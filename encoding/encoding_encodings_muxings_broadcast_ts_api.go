@@ -1,0 +1,74 @@
+package encoding
+import (
+    "github.com/bitmovin/bitmovin-api-sdk-go/common"
+    "github.com/bitmovin/bitmovin-api-sdk-go/query"
+    "github.com/bitmovin/bitmovin-api-sdk-go/model"
+    "github.com/bitmovin/bitmovin-api-sdk-go/pagination"
+)
+
+type EncodingEncodingsMuxingsBroadcastTsApi struct {
+    apiClient *common.ApiClient
+    Customdata *EncodingEncodingsMuxingsBroadcastTsCustomdataApi
+    Information *EncodingEncodingsMuxingsBroadcastTsInformationApi
+}
+
+func NewEncodingEncodingsMuxingsBroadcastTsApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsMuxingsBroadcastTsApi, error) {
+	apiClient, err := common.NewApiClient(configs...)
+	if err != nil {
+		return nil, err
+	}
+
+    api := &EncodingEncodingsMuxingsBroadcastTsApi{apiClient: apiClient}
+
+    customdataApi, err := NewEncodingEncodingsMuxingsBroadcastTsCustomdataApi(configs...)
+    api.Customdata = customdataApi
+    informationApi, err := NewEncodingEncodingsMuxingsBroadcastTsInformationApi(configs...)
+    api.Information = informationApi
+
+	if err != nil {
+		return nil, err
+	}
+
+	return api, nil
+}
+
+func (api *EncodingEncodingsMuxingsBroadcastTsApi) Create(encodingId string, broadcastTsMuxing model.BroadcastTsMuxing) (*model.BroadcastTsMuxing, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+    payload := model.BroadcastTsMuxing(broadcastTsMuxing)
+    
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/broadcast-ts", &payload, reqParams)
+    return &payload, err
+}
+func (api *EncodingEncodingsMuxingsBroadcastTsApi) List(encodingId string, queryParams ...func(*query.BroadcastTsMuxingListQueryParams)) (*pagination.BroadcastTsMuxingsListPagination, error) {
+    queryParameters := &query.BroadcastTsMuxingListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+    var resp *pagination.BroadcastTsMuxingsListPagination
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.QueryParams = queryParameters
+	}
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts", &resp, reqParams)
+    return resp, err
+}
+func (api *EncodingEncodingsMuxingsBroadcastTsApi) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
+    var resp *model.BitmovinResponse
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+	}
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", &resp, reqParams)
+    return resp, err
+}
+func (api *EncodingEncodingsMuxingsBroadcastTsApi) Get(encodingId string, muxingId string) (*model.BroadcastTsMuxing, error) {
+    var resp *model.BroadcastTsMuxing
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+	}
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", &resp, reqParams)
+    return resp, err
+}

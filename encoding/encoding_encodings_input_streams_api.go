@@ -1,0 +1,65 @@
+package encoding
+import (
+    "github.com/bitmovin/bitmovin-api-sdk-go/common"
+    "github.com/bitmovin/bitmovin-api-sdk-go/query"
+    "github.com/bitmovin/bitmovin-api-sdk-go/model"
+    "github.com/bitmovin/bitmovin-api-sdk-go/pagination"
+)
+
+type EncodingEncodingsInputStreamsApi struct {
+    apiClient *common.ApiClient
+    Type *EncodingEncodingsInputStreamsTypeApi
+    AudioMix *EncodingEncodingsInputStreamsAudioMixApi
+    Ingest *EncodingEncodingsInputStreamsIngestApi
+    Concatenation *EncodingEncodingsInputStreamsConcatenationApi
+    Trimming *EncodingEncodingsInputStreamsTrimmingApi
+}
+
+func NewEncodingEncodingsInputStreamsApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsInputStreamsApi, error) {
+	apiClient, err := common.NewApiClient(configs...)
+	if err != nil {
+		return nil, err
+	}
+
+    api := &EncodingEncodingsInputStreamsApi{apiClient: apiClient}
+
+    typeApi, err := NewEncodingEncodingsInputStreamsTypeApi(configs...)
+    api.Type = typeApi
+    audioMixApi, err := NewEncodingEncodingsInputStreamsAudioMixApi(configs...)
+    api.AudioMix = audioMixApi
+    ingestApi, err := NewEncodingEncodingsInputStreamsIngestApi(configs...)
+    api.Ingest = ingestApi
+    concatenationApi, err := NewEncodingEncodingsInputStreamsConcatenationApi(configs...)
+    api.Concatenation = concatenationApi
+    trimmingApi, err := NewEncodingEncodingsInputStreamsTrimmingApi(configs...)
+    api.Trimming = trimmingApi
+
+	if err != nil {
+		return nil, err
+	}
+
+	return api, nil
+}
+
+func (api *EncodingEncodingsInputStreamsApi) Get(encodingId string, inputStreamId string) (*model.BasicInputStream, error) {
+    var resp *model.BasicInputStream
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["input_stream_id"] = inputStreamId
+	}
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}", &resp, reqParams)
+    return resp, err
+}
+func (api *EncodingEncodingsInputStreamsApi) List(encodingId string, queryParams ...func(*query.BasicInputStreamListQueryParams)) (*pagination.BasicInputStreamsListPagination, error) {
+    queryParameters := &query.BasicInputStreamListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+    var resp *pagination.BasicInputStreamsListPagination
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.QueryParams = queryParameters
+	}
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams", &resp, reqParams)
+    return resp, err
+}

@@ -1,0 +1,35 @@
+package encoding
+import (
+    "github.com/bitmovin/bitmovin-api-sdk-go/common"
+    
+    "github.com/bitmovin/bitmovin-api-sdk-go/model"
+)
+
+type EncodingInputsTypeApi struct {
+    apiClient *common.ApiClient
+}
+
+func NewEncodingInputsTypeApi(configs ...func(*common.ApiClient)) (*EncodingInputsTypeApi, error) {
+	apiClient, err := common.NewApiClient(configs...)
+	if err != nil {
+		return nil, err
+	}
+
+    api := &EncodingInputsTypeApi{apiClient: apiClient}
+
+
+	if err != nil {
+		return nil, err
+	}
+
+	return api, nil
+}
+
+func (api *EncodingInputsTypeApi) Get(inputId string) (*model.InputTypeResponse, error) {
+    var resp *model.InputTypeResponse
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+	}
+    err := api.apiClient.Get("/encoding/inputs/{input_id}/type", &resp, reqParams)
+    return resp, err
+}
