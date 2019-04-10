@@ -9,6 +9,7 @@ type EncodingManifestsDashPeriodsAdaptationsetsRepresentationsApi struct {
     Vtt *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi
     Sidecar *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsSidecarApi
     Fmp4 *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api
+    Cmaf *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi
     Mp4 *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4Api
     Webm *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmApi
 }
@@ -27,6 +28,8 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsApi(configs ...
     api.Sidecar = sidecarApi
     fmp4Api, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api(configs...)
     api.Fmp4 = fmp4Api
+    cmafApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi(configs...)
+    api.Cmaf = cmafApi
     mp4Api, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4Api(configs...)
     api.Mp4 = mp4Api
     webmApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmApi(configs...)

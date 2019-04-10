@@ -4,6 +4,7 @@ type MuxingType string
 // List of MuxingType
 const (
 	MuxingType_FMP4 MuxingType = "FMP4"
+	MuxingType_CMAF MuxingType = "CMAF"
 	MuxingType_MP4 MuxingType = "MP4"
 	MuxingType_TS MuxingType = "TS"
 	MuxingType_WEBM MuxingType = "WEBM"

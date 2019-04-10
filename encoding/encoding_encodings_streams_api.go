@@ -17,6 +17,7 @@ type EncodingEncodingsStreamsApi struct {
     Captions *EncodingEncodingsStreamsCaptionsApi
     Thumbnails *EncodingEncodingsStreamsThumbnailsApi
     Sprites *EncodingEncodingsStreamsSpritesApi
+    Qc *EncodingEncodingsStreamsQcApi
 }
 
 func NewEncodingEncodingsStreamsApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsStreamsApi, error) {
@@ -45,6 +46,8 @@ func NewEncodingEncodingsStreamsApi(configs ...func(*common.ApiClient)) (*Encodi
     api.Thumbnails = thumbnailsApi
     spritesApi, err := NewEncodingEncodingsStreamsSpritesApi(configs...)
     api.Sprites = spritesApi
+    qcApi, err := NewEncodingEncodingsStreamsQcApi(configs...)
+    api.Qc = qcApi
 
 	if err != nil {
 		return nil, err

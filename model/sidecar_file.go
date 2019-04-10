@@ -3,6 +3,7 @@ import (
 	"time"
 )
 
+// A file that is added to an encoding. The size limit for a sidecar file is 10 MB
 type SidecarFile struct {
 	// Name of the resource. Can be freely chosen by the user.
 	Name string `json:"name,omitempty"`
@@ -21,5 +22,6 @@ type SidecarFile struct {
 	// Path to sidecar file
 	InputPath string `json:"inputPath,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
+	ErrorMode SidecarErrorMode `json:"errorMode,omitempty"`
 }
 

@@ -9,6 +9,7 @@ import (
 type EncodingEncodingsApi struct {
     apiClient *common.ApiClient
     Live *EncodingEncodingsLiveApi
+    MachineLearning *EncodingEncodingsMachineLearningApi
     Customdata *EncodingEncodingsCustomdataApi
     Streams *EncodingEncodingsStreamsApi
     InputStreams *EncodingEncodingsInputStreamsApi
@@ -29,6 +30,8 @@ func NewEncodingEncodingsApi(configs ...func(*common.ApiClient)) (*EncodingEncod
 
     liveApi, err := NewEncodingEncodingsLiveApi(configs...)
     api.Live = liveApi
+    machineLearningApi, err := NewEncodingEncodingsMachineLearningApi(configs...)
+    api.MachineLearning = machineLearningApi
     customdataApi, err := NewEncodingEncodingsCustomdataApi(configs...)
     api.Customdata = customdataApi
     streamsApi, err := NewEncodingEncodingsStreamsApi(configs...)

@@ -17,12 +17,14 @@ type PlayReadyDrm struct {
 	// Id of the resource
 	Id string `json:"id,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
-	// 16 byte encryption key, 32 hexadecimal characters. Either key or keySeed is required.
+	// 16 byte encryption key, 32 hexadecimal characters. Either key or keySeed is required
 	Key string `json:"key,omitempty"`
-	// Key seed to generate key. Either key or keySeed is required.
+	// Key seed to generate key. Either key or keySeed is required
 	KeySeed string `json:"keySeed,omitempty"`
 	// URL of the license server
 	LaUrl string `json:"laUrl,omitempty"`
+	// Base64 encoded pssh payload
+	Pssh string `json:"pssh,omitempty"`
 	Method PlayReadyEncryptionMethod `json:"method,omitempty"`
 	// Key identifier
 	Kid string `json:"kid,omitempty"`

@@ -16,6 +16,7 @@ type EncodingOutputsApi struct {
     Azure *EncodingOutputsAzureApi
     Ftp *EncodingOutputsFtpApi
     Sftp *EncodingOutputsSftpApi
+    AkamaiMsl *EncodingOutputsAkamaiMslApi
     AkamaiNetstorage *EncodingOutputsAkamaiNetstorageApi
 }
 
@@ -45,6 +46,8 @@ func NewEncodingOutputsApi(configs ...func(*common.ApiClient)) (*EncodingOutputs
     api.Ftp = ftpApi
     sftpApi, err := NewEncodingOutputsSftpApi(configs...)
     api.Sftp = sftpApi
+    akamaiMslApi, err := NewEncodingOutputsAkamaiMslApi(configs...)
+    api.AkamaiMsl = akamaiMslApi
     akamaiNetstorageApi, err := NewEncodingOutputsAkamaiNetstorageApi(configs...)
     api.AkamaiNetstorage = akamaiNetstorageApi
 

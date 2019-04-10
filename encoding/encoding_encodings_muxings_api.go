@@ -8,6 +8,7 @@ import (
 type EncodingEncodingsMuxingsApi struct {
     apiClient *common.ApiClient
     Fmp4 *EncodingEncodingsMuxingsFmp4Api
+    Cmaf *EncodingEncodingsMuxingsCmafApi
     SegmentedRaw *EncodingEncodingsMuxingsSegmentedRawApi
     Ts *EncodingEncodingsMuxingsTsApi
     Webm *EncodingEncodingsMuxingsWebmApi
@@ -29,6 +30,8 @@ func NewEncodingEncodingsMuxingsApi(configs ...func(*common.ApiClient)) (*Encodi
 
     fmp4Api, err := NewEncodingEncodingsMuxingsFmp4Api(configs...)
     api.Fmp4 = fmp4Api
+    cmafApi, err := NewEncodingEncodingsMuxingsCmafApi(configs...)
+    api.Cmaf = cmafApi
     segmentedRawApi, err := NewEncodingEncodingsMuxingsSegmentedRawApi(configs...)
     api.SegmentedRaw = segmentedRawApi
     tsApi, err := NewEncodingEncodingsMuxingsTsApi(configs...)

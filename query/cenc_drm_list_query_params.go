@@ -5,8 +5,8 @@ import(
 )
 
 type CencDrmListQueryParams struct {
-    Offset string `query:"offset"`
-    Limit string `query:"limit"`
+    Offset int32 `query:"offset"`
+    Limit int32 `query:"limit"`
 }
 
 func (q *CencDrmListQueryParams) Params() map[string]string {

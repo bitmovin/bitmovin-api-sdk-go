@@ -43,15 +43,15 @@ func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) List(encodingId string, mux
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin", &resp, reqParams)
     return resp, err
 }
-func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) Create(encodingId string, muxingId string, marlinDrm model.MarlinDrm) (*model.MarlinDrm, error) {
+func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) Delete(encodingId string, muxingId string, drmId string) (*model.BitmovinResponse, error) {
+    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-    }
-    payload := model.MarlinDrm(marlinDrm)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin", &payload, reqParams)
-    return &payload, err
+        params.PathParams["drm_id"] = drmId
+	}
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin/{drm_id}", &resp, reqParams)
+    return resp, err
 }
 func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) Get(encodingId string, muxingId string, drmId string) (*model.MarlinDrm, error) {
     var resp *model.MarlinDrm
@@ -63,13 +63,13 @@ func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) Get(encodingId string, muxi
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin/{drm_id}", &resp, reqParams)
     return resp, err
 }
-func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) Delete(encodingId string, muxingId string, drmId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
+func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) Create(encodingId string, muxingId string, marlinDrm model.MarlinDrm) (*model.MarlinDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-        params.PathParams["drm_id"] = drmId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin/{drm_id}", &resp, reqParams)
-    return resp, err
+    }
+    payload := model.MarlinDrm(marlinDrm)
+    
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin", &payload, reqParams)
+    return &payload, err
 }

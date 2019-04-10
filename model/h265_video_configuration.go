@@ -154,16 +154,16 @@ type H265VideoConfiguration struct {
 	TransformSkip TransformSkipMode `json:"transformSkip,omitempty"`
 	// Enable QP based rate distortion refinement. Default is disabled.
 	RefineRateDistortionCost *bool `json:"refineRateDistortionCost,omitempty"`
-	// Enables early exit from transfer unit depth recursion, for inter coded blocks. Default is DISABLED.
-	LimitTransferUnitDepthRecursion LimitTransferUnitDepthRecursionMode `json:"limitTransferUnitDepthRecursion,omitempty"`
+	// Enables early exit from transform unit depth recursion, for inter coded blocks. Default is DISABLED.
+	LimitTransformUnitDepthRecursion LimitTransformUnitDepthRecursionMode `json:"limitTransformUnitDepthRecursion,omitempty"`
 	// An integer value, which denotes strength of noise reduction in intra CUs. Default 0.
 	NoiseReductionIntra *int32 `json:"noiseReductionIntra,omitempty"`
 	// An integer value, which denotes strength of noise reduction in inter CUs. Default 0.
 	NoiseReductionInter *int32 `json:"noiseReductionInter,omitempty"`
-	// Penalty for 32x32 intra transfer units in non-I slices. Default DISABLED.
+	// Penalty for 32x32 intra transform units in non-I slices. Default DISABLED.
 	RateDistortionPenalty RateDistortionPenaltyMode `json:"rateDistortionPenalty,omitempty"`
-	// Penalty for 32x32 intra transfer units in non-I slices. Default DISABLED.
-	MaximumTransferUnitSize MaxTransferUnitSize `json:"maximumTransferUnitSize,omitempty"`
+	// Penalty for 32x32 intra transform units in non-I slices. Default DISABLED.
+	MaximumTransformUnitSize MaxTransformUnitSize `json:"maximumTransformUnitSize,omitempty"`
 	// Increases the RD level at points where quality drops due to VBV rate control enforcement. Default 0.
 	DynamicRateDistortionStrength *int32 `json:"dynamicRateDistortionStrength,omitempty"`
 	// It is used for mode selection during analysis of CTUs and can achieve significant gain in terms of objective quality metrics SSIM and PSNR. Default false.

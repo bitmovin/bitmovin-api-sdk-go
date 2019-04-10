@@ -5,8 +5,8 @@ import(
 )
 
 type PrimeTimeDrmListQueryParams struct {
-    Offset string `query:"offset"`
-    Limit string `query:"limit"`
+    Offset int32 `query:"offset"`
+    Limit int32 `query:"limit"`
 }
 
 func (q *PrimeTimeDrmListQueryParams) Params() map[string]string {

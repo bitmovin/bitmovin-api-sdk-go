@@ -39,16 +39,6 @@ func (api *EncodingEncodingsStreamsSubtitlesDvbsubApi) Create(encodingId string,
     err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/subtitles/dvbsub", &payload, reqParams)
     return &payload, err
 }
-func (api *EncodingEncodingsStreamsSubtitlesDvbsubApi) Delete(encodingId string, streamId string, subtitleId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["stream_id"] = streamId
-        params.PathParams["subtitle_id"] = subtitleId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/subtitles/dvbsub/{subtitle_id}", &resp, reqParams)
-    return resp, err
-}
 func (api *EncodingEncodingsStreamsSubtitlesDvbsubApi) Get(encodingId string, streamId string, subtitleId string) (*model.StreamDvbSubSubtitle, error) {
     var resp *model.StreamDvbSubSubtitle
     reqParams := func(params *common.RequestParams) {
@@ -57,6 +47,16 @@ func (api *EncodingEncodingsStreamsSubtitlesDvbsubApi) Get(encodingId string, st
         params.PathParams["subtitle_id"] = subtitleId
 	}
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/subtitles/dvbsub/{subtitle_id}", &resp, reqParams)
+    return resp, err
+}
+func (api *EncodingEncodingsStreamsSubtitlesDvbsubApi) Delete(encodingId string, streamId string, subtitleId string) (*model.BitmovinResponse, error) {
+    var resp *model.BitmovinResponse
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["stream_id"] = streamId
+        params.PathParams["subtitle_id"] = subtitleId
+	}
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/subtitles/dvbsub/{subtitle_id}", &resp, reqParams)
     return resp, err
 }
 func (api *EncodingEncodingsStreamsSubtitlesDvbsubApi) List(encodingId string, streamId string, queryParams ...func(*query.StreamDvbSubSubtitleListQueryParams)) (*pagination.StreamDvbSubSubtitlesListPagination, error) {
