@@ -9,7 +9,6 @@ type EncodingManifestsDashPeriodsAdaptationsetsApi struct {
     Audio *EncodingManifestsDashPeriodsAdaptationsetsAudioApi
     Video *EncodingManifestsDashPeriodsAdaptationsetsVideoApi
     Subtitle *EncodingManifestsDashPeriodsAdaptationsetsSubtitleApi
-    Custom *EncodingManifestsDashPeriodsAdaptationsetsCustomApi
     Representations *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsApi
     Contentprotection *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionApi
 }
@@ -28,8 +27,6 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsApi(configs ...func(*common.Ap
     api.Video = videoApi
     subtitleApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsSubtitleApi(configs...)
     api.Subtitle = subtitleApi
-    customApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsCustomApi(configs...)
-    api.Custom = customApi
     representationsApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsApi(configs...)
     api.Representations = representationsApi
     contentprotectionApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsContentprotectionApi(configs...)

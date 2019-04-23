@@ -9,6 +9,7 @@ type EncodingStatisticsEncodingsLiveStatisticsApi struct {
     apiClient *common.ApiClient
     Events *EncodingStatisticsEncodingsLiveStatisticsEventsApi
     Streams *EncodingStatisticsEncodingsLiveStatisticsStreamsApi
+    Srt *EncodingStatisticsEncodingsLiveStatisticsSrtApi
 }
 
 func NewEncodingStatisticsEncodingsLiveStatisticsApi(configs ...func(*common.ApiClient)) (*EncodingStatisticsEncodingsLiveStatisticsApi, error) {
@@ -23,6 +24,8 @@ func NewEncodingStatisticsEncodingsLiveStatisticsApi(configs ...func(*common.Api
     api.Events = eventsApi
     streamsApi, err := NewEncodingStatisticsEncodingsLiveStatisticsStreamsApi(configs...)
     api.Streams = streamsApi
+    srtApi, err := NewEncodingStatisticsEncodingsLiveStatisticsSrtApi(configs...)
+    api.Srt = srtApi
 
 	if err != nil {
 		return nil, err

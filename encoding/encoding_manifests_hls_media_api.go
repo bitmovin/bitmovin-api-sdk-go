@@ -6,7 +6,7 @@ import (
 
 type EncodingManifestsHlsMediaApi struct {
     apiClient *common.ApiClient
-    CustomTag *EncodingManifestsHlsMediaCustomTagApi
+    CustomTags *EncodingManifestsHlsMediaCustomTagsApi
     Type *EncodingManifestsHlsMediaTypeApi
     Video *EncodingManifestsHlsMediaVideoApi
     Audio *EncodingManifestsHlsMediaAudioApi
@@ -23,8 +23,8 @@ func NewEncodingManifestsHlsMediaApi(configs ...func(*common.ApiClient)) (*Encod
 
     api := &EncodingManifestsHlsMediaApi{apiClient: apiClient}
 
-    customTagApi, err := NewEncodingManifestsHlsMediaCustomTagApi(configs...)
-    api.CustomTag = customTagApi
+    customTagsApi, err := NewEncodingManifestsHlsMediaCustomTagsApi(configs...)
+    api.CustomTags = customTagsApi
     typeApi, err := NewEncodingManifestsHlsMediaTypeApi(configs...)
     api.Type = typeApi
     videoApi, err := NewEncodingManifestsHlsMediaVideoApi(configs...)

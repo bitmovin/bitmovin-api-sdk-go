@@ -53,16 +53,6 @@ func (api *EncodingEncodingsMuxingsCmafCaptionsTtmlApi) Delete(encodingId string
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/ttml/{captions_id}", &resp, reqParams)
     return resp, err
 }
-func (api *EncodingEncodingsMuxingsCmafCaptionsTtmlApi) Create(encodingId string, muxingId string, ttmlEmbed model.TtmlEmbed) (*model.TtmlEmbed, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-    }
-    payload := model.TtmlEmbed(ttmlEmbed)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/ttml", &payload, reqParams)
-    return &payload, err
-}
 func (api *EncodingEncodingsMuxingsCmafCaptionsTtmlApi) Get(encodingId string, muxingId string, captionsId string) (*model.TtmlEmbed, error) {
     var resp *model.TtmlEmbed
     reqParams := func(params *common.RequestParams) {
@@ -72,4 +62,14 @@ func (api *EncodingEncodingsMuxingsCmafCaptionsTtmlApi) Get(encodingId string, m
 	}
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/ttml/{captions_id}", &resp, reqParams)
     return resp, err
+}
+func (api *EncodingEncodingsMuxingsCmafCaptionsTtmlApi) Create(encodingId string, muxingId string, ttmlEmbed model.TtmlEmbed) (*model.TtmlEmbed, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+    }
+    payload := model.TtmlEmbed(ttmlEmbed)
+    
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/ttml", &payload, reqParams)
+    return &payload, err
 }

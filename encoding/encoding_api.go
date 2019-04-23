@@ -14,6 +14,7 @@ type EncodingApi struct {
     Manifests *EncodingManifestsApi
     Infrastructure *EncodingInfrastructureApi
     Statistics *EncodingStatisticsApi
+    ErrorDefinitions *EncodingErrorDefinitionsApi
 }
 
 func NewEncodingApi(configs ...func(*common.ApiClient)) (*EncodingApi, error) {
@@ -40,6 +41,8 @@ func NewEncodingApi(configs ...func(*common.ApiClient)) (*EncodingApi, error) {
     api.Infrastructure = infrastructureApi
     statisticsApi, err := NewEncodingStatisticsApi(configs...)
     api.Statistics = statisticsApi
+    errorDefinitionsApi, err := NewEncodingErrorDefinitionsApi(configs...)
+    api.ErrorDefinitions = errorDefinitionsApi
 
 	if err != nil {
 		return nil, err

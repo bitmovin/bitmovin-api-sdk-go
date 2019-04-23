@@ -5,5 +5,5 @@ type EncryptionMode string
 // List of EncryptionMode
 const (
 	EncryptionMode_CTR EncryptionMode = "CTR"
-	EncryptionMode_CBS EncryptionMode = "CBS"
+	EncryptionMode_CBC EncryptionMode = "CBC"
 )

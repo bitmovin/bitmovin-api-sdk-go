@@ -29,16 +29,6 @@ func NewEncodingEncodingsMuxingsCmafCaptionsWebvttApi(configs ...func(*common.Ap
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsCmafCaptionsWebvttApi) Get(encodingId string, muxingId string, captionsId string) (*model.WebVttEmbed, error) {
-    var resp *model.WebVttEmbed
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-        params.PathParams["captions_id"] = captionsId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/webvtt/{captions_id}", &resp, reqParams)
-    return resp, err
-}
 func (api *EncodingEncodingsMuxingsCmafCaptionsWebvttApi) List(encodingId string, muxingId string) (*pagination.WebVttEmbedsListPagination, error) {
     var resp *pagination.WebVttEmbedsListPagination
     reqParams := func(params *common.RequestParams) {
@@ -57,4 +47,14 @@ func (api *EncodingEncodingsMuxingsCmafCaptionsWebvttApi) Create(encodingId stri
     
     err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/webvtt", &payload, reqParams)
     return &payload, err
+}
+func (api *EncodingEncodingsMuxingsCmafCaptionsWebvttApi) Get(encodingId string, muxingId string, captionsId string) (*model.WebVttEmbed, error) {
+    var resp *model.WebVttEmbed
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+        params.PathParams["captions_id"] = captionsId
+	}
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/webvtt/{captions_id}", &resp, reqParams)
+    return resp, err
 }

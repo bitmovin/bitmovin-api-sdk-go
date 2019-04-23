@@ -7,7 +7,6 @@ import (
 type EncodingManifestsDashPeriodsAdaptationsetsRepresentationsApi struct {
     apiClient *common.ApiClient
     Vtt *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi
-    Sidecar *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsSidecarApi
     Fmp4 *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api
     Cmaf *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi
     Mp4 *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4Api
@@ -24,8 +23,6 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsApi(configs ...
 
     vttApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi(configs...)
     api.Vtt = vttApi
-    sidecarApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsSidecarApi(configs...)
-    api.Sidecar = sidecarApi
     fmp4Api, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api(configs...)
     api.Fmp4 = fmp4Api
     cmafApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi(configs...)

@@ -6,9 +6,7 @@ import (
 
 type EncodingEncodingsCaptionsApi struct {
     apiClient *common.ApiClient
-    Cea *EncodingEncodingsCaptionsCeaApi
-    Webvtt *EncodingEncodingsCaptionsWebvttApi
-    Ttml *EncodingEncodingsCaptionsTtmlApi
+    Extract *EncodingEncodingsCaptionsExtractApi
     Scc *EncodingEncodingsCaptionsSccApi
 }
 
@@ -20,12 +18,8 @@ func NewEncodingEncodingsCaptionsApi(configs ...func(*common.ApiClient)) (*Encod
 
     api := &EncodingEncodingsCaptionsApi{apiClient: apiClient}
 
-    ceaApi, err := NewEncodingEncodingsCaptionsCeaApi(configs...)
-    api.Cea = ceaApi
-    webvttApi, err := NewEncodingEncodingsCaptionsWebvttApi(configs...)
-    api.Webvtt = webvttApi
-    ttmlApi, err := NewEncodingEncodingsCaptionsTtmlApi(configs...)
-    api.Ttml = ttmlApi
+    extractApi, err := NewEncodingEncodingsCaptionsExtractApi(configs...)
+    api.Extract = extractApi
     sccApi, err := NewEncodingEncodingsCaptionsSccApi(configs...)
     api.Scc = sccApi
 

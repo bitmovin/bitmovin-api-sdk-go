@@ -12,7 +12,6 @@ type EncodingEncodingsStreamsApi struct {
     Input *EncodingEncodingsStreamsInputApi
     Inputs *EncodingEncodingsStreamsInputsApi
     Filters *EncodingEncodingsStreamsFiltersApi
-    Subtitles *EncodingEncodingsStreamsSubtitlesApi
     BurnInSubtitles *EncodingEncodingsStreamsBurnInSubtitlesApi
     Captions *EncodingEncodingsStreamsCaptionsApi
     Thumbnails *EncodingEncodingsStreamsThumbnailsApi
@@ -36,8 +35,6 @@ func NewEncodingEncodingsStreamsApi(configs ...func(*common.ApiClient)) (*Encodi
     api.Inputs = inputsApi
     filtersApi, err := NewEncodingEncodingsStreamsFiltersApi(configs...)
     api.Filters = filtersApi
-    subtitlesApi, err := NewEncodingEncodingsStreamsSubtitlesApi(configs...)
-    api.Subtitles = subtitlesApi
     burnInSubtitlesApi, err := NewEncodingEncodingsStreamsBurnInSubtitlesApi(configs...)
     api.BurnInSubtitles = burnInSubtitlesApi
     captionsApi, err := NewEncodingEncodingsStreamsCaptionsApi(configs...)

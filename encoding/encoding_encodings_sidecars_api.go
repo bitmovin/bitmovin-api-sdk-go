@@ -9,6 +9,7 @@ import (
 type EncodingEncodingsSidecarsApi struct {
     apiClient *common.ApiClient
     Customdata *EncodingEncodingsSidecarsCustomdataApi
+    Webvtt *EncodingEncodingsSidecarsWebvttApi
 }
 
 func NewEncodingEncodingsSidecarsApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsSidecarsApi, error) {
@@ -21,6 +22,8 @@ func NewEncodingEncodingsSidecarsApi(configs ...func(*common.ApiClient)) (*Encod
 
     customdataApi, err := NewEncodingEncodingsSidecarsCustomdataApi(configs...)
     api.Customdata = customdataApi
+    webvttApi, err := NewEncodingEncodingsSidecarsWebvttApi(configs...)
+    api.Webvtt = webvttApi
 
 	if err != nil {
 		return nil, err

@@ -9,7 +9,7 @@ import (
 type NotificationsApi struct {
     apiClient *common.ApiClient
     Webhooks *NotificationsWebhooksApi
-    State *NotificationsStateApi
+    States *NotificationsStatesApi
     Emails *NotificationsEmailsApi
 }
 
@@ -23,8 +23,8 @@ func NewNotificationsApi(configs ...func(*common.ApiClient)) (*NotificationsApi,
 
     webhooksApi, err := NewNotificationsWebhooksApi(configs...)
     api.Webhooks = webhooksApi
-    stateApi, err := NewNotificationsStateApi(configs...)
-    api.State = stateApi
+    statesApi, err := NewNotificationsStatesApi(configs...)
+    api.States = statesApi
     emailsApi, err := NewNotificationsEmailsApi(configs...)
     api.Emails = emailsApi
 
@@ -52,6 +52,19 @@ func (api *NotificationsApi) Get(notificationId string) (*model.Notification, er
     err := api.apiClient.Get("/notifications/{notification_id}", &resp, reqParams)
     return resp, err
 }
+func (api *NotificationsApi) ListByNotificationId(notificationId string, queryParams ...func(*query.NotificationStateEntryListByNotificationIdQueryParams)) (*pagination.NotificationStateEntrysListByNotificationIdPagination, error) {
+    queryParameters := &query.NotificationStateEntryListByNotificationIdQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+    var resp *pagination.NotificationStateEntrysListByNotificationIdPagination
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["notification_id"] = notificationId
+        params.QueryParams = queryParameters
+	}
+    err := api.apiClient.Get("/notifications/{notification_id}/states", &resp, reqParams)
+    return resp, err
+}
 func (api *NotificationsApi) Mute(notificationId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["notification_id"] = notificationId
@@ -67,19 +80,6 @@ func (api *NotificationsApi) Delete(notificationId string) (*model.BitmovinRespo
         params.PathParams["notification_id"] = notificationId
 	}
     err := api.apiClient.Delete("/notifications/{notification_id}", &resp, reqParams)
-    return resp, err
-}
-func (api *NotificationsApi) ListByNotificationId(notificationId string, queryParams ...func(*query.NotificationStateEntryListByNotificationIdQueryParams)) (*pagination.NotificationStateEntrysListByNotificationIdPagination, error) {
-    queryParameters := &query.NotificationStateEntryListByNotificationIdQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-    var resp *pagination.NotificationStateEntrysListByNotificationIdPagination
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["notification_id"] = notificationId
-        params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/notifications/{notification_id}/state", &resp, reqParams)
     return resp, err
 }
 func (api *NotificationsApi) List(queryParams ...func(*query.NotificationListQueryParams)) (*pagination.NotificationsListPagination, error) {

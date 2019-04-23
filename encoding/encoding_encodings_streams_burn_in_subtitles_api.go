@@ -6,6 +6,7 @@ import (
 
 type EncodingEncodingsStreamsBurnInSubtitlesApi struct {
     apiClient *common.ApiClient
+    Dvbsub *EncodingEncodingsStreamsBurnInSubtitlesDvbsubApi
     Srt *EncodingEncodingsStreamsBurnInSubtitlesSrtApi
 }
 
@@ -17,6 +18,8 @@ func NewEncodingEncodingsStreamsBurnInSubtitlesApi(configs ...func(*common.ApiCl
 
     api := &EncodingEncodingsStreamsBurnInSubtitlesApi{apiClient: apiClient}
 
+    dvbsubApi, err := NewEncodingEncodingsStreamsBurnInSubtitlesDvbsubApi(configs...)
+    api.Dvbsub = dvbsubApi
     srtApi, err := NewEncodingEncodingsStreamsBurnInSubtitlesSrtApi(configs...)
     api.Srt = srtApi
 

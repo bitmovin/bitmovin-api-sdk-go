@@ -8,7 +8,6 @@ import (
 
 type EncodingManifestsHlsMediaVideoApi struct {
     apiClient *common.ApiClient
-    Iframe *EncodingManifestsHlsMediaVideoIframeApi
 }
 
 func NewEncodingManifestsHlsMediaVideoApi(configs ...func(*common.ApiClient)) (*EncodingManifestsHlsMediaVideoApi, error) {
@@ -19,8 +18,6 @@ func NewEncodingManifestsHlsMediaVideoApi(configs ...func(*common.ApiClient)) (*
 
     api := &EncodingManifestsHlsMediaVideoApi{apiClient: apiClient}
 
-    iframeApi, err := NewEncodingManifestsHlsMediaVideoIframeApi(configs...)
-    api.Iframe = iframeApi
 
 	if err != nil {
 		return nil, err

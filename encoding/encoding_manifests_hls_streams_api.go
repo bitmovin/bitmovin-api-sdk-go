@@ -8,7 +8,7 @@ import (
 
 type EncodingManifestsHlsStreamsApi struct {
     apiClient *common.ApiClient
-    CustomTag *EncodingManifestsHlsStreamsCustomTagApi
+    CustomTags *EncodingManifestsHlsStreamsCustomTagsApi
     Iframe *EncodingManifestsHlsStreamsIframeApi
 }
 
@@ -20,8 +20,8 @@ func NewEncodingManifestsHlsStreamsApi(configs ...func(*common.ApiClient)) (*Enc
 
     api := &EncodingManifestsHlsStreamsApi{apiClient: apiClient}
 
-    customTagApi, err := NewEncodingManifestsHlsStreamsCustomTagApi(configs...)
-    api.CustomTag = customTagApi
+    customTagsApi, err := NewEncodingManifestsHlsStreamsCustomTagsApi(configs...)
+    api.CustomTags = customTagsApi
     iframeApi, err := NewEncodingManifestsHlsStreamsIframeApi(configs...)
     api.Iframe = iframeApi
 

@@ -29,6 +29,26 @@ func NewEncodingEncodingsMuxingsCmafDrmWidevineApi(configs ...func(*common.ApiCl
 	return api, nil
 }
 
+func (api *EncodingEncodingsMuxingsCmafDrmWidevineApi) Get(encodingId string, muxingId string, drmId string) (*model.WidevineDrm, error) {
+    var resp *model.WidevineDrm
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+        params.PathParams["drm_id"] = drmId
+	}
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/drm/widevine/{drm_id}", &resp, reqParams)
+    return resp, err
+}
+func (api *EncodingEncodingsMuxingsCmafDrmWidevineApi) Delete(encodingId string, muxingId string, drmId string) (*model.BitmovinResponse, error) {
+    var resp *model.BitmovinResponse
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+        params.PathParams["drm_id"] = drmId
+	}
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/drm/widevine/{drm_id}", &resp, reqParams)
+    return resp, err
+}
 func (api *EncodingEncodingsMuxingsCmafDrmWidevineApi) Create(encodingId string, muxingId string, widevineDrm model.WidevineDrm) (*model.WidevineDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -51,25 +71,5 @@ func (api *EncodingEncodingsMuxingsCmafDrmWidevineApi) List(encodingId string, m
         params.QueryParams = queryParameters
 	}
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/drm/widevine", &resp, reqParams)
-    return resp, err
-}
-func (api *EncodingEncodingsMuxingsCmafDrmWidevineApi) Delete(encodingId string, muxingId string, drmId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-        params.PathParams["drm_id"] = drmId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/drm/widevine/{drm_id}", &resp, reqParams)
-    return resp, err
-}
-func (api *EncodingEncodingsMuxingsCmafDrmWidevineApi) Get(encodingId string, muxingId string, drmId string) (*model.WidevineDrm, error) {
-    var resp *model.WidevineDrm
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-        params.PathParams["drm_id"] = drmId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/drm/widevine/{drm_id}", &resp, reqParams)
     return resp, err
 }

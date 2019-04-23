@@ -6,18 +6,18 @@ import(
     "github.com/bitmovin/bitmovin-api-sdk-go/model"
 )
 
-type AdaptationSetsListPagination struct {
+type SrtStatisticssListPagination struct {
 	TotalCount *int64           `json:"totalCount,omitempty"`
 	Offset     *int32           `json:"offset,omitempty"`
 	Limit      *int32           `json:"limit,omitempty"`
 	Previous   string           `json:"previous,omitempty"`
 	Next       string           `json:"next,omitempty"`
-	Items      []model.AdaptationSet `json:"items,omitempty"`
+	Items      []model.SrtStatistics `json:"items,omitempty"`
 }
 
 
-  func (o *AdaptationSetsListPagination) UnmarshalJSON(b []byte) error {
-    var items []model.AdaptationSet
+  func (o *SrtStatisticssListPagination) UnmarshalJSON(b []byte) error {
+    var items []model.SrtStatistics
 
     var pageResp model.PaginationResponse
     if err := json.Unmarshal(b, &pageResp); err != nil {
@@ -25,7 +25,7 @@ type AdaptationSetsListPagination struct {
     }
 
     for _, i := range pageResp.Items {
-      var v model.AdaptationSet
+      var v model.SrtStatistics
       serialization.Decode(i, &v)
       items = append(items, v)
     }

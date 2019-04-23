@@ -29,6 +29,12 @@ func NewAnalyticsLicensesApi(configs ...func(*common.ApiClient)) (*AnalyticsLice
 	return api, nil
 }
 
+func (api *AnalyticsLicensesApi) Create(analyticsLicense model.AnalyticsLicense) (*model.AnalyticsLicense, error) {
+    payload := model.AnalyticsLicense(analyticsLicense)
+    
+    err := api.apiClient.Post("/analytics/licenses", &payload)
+    return &payload, err
+}
 func (api *AnalyticsLicensesApi) Get(licenseId string) (*model.AnalyticsLicense, error) {
     var resp *model.AnalyticsLicense
     reqParams := func(params *common.RequestParams) {

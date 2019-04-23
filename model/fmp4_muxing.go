@@ -8,9 +8,9 @@ type Fmp4Muxing struct {
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
 	Description string `json:"description,omitempty"`
-	// Creation timestamp expressed in UTC: YYYY-MM-DDThh:mm:ssZ
+	// Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Modified timestamp expressed in UTC: YYYY-MM-DDThh:mm:ssZ
+	// Modified timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
@@ -38,6 +38,8 @@ type Fmp4Muxing struct {
 	InitSegmentName string `json:"initSegmentName,omitempty"`
 	// Segment naming policy with placeholders which will be replaced during the encoding, similar to segmentNamingTemplate. The result will be saved in initSegmentName. If this field is set, initSegmentName must not be specified and segmentNamingTemplate should be set. 
 	InitSegmentNameTemplate string `json:"initSegmentNameTemplate,omitempty"`
+	// Writes the duration per sample into the sample entry in the Track Fragment Run Box. This could help to fix playback issues on legacy players. Enabling this flag increases the muxing overhead by 4 bytes per sample/frame.
+	WriteDurationPerSample *bool `json:"writeDurationPerSample,omitempty"`
 	// Number of segments which have been encoded
 	SegmentsMuxed *int32 `json:"segmentsMuxed,omitempty"`
 }

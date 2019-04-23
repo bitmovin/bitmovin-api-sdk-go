@@ -8,6 +8,7 @@ import (
 
 type PlayerLicensesApi struct {
     apiClient *common.ApiClient
+    Analytics *PlayerLicensesAnalyticsApi
     Domains *PlayerLicensesDomainsApi
     ThirdPartyLicensing *PlayerLicensesThirdPartyLicensingApi
 }
@@ -20,6 +21,8 @@ func NewPlayerLicensesApi(configs ...func(*common.ApiClient)) (*PlayerLicensesAp
 
     api := &PlayerLicensesApi{apiClient: apiClient}
 
+    analyticsApi, err := NewPlayerLicensesAnalyticsApi(configs...)
+    api.Analytics = analyticsApi
     domainsApi, err := NewPlayerLicensesDomainsApi(configs...)
     api.Domains = domainsApi
     thirdPartyLicensingApi, err := NewPlayerLicensesThirdPartyLicensingApi(configs...)
@@ -32,6 +35,12 @@ func NewPlayerLicensesApi(configs ...func(*common.ApiClient)) (*PlayerLicensesAp
 	return api, nil
 }
 
+func (api *PlayerLicensesApi) Create(playerLicense model.PlayerLicense) (*model.PlayerLicense, error) {
+    payload := model.PlayerLicense(playerLicense)
+    
+    err := api.apiClient.Post("/player/licenses", &payload)
+    return &payload, err
+}
 func (api *PlayerLicensesApi) List(queryParams ...func(*query.PlayerLicenseListQueryParams)) (*pagination.PlayerLicensesListPagination, error) {
     queryParameters := &query.PlayerLicenseListQueryParams{}
 	for _, queryParam := range queryParams {

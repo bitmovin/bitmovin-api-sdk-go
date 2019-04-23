@@ -5,17 +5,17 @@ import (
     "github.com/bitmovin/bitmovin-api-sdk-go/pagination"
 )
 
-type NotificationsStateApi struct {
+type NotificationsStatesApi struct {
     apiClient *common.ApiClient
 }
 
-func NewNotificationsStateApi(configs ...func(*common.ApiClient)) (*NotificationsStateApi, error) {
+func NewNotificationsStatesApi(configs ...func(*common.ApiClient)) (*NotificationsStatesApi, error) {
 	apiClient, err := common.NewApiClient(configs...)
 	if err != nil {
 		return nil, err
 	}
 
-    api := &NotificationsStateApi{apiClient: apiClient}
+    api := &NotificationsStatesApi{apiClient: apiClient}
 
 
 	if err != nil {
@@ -25,7 +25,7 @@ func NewNotificationsStateApi(configs ...func(*common.ApiClient)) (*Notification
 	return api, nil
 }
 
-func (api *NotificationsStateApi) List(notificationId string, resourceId string, queryParams ...func(*query.NotificationStateEntryListQueryParams)) (*pagination.NotificationStateEntrysListPagination, error) {
+func (api *NotificationsStatesApi) List(notificationId string, resourceId string, queryParams ...func(*query.NotificationStateEntryListQueryParams)) (*pagination.NotificationStateEntrysListPagination, error) {
     queryParameters := &query.NotificationStateEntryListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
@@ -36,6 +36,6 @@ func (api *NotificationsStateApi) List(notificationId string, resourceId string,
         params.PathParams["resource_id"] = resourceId
         params.QueryParams = queryParameters
 	}
-    err := api.apiClient.Get("/notifications/{notification_id}/state/{resource_id}", &resp, reqParams)
+    err := api.apiClient.Get("/notifications/{notification_id}/states/{resource_id}", &resp, reqParams)
     return resp, err
 }

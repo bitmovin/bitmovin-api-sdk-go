@@ -8,9 +8,9 @@ type H265VideoConfiguration struct {
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
 	Description string `json:"description,omitempty"`
-	// Creation timestamp expressed in UTC: YYYY-MM-DDThh:mm:ssZ
+	// Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Modified timestamp expressed in UTC: YYYY-MM-DDThh:mm:ssZ
+	// Modified timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
@@ -136,10 +136,6 @@ type H265VideoConfiguration struct {
 	QpMax *int32 `json:"qpMax,omitempty"`
 	// The encoder may begin encoding a row as soon as the row above it is at least two CTUs ahead in the encode process. Default is enabled.
 	WavefrontParallelProcessing *bool `json:"wavefrontParallelProcessing,omitempty"`
-	// When enabled the encoder will distribute the analysis work of each CU (merge, inter, intra) across multiple worker threads. Default is disabled.
-	ParallelModeDecision *bool `json:"parallelModeDecision,omitempty"`
-	// When enabled the encoder will distribute motion estimation across multiple worker threads when more than two references require motion searches for a given CU. Default is disabled.
-	ParallelMotionEstimation *bool `json:"parallelMotionEstimation,omitempty"`
 	// Encode each incoming frame as multiple parallel slices that may be decoded independently. Default is 1.
 	Slices *int32 `json:"slices,omitempty"`
 	// Copy buffers of input picture in frame. Default is enabled.
