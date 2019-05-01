@@ -7,8 +7,9 @@ type DashCmafDrmRepresentation struct {
 	EncodingId string `json:"encodingId,omitempty"`
 	// UUID of a muxing
 	MuxingId string `json:"muxingId,omitempty"`
-	Type DashMuxingType `json:"type,omitempty"`
-	// Path to segments
+	Type DashRepresentationType `json:"type,omitempty"`
+	Mode DashRepresentationTypeMode `json:"mode,omitempty"`
+	// Path to segments. Will be used as the representation id if the type is set to TEMPLATE_ADAPTATION_SET
 	SegmentPath string `json:"segmentPath,omitempty"`
 	// Number of the first segment
 	StartSegmentNumber *int64 `json:"startSegmentNumber,omitempty"`
