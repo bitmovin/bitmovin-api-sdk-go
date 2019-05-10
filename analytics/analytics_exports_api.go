@@ -26,26 +26,26 @@ func NewAnalyticsExportsApi(configs ...func(*common.ApiClient)) (*AnalyticsExpor
 	return api, nil
 }
 
-func (api *AnalyticsExportsApi) Create(analyticsExportTask model.AnalyticsExportTaskDetails) (*model.AnalyticsExportTaskDetails, error) {
-    payload := model.AnalyticsExportTaskDetails(analyticsExportTask)
-    
-    err := api.apiClient.Post("/analytics/exports", &payload)
-    return &payload, err
-}
-func (api *AnalyticsExportsApi) List(queryParams ...func(*query.AnalyticsExportTaskDetailsListQueryParams)) (*pagination.AnalyticsExportTaskDetailssListPagination, error) {
-    queryParameters := &query.AnalyticsExportTaskDetailsListQueryParams{}
+func (api *AnalyticsExportsApi) List(queryParams ...func(*query.AnalyticsExportTaskListQueryParams)) (*pagination.AnalyticsExportTasksListPagination, error) {
+    queryParameters := &query.AnalyticsExportTaskListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AnalyticsExportTaskDetailssListPagination
+    var resp *pagination.AnalyticsExportTasksListPagination
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
 	}
     err := api.apiClient.Get("/analytics/exports", &resp, reqParams)
     return resp, err
 }
-func (api *AnalyticsExportsApi) Get(exportTaskId string) (*model.AnalyticsExportTaskDetails, error) {
-    var resp *model.AnalyticsExportTaskDetails
+func (api *AnalyticsExportsApi) Create(analyticsExportTask model.AnalyticsExportTask) (*model.AnalyticsExportTask, error) {
+    payload := model.AnalyticsExportTask(analyticsExportTask)
+    
+    err := api.apiClient.Post("/analytics/exports", &payload)
+    return &payload, err
+}
+func (api *AnalyticsExportsApi) Get(exportTaskId string) (*model.AnalyticsExportTask, error) {
+    var resp *model.AnalyticsExportTask
     reqParams := func(params *common.RequestParams) {
         params.PathParams["export_task_id"] = exportTaskId
 	}

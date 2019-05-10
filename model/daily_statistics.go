@@ -13,7 +13,7 @@ type DailyStatistics struct {
 	// The billable minutes.
 	BillableMinutes *float64 `json:"billableMinutes,omitempty"`
 	// Label identifier.
-	Label *time.Time `json:"label,omitempty"`
+	Label string `json:"label,omitempty"`
 	// Billable minutes for each encoding configuration.
 	BillableEncodingMinutes []BillableEncodingMinutes `json:"billableEncodingMinutes,omitempty"`
 	// Billable minutes for muxings.

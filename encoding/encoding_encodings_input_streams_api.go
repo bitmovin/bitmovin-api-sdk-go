@@ -41,8 +41,8 @@ func NewEncodingEncodingsInputStreamsApi(configs ...func(*common.ApiClient)) (*E
 	return api, nil
 }
 
-func (api *EncodingEncodingsInputStreamsApi) Get(encodingId string, inputStreamId string) (*model.BasicInputStream, error) {
-    var resp *model.BasicInputStream
+func (api *EncodingEncodingsInputStreamsApi) Get(encodingId string, inputStreamId string) (*model.InputStream, error) {
+    var resp *model.InputStream
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["input_stream_id"] = inputStreamId
@@ -50,12 +50,12 @@ func (api *EncodingEncodingsInputStreamsApi) Get(encodingId string, inputStreamI
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}", &resp, reqParams)
     return resp, err
 }
-func (api *EncodingEncodingsInputStreamsApi) List(encodingId string, queryParams ...func(*query.BasicInputStreamListQueryParams)) (*pagination.BasicInputStreamsListPagination, error) {
-    queryParameters := &query.BasicInputStreamListQueryParams{}
+func (api *EncodingEncodingsInputStreamsApi) List(encodingId string, queryParams ...func(*query.InputStreamListQueryParams)) (*pagination.InputStreamsListPagination, error) {
+    queryParameters := &query.InputStreamListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.BasicInputStreamsListPagination
+    var resp *pagination.InputStreamsListPagination
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters

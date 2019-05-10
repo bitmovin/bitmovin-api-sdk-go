@@ -2,9 +2,9 @@ package serialization
 
 import (
     "encoding/json"
-	"github.com/mitchellh/mapstructure"
-	"reflect"
-	"time"
+    "github.com/mitchellh/mapstructure"
+    "reflect"
+    "time"
 )
 
 const TimeLayoutDateTime = "2006-01-02T15:04:05Z"
@@ -47,6 +47,31 @@ func Decode(input interface{}, output interface{}) error {
 }
 
 func Serialize(model interface{}) []byte {
+	value := reflect.ValueOf(model)
+	if value.Kind() == reflect.Ptr {
+		value = value.Elem()
+	}
+
+	for i := 0; i < value.NumField(); i++ {
+		t := value.Field(i).Type()
+		if t.String() == "time.Time" {
+			elem := value.Field(i)
+			if elem.CanSet() {
+				timeValue, _ := value.Field(i).Interface().(time.Time)
+				timeValue = timeValue.UTC().Round(time.Second)
+				elem.Set(reflect.ValueOf(timeValue))
+			}
+		}
+		if t.String() == "*time.Time" {
+			elem := value.Field(i).Elem()
+			if elem.CanSet() {
+				timeValue, _ := elem.Interface().(time.Time)
+				timeValue = timeValue.UTC().Round(time.Second)
+				elem.Set(reflect.ValueOf(timeValue))
+			}
+		}
+	}
+
 	ser, err := json.Marshal(model)
 	if err != nil {
 		panic(err)

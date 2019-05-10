@@ -6,7 +6,6 @@ import (
 
 type EncodingEncodingsMuxingsCmafCaptionsApi struct {
     apiClient *common.ApiClient
-    Webvtt *EncodingEncodingsMuxingsCmafCaptionsWebvttApi
     Ttml *EncodingEncodingsMuxingsCmafCaptionsTtmlApi
 }
 
@@ -18,8 +17,6 @@ func NewEncodingEncodingsMuxingsCmafCaptionsApi(configs ...func(*common.ApiClien
 
     api := &EncodingEncodingsMuxingsCmafCaptionsApi{apiClient: apiClient}
 
-    webvttApi, err := NewEncodingEncodingsMuxingsCmafCaptionsWebvttApi(configs...)
-    api.Webvtt = webvttApi
     ttmlApi, err := NewEncodingEncodingsMuxingsCmafCaptionsTtmlApi(configs...)
     api.Ttml = ttmlApi
 

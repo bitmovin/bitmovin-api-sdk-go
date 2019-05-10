@@ -81,7 +81,7 @@ type H264VideoConfiguration struct {
 	Slices *int32 `json:"slices,omitempty"`
 	// Using TOP_FIELD_FIRST or BOTTOM_FIELD_FIRST will output interlaced video
 	InterlaceMode H264InterlaceMode `json:"interlaceMode,omitempty"`
-	// Scene Change sensitivity. The higher the value, the more likely an I-Frame will be inserted. Set to 0 to disable it.
+	// Scene change sensitivity. The higher the value, the more likely an I-frame will be inserted. Set to 0 to disable it which is advised for scenarios where fixed GOP is required, e.g., adaptive streaming outputs like DASH, HLS and Smooth. Having this setting enabled can improve quality for progressive output with an increased internal chunk length (see `internalChunkLength` of muxings).
 	SceneCutThreshold *int32 `json:"sceneCutThreshold,omitempty"`
 	// Signal hypothetical reference decoder (HRD) information (requires bufsize to be set)
 	NalHrd H264NalHrd `json:"nalHrd,omitempty"`

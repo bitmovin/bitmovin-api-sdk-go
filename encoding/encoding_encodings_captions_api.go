@@ -6,7 +6,6 @@ import (
 
 type EncodingEncodingsCaptionsApi struct {
     apiClient *common.ApiClient
-    Extract *EncodingEncodingsCaptionsExtractApi
     Scc *EncodingEncodingsCaptionsSccApi
 }
 
@@ -18,8 +17,6 @@ func NewEncodingEncodingsCaptionsApi(configs ...func(*common.ApiClient)) (*Encod
 
     api := &EncodingEncodingsCaptionsApi{apiClient: apiClient}
 
-    extractApi, err := NewEncodingEncodingsCaptionsExtractApi(configs...)
-    api.Extract = extractApi
     sccApi, err := NewEncodingEncodingsCaptionsSccApi(configs...)
     api.Scc = sccApi
 

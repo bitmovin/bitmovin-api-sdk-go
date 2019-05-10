@@ -16,7 +16,7 @@ type Stream struct {
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource
 	Id string `json:"id,omitempty"`
-	InputStreams []InputStream `json:"inputStreams,omitempty"`
+	InputStreams []StreamInput `json:"inputStreams,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	// Set true to create quality metadata for this stream
 	CreateQualityMetaData *bool `json:"createQualityMetaData,omitempty"`

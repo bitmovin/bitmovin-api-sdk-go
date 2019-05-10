@@ -26,18 +26,6 @@ func NewEncodingStatisticsLabelsDailyApi(configs ...func(*common.ApiClient)) (*E
 	return api, nil
 }
 
-func (api *EncodingStatisticsLabelsDailyApi) List(queryParams ...func(*query.DailyStatisticsPerLabelListQueryParams)) (*pagination.DailyStatisticsPerLabelsListPagination, error) {
-    queryParameters := &query.DailyStatisticsPerLabelListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-    var resp *pagination.DailyStatisticsPerLabelsListPagination
-    reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/labels/daily", &resp, reqParams)
-    return resp, err
-}
 func (api *EncodingStatisticsLabelsDailyApi) ListByDateRange(from time.Time, to time.Time, queryParams ...func(*query.DailyStatisticsPerLabelListByDateRangeQueryParams)) (*pagination.DailyStatisticsPerLabelsListByDateRangePagination, error) {
     queryParameters := &query.DailyStatisticsPerLabelListByDateRangeQueryParams{}
 	for _, queryParam := range queryParams {
@@ -50,5 +38,17 @@ func (api *EncodingStatisticsLabelsDailyApi) ListByDateRange(from time.Time, to 
         params.QueryParams = queryParameters
 	}
     err := api.apiClient.Get("/encoding/statistics/labels/daily/{from}/{to}", &resp, reqParams)
+    return resp, err
+}
+func (api *EncodingStatisticsLabelsDailyApi) List(queryParams ...func(*query.DailyStatisticsPerLabelListQueryParams)) (*pagination.DailyStatisticsPerLabelsListPagination, error) {
+    queryParameters := &query.DailyStatisticsPerLabelListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+    var resp *pagination.DailyStatisticsPerLabelsListPagination
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+	}
+    err := api.apiClient.Get("/encoding/statistics/labels/daily", &resp, reqParams)
     return resp, err
 }

@@ -1,6 +1,14 @@
 package model
 
-type AbstractCondition struct {
-	Type ConditionType `json:"type,omitempty"`
+type AbstractCondition interface {
+    ConditionType() ConditionType
+}
+
+type BaseAbstractCondition struct {
+    Type ConditionType `json:"type"`
+}
+
+func (b BaseAbstractCondition) ConditionType() ConditionType {
+    return b.Type
 }
 

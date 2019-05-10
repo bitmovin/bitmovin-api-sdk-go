@@ -17,6 +17,6 @@ type StreamDvbSubSubtitle struct {
 	// Id of the resource
 	Id string `json:"id,omitempty"`
 	// The input stream to extract the subtitle from
-	InputStream *InputStream `json:"inputStream,omitempty"`
+	InputStream *StreamInput `json:"inputStream,omitempty"`
 }
 

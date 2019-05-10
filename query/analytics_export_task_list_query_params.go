@@ -4,11 +4,11 @@ import(
     "github.com/bitmovin/bitmovin-api-sdk-go/common"
 )
 
-type TtmlEmbedListQueryParams struct {
+type AnalyticsExportTaskListQueryParams struct {
     Offset int32 `query:"offset"`
     Limit int32 `query:"limit"`
 }
 
-func (q *TtmlEmbedListQueryParams) Params() map[string]string {
+func (q *AnalyticsExportTaskListQueryParams) Params() map[string]string {
     return common.GetParamsMap(q)
 }

@@ -32,7 +32,7 @@ type TsMuxing struct {
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
 	// Segment naming policy
 	SegmentNaming string `json:"segmentNaming,omitempty"`
-	// Segment naming policy with placeholders which will be replaced during the encoding. The result will be saved in segmentNaming. {rand:4} gets replaced with an alphanumeric string of length specified after the colon. Defaults to 32. If this field is set, segmentNaming must not be specified.
+	// Segment naming policy containing a placeholder of the format '{rand_chars:x}', which will be replaced by a random alphanumeric string of length x (default 32) on each (re)start of the encoding. The resulting string will be copied to the segmentNaming property. Intended to avoid re-use of segment names after restarting a live encoding. If segmentNamingTemplate is set, segmentNaming must not be set.
 	SegmentNamingTemplate string `json:"segmentNamingTemplate,omitempty"`
 	// Offset of MPEG-TS timestamps in seconds. E.g., first packet will start with PTS 900,000 for a 10 seconds offset (90,000 MPEG-TS timescale).
 	StartOffset *int32 `json:"startOffset,omitempty"`

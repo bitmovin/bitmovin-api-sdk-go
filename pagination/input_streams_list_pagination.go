@@ -6,17 +6,17 @@ import(
     "github.com/bitmovin/bitmovin-api-sdk-go/model"
 )
 
-type BasicInputStreamsListPagination struct {
+type InputStreamsListPagination struct {
 	TotalCount *int64           `json:"totalCount,omitempty"`
 	Offset     *int32           `json:"offset,omitempty"`
 	Limit      *int32           `json:"limit,omitempty"`
 	Previous   string           `json:"previous,omitempty"`
 	Next       string           `json:"next,omitempty"`
-	Items      []model.BasicInputStream `json:"items,omitempty"`
+	Items      []model.InputStream `json:"items,omitempty"`
 }
 
-func (o *BasicInputStreamsListPagination) UnmarshalJSON(b []byte) error {
-    var items []model.BasicInputStream
+func (o *InputStreamsListPagination) UnmarshalJSON(b []byte) error {
+    var items []model.InputStream
 
     var pageResp model.PaginationResponse
     if err := json.Unmarshal(b, &pageResp); err != nil {
@@ -24,7 +24,7 @@ func (o *BasicInputStreamsListPagination) UnmarshalJSON(b []byte) error {
 	}
 
     for _, i := range pageResp.Items {
-        var base model.BaseBasicInputStream
+        var base model.BaseInputStream
 		serialization.Decode(i, &base)
 
         switch base.InputStreamType() {

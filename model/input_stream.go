@@ -1,15 +1,29 @@
 package model
+import (
+	"time"
+)
 
-type InputStream struct {
-	// Id of input
-	InputId string `json:"inputId,omitempty"`
-	// Path to media file
-	InputPath string `json:"inputPath,omitempty"`
-	// Specifies the algorithm how the stream in the input file will be selected
-	SelectionMode StreamSelectionMode `json:"selectionMode,omitempty"`
-	// Position of the stream
-	Position *int32 `json:"position,omitempty"`
-	// Set this property instead of all others to reference an ingest, trimming or concatenation input stream
-	InputStreamId string `json:"inputStreamId,omitempty"`
+type InputStream interface {
+    InputStreamType() InputStreamType
+}
+
+type BaseInputStream struct {
+    // Name of the resource. Can be freely chosen by the user.
+    Name string `json:"name,omitempty"`
+    // Description of the resource. Can be freely chosen by the user.
+    Description string `json:"description,omitempty"`
+    // Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+    CreatedAt *time.Time `json:"createdAt,omitempty"`
+    // Modified timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+    ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+    // User-specific meta data. This can hold anything.
+    CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+    // Id of the resource
+    Id string `json:"id"`
+    Type InputStreamType `json:"type"`
+}
+
+func (b BaseInputStream) InputStreamType() InputStreamType {
+    return b.Type
 }
 
