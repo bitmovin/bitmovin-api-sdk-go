@@ -33,50 +33,58 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api(configs
 }
 
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashFmp4Representation, error) {
-    var resp *model.DashFmp4Representation
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.PathParams["representation_id"] = representationId
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.DashFmp4Representation
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*query.DashFmp4RepresentationListQueryParams)) (*pagination.DashFmp4RepresentationsListPagination, error) {
     queryParameters := &query.DashFmp4RepresentationListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.DashFmp4RepresentationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.DashFmp4RepresentationsListPagination
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Delete(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.PathParams["representation_id"] = representationId
-	}
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Create(manifestId string, periodId string, adaptationsetId string, dashFmp4Representation model.DashFmp4Representation) (*model.DashFmp4Representation, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
     }
-    payload := model.DashFmp4Representation(dashFmp4Representation)
-    
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.DashFmp4Representation
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4", &dashFmp4Representation, &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -36,62 +36,76 @@ func NewEncodingManifestsDashApi(configs ...func(*common.ApiClient)) (*EncodingM
 }
 
 func (api *EncodingManifestsDashApi) Status(manifestId string) (*model.ModelTask, error) {
-    var resp *model.ModelTask
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/status", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ModelTask
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/status", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashApi) Start(manifestId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
-    
-    var payload model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/start", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/start", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashApi) List(queryParams ...func(*query.DashManifestListQueryParams)) (*pagination.DashManifestsListPagination, error) {
     queryParameters := &query.DashManifestListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.DashManifestsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.DashManifestsListPagination
+    err := api.apiClient.Get("/encoding/manifests/dash", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashApi) Create(dashManifest model.DashManifest) (*model.DashManifest, error) {
-    payload := model.DashManifest(dashManifest)
-    
-    err := api.apiClient.Post("/encoding/manifests/dash", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.DashManifest
+    err := api.apiClient.Post("/encoding/manifests/dash", &dashManifest, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashApi) Get(manifestId string) (*model.DashManifest, error) {
-    var resp *model.DashManifest
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.DashManifest
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashApi) Stop(manifestId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
-    
-    var payload model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/stop", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/stop", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashApi) Delete(manifestId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

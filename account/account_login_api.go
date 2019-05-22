@@ -25,9 +25,12 @@ func NewAccountLoginApi(configs ...func(*common.ApiClient)) (*AccountLoginApi, e
 	return api, nil
 }
 
-func (api *AccountLoginApi) Create(login model.AccountInformation) (*model.AccountInformation, error) {
-    payload := model.AccountInformation(login)
-    
-    err := api.apiClient.Post("/account/login", &payload)
-    return &payload, err
+func (api *AccountLoginApi) Create(login model.Login) (*model.AccountInformation, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AccountInformation
+    err := api.apiClient.Post("/account/login", &login, &responseModel, reqParams)
+    return responseModel, err
 }
+

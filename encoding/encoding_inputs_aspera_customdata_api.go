@@ -25,11 +25,13 @@ func NewEncodingInputsAsperaCustomdataApi(configs ...func(*common.ApiClient)) (*
 	return api, nil
 }
 
-func (api *EncodingInputsAsperaCustomdataApi) GetCustomData(inputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingInputsAsperaCustomdataApi) Get(inputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/aspera/{input_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/inputs/aspera/{input_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

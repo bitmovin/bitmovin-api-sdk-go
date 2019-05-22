@@ -30,36 +30,46 @@ func NewAnalyticsOutputsS3RoleBasedApi(configs ...func(*common.ApiClient)) (*Ana
 }
 
 func (api *AnalyticsOutputsS3RoleBasedApi) Delete(outputId string) (*model.S3RoleBasedOutput, error) {
-    var resp *model.S3RoleBasedOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Delete("/analytics/outputs/s3-role-based/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.S3RoleBasedOutput
+    err := api.apiClient.Delete("/analytics/outputs/s3-role-based/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AnalyticsOutputsS3RoleBasedApi) List(queryParams ...func(*query.S3RoleBasedOutputListQueryParams)) (*pagination.S3RoleBasedOutputsListPagination, error) {
     queryParameters := &query.S3RoleBasedOutputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.S3RoleBasedOutputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/analytics/outputs/s3-role-based", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.S3RoleBasedOutputsListPagination
+    err := api.apiClient.Get("/analytics/outputs/s3-role-based", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AnalyticsOutputsS3RoleBasedApi) Get(outputId string) (*model.S3RoleBasedOutput, error) {
-    var resp *model.S3RoleBasedOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/analytics/outputs/s3-role-based/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.S3RoleBasedOutput
+    err := api.apiClient.Get("/analytics/outputs/s3-role-based/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AnalyticsOutputsS3RoleBasedApi) Create(s3RoleBasedOutput model.S3RoleBasedOutput) (*model.S3RoleBasedOutput, error) {
-    payload := model.S3RoleBasedOutput(s3RoleBasedOutput)
-    
-    err := api.apiClient.Post("/analytics/outputs/s3-role-based", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.S3RoleBasedOutput
+    err := api.apiClient.Post("/analytics/outputs/s3-role-based", &s3RoleBasedOutput, &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -30,11 +30,31 @@ func (api *EncodingStatisticsEncodingsLiveStatisticsSrtApi) List(encodingId stri
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.SrtStatisticssListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/srt", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.SrtStatisticssListPagination
+    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/srt", &responseModel, reqParams)
+    return responseModel, err
 }
+
+func (api *EncodingStatisticsEncodingsLiveStatisticsSrtApi) ListBySrtInputId(encodingId string, srtInputId string, queryParams ...func(*query.SrtStatisticsListBySrtInputIdQueryParams)) (*pagination.SrtStatisticssListBySrtInputIdPagination, error) {
+    queryParameters := &query.SrtStatisticsListBySrtInputIdQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["srt_input_id"] = srtInputId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.SrtStatisticssListBySrtInputIdPagination
+    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/srt/{srt_input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+

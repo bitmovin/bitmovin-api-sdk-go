@@ -27,43 +27,51 @@ func NewEncodingInfrastructureAwsRegionsApi(configs ...func(*common.ApiClient)) 
 }
 
 func (api *EncodingInfrastructureAwsRegionsApi) Get(infrastructureId string, region model.AwsCloudRegion) (*model.AwsAccountRegionSettings, error) {
-    var resp *model.AwsAccountRegionSettings
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
         params.PathParams["region"] = string(region)
-	}
-    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AwsAccountRegionSettings
+    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInfrastructureAwsRegionsApi) Delete(infrastructureId string, region model.AwsCloudRegion) (*model.AwsAccountRegionSettings, error) {
-    var resp *model.AwsAccountRegionSettings
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
         params.PathParams["region"] = string(region)
-	}
-    err := api.apiClient.Delete("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AwsAccountRegionSettings
+    err := api.apiClient.Delete("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInfrastructureAwsRegionsApi) Create(infrastructureId string, region model.AwsCloudRegion, awsAccountRegionSettings model.AwsAccountRegionSettings) (*model.AwsAccountRegionSettings, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
         params.PathParams["region"] = string(region)
     }
-    payload := model.AwsAccountRegionSettings(awsAccountRegionSettings)
-    
-    err := api.apiClient.Post("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.AwsAccountRegionSettings
+    err := api.apiClient.Post("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &awsAccountRegionSettings, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInfrastructureAwsRegionsApi) List(infrastructureId string, queryParams ...func(*query.AwsAccountRegionSettingsListQueryParams)) (*pagination.AwsAccountRegionSettingssListPagination, error) {
     queryParameters := &query.AwsAccountRegionSettingsListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AwsAccountRegionSettingssListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}/regions", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AwsAccountRegionSettingssListPagination
+    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}/regions", &responseModel, reqParams)
+    return responseModel, err
 }
+

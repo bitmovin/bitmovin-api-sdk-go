@@ -25,9 +25,12 @@ func NewAnalyticsQueriesCountApi(configs ...func(*common.ApiClient)) (*Analytics
 	return api, nil
 }
 
-func (api *AnalyticsQueriesCountApi) Create(analyticsCountQueryRequest model.AnalyticsResponse) (*model.AnalyticsResponse, error) {
-    payload := model.AnalyticsResponse(analyticsCountQueryRequest)
-    
-    err := api.apiClient.Post("/analytics/queries/count", &payload)
-    return &payload, err
+func (api *AnalyticsQueriesCountApi) Create(analyticsCountQueryRequest model.AnalyticsCountQueryRequest) (*model.AnalyticsResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsResponse
+    err := api.apiClient.Post("/analytics/queries/count", &analyticsCountQueryRequest, &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -30,36 +30,46 @@ func NewEncodingConfigurationsVideoVp9Api(configs ...func(*common.ApiClient)) (*
 }
 
 func (api *EncodingConfigurationsVideoVp9Api) Create(vp9VideoConfiguration model.Vp9VideoConfiguration) (*model.Vp9VideoConfiguration, error) {
-    payload := model.Vp9VideoConfiguration(vp9VideoConfiguration)
-    
-    err := api.apiClient.Post("/encoding/configurations/video/vp9", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.Vp9VideoConfiguration
+    err := api.apiClient.Post("/encoding/configurations/video/vp9", &vp9VideoConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoVp9Api) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Delete("/encoding/configurations/video/vp9/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/video/vp9/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoVp9Api) Get(configurationId string) (*model.Vp9VideoConfiguration, error) {
-    var resp *model.Vp9VideoConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/vp9/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Vp9VideoConfiguration
+    err := api.apiClient.Get("/encoding/configurations/video/vp9/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoVp9Api) List(queryParams ...func(*query.Vp9VideoConfigurationListQueryParams)) (*pagination.Vp9VideoConfigurationsListPagination, error) {
     queryParameters := &query.Vp9VideoConfigurationListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.Vp9VideoConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/vp9", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.Vp9VideoConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations/video/vp9", &responseModel, reqParams)
+    return responseModel, err
 }
+

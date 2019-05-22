@@ -25,11 +25,13 @@ func NewAnalyticsOutputsS3RoleBasedCustomdataApi(configs ...func(*common.ApiClie
 	return api, nil
 }
 
-func (api *AnalyticsOutputsS3RoleBasedCustomdataApi) GetCustomData(outputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *AnalyticsOutputsS3RoleBasedCustomdataApi) Get(outputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/analytics/outputs/s3-role-based/{output_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/analytics/outputs/s3-role-based/{output_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

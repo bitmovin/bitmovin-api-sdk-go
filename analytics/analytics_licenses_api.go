@@ -30,23 +30,30 @@ func NewAnalyticsLicensesApi(configs ...func(*common.ApiClient)) (*AnalyticsLice
 }
 
 func (api *AnalyticsLicensesApi) Create(analyticsLicense model.AnalyticsLicense) (*model.AnalyticsLicense, error) {
-    payload := model.AnalyticsLicense(analyticsLicense)
-    
-    err := api.apiClient.Post("/analytics/licenses", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsLicense
+    err := api.apiClient.Post("/analytics/licenses", &analyticsLicense, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AnalyticsLicensesApi) Get(licenseId string) (*model.AnalyticsLicense, error) {
-    var resp *model.AnalyticsLicense
     reqParams := func(params *common.RequestParams) {
         params.PathParams["license_id"] = licenseId
-	}
-    err := api.apiClient.Get("/analytics/licenses/{license_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AnalyticsLicense
+    err := api.apiClient.Get("/analytics/licenses/{license_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AnalyticsLicensesApi) List() (*pagination.AnalyticsLicensesListPagination, error) {
-    var resp *pagination.AnalyticsLicensesListPagination
     reqParams := func(params *common.RequestParams) {
-	}
-    err := api.apiClient.Get("/analytics/licenses", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AnalyticsLicensesListPagination
+    err := api.apiClient.Get("/analytics/licenses", &responseModel, reqParams)
+    return responseModel, err
 }
+

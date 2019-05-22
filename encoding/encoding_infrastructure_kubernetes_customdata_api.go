@@ -25,11 +25,13 @@ func NewEncodingInfrastructureKubernetesCustomdataApi(configs ...func(*common.Ap
 	return api, nil
 }
 
-func (api *EncodingInfrastructureKubernetesCustomdataApi) GetCustomData(infrastructureId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingInfrastructureKubernetesCustomdataApi) Get(infrastructureId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
-	}
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

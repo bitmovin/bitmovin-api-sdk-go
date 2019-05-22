@@ -37,38 +37,46 @@ func (api *EncodingEncodingsMuxingsWebmApi) List(encodingId string, queryParams 
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.WebmMuxingsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.WebmMuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsWebmApi) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsWebmApi) Get(encodingId string, muxingId string) (*model.WebmMuxing, error) {
-    var resp *model.WebmMuxing
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.WebmMuxing
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsWebmApi) Create(encodingId string, webmMuxing model.WebmMuxing) (*model.WebmMuxing, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.WebmMuxing(webmMuxing)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/webm", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.WebmMuxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/webm", &webmMuxing, &responseModel, reqParams)
+    return responseModel, err
 }
+

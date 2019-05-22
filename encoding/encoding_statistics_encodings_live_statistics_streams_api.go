@@ -30,11 +30,14 @@ func (api *EncodingStatisticsEncodingsLiveStatisticsStreamsApi) List(encodingId 
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.StreamInfossListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/streams", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.StreamInfossListPagination
+    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/streams", &responseModel, reqParams)
+    return responseModel, err
 }
+

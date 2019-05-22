@@ -30,36 +30,46 @@ func NewEncodingConfigurationsVideoMjpegApi(configs ...func(*common.ApiClient)) 
 }
 
 func (api *EncodingConfigurationsVideoMjpegApi) Get(configurationId string) (*model.MjpegVideoConfiguration, error) {
-    var resp *model.MjpegVideoConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/mjpeg/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.MjpegVideoConfiguration
+    err := api.apiClient.Get("/encoding/configurations/video/mjpeg/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoMjpegApi) Create(mjpegVideoConfiguration model.MjpegVideoConfiguration) (*model.MjpegVideoConfiguration, error) {
-    payload := model.MjpegVideoConfiguration(mjpegVideoConfiguration)
-    
-    err := api.apiClient.Post("/encoding/configurations/video/mjpeg", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.MjpegVideoConfiguration
+    err := api.apiClient.Post("/encoding/configurations/video/mjpeg", &mjpegVideoConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoMjpegApi) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Delete("/encoding/configurations/video/mjpeg/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/video/mjpeg/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoMjpegApi) List(queryParams ...func(*query.MjpegVideoConfigurationListQueryParams)) (*pagination.MjpegVideoConfigurationsListPagination, error) {
     queryParameters := &query.MjpegVideoConfigurationListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.MjpegVideoConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/mjpeg", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.MjpegVideoConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations/video/mjpeg", &responseModel, reqParams)
+    return responseModel, err
 }
+

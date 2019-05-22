@@ -30,36 +30,46 @@ func NewEncodingInputsHttpApi(configs ...func(*common.ApiClient)) (*EncodingInpu
 }
 
 func (api *EncodingInputsHttpApi) Create(httpInput model.HttpInput) (*model.HttpInput, error) {
-    payload := model.HttpInput(httpInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/http", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.HttpInput
+    err := api.apiClient.Post("/encoding/inputs/http", &httpInput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsHttpApi) Delete(inputId string) (*model.HttpInput, error) {
-    var resp *model.HttpInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/http/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.HttpInput
+    err := api.apiClient.Delete("/encoding/inputs/http/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsHttpApi) Get(inputId string) (*model.HttpInput, error) {
-    var resp *model.HttpInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/http/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.HttpInput
+    err := api.apiClient.Get("/encoding/inputs/http/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsHttpApi) List(queryParams ...func(*query.HttpInputListQueryParams)) (*pagination.HttpInputsListPagination, error) {
     queryParameters := &query.HttpInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.HttpInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/http", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.HttpInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/http", &responseModel, reqParams)
+    return responseModel, err
 }
+

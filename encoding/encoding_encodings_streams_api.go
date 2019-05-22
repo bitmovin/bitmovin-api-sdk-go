@@ -57,39 +57,47 @@ func (api *EncodingEncodingsStreamsApi) Create(encodingId string, stream model.S
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.Stream(stream)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.Stream
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams", &stream, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsStreamsApi) List(encodingId string, queryParams ...func(*query.StreamListQueryParams)) (*pagination.StreamsListPagination, error) {
     queryParameters := &query.StreamListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.StreamsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.StreamsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsStreamsApi) Get(encodingId string, streamId string) (*model.Stream, error) {
-    var resp *model.Stream
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Stream
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsStreamsApi) Delete(encodingId string, streamId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

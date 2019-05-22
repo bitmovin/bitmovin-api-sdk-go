@@ -25,11 +25,13 @@ func NewEncodingInputsAkamaiNetstorageCustomdataApi(configs ...func(*common.ApiC
 	return api, nil
 }
 
-func (api *EncodingInputsAkamaiNetstorageCustomdataApi) GetCustomData(inputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingInputsAkamaiNetstorageCustomdataApi) Get(inputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/akamai-netstorage/{input_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/inputs/akamai-netstorage/{input_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

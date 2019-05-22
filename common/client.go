@@ -33,7 +33,7 @@ type PathParams map[string]interface{}
 const QueryParamTagName = "query"
 const DefaultApiBaseUrl = "https://api.bitmovin.com/v1"
 const ContentTypeJson = "application/json"
-const ApiClientVersion = "1.14.3-alpha.0"
+const ApiClientVersion = "1.15.0-alpha.0"
 const ApiClientName = "bitmovin-api-sdk-go"
 const NoApiKeyErrorMsg = "there was no api key provided"
 
@@ -170,20 +170,20 @@ func (apiClient *ApiClient) createHeaders() http.Header {
 	return headers
 }
 
-func (apiClient *ApiClient) Get(relUrl string, resultModel interface{}, requestParams ...func(params *RequestParams)) error {
-	return apiClient.request(http.MethodGet, relUrl, resultModel, requestParams...)
+func (apiClient *ApiClient) Get(relUrl string, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
+	return apiClient.request(http.MethodGet, relUrl, nil, responseModel, requestParams...)
 }
 
-func (apiClient *ApiClient) Post(relUrl string, resultModel interface{}, requestParams ...func(params *RequestParams)) error {
-	return apiClient.request(http.MethodPost, relUrl, resultModel, requestParams...)
+func (apiClient *ApiClient) Post(relUrl string, requestModel interface{}, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
+	return apiClient.request(http.MethodPost, relUrl, requestModel, responseModel, requestParams...)
 }
 
-func (apiClient *ApiClient) Put(relUrl string, resultModel interface{}, requestParams ...func(params *RequestParams)) error {
-	return apiClient.request(http.MethodPut, relUrl, resultModel, requestParams...)
+func (apiClient *ApiClient) Put(relUrl string, requestModel interface{}, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
+	return apiClient.request(http.MethodPut, relUrl, requestModel, responseModel, requestParams...)
 }
 
-func (apiClient *ApiClient) Delete(relUrl string, resultModel interface{}, requestParams ...func(params *RequestParams)) error {
-	return apiClient.request(http.MethodDelete, relUrl, resultModel, requestParams...)
+func (apiClient *ApiClient) Delete(relUrl string, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
+	return apiClient.request(http.MethodDelete, relUrl, nil, responseModel, requestParams...)
 }
 
 func (apiClient *ApiClient) logRequest(reqUrl string, method string, headers http.Header, rawBody []byte) {
@@ -211,7 +211,7 @@ func createBitmovinError(envelope model.GenericResponseEnvelope) BitmovinError {
 	return bitErr
 }
 
-func (apiClient *ApiClient) request(reqMethod string, relUrl string, resultModel interface{}, requestParams ...func(params *RequestParams)) error {
+func (apiClient *ApiClient) request(reqMethod string, relUrl string, requestModel interface{}, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
 
 	reqUrl, err := apiClient.prepareUrl(relUrl, requestParams...)
 	if err != nil {
@@ -226,11 +226,11 @@ func (apiClient *ApiClient) request(reqMethod string, relUrl string, resultModel
 	var resp *http.Response
 	switch reqMethod {
 	case http.MethodPost:
-		serialized := serialization.Serialize(resultModel)
+		serialized := serialization.Serialize(requestModel)
 		apiClient.logRequest(reqUrl, reqMethod, headers, serialized)
 		resp, err = apiClient.restClient.Post(reqUrl, serialized, headers)
 	case http.MethodPut:
-		serialized := serialization.Serialize(resultModel)
+		serialized := serialization.Serialize(requestModel)
 		apiClient.logRequest(reqUrl, reqMethod, headers, serialized)
 		resp, err = apiClient.restClient.Put(reqUrl, serialized, headers)
 	case http.MethodGet:
@@ -262,8 +262,8 @@ func (apiClient *ApiClient) request(reqMethod string, relUrl string, resultModel
 		return createBitmovinError(envelope)
 	}
 
-	if resultModel != nil {
-		convertToModel(envelope, &resultModel)
+	if responseModel != nil {
+		convertToModel(envelope, &responseModel)
 	}
 	return nil
 }

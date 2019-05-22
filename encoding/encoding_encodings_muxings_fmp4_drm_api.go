@@ -47,11 +47,13 @@ func NewEncodingEncodingsMuxingsFmp4DrmApi(configs ...func(*common.ApiClient)) (
 }
 
 func (api *EncodingEncodingsMuxingsFmp4DrmApi) List(encodingId string, muxingId string) (*pagination.DrmsListPagination, error) {
-    var resp *pagination.DrmsListPagination
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.DrmsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -34,32 +34,42 @@ func (api *EncodingFiltersRotateApi) List(queryParams ...func(*query.RotateFilte
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.RotateFiltersListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/filters/rotate", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.RotateFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/rotate", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersRotateApi) Create(rotateFilter model.RotateFilter) (*model.RotateFilter, error) {
-    payload := model.RotateFilter(rotateFilter)
-    
-    err := api.apiClient.Post("/encoding/filters/rotate", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.RotateFilter
+    err := api.apiClient.Post("/encoding/filters/rotate", &rotateFilter, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersRotateApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Delete("/encoding/filters/rotate/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/rotate/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersRotateApi) Get(filterId string) (*model.RotateFilter, error) {
-    var resp *model.RotateFilter
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/rotate/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.RotateFilter
+    err := api.apiClient.Get("/encoding/filters/rotate/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

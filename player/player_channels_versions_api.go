@@ -29,10 +29,12 @@ func NewPlayerChannelsVersionsApi(configs ...func(*common.ApiClient)) (*PlayerCh
 }
 
 func (api *PlayerChannelsVersionsApi) List(channelName string) (*pagination.PlayerVersionsListPagination, error) {
-    var resp *pagination.PlayerVersionsListPagination
     reqParams := func(params *common.RequestParams) {
         params.PathParams["channel_name"] = channelName
-	}
-    err := api.apiClient.Get("/player/channels/{channel_name}/versions", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.PlayerVersionsListPagination
+    err := api.apiClient.Get("/player/channels/{channel_name}/versions", &responseModel, reqParams)
+    return responseModel, err
 }
+

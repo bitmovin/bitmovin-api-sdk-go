@@ -33,10 +33,13 @@ func (api *NotificationsEmailsApi) List(queryParams ...func(*query.NotificationL
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.NotificationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/notifications/emails", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.NotificationsListPagination
+    err := api.apiClient.Get("/notifications/emails", &responseModel, reqParams)
+    return responseModel, err
 }
+

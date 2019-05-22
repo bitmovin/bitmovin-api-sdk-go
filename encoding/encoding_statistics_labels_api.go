@@ -34,24 +34,30 @@ func (api *EncodingStatisticsLabelsApi) List(queryParams ...func(*query.Statisti
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.StatisticsPerLabelsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/labels/", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.StatisticsPerLabelsListPagination
+    err := api.apiClient.Get("/encoding/statistics/labels/", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingStatisticsLabelsApi) ListByDateRange(from time.Time, to time.Time, queryParams ...func(*query.StatisticsPerLabelListByDateRangeQueryParams)) (*pagination.StatisticsPerLabelsListByDateRangePagination, error) {
     queryParameters := &query.StatisticsPerLabelListByDateRangeQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.StatisticsPerLabelsListByDateRangePagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["from"] = from
         params.PathParams["to"] = to
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/labels/{from}/{to}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.StatisticsPerLabelsListByDateRangePagination
+    err := api.apiClient.Get("/encoding/statistics/labels/{from}/{to}", &responseModel, reqParams)
+    return responseModel, err
 }
+

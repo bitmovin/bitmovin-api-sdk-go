@@ -25,11 +25,13 @@ func NewEncodingFiltersDeinterlaceCustomdataApi(configs ...func(*common.ApiClien
 	return api, nil
 }
 
-func (api *EncodingFiltersDeinterlaceCustomdataApi) GetCustomData(filterId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingFiltersDeinterlaceCustomdataApi) Get(filterId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/deinterlace/{filter_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/filters/deinterlace/{filter_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

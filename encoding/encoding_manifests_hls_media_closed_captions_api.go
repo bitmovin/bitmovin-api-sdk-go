@@ -30,39 +30,47 @@ func (api *EncodingManifestsHlsMediaClosedCaptionsApi) Create(manifestId string,
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
-    payload := model.ClosedCaptionsMediaInfo(closedCaptionsMediaInfo)
-    
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/closed-captions", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.ClosedCaptionsMediaInfo
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/closed-captions", &closedCaptionsMediaInfo, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsMediaClosedCaptionsApi) Get(manifestId string, mediaId string) (*model.ClosedCaptionsMediaInfo, error) {
-    var resp *model.ClosedCaptionsMediaInfo
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["media_id"] = mediaId
-	}
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ClosedCaptionsMediaInfo
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsMediaClosedCaptionsApi) Delete(manifestId string, mediaId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["media_id"] = mediaId
-	}
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsMediaClosedCaptionsApi) List(manifestId string, queryParams ...func(*query.ClosedCaptionsMediaInfoListQueryParams)) (*pagination.ClosedCaptionsMediaInfosListPagination, error) {
     queryParameters := &query.ClosedCaptionsMediaInfoListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.ClosedCaptionsMediaInfosListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/closed-captions", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.ClosedCaptionsMediaInfosListPagination
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/closed-captions", &responseModel, reqParams)
+    return responseModel, err
 }
+

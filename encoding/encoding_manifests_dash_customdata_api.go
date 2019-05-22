@@ -25,11 +25,13 @@ func NewEncodingManifestsDashCustomdataApi(configs ...func(*common.ApiClient)) (
 	return api, nil
 }
 
-func (api *EncodingManifestsDashCustomdataApi) GetCustomData(manifestId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingManifestsDashCustomdataApi) Get(manifestId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

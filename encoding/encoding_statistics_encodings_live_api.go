@@ -31,24 +31,30 @@ func (api *EncodingStatisticsEncodingsLiveApi) List(queryParams ...func(*query.E
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.EncodingStatisticsLivesListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/encodings/live", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.EncodingStatisticsLivesListPagination
+    err := api.apiClient.Get("/encoding/statistics/encodings/live", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingStatisticsEncodingsLiveApi) ListByDateRange(from time.Time, to time.Time, queryParams ...func(*query.EncodingStatisticsLiveListByDateRangeQueryParams)) (*pagination.EncodingStatisticsLivesListByDateRangePagination, error) {
     queryParameters := &query.EncodingStatisticsLiveListByDateRangeQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.EncodingStatisticsLivesListByDateRangePagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["from"] = from
         params.PathParams["to"] = to
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/encodings/live/{from}/{to}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.EncodingStatisticsLivesListByDateRangePagination
+    err := api.apiClient.Get("/encoding/statistics/encodings/live/{from}/{to}", &responseModel, reqParams)
+    return responseModel, err
 }
+

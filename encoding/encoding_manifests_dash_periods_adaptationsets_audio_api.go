@@ -31,42 +31,50 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioApi) Create(manifestId
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
     }
-    payload := model.AudioAdaptationSet(audioAdaptationSet)
-    
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.AudioAdaptationSet
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio", &audioAdaptationSet, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioApi) Get(manifestId string, periodId string, adaptationsetId string) (*model.AudioAdaptationSet, error) {
-    var resp *model.AudioAdaptationSet
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio/{adaptationset_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AudioAdaptationSet
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio/{adaptationset_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioApi) List(manifestId string, periodId string, queryParams ...func(*query.AudioAdaptationSetListQueryParams)) (*pagination.AudioAdaptationSetsListPagination, error) {
     queryParameters := &query.AudioAdaptationSetListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AudioAdaptationSetsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AudioAdaptationSetsListPagination
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioApi) Delete(manifestId string, periodId string, adaptationsetId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
-	}
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio/{adaptationset_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio/{adaptationset_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

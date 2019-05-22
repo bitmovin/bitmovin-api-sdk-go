@@ -27,31 +27,40 @@ func NewPlayerCustomBuildsWebDomainsApi(configs ...func(*common.ApiClient)) (*Pl
 }
 
 func (api *PlayerCustomBuildsWebDomainsApi) List() (*pagination.CustomWebPlayerBuildDomainsListPagination, error) {
-    var resp *pagination.CustomWebPlayerBuildDomainsListPagination
     reqParams := func(params *common.RequestParams) {
-	}
-    err := api.apiClient.Get("/player/custom-builds/web/domains", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.CustomWebPlayerBuildDomainsListPagination
+    err := api.apiClient.Get("/player/custom-builds/web/domains", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *PlayerCustomBuildsWebDomainsApi) Get(domainId string) (*model.CustomWebPlayerBuildDomain, error) {
-    var resp *model.CustomWebPlayerBuildDomain
     reqParams := func(params *common.RequestParams) {
         params.PathParams["domain_id"] = domainId
-	}
-    err := api.apiClient.Get("/player/custom-builds/web/domains/{domain_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomWebPlayerBuildDomain
+    err := api.apiClient.Get("/player/custom-builds/web/domains/{domain_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *PlayerCustomBuildsWebDomainsApi) Create(customWebPlayerBuildDomain model.CustomWebPlayerBuildDomain) (*model.CustomWebPlayerBuildDomain, error) {
-    payload := model.CustomWebPlayerBuildDomain(customWebPlayerBuildDomain)
-    
-    err := api.apiClient.Post("/player/custom-builds/web/domains", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.CustomWebPlayerBuildDomain
+    err := api.apiClient.Post("/player/custom-builds/web/domains", &customWebPlayerBuildDomain, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *PlayerCustomBuildsWebDomainsApi) Delete(domainId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["domain_id"] = domainId
-	}
-    err := api.apiClient.Delete("/player/custom-builds/web/domains/{domain_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/player/custom-builds/web/domains/{domain_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

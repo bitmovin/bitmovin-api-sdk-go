@@ -27,31 +27,36 @@ func NewAccountOrganizationsGroupsPermissionsApi(configs ...func(*common.ApiClie
 }
 
 func (api *AccountOrganizationsGroupsPermissionsApi) List(organizationId string, groupId string) (*pagination.AclsListPagination, error) {
-    var resp *pagination.AclsListPagination
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
         params.PathParams["group_id"] = groupId
-	}
-    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/permissions", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AclsListPagination
+    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/permissions", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountOrganizationsGroupsPermissionsApi) Create(organizationId string, groupId string, acl model.Acl) (*model.Acl, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
         params.PathParams["group_id"] = groupId
     }
-    payload := model.Acl(acl)
-    
-    err := api.apiClient.Post("/account/organizations/{organization_id}/groups/{group_id}/permissions", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.Acl
+    err := api.apiClient.Post("/account/organizations/{organization_id}/groups/{group_id}/permissions", &acl, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountOrganizationsGroupsPermissionsApi) Delete(organizationId string, groupId string, permissionId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
         params.PathParams["group_id"] = groupId
         params.PathParams["permission_id"] = permissionId
-	}
-    err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}/permissions/{permission_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}/permissions/{permission_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

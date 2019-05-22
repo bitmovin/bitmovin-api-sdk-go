@@ -30,36 +30,46 @@ func NewEncodingInputsS3Api(configs ...func(*common.ApiClient)) (*EncodingInputs
 }
 
 func (api *EncodingInputsS3Api) Delete(inputId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/s3/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/inputs/s3/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsS3Api) Create(s3Input model.S3Input) (*model.S3Input, error) {
-    payload := model.S3Input(s3Input)
-    
-    err := api.apiClient.Post("/encoding/inputs/s3", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.S3Input
+    err := api.apiClient.Post("/encoding/inputs/s3", &s3Input, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsS3Api) List(queryParams ...func(*query.S3InputListQueryParams)) (*pagination.S3InputsListPagination, error) {
     queryParameters := &query.S3InputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.S3InputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/s3", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.S3InputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/s3", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsS3Api) Get(inputId string) (*model.S3Input, error) {
-    var resp *model.S3Input
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/s3/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.S3Input
+    err := api.apiClient.Get("/encoding/inputs/s3/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

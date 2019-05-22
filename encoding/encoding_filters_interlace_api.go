@@ -34,32 +34,42 @@ func (api *EncodingFiltersInterlaceApi) List(queryParams ...func(*query.Interlac
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.InterlaceFiltersListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/filters/interlace", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.InterlaceFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/interlace", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersInterlaceApi) Get(filterId string) (*model.InterlaceFilter, error) {
-    var resp *model.InterlaceFilter
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/interlace/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.InterlaceFilter
+    err := api.apiClient.Get("/encoding/filters/interlace/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersInterlaceApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Delete("/encoding/filters/interlace/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/interlace/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersInterlaceApi) Create(interlaceFilter model.InterlaceFilter) (*model.InterlaceFilter, error) {
-    payload := model.InterlaceFilter(interlaceFilter)
-    
-    err := api.apiClient.Post("/encoding/filters/interlace", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.InterlaceFilter
+    err := api.apiClient.Post("/encoding/filters/interlace", &interlaceFilter, &responseModel, reqParams)
+    return responseModel, err
 }
+

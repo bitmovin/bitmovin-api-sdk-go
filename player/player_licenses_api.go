@@ -36,28 +36,36 @@ func NewPlayerLicensesApi(configs ...func(*common.ApiClient)) (*PlayerLicensesAp
 }
 
 func (api *PlayerLicensesApi) Create(playerLicense model.PlayerLicense) (*model.PlayerLicense, error) {
-    payload := model.PlayerLicense(playerLicense)
-    
-    err := api.apiClient.Post("/player/licenses", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.PlayerLicense
+    err := api.apiClient.Post("/player/licenses", &playerLicense, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *PlayerLicensesApi) List(queryParams ...func(*query.PlayerLicenseListQueryParams)) (*pagination.PlayerLicensesListPagination, error) {
     queryParameters := &query.PlayerLicenseListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.PlayerLicensesListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/player/licenses", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.PlayerLicensesListPagination
+    err := api.apiClient.Get("/player/licenses", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *PlayerLicensesApi) Get(licenseId string) (*model.PlayerLicense, error) {
-    var resp *model.PlayerLicense
     reqParams := func(params *common.RequestParams) {
         params.PathParams["license_id"] = licenseId
-	}
-    err := api.apiClient.Get("/player/licenses/{license_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.PlayerLicense
+    err := api.apiClient.Get("/player/licenses/{license_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

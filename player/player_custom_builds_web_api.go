@@ -36,32 +36,40 @@ func NewPlayerCustomBuildsWebApi(configs ...func(*common.ApiClient)) (*PlayerCus
 }
 
 func (api *PlayerCustomBuildsWebApi) List() (*pagination.CustomPlayerBuildDetailssListPagination, error) {
-    var resp *pagination.CustomPlayerBuildDetailssListPagination
     reqParams := func(params *common.RequestParams) {
-	}
-    err := api.apiClient.Get("/player/custom-builds/web", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.CustomPlayerBuildDetailssListPagination
+    err := api.apiClient.Get("/player/custom-builds/web", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *PlayerCustomBuildsWebApi) Create(customPlayerBuildDetails model.CustomPlayerBuildDetails) (*model.CustomPlayerBuildDetails, error) {
-    payload := model.CustomPlayerBuildDetails(customPlayerBuildDetails)
-    
-    err := api.apiClient.Post("/player/custom-builds/web", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.CustomPlayerBuildDetails
+    err := api.apiClient.Post("/player/custom-builds/web", &customPlayerBuildDetails, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *PlayerCustomBuildsWebApi) Start(customBuildId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["custom_build_id"] = customBuildId
     }
-    
-    var payload model.BitmovinResponse
-    err := api.apiClient.Post("/player/custom-builds/web/{custom_build_id}/start", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/player/custom-builds/web/{custom_build_id}/start", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *PlayerCustomBuildsWebApi) Get(customBuildId string) (*model.CustomPlayerBuildStatus, error) {
-    var resp *model.CustomPlayerBuildStatus
     reqParams := func(params *common.RequestParams) {
         params.PathParams["custom_build_id"] = customBuildId
-	}
-    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomPlayerBuildStatus
+    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -26,10 +26,12 @@ func NewEncodingFiltersTypeApi(configs ...func(*common.ApiClient)) (*EncodingFil
 }
 
 func (api *EncodingFiltersTypeApi) Get(filterId string) (*model.FilterTypeResponse, error) {
-    var resp *model.FilterTypeResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/{filter_id}/type", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.FilterTypeResponse
+    err := api.apiClient.Get("/encoding/filters/{filter_id}/type", &responseModel, reqParams)
+    return responseModel, err
 }
+

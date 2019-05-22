@@ -25,13 +25,15 @@ func NewEncodingEncodingsMuxingsFmp4DrmMarlinCustomdataApi(configs ...func(*comm
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsFmp4DrmMarlinCustomdataApi) GetCustomData(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingEncodingsMuxingsFmp4DrmMarlinCustomdataApi) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
         params.PathParams["drm_id"] = drmId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin/{drm_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin/{drm_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

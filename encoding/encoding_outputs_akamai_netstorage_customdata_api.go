@@ -25,11 +25,13 @@ func NewEncodingOutputsAkamaiNetstorageCustomdataApi(configs ...func(*common.Api
 	return api, nil
 }
 
-func (api *EncodingOutputsAkamaiNetstorageCustomdataApi) GetCustomData(outputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingOutputsAkamaiNetstorageCustomdataApi) Get(outputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/akamai-netstorage/{output_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/outputs/akamai-netstorage/{output_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

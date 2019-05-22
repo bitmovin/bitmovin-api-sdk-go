@@ -25,9 +25,12 @@ func NewAnalyticsQueriesMinApi(configs ...func(*common.ApiClient)) (*AnalyticsQu
 	return api, nil
 }
 
-func (api *AnalyticsQueriesMinApi) Create(analyticsMinQueryRequest model.AnalyticsResponse) (*model.AnalyticsResponse, error) {
-    payload := model.AnalyticsResponse(analyticsMinQueryRequest)
-    
-    err := api.apiClient.Post("/analytics/queries/min", &payload)
-    return &payload, err
+func (api *AnalyticsQueriesMinApi) Create(analyticsMinQueryRequest model.AnalyticsMinQueryRequest) (*model.AnalyticsResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsResponse
+    err := api.apiClient.Post("/analytics/queries/min", &analyticsMinQueryRequest, &responseModel, reqParams)
+    return responseModel, err
 }
+

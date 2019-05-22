@@ -30,36 +30,46 @@ func NewEncodingConfigurationsVideoAv1Api(configs ...func(*common.ApiClient)) (*
 }
 
 func (api *EncodingConfigurationsVideoAv1Api) Create(av1VideoConfiguration model.Av1VideoConfiguration) (*model.Av1VideoConfiguration, error) {
-    payload := model.Av1VideoConfiguration(av1VideoConfiguration)
-    
-    err := api.apiClient.Post("/encoding/configurations/video/av1", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.Av1VideoConfiguration
+    err := api.apiClient.Post("/encoding/configurations/video/av1", &av1VideoConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoAv1Api) Get(configurationId string) (*model.Av1VideoConfiguration, error) {
-    var resp *model.Av1VideoConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/av1/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Av1VideoConfiguration
+    err := api.apiClient.Get("/encoding/configurations/video/av1/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoAv1Api) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Delete("/encoding/configurations/video/av1/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/video/av1/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoAv1Api) List(queryParams ...func(*query.Av1VideoConfigurationListQueryParams)) (*pagination.Av1VideoConfigurationsListPagination, error) {
     queryParameters := &query.Av1VideoConfigurationListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.Av1VideoConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/av1", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.Av1VideoConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations/video/av1", &responseModel, reqParams)
+    return responseModel, err
 }
+

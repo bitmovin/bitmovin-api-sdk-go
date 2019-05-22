@@ -30,36 +30,46 @@ func NewEncodingFiltersWatermarkApi(configs ...func(*common.ApiClient)) (*Encodi
 }
 
 func (api *EncodingFiltersWatermarkApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Delete("/encoding/filters/watermark/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/watermark/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersWatermarkApi) Get(filterId string) (*model.WatermarkFilter, error) {
-    var resp *model.WatermarkFilter
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/watermark/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.WatermarkFilter
+    err := api.apiClient.Get("/encoding/filters/watermark/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersWatermarkApi) List(queryParams ...func(*query.WatermarkFilterListQueryParams)) (*pagination.WatermarkFiltersListPagination, error) {
     queryParameters := &query.WatermarkFilterListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.WatermarkFiltersListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/filters/watermark", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.WatermarkFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/watermark", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersWatermarkApi) Create(watermarkFilter model.WatermarkFilter) (*model.WatermarkFilter, error) {
-    payload := model.WatermarkFilter(watermarkFilter)
-    
-    err := api.apiClient.Post("/encoding/filters/watermark", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.WatermarkFilter
+    err := api.apiClient.Post("/encoding/filters/watermark", &watermarkFilter, &responseModel, reqParams)
+    return responseModel, err
 }
+

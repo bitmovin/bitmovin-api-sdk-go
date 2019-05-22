@@ -25,11 +25,13 @@ func NewEncodingInputsSftpCustomdataApi(configs ...func(*common.ApiClient)) (*En
 	return api, nil
 }
 
-func (api *EncodingInputsSftpCustomdataApi) GetCustomData(inputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingInputsSftpCustomdataApi) Get(inputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/sftp/{input_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/inputs/sftp/{input_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

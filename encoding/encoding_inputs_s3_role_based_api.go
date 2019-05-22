@@ -30,36 +30,46 @@ func NewEncodingInputsS3RoleBasedApi(configs ...func(*common.ApiClient)) (*Encod
 }
 
 func (api *EncodingInputsS3RoleBasedApi) Create(s3RoleBasedInput model.S3RoleBasedInput) (*model.S3RoleBasedInput, error) {
-    payload := model.S3RoleBasedInput(s3RoleBasedInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/s3-role-based", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.S3RoleBasedInput
+    err := api.apiClient.Post("/encoding/inputs/s3-role-based", &s3RoleBasedInput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsS3RoleBasedApi) Delete(inputId string) (*model.S3RoleBasedInput, error) {
-    var resp *model.S3RoleBasedInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/s3-role-based/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.S3RoleBasedInput
+    err := api.apiClient.Delete("/encoding/inputs/s3-role-based/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsS3RoleBasedApi) Get(inputId string) (*model.S3RoleBasedInput, error) {
-    var resp *model.S3RoleBasedInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/s3-role-based/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.S3RoleBasedInput
+    err := api.apiClient.Get("/encoding/inputs/s3-role-based/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsS3RoleBasedApi) List(queryParams ...func(*query.S3RoleBasedInputListQueryParams)) (*pagination.S3RoleBasedInputsListPagination, error) {
     queryParameters := &query.S3RoleBasedInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.S3RoleBasedInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/s3-role-based", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.S3RoleBasedInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/s3-role-based", &responseModel, reqParams)
+    return responseModel, err
 }
+

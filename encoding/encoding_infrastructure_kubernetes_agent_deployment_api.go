@@ -25,10 +25,12 @@ func NewEncodingInfrastructureKubernetesAgentDeploymentApi(configs ...func(*comm
 }
 
 func (api *EncodingInfrastructureKubernetesAgentDeploymentApi) Get(infrastructureId string) (error) {
-    
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
-	}
+    }
+
+    
     err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/agent-deployment", nil, reqParams)
     return err
 }
+

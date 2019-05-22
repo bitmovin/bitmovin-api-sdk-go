@@ -26,11 +26,13 @@ func NewEncodingEncodingsMuxingsBroadcastTsInformationApi(configs ...func(*commo
 }
 
 func (api *EncodingEncodingsMuxingsBroadcastTsInformationApi) Get(encodingId string, muxingId string) (*model.BroadcastTsMuxingInformation, error) {
-    var resp *model.BroadcastTsMuxingInformation
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}/information", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BroadcastTsMuxingInformation
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}/information", &responseModel, reqParams)
+    return responseModel, err
 }
+

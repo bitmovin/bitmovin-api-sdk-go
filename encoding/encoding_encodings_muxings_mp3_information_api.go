@@ -26,11 +26,13 @@ func NewEncodingEncodingsMuxingsMp3InformationApi(configs ...func(*common.ApiCli
 }
 
 func (api *EncodingEncodingsMuxingsMp3InformationApi) Get(encodingId string, muxingId string) (*model.Mp3MuxingInformation, error) {
-    var resp *model.Mp3MuxingInformation
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}/information", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Mp3MuxingInformation
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}/information", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -39,62 +39,76 @@ func NewEncodingManifestsSmoothApi(configs ...func(*common.ApiClient)) (*Encodin
 }
 
 func (api *EncodingManifestsSmoothApi) Delete(manifestId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Delete("/encoding/manifests/smooth/{manifest_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/smooth/{manifest_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsSmoothApi) Create(smoothStreamingManifest model.SmoothStreamingManifest) (*model.SmoothStreamingManifest, error) {
-    payload := model.SmoothStreamingManifest(smoothStreamingManifest)
-    
-    err := api.apiClient.Post("/encoding/manifests/smooth", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.SmoothStreamingManifest
+    err := api.apiClient.Post("/encoding/manifests/smooth", &smoothStreamingManifest, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsSmoothApi) Get(manifestId string) (*model.SmoothStreamingManifest, error) {
-    var resp *model.SmoothStreamingManifest
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.SmoothStreamingManifest
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsSmoothApi) Status(manifestId string) (*model.ModelTask, error) {
-    var resp *model.ModelTask
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/status", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ModelTask
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/status", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsSmoothApi) Stop(manifestId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
-    
-    var payload model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/stop", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/stop", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsSmoothApi) List(queryParams ...func(*query.SmoothStreamingManifestListQueryParams)) (*pagination.SmoothStreamingManifestsListPagination, error) {
     queryParameters := &query.SmoothStreamingManifestListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.SmoothStreamingManifestsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests/smooth", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.SmoothStreamingManifestsListPagination
+    err := api.apiClient.Get("/encoding/manifests/smooth", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsSmoothApi) Start(manifestId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
-    
-    var payload model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/start", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/start", &responseModel, reqParams)
+    return responseModel, err
 }
+

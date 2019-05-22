@@ -25,11 +25,13 @@ func NewEncodingInputsS3CustomdataApi(configs ...func(*common.ApiClient)) (*Enco
 	return api, nil
 }
 
-func (api *EncodingInputsS3CustomdataApi) GetCustomData(inputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingInputsS3CustomdataApi) Get(inputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/s3/{input_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/inputs/s3/{input_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

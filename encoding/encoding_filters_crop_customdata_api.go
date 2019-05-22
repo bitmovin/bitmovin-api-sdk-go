@@ -25,11 +25,13 @@ func NewEncodingFiltersCropCustomdataApi(configs ...func(*common.ApiClient)) (*E
 	return api, nil
 }
 
-func (api *EncodingFiltersCropCustomdataApi) GetCustomData(filterId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingFiltersCropCustomdataApi) Get(filterId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/crop/{filter_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/filters/crop/{filter_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

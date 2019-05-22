@@ -31,24 +31,30 @@ func (api *EncodingStatisticsEncodingsVodApi) ListByDateRange(from time.Time, to
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.EncodingStatisticsVodsListByDateRangePagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["from"] = from
         params.PathParams["to"] = to
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/encodings/vod/{from}/{to}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.EncodingStatisticsVodsListByDateRangePagination
+    err := api.apiClient.Get("/encoding/statistics/encodings/vod/{from}/{to}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingStatisticsEncodingsVodApi) List(queryParams ...func(*query.EncodingStatisticsVodListQueryParams)) (*pagination.EncodingStatisticsVodsListPagination, error) {
     queryParameters := &query.EncodingStatisticsVodListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.EncodingStatisticsVodsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/encodings/vod", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.EncodingStatisticsVodsListPagination
+    err := api.apiClient.Get("/encoding/statistics/encodings/vod", &responseModel, reqParams)
+    return responseModel, err
 }
+

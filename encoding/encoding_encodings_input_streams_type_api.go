@@ -26,11 +26,13 @@ func NewEncodingEncodingsInputStreamsTypeApi(configs ...func(*common.ApiClient))
 }
 
 func (api *EncodingEncodingsInputStreamsTypeApi) Get(encodingId string, inputStreamId string) (*model.InputStreamTypeResponse, error) {
-    var resp *model.InputStreamTypeResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["input_stream_id"] = inputStreamId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}/type", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.InputStreamTypeResponse
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}/type", &responseModel, reqParams)
+    return responseModel, err
 }
+

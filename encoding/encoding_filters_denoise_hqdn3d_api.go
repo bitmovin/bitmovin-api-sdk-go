@@ -34,32 +34,42 @@ func (api *EncodingFiltersDenoiseHqdn3dApi) List(queryParams ...func(*query.Deno
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.DenoiseHqdn3dFiltersListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/filters/denoise-hqdn3d", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.DenoiseHqdn3dFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/denoise-hqdn3d", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersDenoiseHqdn3dApi) Create(denoiseHqdn3dFilter model.DenoiseHqdn3dFilter) (*model.DenoiseHqdn3dFilter, error) {
-    payload := model.DenoiseHqdn3dFilter(denoiseHqdn3dFilter)
-    
-    err := api.apiClient.Post("/encoding/filters/denoise-hqdn3d", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.DenoiseHqdn3dFilter
+    err := api.apiClient.Post("/encoding/filters/denoise-hqdn3d", &denoiseHqdn3dFilter, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersDenoiseHqdn3dApi) Get(filterId string) (*model.DenoiseHqdn3dFilter, error) {
-    var resp *model.DenoiseHqdn3dFilter
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/denoise-hqdn3d/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.DenoiseHqdn3dFilter
+    err := api.apiClient.Get("/encoding/filters/denoise-hqdn3d/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersDenoiseHqdn3dApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Delete("/encoding/filters/denoise-hqdn3d/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/denoise-hqdn3d/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

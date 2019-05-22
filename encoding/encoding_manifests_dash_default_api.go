@@ -26,8 +26,11 @@ func NewEncodingManifestsDashDefaultApi(configs ...func(*common.ApiClient)) (*En
 }
 
 func (api *EncodingManifestsDashDefaultApi) Create(dashManifestDefault model.DashManifestDefault) (*model.DashManifestDefault, error) {
-    payload := model.DashManifestDefault(dashManifestDefault)
-    
-    err := api.apiClient.Post("/encoding/manifests/dash/default", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.DashManifestDefault
+    err := api.apiClient.Post("/encoding/manifests/dash/default", &dashManifestDefault, &responseModel, reqParams)
+    return responseModel, err
 }
+

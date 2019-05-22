@@ -30,36 +30,46 @@ func NewEncodingInputsZixiApi(configs ...func(*common.ApiClient)) (*EncodingInpu
 }
 
 func (api *EncodingInputsZixiApi) Get(inputId string) (*model.ZixiInput, error) {
-    var resp *model.ZixiInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/zixi/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ZixiInput
+    err := api.apiClient.Get("/encoding/inputs/zixi/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsZixiApi) List(queryParams ...func(*query.ZixiInputListQueryParams)) (*pagination.ZixiInputsListPagination, error) {
     queryParameters := &query.ZixiInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.ZixiInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/zixi", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.ZixiInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/zixi", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsZixiApi) Delete(inputId string) (*model.ZixiInput, error) {
-    var resp *model.ZixiInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/zixi/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ZixiInput
+    err := api.apiClient.Delete("/encoding/inputs/zixi/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsZixiApi) Create(zixiInput model.ZixiInput) (*model.ZixiInput, error) {
-    payload := model.ZixiInput(zixiInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/zixi", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.ZixiInput
+    err := api.apiClient.Post("/encoding/inputs/zixi", &zixiInput, &responseModel, reqParams)
+    return responseModel, err
 }
+

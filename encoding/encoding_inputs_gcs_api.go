@@ -30,36 +30,46 @@ func NewEncodingInputsGcsApi(configs ...func(*common.ApiClient)) (*EncodingInput
 }
 
 func (api *EncodingInputsGcsApi) Create(gcsInput model.GcsInput) (*model.GcsInput, error) {
-    payload := model.GcsInput(gcsInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/gcs", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.GcsInput
+    err := api.apiClient.Post("/encoding/inputs/gcs", &gcsInput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsGcsApi) Delete(inputId string) (*model.GcsInput, error) {
-    var resp *model.GcsInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/gcs/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.GcsInput
+    err := api.apiClient.Delete("/encoding/inputs/gcs/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsGcsApi) List(queryParams ...func(*query.GcsInputListQueryParams)) (*pagination.GcsInputsListPagination, error) {
     queryParameters := &query.GcsInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.GcsInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/gcs", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.GcsInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/gcs", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsGcsApi) Get(inputId string) (*model.GcsInput, error) {
-    var resp *model.GcsInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/gcs/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.GcsInput
+    err := api.apiClient.Get("/encoding/inputs/gcs/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -29,16 +29,19 @@ func (api *PlayerLicensesAnalyticsApi) Create(licenseId string, playerLicenseAna
     reqParams := func(params *common.RequestParams) {
         params.PathParams["license_id"] = licenseId
     }
-    payload := model.PlayerLicenseAnalytics(playerLicenseAnalytics)
-    
-    err := api.apiClient.Post("/player/licenses/{license_id}/analytics", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.PlayerLicenseAnalytics
+    err := api.apiClient.Post("/player/licenses/{license_id}/analytics", &playerLicenseAnalytics, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *PlayerLicensesAnalyticsApi) Delete(licenseId string) (*model.PlayerLicenseAnalytics, error) {
-    var resp *model.PlayerLicenseAnalytics
     reqParams := func(params *common.RequestParams) {
         params.PathParams["license_id"] = licenseId
-	}
-    err := api.apiClient.Delete("/player/licenses/{license_id}/analytics", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.PlayerLicenseAnalytics
+    err := api.apiClient.Delete("/player/licenses/{license_id}/analytics", &responseModel, reqParams)
+    return responseModel, err
 }
+

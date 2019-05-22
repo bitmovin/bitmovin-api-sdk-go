@@ -26,8 +26,11 @@ func NewEncodingManifestsSmoothDefaultApi(configs ...func(*common.ApiClient)) (*
 }
 
 func (api *EncodingManifestsSmoothDefaultApi) Create(smoothManifestDefault model.SmoothManifestDefault) (*model.SmoothManifestDefault, error) {
-    payload := model.SmoothManifestDefault(smoothManifestDefault)
-    
-    err := api.apiClient.Post("/encoding/manifests/smooth/default", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.SmoothManifestDefault
+    err := api.apiClient.Post("/encoding/manifests/smooth/default", &smoothManifestDefault, &responseModel, reqParams)
+    return responseModel, err
 }
+

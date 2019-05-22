@@ -25,11 +25,13 @@ func NewEncodingFiltersAudioVolumeCustomdataApi(configs ...func(*common.ApiClien
 	return api, nil
 }
 
-func (api *EncodingFiltersAudioVolumeCustomdataApi) GetCustomData(filterId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingFiltersAudioVolumeCustomdataApi) Get(filterId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/audio-volume/{filter_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/filters/audio-volume/{filter_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

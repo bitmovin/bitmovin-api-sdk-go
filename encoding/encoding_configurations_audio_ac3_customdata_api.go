@@ -25,11 +25,13 @@ func NewEncodingConfigurationsAudioAc3CustomdataApi(configs ...func(*common.ApiC
 	return api, nil
 }
 
-func (api *EncodingConfigurationsAudioAc3CustomdataApi) GetCustomData(configurationId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingConfigurationsAudioAc3CustomdataApi) Get(configurationId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/audio/ac3/{configuration_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/configurations/audio/ac3/{configuration_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

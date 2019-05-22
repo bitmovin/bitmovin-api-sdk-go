@@ -41,19 +41,24 @@ func (api *EncodingStatisticsApi) List(from time.Time, to time.Time, queryParams
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.StatisticssListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["from"] = from
         params.PathParams["to"] = to
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/{from}/{to}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.StatisticssListPagination
+    err := api.apiClient.Get("/encoding/statistics/{from}/{to}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingStatisticsApi) Get() (*model.Statistics, error) {
-    var resp *model.Statistics
     reqParams := func(params *common.RequestParams) {
-	}
-    err := api.apiClient.Get("/encoding/statistics", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Statistics
+    err := api.apiClient.Get("/encoding/statistics", &responseModel, reqParams)
+    return responseModel, err
 }
+

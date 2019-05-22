@@ -30,36 +30,46 @@ func NewEncodingOutputsFtpApi(configs ...func(*common.ApiClient)) (*EncodingOutp
 }
 
 func (api *EncodingOutputsFtpApi) Delete(outputId string) (*model.FtpOutput, error) {
-    var resp *model.FtpOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Delete("/encoding/outputs/ftp/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.FtpOutput
+    err := api.apiClient.Delete("/encoding/outputs/ftp/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsFtpApi) Get(outputId string) (*model.FtpOutput, error) {
-    var resp *model.FtpOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/ftp/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.FtpOutput
+    err := api.apiClient.Get("/encoding/outputs/ftp/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsFtpApi) Create(ftpOutput model.FtpOutput) (*model.FtpOutput, error) {
-    payload := model.FtpOutput(ftpOutput)
-    
-    err := api.apiClient.Post("/encoding/outputs/ftp", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.FtpOutput
+    err := api.apiClient.Post("/encoding/outputs/ftp", &ftpOutput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsFtpApi) List(queryParams ...func(*query.FtpOutputListQueryParams)) (*pagination.FtpOutputsListPagination, error) {
     queryParameters := &query.FtpOutputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.FtpOutputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/outputs/ftp", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.FtpOutputsListPagination
+    err := api.apiClient.Get("/encoding/outputs/ftp", &responseModel, reqParams)
+    return responseModel, err
 }
+

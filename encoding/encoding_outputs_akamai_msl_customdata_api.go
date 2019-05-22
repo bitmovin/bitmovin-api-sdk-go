@@ -25,11 +25,13 @@ func NewEncodingOutputsAkamaiMslCustomdataApi(configs ...func(*common.ApiClient)
 	return api, nil
 }
 
-func (api *EncodingOutputsAkamaiMslCustomdataApi) GetCustomData(outputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingOutputsAkamaiMslCustomdataApi) Get(outputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/akamai-msl/{output_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/outputs/akamai-msl/{output_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

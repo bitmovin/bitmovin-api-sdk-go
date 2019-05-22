@@ -29,9 +29,11 @@ func NewPlayerChannelsApi(configs ...func(*common.ApiClient)) (*PlayerChannelsAp
 }
 
 func (api *PlayerChannelsApi) List() (*pagination.PlayerChannelsListPagination, error) {
-    var resp *pagination.PlayerChannelsListPagination
     reqParams := func(params *common.RequestParams) {
-	}
-    err := api.apiClient.Get("/player/channels", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.PlayerChannelsListPagination
+    err := api.apiClient.Get("/player/channels", &responseModel, reqParams)
+    return responseModel, err
 }
+

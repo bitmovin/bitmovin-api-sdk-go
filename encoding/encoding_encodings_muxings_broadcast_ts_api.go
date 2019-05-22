@@ -36,39 +36,47 @@ func (api *EncodingEncodingsMuxingsBroadcastTsApi) Create(encodingId string, bro
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.BroadcastTsMuxing(broadcastTsMuxing)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/broadcast-ts", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.BroadcastTsMuxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/broadcast-ts", &broadcastTsMuxing, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsBroadcastTsApi) List(encodingId string, queryParams ...func(*query.BroadcastTsMuxingListQueryParams)) (*pagination.BroadcastTsMuxingsListPagination, error) {
     queryParameters := &query.BroadcastTsMuxingListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.BroadcastTsMuxingsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.BroadcastTsMuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsBroadcastTsApi) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsBroadcastTsApi) Get(encodingId string, muxingId string) (*model.BroadcastTsMuxing, error) {
-    var resp *model.BroadcastTsMuxing
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BroadcastTsMuxing
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

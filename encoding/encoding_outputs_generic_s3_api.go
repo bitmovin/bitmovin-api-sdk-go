@@ -30,36 +30,46 @@ func NewEncodingOutputsGenericS3Api(configs ...func(*common.ApiClient)) (*Encodi
 }
 
 func (api *EncodingOutputsGenericS3Api) Create(genericS3Output model.GenericS3Output) (*model.GenericS3Output, error) {
-    payload := model.GenericS3Output(genericS3Output)
-    
-    err := api.apiClient.Post("/encoding/outputs/generic-s3", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.GenericS3Output
+    err := api.apiClient.Post("/encoding/outputs/generic-s3", &genericS3Output, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsGenericS3Api) Delete(outputId string) (*model.GenericS3Output, error) {
-    var resp *model.GenericS3Output
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Delete("/encoding/outputs/generic-s3/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.GenericS3Output
+    err := api.apiClient.Delete("/encoding/outputs/generic-s3/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsGenericS3Api) Get(outputId string) (*model.GenericS3Output, error) {
-    var resp *model.GenericS3Output
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/generic-s3/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.GenericS3Output
+    err := api.apiClient.Get("/encoding/outputs/generic-s3/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsGenericS3Api) List(queryParams ...func(*query.GenericS3OutputListQueryParams)) (*pagination.GenericS3OutputsListPagination, error) {
     queryParameters := &query.GenericS3OutputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.GenericS3OutputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/outputs/generic-s3", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.GenericS3OutputsListPagination
+    err := api.apiClient.Get("/encoding/outputs/generic-s3", &responseModel, reqParams)
+    return responseModel, err
 }
+

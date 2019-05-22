@@ -90,10 +90,13 @@ func (api *EncodingInputsApi) List(queryParams ...func(*query.InputListQueryPara
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.InputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.InputsListPagination
+    err := api.apiClient.Get("/encoding/inputs", &responseModel, reqParams)
+    return responseModel, err
 }
+

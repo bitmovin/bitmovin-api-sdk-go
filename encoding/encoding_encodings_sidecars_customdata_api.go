@@ -25,12 +25,14 @@ func NewEncodingEncodingsSidecarsCustomdataApi(configs ...func(*common.ApiClient
 	return api, nil
 }
 
-func (api *EncodingEncodingsSidecarsCustomdataApi) GetCustomData(encodingId string, sidecarId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingEncodingsSidecarsCustomdataApi) Get(encodingId string, sidecarId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["sidecar_id"] = sidecarId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/{sidecar_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/{sidecar_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

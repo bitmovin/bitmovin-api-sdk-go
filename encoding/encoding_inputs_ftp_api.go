@@ -34,32 +34,42 @@ func (api *EncodingInputsFtpApi) List(queryParams ...func(*query.FtpInputListQue
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.FtpInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/ftp", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.FtpInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/ftp", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsFtpApi) Get(inputId string) (*model.FtpInput, error) {
-    var resp *model.FtpInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/ftp/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.FtpInput
+    err := api.apiClient.Get("/encoding/inputs/ftp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsFtpApi) Create(ftpInput model.FtpInput) (*model.FtpInput, error) {
-    payload := model.FtpInput(ftpInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/ftp", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.FtpInput
+    err := api.apiClient.Post("/encoding/inputs/ftp", &ftpInput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsFtpApi) Delete(inputId string) (*model.FtpInput, error) {
-    var resp *model.FtpInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/ftp/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.FtpInput
+    err := api.apiClient.Delete("/encoding/inputs/ftp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

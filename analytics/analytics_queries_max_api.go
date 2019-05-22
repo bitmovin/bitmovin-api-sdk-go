@@ -25,9 +25,12 @@ func NewAnalyticsQueriesMaxApi(configs ...func(*common.ApiClient)) (*AnalyticsQu
 	return api, nil
 }
 
-func (api *AnalyticsQueriesMaxApi) Create(analyticsMaxQueryRequest model.AnalyticsResponse) (*model.AnalyticsResponse, error) {
-    payload := model.AnalyticsResponse(analyticsMaxQueryRequest)
-    
-    err := api.apiClient.Post("/analytics/queries/max", &payload)
-    return &payload, err
+func (api *AnalyticsQueriesMaxApi) Create(analyticsMaxQueryRequest model.AnalyticsMaxQueryRequest) (*model.AnalyticsResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsResponse
+    err := api.apiClient.Post("/analytics/queries/max", &analyticsMaxQueryRequest, &responseModel, reqParams)
+    return responseModel, err
 }
+

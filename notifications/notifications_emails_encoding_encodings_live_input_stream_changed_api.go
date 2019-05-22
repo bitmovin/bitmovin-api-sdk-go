@@ -26,26 +26,31 @@ func NewNotificationsEmailsEncodingEncodingsLiveInputStreamChangedApi(configs ..
 }
 
 func (api *NotificationsEmailsEncodingEncodingsLiveInputStreamChangedApi) Create(emailNotificationWithStreamConditions model.EmailNotificationWithStreamConditions) (*model.EmailNotificationWithStreamConditions, error) {
-    payload := model.EmailNotificationWithStreamConditions(emailNotificationWithStreamConditions)
-    
-    err := api.apiClient.Post("/notifications/emails/encoding/encodings/live-input-stream-changed", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.EmailNotificationWithStreamConditions
+    err := api.apiClient.Post("/notifications/emails/encoding/encodings/live-input-stream-changed", &emailNotificationWithStreamConditions, &responseModel, reqParams)
+    return responseModel, err
 }
-func (api *NotificationsEmailsEncodingEncodingsLiveInputStreamChangedApi) Update(notificationId string, emailNotificationWithStreamConditions *model.EmailNotificationWithStreamConditions) (*model.EmailNotificationWithStreamConditions, error) {
+
+func (api *NotificationsEmailsEncodingEncodingsLiveInputStreamChangedApi) Update(notificationId string, emailNotificationWithStreamConditions model.EmailNotificationWithStreamConditions) (*model.EmailNotificationWithStreamConditions, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["notification_id"] = notificationId
     }
-    payload := model.EmailNotificationWithStreamConditions(*emailNotificationWithStreamConditions)
-    
-    err := api.apiClient.Put("/notifications/emails/encoding/encodings/live-input-stream-changed/{notification_id}", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.EmailNotificationWithStreamConditions
+    err := api.apiClient.Put("/notifications/emails/encoding/encodings/live-input-stream-changed/{notification_id}", &emailNotificationWithStreamConditions, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *NotificationsEmailsEncodingEncodingsLiveInputStreamChangedApi) CreateByEncodingId(encodingId string, emailNotificationWithStreamConditions model.EmailNotificationWithStreamConditions) (*model.EmailNotificationWithStreamConditions, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.EmailNotificationWithStreamConditions(emailNotificationWithStreamConditions)
-    
-    err := api.apiClient.Post("/notifications/emails/encoding/encodings/{encoding_id}/live-input-stream-changed", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.EmailNotificationWithStreamConditions
+    err := api.apiClient.Post("/notifications/emails/encoding/encodings/{encoding_id}/live-input-stream-changed", &emailNotificationWithStreamConditions, &responseModel, reqParams)
+    return responseModel, err
 }
+

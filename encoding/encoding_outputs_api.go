@@ -63,10 +63,13 @@ func (api *EncodingOutputsApi) List(queryParams ...func(*query.OutputListQueryPa
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.OutputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/outputs", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.OutputsListPagination
+    err := api.apiClient.Get("/encoding/outputs", &responseModel, reqParams)
+    return responseModel, err
 }
+

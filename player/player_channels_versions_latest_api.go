@@ -26,10 +26,12 @@ func NewPlayerChannelsVersionsLatestApi(configs ...func(*common.ApiClient)) (*Pl
 }
 
 func (api *PlayerChannelsVersionsLatestApi) Get(channelName string) (*model.PlayerVersion, error) {
-    var resp *model.PlayerVersion
     reqParams := func(params *common.RequestParams) {
         params.PathParams["channel_name"] = channelName
-	}
-    err := api.apiClient.Get("/player/channels/{channel_name}/versions/latest", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.PlayerVersion
+    err := api.apiClient.Get("/player/channels/{channel_name}/versions/latest", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -25,11 +25,13 @@ func NewEncodingOutputsGcsCustomdataApi(configs ...func(*common.ApiClient)) (*En
 	return api, nil
 }
 
-func (api *EncodingOutputsGcsCustomdataApi) GetCustomData(outputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingOutputsGcsCustomdataApi) Get(outputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/gcs/{output_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/outputs/gcs/{output_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -33,42 +33,50 @@ func NewEncodingEncodingsMuxingsMp3Api(configs ...func(*common.ApiClient)) (*Enc
 }
 
 func (api *EncodingEncodingsMuxingsMp3Api) Get(encodingId string, muxingId string) (*model.Mp3Muxing, error) {
-    var resp *model.Mp3Muxing
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Mp3Muxing
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsMp3Api) List(encodingId string, queryParams ...func(*query.Mp3MuxingListQueryParams)) (*pagination.Mp3MuxingsListPagination, error) {
     queryParameters := &query.Mp3MuxingListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.Mp3MuxingsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.Mp3MuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsMp3Api) Create(encodingId string, mp3Muxing model.Mp3Muxing) (*model.Mp3Muxing, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.Mp3Muxing(mp3Muxing)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/mp3", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.Mp3Muxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/mp3", &mp3Muxing, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsMp3Api) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

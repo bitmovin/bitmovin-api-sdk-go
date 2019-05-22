@@ -26,19 +26,22 @@ func NewEncodingInfrastructureKubernetesConfigurationApi(configs ...func(*common
 }
 
 func (api *EncodingInfrastructureKubernetesConfigurationApi) Get(infrastructureId string) (*model.KubernetesClusterConfiguration, error) {
-    var resp *model.KubernetesClusterConfiguration
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["infrastructure_id"] = infrastructureId
-	}
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/configuration", &resp, reqParams)
-    return resp, err
-}
-func (api *EncodingInfrastructureKubernetesConfigurationApi) Update(infrastructureId string, kubernetesClusterConfiguration *model.KubernetesClusterConfiguration) (*model.KubernetesClusterConfiguration, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
     }
-    payload := model.KubernetesClusterConfiguration(*kubernetesClusterConfiguration)
-    
-    err := api.apiClient.Put("/encoding/infrastructure/kubernetes/{infrastructure_id}/configuration", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.KubernetesClusterConfiguration
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/configuration", &responseModel, reqParams)
+    return responseModel, err
 }
+
+func (api *EncodingInfrastructureKubernetesConfigurationApi) Update(infrastructureId string, kubernetesClusterConfiguration model.KubernetesClusterConfiguration) (*model.KubernetesClusterConfiguration, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["infrastructure_id"] = infrastructureId
+    }
+
+    var responseModel *model.KubernetesClusterConfiguration
+    err := api.apiClient.Put("/encoding/infrastructure/kubernetes/{infrastructure_id}/configuration", &kubernetesClusterConfiguration, &responseModel, reqParams)
+    return responseModel, err
+}
+

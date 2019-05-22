@@ -20,7 +20,7 @@ type SrtInput struct {
 	Mode SrtMode `json:"mode,omitempty"`
 	// The name or IP of the host providing the SRT stream (only used in CALLER mode)
 	Host string `json:"host,omitempty"`
-	// The port to connect to or listen on. Has to be 2088 if using LISTENER mode.
+	// The port to connect to or listen on. Has to be one of [2088, 2089, 2090, 2091] when using LISTENER mode.
 	Port *int32 `json:"port,omitempty"`
 	// The path parameter of the SRT stream
 	Path string `json:"path,omitempty"`
@@ -30,6 +30,7 @@ type SrtInput struct {
 	Passphrase string `json:"passphrase,omitempty"`
 	// The type of AES encryption determines the length of the key (passphrase). AES-128 uses a 16-character (128-bit) passphrase, and AES-256 uses a 32-character (256-bit) passphrase.
 	KeyLength *int32 `json:"keyLength,omitempty"`
+	BackupSrtInputs *BackupSrtInputs `json:"backupSrtInputs,omitempty"`
 }
 func (o SrtInput) InputType() InputType {
     return InputType_SRT

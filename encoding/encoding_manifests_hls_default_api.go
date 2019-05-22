@@ -26,8 +26,11 @@ func NewEncodingManifestsHlsDefaultApi(configs ...func(*common.ApiClient)) (*Enc
 }
 
 func (api *EncodingManifestsHlsDefaultApi) Create(hlsManifestDefault model.HlsManifestDefault) (*model.HlsManifestDefault, error) {
-    payload := model.HlsManifestDefault(hlsManifestDefault)
-    
-    err := api.apiClient.Post("/encoding/manifests/hls/default", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.HlsManifestDefault
+    err := api.apiClient.Post("/encoding/manifests/hls/default", &hlsManifestDefault, &responseModel, reqParams)
+    return responseModel, err
 }
+

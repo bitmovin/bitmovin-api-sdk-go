@@ -39,62 +39,76 @@ func NewEncodingManifestsHlsApi(configs ...func(*common.ApiClient)) (*EncodingMa
 }
 
 func (api *EncodingManifestsHlsApi) Status(manifestId string) (*model.ModelTask, error) {
-    var resp *model.ModelTask
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/status", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ModelTask
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/status", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsApi) Create(hlsManifest model.HlsManifest) (*model.HlsManifest, error) {
-    payload := model.HlsManifest(hlsManifest)
-    
-    err := api.apiClient.Post("/encoding/manifests/hls", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.HlsManifest
+    err := api.apiClient.Post("/encoding/manifests/hls", &hlsManifest, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsApi) Delete(manifestId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsApi) Start(manifestId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
-    
-    var payload model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/start", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/start", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsApi) Stop(manifestId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
-    
-    var payload model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/stop", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/stop", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsApi) Get(manifestId string) (*model.HlsManifest, error) {
-    var resp *model.HlsManifest
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.HlsManifest
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsApi) List(queryParams ...func(*query.HlsManifestListQueryParams)) (*pagination.HlsManifestsListPagination, error) {
     queryParameters := &query.HlsManifestListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.HlsManifestsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests/hls", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.HlsManifestsListPagination
+    err := api.apiClient.Get("/encoding/manifests/hls", &responseModel, reqParams)
+    return responseModel, err
 }
+

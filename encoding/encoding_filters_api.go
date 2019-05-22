@@ -15,6 +15,7 @@ type EncodingFiltersApi struct {
     Deinterlace *EncodingFiltersDeinterlaceApi
     AudioMix *EncodingFiltersAudioMixApi
     DenoiseHqdn3d *EncodingFiltersDenoiseHqdn3dApi
+    EbuR128SinglePass *EncodingFiltersEbuR128SinglePassApi
     Text *EncodingFiltersTextApi
     Interlace *EncodingFiltersInterlaceApi
     Unsharp *EncodingFiltersUnsharpApi
@@ -46,6 +47,8 @@ func NewEncodingFiltersApi(configs ...func(*common.ApiClient)) (*EncodingFilters
     api.AudioMix = audioMixApi
     denoiseHqdn3dApi, err := NewEncodingFiltersDenoiseHqdn3dApi(configs...)
     api.DenoiseHqdn3d = denoiseHqdn3dApi
+    ebuR128SinglePassApi, err := NewEncodingFiltersEbuR128SinglePassApi(configs...)
+    api.EbuR128SinglePass = ebuR128SinglePassApi
     textApi, err := NewEncodingFiltersTextApi(configs...)
     api.Text = textApi
     interlaceApi, err := NewEncodingFiltersInterlaceApi(configs...)
@@ -69,10 +72,13 @@ func (api *EncodingFiltersApi) List(queryParams ...func(*query.FilterListQueryPa
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.FiltersListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/filters", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.FiltersListPagination
+    err := api.apiClient.Get("/encoding/filters", &responseModel, reqParams)
+    return responseModel, err
 }
+

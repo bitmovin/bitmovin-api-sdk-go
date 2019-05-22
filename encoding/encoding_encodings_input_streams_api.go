@@ -42,24 +42,29 @@ func NewEncodingEncodingsInputStreamsApi(configs ...func(*common.ApiClient)) (*E
 }
 
 func (api *EncodingEncodingsInputStreamsApi) Get(encodingId string, inputStreamId string) (*model.InputStream, error) {
-    var resp *model.InputStream
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["input_stream_id"] = inputStreamId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.InputStream
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsInputStreamsApi) List(encodingId string, queryParams ...func(*query.InputStreamListQueryParams)) (*pagination.InputStreamsListPagination, error) {
     queryParameters := &query.InputStreamListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.InputStreamsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.InputStreamsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams", &responseModel, reqParams)
+    return responseModel, err
 }
+

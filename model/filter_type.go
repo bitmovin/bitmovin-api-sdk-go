@@ -15,4 +15,5 @@ const (
 	FilterType_SCALE FilterType = "SCALE"
 	FilterType_INTERLACE FilterType = "INTERLACE"
 	FilterType_AUDIO_VOLUME FilterType = "AUDIO_VOLUME"
+	FilterType_EBU_R128_SINGLE_PASS FilterType = "EBU_R128_SINGLE_PASS"
 )

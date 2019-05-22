@@ -37,38 +37,46 @@ func (api *EncodingEncodingsMuxingsProgressiveWebmApi) List(encodingId string, q
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.ProgressiveWebmMuxingsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-webm", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.ProgressiveWebmMuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-webm", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsProgressiveWebmApi) Get(encodingId string, muxingId string) (*model.ProgressiveWebmMuxing, error) {
-    var resp *model.ProgressiveWebmMuxing
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ProgressiveWebmMuxing
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsProgressiveWebmApi) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsProgressiveWebmApi) Create(encodingId string, progressiveWebmMuxing model.ProgressiveWebmMuxing) (*model.ProgressiveWebmMuxing, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.ProgressiveWebmMuxing(progressiveWebmMuxing)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/progressive-webm", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.ProgressiveWebmMuxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/progressive-webm", &progressiveWebmMuxing, &responseModel, reqParams)
+    return responseModel, err
 }
+

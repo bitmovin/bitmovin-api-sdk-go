@@ -30,11 +30,14 @@ func (api *EncodingStatisticsEncodingsLiveStatisticsEventsApi) List(encodingId s
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.LiveEncodingStatsEventsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/events", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.LiveEncodingStatsEventsListPagination
+    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/events", &responseModel, reqParams)
+    return responseModel, err
 }
+

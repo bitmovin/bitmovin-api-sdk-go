@@ -34,32 +34,42 @@ func (api *EncodingConfigurationsAudioAacApi) List(queryParams ...func(*query.Aa
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AacAudioConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/configurations/audio/aac", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AacAudioConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations/audio/aac", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioAacApi) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Delete("/encoding/configurations/audio/aac/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/audio/aac/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioAacApi) Create(aacAudioConfiguration model.AacAudioConfiguration) (*model.AacAudioConfiguration, error) {
-    payload := model.AacAudioConfiguration(aacAudioConfiguration)
-    
-    err := api.apiClient.Post("/encoding/configurations/audio/aac", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AacAudioConfiguration
+    err := api.apiClient.Post("/encoding/configurations/audio/aac", &aacAudioConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioAacApi) Get(configurationId string) (*model.AacAudioConfiguration, error) {
-    var resp *model.AacAudioConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/audio/aac/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AacAudioConfiguration
+    err := api.apiClient.Get("/encoding/configurations/audio/aac/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

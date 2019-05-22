@@ -25,9 +25,12 @@ func NewAnalyticsQueriesStddevApi(configs ...func(*common.ApiClient)) (*Analytic
 	return api, nil
 }
 
-func (api *AnalyticsQueriesStddevApi) Create(analyticsStddevQueryRequest model.AnalyticsResponse) (*model.AnalyticsResponse, error) {
-    payload := model.AnalyticsResponse(analyticsStddevQueryRequest)
-    
-    err := api.apiClient.Post("/analytics/queries/stddev", &payload)
-    return &payload, err
+func (api *AnalyticsQueriesStddevApi) Create(analyticsStddevQueryRequest model.AnalyticsStddevQueryRequest) (*model.AnalyticsResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsResponse
+    err := api.apiClient.Post("/analytics/queries/stddev", &analyticsStddevQueryRequest, &responseModel, reqParams)
+    return responseModel, err
 }
+

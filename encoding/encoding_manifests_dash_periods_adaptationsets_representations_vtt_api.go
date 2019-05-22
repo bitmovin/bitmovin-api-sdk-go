@@ -32,45 +32,53 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) Crea
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
     }
-    payload := model.DashVttRepresentation(dashVttRepresentation)
-    
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.DashVttRepresentation
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt", &dashVttRepresentation, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashVttRepresentation, error) {
-    var resp *model.DashVttRepresentation
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.PathParams["representation_id"] = representationId
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.DashVttRepresentation
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) Delete(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.PathParams["representation_id"] = representationId
-	}
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*query.DashVttRepresentationListQueryParams)) (*pagination.DashVttRepresentationsListPagination, error) {
     queryParameters := &query.DashVttRepresentationListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.DashVttRepresentationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.DashVttRepresentationsListPagination
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt", &responseModel, reqParams)
+    return responseModel, err
 }
+

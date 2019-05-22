@@ -25,13 +25,15 @@ func NewEncodingEncodingsMuxingsTsDrmAesCustomdataApi(configs ...func(*common.Ap
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsTsDrmAesCustomdataApi) GetCustomData(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingEncodingsMuxingsTsDrmAesCustomdataApi) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
         params.PathParams["drm_id"] = drmId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/aes/{drm_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/aes/{drm_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

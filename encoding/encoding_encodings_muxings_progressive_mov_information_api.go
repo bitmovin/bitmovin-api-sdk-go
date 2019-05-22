@@ -26,11 +26,13 @@ func NewEncodingEncodingsMuxingsProgressiveMovInformationApi(configs ...func(*co
 }
 
 func (api *EncodingEncodingsMuxingsProgressiveMovInformationApi) Get(encodingId string, muxingId string) (*model.ProgressiveMovMuxingInformation, error) {
-    var resp *model.ProgressiveMovMuxingInformation
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}/information", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ProgressiveMovMuxingInformation
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}/information", &responseModel, reqParams)
+    return responseModel, err
 }
+

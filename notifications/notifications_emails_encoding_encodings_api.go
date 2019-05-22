@@ -36,11 +36,14 @@ func (api *NotificationsEmailsEncodingEncodingsApi) List(encodingId string, quer
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.EmailNotificationWithStreamConditionssListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/notifications/emails/encoding/encodings/{encoding_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.EmailNotificationWithStreamConditionssListPagination
+    err := api.apiClient.Get("/notifications/emails/encoding/encodings/{encoding_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

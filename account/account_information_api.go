@@ -26,9 +26,11 @@ func NewAccountInformationApi(configs ...func(*common.ApiClient)) (*AccountInfor
 }
 
 func (api *AccountInformationApi) Get() (*model.AccountInformation, error) {
-    var resp *model.AccountInformation
     reqParams := func(params *common.RequestParams) {
-	}
-    err := api.apiClient.Get("/account/information", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AccountInformation
+    err := api.apiClient.Get("/account/information", &responseModel, reqParams)
+    return responseModel, err
 }
+

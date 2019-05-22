@@ -30,36 +30,46 @@ func NewEncodingInputsLocalApi(configs ...func(*common.ApiClient)) (*EncodingInp
 }
 
 func (api *EncodingInputsLocalApi) Create(localInput model.LocalInput) (*model.LocalInput, error) {
-    payload := model.LocalInput(localInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/local", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.LocalInput
+    err := api.apiClient.Post("/encoding/inputs/local", &localInput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsLocalApi) Get(inputId string) (*model.LocalInput, error) {
-    var resp *model.LocalInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/local/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.LocalInput
+    err := api.apiClient.Get("/encoding/inputs/local/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsLocalApi) List(queryParams ...func(*query.LocalInputListQueryParams)) (*pagination.LocalInputsListPagination, error) {
     queryParameters := &query.LocalInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.LocalInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/local", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.LocalInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/local", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsLocalApi) Delete(inputId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/local/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/inputs/local/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -29,24 +29,31 @@ func NewEncodingConfigurationsAudioMp2Api(configs ...func(*common.ApiClient)) (*
 }
 
 func (api *EncodingConfigurationsAudioMp2Api) Get(configurationId string) (*model.Mp2AudioConfiguration, error) {
-    var resp *model.Mp2AudioConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/audio/mp2/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Mp2AudioConfiguration
+    err := api.apiClient.Get("/encoding/configurations/audio/mp2/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioMp2Api) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Delete("/encoding/configurations/audio/mp2/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/audio/mp2/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioMp2Api) Create(mp2AudioConfiguration model.Mp2AudioConfiguration) (*model.Mp2AudioConfiguration, error) {
-    payload := model.Mp2AudioConfiguration(mp2AudioConfiguration)
-    
-    err := api.apiClient.Post("/encoding/configurations/audio/mp2", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.Mp2AudioConfiguration
+    err := api.apiClient.Post("/encoding/configurations/audio/mp2", &mp2AudioConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+

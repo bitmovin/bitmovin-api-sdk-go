@@ -26,10 +26,12 @@ func NewEncodingOutputsTypeApi(configs ...func(*common.ApiClient)) (*EncodingOut
 }
 
 func (api *EncodingOutputsTypeApi) Get(outputId string) (*model.OutputTypeResponse, error) {
-    var resp *model.OutputTypeResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/{output_id}/type", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.OutputTypeResponse
+    err := api.apiClient.Get("/encoding/outputs/{output_id}/type", &responseModel, reqParams)
+    return responseModel, err
 }
+

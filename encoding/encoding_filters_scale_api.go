@@ -30,36 +30,46 @@ func NewEncodingFiltersScaleApi(configs ...func(*common.ApiClient)) (*EncodingFi
 }
 
 func (api *EncodingFiltersScaleApi) Get(filterId string) (*model.ScaleFilter, error) {
-    var resp *model.ScaleFilter
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/scale/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ScaleFilter
+    err := api.apiClient.Get("/encoding/filters/scale/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersScaleApi) List(queryParams ...func(*query.ScaleFilterListQueryParams)) (*pagination.ScaleFiltersListPagination, error) {
     queryParameters := &query.ScaleFilterListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.ScaleFiltersListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/filters/scale", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.ScaleFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/scale", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersScaleApi) Create(scaleFilter model.ScaleFilter) (*model.ScaleFilter, error) {
-    payload := model.ScaleFilter(scaleFilter)
-    
-    err := api.apiClient.Post("/encoding/filters/scale", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.ScaleFilter
+    err := api.apiClient.Post("/encoding/filters/scale", &scaleFilter, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersScaleApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Delete("/encoding/filters/scale/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/scale/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

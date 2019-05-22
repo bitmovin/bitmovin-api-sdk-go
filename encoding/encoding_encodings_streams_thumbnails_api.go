@@ -34,42 +34,50 @@ func (api *EncodingEncodingsStreamsThumbnailsApi) Create(encodingId string, stre
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
     }
-    payload := model.Thumbnail(thumbnail)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.Thumbnail
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails", &thumbnail, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsStreamsThumbnailsApi) Get(encodingId string, streamId string, thumbnailId string) (*model.Thumbnail, error) {
-    var resp *model.Thumbnail
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
         params.PathParams["thumbnail_id"] = thumbnailId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails/{thumbnail_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Thumbnail
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails/{thumbnail_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsStreamsThumbnailsApi) List(encodingId string, streamId string, queryParams ...func(*query.ThumbnailListQueryParams)) (*pagination.ThumbnailsListPagination, error) {
     queryParameters := &query.ThumbnailListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.ThumbnailsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.ThumbnailsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsStreamsThumbnailsApi) Delete(encodingId string, streamId string, thumbnailId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
         params.PathParams["thumbnail_id"] = thumbnailId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails/{thumbnail_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/thumbnails/{thumbnail_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

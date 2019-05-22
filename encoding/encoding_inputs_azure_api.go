@@ -30,36 +30,46 @@ func NewEncodingInputsAzureApi(configs ...func(*common.ApiClient)) (*EncodingInp
 }
 
 func (api *EncodingInputsAzureApi) Create(azureInput model.AzureInput) (*model.AzureInput, error) {
-    payload := model.AzureInput(azureInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/azure", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AzureInput
+    err := api.apiClient.Post("/encoding/inputs/azure", &azureInput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsAzureApi) List(queryParams ...func(*query.AzureInputListQueryParams)) (*pagination.AzureInputsListPagination, error) {
     queryParameters := &query.AzureInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AzureInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/azure", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AzureInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/azure", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsAzureApi) Get(inputId string) (*model.AzureInput, error) {
-    var resp *model.AzureInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/azure/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AzureInput
+    err := api.apiClient.Get("/encoding/inputs/azure/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsAzureApi) Delete(inputId string) (*model.AzureInput, error) {
-    var resp *model.AzureInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/azure/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AzureInput
+    err := api.apiClient.Delete("/encoding/inputs/azure/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

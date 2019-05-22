@@ -31,18 +31,23 @@ func (api *EncodingInputsUdpApi) List(queryParams ...func(*query.UdpInputListQue
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.UdpInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/udp", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.UdpInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/udp", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsUdpApi) Get(inputId string) (*model.UdpInput, error) {
-    var resp *model.UdpInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/udp/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.UdpInput
+    err := api.apiClient.Get("/encoding/inputs/udp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -30,36 +30,46 @@ func NewEncodingInputsAsperaApi(configs ...func(*common.ApiClient)) (*EncodingIn
 }
 
 func (api *EncodingInputsAsperaApi) Delete(inputId string) (*model.AsperaInput, error) {
-    var resp *model.AsperaInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/aspera/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AsperaInput
+    err := api.apiClient.Delete("/encoding/inputs/aspera/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsAsperaApi) List(queryParams ...func(*query.AsperaInputListQueryParams)) (*pagination.AsperaInputsListPagination, error) {
     queryParameters := &query.AsperaInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AsperaInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/aspera", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AsperaInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/aspera", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsAsperaApi) Get(inputId string) (*model.AsperaInput, error) {
-    var resp *model.AsperaInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/aspera/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AsperaInput
+    err := api.apiClient.Get("/encoding/inputs/aspera/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsAsperaApi) Create(asperaInput model.AsperaInput) (*model.AsperaInput, error) {
-    payload := model.AsperaInput(asperaInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/aspera", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AsperaInput
+    err := api.apiClient.Post("/encoding/inputs/aspera", &asperaInput, &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -42,10 +42,13 @@ func (api *EncodingManifestsApi) List(queryParams ...func(*query.ManifestListQue
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.ManifestsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.ManifestsListPagination
+    err := api.apiClient.Get("/encoding/manifests", &responseModel, reqParams)
+    return responseModel, err
 }
+

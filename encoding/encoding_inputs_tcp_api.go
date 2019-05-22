@@ -27,22 +27,27 @@ func NewEncodingInputsTcpApi(configs ...func(*common.ApiClient)) (*EncodingInput
 }
 
 func (api *EncodingInputsTcpApi) Get(inputId string) (*model.TcpInput, error) {
-    var resp *model.TcpInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/tcp/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.TcpInput
+    err := api.apiClient.Get("/encoding/inputs/tcp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsTcpApi) List(queryParams ...func(*query.TcpInputListQueryParams)) (*pagination.TcpInputsListPagination, error) {
     queryParameters := &query.TcpInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.TcpInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/tcp", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.TcpInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/tcp", &responseModel, reqParams)
+    return responseModel, err
 }
+

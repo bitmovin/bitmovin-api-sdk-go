@@ -30,12 +30,15 @@ func (api *EncodingEncodingsMachineLearningObjectDetectionResultsApi) List(encod
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.ObjectDetectionResultsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["object_detection_id"] = objectDetectionId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}/results", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.ObjectDetectionResultsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}/results", &responseModel, reqParams)
+    return responseModel, err
 }
+

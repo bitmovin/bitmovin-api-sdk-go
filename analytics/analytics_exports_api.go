@@ -31,24 +31,32 @@ func (api *AnalyticsExportsApi) List(queryParams ...func(*query.AnalyticsExportT
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AnalyticsExportTasksListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/analytics/exports", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AnalyticsExportTasksListPagination
+    err := api.apiClient.Get("/analytics/exports", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AnalyticsExportsApi) Create(analyticsExportTask model.AnalyticsExportTask) (*model.AnalyticsExportTask, error) {
-    payload := model.AnalyticsExportTask(analyticsExportTask)
-    
-    err := api.apiClient.Post("/analytics/exports", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsExportTask
+    err := api.apiClient.Post("/analytics/exports", &analyticsExportTask, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AnalyticsExportsApi) Get(exportTaskId string) (*model.AnalyticsExportTask, error) {
-    var resp *model.AnalyticsExportTask
     reqParams := func(params *common.RequestParams) {
         params.PathParams["export_task_id"] = exportTaskId
-	}
-    err := api.apiClient.Get("/analytics/exports/{export_task_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AnalyticsExportTask
+    err := api.apiClient.Get("/analytics/exports/{export_task_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

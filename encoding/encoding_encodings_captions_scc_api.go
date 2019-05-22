@@ -33,39 +33,47 @@ func (api *EncodingEncodingsCaptionsSccApi) Create(encodingId string, convertScc
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.ConvertSccCaption(convertSccCaption)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/captions/scc", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.ConvertSccCaption
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/captions/scc", &convertSccCaption, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsCaptionsSccApi) List(encodingId string, queryParams ...func(*query.ConvertSccCaptionListQueryParams)) (*pagination.ConvertSccCaptionsListPagination, error) {
     queryParameters := &query.ConvertSccCaptionListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.ConvertSccCaptionsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.ConvertSccCaptionsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsCaptionsSccApi) Delete(encodingId string, captionsId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["captions_id"] = captionsId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsCaptionsSccApi) Get(encodingId string, captionsId string) (*model.ConvertSccCaption, error) {
-    var resp *model.ConvertSccCaption
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["captions_id"] = captionsId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ConvertSccCaption
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

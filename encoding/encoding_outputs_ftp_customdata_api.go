@@ -25,11 +25,13 @@ func NewEncodingOutputsFtpCustomdataApi(configs ...func(*common.ApiClient)) (*En
 	return api, nil
 }
 
-func (api *EncodingOutputsFtpCustomdataApi) GetCustomData(outputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingOutputsFtpCustomdataApi) Get(outputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/ftp/{output_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/outputs/ftp/{output_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

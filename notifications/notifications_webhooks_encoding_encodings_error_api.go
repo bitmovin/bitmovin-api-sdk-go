@@ -34,72 +34,90 @@ func (api *NotificationsWebhooksEncodingEncodingsErrorApi) List(queryParams ...f
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.WebhooksListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/error", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.WebhooksListPagination
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/error", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *NotificationsWebhooksEncodingEncodingsErrorApi) ListByEncodingId(encodingId string, queryParams ...func(*query.WebhookListByEncodingIdQueryParams)) (*pagination.WebhooksListByEncodingIdPagination, error) {
     queryParameters := &query.WebhookListByEncodingIdQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.WebhooksListByEncodingIdPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/error", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.WebhooksListByEncodingIdPagination
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/error", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *NotificationsWebhooksEncodingEncodingsErrorApi) Create(webhook model.Webhook) (*model.Webhook, error) {
-    payload := model.Webhook(webhook)
-    
-    err := api.apiClient.Post("/notifications/webhooks/encoding/encodings/error", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.Webhook
+    err := api.apiClient.Post("/notifications/webhooks/encoding/encodings/error", &webhook, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *NotificationsWebhooksEncodingEncodingsErrorApi) DeleteByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["webhook_id"] = webhookId
-	}
-    err := api.apiClient.Delete("/notifications/webhooks/encoding/encodings/{encoding_id}/error/{webhook_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/notifications/webhooks/encoding/encodings/{encoding_id}/error/{webhook_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *NotificationsWebhooksEncodingEncodingsErrorApi) GetByWebhookId(webhookId string) (*model.Webhook, error) {
-    var resp *model.Webhook
     reqParams := func(params *common.RequestParams) {
         params.PathParams["webhook_id"] = webhookId
-	}
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/error/{webhook_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Webhook
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/error/{webhook_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *NotificationsWebhooksEncodingEncodingsErrorApi) GetByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.Webhook, error) {
-    var resp *model.Webhook
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["webhook_id"] = webhookId
-	}
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/error/{webhook_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Webhook
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/error/{webhook_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *NotificationsWebhooksEncodingEncodingsErrorApi) DeleteByWebhookId(webhookId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["webhook_id"] = webhookId
-	}
-    err := api.apiClient.Delete("/notifications/webhooks/encoding/encodings/error/{webhook_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/notifications/webhooks/encoding/encodings/error/{webhook_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *NotificationsWebhooksEncodingEncodingsErrorApi) CreatebyEncodingId(encodingId string, webhook model.Webhook) (*model.Webhook, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.Webhook(webhook)
-    
-    err := api.apiClient.Post("/notifications/webhooks/encoding/encodings/{encoding_id}/error", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.Webhook
+    err := api.apiClient.Post("/notifications/webhooks/encoding/encodings/{encoding_id}/error", &webhook, &responseModel, reqParams)
+    return responseModel, err
 }
+

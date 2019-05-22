@@ -37,38 +37,46 @@ func (api *EncodingEncodingsMuxingsCmafApi) List(encodingId string, queryParams 
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.CmafMuxingsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.CmafMuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsCmafApi) Get(encodingId string, muxingId string) (*model.CmafMuxing, error) {
-    var resp *model.CmafMuxing
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CmafMuxing
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsCmafApi) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsCmafApi) Create(encodingId string, cmafMuxing model.CmafMuxing) (*model.CmafMuxing, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.CmafMuxing(cmafMuxing)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/cmaf", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.CmafMuxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/cmaf", &cmafMuxing, &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -25,9 +25,12 @@ func NewAnalyticsQueriesPercentileApi(configs ...func(*common.ApiClient)) (*Anal
 	return api, nil
 }
 
-func (api *AnalyticsQueriesPercentileApi) Create(analyticsPercentileQueryRequest model.AnalyticsResponse) (*model.AnalyticsResponse, error) {
-    payload := model.AnalyticsResponse(analyticsPercentileQueryRequest)
-    
-    err := api.apiClient.Post("/analytics/queries/percentile", &payload)
-    return &payload, err
+func (api *AnalyticsQueriesPercentileApi) Create(analyticsPercentileQueryRequest model.AnalyticsPercentileQueryRequest) (*model.AnalyticsResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsResponse
+    err := api.apiClient.Post("/analytics/queries/percentile", &analyticsPercentileQueryRequest, &responseModel, reqParams)
+    return responseModel, err
 }
+

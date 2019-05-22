@@ -25,11 +25,13 @@ func NewEncodingOutputsGenericS3CustomdataApi(configs ...func(*common.ApiClient)
 	return api, nil
 }
 
-func (api *EncodingOutputsGenericS3CustomdataApi) GetCustomData(outputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingOutputsGenericS3CustomdataApi) Get(outputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/generic-s3/{output_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/outputs/generic-s3/{output_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

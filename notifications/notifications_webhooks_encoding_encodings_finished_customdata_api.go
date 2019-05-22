@@ -26,19 +26,23 @@ func NewNotificationsWebhooksEncodingEncodingsFinishedCustomdataApi(configs ...f
 }
 
 func (api *NotificationsWebhooksEncodingEncodingsFinishedCustomdataApi) GetCustomDataByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.CustomData, error) {
-    var resp *model.CustomData
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["webhook_id"] = webhookId
-	}
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/finished/{webhook_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/finished/{webhook_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *NotificationsWebhooksEncodingEncodingsFinishedCustomdataApi) GetCustomDataByWebhookId(webhookId string) (*model.CustomData, error) {
-    var resp *model.CustomData
     reqParams := func(params *common.RequestParams) {
         params.PathParams["webhook_id"] = webhookId
-	}
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/finished/{webhook_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/finished/{webhook_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -26,10 +26,12 @@ func NewPlayerCustomBuildsWebDownloadApi(configs ...func(*common.ApiClient)) (*P
 }
 
 func (api *PlayerCustomBuildsWebDownloadApi) Get(customBuildId string) (*model.CustomPlayerBuildDownload, error) {
-    var resp *model.CustomPlayerBuildDownload
     reqParams := func(params *common.RequestParams) {
         params.PathParams["custom_build_id"] = customBuildId
-	}
-    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}/download", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomPlayerBuildDownload
+    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}/download", &responseModel, reqParams)
+    return responseModel, err
 }
+

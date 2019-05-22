@@ -26,10 +26,12 @@ func NewEncodingManifestsTypeApi(configs ...func(*common.ApiClient)) (*EncodingM
 }
 
 func (api *EncodingManifestsTypeApi) Get(manifestId string) (*model.ManifestTypeResponse, error) {
-    var resp *model.ManifestTypeResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-	}
-    err := api.apiClient.Get("/encoding/manifests/{manifest_id}/type", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ManifestTypeResponse
+    err := api.apiClient.Get("/encoding/manifests/{manifest_id}/type", &responseModel, reqParams)
+    return responseModel, err
 }
+

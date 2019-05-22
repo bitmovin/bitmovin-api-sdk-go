@@ -30,36 +30,46 @@ func NewEncodingOutputsS3Api(configs ...func(*common.ApiClient)) (*EncodingOutpu
 }
 
 func (api *EncodingOutputsS3Api) Get(outputId string) (*model.S3Output, error) {
-    var resp *model.S3Output
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/s3/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.S3Output
+    err := api.apiClient.Get("/encoding/outputs/s3/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsS3Api) Delete(outputId string) (*model.S3Output, error) {
-    var resp *model.S3Output
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Delete("/encoding/outputs/s3/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.S3Output
+    err := api.apiClient.Delete("/encoding/outputs/s3/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsS3Api) List(queryParams ...func(*query.S3OutputListQueryParams)) (*pagination.S3OutputsListPagination, error) {
     queryParameters := &query.S3OutputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.S3OutputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/outputs/s3", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.S3OutputsListPagination
+    err := api.apiClient.Get("/encoding/outputs/s3", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsS3Api) Create(s3Output model.S3Output) (*model.S3Output, error) {
-    payload := model.S3Output(s3Output)
-    
-    err := api.apiClient.Post("/encoding/outputs/s3", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.S3Output
+    err := api.apiClient.Post("/encoding/outputs/s3", &s3Output, &responseModel, reqParams)
+    return responseModel, err
 }
+

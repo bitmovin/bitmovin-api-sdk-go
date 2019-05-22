@@ -27,6 +27,8 @@ type EnhancedWatermarkFilter struct {
 	// Distance from the bottom edge of the input video to the bottom edge of the watermark image. May not be set if 'top' is set.
 	Bottom *float64 `json:"bottom,omitempty"`
 	Unit PositionUnit `json:"unit,omitempty"`
+	// Opacity to apply on the watermark image. Valid values are from 0.0 (completely transparent) to 1.0 (not transparent at all)
+	Opacity *float64 `json:"opacity,omitempty"`
 }
 func (o EnhancedWatermarkFilter) FilterType() FilterType {
     return FilterType_ENHANCED_WATERMARK

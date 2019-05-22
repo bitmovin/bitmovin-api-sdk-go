@@ -34,46 +34,54 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) 
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.DashCmafDrmRepresentationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.DashCmafDrmRepresentationsListPagination
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) Delete(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.PathParams["representation_id"] = representationId
-	}
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) Create(manifestId string, periodId string, adaptationsetId string, dashCmafDrmRepresentation model.DashCmafDrmRepresentation) (*model.DashCmafDrmRepresentation, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
     }
-    payload := model.DashCmafDrmRepresentation(dashCmafDrmRepresentation)
-    
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.DashCmafDrmRepresentation
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm", &dashCmafDrmRepresentation, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashCmafDrmRepresentation, error) {
-    var resp *model.DashCmafDrmRepresentation
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.PathParams["representation_id"] = representationId
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.DashCmafDrmRepresentation
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

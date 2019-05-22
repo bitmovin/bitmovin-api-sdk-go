@@ -34,32 +34,42 @@ func (api *EncodingOutputsAkamaiMslApi) List(queryParams ...func(*query.AkamaiMs
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AkamaiMslOutputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/outputs/akamai-msl", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AkamaiMslOutputsListPagination
+    err := api.apiClient.Get("/encoding/outputs/akamai-msl", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsAkamaiMslApi) Create(akamaiMslOutput model.AkamaiMslOutput) (*model.AkamaiMslOutput, error) {
-    payload := model.AkamaiMslOutput(akamaiMslOutput)
-    
-    err := api.apiClient.Post("/encoding/outputs/akamai-msl", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AkamaiMslOutput
+    err := api.apiClient.Post("/encoding/outputs/akamai-msl", &akamaiMslOutput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsAkamaiMslApi) Get(outputId string) (*model.AkamaiMslOutput, error) {
-    var resp *model.AkamaiMslOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/akamai-msl/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AkamaiMslOutput
+    err := api.apiClient.Get("/encoding/outputs/akamai-msl/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsAkamaiMslApi) Delete(outputId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Delete("/encoding/outputs/akamai-msl/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/outputs/akamai-msl/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

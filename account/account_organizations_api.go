@@ -30,31 +30,40 @@ func NewAccountOrganizationsApi(configs ...func(*common.ApiClient)) (*AccountOrg
 }
 
 func (api *AccountOrganizationsApi) List() (*pagination.OrganizationsListPagination, error) {
-    var resp *pagination.OrganizationsListPagination
     reqParams := func(params *common.RequestParams) {
-	}
-    err := api.apiClient.Get("/account/organizations", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.OrganizationsListPagination
+    err := api.apiClient.Get("/account/organizations", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountOrganizationsApi) Get(organizationId string) (*model.Organization, error) {
-    var resp *model.Organization
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
-	}
-    err := api.apiClient.Get("/account/organizations/{organization_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Organization
+    err := api.apiClient.Get("/account/organizations/{organization_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountOrganizationsApi) Create(organization model.Organization) (*model.Organization, error) {
-    payload := model.Organization(organization)
-    
-    err := api.apiClient.Post("/account/organizations", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.Organization
+    err := api.apiClient.Post("/account/organizations", &organization, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountOrganizationsApi) Delete(organizationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
-	}
-    err := api.apiClient.Delete("/account/organizations/{organization_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/account/organizations/{organization_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

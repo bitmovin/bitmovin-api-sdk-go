@@ -31,18 +31,23 @@ func (api *EncodingInputsRtmpApi) List(queryParams ...func(*query.RtmpInputListQ
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.RtmpInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/rtmp", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.RtmpInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/rtmp", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsRtmpApi) Get(inputId string) (*model.RtmpInput, error) {
-    var resp *model.RtmpInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/rtmp/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.RtmpInput
+    err := api.apiClient.Get("/encoding/inputs/rtmp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

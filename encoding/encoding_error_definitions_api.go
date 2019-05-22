@@ -30,10 +30,13 @@ func (api *EncodingErrorDefinitionsApi) List(queryParams ...func(*query.Encoding
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.EncodingErrorDefinitionsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/error-definitions", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.EncodingErrorDefinitionsListPagination
+    err := api.apiClient.Get("/encoding/error-definitions", &responseModel, reqParams)
+    return responseModel, err
 }
+

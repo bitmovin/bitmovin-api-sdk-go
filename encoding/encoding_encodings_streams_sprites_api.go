@@ -30,46 +30,54 @@ func NewEncodingEncodingsStreamsSpritesApi(configs ...func(*common.ApiClient)) (
 }
 
 func (api *EncodingEncodingsStreamsSpritesApi) Get(encodingId string, streamId string, spriteId string) (*model.Sprite, error) {
-    var resp *model.Sprite
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
         params.PathParams["sprite_id"] = spriteId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites/{sprite_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Sprite
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites/{sprite_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsStreamsSpritesApi) Create(encodingId string, streamId string, sprite model.Sprite) (*model.Sprite, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
     }
-    payload := model.Sprite(sprite)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.Sprite
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites", &sprite, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsStreamsSpritesApi) List(encodingId string, streamId string, queryParams ...func(*query.SpriteListQueryParams)) (*pagination.SpritesListPagination, error) {
     queryParameters := &query.SpriteListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.SpritesListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.SpritesListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsStreamsSpritesApi) Delete(encodingId string, streamId string, spriteId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
         params.PathParams["sprite_id"] = spriteId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites/{sprite_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites/{sprite_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

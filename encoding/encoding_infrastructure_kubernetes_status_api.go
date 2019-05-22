@@ -25,10 +25,12 @@ func NewEncodingInfrastructureKubernetesStatusApi(configs ...func(*common.ApiCli
 }
 
 func (api *EncodingInfrastructureKubernetesStatusApi) Get(infrastructureId string) (error) {
-    
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
-	}
+    }
+
+    
     err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/status", nil, reqParams)
     return err
 }
+

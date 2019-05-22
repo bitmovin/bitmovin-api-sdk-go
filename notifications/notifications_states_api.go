@@ -30,12 +30,15 @@ func (api *NotificationsStatesApi) List(notificationId string, resourceId string
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.NotificationStateEntrysListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["notification_id"] = notificationId
         params.PathParams["resource_id"] = resourceId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/notifications/{notification_id}/states/{resource_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.NotificationStateEntrysListPagination
+    err := api.apiClient.Get("/notifications/{notification_id}/states/{resource_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

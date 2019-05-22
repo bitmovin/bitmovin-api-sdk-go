@@ -25,9 +25,12 @@ func NewAnalyticsQueriesVarianceApi(configs ...func(*common.ApiClient)) (*Analyt
 	return api, nil
 }
 
-func (api *AnalyticsQueriesVarianceApi) Create(analyticsVarianceQueryRequest model.AnalyticsResponse) (*model.AnalyticsResponse, error) {
-    payload := model.AnalyticsResponse(analyticsVarianceQueryRequest)
-    
-    err := api.apiClient.Post("/analytics/queries/variance", &payload)
-    return &payload, err
+func (api *AnalyticsQueriesVarianceApi) Create(analyticsVarianceQueryRequest model.AnalyticsVarianceQueryRequest) (*model.AnalyticsResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsResponse
+    err := api.apiClient.Post("/analytics/queries/variance", &analyticsVarianceQueryRequest, &responseModel, reqParams)
+    return responseModel, err
 }
+

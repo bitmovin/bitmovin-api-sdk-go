@@ -30,36 +30,46 @@ func NewEncodingConfigurationsVideoVp8Api(configs ...func(*common.ApiClient)) (*
 }
 
 func (api *EncodingConfigurationsVideoVp8Api) Create(vp8VideoConfiguration model.Vp8VideoConfiguration) (*model.Vp8VideoConfiguration, error) {
-    payload := model.Vp8VideoConfiguration(vp8VideoConfiguration)
-    
-    err := api.apiClient.Post("/encoding/configurations/video/vp8", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.Vp8VideoConfiguration
+    err := api.apiClient.Post("/encoding/configurations/video/vp8", &vp8VideoConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoVp8Api) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Delete("/encoding/configurations/video/vp8/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/video/vp8/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoVp8Api) List(queryParams ...func(*query.Vp8VideoConfigurationListQueryParams)) (*pagination.Vp8VideoConfigurationsListPagination, error) {
     queryParameters := &query.Vp8VideoConfigurationListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.Vp8VideoConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/vp8", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.Vp8VideoConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations/video/vp8", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoVp8Api) Get(configurationId string) (*model.Vp8VideoConfiguration, error) {
-    var resp *model.Vp8VideoConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/vp8/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Vp8VideoConfiguration
+    err := api.apiClient.Get("/encoding/configurations/video/vp8/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -37,38 +37,46 @@ func (api *EncodingEncodingsMachineLearningObjectDetectionApi) List(encodingId s
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.ObjectDetectionConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.ObjectDetectionConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMachineLearningObjectDetectionApi) Create(encodingId string, objectDetectionConfiguration model.ObjectDetectionConfiguration) (*model.ObjectDetectionConfiguration, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.ObjectDetectionConfiguration(objectDetectionConfiguration)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/machine-learning/object-detection", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.ObjectDetectionConfiguration
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/machine-learning/object-detection", &objectDetectionConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMachineLearningObjectDetectionApi) Get(encodingId string, objectDetectionId string) (*model.ObjectDetectionConfiguration, error) {
-    var resp *model.ObjectDetectionConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["object_detection_id"] = objectDetectionId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.ObjectDetectionConfiguration
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMachineLearningObjectDetectionApi) Delete(encodingId string, objectDetectionId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["object_detection_id"] = objectDetectionId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

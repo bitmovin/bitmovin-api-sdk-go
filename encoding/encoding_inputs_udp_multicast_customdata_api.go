@@ -25,11 +25,13 @@ func NewEncodingInputsUdpMulticastCustomdataApi(configs ...func(*common.ApiClien
 	return api, nil
 }
 
-func (api *EncodingInputsUdpMulticastCustomdataApi) GetCustomData(inputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingInputsUdpMulticastCustomdataApi) Get(inputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/udp-multicast/{input_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/inputs/udp-multicast/{input_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

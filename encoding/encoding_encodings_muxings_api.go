@@ -63,11 +63,14 @@ func (api *EncodingEncodingsMuxingsApi) List(encodingId string, queryParams ...f
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.MuxingsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.MuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings", &responseModel, reqParams)
+    return responseModel, err
 }
+

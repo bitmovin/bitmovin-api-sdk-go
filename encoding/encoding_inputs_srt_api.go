@@ -30,36 +30,46 @@ func NewEncodingInputsSrtApi(configs ...func(*common.ApiClient)) (*EncodingInput
 }
 
 func (api *EncodingInputsSrtApi) Get(inputId string) (*model.SrtInput, error) {
-    var resp *model.SrtInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/srt/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.SrtInput
+    err := api.apiClient.Get("/encoding/inputs/srt/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsSrtApi) Delete(inputId string) (*model.SrtInput, error) {
-    var resp *model.SrtInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/srt/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.SrtInput
+    err := api.apiClient.Delete("/encoding/inputs/srt/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsSrtApi) Create(srtInput model.SrtInput) (*model.SrtInput, error) {
-    payload := model.SrtInput(srtInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/srt", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.SrtInput
+    err := api.apiClient.Post("/encoding/inputs/srt", &srtInput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsSrtApi) List(queryParams ...func(*query.SrtInputListQueryParams)) (*pagination.SrtInputsListPagination, error) {
     queryParameters := &query.SrtInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.SrtInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/srt", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.SrtInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/srt", &responseModel, reqParams)
+    return responseModel, err
 }
+

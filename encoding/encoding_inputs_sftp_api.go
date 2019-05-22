@@ -30,36 +30,46 @@ func NewEncodingInputsSftpApi(configs ...func(*common.ApiClient)) (*EncodingInpu
 }
 
 func (api *EncodingInputsSftpApi) Create(sftpInput model.SftpInput) (*model.SftpInput, error) {
-    payload := model.SftpInput(sftpInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/sftp", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.SftpInput
+    err := api.apiClient.Post("/encoding/inputs/sftp", &sftpInput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsSftpApi) Get(inputId string) (*model.SftpInput, error) {
-    var resp *model.SftpInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/sftp/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.SftpInput
+    err := api.apiClient.Get("/encoding/inputs/sftp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsSftpApi) List(queryParams ...func(*query.SftpInputListQueryParams)) (*pagination.SftpInputsListPagination, error) {
     queryParameters := &query.SftpInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.SftpInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/sftp", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.SftpInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/sftp", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsSftpApi) Delete(inputId string) (*model.SftpInput, error) {
-    var resp *model.SftpInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/sftp/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.SftpInput
+    err := api.apiClient.Delete("/encoding/inputs/sftp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

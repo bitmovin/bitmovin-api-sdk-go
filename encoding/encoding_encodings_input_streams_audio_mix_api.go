@@ -30,39 +30,47 @@ func (api *EncodingEncodingsInputStreamsAudioMixApi) Create(encodingId string, a
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.AudioMixInputStream(audioMixInputStream)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/input-streams/audio-mix", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.AudioMixInputStream
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/input-streams/audio-mix", &audioMixInputStream, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsInputStreamsAudioMixApi) Get(encodingId string, inputStreamId string) (*model.AudioMixInputStream, error) {
-    var resp *model.AudioMixInputStream
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["input_stream_id"] = inputStreamId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AudioMixInputStream
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsInputStreamsAudioMixApi) Delete(encodingId string, inputStreamId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["input_stream_id"] = inputStreamId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsInputStreamsAudioMixApi) List(encodingId string, queryParams ...func(*query.AudioMixInputStreamListQueryParams)) (*pagination.AudioMixInputStreamsListPagination, error) {
     queryParameters := &query.AudioMixInputStreamListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AudioMixInputStreamsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/audio-mix", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AudioMixInputStreamsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/audio-mix", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -26,29 +26,34 @@ func NewEncodingEncodingsSidecarsWebvttApi(configs ...func(*common.ApiClient)) (
 }
 
 func (api *EncodingEncodingsSidecarsWebvttApi) Get(encodingId string, sidecarId string) (*model.WebVttSidecarFile, error) {
-    var resp *model.WebVttSidecarFile
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["sidecar_id"] = sidecarId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.WebVttSidecarFile
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsSidecarsWebvttApi) Create(encodingId string, webVttSidecarFile model.WebVttSidecarFile) (*model.WebVttSidecarFile, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.WebVttSidecarFile(webVttSidecarFile)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/sidecars/webvtt", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.WebVttSidecarFile
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/sidecars/webvtt", &webVttSidecarFile, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsSidecarsWebvttApi) Delete(encodingId string, sidecarId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["sidecar_id"] = sidecarId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -25,11 +25,13 @@ func NewEncodingConfigurationsVideoH264CustomdataApi(configs ...func(*common.Api
 	return api, nil
 }
 
-func (api *EncodingConfigurationsVideoH264CustomdataApi) GetCustomData(configurationId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingConfigurationsVideoH264CustomdataApi) Get(configurationId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/h264/{configuration_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/configurations/video/h264/{configuration_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

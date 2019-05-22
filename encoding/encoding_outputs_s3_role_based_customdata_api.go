@@ -25,11 +25,13 @@ func NewEncodingOutputsS3RoleBasedCustomdataApi(configs ...func(*common.ApiClien
 	return api, nil
 }
 
-func (api *EncodingOutputsS3RoleBasedCustomdataApi) GetCustomData(outputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingOutputsS3RoleBasedCustomdataApi) Get(outputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/s3-role-based/{output_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/outputs/s3-role-based/{output_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -25,13 +25,15 @@ func NewEncodingEncodingsStreamsSpritesCustomdataApi(configs ...func(*common.Api
 	return api, nil
 }
 
-func (api *EncodingEncodingsStreamsSpritesCustomdataApi) GetCustomData(encodingId string, streamId string, spriteId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingEncodingsStreamsSpritesCustomdataApi) Get(encodingId string, streamId string, spriteId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
         params.PathParams["sprite_id"] = spriteId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites/{sprite_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites/{sprite_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

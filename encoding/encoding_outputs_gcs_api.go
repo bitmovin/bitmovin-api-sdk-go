@@ -34,32 +34,42 @@ func (api *EncodingOutputsGcsApi) List(queryParams ...func(*query.GcsOutputListQ
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.GcsOutputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/outputs/gcs", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.GcsOutputsListPagination
+    err := api.apiClient.Get("/encoding/outputs/gcs", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsGcsApi) Delete(outputId string) (*model.GcsOutput, error) {
-    var resp *model.GcsOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Delete("/encoding/outputs/gcs/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.GcsOutput
+    err := api.apiClient.Delete("/encoding/outputs/gcs/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsGcsApi) Create(gcsOutput model.GcsOutput) (*model.GcsOutput, error) {
-    payload := model.GcsOutput(gcsOutput)
-    
-    err := api.apiClient.Post("/encoding/outputs/gcs", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.GcsOutput
+    err := api.apiClient.Post("/encoding/outputs/gcs", &gcsOutput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsGcsApi) Get(outputId string) (*model.GcsOutput, error) {
-    var resp *model.GcsOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/gcs/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.GcsOutput
+    err := api.apiClient.Get("/encoding/outputs/gcs/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

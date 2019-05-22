@@ -27,31 +27,40 @@ func NewAccountApiKeysApi(configs ...func(*common.ApiClient)) (*AccountApiKeysAp
 }
 
 func (api *AccountApiKeysApi) Get(apiKeyId string) (*model.AccountApiKey, error) {
-    var resp *model.AccountApiKey
     reqParams := func(params *common.RequestParams) {
         params.PathParams["api_key_id"] = apiKeyId
-	}
-    err := api.apiClient.Get("/account/api-keys/{api_key_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AccountApiKey
+    err := api.apiClient.Get("/account/api-keys/{api_key_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountApiKeysApi) List() (*pagination.AccountApiKeysListPagination, error) {
-    var resp *pagination.AccountApiKeysListPagination
     reqParams := func(params *common.RequestParams) {
-	}
-    err := api.apiClient.Get("/account/api-keys", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AccountApiKeysListPagination
+    err := api.apiClient.Get("/account/api-keys", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountApiKeysApi) Create() (*model.AccountApiKey, error) {
-    
-    var payload model.AccountApiKey
-    err := api.apiClient.Post("/account/api-keys", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AccountApiKey
+    err := api.apiClient.Post("/account/api-keys", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountApiKeysApi) Delete(apiKeyId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["api_key_id"] = apiKeyId
-	}
-    err := api.apiClient.Delete("/account/api-keys/{api_key_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/account/api-keys/{api_key_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

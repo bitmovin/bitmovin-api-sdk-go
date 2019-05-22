@@ -25,9 +25,12 @@ func NewAnalyticsQueriesSumApi(configs ...func(*common.ApiClient)) (*AnalyticsQu
 	return api, nil
 }
 
-func (api *AnalyticsQueriesSumApi) Create(analyticsSumQueryRequest model.AnalyticsResponse) (*model.AnalyticsResponse, error) {
-    payload := model.AnalyticsResponse(analyticsSumQueryRequest)
-    
-    err := api.apiClient.Post("/analytics/queries/sum", &payload)
-    return &payload, err
+func (api *AnalyticsQueriesSumApi) Create(analyticsSumQueryRequest model.AnalyticsSumQueryRequest) (*model.AnalyticsResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsResponse
+    err := api.apiClient.Post("/analytics/queries/sum", &analyticsSumQueryRequest, &responseModel, reqParams)
+    return responseModel, err
 }
+

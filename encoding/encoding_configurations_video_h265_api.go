@@ -30,36 +30,46 @@ func NewEncodingConfigurationsVideoH265Api(configs ...func(*common.ApiClient)) (
 }
 
 func (api *EncodingConfigurationsVideoH265Api) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Delete("/encoding/configurations/video/h265/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/video/h265/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoH265Api) List(queryParams ...func(*query.H265VideoConfigurationListQueryParams)) (*pagination.H265VideoConfigurationsListPagination, error) {
     queryParameters := &query.H265VideoConfigurationListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.H265VideoConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/h265", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.H265VideoConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations/video/h265", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoH265Api) Get(configurationId string) (*model.H265VideoConfiguration, error) {
-    var resp *model.H265VideoConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/video/h265/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.H265VideoConfiguration
+    err := api.apiClient.Get("/encoding/configurations/video/h265/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsVideoH265Api) Create(h265VideoConfiguration model.H265VideoConfiguration) (*model.H265VideoConfiguration, error) {
-    payload := model.H265VideoConfiguration(h265VideoConfiguration)
-    
-    err := api.apiClient.Post("/encoding/configurations/video/h265", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.H265VideoConfiguration
+    err := api.apiClient.Post("/encoding/configurations/video/h265", &h265VideoConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+

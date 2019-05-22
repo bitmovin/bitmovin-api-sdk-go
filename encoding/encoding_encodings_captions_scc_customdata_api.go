@@ -25,12 +25,14 @@ func NewEncodingEncodingsCaptionsSccCustomdataApi(configs ...func(*common.ApiCli
 	return api, nil
 }
 
-func (api *EncodingEncodingsCaptionsSccCustomdataApi) GetCustomData(encodingId string, captionsId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingEncodingsCaptionsSccCustomdataApi) Get(encodingId string, captionsId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["captions_id"] = captionsId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

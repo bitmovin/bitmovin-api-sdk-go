@@ -26,10 +26,12 @@ func NewEncodingConfigurationsTypeApi(configs ...func(*common.ApiClient)) (*Enco
 }
 
 func (api *EncodingConfigurationsTypeApi) Get(configurationId string) (*model.CodecConfigTypeResponse, error) {
-    var resp *model.CodecConfigTypeResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/{configuration_id}/type", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CodecConfigTypeResponse
+    err := api.apiClient.Get("/encoding/configurations/{configuration_id}/type", &responseModel, reqParams)
+    return responseModel, err
 }
+

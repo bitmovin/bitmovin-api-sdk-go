@@ -25,11 +25,13 @@ func NewEncodingInputsGcsCustomdataApi(configs ...func(*common.ApiClient)) (*Enc
 	return api, nil
 }
 
-func (api *EncodingInputsGcsCustomdataApi) GetCustomData(inputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingInputsGcsCustomdataApi) Get(inputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/gcs/{input_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/inputs/gcs/{input_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

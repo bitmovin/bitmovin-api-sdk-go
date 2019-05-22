@@ -25,9 +25,12 @@ func NewAnalyticsQueriesAvgApi(configs ...func(*common.ApiClient)) (*AnalyticsQu
 	return api, nil
 }
 
-func (api *AnalyticsQueriesAvgApi) Create(analyticsAvgQueryRequest model.AnalyticsResponse) (*model.AnalyticsResponse, error) {
-    payload := model.AnalyticsResponse(analyticsAvgQueryRequest)
-    
-    err := api.apiClient.Post("/analytics/queries/avg", &payload)
-    return &payload, err
+func (api *AnalyticsQueriesAvgApi) Create(analyticsAvgQueryRequest model.AnalyticsAvgQueryRequest) (*model.AnalyticsResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsResponse
+    err := api.apiClient.Post("/analytics/queries/avg", &analyticsAvgQueryRequest, &responseModel, reqParams)
+    return responseModel, err
 }
+

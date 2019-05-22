@@ -35,10 +35,12 @@ func NewEncodingStatisticsEncodingsApi(configs ...func(*common.ApiClient)) (*Enc
 }
 
 func (api *EncodingStatisticsEncodingsApi) Get(encodingId string) (*model.EncodingStats, error) {
-    var resp *model.EncodingStats
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
-	}
-    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.EncodingStats
+    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

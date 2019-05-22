@@ -26,10 +26,12 @@ func NewEncodingInputsTypeApi(configs ...func(*common.ApiClient)) (*EncodingInpu
 }
 
 func (api *EncodingInputsTypeApi) Get(inputId string) (*model.InputTypeResponse, error) {
-    var resp *model.InputTypeResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/{input_id}/type", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.InputTypeResponse
+    err := api.apiClient.Get("/encoding/inputs/{input_id}/type", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -30,36 +30,46 @@ func NewEncodingFiltersDeinterlaceApi(configs ...func(*common.ApiClient)) (*Enco
 }
 
 func (api *EncodingFiltersDeinterlaceApi) Create(deinterlaceFilter model.DeinterlaceFilter) (*model.DeinterlaceFilter, error) {
-    payload := model.DeinterlaceFilter(deinterlaceFilter)
-    
-    err := api.apiClient.Post("/encoding/filters/deinterlace", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.DeinterlaceFilter
+    err := api.apiClient.Post("/encoding/filters/deinterlace", &deinterlaceFilter, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersDeinterlaceApi) List(queryParams ...func(*query.DeinterlaceFilterListQueryParams)) (*pagination.DeinterlaceFiltersListPagination, error) {
     queryParameters := &query.DeinterlaceFilterListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.DeinterlaceFiltersListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/filters/deinterlace", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.DeinterlaceFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/deinterlace", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersDeinterlaceApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Delete("/encoding/filters/deinterlace/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/deinterlace/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersDeinterlaceApi) Get(filterId string) (*model.DeinterlaceFilter, error) {
-    var resp *model.DeinterlaceFilter
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/deinterlace/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.DeinterlaceFilter
+    err := api.apiClient.Get("/encoding/filters/deinterlace/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

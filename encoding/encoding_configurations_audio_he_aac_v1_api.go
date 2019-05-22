@@ -30,36 +30,46 @@ func NewEncodingConfigurationsAudioHeAacV1Api(configs ...func(*common.ApiClient)
 }
 
 func (api *EncodingConfigurationsAudioHeAacV1Api) Get(configurationId string) (*model.HeAacV1AudioConfiguration, error) {
-    var resp *model.HeAacV1AudioConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/audio/he-aac-v1/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.HeAacV1AudioConfiguration
+    err := api.apiClient.Get("/encoding/configurations/audio/he-aac-v1/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioHeAacV1Api) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Delete("/encoding/configurations/audio/he-aac-v1/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/audio/he-aac-v1/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioHeAacV1Api) List(queryParams ...func(*query.HeAacV1AudioConfigurationListQueryParams)) (*pagination.HeAacV1AudioConfigurationsListPagination, error) {
     queryParameters := &query.HeAacV1AudioConfigurationListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.HeAacV1AudioConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/configurations/audio/he-aac-v1", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.HeAacV1AudioConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations/audio/he-aac-v1", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioHeAacV1Api) Create(heAacV1AudioConfiguration model.HeAacV1AudioConfiguration) (*model.HeAacV1AudioConfiguration, error) {
-    payload := model.HeAacV1AudioConfiguration(heAacV1AudioConfiguration)
-    
-    err := api.apiClient.Post("/encoding/configurations/audio/he-aac-v1", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.HeAacV1AudioConfiguration
+    err := api.apiClient.Post("/encoding/configurations/audio/he-aac-v1", &heAacV1AudioConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+

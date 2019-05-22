@@ -26,11 +26,13 @@ func NewEncodingManifestsHlsMediaTypeApi(configs ...func(*common.ApiClient)) (*E
 }
 
 func (api *EncodingManifestsHlsMediaTypeApi) Get(manifestId string, mediaId string) (*model.MediaInfoTypeResponse, error) {
-    var resp *model.MediaInfoTypeResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["media_id"] = mediaId
-	}
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/{media_id}/type", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.MediaInfoTypeResponse
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/{media_id}/type", &responseModel, reqParams)
+    return responseModel, err
 }
+

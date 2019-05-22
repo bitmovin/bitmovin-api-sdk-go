@@ -34,38 +34,46 @@ func (api *EncodingEncodingsMuxingsSegmentedRawApi) List(encodingId string, quer
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.SegmentedRawMuxingsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.SegmentedRawMuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsSegmentedRawApi) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/segmented-raw/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/segmented-raw/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsSegmentedRawApi) Create(encodingId string, segmentedRawMuxing model.SegmentedRawMuxing) (*model.SegmentedRawMuxing, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.SegmentedRawMuxing(segmentedRawMuxing)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/segmented-raw", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.SegmentedRawMuxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/segmented-raw", &segmentedRawMuxing, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsMuxingsSegmentedRawApi) Get(encodingId string, muxingId string) (*model.SegmentedRawMuxing, error) {
-    var resp *model.SegmentedRawMuxing
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw/{muxing_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.SegmentedRawMuxing
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

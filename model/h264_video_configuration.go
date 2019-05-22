@@ -111,7 +111,7 @@ type H264VideoConfiguration struct {
 	MacroblockTreeRatecontrol *bool `json:"macroblockTreeRatecontrol,omitempty"`
 	// Ratio between constant bitrate (0.0) and constant quantizer (1.0). Valid range 0.0 - 1.0
 	QuantizerCurveCompression *float64 `json:"quantizerCurveCompression,omitempty"`
-	// Psychovisual Rate Distortion retains fine details like film grain at the expense of more blocking artifacts. Higher values make the video appear sharper and more detailed but with a higher risk of blocking artifacts. Needs to have subMe with RD_IP, RD_ALL, RD_REF_IP, RD_REF_ALL, QPRD or FULL_RD
+	// Psychovisual Rate Distortion retains fine details like film grain at the expense of more blocking artifacts. Higher values make the video appear sharper and more detailed but with a higher risk of blocking artifacts. Needs to have subMe with RD_IP, RD_ALL, RD_REF_IP or RD_REF_ALL
 	PsyRateDistortionOptimization *float64 `json:"psyRateDistortionOptimization,omitempty"`
 	// Higher values will improve sharpness and detail retention but might come at costs of artifacts. Needs to have trellis enabled
 	PsyTrellis *float64 `json:"psyTrellis,omitempty"`

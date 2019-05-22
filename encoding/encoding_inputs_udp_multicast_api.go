@@ -30,36 +30,46 @@ func NewEncodingInputsUdpMulticastApi(configs ...func(*common.ApiClient)) (*Enco
 }
 
 func (api *EncodingInputsUdpMulticastApi) Create(udpMulticastInput model.UdpMulticastInput) (*model.UdpMulticastInput, error) {
-    payload := model.UdpMulticastInput(udpMulticastInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/udp-multicast", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.UdpMulticastInput
+    err := api.apiClient.Post("/encoding/inputs/udp-multicast", &udpMulticastInput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsUdpMulticastApi) Get(inputId string) (*model.UdpMulticastInput, error) {
-    var resp *model.UdpMulticastInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/udp-multicast/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.UdpMulticastInput
+    err := api.apiClient.Get("/encoding/inputs/udp-multicast/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsUdpMulticastApi) Delete(inputId string) (*model.UdpMulticastInput, error) {
-    var resp *model.UdpMulticastInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/udp-multicast/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.UdpMulticastInput
+    err := api.apiClient.Delete("/encoding/inputs/udp-multicast/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsUdpMulticastApi) List(queryParams ...func(*query.UdpMulticastInputListQueryParams)) (*pagination.UdpMulticastInputsListPagination, error) {
     queryParameters := &query.UdpMulticastInputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.UdpMulticastInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/udp-multicast", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.UdpMulticastInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/udp-multicast", &responseModel, reqParams)
+    return responseModel, err
 }
+

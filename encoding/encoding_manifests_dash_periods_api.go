@@ -33,42 +33,50 @@ func NewEncodingManifestsDashPeriodsApi(configs ...func(*common.ApiClient)) (*En
 }
 
 func (api *EncodingManifestsDashPeriodsApi) Get(manifestId string, periodId string) (*model.Period, error) {
-    var resp *model.Period
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Period
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsApi) Create(manifestId string, period model.Period) (*model.Period, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
-    payload := model.Period(period)
-    
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.Period
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods", &period, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsApi) List(manifestId string, queryParams ...func(*query.PeriodListQueryParams)) (*pagination.PeriodsListPagination, error) {
     queryParameters := &query.PeriodListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.PeriodsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.PeriodsListPagination
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsDashPeriodsApi) Delete(manifestId string, periodId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
-	}
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

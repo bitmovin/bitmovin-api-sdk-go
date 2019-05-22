@@ -39,10 +39,13 @@ func (api *EncodingConfigurationsApi) List(queryParams ...func(*query.CodecConfi
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.CodecConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/configurations", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.CodecConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations", &responseModel, reqParams)
+    return responseModel, err
 }
+

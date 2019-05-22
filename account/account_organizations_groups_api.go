@@ -33,37 +33,44 @@ func NewAccountOrganizationsGroupsApi(configs ...func(*common.ApiClient)) (*Acco
 }
 
 func (api *AccountOrganizationsGroupsApi) Delete(organizationId string, groupId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
         params.PathParams["group_id"] = groupId
-	}
-    err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountOrganizationsGroupsApi) Get(organizationId string, groupId string) (*model.Group, error) {
-    var resp *model.Group
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
         params.PathParams["group_id"] = groupId
-	}
-    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Group
+    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountOrganizationsGroupsApi) List(organizationId string) (*pagination.GroupsListPagination, error) {
-    var resp *pagination.GroupsListPagination
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
-	}
-    err := api.apiClient.Get("/account/organizations/{organization_id}/groups", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.GroupsListPagination
+    err := api.apiClient.Get("/account/organizations/{organization_id}/groups", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *AccountOrganizationsGroupsApi) Create(organizationId string, group model.Group) (*model.Group, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
     }
-    payload := model.Group(group)
-    
-    err := api.apiClient.Post("/account/organizations/{organization_id}/groups", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.Group
+    err := api.apiClient.Post("/account/organizations/{organization_id}/groups", &group, &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -88,6 +88,11 @@ func (o *FiltersListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.FilterType_EBU_R128_SINGLE_PASS:
+                    var v model.EbuR128SinglePassFilter
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 default:
                     items = append(items, base)
         }

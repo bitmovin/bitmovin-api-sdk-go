@@ -30,8 +30,9 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesDvbsubApi) Create(encodingId s
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
     }
-    payload := model.StreamDvbSubSubtitle(streamDvbSubSubtitle)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/dvbsub", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.StreamDvbSubSubtitle
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/dvbsub", &streamDvbSubSubtitle, &responseModel, reqParams)
+    return responseModel, err
 }
+

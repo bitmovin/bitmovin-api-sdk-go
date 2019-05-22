@@ -25,11 +25,13 @@ func NewEncodingFiltersDenoiseHqdn3dCustomdataApi(configs ...func(*common.ApiCli
 	return api, nil
 }
 
-func (api *EncodingFiltersDenoiseHqdn3dCustomdataApi) GetCustomData(filterId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingFiltersDenoiseHqdn3dCustomdataApi) Get(filterId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/denoise-hqdn3d/{filter_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/filters/denoise-hqdn3d/{filter_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

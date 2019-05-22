@@ -30,36 +30,46 @@ func NewEncodingFiltersAudioVolumeApi(configs ...func(*common.ApiClient)) (*Enco
 }
 
 func (api *EncodingFiltersAudioVolumeApi) Create(audioVolumeFilter model.AudioVolumeFilter) (*model.AudioVolumeFilter, error) {
-    payload := model.AudioVolumeFilter(audioVolumeFilter)
-    
-    err := api.apiClient.Post("/encoding/filters/audio-volume", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AudioVolumeFilter
+    err := api.apiClient.Post("/encoding/filters/audio-volume", &audioVolumeFilter, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersAudioVolumeApi) List(queryParams ...func(*query.AudioVolumeFilterListQueryParams)) (*pagination.AudioVolumeFiltersListPagination, error) {
     queryParameters := &query.AudioVolumeFilterListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AudioVolumeFiltersListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/filters/audio-volume", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AudioVolumeFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/audio-volume", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersAudioVolumeApi) Get(filterId string) (*model.AudioVolumeFilter, error) {
-    var resp *model.AudioVolumeFilter
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/audio-volume/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AudioVolumeFilter
+    err := api.apiClient.Get("/encoding/filters/audio-volume/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersAudioVolumeApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Delete("/encoding/filters/audio-volume/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/audio-volume/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

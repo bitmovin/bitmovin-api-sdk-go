@@ -25,9 +25,12 @@ func NewAnalyticsQueriesMedianApi(configs ...func(*common.ApiClient)) (*Analytic
 	return api, nil
 }
 
-func (api *AnalyticsQueriesMedianApi) Create(analyticsMedianQueryRequest model.AnalyticsResponse) (*model.AnalyticsResponse, error) {
-    payload := model.AnalyticsResponse(analyticsMedianQueryRequest)
-    
-    err := api.apiClient.Post("/analytics/queries/median", &payload)
-    return &payload, err
+func (api *AnalyticsQueriesMedianApi) Create(analyticsMedianQueryRequest model.AnalyticsMedianQueryRequest) (*model.AnalyticsResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsResponse
+    err := api.apiClient.Post("/analytics/queries/median", &analyticsMedianQueryRequest, &responseModel, reqParams)
+    return responseModel, err
 }
+

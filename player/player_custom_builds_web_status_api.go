@@ -26,10 +26,12 @@ func NewPlayerCustomBuildsWebStatusApi(configs ...func(*common.ApiClient)) (*Pla
 }
 
 func (api *PlayerCustomBuildsWebStatusApi) Get(customBuildId string) (*model.CustomPlayerBuildStatus, error) {
-    var resp *model.CustomPlayerBuildStatus
     reqParams := func(params *common.RequestParams) {
         params.PathParams["custom_build_id"] = customBuildId
-	}
-    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}/status", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomPlayerBuildStatus
+    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}/status", &responseModel, reqParams)
+    return responseModel, err
 }
+

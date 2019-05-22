@@ -25,12 +25,14 @@ func NewEncodingEncodingsMachineLearningObjectDetectionCustomdataApi(configs ...
 	return api, nil
 }
 
-func (api *EncodingEncodingsMachineLearningObjectDetectionCustomdataApi) GetCustomData(encodingId string, objectDetectionId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingEncodingsMachineLearningObjectDetectionCustomdataApi) Get(encodingId string, objectDetectionId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["object_detection_id"] = objectDetectionId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -25,11 +25,13 @@ func NewEncodingOutputsAzureCustomdataApi(configs ...func(*common.ApiClient)) (*
 	return api, nil
 }
 
-func (api *EncodingOutputsAzureCustomdataApi) GetCustomData(outputId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingOutputsAzureCustomdataApi) Get(outputId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/azure/{output_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/outputs/azure/{output_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

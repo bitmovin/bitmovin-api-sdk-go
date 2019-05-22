@@ -31,38 +31,46 @@ func (api *EncodingManifestsHlsMediaVttApi) List(manifestId string, queryParams 
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.VttMediaInfosListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.VttMediaInfosListPagination
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsMediaVttApi) Create(manifestId string, vttMediaInfo model.VttMediaInfo) (*model.VttMediaInfo, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
-    payload := model.VttMediaInfo(vttMediaInfo)
-    
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/vtt", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.VttMediaInfo
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/vtt", &vttMediaInfo, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsMediaVttApi) Delete(manifestId string, mediaId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["media_id"] = mediaId
-	}
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/vtt/{media_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/vtt/{media_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingManifestsHlsMediaVttApi) Get(manifestId string, mediaId string) (*model.VttMediaInfo, error) {
-    var resp *model.VttMediaInfo
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["media_id"] = mediaId
-	}
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt/{media_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.VttMediaInfo
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt/{media_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

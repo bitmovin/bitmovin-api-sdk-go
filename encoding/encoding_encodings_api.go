@@ -54,88 +54,106 @@ func NewEncodingEncodingsApi(configs ...func(*common.ApiClient)) (*EncodingEncod
 }
 
 func (api *EncodingEncodingsApi) Create(encoding model.Encoding) (*model.Encoding, error) {
-    payload := model.Encoding(encoding)
-    
-    err := api.apiClient.Post("/encoding/encodings", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.Encoding
+    err := api.apiClient.Post("/encoding/encodings", &encoding, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingEncodingsApi) GetStartRequest(encodingId string) (*model.StartEncodingRequest, error) {
-    var resp *model.StartEncodingRequest
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/start", &resp, reqParams)
-    return resp, err
-}
-func (api *EncodingEncodingsApi) Delete(encodingId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-	}
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}", &resp, reqParams)
-    return resp, err
-}
-func (api *EncodingEncodingsApi) Reprioritize(encodingId string, reprioritizeEncodingRequest model.BitmovinResponse) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.BitmovinResponse(reprioritizeEncodingRequest)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/reprioritize", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.StartEncodingRequest
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/start", &responseModel, reqParams)
+    return responseModel, err
 }
+
+func (api *EncodingEncodingsApi) Delete(encodingId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsApi) Reprioritize(encodingId string, reprioritizeEncodingRequest model.ReprioritizeEncodingRequest) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/reprioritize", &reprioritizeEncodingRequest, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsApi) Stop(encodingId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    
-    var payload model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/stop", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/stop", &responseModel, reqParams)
+    return responseModel, err
 }
-func (api *EncodingEncodingsApi) Get(encodingId string) (*model.Encoding, error) {
-    var resp *model.Encoding
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}", &resp, reqParams)
-    return resp, err
-}
-func (api *EncodingEncodingsApi) Status(encodingId string) (*model.ModelTask, error) {
-    var resp *model.ModelTask
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/status", &resp, reqParams)
-    return resp, err
-}
-func (api *EncodingEncodingsApi) Reschedule(encodingId string, rescheduleEncodingRequest model.BitmovinResponse) (*model.BitmovinResponse, error) {
+
+func (api *EncodingEncodingsApi) Start(encodingId string, startEncodingRequest model.StartEncodingRequest) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.BitmovinResponse(rescheduleEncodingRequest)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/reschedule", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/start", &startEncodingRequest, &responseModel, reqParams)
+    return responseModel, err
 }
+
+func (api *EncodingEncodingsApi) Get(encodingId string) (*model.Encoding, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.Encoding
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsApi) Status(encodingId string) (*model.ModelTask, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.ModelTask
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/status", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsApi) Reschedule(encodingId string, rescheduleEncodingRequest model.RescheduleEncodingRequest) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/reschedule", &rescheduleEncodingRequest, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsApi) List(queryParams ...func(*query.EncodingListQueryParams)) (*pagination.EncodingsListPagination, error) {
     queryParameters := &query.EncodingListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.EncodingsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings", &resp, reqParams)
-    return resp, err
-}
-func (api *EncodingEncodingsApi) Start(encodingId string, startEncodingRequest model.StartEncodingRequest) (*model.StartEncodingRequest, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
     }
-    payload := model.StartEncodingRequest(startEncodingRequest)
-    
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/start", &payload, reqParams)
-    return &payload, err
+
+    var responseModel *pagination.EncodingsListPagination
+    err := api.apiClient.Get("/encoding/encodings", &responseModel, reqParams)
+    return responseModel, err
 }
+

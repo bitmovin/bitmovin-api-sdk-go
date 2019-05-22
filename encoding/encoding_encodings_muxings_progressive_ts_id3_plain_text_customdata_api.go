@@ -25,13 +25,15 @@ func NewEncodingEncodingsMuxingsProgressiveTsId3PlainTextCustomdataApi(configs .
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextCustomdataApi) GetCustomData(encodingId string, muxingId string, id3TagId string) (*model.CustomData, error) {
-    var resp *model.CustomData
+func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextCustomdataApi) Get(encodingId string, muxingId string, id3TagId string) (*model.CustomData, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
         params.PathParams["id3_tag_id"] = id3TagId
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/plain-text/{id3_tag_id}/customData", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.CustomData
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/plain-text/{id3_tag_id}/customData", &responseModel, reqParams)
+    return responseModel, err
 }
+

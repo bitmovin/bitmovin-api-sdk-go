@@ -35,10 +35,12 @@ func NewEncodingStatisticsEncodingsLiveStatisticsApi(configs ...func(*common.Api
 }
 
 func (api *EncodingStatisticsEncodingsLiveStatisticsApi) Get(encodingId string) (*model.LiveEncodingStats, error) {
-    var resp *model.LiveEncodingStats
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
-	}
-    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.LiveEncodingStats
+    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics", &responseModel, reqParams)
+    return responseModel, err
 }
+

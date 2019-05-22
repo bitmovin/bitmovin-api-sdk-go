@@ -30,36 +30,46 @@ func NewEncodingConfigurationsAudioAc3Api(configs ...func(*common.ApiClient)) (*
 }
 
 func (api *EncodingConfigurationsAudioAc3Api) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Delete("/encoding/configurations/audio/ac3/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/audio/ac3/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioAc3Api) List(queryParams ...func(*query.Ac3AudioConfigurationListQueryParams)) (*pagination.Ac3AudioConfigurationsListPagination, error) {
     queryParameters := &query.Ac3AudioConfigurationListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.Ac3AudioConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/configurations/audio/ac3", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.Ac3AudioConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations/audio/ac3", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioAc3Api) Get(configurationId string) (*model.Ac3AudioConfiguration, error) {
-    var resp *model.Ac3AudioConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/audio/ac3/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.Ac3AudioConfiguration
+    err := api.apiClient.Get("/encoding/configurations/audio/ac3/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioAc3Api) Create(ac3AudioConfiguration model.Ac3AudioConfiguration) (*model.Ac3AudioConfiguration, error) {
-    payload := model.Ac3AudioConfiguration(ac3AudioConfiguration)
-    
-    err := api.apiClient.Post("/encoding/configurations/audio/ac3", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.Ac3AudioConfiguration
+    err := api.apiClient.Post("/encoding/configurations/audio/ac3", &ac3AudioConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+

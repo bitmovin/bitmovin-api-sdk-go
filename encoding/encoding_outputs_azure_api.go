@@ -34,32 +34,42 @@ func (api *EncodingOutputsAzureApi) List(queryParams ...func(*query.AzureOutputL
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.AzureOutputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/outputs/azure", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.AzureOutputsListPagination
+    err := api.apiClient.Get("/encoding/outputs/azure", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsAzureApi) Delete(outputId string) (*model.AzureOutput, error) {
-    var resp *model.AzureOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Delete("/encoding/outputs/azure/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AzureOutput
+    err := api.apiClient.Delete("/encoding/outputs/azure/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsAzureApi) Create(azureOutput model.AzureOutput) (*model.AzureOutput, error) {
-    payload := model.AzureOutput(azureOutput)
-    
-    err := api.apiClient.Post("/encoding/outputs/azure", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AzureOutput
+    err := api.apiClient.Post("/encoding/outputs/azure", &azureOutput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsAzureApi) Get(outputId string) (*model.AzureOutput, error) {
-    var resp *model.AzureOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/azure/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.AzureOutput
+    err := api.apiClient.Get("/encoding/outputs/azure/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

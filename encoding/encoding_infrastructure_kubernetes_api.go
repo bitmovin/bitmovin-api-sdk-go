@@ -46,32 +46,42 @@ func (api *EncodingInfrastructureKubernetesApi) List(queryParams ...func(*query.
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.KubernetesClustersListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.KubernetesClustersListPagination
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInfrastructureKubernetesApi) Get(infrastructureId string) (*model.KubernetesCluster, error) {
-    var resp *model.KubernetesCluster
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
-	}
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.KubernetesCluster
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInfrastructureKubernetesApi) Create(kubernetesCluster model.KubernetesCluster) (*model.KubernetesCluster, error) {
-    payload := model.KubernetesCluster(kubernetesCluster)
-    
-    err := api.apiClient.Post("/encoding/infrastructure/kubernetes", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.KubernetesCluster
+    err := api.apiClient.Post("/encoding/infrastructure/kubernetes", &kubernetesCluster, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInfrastructureKubernetesApi) Delete(infrastructureId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
-	}
-    err := api.apiClient.Delete("/encoding/infrastructure/kubernetes/{infrastructure_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/infrastructure/kubernetes/{infrastructure_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

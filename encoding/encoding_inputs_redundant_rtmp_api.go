@@ -31,32 +31,42 @@ func (api *EncodingInputsRedundantRtmpApi) List(queryParams ...func(*query.Redun
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.RedundantRtmpInputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.RedundantRtmpInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsRedundantRtmpApi) Get(inputId string) (*model.RedundantRtmpInput, error) {
-    var resp *model.RedundantRtmpInput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.RedundantRtmpInput
+    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsRedundantRtmpApi) Create(redundantRtmpInput model.RedundantRtmpInput) (*model.RedundantRtmpInput, error) {
-    payload := model.RedundantRtmpInput(redundantRtmpInput)
-    
-    err := api.apiClient.Post("/encoding/inputs/redundant-rtmp", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.RedundantRtmpInput
+    err := api.apiClient.Post("/encoding/inputs/redundant-rtmp", &redundantRtmpInput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingInputsRedundantRtmpApi) Delete(inputId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
-	}
-    err := api.apiClient.Delete("/encoding/inputs/redundant-rtmp/{input_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/inputs/redundant-rtmp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+

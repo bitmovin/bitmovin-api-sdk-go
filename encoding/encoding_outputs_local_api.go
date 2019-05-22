@@ -30,36 +30,46 @@ func NewEncodingOutputsLocalApi(configs ...func(*common.ApiClient)) (*EncodingOu
 }
 
 func (api *EncodingOutputsLocalApi) Create(localOutput model.LocalOutput) (*model.LocalOutput, error) {
-    payload := model.LocalOutput(localOutput)
-    
-    err := api.apiClient.Post("/encoding/outputs/local", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.LocalOutput
+    err := api.apiClient.Post("/encoding/outputs/local", &localOutput, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsLocalApi) Get(outputId string) (*model.LocalOutput, error) {
-    var resp *model.LocalOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Get("/encoding/outputs/local/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.LocalOutput
+    err := api.apiClient.Get("/encoding/outputs/local/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsLocalApi) Delete(outputId string) (*model.LocalOutput, error) {
-    var resp *model.LocalOutput
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
-	}
-    err := api.apiClient.Delete("/encoding/outputs/local/{output_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.LocalOutput
+    err := api.apiClient.Delete("/encoding/outputs/local/{output_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingOutputsLocalApi) List(queryParams ...func(*query.LocalOutputListQueryParams)) (*pagination.LocalOutputsListPagination, error) {
     queryParameters := &query.LocalOutputListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.LocalOutputsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/outputs/local", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.LocalOutputsListPagination
+    err := api.apiClient.Get("/encoding/outputs/local", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -39,12 +39,15 @@ func (api *EncodingEncodingsMuxingsProgressiveTsId3Api) List(encodingId string, 
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.Id3TagsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.Id3TagsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3", &responseModel, reqParams)
+    return responseModel, err
 }
+

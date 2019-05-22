@@ -30,36 +30,46 @@ func NewEncodingFiltersTextApi(configs ...func(*common.ApiClient)) (*EncodingFil
 }
 
 func (api *EncodingFiltersTextApi) Create(textFilter model.TextFilter) (*model.TextFilter, error) {
-    payload := model.TextFilter(textFilter)
-    
-    err := api.apiClient.Post("/encoding/filters/text", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.TextFilter
+    err := api.apiClient.Post("/encoding/filters/text", &textFilter, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersTextApi) Get(filterId string) (*model.TextFilter, error) {
-    var resp *model.TextFilter
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Get("/encoding/filters/text/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.TextFilter
+    err := api.apiClient.Get("/encoding/filters/text/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersTextApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
-	}
-    err := api.apiClient.Delete("/encoding/filters/text/{filter_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/text/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingFiltersTextApi) List(queryParams ...func(*query.TextFilterListQueryParams)) (*pagination.TextFiltersListPagination, error) {
     queryParameters := &query.TextFilterListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.TextFiltersListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/filters/text", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.TextFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/text", &responseModel, reqParams)
+    return responseModel, err
 }
+

@@ -30,36 +30,46 @@ func NewEncodingConfigurationsAudioOpusApi(configs ...func(*common.ApiClient)) (
 }
 
 func (api *EncodingConfigurationsAudioOpusApi) Get(configurationId string) (*model.OpusAudioConfiguration, error) {
-    var resp *model.OpusAudioConfiguration
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Get("/encoding/configurations/audio/opus/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.OpusAudioConfiguration
+    err := api.apiClient.Get("/encoding/configurations/audio/opus/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioOpusApi) List(queryParams ...func(*query.OpusAudioConfigurationListQueryParams)) (*pagination.OpusAudioConfigurationsListPagination, error) {
     queryParameters := &query.OpusAudioConfigurationListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
     }
-    var resp *pagination.OpusAudioConfigurationsListPagination
+
     reqParams := func(params *common.RequestParams) {
         params.QueryParams = queryParameters
-	}
-    err := api.apiClient.Get("/encoding/configurations/audio/opus", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *pagination.OpusAudioConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations/audio/opus", &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioOpusApi) Create(opusAudioConfiguration model.OpusAudioConfiguration) (*model.OpusAudioConfiguration, error) {
-    payload := model.OpusAudioConfiguration(opusAudioConfiguration)
-    
-    err := api.apiClient.Post("/encoding/configurations/audio/opus", &payload)
-    return &payload, err
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.OpusAudioConfiguration
+    err := api.apiClient.Post("/encoding/configurations/audio/opus", &opusAudioConfiguration, &responseModel, reqParams)
+    return responseModel, err
 }
+
 func (api *EncodingConfigurationsAudioOpusApi) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    var resp *model.BitmovinResponse
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
-	}
-    err := api.apiClient.Delete("/encoding/configurations/audio/opus/{configuration_id}", &resp, reqParams)
-    return resp, err
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/audio/opus/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
 }
+
