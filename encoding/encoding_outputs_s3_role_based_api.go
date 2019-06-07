@@ -29,6 +29,15 @@ func NewEncodingOutputsS3RoleBasedApi(configs ...func(*common.ApiClient)) (*Enco
 	return api, nil
 }
 
+func (api *EncodingOutputsS3RoleBasedApi) Create(s3RoleBasedOutput model.S3RoleBasedOutput) (*model.S3RoleBasedOutput, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.S3RoleBasedOutput
+    err := api.apiClient.Post("/encoding/outputs/s3-role-based", &s3RoleBasedOutput, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingOutputsS3RoleBasedApi) Delete(outputId string) (*model.S3RoleBasedOutput, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
@@ -39,12 +48,13 @@ func (api *EncodingOutputsS3RoleBasedApi) Delete(outputId string) (*model.S3Role
     return responseModel, err
 }
 
-func (api *EncodingOutputsS3RoleBasedApi) Create(s3RoleBasedOutput model.S3RoleBasedOutput) (*model.S3RoleBasedOutput, error) {
+func (api *EncodingOutputsS3RoleBasedApi) Get(outputId string) (*model.S3RoleBasedOutput, error) {
     reqParams := func(params *common.RequestParams) {
+        params.PathParams["output_id"] = outputId
     }
 
     var responseModel *model.S3RoleBasedOutput
-    err := api.apiClient.Post("/encoding/outputs/s3-role-based", &s3RoleBasedOutput, &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/s3-role-based/{output_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,16 +70,6 @@ func (api *EncodingOutputsS3RoleBasedApi) List(queryParams ...func(*query.S3Role
 
     var responseModel *pagination.S3RoleBasedOutputsListPagination
     err := api.apiClient.Get("/encoding/outputs/s3-role-based", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingOutputsS3RoleBasedApi) Get(outputId string) (*model.S3RoleBasedOutput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["output_id"] = outputId
-    }
-
-    var responseModel *model.S3RoleBasedOutput
-    err := api.apiClient.Get("/encoding/outputs/s3-role-based/{output_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

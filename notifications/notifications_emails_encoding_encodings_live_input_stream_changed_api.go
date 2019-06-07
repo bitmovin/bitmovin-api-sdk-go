@@ -34,16 +34,6 @@ func (api *NotificationsEmailsEncodingEncodingsLiveInputStreamChangedApi) Create
     return responseModel, err
 }
 
-func (api *NotificationsEmailsEncodingEncodingsLiveInputStreamChangedApi) Update(notificationId string, emailNotificationWithStreamConditions model.EmailNotificationWithStreamConditions) (*model.EmailNotificationWithStreamConditions, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["notification_id"] = notificationId
-    }
-
-    var responseModel *model.EmailNotificationWithStreamConditions
-    err := api.apiClient.Put("/notifications/emails/encoding/encodings/live-input-stream-changed/{notification_id}", &emailNotificationWithStreamConditions, &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *NotificationsEmailsEncodingEncodingsLiveInputStreamChangedApi) CreateByEncodingId(encodingId string, emailNotificationWithStreamConditions model.EmailNotificationWithStreamConditions) (*model.EmailNotificationWithStreamConditions, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -51,6 +41,16 @@ func (api *NotificationsEmailsEncodingEncodingsLiveInputStreamChangedApi) Create
 
     var responseModel *model.EmailNotificationWithStreamConditions
     err := api.apiClient.Post("/notifications/emails/encoding/encodings/{encoding_id}/live-input-stream-changed", &emailNotificationWithStreamConditions, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *NotificationsEmailsEncodingEncodingsLiveInputStreamChangedApi) Update(notificationId string, emailNotificationWithStreamConditions model.EmailNotificationWithStreamConditions) (*model.EmailNotificationWithStreamConditions, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["notification_id"] = notificationId
+    }
+
+    var responseModel *model.EmailNotificationWithStreamConditions
+    err := api.apiClient.Put("/notifications/emails/encoding/encodings/live-input-stream-changed/{notification_id}", &emailNotificationWithStreamConditions, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -29,6 +29,15 @@ func NewEncodingFiltersWatermarkApi(configs ...func(*common.ApiClient)) (*Encodi
 	return api, nil
 }
 
+func (api *EncodingFiltersWatermarkApi) Create(watermarkFilter model.WatermarkFilter) (*model.WatermarkFilter, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.WatermarkFilter
+    err := api.apiClient.Post("/encoding/filters/watermark", &watermarkFilter, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingFiltersWatermarkApi) Delete(filterId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
@@ -61,15 +70,6 @@ func (api *EncodingFiltersWatermarkApi) List(queryParams ...func(*query.Watermar
 
     var responseModel *pagination.WatermarkFiltersListPagination
     err := api.apiClient.Get("/encoding/filters/watermark", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingFiltersWatermarkApi) Create(watermarkFilter model.WatermarkFilter) (*model.WatermarkFilter, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.WatermarkFilter
-    err := api.apiClient.Post("/encoding/filters/watermark", &watermarkFilter, &responseModel, reqParams)
     return responseModel, err
 }
 

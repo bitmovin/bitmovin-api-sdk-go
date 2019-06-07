@@ -29,16 +29,6 @@ func NewEncodingConfigurationsVideoMjpegApi(configs ...func(*common.ApiClient)) 
 	return api, nil
 }
 
-func (api *EncodingConfigurationsVideoMjpegApi) Get(configurationId string) (*model.MjpegVideoConfiguration, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["configuration_id"] = configurationId
-    }
-
-    var responseModel *model.MjpegVideoConfiguration
-    err := api.apiClient.Get("/encoding/configurations/video/mjpeg/{configuration_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingConfigurationsVideoMjpegApi) Create(mjpegVideoConfiguration model.MjpegVideoConfiguration) (*model.MjpegVideoConfiguration, error) {
     reqParams := func(params *common.RequestParams) {
     }
@@ -55,6 +45,16 @@ func (api *EncodingConfigurationsVideoMjpegApi) Delete(configurationId string) (
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/configurations/video/mjpeg/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingConfigurationsVideoMjpegApi) Get(configurationId string) (*model.MjpegVideoConfiguration, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["configuration_id"] = configurationId
+    }
+
+    var responseModel *model.MjpegVideoConfiguration
+    err := api.apiClient.Get("/encoding/configurations/video/mjpeg/{configuration_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

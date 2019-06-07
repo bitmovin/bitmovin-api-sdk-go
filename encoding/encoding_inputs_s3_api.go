@@ -29,6 +29,15 @@ func NewEncodingInputsS3Api(configs ...func(*common.ApiClient)) (*EncodingInputs
 	return api, nil
 }
 
+func (api *EncodingInputsS3Api) Create(s3Input model.S3Input) (*model.S3Input, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.S3Input
+    err := api.apiClient.Post("/encoding/inputs/s3", &s3Input, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingInputsS3Api) Delete(inputId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
@@ -39,12 +48,13 @@ func (api *EncodingInputsS3Api) Delete(inputId string) (*model.BitmovinResponse,
     return responseModel, err
 }
 
-func (api *EncodingInputsS3Api) Create(s3Input model.S3Input) (*model.S3Input, error) {
+func (api *EncodingInputsS3Api) Get(inputId string) (*model.S3Input, error) {
     reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
     }
 
     var responseModel *model.S3Input
-    err := api.apiClient.Post("/encoding/inputs/s3", &s3Input, &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/s3/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,16 +70,6 @@ func (api *EncodingInputsS3Api) List(queryParams ...func(*query.S3InputListQuery
 
     var responseModel *pagination.S3InputsListPagination
     err := api.apiClient.Get("/encoding/inputs/s3", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInputsS3Api) Get(inputId string) (*model.S3Input, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.S3Input
-    err := api.apiClient.Get("/encoding/inputs/s3/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

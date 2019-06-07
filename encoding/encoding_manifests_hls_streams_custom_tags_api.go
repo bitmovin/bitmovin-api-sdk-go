@@ -26,15 +26,14 @@ func NewEncodingManifestsHlsStreamsCustomTagsApi(configs ...func(*common.ApiClie
 	return api, nil
 }
 
-func (api *EncodingManifestsHlsStreamsCustomTagsApi) Get(manifestId string, streamId string, customTagId string) (*model.CustomTag, error) {
+func (api *EncodingManifestsHlsStreamsCustomTagsApi) Create(manifestId string, streamId string, customTag model.CustomTag) (*model.CustomTag, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["stream_id"] = streamId
-        params.PathParams["custom_tag_id"] = customTagId
     }
 
     var responseModel *model.CustomTag
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/custom-tags/{custom_tag_id}", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/custom-tags", &customTag, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -50,14 +49,15 @@ func (api *EncodingManifestsHlsStreamsCustomTagsApi) Delete(manifestId string, s
     return responseModel, err
 }
 
-func (api *EncodingManifestsHlsStreamsCustomTagsApi) Create(manifestId string, streamId string, customTag model.CustomTag) (*model.CustomTag, error) {
+func (api *EncodingManifestsHlsStreamsCustomTagsApi) Get(manifestId string, streamId string, customTagId string) (*model.CustomTag, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["stream_id"] = streamId
+        params.PathParams["custom_tag_id"] = customTagId
     }
 
     var responseModel *model.CustomTag
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/custom-tags", &customTag, &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/custom-tags/{custom_tag_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

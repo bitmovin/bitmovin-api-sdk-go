@@ -29,19 +29,13 @@ func NewEncodingEncodingsMuxingsSegmentedRawApi(configs ...func(*common.ApiClien
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsSegmentedRawApi) List(encodingId string, queryParams ...func(*query.SegmentedRawMuxingListQueryParams)) (*pagination.SegmentedRawMuxingsListPagination, error) {
-    queryParameters := &query.SegmentedRawMuxingListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingEncodingsMuxingsSegmentedRawApi) Create(encodingId string, segmentedRawMuxing model.SegmentedRawMuxing) (*model.SegmentedRawMuxing, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
-        params.QueryParams = queryParameters
     }
 
-    var responseModel *pagination.SegmentedRawMuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw", &responseModel, reqParams)
+    var responseModel *model.SegmentedRawMuxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/segmented-raw", &segmentedRawMuxing, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -56,16 +50,6 @@ func (api *EncodingEncodingsMuxingsSegmentedRawApi) Delete(encodingId string, mu
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsSegmentedRawApi) Create(encodingId string, segmentedRawMuxing model.SegmentedRawMuxing) (*model.SegmentedRawMuxing, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.SegmentedRawMuxing
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/segmented-raw", &segmentedRawMuxing, &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsMuxingsSegmentedRawApi) Get(encodingId string, muxingId string) (*model.SegmentedRawMuxing, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -74,6 +58,22 @@ func (api *EncodingEncodingsMuxingsSegmentedRawApi) Get(encodingId string, muxin
 
     var responseModel *model.SegmentedRawMuxing
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsMuxingsSegmentedRawApi) List(encodingId string, queryParams ...func(*query.SegmentedRawMuxingListQueryParams)) (*pagination.SegmentedRawMuxingsListPagination, error) {
+    queryParameters := &query.SegmentedRawMuxingListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.SegmentedRawMuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw", &responseModel, reqParams)
     return responseModel, err
 }
 

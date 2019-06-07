@@ -29,6 +29,15 @@ func NewEncodingFiltersUnsharpApi(configs ...func(*common.ApiClient)) (*Encoding
 	return api, nil
 }
 
+func (api *EncodingFiltersUnsharpApi) Create(unsharpFilter model.UnsharpFilter) (*model.UnsharpFilter, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.UnsharpFilter
+    err := api.apiClient.Post("/encoding/filters/unsharp", &unsharpFilter, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingFiltersUnsharpApi) Delete(filterId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
@@ -36,6 +45,16 @@ func (api *EncodingFiltersUnsharpApi) Delete(filterId string) (*model.BitmovinRe
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/filters/unsharp/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingFiltersUnsharpApi) Get(filterId string) (*model.UnsharpFilter, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["filter_id"] = filterId
+    }
+
+    var responseModel *model.UnsharpFilter
+    err := api.apiClient.Get("/encoding/filters/unsharp/{filter_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -51,25 +70,6 @@ func (api *EncodingFiltersUnsharpApi) List(queryParams ...func(*query.UnsharpFil
 
     var responseModel *pagination.UnsharpFiltersListPagination
     err := api.apiClient.Get("/encoding/filters/unsharp", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingFiltersUnsharpApi) Get(filterId string) (*model.UnsharpFilter, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["filter_id"] = filterId
-    }
-
-    var responseModel *model.UnsharpFilter
-    err := api.apiClient.Get("/encoding/filters/unsharp/{filter_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingFiltersUnsharpApi) Create(unsharpFilter model.UnsharpFilter) (*model.UnsharpFilter, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.UnsharpFilter
-    err := api.apiClient.Post("/encoding/filters/unsharp", &unsharpFilter, &responseModel, reqParams)
     return responseModel, err
 }
 

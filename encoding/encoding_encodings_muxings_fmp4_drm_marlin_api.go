@@ -29,20 +29,14 @@ func NewEncodingEncodingsMuxingsFmp4DrmMarlinApi(configs ...func(*common.ApiClie
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) List(encodingId string, muxingId string, queryParams ...func(*query.MarlinDrmListQueryParams)) (*pagination.MarlinDrmsListPagination, error) {
-    queryParameters := &query.MarlinDrmListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) Create(encodingId string, muxingId string, marlinDrm model.MarlinDrm) (*model.MarlinDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-        params.QueryParams = queryParameters
     }
 
-    var responseModel *pagination.MarlinDrmsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin", &responseModel, reqParams)
+    var responseModel *model.MarlinDrm
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin", &marlinDrm, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,14 +64,20 @@ func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) Get(encodingId string, muxi
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) Create(encodingId string, muxingId string, marlinDrm model.MarlinDrm) (*model.MarlinDrm, error) {
+func (api *EncodingEncodingsMuxingsFmp4DrmMarlinApi) List(encodingId string, muxingId string, queryParams ...func(*query.MarlinDrmListQueryParams)) (*pagination.MarlinDrmsListPagination, error) {
+    queryParameters := &query.MarlinDrmListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
+        params.QueryParams = queryParameters
     }
 
-    var responseModel *model.MarlinDrm
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin", &marlinDrm, &responseModel, reqParams)
+    var responseModel *pagination.MarlinDrmsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/marlin", &responseModel, reqParams)
     return responseModel, err
 }
 

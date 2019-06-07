@@ -38,6 +38,16 @@ func (api *EncodingInputsAkamaiNetstorageApi) Create(akamaiNetStorageInput model
     return responseModel, err
 }
 
+func (api *EncodingInputsAkamaiNetstorageApi) Delete(inputId string) (*model.AkamaiNetStorageInput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+    }
+
+    var responseModel *model.AkamaiNetStorageInput
+    err := api.apiClient.Delete("/encoding/inputs/akamai-netstorage/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingInputsAkamaiNetstorageApi) Get(inputId string) (*model.AkamaiNetStorageInput, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
@@ -60,16 +70,6 @@ func (api *EncodingInputsAkamaiNetstorageApi) List(queryParams ...func(*query.Ak
 
     var responseModel *pagination.AkamaiNetStorageInputsListPagination
     err := api.apiClient.Get("/encoding/inputs/akamai-netstorage", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInputsAkamaiNetstorageApi) Delete(inputId string) (*model.AkamaiNetStorageInput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.AkamaiNetStorageInput
-    err := api.apiClient.Delete("/encoding/inputs/akamai-netstorage/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

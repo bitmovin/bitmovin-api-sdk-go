@@ -38,6 +38,16 @@ func (api *EncodingConfigurationsAudioVorbisApi) Create(vorbisAudioConfiguration
     return responseModel, err
 }
 
+func (api *EncodingConfigurationsAudioVorbisApi) Delete(configurationId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["configuration_id"] = configurationId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/configurations/audio/vorbis/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingConfigurationsAudioVorbisApi) Get(configurationId string) (*model.VorbisAudioConfiguration, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
@@ -60,16 +70,6 @@ func (api *EncodingConfigurationsAudioVorbisApi) List(queryParams ...func(*query
 
     var responseModel *pagination.VorbisAudioConfigurationsListPagination
     err := api.apiClient.Get("/encoding/configurations/audio/vorbis", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingConfigurationsAudioVorbisApi) Delete(configurationId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["configuration_id"] = configurationId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/configurations/audio/vorbis/{configuration_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

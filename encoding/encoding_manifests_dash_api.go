@@ -35,23 +35,32 @@ func NewEncodingManifestsDashApi(configs ...func(*common.ApiClient)) (*EncodingM
 	return api, nil
 }
 
-func (api *EncodingManifestsDashApi) Status(manifestId string) (*model.ModelTask, error) {
+func (api *EncodingManifestsDashApi) Create(dashManifest model.DashManifest) (*model.DashManifest, error) {
     reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
     }
 
-    var responseModel *model.ModelTask
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/status", &responseModel, reqParams)
+    var responseModel *model.DashManifest
+    err := api.apiClient.Post("/encoding/manifests/dash", &dashManifest, &responseModel, reqParams)
     return responseModel, err
 }
 
-func (api *EncodingManifestsDashApi) Start(manifestId string) (*model.BitmovinResponse, error) {
+func (api *EncodingManifestsDashApi) Delete(manifestId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/start", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsDashApi) Get(manifestId string) (*model.DashManifest, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+    }
+
+    var responseModel *model.DashManifest
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,22 +79,23 @@ func (api *EncodingManifestsDashApi) List(queryParams ...func(*query.DashManifes
     return responseModel, err
 }
 
-func (api *EncodingManifestsDashApi) Create(dashManifest model.DashManifest) (*model.DashManifest, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.DashManifest
-    err := api.apiClient.Post("/encoding/manifests/dash", &dashManifest, &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsDashApi) Get(manifestId string) (*model.DashManifest, error) {
+func (api *EncodingManifestsDashApi) Start(manifestId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
     }
 
-    var responseModel *model.DashManifest
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}", &responseModel, reqParams)
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/start", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsDashApi) Status(manifestId string) (*model.ModelTask, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+    }
+
+    var responseModel *model.ModelTask
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/status", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -96,16 +106,6 @@ func (api *EncodingManifestsDashApi) Stop(manifestId string) (*model.BitmovinRes
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/stop", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsDashApi) Delete(manifestId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

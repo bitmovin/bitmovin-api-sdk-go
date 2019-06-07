@@ -29,6 +29,17 @@ func NewEncodingEncodingsMuxingsFmp4DrmPlayreadyApi(configs ...func(*common.ApiC
 	return api, nil
 }
 
+func (api *EncodingEncodingsMuxingsFmp4DrmPlayreadyApi) Create(encodingId string, muxingId string, playReadyDrm model.PlayReadyDrm) (*model.PlayReadyDrm, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+    }
+
+    var responseModel *model.PlayReadyDrm
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/playready", &playReadyDrm, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsMuxingsFmp4DrmPlayreadyApi) Delete(encodingId string, muxingId string, drmId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -38,17 +49,6 @@ func (api *EncodingEncodingsMuxingsFmp4DrmPlayreadyApi) Delete(encodingId string
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/playready/{drm_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsMuxingsFmp4DrmPlayreadyApi) Create(encodingId string, muxingId string, playReadyDrm model.PlayReadyDrm) (*model.PlayReadyDrm, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-    }
-
-    var responseModel *model.PlayReadyDrm
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/playready", &playReadyDrm, &responseModel, reqParams)
     return responseModel, err
 }
 

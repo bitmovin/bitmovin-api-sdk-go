@@ -32,6 +32,16 @@ func NewEncodingEncodingsMuxingsFmp4Api(configs ...func(*common.ApiClient)) (*En
 	return api, nil
 }
 
+func (api *EncodingEncodingsMuxingsFmp4Api) Create(encodingId string, fmp4Muxing model.Fmp4Muxing) (*model.Fmp4Muxing, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.Fmp4Muxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4", &fmp4Muxing, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsMuxingsFmp4Api) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -40,16 +50,6 @@ func (api *EncodingEncodingsMuxingsFmp4Api) Delete(encodingId string, muxingId s
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsMuxingsFmp4Api) Create(encodingId string, fmp4Muxing model.Fmp4Muxing) (*model.Fmp4Muxing, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.Fmp4Muxing
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4", &fmp4Muxing, &responseModel, reqParams)
     return responseModel, err
 }
 

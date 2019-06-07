@@ -38,21 +38,6 @@ func (api *EncodingFiltersDeinterlaceApi) Create(deinterlaceFilter model.Deinter
     return responseModel, err
 }
 
-func (api *EncodingFiltersDeinterlaceApi) List(queryParams ...func(*query.DeinterlaceFilterListQueryParams)) (*pagination.DeinterlaceFiltersListPagination, error) {
-    queryParameters := &query.DeinterlaceFilterListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.DeinterlaceFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/deinterlace", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingFiltersDeinterlaceApi) Delete(filterId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
@@ -70,6 +55,21 @@ func (api *EncodingFiltersDeinterlaceApi) Get(filterId string) (*model.Deinterla
 
     var responseModel *model.DeinterlaceFilter
     err := api.apiClient.Get("/encoding/filters/deinterlace/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingFiltersDeinterlaceApi) List(queryParams ...func(*query.DeinterlaceFilterListQueryParams)) (*pagination.DeinterlaceFiltersListPagination, error) {
+    queryParameters := &query.DeinterlaceFilterListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.DeinterlaceFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/deinterlace", &responseModel, reqParams)
     return responseModel, err
 }
 

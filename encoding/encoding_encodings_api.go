@@ -62,16 +62,6 @@ func (api *EncodingEncodingsApi) Create(encoding model.Encoding) (*model.Encodin
     return responseModel, err
 }
 
-func (api *EncodingEncodingsApi) GetStartRequest(encodingId string) (*model.StartEncodingRequest, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.StartEncodingRequest
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/start", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsApi) Delete(encodingId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -79,36 +69,6 @@ func (api *EncodingEncodingsApi) Delete(encodingId string) (*model.BitmovinRespo
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsApi) Reprioritize(encodingId string, reprioritizeEncodingRequest model.ReprioritizeEncodingRequest) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/reprioritize", &reprioritizeEncodingRequest, &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsApi) Stop(encodingId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/stop", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsApi) Start(encodingId string, startEncodingRequest model.StartEncodingRequest) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/start", &startEncodingRequest, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -122,23 +82,13 @@ func (api *EncodingEncodingsApi) Get(encodingId string) (*model.Encoding, error)
     return responseModel, err
 }
 
-func (api *EncodingEncodingsApi) Status(encodingId string) (*model.ModelTask, error) {
+func (api *EncodingEncodingsApi) GetStartRequest(encodingId string) (*model.StartEncodingRequest, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
 
-    var responseModel *model.ModelTask
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/status", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsApi) Reschedule(encodingId string, rescheduleEncodingRequest model.RescheduleEncodingRequest) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/reschedule", &rescheduleEncodingRequest, &responseModel, reqParams)
+    var responseModel *model.StartEncodingRequest
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/start", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -154,6 +104,56 @@ func (api *EncodingEncodingsApi) List(queryParams ...func(*query.EncodingListQue
 
     var responseModel *pagination.EncodingsListPagination
     err := api.apiClient.Get("/encoding/encodings", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsApi) Reprioritize(encodingId string, reprioritizeEncodingRequest model.ReprioritizeEncodingRequest) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/reprioritize", &reprioritizeEncodingRequest, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsApi) Reschedule(encodingId string, rescheduleEncodingRequest model.RescheduleEncodingRequest) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/reschedule", &rescheduleEncodingRequest, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsApi) Start(encodingId string, startEncodingRequest model.StartEncodingRequest) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/start", &startEncodingRequest, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsApi) Status(encodingId string) (*model.ModelTask, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.ModelTask
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/status", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsApi) Stop(encodingId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/stop", &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -29,6 +29,29 @@ func NewEncodingEncodingsMuxingsFmp4DrmFairplayApi(configs ...func(*common.ApiCl
 	return api, nil
 }
 
+func (api *EncodingEncodingsMuxingsFmp4DrmFairplayApi) Create(encodingId string, muxingId string, fairPlayDrm model.FairPlayDrm) (*model.FairPlayDrm, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+    }
+
+    var responseModel *model.FairPlayDrm
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/fairplay", &fairPlayDrm, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsMuxingsFmp4DrmFairplayApi) Delete(encodingId string, muxingId string, drmId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+        params.PathParams["drm_id"] = drmId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/fairplay/{drm_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsMuxingsFmp4DrmFairplayApi) Get(encodingId string, muxingId string, drmId string) (*model.FairPlayDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -55,29 +78,6 @@ func (api *EncodingEncodingsMuxingsFmp4DrmFairplayApi) List(encodingId string, m
 
     var responseModel *pagination.FairPlayDrmsListPagination
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/fairplay", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsMuxingsFmp4DrmFairplayApi) Delete(encodingId string, muxingId string, drmId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-        params.PathParams["drm_id"] = drmId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/fairplay/{drm_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsMuxingsFmp4DrmFairplayApi) Create(encodingId string, muxingId string, fairPlayDrm model.FairPlayDrm) (*model.FairPlayDrm, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-    }
-
-    var responseModel *model.FairPlayDrm
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/fairplay", &fairPlayDrm, &responseModel, reqParams)
     return responseModel, err
 }
 

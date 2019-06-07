@@ -32,19 +32,13 @@ func NewEncodingEncodingsMuxingsWebmApi(configs ...func(*common.ApiClient)) (*En
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsWebmApi) List(encodingId string, queryParams ...func(*query.WebmMuxingListQueryParams)) (*pagination.WebmMuxingsListPagination, error) {
-    queryParameters := &query.WebmMuxingListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingEncodingsMuxingsWebmApi) Create(encodingId string, webmMuxing model.WebmMuxing) (*model.WebmMuxing, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
-        params.QueryParams = queryParameters
     }
 
-    var responseModel *pagination.WebmMuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm", &responseModel, reqParams)
+    var responseModel *model.WebmMuxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/webm", &webmMuxing, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,13 +64,19 @@ func (api *EncodingEncodingsMuxingsWebmApi) Get(encodingId string, muxingId stri
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsWebmApi) Create(encodingId string, webmMuxing model.WebmMuxing) (*model.WebmMuxing, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
+func (api *EncodingEncodingsMuxingsWebmApi) List(encodingId string, queryParams ...func(*query.WebmMuxingListQueryParams)) (*pagination.WebmMuxingsListPagination, error) {
+    queryParameters := &query.WebmMuxingListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
     }
 
-    var responseModel *model.WebmMuxing
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/webm", &webmMuxing, &responseModel, reqParams)
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.WebmMuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm", &responseModel, reqParams)
     return responseModel, err
 }
 

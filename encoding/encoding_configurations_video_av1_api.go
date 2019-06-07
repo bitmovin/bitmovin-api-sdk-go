@@ -38,16 +38,6 @@ func (api *EncodingConfigurationsVideoAv1Api) Create(av1VideoConfiguration model
     return responseModel, err
 }
 
-func (api *EncodingConfigurationsVideoAv1Api) Get(configurationId string) (*model.Av1VideoConfiguration, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["configuration_id"] = configurationId
-    }
-
-    var responseModel *model.Av1VideoConfiguration
-    err := api.apiClient.Get("/encoding/configurations/video/av1/{configuration_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingConfigurationsVideoAv1Api) Delete(configurationId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
@@ -55,6 +45,16 @@ func (api *EncodingConfigurationsVideoAv1Api) Delete(configurationId string) (*m
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/configurations/video/av1/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingConfigurationsVideoAv1Api) Get(configurationId string) (*model.Av1VideoConfiguration, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["configuration_id"] = configurationId
+    }
+
+    var responseModel *model.Av1VideoConfiguration
+    err := api.apiClient.Get("/encoding/configurations/video/av1/{configuration_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

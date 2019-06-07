@@ -26,14 +26,14 @@ func NewEncodingInfrastructureAwsRegionsApi(configs ...func(*common.ApiClient)) 
 	return api, nil
 }
 
-func (api *EncodingInfrastructureAwsRegionsApi) Get(infrastructureId string, region model.AwsCloudRegion) (*model.AwsAccountRegionSettings, error) {
+func (api *EncodingInfrastructureAwsRegionsApi) Create(infrastructureId string, region model.AwsCloudRegion, awsAccountRegionSettings model.AwsAccountRegionSettings) (*model.AwsAccountRegionSettings, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
         params.PathParams["region"] = string(region)
     }
 
     var responseModel *model.AwsAccountRegionSettings
-    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &awsAccountRegionSettings, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -48,14 +48,14 @@ func (api *EncodingInfrastructureAwsRegionsApi) Delete(infrastructureId string, 
     return responseModel, err
 }
 
-func (api *EncodingInfrastructureAwsRegionsApi) Create(infrastructureId string, region model.AwsCloudRegion, awsAccountRegionSettings model.AwsAccountRegionSettings) (*model.AwsAccountRegionSettings, error) {
+func (api *EncodingInfrastructureAwsRegionsApi) Get(infrastructureId string, region model.AwsCloudRegion) (*model.AwsAccountRegionSettings, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
         params.PathParams["region"] = string(region)
     }
 
     var responseModel *model.AwsAccountRegionSettings
-    err := api.apiClient.Post("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &awsAccountRegionSettings, &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &responseModel, reqParams)
     return responseModel, err
 }
 

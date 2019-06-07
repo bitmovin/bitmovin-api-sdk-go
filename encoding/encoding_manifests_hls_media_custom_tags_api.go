@@ -26,6 +26,17 @@ func NewEncodingManifestsHlsMediaCustomTagsApi(configs ...func(*common.ApiClient
 	return api, nil
 }
 
+func (api *EncodingManifestsHlsMediaCustomTagsApi) Create(manifestId string, mediaId string, customTag model.CustomTag) (*model.CustomTag, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["media_id"] = mediaId
+    }
+
+    var responseModel *model.CustomTag
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/{media_id}/custom-tags", &customTag, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsHlsMediaCustomTagsApi) Delete(manifestId string, mediaId string, customTagId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -64,17 +75,6 @@ func (api *EncodingManifestsHlsMediaCustomTagsApi) List(manifestId string, media
 
     var responseModel *pagination.CustomTagsListPagination
     err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/{media_id}/custom-tags", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsHlsMediaCustomTagsApi) Create(manifestId string, mediaId string, customTag model.CustomTag) (*model.CustomTag, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["media_id"] = mediaId
-    }
-
-    var responseModel *model.CustomTag
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/{media_id}/custom-tags", &customTag, &responseModel, reqParams)
     return responseModel, err
 }
 

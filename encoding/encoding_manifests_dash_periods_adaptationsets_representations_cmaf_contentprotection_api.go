@@ -39,22 +39,17 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentp
     return responseModel, err
 }
 
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionApi) List(manifestId string, periodId string, adaptationsetId string, representationId string, queryParams ...func(*query.ContentProtectionListQueryParams)) (*pagination.ContentProtectionsListPagination, error) {
-    queryParameters := &query.ContentProtectionListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionApi) Delete(manifestId string, periodId string, adaptationsetId string, representationId string, contentprotectionId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.PathParams["representation_id"] = representationId
-        params.QueryParams = queryParameters
+        params.PathParams["contentprotection_id"] = contentprotectionId
     }
 
-    var responseModel *pagination.ContentProtectionsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/{representation_id}/contentprotection", &responseModel, reqParams)
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/{representation_id}/contentprotection/{contentprotection_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -72,17 +67,22 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentp
     return responseModel, err
 }
 
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionApi) Delete(manifestId string, periodId string, adaptationsetId string, representationId string, contentprotectionId string) (*model.BitmovinResponse, error) {
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionApi) List(manifestId string, periodId string, adaptationsetId string, representationId string, queryParams ...func(*query.ContentProtectionListQueryParams)) (*pagination.ContentProtectionsListPagination, error) {
+    queryParameters := &query.ContentProtectionListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
         params.PathParams["representation_id"] = representationId
-        params.PathParams["contentprotection_id"] = contentprotectionId
+        params.QueryParams = queryParameters
     }
 
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/{representation_id}/contentprotection/{contentprotection_id}", &responseModel, reqParams)
+    var responseModel *pagination.ContentProtectionsListPagination
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/{representation_id}/contentprotection", &responseModel, reqParams)
     return responseModel, err
 }
 

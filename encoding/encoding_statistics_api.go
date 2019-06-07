@@ -36,6 +36,15 @@ func NewEncodingStatisticsApi(configs ...func(*common.ApiClient)) (*EncodingStat
 	return api, nil
 }
 
+func (api *EncodingStatisticsApi) Get() (*model.Statistics, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.Statistics
+    err := api.apiClient.Get("/encoding/statistics", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingStatisticsApi) List(from time.Time, to time.Time, queryParams ...func(*query.StatisticsListQueryParams)) (*pagination.StatisticssListPagination, error) {
     queryParameters := &query.StatisticsListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -50,15 +59,6 @@ func (api *EncodingStatisticsApi) List(from time.Time, to time.Time, queryParams
 
     var responseModel *pagination.StatisticssListPagination
     err := api.apiClient.Get("/encoding/statistics/{from}/{to}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingStatisticsApi) Get() (*model.Statistics, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.Statistics
-    err := api.apiClient.Get("/encoding/statistics", &responseModel, reqParams)
     return responseModel, err
 }
 

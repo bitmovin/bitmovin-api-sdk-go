@@ -26,19 +26,13 @@ func NewEncodingManifestsHlsMediaVideoApi(configs ...func(*common.ApiClient)) (*
 	return api, nil
 }
 
-func (api *EncodingManifestsHlsMediaVideoApi) List(manifestId string, queryParams ...func(*query.VideoMediaInfoListQueryParams)) (*pagination.VideoMediaInfosListPagination, error) {
-    queryParameters := &query.VideoMediaInfoListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingManifestsHlsMediaVideoApi) Create(manifestId string, videoMediaInfo model.VideoMediaInfo) (*model.VideoMediaInfo, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
-        params.QueryParams = queryParameters
     }
 
-    var responseModel *pagination.VideoMediaInfosListPagination
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/video", &responseModel, reqParams)
+    var responseModel *model.VideoMediaInfo
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/video", &videoMediaInfo, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -53,16 +47,6 @@ func (api *EncodingManifestsHlsMediaVideoApi) Delete(manifestId string, mediaId 
     return responseModel, err
 }
 
-func (api *EncodingManifestsHlsMediaVideoApi) Create(manifestId string, videoMediaInfo model.VideoMediaInfo) (*model.VideoMediaInfo, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-    }
-
-    var responseModel *model.VideoMediaInfo
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/video", &videoMediaInfo, &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingManifestsHlsMediaVideoApi) Get(manifestId string, mediaId string) (*model.VideoMediaInfo, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -71,6 +55,22 @@ func (api *EncodingManifestsHlsMediaVideoApi) Get(manifestId string, mediaId str
 
     var responseModel *model.VideoMediaInfo
     err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/video/{media_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsHlsMediaVideoApi) List(manifestId string, queryParams ...func(*query.VideoMediaInfoListQueryParams)) (*pagination.VideoMediaInfosListPagination, error) {
+    queryParameters := &query.VideoMediaInfoListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.VideoMediaInfosListPagination
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/video", &responseModel, reqParams)
     return responseModel, err
 }
 

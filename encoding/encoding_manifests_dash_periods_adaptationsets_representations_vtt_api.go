@@ -38,19 +38,6 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) Crea
     return responseModel, err
 }
 
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashVttRepresentation, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
-        params.PathParams["representation_id"] = representationId
-    }
-
-    var responseModel *model.DashVttRepresentation
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) Delete(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -61,6 +48,19 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) Dele
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashVttRepresentation, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+        params.PathParams["representation_id"] = representationId
+    }
+
+    var responseModel *model.DashVttRepresentation
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -26,25 +26,6 @@ func NewPlayerCustomBuildsWebDomainsApi(configs ...func(*common.ApiClient)) (*Pl
 	return api, nil
 }
 
-func (api *PlayerCustomBuildsWebDomainsApi) List() (*pagination.CustomWebPlayerBuildDomainsListPagination, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *pagination.CustomWebPlayerBuildDomainsListPagination
-    err := api.apiClient.Get("/player/custom-builds/web/domains", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *PlayerCustomBuildsWebDomainsApi) Get(domainId string) (*model.CustomWebPlayerBuildDomain, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["domain_id"] = domainId
-    }
-
-    var responseModel *model.CustomWebPlayerBuildDomain
-    err := api.apiClient.Get("/player/custom-builds/web/domains/{domain_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *PlayerCustomBuildsWebDomainsApi) Create(customWebPlayerBuildDomain model.CustomWebPlayerBuildDomain) (*model.CustomWebPlayerBuildDomain, error) {
     reqParams := func(params *common.RequestParams) {
     }
@@ -61,6 +42,25 @@ func (api *PlayerCustomBuildsWebDomainsApi) Delete(domainId string) (*model.Bitm
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/player/custom-builds/web/domains/{domain_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *PlayerCustomBuildsWebDomainsApi) Get(domainId string) (*model.CustomWebPlayerBuildDomain, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["domain_id"] = domainId
+    }
+
+    var responseModel *model.CustomWebPlayerBuildDomain
+    err := api.apiClient.Get("/player/custom-builds/web/domains/{domain_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *PlayerCustomBuildsWebDomainsApi) List() (*pagination.CustomWebPlayerBuildDomainsListPagination, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *pagination.CustomWebPlayerBuildDomainsListPagination
+    err := api.apiClient.Get("/player/custom-builds/web/domains", &responseModel, reqParams)
     return responseModel, err
 }
 

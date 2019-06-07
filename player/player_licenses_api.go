@@ -44,6 +44,16 @@ func (api *PlayerLicensesApi) Create(playerLicense model.PlayerLicense) (*model.
     return responseModel, err
 }
 
+func (api *PlayerLicensesApi) Get(licenseId string) (*model.PlayerLicense, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["license_id"] = licenseId
+    }
+
+    var responseModel *model.PlayerLicense
+    err := api.apiClient.Get("/player/licenses/{license_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *PlayerLicensesApi) List(queryParams ...func(*query.PlayerLicenseListQueryParams)) (*pagination.PlayerLicensesListPagination, error) {
     queryParameters := &query.PlayerLicenseListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -56,16 +66,6 @@ func (api *PlayerLicensesApi) List(queryParams ...func(*query.PlayerLicenseListQ
 
     var responseModel *pagination.PlayerLicensesListPagination
     err := api.apiClient.Get("/player/licenses", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *PlayerLicensesApi) Get(licenseId string) (*model.PlayerLicense, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["license_id"] = licenseId
-    }
-
-    var responseModel *model.PlayerLicense
-    err := api.apiClient.Get("/player/licenses/{license_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

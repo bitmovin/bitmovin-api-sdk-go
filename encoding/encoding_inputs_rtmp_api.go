@@ -26,6 +26,16 @@ func NewEncodingInputsRtmpApi(configs ...func(*common.ApiClient)) (*EncodingInpu
 	return api, nil
 }
 
+func (api *EncodingInputsRtmpApi) Get(inputId string) (*model.RtmpInput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+    }
+
+    var responseModel *model.RtmpInput
+    err := api.apiClient.Get("/encoding/inputs/rtmp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingInputsRtmpApi) List(queryParams ...func(*query.RtmpInputListQueryParams)) (*pagination.RtmpInputsListPagination, error) {
     queryParameters := &query.RtmpInputListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -38,16 +48,6 @@ func (api *EncodingInputsRtmpApi) List(queryParams ...func(*query.RtmpInputListQ
 
     var responseModel *pagination.RtmpInputsListPagination
     err := api.apiClient.Get("/encoding/inputs/rtmp", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInputsRtmpApi) Get(inputId string) (*model.RtmpInput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.RtmpInput
-    err := api.apiClient.Get("/encoding/inputs/rtmp/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -29,6 +29,15 @@ func NewEncodingInfrastructureAwsApi(configs ...func(*common.ApiClient)) (*Encod
 	return api, nil
 }
 
+func (api *EncodingInfrastructureAwsApi) Create(awsAccount model.AwsAccount) (*model.AwsAccount, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AwsAccount
+    err := api.apiClient.Post("/encoding/infrastructure/aws", &awsAccount, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingInfrastructureAwsApi) Delete(infrastructureId string) (*model.AwsAccount, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
@@ -36,6 +45,16 @@ func (api *EncodingInfrastructureAwsApi) Delete(infrastructureId string) (*model
 
     var responseModel *model.AwsAccount
     err := api.apiClient.Delete("/encoding/infrastructure/aws/{infrastructure_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingInfrastructureAwsApi) Get(infrastructureId string) (*model.AwsAccount, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["infrastructure_id"] = infrastructureId
+    }
+
+    var responseModel *model.AwsAccount
+    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -51,25 +70,6 @@ func (api *EncodingInfrastructureAwsApi) List(queryParams ...func(*query.AwsAcco
 
     var responseModel *pagination.AwsAccountsListPagination
     err := api.apiClient.Get("/encoding/infrastructure/aws", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInfrastructureAwsApi) Create(awsAccount model.AwsAccount) (*model.AwsAccount, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.AwsAccount
-    err := api.apiClient.Post("/encoding/infrastructure/aws", &awsAccount, &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInfrastructureAwsApi) Get(infrastructureId string) (*model.AwsAccount, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["infrastructure_id"] = infrastructureId
-    }
-
-    var responseModel *model.AwsAccount
-    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

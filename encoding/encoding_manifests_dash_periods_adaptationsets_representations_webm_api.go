@@ -41,24 +41,6 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmApi) Cre
     return responseModel, err
 }
 
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmApi) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*query.DashWebmRepresentationListQueryParams)) (*pagination.DashWebmRepresentationsListPagination, error) {
-    queryParameters := &query.DashWebmRepresentationListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.DashWebmRepresentationsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmApi) Delete(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -82,6 +64,24 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmApi) Get
 
     var responseModel *model.DashWebmRepresentation
     err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmApi) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*query.DashWebmRepresentationListQueryParams)) (*pagination.DashWebmRepresentationsListPagination, error) {
+    queryParameters := &query.DashWebmRepresentationListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.DashWebmRepresentationsListPagination
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/webm", &responseModel, reqParams)
     return responseModel, err
 }
 

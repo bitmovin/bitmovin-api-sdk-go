@@ -32,6 +32,16 @@ func NewAccountOrganizationsGroupsApi(configs ...func(*common.ApiClient)) (*Acco
 	return api, nil
 }
 
+func (api *AccountOrganizationsGroupsApi) Create(organizationId string, group model.Group) (*model.Group, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["organization_id"] = organizationId
+    }
+
+    var responseModel *model.Group
+    err := api.apiClient.Post("/account/organizations/{organization_id}/groups", &group, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *AccountOrganizationsGroupsApi) Delete(organizationId string, groupId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
@@ -61,16 +71,6 @@ func (api *AccountOrganizationsGroupsApi) List(organizationId string) (*paginati
 
     var responseModel *pagination.GroupsListPagination
     err := api.apiClient.Get("/account/organizations/{organization_id}/groups", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *AccountOrganizationsGroupsApi) Create(organizationId string, group model.Group) (*model.Group, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["organization_id"] = organizationId
-    }
-
-    var responseModel *model.Group
-    err := api.apiClient.Post("/account/organizations/{organization_id}/groups", &group, &responseModel, reqParams)
     return responseModel, err
 }
 

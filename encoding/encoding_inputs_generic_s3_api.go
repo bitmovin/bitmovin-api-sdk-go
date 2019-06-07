@@ -38,6 +38,16 @@ func (api *EncodingInputsGenericS3Api) Create(genericS3Input model.GenericS3Inpu
     return responseModel, err
 }
 
+func (api *EncodingInputsGenericS3Api) Delete(inputId string) (*model.GenericS3Input, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+    }
+
+    var responseModel *model.GenericS3Input
+    err := api.apiClient.Delete("/encoding/inputs/generic-s3/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingInputsGenericS3Api) Get(inputId string) (*model.GenericS3Input, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
@@ -60,16 +70,6 @@ func (api *EncodingInputsGenericS3Api) List(queryParams ...func(*query.GenericS3
 
     var responseModel *pagination.GenericS3InputsListPagination
     err := api.apiClient.Get("/encoding/inputs/generic-s3", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInputsGenericS3Api) Delete(inputId string) (*model.GenericS3Input, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.GenericS3Input
-    err := api.apiClient.Delete("/encoding/inputs/generic-s3/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

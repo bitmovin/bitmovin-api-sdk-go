@@ -48,6 +48,16 @@ func (api *EncodingInputsHttpsApi) Delete(inputId string) (*model.HttpsInput, er
     return responseModel, err
 }
 
+func (api *EncodingInputsHttpsApi) Get(inputId string) (*model.HttpsInput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+    }
+
+    var responseModel *model.HttpsInput
+    err := api.apiClient.Get("/encoding/inputs/https/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingInputsHttpsApi) List(queryParams ...func(*query.HttpsInputListQueryParams)) (*pagination.HttpsInputsListPagination, error) {
     queryParameters := &query.HttpsInputListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -60,16 +70,6 @@ func (api *EncodingInputsHttpsApi) List(queryParams ...func(*query.HttpsInputLis
 
     var responseModel *pagination.HttpsInputsListPagination
     err := api.apiClient.Get("/encoding/inputs/https", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInputsHttpsApi) Get(inputId string) (*model.HttpsInput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.HttpsInput
-    err := api.apiClient.Get("/encoding/inputs/https/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

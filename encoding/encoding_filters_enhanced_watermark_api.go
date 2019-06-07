@@ -38,16 +38,6 @@ func (api *EncodingFiltersEnhancedWatermarkApi) Create(enhancedWatermarkFilter m
     return responseModel, err
 }
 
-func (api *EncodingFiltersEnhancedWatermarkApi) Get(filterId string) (*model.EnhancedWatermarkFilter, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["filter_id"] = filterId
-    }
-
-    var responseModel *model.EnhancedWatermarkFilter
-    err := api.apiClient.Get("/encoding/filters/enhanced-watermark/{filter_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingFiltersEnhancedWatermarkApi) Delete(filterId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
@@ -55,6 +45,16 @@ func (api *EncodingFiltersEnhancedWatermarkApi) Delete(filterId string) (*model.
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/filters/enhanced-watermark/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingFiltersEnhancedWatermarkApi) Get(filterId string) (*model.EnhancedWatermarkFilter, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["filter_id"] = filterId
+    }
+
+    var responseModel *model.EnhancedWatermarkFilter
+    err := api.apiClient.Get("/encoding/filters/enhanced-watermark/{filter_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

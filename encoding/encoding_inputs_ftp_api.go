@@ -29,31 +29,6 @@ func NewEncodingInputsFtpApi(configs ...func(*common.ApiClient)) (*EncodingInput
 	return api, nil
 }
 
-func (api *EncodingInputsFtpApi) List(queryParams ...func(*query.FtpInputListQueryParams)) (*pagination.FtpInputsListPagination, error) {
-    queryParameters := &query.FtpInputListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.FtpInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/ftp", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInputsFtpApi) Get(inputId string) (*model.FtpInput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.FtpInput
-    err := api.apiClient.Get("/encoding/inputs/ftp/{input_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingInputsFtpApi) Create(ftpInput model.FtpInput) (*model.FtpInput, error) {
     reqParams := func(params *common.RequestParams) {
     }
@@ -70,6 +45,31 @@ func (api *EncodingInputsFtpApi) Delete(inputId string) (*model.FtpInput, error)
 
     var responseModel *model.FtpInput
     err := api.apiClient.Delete("/encoding/inputs/ftp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingInputsFtpApi) Get(inputId string) (*model.FtpInput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+    }
+
+    var responseModel *model.FtpInput
+    err := api.apiClient.Get("/encoding/inputs/ftp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingInputsFtpApi) List(queryParams ...func(*query.FtpInputListQueryParams)) (*pagination.FtpInputsListPagination, error) {
+    queryParameters := &query.FtpInputListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.FtpInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/ftp", &responseModel, reqParams)
     return responseModel, err
 }
 

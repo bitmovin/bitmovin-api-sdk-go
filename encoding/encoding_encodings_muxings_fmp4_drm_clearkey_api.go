@@ -29,15 +29,14 @@ func NewEncodingEncodingsMuxingsFmp4DrmClearkeyApi(configs ...func(*common.ApiCl
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsFmp4DrmClearkeyApi) Get(encodingId string, muxingId string, drmId string) (*model.ClearKeyDrm, error) {
+func (api *EncodingEncodingsMuxingsFmp4DrmClearkeyApi) Create(encodingId string, muxingId string, clearKeyDrm model.ClearKeyDrm) (*model.ClearKeyDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-        params.PathParams["drm_id"] = drmId
     }
 
     var responseModel *model.ClearKeyDrm
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey/{drm_id}", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey", &clearKeyDrm, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -53,14 +52,15 @@ func (api *EncodingEncodingsMuxingsFmp4DrmClearkeyApi) Delete(encodingId string,
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsFmp4DrmClearkeyApi) Create(encodingId string, muxingId string, clearKeyDrm model.ClearKeyDrm) (*model.ClearKeyDrm, error) {
+func (api *EncodingEncodingsMuxingsFmp4DrmClearkeyApi) Get(encodingId string, muxingId string, drmId string) (*model.ClearKeyDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
+        params.PathParams["drm_id"] = drmId
     }
 
     var responseModel *model.ClearKeyDrm
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey", &clearKeyDrm, &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey/{drm_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

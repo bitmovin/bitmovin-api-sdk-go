@@ -38,6 +38,16 @@ func (api *EncodingInputsLocalApi) Create(localInput model.LocalInput) (*model.L
     return responseModel, err
 }
 
+func (api *EncodingInputsLocalApi) Delete(inputId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/inputs/local/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingInputsLocalApi) Get(inputId string) (*model.LocalInput, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
@@ -60,16 +70,6 @@ func (api *EncodingInputsLocalApi) List(queryParams ...func(*query.LocalInputLis
 
     var responseModel *pagination.LocalInputsListPagination
     err := api.apiClient.Get("/encoding/inputs/local", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInputsLocalApi) Delete(inputId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/inputs/local/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

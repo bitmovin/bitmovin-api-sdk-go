@@ -32,6 +32,27 @@ func NewEncodingManifestsHlsStreamsApi(configs ...func(*common.ApiClient)) (*Enc
 	return api, nil
 }
 
+func (api *EncodingManifestsHlsStreamsApi) Create(manifestId string, streamInfo model.StreamInfo) (*model.StreamInfo, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+    }
+
+    var responseModel *model.StreamInfo
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/streams", &streamInfo, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsHlsStreamsApi) Delete(manifestId string, streamId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["stream_id"] = streamId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsHlsStreamsApi) Get(manifestId string, streamId string) (*model.StreamInfo, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -40,16 +61,6 @@ func (api *EncodingManifestsHlsStreamsApi) Get(manifestId string, streamId strin
 
     var responseModel *model.StreamInfo
     err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsHlsStreamsApi) Create(manifestId string, streamInfo model.StreamInfo) (*model.StreamInfo, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-    }
-
-    var responseModel *model.StreamInfo
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/streams", &streamInfo, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -66,17 +77,6 @@ func (api *EncodingManifestsHlsStreamsApi) List(manifestId string, queryParams .
 
     var responseModel *pagination.StreamInfosListPagination
     err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsHlsStreamsApi) Delete(manifestId string, streamId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["stream_id"] = streamId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

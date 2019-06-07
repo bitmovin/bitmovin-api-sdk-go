@@ -26,6 +26,17 @@ func NewEncodingEncodingsStreamsQcPsnrApi(configs ...func(*common.ApiClient)) (*
 	return api, nil
 }
 
+func (api *EncodingEncodingsStreamsQcPsnrApi) Create(encodingId string, streamId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["stream_id"] = streamId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/qc/psnr", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsStreamsQcPsnrApi) List(encodingId string, streamId string, queryParams ...func(*query.PsnrQualityMetricListQueryParams)) (*pagination.PsnrQualityMetricsListPagination, error) {
     queryParameters := &query.PsnrQualityMetricListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -40,17 +51,6 @@ func (api *EncodingEncodingsStreamsQcPsnrApi) List(encodingId string, streamId s
 
     var responseModel *pagination.PsnrQualityMetricsListPagination
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/qc/psnr", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsStreamsQcPsnrApi) Create(encodingId string, streamId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["stream_id"] = streamId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/qc/psnr", &responseModel, reqParams)
     return responseModel, err
 }
 

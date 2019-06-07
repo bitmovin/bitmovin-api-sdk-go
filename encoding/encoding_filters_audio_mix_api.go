@@ -38,6 +38,16 @@ func (api *EncodingFiltersAudioMixApi) Create(audioMixFilter model.AudioMixFilte
     return responseModel, err
 }
 
+func (api *EncodingFiltersAudioMixApi) Delete(filterId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["filter_id"] = filterId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/audio-mix/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingFiltersAudioMixApi) Get(filterId string) (*model.AudioMixFilter, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
@@ -60,16 +70,6 @@ func (api *EncodingFiltersAudioMixApi) List(queryParams ...func(*query.AudioMixF
 
     var responseModel *pagination.AudioMixFiltersListPagination
     err := api.apiClient.Get("/encoding/filters/audio-mix", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingFiltersAudioMixApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["filter_id"] = filterId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/audio-mix/{filter_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

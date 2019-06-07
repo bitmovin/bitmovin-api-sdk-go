@@ -29,6 +29,15 @@ func NewEncodingConfigurationsVideoH264Api(configs ...func(*common.ApiClient)) (
 	return api, nil
 }
 
+func (api *EncodingConfigurationsVideoH264Api) Create(h264VideoConfiguration model.H264VideoConfiguration) (*model.H264VideoConfiguration, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.H264VideoConfiguration
+    err := api.apiClient.Post("/encoding/configurations/video/h264", &h264VideoConfiguration, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingConfigurationsVideoH264Api) Delete(configurationId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
@@ -36,6 +45,16 @@ func (api *EncodingConfigurationsVideoH264Api) Delete(configurationId string) (*
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/configurations/video/h264/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingConfigurationsVideoH264Api) Get(configurationId string) (*model.H264VideoConfiguration, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["configuration_id"] = configurationId
+    }
+
+    var responseModel *model.H264VideoConfiguration
+    err := api.apiClient.Get("/encoding/configurations/video/h264/{configuration_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -51,25 +70,6 @@ func (api *EncodingConfigurationsVideoH264Api) List(queryParams ...func(*query.H
 
     var responseModel *pagination.H264VideoConfigurationsListPagination
     err := api.apiClient.Get("/encoding/configurations/video/h264", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingConfigurationsVideoH264Api) Get(configurationId string) (*model.H264VideoConfiguration, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["configuration_id"] = configurationId
-    }
-
-    var responseModel *model.H264VideoConfiguration
-    err := api.apiClient.Get("/encoding/configurations/video/h264/{configuration_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingConfigurationsVideoH264Api) Create(h264VideoConfiguration model.H264VideoConfiguration) (*model.H264VideoConfiguration, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.H264VideoConfiguration
-    err := api.apiClient.Post("/encoding/configurations/video/h264", &h264VideoConfiguration, &responseModel, reqParams)
     return responseModel, err
 }
 

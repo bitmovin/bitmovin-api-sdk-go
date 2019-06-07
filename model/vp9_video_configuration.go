@@ -38,6 +38,8 @@ type Vp9VideoConfiguration struct {
 	Crf *int32 `json:"crf,omitempty"`
 	// Number of frames to look ahead for alternate reference frame selection.
 	LagInFrames *int32 `json:"lagInFrames,omitempty"`
+	// Enables error resiliency feature
+	ErrorResiliencyEnabled *bool `json:"errorResiliencyEnabled,omitempty"`
 	// Number of tile columns to use, log2.
 	TileColumns *int32 `json:"tileColumns,omitempty"`
 	// Number of tile rows to use, log2.
@@ -54,8 +56,22 @@ type Vp9VideoConfiguration struct {
 	RateUndershootPct *int32 `json:"rateUndershootPct,omitempty"`
 	// Datarate overshoot (max) target (percentage).
 	RateOvershootPct *int32 `json:"rateOvershootPct,omitempty"`
+	// Client buffer size (ms)
+	ClientBufferSize *int64 `json:"clientBufferSize,omitempty"`
+	// Client initial buffer size (ms)
+	ClientInitialBufferSize *int64 `json:"clientInitialBufferSize,omitempty"`
+	// CBR/VBR bias (0=CBR, 100=VBR)
+	BiasPct *int32 `json:"biasPct,omitempty"`
 	// Enable noise sensitivity on Y channel
 	NoiseSensitivity *bool `json:"noiseSensitivity,omitempty"`
+	// Controls the tradeoff between compression efficiency and encoding speed. Higher values indicate a faster encoding.
+	CpuUsed *int32 `json:"cpuUsed,omitempty"`
+	// Enable automatic alternate reference frames (2pass only)
+	AutomaticAltRefFramesEnabled *bool `json:"automaticAltRefFramesEnabled,omitempty"`
+	// Target level (255: off, 0: only keep level stats; 10: level 1.0; 11: level 1.1; ... 62: level 6.2)
+	TargetLevel *int32 `json:"targetLevel,omitempty"`
+	// Enable row based non-deterministic multi-threading
+	RowMultiThreadingEnabled *bool `json:"rowMultiThreadingEnabled,omitempty"`
 	// Loop filter sharpness.
 	Sharpness *int32 `json:"sharpness,omitempty"`
 	// Minimum GOP length, the minimum distance between I-frames.

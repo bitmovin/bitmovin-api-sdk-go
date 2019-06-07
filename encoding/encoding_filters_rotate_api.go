@@ -29,21 +29,6 @@ func NewEncodingFiltersRotateApi(configs ...func(*common.ApiClient)) (*EncodingF
 	return api, nil
 }
 
-func (api *EncodingFiltersRotateApi) List(queryParams ...func(*query.RotateFilterListQueryParams)) (*pagination.RotateFiltersListPagination, error) {
-    queryParameters := &query.RotateFilterListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.RotateFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/rotate", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingFiltersRotateApi) Create(rotateFilter model.RotateFilter) (*model.RotateFilter, error) {
     reqParams := func(params *common.RequestParams) {
     }
@@ -70,6 +55,21 @@ func (api *EncodingFiltersRotateApi) Get(filterId string) (*model.RotateFilter, 
 
     var responseModel *model.RotateFilter
     err := api.apiClient.Get("/encoding/filters/rotate/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingFiltersRotateApi) List(queryParams ...func(*query.RotateFilterListQueryParams)) (*pagination.RotateFiltersListPagination, error) {
+    queryParameters := &query.RotateFilterListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.RotateFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/rotate", &responseModel, reqParams)
     return responseModel, err
 }
 

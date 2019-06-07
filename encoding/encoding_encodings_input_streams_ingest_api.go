@@ -36,17 +36,6 @@ func (api *EncodingEncodingsInputStreamsIngestApi) Create(encodingId string, ing
     return responseModel, err
 }
 
-func (api *EncodingEncodingsInputStreamsIngestApi) Get(encodingId string, inputStreamId string) (*model.IngestInputStream, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["input_stream_id"] = inputStreamId
-    }
-
-    var responseModel *model.IngestInputStream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/ingest/{input_stream_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsInputStreamsIngestApi) Delete(encodingId string, inputStreamId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -55,6 +44,17 @@ func (api *EncodingEncodingsInputStreamsIngestApi) Delete(encodingId string, inp
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/ingest/{input_stream_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsInputStreamsIngestApi) Get(encodingId string, inputStreamId string) (*model.IngestInputStream, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["input_stream_id"] = inputStreamId
+    }
+
+    var responseModel *model.IngestInputStream
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/ingest/{input_stream_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

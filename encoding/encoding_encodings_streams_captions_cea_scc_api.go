@@ -29,23 +29,6 @@ func NewEncodingEncodingsStreamsCaptionsCeaSccApi(configs ...func(*common.ApiCli
 	return api, nil
 }
 
-func (api *EncodingEncodingsStreamsCaptionsCeaSccApi) List(encodingId string, streamId string, queryParams ...func(*query.SccCaptionListQueryParams)) (*pagination.SccCaptionsListPagination, error) {
-    queryParameters := &query.SccCaptionListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["stream_id"] = streamId
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.SccCaptionsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsStreamsCaptionsCeaSccApi) Create(encodingId string, streamId string, sccCaption model.SccCaption) (*model.SccCaption, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -54,6 +37,18 @@ func (api *EncodingEncodingsStreamsCaptionsCeaSccApi) Create(encodingId string, 
 
     var responseModel *model.SccCaption
     err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc", &sccCaption, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsStreamsCaptionsCeaSccApi) Delete(encodingId string, streamId string, captionsId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["stream_id"] = streamId
+        params.PathParams["captions_id"] = captionsId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc/{captions_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,15 +64,20 @@ func (api *EncodingEncodingsStreamsCaptionsCeaSccApi) Get(encodingId string, str
     return responseModel, err
 }
 
-func (api *EncodingEncodingsStreamsCaptionsCeaSccApi) Delete(encodingId string, streamId string, captionsId string) (*model.BitmovinResponse, error) {
+func (api *EncodingEncodingsStreamsCaptionsCeaSccApi) List(encodingId string, streamId string, queryParams ...func(*query.SccCaptionListQueryParams)) (*pagination.SccCaptionsListPagination, error) {
+    queryParameters := &query.SccCaptionListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
-        params.PathParams["captions_id"] = captionsId
+        params.QueryParams = queryParameters
     }
 
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc/{captions_id}", &responseModel, reqParams)
+    var responseModel *pagination.SccCaptionsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc", &responseModel, reqParams)
     return responseModel, err
 }
 

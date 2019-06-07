@@ -26,6 +26,21 @@ func NewEncodingStatisticsLabelsDailyApi(configs ...func(*common.ApiClient)) (*E
 	return api, nil
 }
 
+func (api *EncodingStatisticsLabelsDailyApi) List(queryParams ...func(*query.DailyStatisticsPerLabelListQueryParams)) (*pagination.DailyStatisticsPerLabelsListPagination, error) {
+    queryParameters := &query.DailyStatisticsPerLabelListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.DailyStatisticsPerLabelsListPagination
+    err := api.apiClient.Get("/encoding/statistics/labels/daily", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingStatisticsLabelsDailyApi) ListByDateRange(from time.Time, to time.Time, queryParams ...func(*query.DailyStatisticsPerLabelListByDateRangeQueryParams)) (*pagination.DailyStatisticsPerLabelsListByDateRangePagination, error) {
     queryParameters := &query.DailyStatisticsPerLabelListByDateRangeQueryParams{}
 	for _, queryParam := range queryParams {
@@ -40,21 +55,6 @@ func (api *EncodingStatisticsLabelsDailyApi) ListByDateRange(from time.Time, to 
 
     var responseModel *pagination.DailyStatisticsPerLabelsListByDateRangePagination
     err := api.apiClient.Get("/encoding/statistics/labels/daily/{from}/{to}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingStatisticsLabelsDailyApi) List(queryParams ...func(*query.DailyStatisticsPerLabelListQueryParams)) (*pagination.DailyStatisticsPerLabelsListPagination, error) {
-    queryParameters := &query.DailyStatisticsPerLabelListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.DailyStatisticsPerLabelsListPagination
-    err := api.apiClient.Get("/encoding/statistics/labels/daily", &responseModel, reqParams)
     return responseModel, err
 }
 

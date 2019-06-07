@@ -38,16 +38,6 @@ func (api *EncodingOutputsLocalApi) Create(localOutput model.LocalOutput) (*mode
     return responseModel, err
 }
 
-func (api *EncodingOutputsLocalApi) Get(outputId string) (*model.LocalOutput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["output_id"] = outputId
-    }
-
-    var responseModel *model.LocalOutput
-    err := api.apiClient.Get("/encoding/outputs/local/{output_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingOutputsLocalApi) Delete(outputId string) (*model.LocalOutput, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
@@ -55,6 +45,16 @@ func (api *EncodingOutputsLocalApi) Delete(outputId string) (*model.LocalOutput,
 
     var responseModel *model.LocalOutput
     err := api.apiClient.Delete("/encoding/outputs/local/{output_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingOutputsLocalApi) Get(outputId string) (*model.LocalOutput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["output_id"] = outputId
+    }
+
+    var responseModel *model.LocalOutput
+    err := api.apiClient.Get("/encoding/outputs/local/{output_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

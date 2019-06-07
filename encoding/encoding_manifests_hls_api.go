@@ -38,16 +38,6 @@ func NewEncodingManifestsHlsApi(configs ...func(*common.ApiClient)) (*EncodingMa
 	return api, nil
 }
 
-func (api *EncodingManifestsHlsApi) Status(manifestId string) (*model.ModelTask, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-    }
-
-    var responseModel *model.ModelTask
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/status", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingManifestsHlsApi) Create(hlsManifest model.HlsManifest) (*model.HlsManifest, error) {
     reqParams := func(params *common.RequestParams) {
     }
@@ -64,26 +54,6 @@ func (api *EncodingManifestsHlsApi) Delete(manifestId string) (*model.BitmovinRe
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsHlsApi) Start(manifestId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/start", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsHlsApi) Stop(manifestId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/stop", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -109,6 +79,36 @@ func (api *EncodingManifestsHlsApi) List(queryParams ...func(*query.HlsManifestL
 
     var responseModel *pagination.HlsManifestsListPagination
     err := api.apiClient.Get("/encoding/manifests/hls", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsHlsApi) Start(manifestId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/start", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsHlsApi) Status(manifestId string) (*model.ModelTask, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+    }
+
+    var responseModel *model.ModelTask
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/status", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsHlsApi) Stop(manifestId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/stop", &responseModel, reqParams)
     return responseModel, err
 }
 

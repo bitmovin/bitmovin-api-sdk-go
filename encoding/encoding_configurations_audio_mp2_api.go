@@ -28,13 +28,12 @@ func NewEncodingConfigurationsAudioMp2Api(configs ...func(*common.ApiClient)) (*
 	return api, nil
 }
 
-func (api *EncodingConfigurationsAudioMp2Api) Get(configurationId string) (*model.Mp2AudioConfiguration, error) {
+func (api *EncodingConfigurationsAudioMp2Api) Create(mp2AudioConfiguration model.Mp2AudioConfiguration) (*model.Mp2AudioConfiguration, error) {
     reqParams := func(params *common.RequestParams) {
-        params.PathParams["configuration_id"] = configurationId
     }
 
     var responseModel *model.Mp2AudioConfiguration
-    err := api.apiClient.Get("/encoding/configurations/audio/mp2/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/configurations/audio/mp2", &mp2AudioConfiguration, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -48,12 +47,13 @@ func (api *EncodingConfigurationsAudioMp2Api) Delete(configurationId string) (*m
     return responseModel, err
 }
 
-func (api *EncodingConfigurationsAudioMp2Api) Create(mp2AudioConfiguration model.Mp2AudioConfiguration) (*model.Mp2AudioConfiguration, error) {
+func (api *EncodingConfigurationsAudioMp2Api) Get(configurationId string) (*model.Mp2AudioConfiguration, error) {
     reqParams := func(params *common.RequestParams) {
+        params.PathParams["configuration_id"] = configurationId
     }
 
     var responseModel *model.Mp2AudioConfiguration
-    err := api.apiClient.Post("/encoding/configurations/audio/mp2", &mp2AudioConfiguration, &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/mp2/{configuration_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

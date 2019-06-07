@@ -29,21 +29,15 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi(conf
 	return api, nil
 }
 
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*query.DashCmafDrmRepresentationListQueryParams)) (*pagination.DashCmafDrmRepresentationsListPagination, error) {
-    queryParameters := &query.DashCmafDrmRepresentationListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) Create(manifestId string, periodId string, adaptationsetId string, dashCmafDrmRepresentation model.DashCmafDrmRepresentation) (*model.DashCmafDrmRepresentation, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
         params.PathParams["adaptationset_id"] = adaptationsetId
-        params.QueryParams = queryParameters
     }
 
-    var responseModel *pagination.DashCmafDrmRepresentationsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm", &responseModel, reqParams)
+    var responseModel *model.DashCmafDrmRepresentation
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm", &dashCmafDrmRepresentation, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,18 +54,6 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) 
     return responseModel, err
 }
 
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) Create(manifestId string, periodId string, adaptationsetId string, dashCmafDrmRepresentation model.DashCmafDrmRepresentation) (*model.DashCmafDrmRepresentation, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
-    }
-
-    var responseModel *model.DashCmafDrmRepresentation
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm", &dashCmafDrmRepresentation, &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashCmafDrmRepresentation, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -82,6 +64,24 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) 
 
     var responseModel *model.DashCmafDrmRepresentation
     err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*query.DashCmafDrmRepresentationListQueryParams)) (*pagination.DashCmafDrmRepresentationsListPagination, error) {
+    queryParameters := &query.DashCmafDrmRepresentationListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.DashCmafDrmRepresentationsListPagination
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm", &responseModel, reqParams)
     return responseModel, err
 }
 

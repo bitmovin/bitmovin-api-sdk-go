@@ -26,23 +26,6 @@ func NewEncodingManifestsDashPeriodsCustomXmlElementsApi(configs ...func(*common
 	return api, nil
 }
 
-func (api *EncodingManifestsDashPeriodsCustomXmlElementsApi) List(manifestId string, periodId string, queryParams ...func(*query.CustomXmlElementListQueryParams)) (*pagination.CustomXmlElementsListPagination, error) {
-    queryParameters := &query.CustomXmlElementListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.CustomXmlElementsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingManifestsDashPeriodsCustomXmlElementsApi) Create(manifestId string, periodId string, customXmlElement model.CustomXmlElement) (*model.CustomXmlElement, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -51,6 +34,18 @@ func (api *EncodingManifestsDashPeriodsCustomXmlElementsApi) Create(manifestId s
 
     var responseModel *model.CustomXmlElement
     err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements", &customXmlElement, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsDashPeriodsCustomXmlElementsApi) Delete(manifestId string, periodId string, customXmlElementId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["custom_xml_element_id"] = customXmlElementId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements/{custom_xml_element_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -66,15 +61,20 @@ func (api *EncodingManifestsDashPeriodsCustomXmlElementsApi) Get(manifestId stri
     return responseModel, err
 }
 
-func (api *EncodingManifestsDashPeriodsCustomXmlElementsApi) Delete(manifestId string, periodId string, customXmlElementId string) (*model.BitmovinResponse, error) {
+func (api *EncodingManifestsDashPeriodsCustomXmlElementsApi) List(manifestId string, periodId string, queryParams ...func(*query.CustomXmlElementListQueryParams)) (*pagination.CustomXmlElementsListPagination, error) {
+    queryParameters := &query.CustomXmlElementListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
-        params.PathParams["custom_xml_element_id"] = customXmlElementId
+        params.QueryParams = queryParameters
     }
 
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements/{custom_xml_element_id}", &responseModel, reqParams)
+    var responseModel *pagination.CustomXmlElementsListPagination
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements", &responseModel, reqParams)
     return responseModel, err
 }
 

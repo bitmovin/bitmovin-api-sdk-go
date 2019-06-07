@@ -29,6 +29,18 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmApi(conf
 	return api, nil
 }
 
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmApi) Create(manifestId string, periodId string, adaptationsetId string, dashFmp4DrmRepresentation model.DashFmp4DrmRepresentation) (*model.DashFmp4DrmRepresentation, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+    }
+
+    var responseModel *model.DashFmp4DrmRepresentation
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/drm", &dashFmp4DrmRepresentation, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmApi) Delete(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -52,18 +64,6 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmApi) 
 
     var responseModel *model.DashFmp4DrmRepresentation
     err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/drm/{representation_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmApi) Create(manifestId string, periodId string, adaptationsetId string, dashFmp4DrmRepresentation model.DashFmp4DrmRepresentation) (*model.DashFmp4DrmRepresentation, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
-    }
-
-    var responseModel *model.DashFmp4DrmRepresentation
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/drm", &dashFmp4DrmRepresentation, &responseModel, reqParams)
     return responseModel, err
 }
 

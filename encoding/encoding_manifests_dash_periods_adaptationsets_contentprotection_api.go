@@ -51,6 +51,19 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionApi) Delet
     return responseModel, err
 }
 
+func (api *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionApi) Get(manifestId string, periodId string, adaptationsetId string, contentprotectionId string) (*model.ContentProtection, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+        params.PathParams["contentprotection_id"] = contentprotectionId
+    }
+
+    var responseModel *model.ContentProtection
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/contentprotection/{contentprotection_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionApi) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*query.ContentProtectionListQueryParams)) (*pagination.ContentProtectionsListPagination, error) {
     queryParameters := &query.ContentProtectionListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -66,19 +79,6 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionApi) List(
 
     var responseModel *pagination.ContentProtectionsListPagination
     err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/contentprotection", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionApi) Get(manifestId string, periodId string, adaptationsetId string, contentprotectionId string) (*model.ContentProtection, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
-        params.PathParams["contentprotection_id"] = contentprotectionId
-    }
-
-    var responseModel *model.ContentProtection
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/contentprotection/{contentprotection_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

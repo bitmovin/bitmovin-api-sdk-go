@@ -29,18 +29,12 @@ func NewEncodingOutputsGcsApi(configs ...func(*common.ApiClient)) (*EncodingOutp
 	return api, nil
 }
 
-func (api *EncodingOutputsGcsApi) List(queryParams ...func(*query.GcsOutputListQueryParams)) (*pagination.GcsOutputsListPagination, error) {
-    queryParameters := &query.GcsOutputListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingOutputsGcsApi) Create(gcsOutput model.GcsOutput) (*model.GcsOutput, error) {
     reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
     }
 
-    var responseModel *pagination.GcsOutputsListPagination
-    err := api.apiClient.Get("/encoding/outputs/gcs", &responseModel, reqParams)
+    var responseModel *model.GcsOutput
+    err := api.apiClient.Post("/encoding/outputs/gcs", &gcsOutput, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,15 +48,6 @@ func (api *EncodingOutputsGcsApi) Delete(outputId string) (*model.GcsOutput, err
     return responseModel, err
 }
 
-func (api *EncodingOutputsGcsApi) Create(gcsOutput model.GcsOutput) (*model.GcsOutput, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.GcsOutput
-    err := api.apiClient.Post("/encoding/outputs/gcs", &gcsOutput, &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingOutputsGcsApi) Get(outputId string) (*model.GcsOutput, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
@@ -70,6 +55,21 @@ func (api *EncodingOutputsGcsApi) Get(outputId string) (*model.GcsOutput, error)
 
     var responseModel *model.GcsOutput
     err := api.apiClient.Get("/encoding/outputs/gcs/{output_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingOutputsGcsApi) List(queryParams ...func(*query.GcsOutputListQueryParams)) (*pagination.GcsOutputsListPagination, error) {
+    queryParameters := &query.GcsOutputListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.GcsOutputsListPagination
+    err := api.apiClient.Get("/encoding/outputs/gcs", &responseModel, reqParams)
     return responseModel, err
 }
 

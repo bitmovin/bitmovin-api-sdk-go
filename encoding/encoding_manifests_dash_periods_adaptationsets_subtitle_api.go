@@ -26,15 +26,14 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsSubtitleApi(configs ...func(*c
 	return api, nil
 }
 
-func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleApi) Get(manifestId string, periodId string, adaptationsetId string) (*model.SubtitleAdaptationSet, error) {
+func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleApi) Create(manifestId string, periodId string, subtitleAdaptationSet model.SubtitleAdaptationSet) (*model.SubtitleAdaptationSet, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
     }
 
     var responseModel *model.SubtitleAdaptationSet
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle/{adaptationset_id}", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle", &subtitleAdaptationSet, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -47,6 +46,18 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleApi) Delete(manifes
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle/{adaptationset_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleApi) Get(manifestId string, periodId string, adaptationsetId string) (*model.SubtitleAdaptationSet, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+    }
+
+    var responseModel *model.SubtitleAdaptationSet
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle/{adaptationset_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -64,17 +75,6 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleApi) List(manifestI
 
     var responseModel *pagination.SubtitleAdaptationSetsListPagination
     err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleApi) Create(manifestId string, periodId string, subtitleAdaptationSet model.SubtitleAdaptationSet) (*model.SubtitleAdaptationSet, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-    }
-
-    var responseModel *model.SubtitleAdaptationSet
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle", &subtitleAdaptationSet, &responseModel, reqParams)
     return responseModel, err
 }
 

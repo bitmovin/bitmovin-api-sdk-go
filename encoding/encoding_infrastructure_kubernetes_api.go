@@ -41,31 +41,6 @@ func NewEncodingInfrastructureKubernetesApi(configs ...func(*common.ApiClient)) 
 	return api, nil
 }
 
-func (api *EncodingInfrastructureKubernetesApi) List(queryParams ...func(*query.KubernetesClusterListQueryParams)) (*pagination.KubernetesClustersListPagination, error) {
-    queryParameters := &query.KubernetesClusterListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.KubernetesClustersListPagination
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInfrastructureKubernetesApi) Get(infrastructureId string) (*model.KubernetesCluster, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["infrastructure_id"] = infrastructureId
-    }
-
-    var responseModel *model.KubernetesCluster
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingInfrastructureKubernetesApi) Create(kubernetesCluster model.KubernetesCluster) (*model.KubernetesCluster, error) {
     reqParams := func(params *common.RequestParams) {
     }
@@ -82,6 +57,31 @@ func (api *EncodingInfrastructureKubernetesApi) Delete(infrastructureId string) 
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/infrastructure/kubernetes/{infrastructure_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingInfrastructureKubernetesApi) Get(infrastructureId string) (*model.KubernetesCluster, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["infrastructure_id"] = infrastructureId
+    }
+
+    var responseModel *model.KubernetesCluster
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingInfrastructureKubernetesApi) List(queryParams ...func(*query.KubernetesClusterListQueryParams)) (*pagination.KubernetesClustersListPagination, error) {
+    queryParameters := &query.KubernetesClusterListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.KubernetesClustersListPagination
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes", &responseModel, reqParams)
     return responseModel, err
 }
 

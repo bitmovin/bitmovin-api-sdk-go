@@ -25,16 +25,6 @@ func NewNotificationsEmailsEncodingEncodingsErrorApi(configs ...func(*common.Api
 	return api, nil
 }
 
-func (api *NotificationsEmailsEncodingEncodingsErrorApi) Update(notificationId string, emailNotification model.EmailNotification) (*model.EmailNotification, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["notification_id"] = notificationId
-    }
-
-    var responseModel *model.EmailNotification
-    err := api.apiClient.Put("/notifications/emails/encoding/encodings/error/{notification_id}", &emailNotification, &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *NotificationsEmailsEncodingEncodingsErrorApi) CreateByEncodingId(encodingId string, emailNotification model.EmailNotification) (*model.EmailNotification, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -42,6 +32,16 @@ func (api *NotificationsEmailsEncodingEncodingsErrorApi) CreateByEncodingId(enco
 
     var responseModel *model.EmailNotification
     err := api.apiClient.Post("/notifications/emails/encoding/encodings/{encoding_id}/error", &emailNotification, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *NotificationsEmailsEncodingEncodingsErrorApi) Update(notificationId string, emailNotification model.EmailNotification) (*model.EmailNotification, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["notification_id"] = notificationId
+    }
+
+    var responseModel *model.EmailNotification
+    err := api.apiClient.Put("/notifications/emails/encoding/encodings/error/{notification_id}", &emailNotification, &responseModel, reqParams)
     return responseModel, err
 }
 

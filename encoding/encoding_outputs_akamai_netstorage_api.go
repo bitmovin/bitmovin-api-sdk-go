@@ -29,6 +29,25 @@ func NewEncodingOutputsAkamaiNetstorageApi(configs ...func(*common.ApiClient)) (
 	return api, nil
 }
 
+func (api *EncodingOutputsAkamaiNetstorageApi) Create(akamaiNetStorageOutput model.AkamaiNetStorageOutput) (*model.AkamaiNetStorageOutput, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AkamaiNetStorageOutput
+    err := api.apiClient.Post("/encoding/outputs/akamai-netstorage", &akamaiNetStorageOutput, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingOutputsAkamaiNetstorageApi) Delete(outputId string) (*model.AkamaiNetStorageOutput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["output_id"] = outputId
+    }
+
+    var responseModel *model.AkamaiNetStorageOutput
+    err := api.apiClient.Delete("/encoding/outputs/akamai-netstorage/{output_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingOutputsAkamaiNetstorageApi) Get(outputId string) (*model.AkamaiNetStorageOutput, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
@@ -51,25 +70,6 @@ func (api *EncodingOutputsAkamaiNetstorageApi) List(queryParams ...func(*query.A
 
     var responseModel *pagination.AkamaiNetStorageOutputsListPagination
     err := api.apiClient.Get("/encoding/outputs/akamai-netstorage", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingOutputsAkamaiNetstorageApi) Delete(outputId string) (*model.AkamaiNetStorageOutput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["output_id"] = outputId
-    }
-
-    var responseModel *model.AkamaiNetStorageOutput
-    err := api.apiClient.Delete("/encoding/outputs/akamai-netstorage/{output_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingOutputsAkamaiNetstorageApi) Create(akamaiNetStorageOutput model.AkamaiNetStorageOutput) (*model.AkamaiNetStorageOutput, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.AkamaiNetStorageOutput
-    err := api.apiClient.Post("/encoding/outputs/akamai-netstorage", &akamaiNetStorageOutput, &responseModel, reqParams)
     return responseModel, err
 }
 

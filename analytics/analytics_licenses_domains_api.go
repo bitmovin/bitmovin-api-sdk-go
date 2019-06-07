@@ -25,6 +25,16 @@ func NewAnalyticsLicensesDomainsApi(configs ...func(*common.ApiClient)) (*Analyt
 	return api, nil
 }
 
+func (api *AnalyticsLicensesDomainsApi) Create(licenseId string, domain model.Domain) (*model.Domain, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["license_id"] = licenseId
+    }
+
+    var responseModel *model.Domain
+    err := api.apiClient.Post("/analytics/licenses/{license_id}/domains", &domain, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *AnalyticsLicensesDomainsApi) Delete(licenseId string, domainId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["license_id"] = licenseId
@@ -43,16 +53,6 @@ func (api *AnalyticsLicensesDomainsApi) Get(licenseId string) (*model.DomainList
 
     var responseModel *model.DomainList
     err := api.apiClient.Get("/analytics/licenses/{license_id}/domains", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *AnalyticsLicensesDomainsApi) Create(licenseId string, domain model.Domain) (*model.Domain, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["license_id"] = licenseId
-    }
-
-    var responseModel *model.Domain
-    err := api.apiClient.Post("/analytics/licenses/{license_id}/domains", &domain, &responseModel, reqParams)
     return responseModel, err
 }
 

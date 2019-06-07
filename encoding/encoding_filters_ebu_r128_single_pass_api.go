@@ -29,13 +29,12 @@ func NewEncodingFiltersEbuR128SinglePassApi(configs ...func(*common.ApiClient)) 
 	return api, nil
 }
 
-func (api *EncodingFiltersEbuR128SinglePassApi) Get(filterId string) (*model.EbuR128SinglePassFilter, error) {
+func (api *EncodingFiltersEbuR128SinglePassApi) Create(ebuR128SinglePassFilter model.EbuR128SinglePassFilter) (*model.EbuR128SinglePassFilter, error) {
     reqParams := func(params *common.RequestParams) {
-        params.PathParams["filter_id"] = filterId
     }
 
     var responseModel *model.EbuR128SinglePassFilter
-    err := api.apiClient.Get("/encoding/filters/ebu-r128-single-pass/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/filters/ebu-r128-single-pass", &ebuR128SinglePassFilter, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -46,6 +45,16 @@ func (api *EncodingFiltersEbuR128SinglePassApi) Delete(filterId string) (*model.
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/filters/ebu-r128-single-pass/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingFiltersEbuR128SinglePassApi) Get(filterId string) (*model.EbuR128SinglePassFilter, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["filter_id"] = filterId
+    }
+
+    var responseModel *model.EbuR128SinglePassFilter
+    err := api.apiClient.Get("/encoding/filters/ebu-r128-single-pass/{filter_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -61,15 +70,6 @@ func (api *EncodingFiltersEbuR128SinglePassApi) List(queryParams ...func(*query.
 
     var responseModel *pagination.EbuR128SinglePassFiltersListPagination
     err := api.apiClient.Get("/encoding/filters/ebu-r128-single-pass", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingFiltersEbuR128SinglePassApi) Create(ebuR128SinglePassFilter model.EbuR128SinglePassFilter) (*model.EbuR128SinglePassFilter, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.EbuR128SinglePassFilter
-    err := api.apiClient.Post("/encoding/filters/ebu-r128-single-pass", &ebuR128SinglePassFilter, &responseModel, reqParams)
     return responseModel, err
 }
 

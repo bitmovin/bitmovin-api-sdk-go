@@ -35,16 +35,6 @@ func (api *PlayerLicensesThirdPartyLicensingApi) Create(licenseId string, player
     return responseModel, err
 }
 
-func (api *PlayerLicensesThirdPartyLicensingApi) Get(licenseId string) (*model.PlayerThirdPartyLicensing, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["license_id"] = licenseId
-    }
-
-    var responseModel *model.PlayerThirdPartyLicensing
-    err := api.apiClient.Get("/player/licenses/{license_id}/third-party-licensing", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *PlayerLicensesThirdPartyLicensingApi) Delete(licenseId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["license_id"] = licenseId
@@ -52,6 +42,16 @@ func (api *PlayerLicensesThirdPartyLicensingApi) Delete(licenseId string) (*mode
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/player/licenses/{license_id}/third-party-licensing", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *PlayerLicensesThirdPartyLicensingApi) Get(licenseId string) (*model.PlayerThirdPartyLicensing, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["license_id"] = licenseId
+    }
+
+    var responseModel *model.PlayerThirdPartyLicensing
+    err := api.apiClient.Get("/player/licenses/{license_id}/third-party-licensing", &responseModel, reqParams)
     return responseModel, err
 }
 

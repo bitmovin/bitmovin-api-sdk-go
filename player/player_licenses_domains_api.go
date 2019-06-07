@@ -36,16 +36,6 @@ func (api *PlayerLicensesDomainsApi) Create(licenseId string, domain model.Domai
     return responseModel, err
 }
 
-func (api *PlayerLicensesDomainsApi) List(licenseId string) (*pagination.DomainsListPagination, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["license_id"] = licenseId
-    }
-
-    var responseModel *pagination.DomainsListPagination
-    err := api.apiClient.Get("/player/licenses/{license_id}/domains", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *PlayerLicensesDomainsApi) Delete(licenseId string, domainId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["license_id"] = licenseId
@@ -54,6 +44,16 @@ func (api *PlayerLicensesDomainsApi) Delete(licenseId string, domainId string) (
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/player/licenses/{license_id}/domains/{domain_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *PlayerLicensesDomainsApi) List(licenseId string) (*pagination.DomainsListPagination, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["license_id"] = licenseId
+    }
+
+    var responseModel *pagination.DomainsListPagination
+    err := api.apiClient.Get("/player/licenses/{license_id}/domains", &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -38,16 +38,6 @@ func (api *EncodingFiltersTextApi) Create(textFilter model.TextFilter) (*model.T
     return responseModel, err
 }
 
-func (api *EncodingFiltersTextApi) Get(filterId string) (*model.TextFilter, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["filter_id"] = filterId
-    }
-
-    var responseModel *model.TextFilter
-    err := api.apiClient.Get("/encoding/filters/text/{filter_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingFiltersTextApi) Delete(filterId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["filter_id"] = filterId
@@ -55,6 +45,16 @@ func (api *EncodingFiltersTextApi) Delete(filterId string) (*model.BitmovinRespo
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/filters/text/{filter_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingFiltersTextApi) Get(filterId string) (*model.TextFilter, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["filter_id"] = filterId
+    }
+
+    var responseModel *model.TextFilter
+    err := api.apiClient.Get("/encoding/filters/text/{filter_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -5,6 +5,7 @@ import (
     "github.com/bitmovin/bitmovin-api-sdk-go/account"
     "github.com/bitmovin/bitmovin-api-sdk-go/analytics"
     "github.com/bitmovin/bitmovin-api-sdk-go/encoding"
+    "github.com/bitmovin/bitmovin-api-sdk-go/general"
     "github.com/bitmovin/bitmovin-api-sdk-go/notifications"
     "github.com/bitmovin/bitmovin-api-sdk-go/player"
 )
@@ -14,6 +15,7 @@ type BitmovinApi struct {
     Account *account.AccountApi
     Analytics *analytics.AnalyticsApi
     Encoding *encoding.EncodingApi
+    General *general.GeneralApi
     Notifications *notifications.NotificationsApi
     Player *player.PlayerApi
 }
@@ -32,6 +34,8 @@ func NewBitmovinApi(configs ...func(*common.ApiClient)) (*BitmovinApi, error) {
     api.Analytics = analyticsApi
     encodingApi, err := encoding.NewEncodingApi(configs...)
     api.Encoding = encodingApi
+    generalApi, err := general.NewGeneralApi(configs...)
+    api.General = generalApi
     notificationsApi, err := notifications.NewNotificationsApi(configs...)
     api.Notifications = notificationsApi
     playerApi, err := player.NewPlayerApi(configs...)

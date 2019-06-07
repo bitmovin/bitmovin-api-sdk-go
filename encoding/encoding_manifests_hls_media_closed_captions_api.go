@@ -36,17 +36,6 @@ func (api *EncodingManifestsHlsMediaClosedCaptionsApi) Create(manifestId string,
     return responseModel, err
 }
 
-func (api *EncodingManifestsHlsMediaClosedCaptionsApi) Get(manifestId string, mediaId string) (*model.ClosedCaptionsMediaInfo, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["media_id"] = mediaId
-    }
-
-    var responseModel *model.ClosedCaptionsMediaInfo
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingManifestsHlsMediaClosedCaptionsApi) Delete(manifestId string, mediaId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -55,6 +44,17 @@ func (api *EncodingManifestsHlsMediaClosedCaptionsApi) Delete(manifestId string,
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsHlsMediaClosedCaptionsApi) Get(manifestId string, mediaId string) (*model.ClosedCaptionsMediaInfo, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["media_id"] = mediaId
+    }
+
+    var responseModel *model.ClosedCaptionsMediaInfo
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -37,6 +37,18 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioApi) Create(manifestId
     return responseModel, err
 }
 
+func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioApi) Delete(manifestId string, periodId string, adaptationsetId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio/{adaptationset_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioApi) Get(manifestId string, periodId string, adaptationsetId string) (*model.AudioAdaptationSet, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -63,18 +75,6 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioApi) List(manifestId s
 
     var responseModel *pagination.AudioAdaptationSetsListPagination
     err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioApi) Delete(manifestId string, periodId string, adaptationsetId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio/{adaptationset_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

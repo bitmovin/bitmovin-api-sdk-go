@@ -26,6 +26,27 @@ func NewEncodingEncodingsInputStreamsConcatenationApi(configs ...func(*common.Ap
 	return api, nil
 }
 
+func (api *EncodingEncodingsInputStreamsConcatenationApi) Create(encodingId string, concatenationInputStream model.ConcatenationInputStream) (*model.ConcatenationInputStream, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.ConcatenationInputStream
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/input-streams/concatenation", &concatenationInputStream, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsInputStreamsConcatenationApi) Delete(encodingId string, inputStreamId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["input_stream_id"] = inputStreamId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/concatenation/{input_stream_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsInputStreamsConcatenationApi) Get(encodingId string, inputStreamId string) (*model.ConcatenationInputStream, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -50,27 +71,6 @@ func (api *EncodingEncodingsInputStreamsConcatenationApi) List(encodingId string
 
     var responseModel *pagination.ConcatenationInputStreamsListPagination
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/concatenation", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsInputStreamsConcatenationApi) Delete(encodingId string, inputStreamId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["input_stream_id"] = inputStreamId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/concatenation/{input_stream_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsInputStreamsConcatenationApi) Create(encodingId string, concatenationInputStream model.ConcatenationInputStream) (*model.ConcatenationInputStream, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.ConcatenationInputStream
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/input-streams/concatenation", &concatenationInputStream, &responseModel, reqParams)
     return responseModel, err
 }
 

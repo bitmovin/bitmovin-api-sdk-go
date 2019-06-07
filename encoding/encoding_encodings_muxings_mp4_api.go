@@ -45,19 +45,14 @@ func (api *EncodingEncodingsMuxingsMp4Api) Create(encodingId string, mp4Muxing m
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsMp4Api) List(encodingId string, queryParams ...func(*query.Mp4MuxingListQueryParams)) (*pagination.Mp4MuxingsListPagination, error) {
-    queryParameters := &query.Mp4MuxingListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingEncodingsMuxingsMp4Api) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
-        params.QueryParams = queryParameters
+        params.PathParams["muxing_id"] = muxingId
     }
 
-    var responseModel *pagination.Mp4MuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4", &responseModel, reqParams)
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -72,14 +67,19 @@ func (api *EncodingEncodingsMuxingsMp4Api) Get(encodingId string, muxingId strin
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsMp4Api) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
+func (api *EncodingEncodingsMuxingsMp4Api) List(encodingId string, queryParams ...func(*query.Mp4MuxingListQueryParams)) (*pagination.Mp4MuxingsListPagination, error) {
+    queryParameters := &query.Mp4MuxingListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
     }
 
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}", &responseModel, reqParams)
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.Mp4MuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4", &responseModel, reqParams)
     return responseModel, err
 }
 

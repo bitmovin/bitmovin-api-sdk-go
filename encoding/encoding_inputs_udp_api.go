@@ -26,6 +26,16 @@ func NewEncodingInputsUdpApi(configs ...func(*common.ApiClient)) (*EncodingInput
 	return api, nil
 }
 
+func (api *EncodingInputsUdpApi) Get(inputId string) (*model.UdpInput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+    }
+
+    var responseModel *model.UdpInput
+    err := api.apiClient.Get("/encoding/inputs/udp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingInputsUdpApi) List(queryParams ...func(*query.UdpInputListQueryParams)) (*pagination.UdpInputsListPagination, error) {
     queryParameters := &query.UdpInputListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -38,16 +48,6 @@ func (api *EncodingInputsUdpApi) List(queryParams ...func(*query.UdpInputListQue
 
     var responseModel *pagination.UdpInputsListPagination
     err := api.apiClient.Get("/encoding/inputs/udp", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInputsUdpApi) Get(inputId string) (*model.UdpInput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.UdpInput
-    err := api.apiClient.Get("/encoding/inputs/udp/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

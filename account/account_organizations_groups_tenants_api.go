@@ -26,6 +26,17 @@ func NewAccountOrganizationsGroupsTenantsApi(configs ...func(*common.ApiClient))
 	return api, nil
 }
 
+func (api *AccountOrganizationsGroupsTenantsApi) Create(organizationId string, groupId string, tenant model.Tenant) (*model.Tenant, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["organization_id"] = organizationId
+        params.PathParams["group_id"] = groupId
+    }
+
+    var responseModel *model.Tenant
+    err := api.apiClient.Post("/account/organizations/{organization_id}/groups/{group_id}/tenants", &tenant, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *AccountOrganizationsGroupsTenantsApi) Delete(organizationId string, groupId string, tenantId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
@@ -35,17 +46,6 @@ func (api *AccountOrganizationsGroupsTenantsApi) Delete(organizationId string, g
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}/tenants/{tenant_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *AccountOrganizationsGroupsTenantsApi) Create(organizationId string, groupId string, tenant model.Tenant) (*model.Tenant, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["organization_id"] = organizationId
-        params.PathParams["group_id"] = groupId
-    }
-
-    var responseModel *model.Tenant
-    err := api.apiClient.Post("/account/organizations/{organization_id}/groups/{group_id}/tenants", &tenant, &responseModel, reqParams)
     return responseModel, err
 }
 

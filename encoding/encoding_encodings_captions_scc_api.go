@@ -39,22 +39,6 @@ func (api *EncodingEncodingsCaptionsSccApi) Create(encodingId string, convertScc
     return responseModel, err
 }
 
-func (api *EncodingEncodingsCaptionsSccApi) List(encodingId string, queryParams ...func(*query.ConvertSccCaptionListQueryParams)) (*pagination.ConvertSccCaptionsListPagination, error) {
-    queryParameters := &query.ConvertSccCaptionListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.ConvertSccCaptionsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsCaptionsSccApi) Delete(encodingId string, captionsId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -74,6 +58,22 @@ func (api *EncodingEncodingsCaptionsSccApi) Get(encodingId string, captionsId st
 
     var responseModel *model.ConvertSccCaption
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsCaptionsSccApi) List(encodingId string, queryParams ...func(*query.ConvertSccCaptionListQueryParams)) (*pagination.ConvertSccCaptionsListPagination, error) {
+    queryParameters := &query.ConvertSccCaptionListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.ConvertSccCaptionsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc", &responseModel, reqParams)
     return responseModel, err
 }
 

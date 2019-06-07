@@ -26,6 +26,27 @@ func NewEncodingManifestsHlsMediaAudioApi(configs ...func(*common.ApiClient)) (*
 	return api, nil
 }
 
+func (api *EncodingManifestsHlsMediaAudioApi) Create(manifestId string, audioMediaInfo model.AudioMediaInfo) (*model.AudioMediaInfo, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+    }
+
+    var responseModel *model.AudioMediaInfo
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/audio", &audioMediaInfo, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsHlsMediaAudioApi) Delete(manifestId string, mediaId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["media_id"] = mediaId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/audio/{media_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsHlsMediaAudioApi) Get(manifestId string, mediaId string) (*model.AudioMediaInfo, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -34,16 +55,6 @@ func (api *EncodingManifestsHlsMediaAudioApi) Get(manifestId string, mediaId str
 
     var responseModel *model.AudioMediaInfo
     err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/audio/{media_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsHlsMediaAudioApi) Create(manifestId string, audioMediaInfo model.AudioMediaInfo) (*model.AudioMediaInfo, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-    }
-
-    var responseModel *model.AudioMediaInfo
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/audio", &audioMediaInfo, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,17 +71,6 @@ func (api *EncodingManifestsHlsMediaAudioApi) List(manifestId string, queryParam
 
     var responseModel *pagination.AudioMediaInfosListPagination
     err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/audio", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsHlsMediaAudioApi) Delete(manifestId string, mediaId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["media_id"] = mediaId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/audio/{media_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

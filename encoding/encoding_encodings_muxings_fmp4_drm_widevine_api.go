@@ -29,6 +29,17 @@ func NewEncodingEncodingsMuxingsFmp4DrmWidevineApi(configs ...func(*common.ApiCl
 	return api, nil
 }
 
+func (api *EncodingEncodingsMuxingsFmp4DrmWidevineApi) Create(encodingId string, muxingId string, widevineDrm model.WidevineDrm) (*model.WidevineDrm, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+    }
+
+    var responseModel *model.WidevineDrm
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/widevine", &widevineDrm, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsMuxingsFmp4DrmWidevineApi) Delete(encodingId string, muxingId string, drmId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -41,14 +52,15 @@ func (api *EncodingEncodingsMuxingsFmp4DrmWidevineApi) Delete(encodingId string,
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsFmp4DrmWidevineApi) Create(encodingId string, muxingId string, widevineDrm model.WidevineDrm) (*model.WidevineDrm, error) {
+func (api *EncodingEncodingsMuxingsFmp4DrmWidevineApi) Get(encodingId string, muxingId string, drmId string) (*model.WidevineDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
+        params.PathParams["drm_id"] = drmId
     }
 
     var responseModel *model.WidevineDrm
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/widevine", &widevineDrm, &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/widevine/{drm_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -66,18 +78,6 @@ func (api *EncodingEncodingsMuxingsFmp4DrmWidevineApi) List(encodingId string, m
 
     var responseModel *pagination.WidevineDrmsListPagination
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/widevine", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsMuxingsFmp4DrmWidevineApi) Get(encodingId string, muxingId string, drmId string) (*model.WidevineDrm, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-        params.PathParams["drm_id"] = drmId
-    }
-
-    var responseModel *model.WidevineDrm
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/widevine/{drm_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

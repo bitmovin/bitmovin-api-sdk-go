@@ -26,15 +26,14 @@ func NewEncodingManifestsHlsStreamsIframeApi(configs ...func(*common.ApiClient))
 	return api, nil
 }
 
-func (api *EncodingManifestsHlsStreamsIframeApi) Get(manifestId string, streamId string, iframeId string) (*model.IFramePlaylist, error) {
+func (api *EncodingManifestsHlsStreamsIframeApi) Create(manifestId string, streamId string, iFramePlaylist model.IFramePlaylist) (*model.IFramePlaylist, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
         params.PathParams["stream_id"] = streamId
-        params.PathParams["iframe_id"] = iframeId
     }
 
     var responseModel *model.IFramePlaylist
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe/{iframe_id}", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe", &iFramePlaylist, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -47,6 +46,18 @@ func (api *EncodingManifestsHlsStreamsIframeApi) Delete(manifestId string, strea
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe/{iframe_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsHlsStreamsIframeApi) Get(manifestId string, streamId string, iframeId string) (*model.IFramePlaylist, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["stream_id"] = streamId
+        params.PathParams["iframe_id"] = iframeId
+    }
+
+    var responseModel *model.IFramePlaylist
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe/{iframe_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -64,17 +75,6 @@ func (api *EncodingManifestsHlsStreamsIframeApi) List(manifestId string, streamI
 
     var responseModel *pagination.IFramePlaylistsListPagination
     err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsHlsStreamsIframeApi) Create(manifestId string, streamId string, iFramePlaylist model.IFramePlaylist) (*model.IFramePlaylist, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["stream_id"] = streamId
-    }
-
-    var responseModel *model.IFramePlaylist
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe", &iFramePlaylist, &responseModel, reqParams)
     return responseModel, err
 }
 

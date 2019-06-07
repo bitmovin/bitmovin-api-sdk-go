@@ -29,25 +29,6 @@ func NewAccountOrganizationsApi(configs ...func(*common.ApiClient)) (*AccountOrg
 	return api, nil
 }
 
-func (api *AccountOrganizationsApi) List() (*pagination.OrganizationsListPagination, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *pagination.OrganizationsListPagination
-    err := api.apiClient.Get("/account/organizations", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *AccountOrganizationsApi) Get(organizationId string) (*model.Organization, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["organization_id"] = organizationId
-    }
-
-    var responseModel *model.Organization
-    err := api.apiClient.Get("/account/organizations/{organization_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *AccountOrganizationsApi) Create(organization model.Organization) (*model.Organization, error) {
     reqParams := func(params *common.RequestParams) {
     }
@@ -64,6 +45,25 @@ func (api *AccountOrganizationsApi) Delete(organizationId string) (*model.Bitmov
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/account/organizations/{organization_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *AccountOrganizationsApi) Get(organizationId string) (*model.Organization, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["organization_id"] = organizationId
+    }
+
+    var responseModel *model.Organization
+    err := api.apiClient.Get("/account/organizations/{organization_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *AccountOrganizationsApi) List() (*pagination.OrganizationsListPagination, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *pagination.OrganizationsListPagination
+    err := api.apiClient.Get("/account/organizations", &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -29,20 +29,14 @@ func NewEncodingEncodingsMuxingsTsDrmAesApi(configs ...func(*common.ApiClient)) 
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsTsDrmAesApi) List(encodingId string, muxingId string, queryParams ...func(*query.AesEncryptionDrmListQueryParams)) (*pagination.AesEncryptionDrmsListPagination, error) {
-    queryParameters := &query.AesEncryptionDrmListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingEncodingsMuxingsTsDrmAesApi) Create(encodingId string, muxingId string, aesEncryptionDrm model.AesEncryptionDrm) (*model.AesEncryptionDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-        params.QueryParams = queryParameters
     }
 
-    var responseModel *pagination.AesEncryptionDrmsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/aes", &responseModel, reqParams)
+    var responseModel *model.AesEncryptionDrm
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/aes", &aesEncryptionDrm, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -58,17 +52,6 @@ func (api *EncodingEncodingsMuxingsTsDrmAesApi) Delete(encodingId string, muxing
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsTsDrmAesApi) Create(encodingId string, muxingId string, aesEncryptionDrm model.AesEncryptionDrm) (*model.AesEncryptionDrm, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-    }
-
-    var responseModel *model.AesEncryptionDrm
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/aes", &aesEncryptionDrm, &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsMuxingsTsDrmAesApi) Get(encodingId string, muxingId string, drmId string) (*model.AesEncryptionDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -78,6 +61,23 @@ func (api *EncodingEncodingsMuxingsTsDrmAesApi) Get(encodingId string, muxingId 
 
     var responseModel *model.AesEncryptionDrm
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/aes/{drm_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsMuxingsTsDrmAesApi) List(encodingId string, muxingId string, queryParams ...func(*query.AesEncryptionDrmListQueryParams)) (*pagination.AesEncryptionDrmsListPagination, error) {
+    queryParameters := &query.AesEncryptionDrmListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.AesEncryptionDrmsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/aes", &responseModel, reqParams)
     return responseModel, err
 }
 

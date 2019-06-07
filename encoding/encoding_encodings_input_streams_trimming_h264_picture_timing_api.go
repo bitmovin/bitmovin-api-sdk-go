@@ -26,14 +26,13 @@ func NewEncodingEncodingsInputStreamsTrimmingH264PictureTimingApi(configs ...fun
 	return api, nil
 }
 
-func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingApi) Get(encodingId string, inputStreamId string) (*model.H264PictureTimingTrimmingInputStream, error) {
+func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingApi) Create(encodingId string, h264PictureTimingTrimmingInputStream model.H264PictureTimingTrimmingInputStream) (*model.H264PictureTimingTrimmingInputStream, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
-        params.PathParams["input_stream_id"] = inputStreamId
     }
 
     var responseModel *model.H264PictureTimingTrimmingInputStream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing", &h264PictureTimingTrimmingInputStream, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -45,6 +44,17 @@ func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingApi) Delete(enc
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing/{input_stream_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingApi) Get(encodingId string, inputStreamId string) (*model.H264PictureTimingTrimmingInputStream, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["input_stream_id"] = inputStreamId
+    }
+
+    var responseModel *model.H264PictureTimingTrimmingInputStream
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing/{input_stream_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -61,16 +71,6 @@ func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingApi) List(encod
 
     var responseModel *pagination.H264PictureTimingTrimmingInputStreamsListPagination
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingApi) Create(encodingId string, h264PictureTimingTrimmingInputStream model.H264PictureTimingTrimmingInputStream) (*model.H264PictureTimingTrimmingInputStream, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.H264PictureTimingTrimmingInputStream
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing", &h264PictureTimingTrimmingInputStream, &responseModel, reqParams)
     return responseModel, err
 }
 

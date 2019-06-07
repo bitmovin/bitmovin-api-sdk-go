@@ -25,31 +25,14 @@ func NewEncodingEncodingsStreamsFiltersApi(configs ...func(*common.ApiClient)) (
 	return api, nil
 }
 
-func (api *EncodingEncodingsStreamsFiltersApi) List(encodingId string, streamId string, queryParams ...func(*query.StreamFilterListListQueryParams)) (*model.StreamFilterList, error) {
-    queryParameters := &query.StreamFilterListListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingEncodingsStreamsFiltersApi) Create(encodingId string, streamId string, streamFilter []model.StreamFilter) (*model.StreamFilterList, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
-        params.QueryParams = queryParameters
     }
 
     var responseModel *model.StreamFilterList
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsStreamsFiltersApi) DeleteAll(encodingId string, streamId string) (*model.BitmovinResponseList, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["stream_id"] = streamId
-    }
-
-    var responseModel *model.BitmovinResponseList
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters", &streamFilter, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -65,14 +48,31 @@ func (api *EncodingEncodingsStreamsFiltersApi) Delete(encodingId string, streamI
     return responseModel, err
 }
 
-func (api *EncodingEncodingsStreamsFiltersApi) Create(encodingId string, streamId string, streamFilter []model.StreamFilter) (*model.StreamFilterList, error) {
+func (api *EncodingEncodingsStreamsFiltersApi) DeleteAll(encodingId string, streamId string) (*model.BitmovinResponseList, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
     }
 
+    var responseModel *model.BitmovinResponseList
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsStreamsFiltersApi) List(encodingId string, streamId string, queryParams ...func(*query.StreamFilterListListQueryParams)) (*model.StreamFilterList, error) {
+    queryParameters := &query.StreamFilterListListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["stream_id"] = streamId
+        params.QueryParams = queryParameters
+    }
+
     var responseModel *model.StreamFilterList
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters", &streamFilter, &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters", &responseModel, reqParams)
     return responseModel, err
 }
 

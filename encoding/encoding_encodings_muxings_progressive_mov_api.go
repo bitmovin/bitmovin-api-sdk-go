@@ -32,19 +32,13 @@ func NewEncodingEncodingsMuxingsProgressiveMovApi(configs ...func(*common.ApiCli
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsProgressiveMovApi) List(encodingId string, queryParams ...func(*query.ProgressiveMovMuxingListQueryParams)) (*pagination.ProgressiveMovMuxingsListPagination, error) {
-    queryParameters := &query.ProgressiveMovMuxingListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingEncodingsMuxingsProgressiveMovApi) Create(encodingId string, progressiveMovMuxing model.ProgressiveMovMuxing) (*model.ProgressiveMovMuxing, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
-        params.QueryParams = queryParameters
     }
 
-    var responseModel *pagination.ProgressiveMovMuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov", &responseModel, reqParams)
+    var responseModel *model.ProgressiveMovMuxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/progressive-mov", &progressiveMovMuxing, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -59,16 +53,6 @@ func (api *EncodingEncodingsMuxingsProgressiveMovApi) Delete(encodingId string, 
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsProgressiveMovApi) Create(encodingId string, progressiveMovMuxing model.ProgressiveMovMuxing) (*model.ProgressiveMovMuxing, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.ProgressiveMovMuxing
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/progressive-mov", &progressiveMovMuxing, &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsMuxingsProgressiveMovApi) Get(encodingId string, muxingId string) (*model.ProgressiveMovMuxing, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -77,6 +61,22 @@ func (api *EncodingEncodingsMuxingsProgressiveMovApi) Get(encodingId string, mux
 
     var responseModel *model.ProgressiveMovMuxing
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsMuxingsProgressiveMovApi) List(encodingId string, queryParams ...func(*query.ProgressiveMovMuxingListQueryParams)) (*pagination.ProgressiveMovMuxingsListPagination, error) {
+    queryParameters := &query.ProgressiveMovMuxingListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.ProgressiveMovMuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov", &responseModel, reqParams)
     return responseModel, err
 }
 

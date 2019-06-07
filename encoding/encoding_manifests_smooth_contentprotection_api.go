@@ -26,6 +26,16 @@ func NewEncodingManifestsSmoothContentprotectionApi(configs ...func(*common.ApiC
 	return api, nil
 }
 
+func (api *EncodingManifestsSmoothContentprotectionApi) Create(manifestId string, smoothManifestContentProtection model.SmoothManifestContentProtection) (*model.SmoothManifestContentProtection, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+    }
+
+    var responseModel *model.SmoothManifestContentProtection
+    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/contentprotection", &smoothManifestContentProtection, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsSmoothContentprotectionApi) Delete(manifestId string, protectionId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -34,6 +44,17 @@ func (api *EncodingManifestsSmoothContentprotectionApi) Delete(manifestId string
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/manifests/smooth/{manifest_id}/contentprotection/{protection_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsSmoothContentprotectionApi) Get(manifestId string, protectionId string) (*model.SmoothManifestContentProtection, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["protection_id"] = protectionId
+    }
+
+    var responseModel *model.SmoothManifestContentProtection
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/contentprotection/{protection_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -50,27 +71,6 @@ func (api *EncodingManifestsSmoothContentprotectionApi) List(manifestId string, 
 
     var responseModel *pagination.SmoothManifestContentProtectionsListPagination
     err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/contentprotection", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsSmoothContentprotectionApi) Create(manifestId string, smoothManifestContentProtection model.SmoothManifestContentProtection) (*model.SmoothManifestContentProtection, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-    }
-
-    var responseModel *model.SmoothManifestContentProtection
-    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/contentprotection", &smoothManifestContentProtection, &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsSmoothContentprotectionApi) Get(manifestId string, protectionId string) (*model.SmoothManifestContentProtection, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["protection_id"] = protectionId
-    }
-
-    var responseModel *model.SmoothManifestContentProtection
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/contentprotection/{protection_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

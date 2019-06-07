@@ -38,18 +38,13 @@ func (api *EncodingInputsAzureApi) Create(azureInput model.AzureInput) (*model.A
     return responseModel, err
 }
 
-func (api *EncodingInputsAzureApi) List(queryParams ...func(*query.AzureInputListQueryParams)) (*pagination.AzureInputsListPagination, error) {
-    queryParameters := &query.AzureInputListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingInputsAzureApi) Delete(inputId string) (*model.AzureInput, error) {
     reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
+        params.PathParams["input_id"] = inputId
     }
 
-    var responseModel *pagination.AzureInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/azure", &responseModel, reqParams)
+    var responseModel *model.AzureInput
+    err := api.apiClient.Delete("/encoding/inputs/azure/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -63,13 +58,18 @@ func (api *EncodingInputsAzureApi) Get(inputId string) (*model.AzureInput, error
     return responseModel, err
 }
 
-func (api *EncodingInputsAzureApi) Delete(inputId string) (*model.AzureInput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
+func (api *EncodingInputsAzureApi) List(queryParams ...func(*query.AzureInputListQueryParams)) (*pagination.AzureInputsListPagination, error) {
+    queryParameters := &query.AzureInputListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
     }
 
-    var responseModel *model.AzureInput
-    err := api.apiClient.Delete("/encoding/inputs/azure/{input_id}", &responseModel, reqParams)
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.AzureInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/azure", &responseModel, reqParams)
     return responseModel, err
 }
 

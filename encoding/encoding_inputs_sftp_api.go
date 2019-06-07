@@ -38,6 +38,16 @@ func (api *EncodingInputsSftpApi) Create(sftpInput model.SftpInput) (*model.Sftp
     return responseModel, err
 }
 
+func (api *EncodingInputsSftpApi) Delete(inputId string) (*model.SftpInput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+    }
+
+    var responseModel *model.SftpInput
+    err := api.apiClient.Delete("/encoding/inputs/sftp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingInputsSftpApi) Get(inputId string) (*model.SftpInput, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
@@ -60,16 +70,6 @@ func (api *EncodingInputsSftpApi) List(queryParams ...func(*query.SftpInputListQ
 
     var responseModel *pagination.SftpInputsListPagination
     err := api.apiClient.Get("/encoding/inputs/sftp", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInputsSftpApi) Delete(inputId string) (*model.SftpInput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.SftpInput
-    err := api.apiClient.Delete("/encoding/inputs/sftp/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

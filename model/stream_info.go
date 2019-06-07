@@ -42,5 +42,9 @@ type StreamInfo struct {
 	StartSegmentNumber *int64 `json:"startSegmentNumber,omitempty"`
 	// Number of the last segment. Default is the last one that was encoded.
 	EndSegmentNumber *int64 `json:"endSegmentNumber,omitempty"`
+	// Force the addition of the frame rate attribute to all stream infos.
+	ForceFrameRateAttribute *bool `json:"forceFrameRateAttribute,omitempty"`
+	// Force the addition of the video-range attribute to all stream infos.
+	ForceVideoRangeAttribute *bool `json:"forceVideoRangeAttribute,omitempty"`
 }
 

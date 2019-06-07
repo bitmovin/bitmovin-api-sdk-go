@@ -29,6 +29,17 @@ func NewEncodingEncodingsMuxingsMp4DrmMarlinApi(configs ...func(*common.ApiClien
 	return api, nil
 }
 
+func (api *EncodingEncodingsMuxingsMp4DrmMarlinApi) Create(encodingId string, muxingId string, marlinDrm model.MarlinDrm) (*model.MarlinDrm, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+    }
+
+    var responseModel *model.MarlinDrm
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin", &marlinDrm, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsMuxingsMp4DrmMarlinApi) Delete(encodingId string, muxingId string, drmId string) (*model.MarlinDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -41,14 +52,15 @@ func (api *EncodingEncodingsMuxingsMp4DrmMarlinApi) Delete(encodingId string, mu
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsMp4DrmMarlinApi) Create(encodingId string, muxingId string, marlinDrm model.MarlinDrm) (*model.MarlinDrm, error) {
+func (api *EncodingEncodingsMuxingsMp4DrmMarlinApi) Get(encodingId string, muxingId string, drmId string) (*model.MarlinDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
+        params.PathParams["drm_id"] = drmId
     }
 
     var responseModel *model.MarlinDrm
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin", &marlinDrm, &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin/{drm_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -66,18 +78,6 @@ func (api *EncodingEncodingsMuxingsMp4DrmMarlinApi) List(encodingId string, muxi
 
     var responseModel *pagination.MarlinDrmsListPagination
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsMuxingsMp4DrmMarlinApi) Get(encodingId string, muxingId string, drmId string) (*model.MarlinDrm, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-        params.PathParams["drm_id"] = drmId
-    }
-
-    var responseModel *model.MarlinDrm
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin/{drm_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

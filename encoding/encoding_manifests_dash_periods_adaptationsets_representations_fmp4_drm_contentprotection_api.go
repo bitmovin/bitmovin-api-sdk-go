@@ -26,6 +26,19 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmContentp
 	return api, nil
 }
 
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmContentprotectionApi) Create(manifestId string, periodId string, adaptationsetId string, representationId string, contentProtection model.ContentProtection) (*model.ContentProtection, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+        params.PathParams["representation_id"] = representationId
+    }
+
+    var responseModel *model.ContentProtection
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/drm/{representation_id}/contentprotection", &contentProtection, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmContentprotectionApi) Delete(manifestId string, periodId string, adaptationsetId string, representationId string, contentprotectionId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -37,6 +50,20 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmConte
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/drm/{representation_id}/contentprotection/{contentprotection_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmContentprotectionApi) Get(manifestId string, periodId string, adaptationsetId string, representationId string, contentprotectionId string) (*model.ContentProtection, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+        params.PathParams["representation_id"] = representationId
+        params.PathParams["contentprotection_id"] = contentprotectionId
+    }
+
+    var responseModel *model.ContentProtection
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/drm/{representation_id}/contentprotection/{contentprotection_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -56,33 +83,6 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmConte
 
     var responseModel *pagination.ContentProtectionsListPagination
     err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/drm/{representation_id}/contentprotection", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmContentprotectionApi) Get(manifestId string, periodId string, adaptationsetId string, representationId string, contentprotectionId string) (*model.ContentProtection, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
-        params.PathParams["representation_id"] = representationId
-        params.PathParams["contentprotection_id"] = contentprotectionId
-    }
-
-    var responseModel *model.ContentProtection
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/drm/{representation_id}/contentprotection/{contentprotection_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4DrmContentprotectionApi) Create(manifestId string, periodId string, adaptationsetId string, representationId string, contentProtection model.ContentProtection) (*model.ContentProtection, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
-        params.PathParams["representation_id"] = representationId
-    }
-
-    var responseModel *model.ContentProtection
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/drm/{representation_id}/contentprotection", &contentProtection, &responseModel, reqParams)
     return responseModel, err
 }
 

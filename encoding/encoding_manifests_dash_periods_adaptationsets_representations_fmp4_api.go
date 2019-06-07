@@ -32,6 +32,31 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api(configs
 	return api, nil
 }
 
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Create(manifestId string, periodId string, adaptationsetId string, dashFmp4Representation model.DashFmp4Representation) (*model.DashFmp4Representation, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+    }
+
+    var responseModel *model.DashFmp4Representation
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4", &dashFmp4Representation, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Delete(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["period_id"] = periodId
+        params.PathParams["adaptationset_id"] = adaptationsetId
+        params.PathParams["representation_id"] = representationId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashFmp4Representation, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -60,31 +85,6 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Lis
 
     var responseModel *pagination.DashFmp4RepresentationsListPagination
     err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Delete(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
-        params.PathParams["representation_id"] = representationId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Create(manifestId string, periodId string, adaptationsetId string, dashFmp4Representation model.DashFmp4Representation) (*model.DashFmp4Representation, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["period_id"] = periodId
-        params.PathParams["adaptationset_id"] = adaptationsetId
-    }
-
-    var responseModel *model.DashFmp4Representation
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4", &dashFmp4Representation, &responseModel, reqParams)
     return responseModel, err
 }
 

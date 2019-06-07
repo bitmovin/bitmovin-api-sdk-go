@@ -35,13 +35,13 @@ func NewNotificationsApi(configs ...func(*common.ApiClient)) (*NotificationsApi,
 	return api, nil
 }
 
-func (api *NotificationsApi) Unmute(notificationId string) (*model.BitmovinResponse, error) {
+func (api *NotificationsApi) Delete(notificationId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["notification_id"] = notificationId
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/notifications/{notification_id}/unmute", &responseModel, reqParams)
+    err := api.apiClient.Delete("/notifications/{notification_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -52,6 +52,21 @@ func (api *NotificationsApi) Get(notificationId string) (*model.Notification, er
 
     var responseModel *model.Notification
     err := api.apiClient.Get("/notifications/{notification_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *NotificationsApi) List(queryParams ...func(*query.NotificationListQueryParams)) (*pagination.NotificationsListPagination, error) {
+    queryParameters := &query.NotificationListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.NotificationsListPagination
+    err := api.apiClient.Get("/notifications", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -81,28 +96,13 @@ func (api *NotificationsApi) Mute(notificationId string) (*model.BitmovinRespons
     return responseModel, err
 }
 
-func (api *NotificationsApi) Delete(notificationId string) (*model.BitmovinResponse, error) {
+func (api *NotificationsApi) Unmute(notificationId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["notification_id"] = notificationId
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/notifications/{notification_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *NotificationsApi) List(queryParams ...func(*query.NotificationListQueryParams)) (*pagination.NotificationsListPagination, error) {
-    queryParameters := &query.NotificationListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.NotificationsListPagination
-    err := api.apiClient.Get("/notifications", &responseModel, reqParams)
+    err := api.apiClient.Post("/notifications/{notification_id}/unmute", &responseModel, reqParams)
     return responseModel, err
 }
 

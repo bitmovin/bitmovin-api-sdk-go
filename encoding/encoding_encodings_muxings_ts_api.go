@@ -32,6 +32,16 @@ func NewEncodingEncodingsMuxingsTsApi(configs ...func(*common.ApiClient)) (*Enco
 	return api, nil
 }
 
+func (api *EncodingEncodingsMuxingsTsApi) Create(encodingId string, tsMuxing model.TsMuxing) (*model.TsMuxing, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.TsMuxing
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/ts", &tsMuxing, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsMuxingsTsApi) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -51,16 +61,6 @@ func (api *EncodingEncodingsMuxingsTsApi) Get(encodingId string, muxingId string
 
     var responseModel *model.TsMuxing
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsMuxingsTsApi) Create(encodingId string, tsMuxing model.TsMuxing) (*model.TsMuxing, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.TsMuxing
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/ts", &tsMuxing, &responseModel, reqParams)
     return responseModel, err
 }
 

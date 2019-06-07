@@ -29,6 +29,15 @@ func NewAnalyticsOutputsS3RoleBasedApi(configs ...func(*common.ApiClient)) (*Ana
 	return api, nil
 }
 
+func (api *AnalyticsOutputsS3RoleBasedApi) Create(s3RoleBasedOutput model.S3RoleBasedOutput) (*model.S3RoleBasedOutput, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.S3RoleBasedOutput
+    err := api.apiClient.Post("/analytics/outputs/s3-role-based", &s3RoleBasedOutput, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *AnalyticsOutputsS3RoleBasedApi) Delete(outputId string) (*model.S3RoleBasedOutput, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
@@ -36,6 +45,16 @@ func (api *AnalyticsOutputsS3RoleBasedApi) Delete(outputId string) (*model.S3Rol
 
     var responseModel *model.S3RoleBasedOutput
     err := api.apiClient.Delete("/analytics/outputs/s3-role-based/{output_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *AnalyticsOutputsS3RoleBasedApi) Get(outputId string) (*model.S3RoleBasedOutput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["output_id"] = outputId
+    }
+
+    var responseModel *model.S3RoleBasedOutput
+    err := api.apiClient.Get("/analytics/outputs/s3-role-based/{output_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -51,25 +70,6 @@ func (api *AnalyticsOutputsS3RoleBasedApi) List(queryParams ...func(*query.S3Rol
 
     var responseModel *pagination.S3RoleBasedOutputsListPagination
     err := api.apiClient.Get("/analytics/outputs/s3-role-based", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *AnalyticsOutputsS3RoleBasedApi) Get(outputId string) (*model.S3RoleBasedOutput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["output_id"] = outputId
-    }
-
-    var responseModel *model.S3RoleBasedOutput
-    err := api.apiClient.Get("/analytics/outputs/s3-role-based/{output_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *AnalyticsOutputsS3RoleBasedApi) Create(s3RoleBasedOutput model.S3RoleBasedOutput) (*model.S3RoleBasedOutput, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.S3RoleBasedOutput
-    err := api.apiClient.Post("/analytics/outputs/s3-role-based", &s3RoleBasedOutput, &responseModel, reqParams)
     return responseModel, err
 }
 

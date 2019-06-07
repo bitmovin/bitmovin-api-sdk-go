@@ -26,17 +26,6 @@ func NewAccountOrganizationsGroupsPermissionsApi(configs ...func(*common.ApiClie
 	return api, nil
 }
 
-func (api *AccountOrganizationsGroupsPermissionsApi) List(organizationId string, groupId string) (*pagination.AclsListPagination, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["organization_id"] = organizationId
-        params.PathParams["group_id"] = groupId
-    }
-
-    var responseModel *pagination.AclsListPagination
-    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/permissions", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *AccountOrganizationsGroupsPermissionsApi) Create(organizationId string, groupId string, acl model.Acl) (*model.Acl, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["organization_id"] = organizationId
@@ -57,6 +46,17 @@ func (api *AccountOrganizationsGroupsPermissionsApi) Delete(organizationId strin
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}/permissions/{permission_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *AccountOrganizationsGroupsPermissionsApi) List(organizationId string, groupId string) (*pagination.AclsListPagination, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["organization_id"] = organizationId
+        params.PathParams["group_id"] = groupId
+    }
+
+    var responseModel *pagination.AclsListPagination
+    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/permissions", &responseModel, reqParams)
     return responseModel, err
 }
 

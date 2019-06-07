@@ -63,19 +63,14 @@ func (api *EncodingEncodingsStreamsApi) Create(encodingId string, stream model.S
     return responseModel, err
 }
 
-func (api *EncodingEncodingsStreamsApi) List(encodingId string, queryParams ...func(*query.StreamListQueryParams)) (*pagination.StreamsListPagination, error) {
-    queryParameters := &query.StreamListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingEncodingsStreamsApi) Delete(encodingId string, streamId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
-        params.QueryParams = queryParameters
+        params.PathParams["stream_id"] = streamId
     }
 
-    var responseModel *pagination.StreamsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams", &responseModel, reqParams)
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -90,14 +85,19 @@ func (api *EncodingEncodingsStreamsApi) Get(encodingId string, streamId string) 
     return responseModel, err
 }
 
-func (api *EncodingEncodingsStreamsApi) Delete(encodingId string, streamId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["stream_id"] = streamId
+func (api *EncodingEncodingsStreamsApi) List(encodingId string, queryParams ...func(*query.StreamListQueryParams)) (*pagination.StreamsListPagination, error) {
+    queryParameters := &query.StreamListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
     }
 
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}", &responseModel, reqParams)
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.StreamsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams", &responseModel, reqParams)
     return responseModel, err
 }
 

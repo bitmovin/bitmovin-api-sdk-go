@@ -26,6 +26,16 @@ func NewEncodingManifestsHlsMediaSubtitlesApi(configs ...func(*common.ApiClient)
 	return api, nil
 }
 
+func (api *EncodingManifestsHlsMediaSubtitlesApi) Create(manifestId string, subtitlesMediaInfo model.SubtitlesMediaInfo) (*model.SubtitlesMediaInfo, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+    }
+
+    var responseModel *model.SubtitlesMediaInfo
+    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/subtitles", &subtitlesMediaInfo, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsHlsMediaSubtitlesApi) Delete(manifestId string, mediaId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -61,16 +71,6 @@ func (api *EncodingManifestsHlsMediaSubtitlesApi) List(manifestId string, queryP
 
     var responseModel *pagination.SubtitlesMediaInfosListPagination
     err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/subtitles", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsHlsMediaSubtitlesApi) Create(manifestId string, subtitlesMediaInfo model.SubtitlesMediaInfo) (*model.SubtitlesMediaInfo, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-    }
-
-    var responseModel *model.SubtitlesMediaInfo
-    err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/media/subtitles", &subtitlesMediaInfo, &responseModel, reqParams)
     return responseModel, err
 }
 

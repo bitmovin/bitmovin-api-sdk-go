@@ -26,22 +26,6 @@ func NewEncodingManifestsHlsMediaVttApi(configs ...func(*common.ApiClient)) (*En
 	return api, nil
 }
 
-func (api *EncodingManifestsHlsMediaVttApi) List(manifestId string, queryParams ...func(*query.VttMediaInfoListQueryParams)) (*pagination.VttMediaInfosListPagination, error) {
-    queryParameters := &query.VttMediaInfoListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.VttMediaInfosListPagination
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingManifestsHlsMediaVttApi) Create(manifestId string, vttMediaInfo model.VttMediaInfo) (*model.VttMediaInfo, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -71,6 +55,22 @@ func (api *EncodingManifestsHlsMediaVttApi) Get(manifestId string, mediaId strin
 
     var responseModel *model.VttMediaInfo
     err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt/{media_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsHlsMediaVttApi) List(manifestId string, queryParams ...func(*query.VttMediaInfoListQueryParams)) (*pagination.VttMediaInfosListPagination, error) {
+    queryParameters := &query.VttMediaInfoListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.VttMediaInfosListPagination
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt", &responseModel, reqParams)
     return responseModel, err
 }
 

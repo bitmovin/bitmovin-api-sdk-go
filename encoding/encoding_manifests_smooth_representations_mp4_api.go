@@ -26,6 +26,16 @@ func NewEncodingManifestsSmoothRepresentationsMp4Api(configs ...func(*common.Api
 	return api, nil
 }
 
+func (api *EncodingManifestsSmoothRepresentationsMp4Api) Create(manifestId string, smoothStreamingRepresentation model.SmoothStreamingRepresentation) (*model.SmoothStreamingRepresentation, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+    }
+
+    var responseModel *model.SmoothStreamingRepresentation
+    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/representations/mp4", &smoothStreamingRepresentation, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingManifestsSmoothRepresentationsMp4Api) Delete(manifestId string, representationId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["manifest_id"] = manifestId
@@ -34,6 +44,17 @@ func (api *EncodingManifestsSmoothRepresentationsMp4Api) Delete(manifestId strin
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/manifests/smooth/{manifest_id}/representations/mp4/{representation_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingManifestsSmoothRepresentationsMp4Api) Get(manifestId string, representationId string) (*model.SmoothStreamingRepresentation, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["manifest_id"] = manifestId
+        params.PathParams["representation_id"] = representationId
+    }
+
+    var responseModel *model.SmoothStreamingRepresentation
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/representations/mp4/{representation_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -50,27 +71,6 @@ func (api *EncodingManifestsSmoothRepresentationsMp4Api) List(manifestId string,
 
     var responseModel *pagination.SmoothStreamingRepresentationsListPagination
     err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/representations/mp4", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsSmoothRepresentationsMp4Api) Get(manifestId string, representationId string) (*model.SmoothStreamingRepresentation, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-        params.PathParams["representation_id"] = representationId
-    }
-
-    var responseModel *model.SmoothStreamingRepresentation
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/representations/mp4/{representation_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingManifestsSmoothRepresentationsMp4Api) Create(manifestId string, smoothStreamingRepresentation model.SmoothStreamingRepresentation) (*model.SmoothStreamingRepresentation, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["manifest_id"] = manifestId
-    }
-
-    var responseModel *model.SmoothStreamingRepresentation
-    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/representations/mp4", &smoothStreamingRepresentation, &responseModel, reqParams)
     return responseModel, err
 }
 

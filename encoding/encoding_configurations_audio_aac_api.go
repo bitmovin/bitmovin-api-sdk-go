@@ -29,18 +29,12 @@ func NewEncodingConfigurationsAudioAacApi(configs ...func(*common.ApiClient)) (*
 	return api, nil
 }
 
-func (api *EncodingConfigurationsAudioAacApi) List(queryParams ...func(*query.AacAudioConfigurationListQueryParams)) (*pagination.AacAudioConfigurationsListPagination, error) {
-    queryParameters := &query.AacAudioConfigurationListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingConfigurationsAudioAacApi) Create(aacAudioConfiguration model.AacAudioConfiguration) (*model.AacAudioConfiguration, error) {
     reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
     }
 
-    var responseModel *pagination.AacAudioConfigurationsListPagination
-    err := api.apiClient.Get("/encoding/configurations/audio/aac", &responseModel, reqParams)
+    var responseModel *model.AacAudioConfiguration
+    err := api.apiClient.Post("/encoding/configurations/audio/aac", &aacAudioConfiguration, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,15 +48,6 @@ func (api *EncodingConfigurationsAudioAacApi) Delete(configurationId string) (*m
     return responseModel, err
 }
 
-func (api *EncodingConfigurationsAudioAacApi) Create(aacAudioConfiguration model.AacAudioConfiguration) (*model.AacAudioConfiguration, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.AacAudioConfiguration
-    err := api.apiClient.Post("/encoding/configurations/audio/aac", &aacAudioConfiguration, &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingConfigurationsAudioAacApi) Get(configurationId string) (*model.AacAudioConfiguration, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["configuration_id"] = configurationId
@@ -70,6 +55,21 @@ func (api *EncodingConfigurationsAudioAacApi) Get(configurationId string) (*mode
 
     var responseModel *model.AacAudioConfiguration
     err := api.apiClient.Get("/encoding/configurations/audio/aac/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingConfigurationsAudioAacApi) List(queryParams ...func(*query.AacAudioConfigurationListQueryParams)) (*pagination.AacAudioConfigurationsListPagination, error) {
+    queryParameters := &query.AacAudioConfigurationListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.AacAudioConfigurationsListPagination
+    err := api.apiClient.Get("/encoding/configurations/audio/aac", &responseModel, reqParams)
     return responseModel, err
 }
 

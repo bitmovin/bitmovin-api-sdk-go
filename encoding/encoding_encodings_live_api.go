@@ -25,6 +25,26 @@ func NewEncodingEncodingsLiveApi(configs ...func(*common.ApiClient)) (*EncodingE
 	return api, nil
 }
 
+func (api *EncodingEncodingsLiveApi) Get(encodingId string) (*model.LiveEncoding, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.LiveEncoding
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/live", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsLiveApi) GetStartRequest(encodingId string) (*model.StartLiveEncodingRequest, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.StartLiveEncodingRequest
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/live/start", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsLiveApi) Restart(encodingId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -52,26 +72,6 @@ func (api *EncodingEncodingsLiveApi) Stop(encodingId string) (*model.BitmovinRes
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Post("/encoding/encodings/{encoding_id}/live/stop", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsLiveApi) Get(encodingId string) (*model.LiveEncoding, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.LiveEncoding
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/live", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsLiveApi) GetStartRequest(encodingId string) (*model.StartLiveEncodingRequest, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.StartLiveEncodingRequest
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/live/start", &responseModel, reqParams)
     return responseModel, err
 }
 

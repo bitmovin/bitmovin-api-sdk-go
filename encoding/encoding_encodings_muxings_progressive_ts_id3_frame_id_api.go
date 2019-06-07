@@ -29,6 +29,29 @@ func NewEncodingEncodingsMuxingsProgressiveTsId3FrameIdApi(configs ...func(*comm
 	return api, nil
 }
 
+func (api *EncodingEncodingsMuxingsProgressiveTsId3FrameIdApi) Create(encodingId string, muxingId string, frameIdId3Tag model.FrameIdId3Tag) (*model.FrameIdId3Tag, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+    }
+
+    var responseModel *model.FrameIdId3Tag
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id", &frameIdId3Tag, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsMuxingsProgressiveTsId3FrameIdApi) Delete(encodingId string, muxingId string, id3TagId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+        params.PathParams["id3_tag_id"] = id3TagId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id/{id3_tag_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsMuxingsProgressiveTsId3FrameIdApi) Get(encodingId string, muxingId string, id3TagId string) (*model.FrameIdId3Tag, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -55,29 +78,6 @@ func (api *EncodingEncodingsMuxingsProgressiveTsId3FrameIdApi) List(encodingId s
 
     var responseModel *pagination.FrameIdId3TagsListPagination
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsMuxingsProgressiveTsId3FrameIdApi) Delete(encodingId string, muxingId string, id3TagId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-        params.PathParams["id3_tag_id"] = id3TagId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id/{id3_tag_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsMuxingsProgressiveTsId3FrameIdApi) Create(encodingId string, muxingId string, frameIdId3Tag model.FrameIdId3Tag) (*model.FrameIdId3Tag, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-    }
-
-    var responseModel *model.FrameIdId3Tag
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/frame-id", &frameIdId3Tag, &responseModel, reqParams)
     return responseModel, err
 }
 

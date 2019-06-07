@@ -38,18 +38,13 @@ func (api *EncodingFiltersAudioVolumeApi) Create(audioVolumeFilter model.AudioVo
     return responseModel, err
 }
 
-func (api *EncodingFiltersAudioVolumeApi) List(queryParams ...func(*query.AudioVolumeFilterListQueryParams)) (*pagination.AudioVolumeFiltersListPagination, error) {
-    queryParameters := &query.AudioVolumeFilterListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingFiltersAudioVolumeApi) Delete(filterId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
+        params.PathParams["filter_id"] = filterId
     }
 
-    var responseModel *pagination.AudioVolumeFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/audio-volume", &responseModel, reqParams)
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/audio-volume/{filter_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -63,13 +58,18 @@ func (api *EncodingFiltersAudioVolumeApi) Get(filterId string) (*model.AudioVolu
     return responseModel, err
 }
 
-func (api *EncodingFiltersAudioVolumeApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["filter_id"] = filterId
+func (api *EncodingFiltersAudioVolumeApi) List(queryParams ...func(*query.AudioVolumeFilterListQueryParams)) (*pagination.AudioVolumeFiltersListPagination, error) {
+    queryParameters := &query.AudioVolumeFilterListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
     }
 
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/audio-volume/{filter_id}", &responseModel, reqParams)
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.AudioVolumeFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/audio-volume", &responseModel, reqParams)
     return responseModel, err
 }
 

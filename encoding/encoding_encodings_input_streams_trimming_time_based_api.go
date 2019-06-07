@@ -47,6 +47,17 @@ func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedApi) Delete(encodingId 
     return responseModel, err
 }
 
+func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedApi) Get(encodingId string, inputStreamId string) (*model.TimeBasedTrimmingInputStream, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["input_stream_id"] = inputStreamId
+    }
+
+    var responseModel *model.TimeBasedTrimmingInputStream
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/time-based/{input_stream_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedApi) List(encodingId string, queryParams ...func(*query.TimeBasedTrimmingInputStreamListQueryParams)) (*pagination.TimeBasedTrimmingInputStreamsListPagination, error) {
     queryParameters := &query.TimeBasedTrimmingInputStreamListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -60,17 +71,6 @@ func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedApi) List(encodingId st
 
     var responseModel *pagination.TimeBasedTrimmingInputStreamsListPagination
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/time-based", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedApi) Get(encodingId string, inputStreamId string) (*model.TimeBasedTrimmingInputStream, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["input_stream_id"] = inputStreamId
-    }
-
-    var responseModel *model.TimeBasedTrimmingInputStream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/time-based/{input_stream_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

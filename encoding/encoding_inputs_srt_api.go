@@ -29,13 +29,12 @@ func NewEncodingInputsSrtApi(configs ...func(*common.ApiClient)) (*EncodingInput
 	return api, nil
 }
 
-func (api *EncodingInputsSrtApi) Get(inputId string) (*model.SrtInput, error) {
+func (api *EncodingInputsSrtApi) Create(srtInput model.SrtInput) (*model.SrtInput, error) {
     reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
     }
 
     var responseModel *model.SrtInput
-    err := api.apiClient.Get("/encoding/inputs/srt/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/inputs/srt", &srtInput, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -49,12 +48,13 @@ func (api *EncodingInputsSrtApi) Delete(inputId string) (*model.SrtInput, error)
     return responseModel, err
 }
 
-func (api *EncodingInputsSrtApi) Create(srtInput model.SrtInput) (*model.SrtInput, error) {
+func (api *EncodingInputsSrtApi) Get(inputId string) (*model.SrtInput, error) {
     reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
     }
 
     var responseModel *model.SrtInput
-    err := api.apiClient.Post("/encoding/inputs/srt", &srtInput, &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/srt/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

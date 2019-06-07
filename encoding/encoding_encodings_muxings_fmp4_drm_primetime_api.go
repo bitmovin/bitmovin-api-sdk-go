@@ -40,18 +40,6 @@ func (api *EncodingEncodingsMuxingsFmp4DrmPrimetimeApi) Create(encodingId string
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsFmp4DrmPrimetimeApi) Get(encodingId string, muxingId string, drmId string) (*model.PrimeTimeDrm, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-        params.PathParams["drm_id"] = drmId
-    }
-
-    var responseModel *model.PrimeTimeDrm
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/primetime/{drm_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsMuxingsFmp4DrmPrimetimeApi) Delete(encodingId string, muxingId string, drmId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -61,6 +49,18 @@ func (api *EncodingEncodingsMuxingsFmp4DrmPrimetimeApi) Delete(encodingId string
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/primetime/{drm_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsMuxingsFmp4DrmPrimetimeApi) Get(encodingId string, muxingId string, drmId string) (*model.PrimeTimeDrm, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+        params.PathParams["drm_id"] = drmId
+    }
+
+    var responseModel *model.PrimeTimeDrm
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/primetime/{drm_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

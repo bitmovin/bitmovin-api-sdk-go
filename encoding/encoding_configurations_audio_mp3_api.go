@@ -29,13 +29,12 @@ func NewEncodingConfigurationsAudioMp3Api(configs ...func(*common.ApiClient)) (*
 	return api, nil
 }
 
-func (api *EncodingConfigurationsAudioMp3Api) Get(configurationId string) (*model.Mp3AudioConfiguration, error) {
+func (api *EncodingConfigurationsAudioMp3Api) Create(mp3AudioConfiguration model.Mp3AudioConfiguration) (*model.Mp3AudioConfiguration, error) {
     reqParams := func(params *common.RequestParams) {
-        params.PathParams["configuration_id"] = configurationId
     }
 
     var responseModel *model.Mp3AudioConfiguration
-    err := api.apiClient.Get("/encoding/configurations/audio/mp3/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/configurations/audio/mp3", &mp3AudioConfiguration, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -46,6 +45,16 @@ func (api *EncodingConfigurationsAudioMp3Api) Delete(configurationId string) (*m
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/configurations/audio/mp3/{configuration_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingConfigurationsAudioMp3Api) Get(configurationId string) (*model.Mp3AudioConfiguration, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["configuration_id"] = configurationId
+    }
+
+    var responseModel *model.Mp3AudioConfiguration
+    err := api.apiClient.Get("/encoding/configurations/audio/mp3/{configuration_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -61,15 +70,6 @@ func (api *EncodingConfigurationsAudioMp3Api) List(queryParams ...func(*query.Mp
 
     var responseModel *pagination.Mp3AudioConfigurationsListPagination
     err := api.apiClient.Get("/encoding/configurations/audio/mp3", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingConfigurationsAudioMp3Api) Create(mp3AudioConfiguration model.Mp3AudioConfiguration) (*model.Mp3AudioConfiguration, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.Mp3AudioConfiguration
-    err := api.apiClient.Post("/encoding/configurations/audio/mp3", &mp3AudioConfiguration, &responseModel, reqParams)
     return responseModel, err
 }
 

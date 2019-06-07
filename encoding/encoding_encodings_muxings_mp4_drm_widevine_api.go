@@ -29,23 +29,6 @@ func NewEncodingEncodingsMuxingsMp4DrmWidevineApi(configs ...func(*common.ApiCli
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsMp4DrmWidevineApi) List(encodingId string, muxingId string, queryParams ...func(*query.WidevineDrmListQueryParams)) (*pagination.WidevineDrmsListPagination, error) {
-    queryParameters := &query.WidevineDrmListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.WidevineDrmsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/widevine", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsMuxingsMp4DrmWidevineApi) Create(encodingId string, muxingId string, widevineDrm model.WidevineDrm) (*model.WidevineDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -78,6 +61,23 @@ func (api *EncodingEncodingsMuxingsMp4DrmWidevineApi) Get(encodingId string, mux
 
     var responseModel *model.WidevineDrm
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/widevine/{drm_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsMuxingsMp4DrmWidevineApi) List(encodingId string, muxingId string, queryParams ...func(*query.WidevineDrmListQueryParams)) (*pagination.WidevineDrmsListPagination, error) {
+    queryParameters := &query.WidevineDrmListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.WidevineDrmsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/widevine", &responseModel, reqParams)
     return responseModel, err
 }
 

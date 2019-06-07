@@ -38,16 +38,6 @@ func (api *EncodingInputsUdpMulticastApi) Create(udpMulticastInput model.UdpMult
     return responseModel, err
 }
 
-func (api *EncodingInputsUdpMulticastApi) Get(inputId string) (*model.UdpMulticastInput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.UdpMulticastInput
-    err := api.apiClient.Get("/encoding/inputs/udp-multicast/{input_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingInputsUdpMulticastApi) Delete(inputId string) (*model.UdpMulticastInput, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["input_id"] = inputId
@@ -55,6 +45,16 @@ func (api *EncodingInputsUdpMulticastApi) Delete(inputId string) (*model.UdpMult
 
     var responseModel *model.UdpMulticastInput
     err := api.apiClient.Delete("/encoding/inputs/udp-multicast/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingInputsUdpMulticastApi) Get(inputId string) (*model.UdpMulticastInput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+    }
+
+    var responseModel *model.UdpMulticastInput
+    err := api.apiClient.Get("/encoding/inputs/udp-multicast/{input_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

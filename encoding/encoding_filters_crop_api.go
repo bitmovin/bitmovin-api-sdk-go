@@ -38,18 +38,13 @@ func (api *EncodingFiltersCropApi) Create(cropFilter model.CropFilter) (*model.C
     return responseModel, err
 }
 
-func (api *EncodingFiltersCropApi) List(queryParams ...func(*query.CropFilterListQueryParams)) (*pagination.CropFiltersListPagination, error) {
-    queryParameters := &query.CropFilterListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingFiltersCropApi) Delete(filterId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
+        params.PathParams["filter_id"] = filterId
     }
 
-    var responseModel *pagination.CropFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/crop", &responseModel, reqParams)
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/encoding/filters/crop/{filter_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -63,13 +58,18 @@ func (api *EncodingFiltersCropApi) Get(filterId string) (*model.CropFilter, erro
     return responseModel, err
 }
 
-func (api *EncodingFiltersCropApi) Delete(filterId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["filter_id"] = filterId
+func (api *EncodingFiltersCropApi) List(queryParams ...func(*query.CropFilterListQueryParams)) (*pagination.CropFiltersListPagination, error) {
+    queryParameters := &query.CropFilterListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
     }
 
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/crop/{filter_id}", &responseModel, reqParams)
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.CropFiltersListPagination
+    err := api.apiClient.Get("/encoding/filters/crop", &responseModel, reqParams)
     return responseModel, err
 }
 

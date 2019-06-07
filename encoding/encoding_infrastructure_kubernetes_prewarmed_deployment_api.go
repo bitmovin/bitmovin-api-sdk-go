@@ -26,22 +26,6 @@ func NewEncodingInfrastructureKubernetesPrewarmedDeploymentApi(configs ...func(*
 	return api, nil
 }
 
-func (api *EncodingInfrastructureKubernetesPrewarmedDeploymentApi) List(infrastructureId string, queryParams ...func(*query.PrewarmEncoderSettingsListQueryParams)) (*pagination.PrewarmEncoderSettingssListPagination, error) {
-    queryParameters := &query.PrewarmEncoderSettingsListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["infrastructure_id"] = infrastructureId
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.PrewarmEncoderSettingssListPagination
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingInfrastructureKubernetesPrewarmedDeploymentApi) Create(infrastructureId string, prewarmEncoderSettings model.PrewarmEncoderSettings) (*model.PrewarmEncoderSettings, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["infrastructure_id"] = infrastructureId
@@ -71,6 +55,22 @@ func (api *EncodingInfrastructureKubernetesPrewarmedDeploymentApi) Get(infrastru
 
     var responseModel *model.PrewarmEncoderSettings
     err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment/{deployment_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingInfrastructureKubernetesPrewarmedDeploymentApi) List(infrastructureId string, queryParams ...func(*query.PrewarmEncoderSettingsListQueryParams)) (*pagination.PrewarmEncoderSettingssListPagination, error) {
+    queryParameters := &query.PrewarmEncoderSettingsListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["infrastructure_id"] = infrastructureId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.PrewarmEncoderSettingssListPagination
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment", &responseModel, reqParams)
     return responseModel, err
 }
 

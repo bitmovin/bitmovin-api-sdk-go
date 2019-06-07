@@ -26,6 +26,16 @@ func NewEncodingEncodingsKeyframesApi(configs ...func(*common.ApiClient)) (*Enco
 	return api, nil
 }
 
+func (api *EncodingEncodingsKeyframesApi) Create(encodingId string, keyframe model.Keyframe) (*model.Keyframe, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.Keyframe
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/keyframes", &keyframe, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsKeyframesApi) Delete(encodingId string, keyframeId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -34,16 +44,6 @@ func (api *EncodingEncodingsKeyframesApi) Delete(encodingId string, keyframeId s
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/keyframes/{keyframe_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsKeyframesApi) Create(encodingId string, keyframe model.Keyframe) (*model.Keyframe, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.Keyframe
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/keyframes", &keyframe, &responseModel, reqParams)
     return responseModel, err
 }
 

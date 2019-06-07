@@ -36,17 +36,6 @@ func (api *EncodingEncodingsInputStreamsAudioMixApi) Create(encodingId string, a
     return responseModel, err
 }
 
-func (api *EncodingEncodingsInputStreamsAudioMixApi) Get(encodingId string, inputStreamId string) (*model.AudioMixInputStream, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["input_stream_id"] = inputStreamId
-    }
-
-    var responseModel *model.AudioMixInputStream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsInputStreamsAudioMixApi) Delete(encodingId string, inputStreamId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -55,6 +44,17 @@ func (api *EncodingEncodingsInputStreamsAudioMixApi) Delete(encodingId string, i
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsInputStreamsAudioMixApi) Get(encodingId string, inputStreamId string) (*model.AudioMixInputStream, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["input_stream_id"] = inputStreamId
+    }
+
+    var responseModel *model.AudioMixInputStream
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

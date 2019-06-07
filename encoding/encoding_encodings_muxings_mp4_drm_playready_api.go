@@ -29,23 +29,6 @@ func NewEncodingEncodingsMuxingsMp4DrmPlayreadyApi(configs ...func(*common.ApiCl
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsMp4DrmPlayreadyApi) List(encodingId string, muxingId string, queryParams ...func(*query.PlayReadyDrmListQueryParams)) (*pagination.PlayReadyDrmsListPagination, error) {
-    queryParameters := &query.PlayReadyDrmListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.PlayReadyDrmsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/playready", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsMuxingsMp4DrmPlayreadyApi) Create(encodingId string, muxingId string, playReadyDrm model.PlayReadyDrm) (*model.PlayReadyDrm, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -78,6 +61,23 @@ func (api *EncodingEncodingsMuxingsMp4DrmPlayreadyApi) Get(encodingId string, mu
 
     var responseModel *model.PlayReadyDrm
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/playready/{drm_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsMuxingsMp4DrmPlayreadyApi) List(encodingId string, muxingId string, queryParams ...func(*query.PlayReadyDrmListQueryParams)) (*pagination.PlayReadyDrmsListPagination, error) {
+    queryParameters := &query.PlayReadyDrmListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.PlayReadyDrmsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/playready", &responseModel, reqParams)
     return responseModel, err
 }
 

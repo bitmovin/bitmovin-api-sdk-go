@@ -26,31 +26,6 @@ func NewEncodingInputsRedundantRtmpApi(configs ...func(*common.ApiClient)) (*Enc
 	return api, nil
 }
 
-func (api *EncodingInputsRedundantRtmpApi) List(queryParams ...func(*query.RedundantRtmpInputListQueryParams)) (*pagination.RedundantRtmpInputsListPagination, error) {
-    queryParameters := &query.RedundantRtmpInputListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.RedundantRtmpInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingInputsRedundantRtmpApi) Get(inputId string) (*model.RedundantRtmpInput, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["input_id"] = inputId
-    }
-
-    var responseModel *model.RedundantRtmpInput
-    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp/{input_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingInputsRedundantRtmpApi) Create(redundantRtmpInput model.RedundantRtmpInput) (*model.RedundantRtmpInput, error) {
     reqParams := func(params *common.RequestParams) {
     }
@@ -67,6 +42,31 @@ func (api *EncodingInputsRedundantRtmpApi) Delete(inputId string) (*model.Bitmov
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/inputs/redundant-rtmp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingInputsRedundantRtmpApi) Get(inputId string) (*model.RedundantRtmpInput, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["input_id"] = inputId
+    }
+
+    var responseModel *model.RedundantRtmpInput
+    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp/{input_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingInputsRedundantRtmpApi) List(queryParams ...func(*query.RedundantRtmpInputListQueryParams)) (*pagination.RedundantRtmpInputsListPagination, error) {
+    queryParameters := &query.RedundantRtmpInputListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.RedundantRtmpInputsListPagination
+    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp", &responseModel, reqParams)
     return responseModel, err
 }
 

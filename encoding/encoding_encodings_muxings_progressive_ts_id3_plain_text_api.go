@@ -29,20 +29,14 @@ func NewEncodingEncodingsMuxingsProgressiveTsId3PlainTextApi(configs ...func(*co
 	return api, nil
 }
 
-func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextApi) List(encodingId string, muxingId string, queryParams ...func(*query.PlaintextId3TagListQueryParams)) (*pagination.PlaintextId3TagsListPagination, error) {
-    queryParameters := &query.PlaintextId3TagListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
+func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextApi) Create(encodingId string, muxingId string, plaintextId3Tag model.PlaintextId3Tag) (*model.PlaintextId3Tag, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["muxing_id"] = muxingId
-        params.QueryParams = queryParameters
     }
 
-    var responseModel *pagination.PlaintextId3TagsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/plain-text", &responseModel, reqParams)
+    var responseModel *model.PlaintextId3Tag
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/plain-text", &plaintextId3Tag, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -58,17 +52,6 @@ func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextApi) Delete(encoding
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextApi) Create(encodingId string, muxingId string, plaintextId3Tag model.PlaintextId3Tag) (*model.PlaintextId3Tag, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["muxing_id"] = muxingId
-    }
-
-    var responseModel *model.PlaintextId3Tag
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/plain-text", &plaintextId3Tag, &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextApi) Get(encodingId string, muxingId string, id3TagId string) (*model.PlaintextId3Tag, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -78,6 +61,23 @@ func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextApi) Get(encodingId 
 
     var responseModel *model.PlaintextId3Tag
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/plain-text/{id3_tag_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextApi) List(encodingId string, muxingId string, queryParams ...func(*query.PlaintextId3TagListQueryParams)) (*pagination.PlaintextId3TagsListPagination, error) {
+    queryParameters := &query.PlaintextId3TagListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.PlaintextId3TagsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/plain-text", &responseModel, reqParams)
     return responseModel, err
 }
 

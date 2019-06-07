@@ -26,6 +26,21 @@ func NewEncodingStatisticsEncodingsVodApi(configs ...func(*common.ApiClient)) (*
 	return api, nil
 }
 
+func (api *EncodingStatisticsEncodingsVodApi) List(queryParams ...func(*query.EncodingStatisticsVodListQueryParams)) (*pagination.EncodingStatisticsVodsListPagination, error) {
+    queryParameters := &query.EncodingStatisticsVodListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.EncodingStatisticsVodsListPagination
+    err := api.apiClient.Get("/encoding/statistics/encodings/vod", &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingStatisticsEncodingsVodApi) ListByDateRange(from time.Time, to time.Time, queryParams ...func(*query.EncodingStatisticsVodListByDateRangeQueryParams)) (*pagination.EncodingStatisticsVodsListByDateRangePagination, error) {
     queryParameters := &query.EncodingStatisticsVodListByDateRangeQueryParams{}
 	for _, queryParam := range queryParams {
@@ -40,21 +55,6 @@ func (api *EncodingStatisticsEncodingsVodApi) ListByDateRange(from time.Time, to
 
     var responseModel *pagination.EncodingStatisticsVodsListByDateRangePagination
     err := api.apiClient.Get("/encoding/statistics/encodings/vod/{from}/{to}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingStatisticsEncodingsVodApi) List(queryParams ...func(*query.EncodingStatisticsVodListQueryParams)) (*pagination.EncodingStatisticsVodsListPagination, error) {
-    queryParameters := &query.EncodingStatisticsVodListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.EncodingStatisticsVodsListPagination
-    err := api.apiClient.Get("/encoding/statistics/encodings/vod", &responseModel, reqParams)
     return responseModel, err
 }
 

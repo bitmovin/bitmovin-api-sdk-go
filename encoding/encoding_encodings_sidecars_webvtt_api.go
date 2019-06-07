@@ -25,17 +25,6 @@ func NewEncodingEncodingsSidecarsWebvttApi(configs ...func(*common.ApiClient)) (
 	return api, nil
 }
 
-func (api *EncodingEncodingsSidecarsWebvttApi) Get(encodingId string, sidecarId string) (*model.WebVttSidecarFile, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["sidecar_id"] = sidecarId
-    }
-
-    var responseModel *model.WebVttSidecarFile
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsSidecarsWebvttApi) Create(encodingId string, webVttSidecarFile model.WebVttSidecarFile) (*model.WebVttSidecarFile, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -54,6 +43,17 @@ func (api *EncodingEncodingsSidecarsWebvttApi) Delete(encodingId string, sidecar
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsSidecarsWebvttApi) Get(encodingId string, sidecarId string) (*model.WebVttSidecarFile, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["sidecar_id"] = sidecarId
+    }
+
+    var responseModel *model.WebVttSidecarFile
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

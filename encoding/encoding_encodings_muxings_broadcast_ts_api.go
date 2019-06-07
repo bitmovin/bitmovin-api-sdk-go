@@ -42,22 +42,6 @@ func (api *EncodingEncodingsMuxingsBroadcastTsApi) Create(encodingId string, bro
     return responseModel, err
 }
 
-func (api *EncodingEncodingsMuxingsBroadcastTsApi) List(encodingId string, queryParams ...func(*query.BroadcastTsMuxingListQueryParams)) (*pagination.BroadcastTsMuxingsListPagination, error) {
-    queryParameters := &query.BroadcastTsMuxingListQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-    }
-
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.QueryParams = queryParameters
-    }
-
-    var responseModel *pagination.BroadcastTsMuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts", &responseModel, reqParams)
-    return responseModel, err
-}
-
 func (api *EncodingEncodingsMuxingsBroadcastTsApi) Delete(encodingId string, muxingId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -77,6 +61,22 @@ func (api *EncodingEncodingsMuxingsBroadcastTsApi) Get(encodingId string, muxing
 
     var responseModel *model.BroadcastTsMuxing
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsMuxingsBroadcastTsApi) List(encodingId string, queryParams ...func(*query.BroadcastTsMuxingListQueryParams)) (*pagination.BroadcastTsMuxingsListPagination, error) {
+    queryParameters := &query.BroadcastTsMuxingListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+    }
+
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.QueryParams = queryParameters
+    }
+
+    var responseModel *pagination.BroadcastTsMuxingsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts", &responseModel, reqParams)
     return responseModel, err
 }
 

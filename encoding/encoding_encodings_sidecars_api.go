@@ -32,6 +32,16 @@ func NewEncodingEncodingsSidecarsApi(configs ...func(*common.ApiClient)) (*Encod
 	return api, nil
 }
 
+func (api *EncodingEncodingsSidecarsApi) Create(encodingId string, sidecarFile model.SidecarFile) (*model.SidecarFile, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+    }
+
+    var responseModel *model.SidecarFile
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/sidecars", &sidecarFile, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingEncodingsSidecarsApi) Delete(encodingId string, sidecarId string) (*model.BitmovinResponse, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
@@ -40,6 +50,17 @@ func (api *EncodingEncodingsSidecarsApi) Delete(encodingId string, sidecarId str
 
     var responseModel *model.BitmovinResponse
     err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/sidecars/{sidecar_id}", &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *EncodingEncodingsSidecarsApi) Get(encodingId string, sidecarId string) (*model.SidecarFile, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["sidecar_id"] = sidecarId
+    }
+
+    var responseModel *model.SidecarFile
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/{sidecar_id}", &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -56,27 +77,6 @@ func (api *EncodingEncodingsSidecarsApi) List(encodingId string, queryParams ...
 
     var responseModel *pagination.SidecarFilesListPagination
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsSidecarsApi) Create(encodingId string, sidecarFile model.SidecarFile) (*model.SidecarFile, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-    }
-
-    var responseModel *model.SidecarFile
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/sidecars", &sidecarFile, &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingEncodingsSidecarsApi) Get(encodingId string, sidecarId string) (*model.SidecarFile, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["encoding_id"] = encodingId
-        params.PathParams["sidecar_id"] = sidecarId
-    }
-
-    var responseModel *model.SidecarFile
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/{sidecar_id}", &responseModel, reqParams)
     return responseModel, err
 }
 

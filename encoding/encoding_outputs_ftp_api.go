@@ -29,6 +29,15 @@ func NewEncodingOutputsFtpApi(configs ...func(*common.ApiClient)) (*EncodingOutp
 	return api, nil
 }
 
+func (api *EncodingOutputsFtpApi) Create(ftpOutput model.FtpOutput) (*model.FtpOutput, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.FtpOutput
+    err := api.apiClient.Post("/encoding/outputs/ftp", &ftpOutput, &responseModel, reqParams)
+    return responseModel, err
+}
+
 func (api *EncodingOutputsFtpApi) Delete(outputId string) (*model.FtpOutput, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["output_id"] = outputId
@@ -46,15 +55,6 @@ func (api *EncodingOutputsFtpApi) Get(outputId string) (*model.FtpOutput, error)
 
     var responseModel *model.FtpOutput
     err := api.apiClient.Get("/encoding/outputs/ftp/{output_id}", &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *EncodingOutputsFtpApi) Create(ftpOutput model.FtpOutput) (*model.FtpOutput, error) {
-    reqParams := func(params *common.RequestParams) {
-    }
-
-    var responseModel *model.FtpOutput
-    err := api.apiClient.Post("/encoding/outputs/ftp", &ftpOutput, &responseModel, reqParams)
     return responseModel, err
 }
 
