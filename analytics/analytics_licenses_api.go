@@ -44,7 +44,7 @@ func (api *AnalyticsLicensesApi) Get(licenseId string) (*model.AnalyticsLicense,
     }
 
     var responseModel *model.AnalyticsLicense
-    err := api.apiClient.Get("/analytics/licenses/{license_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/analytics/licenses/{license_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -53,7 +53,7 @@ func (api *AnalyticsLicensesApi) List() (*pagination.AnalyticsLicensesListPagina
     }
 
     var responseModel *pagination.AnalyticsLicensesListPagination
-    err := api.apiClient.Get("/analytics/licenses", &responseModel, reqParams)
+    err := api.apiClient.Get("/analytics/licenses", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -44,7 +44,7 @@ func (api *EncodingConfigurationsVideoH265Api) Delete(configurationId string) (*
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/configurations/video/h265/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/configurations/video/h265/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingConfigurationsVideoH265Api) Get(configurationId string) (*mod
     }
 
     var responseModel *model.H265VideoConfiguration
-    err := api.apiClient.Get("/encoding/configurations/video/h265/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/video/h265/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingConfigurationsVideoH265Api) List(queryParams ...func(*query.H
     }
 
     var responseModel *pagination.H265VideoConfigurationsListPagination
-    err := api.apiClient.Get("/encoding/configurations/video/h265", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/video/h265", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

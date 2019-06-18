@@ -43,7 +43,7 @@ func (api *EncodingConfigurationsAudioMp2Api) Delete(configurationId string) (*m
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/configurations/audio/mp2/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/configurations/audio/mp2/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioMp2Api) Get(configurationId string) (*mode
     }
 
     var responseModel *model.Mp2AudioConfiguration
-    err := api.apiClient.Get("/encoding/configurations/audio/mp2/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/mp2/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

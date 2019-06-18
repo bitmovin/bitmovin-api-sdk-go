@@ -49,7 +49,7 @@ func (api *EncodingEncodingsMuxingsTsApi) Delete(encodingId string, muxingId str
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMuxingsTsApi) Get(encodingId string, muxingId string
     }
 
     var responseModel *model.TsMuxing
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingEncodingsMuxingsTsApi) List(encodingId string, queryParams ..
     }
 
     var responseModel *pagination.TsMuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

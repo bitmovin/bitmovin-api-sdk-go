@@ -56,7 +56,7 @@ func (api *EncodingInfrastructureKubernetesApi) Delete(infrastructureId string) 
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/infrastructure/kubernetes/{infrastructure_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/infrastructure/kubernetes/{infrastructure_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -66,7 +66,7 @@ func (api *EncodingInfrastructureKubernetesApi) Get(infrastructureId string) (*m
     }
 
     var responseModel *model.KubernetesCluster
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -81,7 +81,7 @@ func (api *EncodingInfrastructureKubernetesApi) List(queryParams ...func(*query.
     }
 
     var responseModel *pagination.KubernetesClustersListPagination
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

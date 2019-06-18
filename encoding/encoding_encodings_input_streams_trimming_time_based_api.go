@@ -43,7 +43,7 @@ func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedApi) Delete(encodingId 
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/trimming/time-based/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/trimming/time-based/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedApi) Get(encodingId str
     }
 
     var responseModel *model.TimeBasedTrimmingInputStream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/time-based/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/time-based/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedApi) List(encodingId st
     }
 
     var responseModel *pagination.TimeBasedTrimmingInputStreamsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/time-based", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/time-based", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

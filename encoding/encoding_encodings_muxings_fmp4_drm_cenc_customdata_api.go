@@ -33,7 +33,7 @@ func (api *EncodingEncodingsMuxingsFmp4DrmCencCustomdataApi) Get(encodingId stri
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/cenc/{drm_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/cenc/{drm_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

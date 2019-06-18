@@ -31,7 +31,7 @@ func (api *EncodingManifestsTypeApi) Get(manifestId string) (*model.ManifestType
     }
 
     var responseModel *model.ManifestTypeResponse
-    err := api.apiClient.Get("/encoding/manifests/{manifest_id}/type", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/{manifest_id}/type", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

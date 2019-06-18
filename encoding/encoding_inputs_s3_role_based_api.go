@@ -44,7 +44,7 @@ func (api *EncodingInputsS3RoleBasedApi) Delete(inputId string) (*model.S3RoleBa
     }
 
     var responseModel *model.S3RoleBasedInput
-    err := api.apiClient.Delete("/encoding/inputs/s3-role-based/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/s3-role-based/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsS3RoleBasedApi) Get(inputId string) (*model.S3RoleBased
     }
 
     var responseModel *model.S3RoleBasedInput
-    err := api.apiClient.Get("/encoding/inputs/s3-role-based/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/s3-role-based/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsS3RoleBasedApi) List(queryParams ...func(*query.S3RoleB
     }
 
     var responseModel *pagination.S3RoleBasedInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/s3-role-based", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/s3-role-based", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

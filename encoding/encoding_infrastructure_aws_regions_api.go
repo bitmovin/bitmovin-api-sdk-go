@@ -44,7 +44,7 @@ func (api *EncodingInfrastructureAwsRegionsApi) Delete(infrastructureId string, 
     }
 
     var responseModel *model.AwsAccountRegionSettings
-    err := api.apiClient.Delete("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -55,7 +55,7 @@ func (api *EncodingInfrastructureAwsRegionsApi) Get(infrastructureId string, reg
     }
 
     var responseModel *model.AwsAccountRegionSettings
-    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}/regions/{region}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -71,7 +71,7 @@ func (api *EncodingInfrastructureAwsRegionsApi) List(infrastructureId string, qu
     }
 
     var responseModel *pagination.AwsAccountRegionSettingssListPagination
-    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}/regions", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}/regions", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

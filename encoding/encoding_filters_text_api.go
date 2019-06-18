@@ -44,7 +44,7 @@ func (api *EncodingFiltersTextApi) Delete(filterId string) (*model.BitmovinRespo
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/text/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/filters/text/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingFiltersTextApi) Get(filterId string) (*model.TextFilter, erro
     }
 
     var responseModel *model.TextFilter
-    err := api.apiClient.Get("/encoding/filters/text/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/text/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingFiltersTextApi) List(queryParams ...func(*query.TextFilterLis
     }
 
     var responseModel *pagination.TextFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/text", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/text", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

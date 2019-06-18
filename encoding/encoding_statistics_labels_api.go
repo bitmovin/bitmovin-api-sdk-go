@@ -40,7 +40,7 @@ func (api *EncodingStatisticsLabelsApi) List(queryParams ...func(*query.Statisti
     }
 
     var responseModel *pagination.StatisticsPerLabelsListPagination
-    err := api.apiClient.Get("/encoding/statistics/labels/", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/labels/", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -57,7 +57,7 @@ func (api *EncodingStatisticsLabelsApi) ListByDateRange(from time.Time, to time.
     }
 
     var responseModel *pagination.StatisticsPerLabelsListByDateRangePagination
-    err := api.apiClient.Get("/encoding/statistics/labels/{from}/{to}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/labels/{from}/{to}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

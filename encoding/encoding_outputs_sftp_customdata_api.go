@@ -31,7 +31,7 @@ func (api *EncodingOutputsSftpCustomdataApi) Get(outputId string) (*model.Custom
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/outputs/sftp/{output_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/sftp/{output_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

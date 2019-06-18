@@ -42,7 +42,7 @@ func (api *EncodingEncodingsSidecarsWebvttApi) Delete(encodingId string, sidecar
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -53,7 +53,7 @@ func (api *EncodingEncodingsSidecarsWebvttApi) Get(encodingId string, sidecarId 
     }
 
     var responseModel *model.WebVttSidecarFile
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/webvtt/{sidecar_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -49,7 +49,7 @@ func (api *EncodingEncodingsMuxingsBroadcastTsApi) Delete(encodingId string, mux
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMuxingsBroadcastTsApi) Get(encodingId string, muxing
     }
 
     var responseModel *model.BroadcastTsMuxing
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingEncodingsMuxingsBroadcastTsApi) List(encodingId string, query
     }
 
     var responseModel *pagination.BroadcastTsMuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/broadcast-ts", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

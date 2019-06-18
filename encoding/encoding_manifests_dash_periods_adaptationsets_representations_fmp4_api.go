@@ -53,7 +53,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Del
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -66,7 +66,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Get
     }
 
     var responseModel *model.DashFmp4Representation
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4/{representation_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -84,7 +84,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Api) Lis
     }
 
     var responseModel *pagination.DashFmp4RepresentationsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

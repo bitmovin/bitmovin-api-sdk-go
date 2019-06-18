@@ -30,7 +30,7 @@ func (api *EncodingInfrastructureKubernetesAgentDeploymentApi) Get(infrastructur
     }
 
     
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/agent-deployment", nil, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/agent-deployment", nil, nil, reqParams)
     return err
 }
 

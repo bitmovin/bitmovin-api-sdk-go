@@ -44,7 +44,7 @@ func (api *EncodingOutputsAzureApi) Delete(outputId string) (*model.AzureOutput,
     }
 
     var responseModel *model.AzureOutput
-    err := api.apiClient.Delete("/encoding/outputs/azure/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/outputs/azure/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingOutputsAzureApi) Get(outputId string) (*model.AzureOutput, er
     }
 
     var responseModel *model.AzureOutput
-    err := api.apiClient.Get("/encoding/outputs/azure/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/azure/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingOutputsAzureApi) List(queryParams ...func(*query.AzureOutputL
     }
 
     var responseModel *pagination.AzureOutputsListPagination
-    err := api.apiClient.Get("/encoding/outputs/azure", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/azure", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

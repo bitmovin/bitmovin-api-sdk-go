@@ -37,7 +37,7 @@ func (api *EncodingStatisticsEncodingsLiveApi) List(queryParams ...func(*query.E
     }
 
     var responseModel *pagination.EncodingStatisticsLivesListPagination
-    err := api.apiClient.Get("/encoding/statistics/encodings/live", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/encodings/live", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingStatisticsEncodingsLiveApi) ListByDateRange(from time.Time, t
     }
 
     var responseModel *pagination.EncodingStatisticsLivesListByDateRangePagination
-    err := api.apiClient.Get("/encoding/statistics/encodings/live/{from}/{to}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/encodings/live/{from}/{to}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

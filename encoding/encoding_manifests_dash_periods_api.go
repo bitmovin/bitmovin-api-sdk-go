@@ -49,7 +49,7 @@ func (api *EncodingManifestsDashPeriodsApi) Delete(manifestId string, periodId s
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingManifestsDashPeriodsApi) Get(manifestId string, periodId stri
     }
 
     var responseModel *model.Period
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingManifestsDashPeriodsApi) List(manifestId string, queryParams 
     }
 
     var responseModel *pagination.PeriodsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

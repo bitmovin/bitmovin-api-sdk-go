@@ -44,7 +44,7 @@ func (api *EncodingConfigurationsAudioVorbisApi) Delete(configurationId string) 
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/configurations/audio/vorbis/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/configurations/audio/vorbis/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingConfigurationsAudioVorbisApi) Get(configurationId string) (*m
     }
 
     var responseModel *model.VorbisAudioConfiguration
-    err := api.apiClient.Get("/encoding/configurations/audio/vorbis/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/vorbis/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingConfigurationsAudioVorbisApi) List(queryParams ...func(*query
     }
 
     var responseModel *pagination.VorbisAudioConfigurationsListPagination
-    err := api.apiClient.Get("/encoding/configurations/audio/vorbis", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/vorbis", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

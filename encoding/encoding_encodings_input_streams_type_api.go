@@ -32,7 +32,7 @@ func (api *EncodingEncodingsInputStreamsTypeApi) Get(encodingId string, inputStr
     }
 
     var responseModel *model.InputStreamTypeResponse
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}/type", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}/type", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

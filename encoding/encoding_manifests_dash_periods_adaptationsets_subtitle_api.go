@@ -45,7 +45,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleApi) Delete(manifes
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle/{adaptationset_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle/{adaptationset_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -57,7 +57,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleApi) Get(manifestId
     }
 
     var responseModel *model.SubtitleAdaptationSet
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle/{adaptationset_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle/{adaptationset_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -74,7 +74,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleApi) List(manifestI
     }
 
     var responseModel *pagination.SubtitleAdaptationSetsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

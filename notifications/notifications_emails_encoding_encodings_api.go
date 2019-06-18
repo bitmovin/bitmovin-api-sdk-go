@@ -43,7 +43,7 @@ func (api *NotificationsEmailsEncodingEncodingsApi) List(encodingId string, quer
     }
 
     var responseModel *pagination.EmailNotificationWithStreamConditionssListPagination
-    err := api.apiClient.Get("/notifications/emails/encoding/encodings/{encoding_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/emails/encoding/encodings/{encoding_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -48,7 +48,7 @@ func (api *EncodingEncodingsMuxingsFmp4DrmClearkeyApi) Delete(encodingId string,
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey/{drm_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey/{drm_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMuxingsFmp4DrmClearkeyApi) Get(encodingId string, mu
     }
 
     var responseModel *model.ClearKeyDrm
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey/{drm_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey/{drm_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -77,7 +77,7 @@ func (api *EncodingEncodingsMuxingsFmp4DrmClearkeyApi) List(encodingId string, m
     }
 
     var responseModel *pagination.ClearKeyDrmsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/drm/clearkey", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

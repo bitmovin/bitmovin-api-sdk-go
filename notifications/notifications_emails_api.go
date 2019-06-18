@@ -39,7 +39,7 @@ func (api *NotificationsEmailsApi) List(queryParams ...func(*query.NotificationL
     }
 
     var responseModel *pagination.NotificationsListPagination
-    err := api.apiClient.Get("/notifications/emails", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/emails", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -45,7 +45,7 @@ func (api *EncodingConfigurationsApi) List(queryParams ...func(*query.CodecConfi
     }
 
     var responseModel *pagination.CodecConfigurationsListPagination
-    err := api.apiClient.Get("/encoding/configurations", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

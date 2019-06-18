@@ -31,7 +31,7 @@ func (api *PlayerChannelsVersionsLatestApi) Get(channelName string) (*model.Play
     }
 
     var responseModel *model.PlayerVersion
-    err := api.apiClient.Get("/player/channels/{channel_name}/versions/latest", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/channels/{channel_name}/versions/latest", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

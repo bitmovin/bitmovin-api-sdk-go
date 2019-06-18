@@ -44,7 +44,7 @@ func (api *EncodingOutputsSftpApi) Delete(outputId string) (*model.SftpOutput, e
     }
 
     var responseModel *model.SftpOutput
-    err := api.apiClient.Delete("/encoding/outputs/sftp/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/outputs/sftp/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingOutputsSftpApi) Get(outputId string) (*model.SftpOutput, erro
     }
 
     var responseModel *model.SftpOutput
-    err := api.apiClient.Get("/encoding/outputs/sftp/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/sftp/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingOutputsSftpApi) List(queryParams ...func(*query.SftpOutputLis
     }
 
     var responseModel *pagination.SftpOutputsListPagination
-    err := api.apiClient.Get("/encoding/outputs/sftp", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/sftp", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

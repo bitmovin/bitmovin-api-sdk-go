@@ -12,7 +12,7 @@ type EncodingStreamInputDetails struct {
 	// Bitrate in bps
 	Bitrate *int64 `json:"bitrate,omitempty"`
 	// Additional metadata saved in the input file
-	Tags []string `json:"tags,omitempty"`
+	Tags *map[string]map[string]interface{} `json:"tags,omitempty"`
 	// Video streams in the input file
 	VideoStreams []VideoStream `json:"videoStreams,omitempty"`
 	// Audio stream in the input file

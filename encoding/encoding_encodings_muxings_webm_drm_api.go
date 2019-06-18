@@ -35,7 +35,7 @@ func (api *EncodingEncodingsMuxingsWebmDrmApi) List(encodingId string, muxingId 
     }
 
     var responseModel *pagination.DrmsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}/drm", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}/drm", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

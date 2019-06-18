@@ -31,7 +31,7 @@ func (api *EncodingInputsTypeApi) Get(inputId string) (*model.InputTypeResponse,
     }
 
     var responseModel *model.InputTypeResponse
-    err := api.apiClient.Get("/encoding/inputs/{input_id}/type", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/{input_id}/type", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

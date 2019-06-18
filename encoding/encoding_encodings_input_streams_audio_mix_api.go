@@ -43,7 +43,7 @@ func (api *EncodingEncodingsInputStreamsAudioMixApi) Delete(encodingId string, i
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingEncodingsInputStreamsAudioMixApi) Get(encodingId string, inpu
     }
 
     var responseModel *model.AudioMixInputStream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/audio-mix/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingEncodingsInputStreamsAudioMixApi) List(encodingId string, que
     }
 
     var responseModel *pagination.AudioMixInputStreamsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/audio-mix", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/audio-mix", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

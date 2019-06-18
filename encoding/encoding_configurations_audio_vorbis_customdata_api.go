@@ -31,7 +31,7 @@ func (api *EncodingConfigurationsAudioVorbisCustomdataApi) Get(configurationId s
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/configurations/audio/vorbis/{configuration_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/vorbis/{configuration_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

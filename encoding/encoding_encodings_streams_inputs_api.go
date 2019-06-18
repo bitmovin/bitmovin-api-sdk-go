@@ -32,7 +32,7 @@ func (api *EncodingEncodingsStreamsInputsApi) List(encodingId string, streamId s
     }
 
     var responseModel *pagination.StreamDetailssListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/inputs", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/inputs", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

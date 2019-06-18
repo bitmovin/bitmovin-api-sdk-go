@@ -44,7 +44,7 @@ func (api *EncodingFiltersScaleApi) Delete(filterId string) (*model.BitmovinResp
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/scale/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/filters/scale/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingFiltersScaleApi) Get(filterId string) (*model.ScaleFilter, er
     }
 
     var responseModel *model.ScaleFilter
-    err := api.apiClient.Get("/encoding/filters/scale/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/scale/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingFiltersScaleApi) List(queryParams ...func(*query.ScaleFilterL
     }
 
     var responseModel *pagination.ScaleFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/scale", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/scale", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

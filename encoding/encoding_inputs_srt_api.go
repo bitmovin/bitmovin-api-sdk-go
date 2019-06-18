@@ -44,7 +44,7 @@ func (api *EncodingInputsSrtApi) Delete(inputId string) (*model.SrtInput, error)
     }
 
     var responseModel *model.SrtInput
-    err := api.apiClient.Delete("/encoding/inputs/srt/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/srt/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsSrtApi) Get(inputId string) (*model.SrtInput, error) {
     }
 
     var responseModel *model.SrtInput
-    err := api.apiClient.Get("/encoding/inputs/srt/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/srt/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsSrtApi) List(queryParams ...func(*query.SrtInputListQue
     }
 
     var responseModel *pagination.SrtInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/srt", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/srt", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

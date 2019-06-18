@@ -44,7 +44,7 @@ func (api *EncodingInputsFtpApi) Delete(inputId string) (*model.FtpInput, error)
     }
 
     var responseModel *model.FtpInput
-    err := api.apiClient.Delete("/encoding/inputs/ftp/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/ftp/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsFtpApi) Get(inputId string) (*model.FtpInput, error) {
     }
 
     var responseModel *model.FtpInput
-    err := api.apiClient.Get("/encoding/inputs/ftp/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/ftp/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsFtpApi) List(queryParams ...func(*query.FtpInputListQue
     }
 
     var responseModel *pagination.FtpInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/ftp", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/ftp", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

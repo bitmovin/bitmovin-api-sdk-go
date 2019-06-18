@@ -31,7 +31,7 @@ func (api *EncodingManifestsDashCustomdataApi) Get(manifestId string) (*model.Cu
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

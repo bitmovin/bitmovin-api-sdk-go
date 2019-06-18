@@ -78,7 +78,7 @@ func (api *EncodingFiltersApi) List(queryParams ...func(*query.FilterListQueryPa
     }
 
     var responseModel *pagination.FiltersListPagination
-    err := api.apiClient.Get("/encoding/filters", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

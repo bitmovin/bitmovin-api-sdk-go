@@ -31,7 +31,7 @@ func (api *EncodingInfrastructureKubernetesCustomdataApi) Get(infrastructureId s
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

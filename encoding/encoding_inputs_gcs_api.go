@@ -44,7 +44,7 @@ func (api *EncodingInputsGcsApi) Delete(inputId string) (*model.GcsInput, error)
     }
 
     var responseModel *model.GcsInput
-    err := api.apiClient.Delete("/encoding/inputs/gcs/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/gcs/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsGcsApi) Get(inputId string) (*model.GcsInput, error) {
     }
 
     var responseModel *model.GcsInput
-    err := api.apiClient.Get("/encoding/inputs/gcs/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/gcs/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsGcsApi) List(queryParams ...func(*query.GcsInputListQue
     }
 
     var responseModel *pagination.GcsInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/gcs", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/gcs", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

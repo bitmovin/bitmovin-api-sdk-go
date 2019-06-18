@@ -32,7 +32,7 @@ func (api *EncodingEncodingsMuxingsProgressiveMovInformationApi) Get(encodingId 
     }
 
     var responseModel *model.ProgressiveMovMuxingInformation
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}/information", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}/information", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

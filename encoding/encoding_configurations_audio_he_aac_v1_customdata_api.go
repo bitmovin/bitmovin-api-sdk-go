@@ -31,7 +31,7 @@ func (api *EncodingConfigurationsAudioHeAacV1CustomdataApi) Get(configurationId 
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/configurations/audio/he-aac-v1/{configuration_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/he-aac-v1/{configuration_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

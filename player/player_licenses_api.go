@@ -50,7 +50,7 @@ func (api *PlayerLicensesApi) Get(licenseId string) (*model.PlayerLicense, error
     }
 
     var responseModel *model.PlayerLicense
-    err := api.apiClient.Get("/player/licenses/{license_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/licenses/{license_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -65,7 +65,7 @@ func (api *PlayerLicensesApi) List(queryParams ...func(*query.PlayerLicenseListQ
     }
 
     var responseModel *pagination.PlayerLicensesListPagination
-    err := api.apiClient.Get("/player/licenses", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/licenses", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

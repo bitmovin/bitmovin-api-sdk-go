@@ -47,7 +47,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) Dele
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) Get(
     }
 
     var responseModel *model.DashVttRepresentation
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt/{representation_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -78,7 +78,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttApi) List
     }
 
     var responseModel *pagination.DashVttRepresentationsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

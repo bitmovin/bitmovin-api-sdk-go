@@ -45,7 +45,7 @@ func (api *EncodingManifestsDashPeriodsCustomXmlElementsApi) Delete(manifestId s
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements/{custom_xml_element_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements/{custom_xml_element_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -57,7 +57,7 @@ func (api *EncodingManifestsDashPeriodsCustomXmlElementsApi) Get(manifestId stri
     }
 
     var responseModel *model.CustomXmlElement
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements/{custom_xml_element_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements/{custom_xml_element_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -74,7 +74,7 @@ func (api *EncodingManifestsDashPeriodsCustomXmlElementsApi) List(manifestId str
     }
 
     var responseModel *pagination.CustomXmlElementsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

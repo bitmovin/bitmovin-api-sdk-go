@@ -33,7 +33,7 @@ func (api *PlayerChannelsApi) List() (*pagination.PlayerChannelsListPagination, 
     }
 
     var responseModel *pagination.PlayerChannelsListPagination
-    err := api.apiClient.Get("/player/channels", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/channels", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

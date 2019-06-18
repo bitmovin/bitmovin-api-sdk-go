@@ -30,7 +30,7 @@ func (api *AccountInformationApi) Get() (*model.AccountInformation, error) {
     }
 
     var responseModel *model.AccountInformation
-    err := api.apiClient.Get("/account/information", &responseModel, reqParams)
+    err := api.apiClient.Get("/account/information", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

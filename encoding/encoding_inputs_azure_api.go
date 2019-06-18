@@ -44,7 +44,7 @@ func (api *EncodingInputsAzureApi) Delete(inputId string) (*model.AzureInput, er
     }
 
     var responseModel *model.AzureInput
-    err := api.apiClient.Delete("/encoding/inputs/azure/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/azure/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsAzureApi) Get(inputId string) (*model.AzureInput, error
     }
 
     var responseModel *model.AzureInput
-    err := api.apiClient.Get("/encoding/inputs/azure/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/azure/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsAzureApi) List(queryParams ...func(*query.AzureInputLis
     }
 
     var responseModel *pagination.AzureInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/azure", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/azure", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

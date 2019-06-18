@@ -48,7 +48,7 @@ func (api *EncodingEncodingsInputStreamsApi) Get(encodingId string, inputStreamI
     }
 
     var responseModel *model.InputStream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -64,7 +64,7 @@ func (api *EncodingEncodingsInputStreamsApi) List(encodingId string, queryParams
     }
 
     var responseModel *pagination.InputStreamsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

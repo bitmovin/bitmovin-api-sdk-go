@@ -32,7 +32,7 @@ func (api *EncodingManifestsHlsMediaTypeApi) Get(manifestId string, mediaId stri
     }
 
     var responseModel *model.MediaInfoTypeResponse
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/{media_id}/type", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/{media_id}/type", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -41,7 +41,7 @@ func (api *EncodingInputsRedundantRtmpApi) Delete(inputId string) (*model.Bitmov
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/inputs/redundant-rtmp/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/redundant-rtmp/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -51,7 +51,7 @@ func (api *EncodingInputsRedundantRtmpApi) Get(inputId string) (*model.Redundant
     }
 
     var responseModel *model.RedundantRtmpInput
-    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -66,7 +66,7 @@ func (api *EncodingInputsRedundantRtmpApi) List(queryParams ...func(*query.Redun
     }
 
     var responseModel *pagination.RedundantRtmpInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/redundant-rtmp", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

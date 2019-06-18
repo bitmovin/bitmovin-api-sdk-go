@@ -48,7 +48,7 @@ func (api *EncodingEncodingsMuxingsTsDrmFairplayApi) Delete(encodingId string, m
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/fairplay/{drm_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/fairplay/{drm_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMuxingsTsDrmFairplayApi) Get(encodingId string, muxi
     }
 
     var responseModel *model.FairPlayDrm
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/fairplay/{drm_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/fairplay/{drm_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -77,7 +77,7 @@ func (api *EncodingEncodingsMuxingsTsDrmFairplayApi) List(encodingId string, mux
     }
 
     var responseModel *pagination.FairPlayDrmsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/fairplay", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/ts/{muxing_id}/drm/fairplay", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

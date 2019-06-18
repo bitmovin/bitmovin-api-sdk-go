@@ -50,7 +50,7 @@ func (api *PlayerCustomBuildsWebApi) Get(customBuildId string) (*model.CustomPla
     }
 
     var responseModel *model.CustomPlayerBuildStatus
-    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -59,7 +59,7 @@ func (api *PlayerCustomBuildsWebApi) List() (*pagination.CustomPlayerBuildDetail
     }
 
     var responseModel *pagination.CustomPlayerBuildDetailssListPagination
-    err := api.apiClient.Get("/player/custom-builds/web", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/custom-builds/web", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *PlayerCustomBuildsWebApi) Start(customBuildId string) (*model.Bitmovi
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/player/custom-builds/web/{custom_build_id}/start", &responseModel, reqParams)
+    err := api.apiClient.Post("/player/custom-builds/web/{custom_build_id}/start", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

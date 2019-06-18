@@ -31,7 +31,7 @@ func (api *EncodingFiltersTypeApi) Get(filterId string) (*model.FilterTypeRespon
     }
 
     var responseModel *model.FilterTypeResponse
-    err := api.apiClient.Get("/encoding/filters/{filter_id}/type", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/{filter_id}/type", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

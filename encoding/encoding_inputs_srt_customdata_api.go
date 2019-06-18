@@ -31,7 +31,7 @@ func (api *EncodingInputsSrtCustomdataApi) Get(inputId string) (*model.CustomDat
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/inputs/srt/{input_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/srt/{input_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

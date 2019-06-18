@@ -48,7 +48,7 @@ func (api *EncodingManifestsApi) List(queryParams ...func(*query.ManifestListQue
     }
 
     var responseModel *pagination.ManifestsListPagination
-    err := api.apiClient.Get("/encoding/manifests", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

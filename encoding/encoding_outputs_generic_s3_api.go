@@ -44,7 +44,7 @@ func (api *EncodingOutputsGenericS3Api) Delete(outputId string) (*model.GenericS
     }
 
     var responseModel *model.GenericS3Output
-    err := api.apiClient.Delete("/encoding/outputs/generic-s3/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/outputs/generic-s3/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingOutputsGenericS3Api) Get(outputId string) (*model.GenericS3Ou
     }
 
     var responseModel *model.GenericS3Output
-    err := api.apiClient.Get("/encoding/outputs/generic-s3/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/generic-s3/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingOutputsGenericS3Api) List(queryParams ...func(*query.GenericS
     }
 
     var responseModel *pagination.GenericS3OutputsListPagination
-    err := api.apiClient.Get("/encoding/outputs/generic-s3", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/generic-s3", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -49,7 +49,7 @@ func (api *EncodingEncodingsMuxingsCmafApi) Delete(encodingId string, muxingId s
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMuxingsCmafApi) Get(encodingId string, muxingId stri
     }
 
     var responseModel *model.CmafMuxing
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingEncodingsMuxingsCmafApi) List(encodingId string, queryParams 
     }
 
     var responseModel *pagination.CmafMuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

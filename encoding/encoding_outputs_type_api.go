@@ -31,7 +31,7 @@ func (api *EncodingOutputsTypeApi) Get(outputId string) (*model.OutputTypeRespon
     }
 
     var responseModel *model.OutputTypeResponse
-    err := api.apiClient.Get("/encoding/outputs/{output_id}/type", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/{output_id}/type", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

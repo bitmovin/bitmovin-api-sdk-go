@@ -37,7 +37,7 @@ func (api *EncodingStatisticsEncodingsVodApi) List(queryParams ...func(*query.En
     }
 
     var responseModel *pagination.EncodingStatisticsVodsListPagination
-    err := api.apiClient.Get("/encoding/statistics/encodings/vod", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/encodings/vod", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingStatisticsEncodingsVodApi) ListByDateRange(from time.Time, to
     }
 
     var responseModel *pagination.EncodingStatisticsVodsListByDateRangePagination
-    err := api.apiClient.Get("/encoding/statistics/encodings/vod/{from}/{to}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/encodings/vod/{from}/{to}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

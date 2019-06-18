@@ -49,7 +49,7 @@ func (api *AccountOrganizationsGroupsApi) Delete(organizationId string, groupId 
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *AccountOrganizationsGroupsApi) Get(organizationId string, groupId str
     }
 
     var responseModel *model.Group
-    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *AccountOrganizationsGroupsApi) List(organizationId string) (*paginati
     }
 
     var responseModel *pagination.GroupsListPagination
-    err := api.apiClient.Get("/account/organizations/{organization_id}/groups", &responseModel, reqParams)
+    err := api.apiClient.Get("/account/organizations/{organization_id}/groups", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

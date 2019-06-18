@@ -31,7 +31,7 @@ func (api *EncodingEncodingsLiveApi) Get(encodingId string) (*model.LiveEncoding
     }
 
     var responseModel *model.LiveEncoding
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/live", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/live", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -41,7 +41,7 @@ func (api *EncodingEncodingsLiveApi) GetStartRequest(encodingId string) (*model.
     }
 
     var responseModel *model.StartLiveEncodingRequest
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/live/start", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/live/start", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -51,7 +51,7 @@ func (api *EncodingEncodingsLiveApi) Restart(encodingId string) (*model.Bitmovin
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/live/restart", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/live/restart", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -71,7 +71,7 @@ func (api *EncodingEncodingsLiveApi) Stop(encodingId string) (*model.BitmovinRes
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/live/stop", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/live/stop", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

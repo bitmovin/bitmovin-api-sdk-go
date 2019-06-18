@@ -43,7 +43,7 @@ func (api *EncodingManifestsSmoothContentprotectionApi) Delete(manifestId string
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/smooth/{manifest_id}/contentprotection/{protection_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/smooth/{manifest_id}/contentprotection/{protection_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingManifestsSmoothContentprotectionApi) Get(manifestId string, p
     }
 
     var responseModel *model.SmoothManifestContentProtection
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/contentprotection/{protection_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/contentprotection/{protection_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingManifestsSmoothContentprotectionApi) List(manifestId string, 
     }
 
     var responseModel *pagination.SmoothManifestContentProtectionsListPagination
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/contentprotection", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/contentprotection", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

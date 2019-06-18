@@ -44,7 +44,7 @@ func (api *EncodingConfigurationsAudioEac3Api) Delete(configurationId string) (*
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/configurations/audio/eac3/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/configurations/audio/eac3/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingConfigurationsAudioEac3Api) Get(configurationId string) (*mod
     }
 
     var responseModel *model.Eac3AudioConfiguration
-    err := api.apiClient.Get("/encoding/configurations/audio/eac3/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/eac3/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingConfigurationsAudioEac3Api) List(queryParams ...func(*query.E
     }
 
     var responseModel *pagination.Eac3AudioConfigurationsListPagination
-    err := api.apiClient.Get("/encoding/configurations/audio/eac3", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/eac3", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -49,7 +49,7 @@ func (api *EncodingEncodingsMuxingsProgressiveMovApi) Delete(encodingId string, 
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMuxingsProgressiveMovApi) Get(encodingId string, mux
     }
 
     var responseModel *model.ProgressiveMovMuxing
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingEncodingsMuxingsProgressiveMovApi) List(encodingId string, qu
     }
 
     var responseModel *pagination.ProgressiveMovMuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-mov", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

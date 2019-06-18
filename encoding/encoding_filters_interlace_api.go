@@ -44,7 +44,7 @@ func (api *EncodingFiltersInterlaceApi) Delete(filterId string) (*model.Bitmovin
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/interlace/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/filters/interlace/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingFiltersInterlaceApi) Get(filterId string) (*model.InterlaceFi
     }
 
     var responseModel *model.InterlaceFilter
-    err := api.apiClient.Get("/encoding/filters/interlace/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/interlace/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingFiltersInterlaceApi) List(queryParams ...func(*query.Interlac
     }
 
     var responseModel *pagination.InterlaceFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/interlace", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/interlace", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

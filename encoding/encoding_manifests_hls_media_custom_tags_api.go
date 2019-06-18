@@ -45,7 +45,7 @@ func (api *EncodingManifestsHlsMediaCustomTagsApi) Delete(manifestId string, med
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/{media_id}/custom-tags/{custom_tag_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/{media_id}/custom-tags/{custom_tag_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -57,7 +57,7 @@ func (api *EncodingManifestsHlsMediaCustomTagsApi) Get(manifestId string, mediaI
     }
 
     var responseModel *model.CustomTag
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/{media_id}/custom-tags/{custom_tag_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/{media_id}/custom-tags/{custom_tag_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -74,7 +74,7 @@ func (api *EncodingManifestsHlsMediaCustomTagsApi) List(manifestId string, media
     }
 
     var responseModel *pagination.CustomTagsListPagination
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/{media_id}/custom-tags", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/{media_id}/custom-tags", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

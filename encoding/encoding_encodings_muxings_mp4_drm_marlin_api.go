@@ -48,7 +48,7 @@ func (api *EncodingEncodingsMuxingsMp4DrmMarlinApi) Delete(encodingId string, mu
     }
 
     var responseModel *model.MarlinDrm
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin/{drm_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin/{drm_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMuxingsMp4DrmMarlinApi) Get(encodingId string, muxin
     }
 
     var responseModel *model.MarlinDrm
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin/{drm_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin/{drm_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -77,7 +77,7 @@ func (api *EncodingEncodingsMuxingsMp4DrmMarlinApi) List(encodingId string, muxi
     }
 
     var responseModel *pagination.MarlinDrmsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp4/{muxing_id}/drm/marlin", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

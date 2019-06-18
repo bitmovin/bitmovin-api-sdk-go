@@ -49,7 +49,7 @@ func (api *EncodingEncodingsSidecarsApi) Delete(encodingId string, sidecarId str
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/sidecars/{sidecar_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/sidecars/{sidecar_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsSidecarsApi) Get(encodingId string, sidecarId string
     }
 
     var responseModel *model.SidecarFile
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/{sidecar_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars/{sidecar_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingEncodingsSidecarsApi) List(encodingId string, queryParams ...
     }
 
     var responseModel *pagination.SidecarFilesListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/sidecars", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

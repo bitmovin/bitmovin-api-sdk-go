@@ -31,7 +31,7 @@ func (api *EncodingConfigurationsAudioOpusCustomdataApi) Get(configurationId str
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/configurations/audio/opus/{configuration_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/opus/{configuration_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

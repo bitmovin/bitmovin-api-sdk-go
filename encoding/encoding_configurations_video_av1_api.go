@@ -44,7 +44,7 @@ func (api *EncodingConfigurationsVideoAv1Api) Delete(configurationId string) (*m
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/configurations/video/av1/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/configurations/video/av1/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingConfigurationsVideoAv1Api) Get(configurationId string) (*mode
     }
 
     var responseModel *model.Av1VideoConfiguration
-    err := api.apiClient.Get("/encoding/configurations/video/av1/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/video/av1/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingConfigurationsVideoAv1Api) List(queryParams ...func(*query.Av
     }
 
     var responseModel *pagination.Av1VideoConfigurationsListPagination
-    err := api.apiClient.Get("/encoding/configurations/video/av1", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/video/av1", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

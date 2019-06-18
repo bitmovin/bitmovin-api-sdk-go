@@ -44,7 +44,7 @@ func (api *EncodingOutputsAkamaiNetstorageApi) Delete(outputId string) (*model.A
     }
 
     var responseModel *model.AkamaiNetStorageOutput
-    err := api.apiClient.Delete("/encoding/outputs/akamai-netstorage/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/outputs/akamai-netstorage/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingOutputsAkamaiNetstorageApi) Get(outputId string) (*model.Akam
     }
 
     var responseModel *model.AkamaiNetStorageOutput
-    err := api.apiClient.Get("/encoding/outputs/akamai-netstorage/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/akamai-netstorage/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingOutputsAkamaiNetstorageApi) List(queryParams ...func(*query.A
     }
 
     var responseModel *pagination.AkamaiNetStorageOutputsListPagination
-    err := api.apiClient.Get("/encoding/outputs/akamai-netstorage", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/akamai-netstorage", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -32,7 +32,7 @@ func (api *EncodingInputsUdpApi) Get(inputId string) (*model.UdpInput, error) {
     }
 
     var responseModel *model.UdpInput
-    err := api.apiClient.Get("/encoding/inputs/udp/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/udp/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -47,7 +47,7 @@ func (api *EncodingInputsUdpApi) List(queryParams ...func(*query.UdpInputListQue
     }
 
     var responseModel *pagination.UdpInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/udp", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/udp", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

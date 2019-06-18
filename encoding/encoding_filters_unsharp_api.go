@@ -44,7 +44,7 @@ func (api *EncodingFiltersUnsharpApi) Delete(filterId string) (*model.BitmovinRe
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/unsharp/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/filters/unsharp/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingFiltersUnsharpApi) Get(filterId string) (*model.UnsharpFilter
     }
 
     var responseModel *model.UnsharpFilter
-    err := api.apiClient.Get("/encoding/filters/unsharp/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/unsharp/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingFiltersUnsharpApi) List(queryParams ...func(*query.UnsharpFil
     }
 
     var responseModel *pagination.UnsharpFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/unsharp", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/unsharp", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

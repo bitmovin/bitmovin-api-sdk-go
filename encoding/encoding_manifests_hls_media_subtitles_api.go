@@ -43,7 +43,7 @@ func (api *EncodingManifestsHlsMediaSubtitlesApi) Delete(manifestId string, medi
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/subtitles/{media_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/subtitles/{media_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingManifestsHlsMediaSubtitlesApi) Get(manifestId string, mediaId
     }
 
     var responseModel *model.SubtitlesMediaInfo
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/subtitles/{media_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/subtitles/{media_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingManifestsHlsMediaSubtitlesApi) List(manifestId string, queryP
     }
 
     var responseModel *pagination.SubtitlesMediaInfosListPagination
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/subtitles", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/subtitles", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -44,7 +44,7 @@ func (api *EncodingInputsSftpApi) Delete(inputId string) (*model.SftpInput, erro
     }
 
     var responseModel *model.SftpInput
-    err := api.apiClient.Delete("/encoding/inputs/sftp/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/sftp/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsSftpApi) Get(inputId string) (*model.SftpInput, error) 
     }
 
     var responseModel *model.SftpInput
-    err := api.apiClient.Get("/encoding/inputs/sftp/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/sftp/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsSftpApi) List(queryParams ...func(*query.SftpInputListQ
     }
 
     var responseModel *pagination.SftpInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/sftp", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/sftp", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

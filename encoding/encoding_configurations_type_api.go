@@ -31,7 +31,7 @@ func (api *EncodingConfigurationsTypeApi) Get(configurationId string) (*model.Co
     }
 
     var responseModel *model.CodecConfigTypeResponse
-    err := api.apiClient.Get("/encoding/configurations/{configuration_id}/type", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/{configuration_id}/type", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

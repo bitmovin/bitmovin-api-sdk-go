@@ -44,7 +44,7 @@ func (api *EncodingInputsZixiApi) Delete(inputId string) (*model.ZixiInput, erro
     }
 
     var responseModel *model.ZixiInput
-    err := api.apiClient.Delete("/encoding/inputs/zixi/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/zixi/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsZixiApi) Get(inputId string) (*model.ZixiInput, error) 
     }
 
     var responseModel *model.ZixiInput
-    err := api.apiClient.Get("/encoding/inputs/zixi/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/zixi/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsZixiApi) List(queryParams ...func(*query.ZixiInputListQ
     }
 
     var responseModel *pagination.ZixiInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/zixi", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/zixi", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

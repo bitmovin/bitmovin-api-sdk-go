@@ -33,7 +33,7 @@ type PathParams map[string]interface{}
 const QueryParamTagName = "query"
 const DefaultApiBaseUrl = "https://api.bitmovin.com/v1"
 const ContentTypeJson = "application/json"
-const ApiClientVersion = "1.16.0-alpha.0"
+const ApiClientVersion = "1.17.0-alpha.0"
 const ApiClientName = "bitmovin-api-sdk-go"
 const NoApiKeyErrorMsg = "there was no api key provided"
 
@@ -170,7 +170,7 @@ func (apiClient *ApiClient) createHeaders() http.Header {
 	return headers
 }
 
-func (apiClient *ApiClient) Get(relUrl string, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
+func (apiClient *ApiClient) Get(relUrl string, requestModel interface{}, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
 	return apiClient.request(http.MethodGet, relUrl, nil, responseModel, requestParams...)
 }
 
@@ -182,7 +182,7 @@ func (apiClient *ApiClient) Put(relUrl string, requestModel interface{}, respons
 	return apiClient.request(http.MethodPut, relUrl, requestModel, responseModel, requestParams...)
 }
 
-func (apiClient *ApiClient) Delete(relUrl string, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
+func (apiClient *ApiClient) Delete(relUrl string, requestModel interface{}, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
 	return apiClient.request(http.MethodDelete, relUrl, nil, responseModel, requestParams...)
 }
 

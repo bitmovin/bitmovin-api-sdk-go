@@ -32,7 +32,7 @@ func (api *EncodingEncodingsMuxingsMp3InformationApi) Get(encodingId string, mux
     }
 
     var responseModel *model.Mp3MuxingInformation
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}/information", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}/information", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

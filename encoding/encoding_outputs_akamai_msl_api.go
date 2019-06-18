@@ -44,7 +44,7 @@ func (api *EncodingOutputsAkamaiMslApi) Delete(outputId string) (*model.Bitmovin
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/outputs/akamai-msl/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/outputs/akamai-msl/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingOutputsAkamaiMslApi) Get(outputId string) (*model.AkamaiMslOu
     }
 
     var responseModel *model.AkamaiMslOutput
-    err := api.apiClient.Get("/encoding/outputs/akamai-msl/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/akamai-msl/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingOutputsAkamaiMslApi) List(queryParams ...func(*query.AkamaiMs
     }
 
     var responseModel *pagination.AkamaiMslOutputsListPagination
-    err := api.apiClient.Get("/encoding/outputs/akamai-msl", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/akamai-msl", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -44,7 +44,7 @@ func (api *EncodingInputsHttpsApi) Delete(inputId string) (*model.HttpsInput, er
     }
 
     var responseModel *model.HttpsInput
-    err := api.apiClient.Delete("/encoding/inputs/https/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/https/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsHttpsApi) Get(inputId string) (*model.HttpsInput, error
     }
 
     var responseModel *model.HttpsInput
-    err := api.apiClient.Get("/encoding/inputs/https/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/https/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsHttpsApi) List(queryParams ...func(*query.HttpsInputLis
     }
 
     var responseModel *pagination.HttpsInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/https", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/https", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

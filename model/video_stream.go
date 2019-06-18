@@ -13,7 +13,7 @@ type VideoStream struct {
 	Fps string `json:"fps,omitempty"`
 	// Bitrate in bps
 	Bitrate string `json:"bitrate,omitempty"`
-	// Bitrate in bps
+	// Bitrate in bps (the same as bitrate, but represented as an integer value)
 	Rate *int64 `json:"rate,omitempty"`
 	// Width of the video
 	Width *int32 `json:"width,omitempty"`

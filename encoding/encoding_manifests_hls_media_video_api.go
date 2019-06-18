@@ -43,7 +43,7 @@ func (api *EncodingManifestsHlsMediaVideoApi) Delete(manifestId string, mediaId 
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/video/{media_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/video/{media_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingManifestsHlsMediaVideoApi) Get(manifestId string, mediaId str
     }
 
     var responseModel *model.VideoMediaInfo
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/video/{media_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/video/{media_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingManifestsHlsMediaVideoApi) List(manifestId string, queryParam
     }
 
     var responseModel *pagination.VideoMediaInfosListPagination
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/video", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/video", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

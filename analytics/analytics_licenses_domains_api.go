@@ -42,7 +42,7 @@ func (api *AnalyticsLicensesDomainsApi) Delete(licenseId string, domainId string
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/analytics/licenses/{license_id}/domains/{domain_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/analytics/licenses/{license_id}/domains/{domain_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -52,7 +52,7 @@ func (api *AnalyticsLicensesDomainsApi) Get(licenseId string) (*model.DomainList
     }
 
     var responseModel *model.DomainList
-    err := api.apiClient.Get("/analytics/licenses/{license_id}/domains", &responseModel, reqParams)
+    err := api.apiClient.Get("/analytics/licenses/{license_id}/domains", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -43,7 +43,7 @@ func (api *EncodingManifestsHlsMediaAudioApi) Delete(manifestId string, mediaId 
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/audio/{media_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/audio/{media_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingManifestsHlsMediaAudioApi) Get(manifestId string, mediaId str
     }
 
     var responseModel *model.AudioMediaInfo
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/audio/{media_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/audio/{media_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingManifestsHlsMediaAudioApi) List(manifestId string, queryParam
     }
 
     var responseModel *pagination.AudioMediaInfosListPagination
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/audio", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/audio", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

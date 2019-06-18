@@ -40,7 +40,7 @@ func (api *EncodingStatisticsEncodingsLiveStatisticsApi) Get(encodingId string) 
     }
 
     var responseModel *model.LiveEncodingStats
-    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

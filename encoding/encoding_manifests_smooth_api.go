@@ -53,7 +53,7 @@ func (api *EncodingManifestsSmoothApi) Delete(manifestId string) (*model.Bitmovi
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/smooth/{manifest_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/smooth/{manifest_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -63,7 +63,7 @@ func (api *EncodingManifestsSmoothApi) Get(manifestId string) (*model.SmoothStre
     }
 
     var responseModel *model.SmoothStreamingManifest
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -78,7 +78,7 @@ func (api *EncodingManifestsSmoothApi) List(queryParams ...func(*query.SmoothStr
     }
 
     var responseModel *pagination.SmoothStreamingManifestsListPagination
-    err := api.apiClient.Get("/encoding/manifests/smooth", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/smooth", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -88,7 +88,7 @@ func (api *EncodingManifestsSmoothApi) Start(manifestId string) (*model.Bitmovin
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/start", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/start", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -98,7 +98,7 @@ func (api *EncodingManifestsSmoothApi) Status(manifestId string) (*model.ModelTa
     }
 
     var responseModel *model.ModelTask
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/status", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/status", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -108,7 +108,7 @@ func (api *EncodingManifestsSmoothApi) Stop(manifestId string) (*model.BitmovinR
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/stop", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/stop", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

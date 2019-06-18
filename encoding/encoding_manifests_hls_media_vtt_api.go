@@ -43,7 +43,7 @@ func (api *EncodingManifestsHlsMediaVttApi) Delete(manifestId string, mediaId st
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/vtt/{media_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/vtt/{media_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingManifestsHlsMediaVttApi) Get(manifestId string, mediaId strin
     }
 
     var responseModel *model.VttMediaInfo
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt/{media_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt/{media_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingManifestsHlsMediaVttApi) List(manifestId string, queryParams 
     }
 
     var responseModel *pagination.VttMediaInfosListPagination
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/vtt", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

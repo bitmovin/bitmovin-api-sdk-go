@@ -44,7 +44,7 @@ func (api *EncodingConfigurationsVideoVp8Api) Delete(configurationId string) (*m
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/configurations/video/vp8/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/configurations/video/vp8/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingConfigurationsVideoVp8Api) Get(configurationId string) (*mode
     }
 
     var responseModel *model.Vp8VideoConfiguration
-    err := api.apiClient.Get("/encoding/configurations/video/vp8/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/video/vp8/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingConfigurationsVideoVp8Api) List(queryParams ...func(*query.Vp
     }
 
     var responseModel *pagination.Vp8VideoConfigurationsListPagination
-    err := api.apiClient.Get("/encoding/configurations/video/vp8", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/video/vp8", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

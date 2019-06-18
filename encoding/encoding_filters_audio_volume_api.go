@@ -44,7 +44,7 @@ func (api *EncodingFiltersAudioVolumeApi) Delete(filterId string) (*model.Bitmov
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/audio-volume/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/filters/audio-volume/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingFiltersAudioVolumeApi) Get(filterId string) (*model.AudioVolu
     }
 
     var responseModel *model.AudioVolumeFilter
-    err := api.apiClient.Get("/encoding/filters/audio-volume/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/audio-volume/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingFiltersAudioVolumeApi) List(queryParams ...func(*query.AudioV
     }
 
     var responseModel *pagination.AudioVolumeFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/audio-volume", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/audio-volume", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

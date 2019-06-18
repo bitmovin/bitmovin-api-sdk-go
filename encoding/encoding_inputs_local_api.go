@@ -44,7 +44,7 @@ func (api *EncodingInputsLocalApi) Delete(inputId string) (*model.BitmovinRespon
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/inputs/local/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/local/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsLocalApi) Get(inputId string) (*model.LocalInput, error
     }
 
     var responseModel *model.LocalInput
-    err := api.apiClient.Get("/encoding/inputs/local/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/local/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsLocalApi) List(queryParams ...func(*query.LocalInputLis
     }
 
     var responseModel *pagination.LocalInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/local", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/local", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

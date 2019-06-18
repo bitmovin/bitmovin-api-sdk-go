@@ -33,7 +33,7 @@ func (api *EncodingEncodingsMuxingsCmafCaptionsTtmlApi) Delete(encodingId string
     }
 
     var responseModel *model.TtmlEmbed
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/ttml/{captions_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/ttml/{captions_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -45,7 +45,7 @@ func (api *EncodingEncodingsMuxingsCmafCaptionsTtmlApi) Get(encodingId string, m
     }
 
     var responseModel *model.TtmlEmbed
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/ttml/{captions_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/cmaf/{muxing_id}/captions/ttml/{captions_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

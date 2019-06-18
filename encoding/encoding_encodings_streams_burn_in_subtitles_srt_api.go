@@ -45,7 +45,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesSrtApi) Delete(encodingId stri
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt/{subtitle_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt/{subtitle_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesSrtApi) Get(encodingId string,
     }
 
     var responseModel *model.BurnInSubtitleSrt
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt/{subtitle_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt/{subtitle_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -74,7 +74,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesSrtApi) List(encodingId string
     }
 
     var responseModel *pagination.BurnInSubtitleSrtsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

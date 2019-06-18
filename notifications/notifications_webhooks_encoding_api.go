@@ -7,6 +7,7 @@ import (
 type NotificationsWebhooksEncodingApi struct {
     apiClient *common.ApiClient
     Encodings *NotificationsWebhooksEncodingEncodingsApi
+    Manifest *NotificationsWebhooksEncodingManifestApi
 }
 
 func NewNotificationsWebhooksEncodingApi(configs ...func(*common.ApiClient)) (*NotificationsWebhooksEncodingApi, error) {
@@ -19,6 +20,8 @@ func NewNotificationsWebhooksEncodingApi(configs ...func(*common.ApiClient)) (*N
 
     encodingsApi, err := NewNotificationsWebhooksEncodingEncodingsApi(configs...)
     api.Encodings = encodingsApi
+    manifestApi, err := NewNotificationsWebhooksEncodingManifestApi(configs...)
+    api.Manifest = manifestApi
 
 	if err != nil {
 		return nil, err

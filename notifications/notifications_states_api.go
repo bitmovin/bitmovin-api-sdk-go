@@ -38,7 +38,7 @@ func (api *NotificationsStatesApi) List(notificationId string, resourceId string
     }
 
     var responseModel *pagination.NotificationStateEntrysListPagination
-    err := api.apiClient.Get("/notifications/{notification_id}/states/{resource_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/{notification_id}/states/{resource_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

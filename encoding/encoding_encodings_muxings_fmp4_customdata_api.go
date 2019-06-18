@@ -32,7 +32,7 @@ func (api *EncodingEncodingsMuxingsFmp4CustomdataApi) Get(encodingId string, mux
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -41,7 +41,7 @@ func (api *PlayerCustomBuildsWebDomainsApi) Delete(domainId string) (*model.Bitm
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/player/custom-builds/web/domains/{domain_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/player/custom-builds/web/domains/{domain_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -51,7 +51,7 @@ func (api *PlayerCustomBuildsWebDomainsApi) Get(domainId string) (*model.CustomW
     }
 
     var responseModel *model.CustomWebPlayerBuildDomain
-    err := api.apiClient.Get("/player/custom-builds/web/domains/{domain_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/custom-builds/web/domains/{domain_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *PlayerCustomBuildsWebDomainsApi) List() (*pagination.CustomWebPlayerB
     }
 
     var responseModel *pagination.CustomWebPlayerBuildDomainsListPagination
-    err := api.apiClient.Get("/player/custom-builds/web/domains", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/custom-builds/web/domains", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

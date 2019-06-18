@@ -33,7 +33,7 @@ func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextCustomdataApi) Get(e
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/plain-text/{id3_tag_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3/plain-text/{id3_tag_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

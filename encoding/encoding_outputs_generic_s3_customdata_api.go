@@ -31,7 +31,7 @@ func (api *EncodingOutputsGenericS3CustomdataApi) Get(outputId string) (*model.C
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/outputs/generic-s3/{output_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/generic-s3/{output_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

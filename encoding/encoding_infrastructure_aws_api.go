@@ -44,7 +44,7 @@ func (api *EncodingInfrastructureAwsApi) Delete(infrastructureId string) (*model
     }
 
     var responseModel *model.AwsAccount
-    err := api.apiClient.Delete("/encoding/infrastructure/aws/{infrastructure_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/infrastructure/aws/{infrastructure_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInfrastructureAwsApi) Get(infrastructureId string) (*model.Aw
     }
 
     var responseModel *model.AwsAccount
-    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/aws/{infrastructure_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInfrastructureAwsApi) List(queryParams ...func(*query.AwsAcco
     }
 
     var responseModel *pagination.AwsAccountsListPagination
-    err := api.apiClient.Get("/encoding/infrastructure/aws", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/aws", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -41,7 +41,7 @@ func (api *AnalyticsExportsApi) Get(exportTaskId string) (*model.AnalyticsExport
     }
 
     var responseModel *model.AnalyticsExportTask
-    err := api.apiClient.Get("/analytics/exports/{export_task_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/analytics/exports/{export_task_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -56,7 +56,7 @@ func (api *AnalyticsExportsApi) List(queryParams ...func(*query.AnalyticsExportT
     }
 
     var responseModel *pagination.AnalyticsExportTasksListPagination
-    err := api.apiClient.Get("/analytics/exports", &responseModel, reqParams)
+    err := api.apiClient.Get("/analytics/exports", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

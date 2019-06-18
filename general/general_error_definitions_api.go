@@ -36,7 +36,7 @@ func (api *GeneralErrorDefinitionsApi) List(queryParams ...func(*query.ApiErrorD
     }
 
     var responseModel *pagination.ApiErrorDefinitionsListPagination
-    err := api.apiClient.Get("/general/error-definitions", &responseModel, reqParams)
+    err := api.apiClient.Get("/general/error-definitions", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

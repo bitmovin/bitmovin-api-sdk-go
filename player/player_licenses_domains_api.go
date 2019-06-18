@@ -43,7 +43,7 @@ func (api *PlayerLicensesDomainsApi) Delete(licenseId string, domainId string) (
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/player/licenses/{license_id}/domains/{domain_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/player/licenses/{license_id}/domains/{domain_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -53,7 +53,7 @@ func (api *PlayerLicensesDomainsApi) List(licenseId string) (*pagination.Domains
     }
 
     var responseModel *pagination.DomainsListPagination
-    err := api.apiClient.Get("/player/licenses/{license_id}/domains", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/licenses/{license_id}/domains", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

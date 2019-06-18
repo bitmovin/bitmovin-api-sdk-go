@@ -44,7 +44,7 @@ func (api *EncodingFiltersEbuR128SinglePassApi) Delete(filterId string) (*model.
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/ebu-r128-single-pass/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/filters/ebu-r128-single-pass/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingFiltersEbuR128SinglePassApi) Get(filterId string) (*model.Ebu
     }
 
     var responseModel *model.EbuR128SinglePassFilter
-    err := api.apiClient.Get("/encoding/filters/ebu-r128-single-pass/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/ebu-r128-single-pass/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingFiltersEbuR128SinglePassApi) List(queryParams ...func(*query.
     }
 
     var responseModel *pagination.EbuR128SinglePassFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/ebu-r128-single-pass", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/ebu-r128-single-pass", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

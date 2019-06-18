@@ -43,7 +43,7 @@ func (api *EncodingManifestsSmoothRepresentationsMp4Api) Delete(manifestId strin
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/smooth/{manifest_id}/representations/mp4/{representation_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/smooth/{manifest_id}/representations/mp4/{representation_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingManifestsSmoothRepresentationsMp4Api) Get(manifestId string, 
     }
 
     var responseModel *model.SmoothStreamingRepresentation
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/representations/mp4/{representation_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/representations/mp4/{representation_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingManifestsSmoothRepresentationsMp4Api) List(manifestId string,
     }
 
     var responseModel *pagination.SmoothStreamingRepresentationsListPagination
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/representations/mp4", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/representations/mp4", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

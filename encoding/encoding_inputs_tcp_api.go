@@ -32,7 +32,7 @@ func (api *EncodingInputsTcpApi) Get(inputId string) (*model.TcpInput, error) {
     }
 
     var responseModel *model.TcpInput
-    err := api.apiClient.Get("/encoding/inputs/tcp/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/tcp/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -47,7 +47,7 @@ func (api *EncodingInputsTcpApi) List(queryParams ...func(*query.TcpInputListQue
     }
 
     var responseModel *pagination.TcpInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/tcp", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/tcp", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

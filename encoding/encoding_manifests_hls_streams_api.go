@@ -49,7 +49,7 @@ func (api *EncodingManifestsHlsStreamsApi) Delete(manifestId string, streamId st
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingManifestsHlsStreamsApi) Get(manifestId string, streamId strin
     }
 
     var responseModel *model.StreamInfo
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingManifestsHlsStreamsApi) List(manifestId string, queryParams .
     }
 
     var responseModel *pagination.StreamInfosListPagination
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

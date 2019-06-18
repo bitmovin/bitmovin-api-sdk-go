@@ -50,7 +50,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) 
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -63,7 +63,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) 
     }
 
     var responseModel *model.DashCmafDrmRepresentation
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -81,7 +81,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi) 
     }
 
     var responseModel *pagination.DashCmafDrmRepresentationsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

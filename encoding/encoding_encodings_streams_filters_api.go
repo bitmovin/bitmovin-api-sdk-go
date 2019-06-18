@@ -44,7 +44,7 @@ func (api *EncodingEncodingsStreamsFiltersApi) Delete(encodingId string, streamI
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -55,7 +55,7 @@ func (api *EncodingEncodingsStreamsFiltersApi) DeleteAll(encodingId string, stre
     }
 
     var responseModel *model.BitmovinResponseList
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -72,7 +72,7 @@ func (api *EncodingEncodingsStreamsFiltersApi) List(encodingId string, streamId 
     }
 
     var responseModel *model.StreamFilterList
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/filters", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

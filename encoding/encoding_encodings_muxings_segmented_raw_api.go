@@ -46,7 +46,7 @@ func (api *EncodingEncodingsMuxingsSegmentedRawApi) Delete(encodingId string, mu
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/segmented-raw/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/segmented-raw/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsSegmentedRawApi) Get(encodingId string, muxin
     }
 
     var responseModel *model.SegmentedRawMuxing
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -73,7 +73,7 @@ func (api *EncodingEncodingsMuxingsSegmentedRawApi) List(encodingId string, quer
     }
 
     var responseModel *pagination.SegmentedRawMuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/segmented-raw", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

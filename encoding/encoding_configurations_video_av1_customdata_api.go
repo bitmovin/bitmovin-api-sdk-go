@@ -31,7 +31,7 @@ func (api *EncodingConfigurationsVideoAv1CustomdataApi) Get(configurationId stri
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/configurations/video/av1/{configuration_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/video/av1/{configuration_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

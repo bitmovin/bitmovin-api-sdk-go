@@ -49,7 +49,7 @@ func (api *EncodingEncodingsMachineLearningObjectDetectionApi) Delete(encodingId
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMachineLearningObjectDetectionApi) Get(encodingId st
     }
 
     var responseModel *model.ObjectDetectionConfiguration
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection/{object_detection_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingEncodingsMachineLearningObjectDetectionApi) List(encodingId s
     }
 
     var responseModel *pagination.ObjectDetectionConfigurationsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/machine-learning/object-detection", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

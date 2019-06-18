@@ -69,7 +69,7 @@ func (api *EncodingOutputsApi) List(queryParams ...func(*query.OutputListQueryPa
     }
 
     var responseModel *pagination.OutputsListPagination
-    err := api.apiClient.Get("/encoding/outputs", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -18,6 +18,6 @@ type EmailNotificationWithStreamConditions struct {
 	ResourceType string `json:"resourceType,omitempty"`
 	Muted *bool `json:"muted,omitempty"`
 	Emails []string `json:"emails,omitempty"`
-	Conditions []AbstractCondition `json:"conditions,omitempty"`
+	Conditions *AbstractCondition `json:"conditions,omitempty"`
 }
 

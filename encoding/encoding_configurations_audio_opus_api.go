@@ -44,7 +44,7 @@ func (api *EncodingConfigurationsAudioOpusApi) Delete(configurationId string) (*
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/configurations/audio/opus/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/configurations/audio/opus/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingConfigurationsAudioOpusApi) Get(configurationId string) (*mod
     }
 
     var responseModel *model.OpusAudioConfiguration
-    err := api.apiClient.Get("/encoding/configurations/audio/opus/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/opus/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingConfigurationsAudioOpusApi) List(queryParams ...func(*query.O
     }
 
     var responseModel *pagination.OpusAudioConfigurationsListPagination
-    err := api.apiClient.Get("/encoding/configurations/audio/opus", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/audio/opus", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

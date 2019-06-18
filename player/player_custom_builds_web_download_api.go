@@ -31,7 +31,7 @@ func (api *PlayerCustomBuildsWebDownloadApi) Get(customBuildId string) (*model.C
     }
 
     var responseModel *model.CustomPlayerBuildDownload
-    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}/download", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}/download", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

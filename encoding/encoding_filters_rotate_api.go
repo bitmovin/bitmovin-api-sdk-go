@@ -44,7 +44,7 @@ func (api *EncodingFiltersRotateApi) Delete(filterId string) (*model.BitmovinRes
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/rotate/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/filters/rotate/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingFiltersRotateApi) Get(filterId string) (*model.RotateFilter, 
     }
 
     var responseModel *model.RotateFilter
-    err := api.apiClient.Get("/encoding/filters/rotate/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/rotate/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingFiltersRotateApi) List(queryParams ...func(*query.RotateFilte
     }
 
     var responseModel *pagination.RotateFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/rotate", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/rotate", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

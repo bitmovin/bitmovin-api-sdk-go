@@ -43,7 +43,7 @@ func (api *EncodingEncodingsInputStreamsIngestApi) Delete(encodingId string, inp
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/ingest/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/ingest/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingEncodingsInputStreamsIngestApi) Get(encodingId string, inputS
     }
 
     var responseModel *model.IngestInputStream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/ingest/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/ingest/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingEncodingsInputStreamsIngestApi) List(encodingId string, query
     }
 
     var responseModel *pagination.IngestInputStreamsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/ingest", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/ingest", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

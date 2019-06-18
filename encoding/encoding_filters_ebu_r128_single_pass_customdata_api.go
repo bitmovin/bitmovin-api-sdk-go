@@ -31,7 +31,7 @@ func (api *EncodingFiltersEbuR128SinglePassCustomdataApi) Get(filterId string) (
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/filters/ebu-r128-single-pass/{filter_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/ebu-r128-single-pass/{filter_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

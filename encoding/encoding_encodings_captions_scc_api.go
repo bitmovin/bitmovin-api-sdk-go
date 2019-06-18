@@ -46,7 +46,7 @@ func (api *EncodingEncodingsCaptionsSccApi) Delete(encodingId string, captionsId
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsCaptionsSccApi) Get(encodingId string, captionsId st
     }
 
     var responseModel *model.ConvertSccCaption
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -73,7 +73,7 @@ func (api *EncodingEncodingsCaptionsSccApi) List(encodingId string, queryParams 
     }
 
     var responseModel *pagination.ConvertSccCaptionsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

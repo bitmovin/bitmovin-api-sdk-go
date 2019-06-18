@@ -96,7 +96,7 @@ func (api *EncodingInputsApi) List(queryParams ...func(*query.InputListQueryPara
     }
 
     var responseModel *pagination.InputsListPagination
-    err := api.apiClient.Get("/encoding/inputs", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

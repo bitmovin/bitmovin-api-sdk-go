@@ -44,7 +44,7 @@ func (api *EncodingOutputsS3Api) Delete(outputId string) (*model.S3Output, error
     }
 
     var responseModel *model.S3Output
-    err := api.apiClient.Delete("/encoding/outputs/s3/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/outputs/s3/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingOutputsS3Api) Get(outputId string) (*model.S3Output, error) {
     }
 
     var responseModel *model.S3Output
-    err := api.apiClient.Get("/encoding/outputs/s3/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/s3/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingOutputsS3Api) List(queryParams ...func(*query.S3OutputListQue
     }
 
     var responseModel *pagination.S3OutputsListPagination
-    err := api.apiClient.Get("/encoding/outputs/s3", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/s3", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -49,7 +49,7 @@ func (api *EncodingEncodingsMuxingsFmp4Api) Delete(encodingId string, muxingId s
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMuxingsFmp4Api) Get(encodingId string, muxingId stri
     }
 
     var responseModel *model.Fmp4Muxing
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingEncodingsMuxingsFmp4Api) List(encodingId string, queryParams 
     }
 
     var responseModel *pagination.Fmp4MuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/fmp4", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

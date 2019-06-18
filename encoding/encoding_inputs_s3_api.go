@@ -44,7 +44,7 @@ func (api *EncodingInputsS3Api) Delete(inputId string) (*model.BitmovinResponse,
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/inputs/s3/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/s3/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsS3Api) Get(inputId string) (*model.S3Input, error) {
     }
 
     var responseModel *model.S3Input
-    err := api.apiClient.Get("/encoding/inputs/s3/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/s3/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsS3Api) List(queryParams ...func(*query.S3InputListQuery
     }
 
     var responseModel *pagination.S3InputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/s3", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/s3", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -45,7 +45,7 @@ func (api *AccountOrganizationsGroupsTenantsApi) Delete(organizationId string, g
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}/tenants/{tenant_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}/tenants/{tenant_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -57,7 +57,7 @@ func (api *AccountOrganizationsGroupsTenantsApi) Get(organizationId string, grou
     }
 
     var responseModel *model.Tenant
-    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/tenants/{tenant_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/tenants/{tenant_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -68,7 +68,7 @@ func (api *AccountOrganizationsGroupsTenantsApi) List(organizationId string, gro
     }
 
     var responseModel *pagination.TenantsListPagination
-    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/tenants", &responseModel, reqParams)
+    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/tenants", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -31,7 +31,7 @@ func (api *PlayerCustomBuildsWebStatusApi) Get(customBuildId string) (*model.Cus
     }
 
     var responseModel *model.CustomPlayerBuildStatus
-    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}/status", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/custom-builds/web/{custom_build_id}/status", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

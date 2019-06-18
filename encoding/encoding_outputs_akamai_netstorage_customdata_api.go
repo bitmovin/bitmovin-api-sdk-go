@@ -31,7 +31,7 @@ func (api *EncodingOutputsAkamaiNetstorageCustomdataApi) Get(outputId string) (*
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/outputs/akamai-netstorage/{output_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/akamai-netstorage/{output_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

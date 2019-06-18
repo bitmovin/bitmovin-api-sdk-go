@@ -44,7 +44,7 @@ func (api *EncodingOutputsLocalApi) Delete(outputId string) (*model.LocalOutput,
     }
 
     var responseModel *model.LocalOutput
-    err := api.apiClient.Delete("/encoding/outputs/local/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/outputs/local/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingOutputsLocalApi) Get(outputId string) (*model.LocalOutput, er
     }
 
     var responseModel *model.LocalOutput
-    err := api.apiClient.Get("/encoding/outputs/local/{output_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/local/{output_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingOutputsLocalApi) List(queryParams ...func(*query.LocalOutputL
     }
 
     var responseModel *pagination.LocalOutputsListPagination
-    err := api.apiClient.Get("/encoding/outputs/local", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/outputs/local", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -44,7 +44,7 @@ func (api *EncodingFiltersWatermarkApi) Delete(filterId string) (*model.Bitmovin
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/watermark/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/filters/watermark/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingFiltersWatermarkApi) Get(filterId string) (*model.WatermarkFi
     }
 
     var responseModel *model.WatermarkFilter
-    err := api.apiClient.Get("/encoding/filters/watermark/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/watermark/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingFiltersWatermarkApi) List(queryParams ...func(*query.Watermar
     }
 
     var responseModel *pagination.WatermarkFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/watermark", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/watermark", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

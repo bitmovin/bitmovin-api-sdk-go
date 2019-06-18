@@ -41,7 +41,7 @@ func (api *PlayerLicensesAnalyticsApi) Delete(licenseId string) (*model.PlayerLi
     }
 
     var responseModel *model.PlayerLicenseAnalytics
-    err := api.apiClient.Delete("/player/licenses/{license_id}/analytics", &responseModel, reqParams)
+    err := api.apiClient.Delete("/player/licenses/{license_id}/analytics", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

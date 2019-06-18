@@ -37,7 +37,7 @@ func (api *EncodingStatisticsEncodingsLiveStatisticsEventsApi) List(encodingId s
     }
 
     var responseModel *pagination.LiveEncodingStatsEventsListPagination
-    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/events", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/events", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

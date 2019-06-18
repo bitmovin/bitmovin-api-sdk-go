@@ -70,7 +70,7 @@ func (api *EncodingEncodingsMuxingsApi) List(encodingId string, queryParams ...f
     }
 
     var responseModel *pagination.MuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

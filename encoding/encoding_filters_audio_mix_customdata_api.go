@@ -31,7 +31,7 @@ func (api *EncodingFiltersAudioMixCustomdataApi) Get(filterId string) (*model.Cu
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/filters/audio-mix/{filter_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/audio-mix/{filter_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

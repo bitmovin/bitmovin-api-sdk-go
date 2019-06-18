@@ -44,7 +44,7 @@ func (api *EncodingFiltersCropApi) Delete(filterId string) (*model.BitmovinRespo
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/crop/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/filters/crop/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingFiltersCropApi) Get(filterId string) (*model.CropFilter, erro
     }
 
     var responseModel *model.CropFilter
-    err := api.apiClient.Get("/encoding/filters/crop/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/crop/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingFiltersCropApi) List(queryParams ...func(*query.CropFilterLis
     }
 
     var responseModel *pagination.CropFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/crop", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/crop", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -44,7 +44,7 @@ func (api *EncodingFiltersDeinterlaceApi) Delete(filterId string) (*model.Bitmov
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/filters/deinterlace/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/filters/deinterlace/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingFiltersDeinterlaceApi) Get(filterId string) (*model.Deinterla
     }
 
     var responseModel *model.DeinterlaceFilter
-    err := api.apiClient.Get("/encoding/filters/deinterlace/{filter_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/deinterlace/{filter_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingFiltersDeinterlaceApi) List(queryParams ...func(*query.Deinte
     }
 
     var responseModel *pagination.DeinterlaceFiltersListPagination
-    err := api.apiClient.Get("/encoding/filters/deinterlace", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/deinterlace", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -30,7 +30,7 @@ func (api *EncodingInfrastructureKubernetesStatusApi) Get(infrastructureId strin
     }
 
     
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/status", nil, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/status", nil, nil, reqParams)
     return err
 }
 

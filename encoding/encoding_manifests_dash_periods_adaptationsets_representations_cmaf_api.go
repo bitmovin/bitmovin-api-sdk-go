@@ -53,7 +53,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi) Del
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/{representation_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/{representation_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -66,7 +66,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi) Get
     }
 
     var responseModel *model.DashCmafRepresentation
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/{representation_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/{representation_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -84,7 +84,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi) Lis
     }
 
     var responseModel *pagination.DashCmafRepresentationsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

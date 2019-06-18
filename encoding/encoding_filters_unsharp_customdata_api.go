@@ -31,7 +31,7 @@ func (api *EncodingFiltersUnsharpCustomdataApi) Get(filterId string) (*model.Cus
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/filters/unsharp/{filter_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/unsharp/{filter_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -48,7 +48,7 @@ func (api *EncodingEncodingsStreamsSpritesApi) Delete(encodingId string, streamI
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites/{sprite_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites/{sprite_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsStreamsSpritesApi) Get(encodingId string, streamId s
     }
 
     var responseModel *model.Sprite
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites/{sprite_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites/{sprite_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -77,7 +77,7 @@ func (api *EncodingEncodingsStreamsSpritesApi) List(encodingId string, streamId 
     }
 
     var responseModel *pagination.SpritesListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/sprites", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

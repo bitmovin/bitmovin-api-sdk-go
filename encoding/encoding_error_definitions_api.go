@@ -36,7 +36,7 @@ func (api *EncodingErrorDefinitionsApi) List(queryParams ...func(*query.Encoding
     }
 
     var responseModel *pagination.EncodingErrorDefinitionsListPagination
-    err := api.apiClient.Get("/encoding/error-definitions", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/error-definitions", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

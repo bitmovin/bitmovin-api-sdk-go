@@ -49,7 +49,7 @@ func (api *EncodingEncodingsMuxingsWebmApi) Delete(encodingId string, muxingId s
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMuxingsWebmApi) Get(encodingId string, muxingId stri
     }
 
     var responseModel *model.WebmMuxing
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingEncodingsMuxingsWebmApi) List(encodingId string, queryParams 
     }
 
     var responseModel *pagination.WebmMuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/webm", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

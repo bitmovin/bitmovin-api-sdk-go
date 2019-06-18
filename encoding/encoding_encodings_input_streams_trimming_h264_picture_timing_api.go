@@ -43,7 +43,7 @@ func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingApi) Delete(enc
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingApi) Get(encodi
     }
 
     var responseModel *model.H264PictureTimingTrimmingInputStream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingApi) List(encod
     }
 
     var responseModel *pagination.H264PictureTimingTrimmingInputStreamsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/trimming/h264-picture-timing", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

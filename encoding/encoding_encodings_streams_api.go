@@ -70,7 +70,7 @@ func (api *EncodingEncodingsStreamsApi) Delete(encodingId string, streamId strin
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/streams/{stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -81,7 +81,7 @@ func (api *EncodingEncodingsStreamsApi) Get(encodingId string, streamId string) 
     }
 
     var responseModel *model.Stream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -97,7 +97,7 @@ func (api *EncodingEncodingsStreamsApi) List(encodingId string, queryParams ...f
     }
 
     var responseModel *pagination.StreamsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

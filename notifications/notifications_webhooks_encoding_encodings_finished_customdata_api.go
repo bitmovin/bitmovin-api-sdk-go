@@ -32,7 +32,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedCustomdataApi) GetCusto
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/finished/{webhook_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/finished/{webhook_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -42,7 +42,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedCustomdataApi) GetCusto
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/finished/{webhook_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/finished/{webhook_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

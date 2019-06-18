@@ -44,7 +44,7 @@ func (api *EncodingConfigurationsVideoMjpegApi) Delete(configurationId string) (
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/configurations/video/mjpeg/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/configurations/video/mjpeg/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingConfigurationsVideoMjpegApi) Get(configurationId string) (*mo
     }
 
     var responseModel *model.MjpegVideoConfiguration
-    err := api.apiClient.Get("/encoding/configurations/video/mjpeg/{configuration_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/video/mjpeg/{configuration_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingConfigurationsVideoMjpegApi) List(queryParams ...func(*query.
     }
 
     var responseModel *pagination.MjpegVideoConfigurationsListPagination
-    err := api.apiClient.Get("/encoding/configurations/video/mjpeg", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/configurations/video/mjpeg", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

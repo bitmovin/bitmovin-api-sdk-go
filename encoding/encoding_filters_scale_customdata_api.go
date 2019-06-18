@@ -31,7 +31,7 @@ func (api *EncodingFiltersScaleCustomdataApi) Get(filterId string) (*model.Custo
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/filters/scale/{filter_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/scale/{filter_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

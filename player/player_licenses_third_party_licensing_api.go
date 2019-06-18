@@ -41,7 +41,7 @@ func (api *PlayerLicensesThirdPartyLicensingApi) Delete(licenseId string) (*mode
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/player/licenses/{license_id}/third-party-licensing", &responseModel, reqParams)
+    err := api.apiClient.Delete("/player/licenses/{license_id}/third-party-licensing", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -51,7 +51,7 @@ func (api *PlayerLicensesThirdPartyLicensingApi) Get(licenseId string) (*model.P
     }
 
     var responseModel *model.PlayerThirdPartyLicensing
-    err := api.apiClient.Get("/player/licenses/{license_id}/third-party-licensing", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/licenses/{license_id}/third-party-licensing", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

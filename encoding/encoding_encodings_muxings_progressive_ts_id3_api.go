@@ -47,7 +47,7 @@ func (api *EncodingEncodingsMuxingsProgressiveTsId3Api) List(encodingId string, 
     }
 
     var responseModel *pagination.Id3TagsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-ts/{muxing_id}/id3", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

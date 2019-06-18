@@ -12,7 +12,7 @@ type AudioStream struct {
 	// Audio sampling rate in Hz
 	SampleRate *int32 `json:"sampleRate,omitempty"`
 	// Bitrate in bps
-	Bitrate *int64 `json:"bitrate,omitempty"`
+	Bitrate string `json:"bitrate,omitempty"`
 	// Bitrate in bps
 	Rate *int64 `json:"rate,omitempty"`
 	// Audio channel format

@@ -44,7 +44,7 @@ func (api *EncodingInputsAsperaApi) Delete(inputId string) (*model.AsperaInput, 
     }
 
     var responseModel *model.AsperaInput
-    err := api.apiClient.Delete("/encoding/inputs/aspera/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/aspera/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsAsperaApi) Get(inputId string) (*model.AsperaInput, err
     }
 
     var responseModel *model.AsperaInput
-    err := api.apiClient.Get("/encoding/inputs/aspera/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/aspera/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsAsperaApi) List(queryParams ...func(*query.AsperaInputL
     }
 
     var responseModel *pagination.AsperaInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/aspera", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/aspera", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

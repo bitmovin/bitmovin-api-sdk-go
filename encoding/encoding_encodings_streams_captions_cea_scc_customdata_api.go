@@ -33,7 +33,7 @@ func (api *EncodingEncodingsStreamsCaptionsCeaSccCustomdataApi) Get(encodingId s
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc/{captions_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc/{captions_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -34,7 +34,7 @@ func (api *PlayerChannelsVersionsApi) List(channelName string) (*pagination.Play
     }
 
     var responseModel *pagination.PlayerVersionsListPagination
-    err := api.apiClient.Get("/player/channels/{channel_name}/versions", &responseModel, reqParams)
+    err := api.apiClient.Get("/player/channels/{channel_name}/versions", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

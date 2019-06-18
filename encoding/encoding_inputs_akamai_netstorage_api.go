@@ -44,7 +44,7 @@ func (api *EncodingInputsAkamaiNetstorageApi) Delete(inputId string) (*model.Aka
     }
 
     var responseModel *model.AkamaiNetStorageInput
-    err := api.apiClient.Delete("/encoding/inputs/akamai-netstorage/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/akamai-netstorage/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsAkamaiNetstorageApi) Get(inputId string) (*model.Akamai
     }
 
     var responseModel *model.AkamaiNetStorageInput
-    err := api.apiClient.Get("/encoding/inputs/akamai-netstorage/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/akamai-netstorage/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsAkamaiNetstorageApi) List(queryParams ...func(*query.Ak
     }
 
     var responseModel *pagination.AkamaiNetStorageInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/akamai-netstorage", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/akamai-netstorage", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

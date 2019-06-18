@@ -33,7 +33,7 @@ func (api *EncodingEncodingsStreamsQcPsnrApi) Create(encodingId string, streamId
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/qc/psnr", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/streams/{stream_id}/qc/psnr", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -50,7 +50,7 @@ func (api *EncodingEncodingsStreamsQcPsnrApi) List(encodingId string, streamId s
     }
 
     var responseModel *pagination.PsnrQualityMetricsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/qc/psnr", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/qc/psnr", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

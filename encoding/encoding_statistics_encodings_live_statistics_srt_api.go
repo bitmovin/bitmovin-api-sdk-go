@@ -37,7 +37,7 @@ func (api *EncodingStatisticsEncodingsLiveStatisticsSrtApi) List(encodingId stri
     }
 
     var responseModel *pagination.SrtStatisticssListPagination
-    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/srt", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/srt", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingStatisticsEncodingsLiveStatisticsSrtApi) ListBySrtInputId(enc
     }
 
     var responseModel *pagination.SrtStatisticssListBySrtInputIdPagination
-    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/srt/{srt_input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/encodings/{encoding_id}/live-statistics/srt/{srt_input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -31,7 +31,7 @@ func (api *EncodingManifestsSmoothCustomdataApi) Get(manifestId string) (*model.
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

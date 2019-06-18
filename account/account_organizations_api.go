@@ -44,7 +44,7 @@ func (api *AccountOrganizationsApi) Delete(organizationId string) (*model.Bitmov
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/account/organizations/{organization_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/account/organizations/{organization_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *AccountOrganizationsApi) Get(organizationId string) (*model.Organizat
     }
 
     var responseModel *model.Organization
-    err := api.apiClient.Get("/account/organizations/{organization_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/account/organizations/{organization_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -63,7 +63,7 @@ func (api *AccountOrganizationsApi) List() (*pagination.OrganizationsListPaginat
     }
 
     var responseModel *pagination.OrganizationsListPagination
-    err := api.apiClient.Get("/account/organizations", &responseModel, reqParams)
+    err := api.apiClient.Get("/account/organizations", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

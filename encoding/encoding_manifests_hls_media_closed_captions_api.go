@@ -43,7 +43,7 @@ func (api *EncodingManifestsHlsMediaClosedCaptionsApi) Delete(manifestId string,
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingManifestsHlsMediaClosedCaptionsApi) Get(manifestId string, me
     }
 
     var responseModel *model.ClosedCaptionsMediaInfo
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/closed-captions/{media_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingManifestsHlsMediaClosedCaptionsApi) List(manifestId string, q
     }
 
     var responseModel *pagination.ClosedCaptionsMediaInfosListPagination
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/closed-captions", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/media/closed-captions", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

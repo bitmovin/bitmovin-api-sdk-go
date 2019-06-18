@@ -55,7 +55,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedApi) DeleteByEncodingId
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/notifications/webhooks/encoding/encodings/{encoding_id}/finished/{webhook_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/notifications/webhooks/encoding/encodings/{encoding_id}/finished/{webhook_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -65,7 +65,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedApi) DeleteByWebhookId(
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/notifications/webhooks/encoding/encodings/finished/{webhook_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/notifications/webhooks/encoding/encodings/finished/{webhook_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedApi) GetByEncodingIdAnd
     }
 
     var responseModel *model.Webhook
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/finished/{webhook_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/finished/{webhook_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -86,7 +86,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedApi) GetByWebhookId(web
     }
 
     var responseModel *model.Webhook
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/finished/{webhook_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/finished/{webhook_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -101,7 +101,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedApi) List(queryParams .
     }
 
     var responseModel *pagination.WebhooksListPagination
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/finished", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/finished", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -117,7 +117,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedApi) ListByEncodingId(e
     }
 
     var responseModel *pagination.WebhooksListByEncodingIdPagination
-    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/finished", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/webhooks/encoding/encodings/{encoding_id}/finished", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -43,7 +43,7 @@ func (api *EncodingEncodingsKeyframesApi) Delete(encodingId string, keyframeId s
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/keyframes/{keyframe_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/keyframes/{keyframe_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingEncodingsKeyframesApi) Get(encodingId string, keyframeId stri
     }
 
     var responseModel *model.Keyframe
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/keyframes/{keyframe_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/keyframes/{keyframe_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingEncodingsKeyframesApi) List(encodingId string, queryParams ..
     }
 
     var responseModel *pagination.KeyframesListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/keyframes", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/keyframes", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

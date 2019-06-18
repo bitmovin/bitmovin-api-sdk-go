@@ -49,7 +49,7 @@ func (api *EncodingEncodingsMuxingsMp3Api) Delete(encodingId string, muxingId st
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingEncodingsMuxingsMp3Api) Get(encodingId string, muxingId strin
     }
 
     var responseModel *model.Mp3Muxing
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3/{muxing_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -76,7 +76,7 @@ func (api *EncodingEncodingsMuxingsMp3Api) List(encodingId string, queryParams .
     }
 
     var responseModel *pagination.Mp3MuxingsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/mp3", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

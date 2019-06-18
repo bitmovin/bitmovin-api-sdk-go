@@ -50,7 +50,7 @@ func (api *EncodingManifestsDashApi) Delete(manifestId string) (*model.BitmovinR
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *EncodingManifestsDashApi) Get(manifestId string) (*model.DashManifest
     }
 
     var responseModel *model.DashManifest
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -75,7 +75,7 @@ func (api *EncodingManifestsDashApi) List(queryParams ...func(*query.DashManifes
     }
 
     var responseModel *pagination.DashManifestsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -85,7 +85,7 @@ func (api *EncodingManifestsDashApi) Start(manifestId string) (*model.BitmovinRe
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/start", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/start", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -95,7 +95,7 @@ func (api *EncodingManifestsDashApi) Status(manifestId string) (*model.ModelTask
     }
 
     var responseModel *model.ModelTask
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/status", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/status", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -105,7 +105,7 @@ func (api *EncodingManifestsDashApi) Stop(manifestId string) (*model.BitmovinRes
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/stop", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/manifests/dash/{manifest_id}/stop", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

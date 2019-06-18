@@ -68,7 +68,7 @@ func (api *EncodingEncodingsApi) Delete(encodingId string) (*model.BitmovinRespo
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -78,7 +78,7 @@ func (api *EncodingEncodingsApi) Get(encodingId string) (*model.Encoding, error)
     }
 
     var responseModel *model.Encoding
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -88,7 +88,7 @@ func (api *EncodingEncodingsApi) GetStartRequest(encodingId string) (*model.Star
     }
 
     var responseModel *model.StartEncodingRequest
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/start", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/start", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -103,7 +103,7 @@ func (api *EncodingEncodingsApi) List(queryParams ...func(*query.EncodingListQue
     }
 
     var responseModel *pagination.EncodingsListPagination
-    err := api.apiClient.Get("/encoding/encodings", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -143,7 +143,7 @@ func (api *EncodingEncodingsApi) Status(encodingId string) (*model.ModelTask, er
     }
 
     var responseModel *model.ModelTask
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/status", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/status", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -153,7 +153,7 @@ func (api *EncodingEncodingsApi) Stop(encodingId string) (*model.BitmovinRespons
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/stop", &responseModel, reqParams)
+    err := api.apiClient.Post("/encoding/encodings/{encoding_id}/stop", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

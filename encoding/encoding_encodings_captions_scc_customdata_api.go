@@ -32,7 +32,7 @@ func (api *EncodingEncodingsCaptionsSccCustomdataApi) Get(encodingId string, cap
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/captions/scc/{captions_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

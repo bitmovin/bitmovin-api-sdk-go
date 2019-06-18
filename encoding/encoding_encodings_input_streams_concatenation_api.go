@@ -43,7 +43,7 @@ func (api *EncodingEncodingsInputStreamsConcatenationApi) Delete(encodingId stri
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/concatenation/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/encodings/{encoding_id}/input-streams/concatenation/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingEncodingsInputStreamsConcatenationApi) Get(encodingId string,
     }
 
     var responseModel *model.ConcatenationInputStream
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/concatenation/{input_stream_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/concatenation/{input_stream_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingEncodingsInputStreamsConcatenationApi) List(encodingId string
     }
 
     var responseModel *pagination.ConcatenationInputStreamsListPagination
-    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/concatenation", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/input-streams/concatenation", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

@@ -31,7 +31,7 @@ func (api *EncodingFiltersDenoiseHqdn3dCustomdataApi) Get(filterId string) (*mod
     }
 
     var responseModel *model.CustomData
-    err := api.apiClient.Get("/encoding/filters/denoise-hqdn3d/{filter_id}/customData", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/filters/denoise-hqdn3d/{filter_id}/customData", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

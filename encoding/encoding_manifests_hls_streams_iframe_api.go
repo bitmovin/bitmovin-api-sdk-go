@@ -45,7 +45,7 @@ func (api *EncodingManifestsHlsStreamsIframeApi) Delete(manifestId string, strea
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe/{iframe_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe/{iframe_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -57,7 +57,7 @@ func (api *EncodingManifestsHlsStreamsIframeApi) Get(manifestId string, streamId
     }
 
     var responseModel *model.IFramePlaylist
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe/{iframe_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe/{iframe_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -74,7 +74,7 @@ func (api *EncodingManifestsHlsStreamsIframeApi) List(manifestId string, streamI
     }
 
     var responseModel *pagination.IFramePlaylistsListPagination
-    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/streams/{stream_id}/iframe", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

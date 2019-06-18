@@ -41,7 +41,7 @@ func (api *NotificationsApi) Delete(notificationId string) (*model.BitmovinRespo
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/notifications/{notification_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/notifications/{notification_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -51,7 +51,7 @@ func (api *NotificationsApi) Get(notificationId string) (*model.Notification, er
     }
 
     var responseModel *model.Notification
-    err := api.apiClient.Get("/notifications/{notification_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/{notification_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -66,7 +66,7 @@ func (api *NotificationsApi) List(queryParams ...func(*query.NotificationListQue
     }
 
     var responseModel *pagination.NotificationsListPagination
-    err := api.apiClient.Get("/notifications", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -82,7 +82,7 @@ func (api *NotificationsApi) ListByNotificationId(notificationId string, queryPa
     }
 
     var responseModel *pagination.NotificationStateEntrysListByNotificationIdPagination
-    err := api.apiClient.Get("/notifications/{notification_id}/states", &responseModel, reqParams)
+    err := api.apiClient.Get("/notifications/{notification_id}/states", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -92,7 +92,7 @@ func (api *NotificationsApi) Mute(notificationId string) (*model.BitmovinRespons
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/notifications/{notification_id}/mute", &responseModel, reqParams)
+    err := api.apiClient.Post("/notifications/{notification_id}/mute", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -102,7 +102,7 @@ func (api *NotificationsApi) Unmute(notificationId string) (*model.BitmovinRespo
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Post("/notifications/{notification_id}/unmute", &responseModel, reqParams)
+    err := api.apiClient.Post("/notifications/{notification_id}/unmute", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

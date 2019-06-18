@@ -45,7 +45,7 @@ func (api *AccountOrganizationsGroupsPermissionsApi) Delete(organizationId strin
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}/permissions/{permission_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/account/organizations/{organization_id}/groups/{group_id}/permissions/{permission_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -56,7 +56,7 @@ func (api *AccountOrganizationsGroupsPermissionsApi) List(organizationId string,
     }
 
     var responseModel *pagination.AclsListPagination
-    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/permissions", &responseModel, reqParams)
+    err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/permissions", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

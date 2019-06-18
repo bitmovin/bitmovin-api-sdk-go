@@ -49,7 +49,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmConte
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}/contentprotection/{contentprotection_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}/contentprotection/{contentprotection_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -63,7 +63,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmConte
     }
 
     var responseModel *model.ContentProtection
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}/contentprotection/{contentprotection_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}/contentprotection/{contentprotection_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -82,7 +82,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmConte
     }
 
     var responseModel *pagination.ContentProtectionsListPagination
-    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}/contentprotection", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/cmaf/drm/{representation_id}/contentprotection", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

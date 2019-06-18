@@ -31,7 +31,7 @@ func (api *EncodingInfrastructureKubernetesConfigurationApi) Get(infrastructureI
     }
 
     var responseModel *model.KubernetesClusterConfiguration
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/configuration", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/configuration", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

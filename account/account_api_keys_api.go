@@ -31,7 +31,7 @@ func (api *AccountApiKeysApi) Create() (*model.AccountApiKey, error) {
     }
 
     var responseModel *model.AccountApiKey
-    err := api.apiClient.Post("/account/api-keys", &responseModel, reqParams)
+    err := api.apiClient.Post("/account/api-keys", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -41,7 +41,7 @@ func (api *AccountApiKeysApi) Delete(apiKeyId string) (*model.BitmovinResponse, 
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/account/api-keys/{api_key_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/account/api-keys/{api_key_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -51,7 +51,7 @@ func (api *AccountApiKeysApi) Get(apiKeyId string) (*model.AccountApiKey, error)
     }
 
     var responseModel *model.AccountApiKey
-    err := api.apiClient.Get("/account/api-keys/{api_key_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/account/api-keys/{api_key_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -60,7 +60,7 @@ func (api *AccountApiKeysApi) List() (*pagination.AccountApiKeysListPagination, 
     }
 
     var responseModel *pagination.AccountApiKeysListPagination
-    err := api.apiClient.Get("/account/api-keys", &responseModel, reqParams)
+    err := api.apiClient.Get("/account/api-keys", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

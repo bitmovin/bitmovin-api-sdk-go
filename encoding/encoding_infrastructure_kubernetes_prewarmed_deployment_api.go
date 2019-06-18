@@ -43,7 +43,7 @@ func (api *EncodingInfrastructureKubernetesPrewarmedDeploymentApi) Delete(infras
     }
 
     var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment/{deployment_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment/{deployment_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInfrastructureKubernetesPrewarmedDeploymentApi) Get(infrastru
     }
 
     var responseModel *model.PrewarmEncoderSettings
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment/{deployment_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment/{deployment_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -70,7 +70,7 @@ func (api *EncodingInfrastructureKubernetesPrewarmedDeploymentApi) List(infrastr
     }
 
     var responseModel *pagination.PrewarmEncoderSettingssListPagination
-    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/infrastructure/kubernetes/{infrastructure_id}/prewarmed-deployment", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

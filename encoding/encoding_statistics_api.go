@@ -41,7 +41,7 @@ func (api *EncodingStatisticsApi) Get() (*model.Statistics, error) {
     }
 
     var responseModel *model.Statistics
-    err := api.apiClient.Get("/encoding/statistics", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -58,7 +58,7 @@ func (api *EncodingStatisticsApi) List(from time.Time, to time.Time, queryParams
     }
 
     var responseModel *pagination.StatisticssListPagination
-    err := api.apiClient.Get("/encoding/statistics/{from}/{to}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/statistics/{from}/{to}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

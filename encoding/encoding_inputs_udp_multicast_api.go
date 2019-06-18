@@ -44,7 +44,7 @@ func (api *EncodingInputsUdpMulticastApi) Delete(inputId string) (*model.UdpMult
     }
 
     var responseModel *model.UdpMulticastInput
-    err := api.apiClient.Delete("/encoding/inputs/udp-multicast/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Delete("/encoding/inputs/udp-multicast/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -54,7 +54,7 @@ func (api *EncodingInputsUdpMulticastApi) Get(inputId string) (*model.UdpMultica
     }
 
     var responseModel *model.UdpMulticastInput
-    err := api.apiClient.Get("/encoding/inputs/udp-multicast/{input_id}", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/udp-multicast/{input_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
@@ -69,7 +69,7 @@ func (api *EncodingInputsUdpMulticastApi) List(queryParams ...func(*query.UdpMul
     }
 
     var responseModel *pagination.UdpMulticastInputsListPagination
-    err := api.apiClient.Get("/encoding/inputs/udp-multicast", &responseModel, reqParams)
+    err := api.apiClient.Get("/encoding/inputs/udp-multicast", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
