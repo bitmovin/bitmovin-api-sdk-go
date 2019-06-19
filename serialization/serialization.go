@@ -47,6 +47,10 @@ func Decode(input interface{}, output interface{}) error {
 }
 
 func Serialize(model interface{}) []byte {
+	if model == nil {
+		return nil
+	}
+
 	value := reflect.ValueOf(model)
 	if value.Kind() == reflect.Ptr {
 		value = value.Elem()
