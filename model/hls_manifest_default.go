@@ -14,18 +14,18 @@ type HlsManifestDefault struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Type ManifestType `json:"type,omitempty"`
-	// The outputs to store the manifest
+	// The outputs to store the manifest (required)
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
-	// The filename of your manifest
+	// The filename of your manifest (required)
 	ManifestName string `json:"manifestName,omitempty"`
 	// If this is set, the EXT-X-VERSION tags of the Media Playlists are set to the provided version
 	HlsMediaPlaylistVersion HlsVersion `json:"hlsMediaPlaylistVersion,omitempty"`
 	// If this is set, the EXT-X-VERSION tag of the Master Playlist is set to the provided version
 	HlsMasterPlaylistVersion HlsVersion `json:"hlsMasterPlaylistVersion,omitempty"`
-	// The id of the encoding to create a default manifest from
+	// The id of the encoding to create a default manifest from (required)
 	EncodingId string `json:"encodingId,omitempty"`
 	// The version of the default manifest generator
 	Version HlsManifestDefaultVersion `json:"version,omitempty"`

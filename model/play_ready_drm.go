@@ -14,7 +14,7 @@ type PlayReadyDrm struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	// 16 byte encryption key, 32 hexadecimal characters. Either key or keySeed is required

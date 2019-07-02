@@ -14,12 +14,12 @@ type ConvertSccCaption struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// The input location to get the scc file from
+	// The input location to get the scc file from (required)
 	Input *InputPath `json:"input,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
-	// Name of the captions file
+	// Name of the captions file (required)
 	FileName string `json:"fileName,omitempty"`
 	OutputFormat StreamCaptionOutputFormat `json:"outputFormat,omitempty"`
 	// Optional settings when converting SCC to WebVTT

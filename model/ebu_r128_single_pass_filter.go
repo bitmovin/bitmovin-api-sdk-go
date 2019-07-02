@@ -14,7 +14,7 @@ type EbuR128SinglePassFilter struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// Set the targeted integrated loudness value. Range is from '-70.0' to '-5.0'. Default value is '-24.0'. Value is measured in LUFS (Loudness Units, referenced to Full Scale)
 	IntegratedLoudness *float64 `json:"integratedLoudness,omitempty"`

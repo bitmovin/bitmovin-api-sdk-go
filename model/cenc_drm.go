@@ -14,14 +14,14 @@ type CencDrm struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
-	// 16 byte encryption key, 32 hexadecimal characters
+	// 16 byte encryption key, 32 hexadecimal characters (required)
 	Key string `json:"key,omitempty"`
 	// 16 byte encryption key id. Required for any other DRM but FairPlay
 	Kid string `json:"kid,omitempty"`
-	// The encryption method to use. Default is `CTR`
+	// The encryption method to use. Default is `CTR` (required)
 	EncryptionMode EncryptionMode `json:"encryptionMode,omitempty"`
 	// Size of the initialization vector
 	IvSize IvSize `json:"ivSize,omitempty"`

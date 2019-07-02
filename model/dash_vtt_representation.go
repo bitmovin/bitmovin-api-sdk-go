@@ -14,9 +14,9 @@ type DashVttRepresentation struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// URL of the referenced VTT file
+	// URL of the referenced VTT file (required)
 	VttUrl string `json:"vttUrl,omitempty"`
 }
 

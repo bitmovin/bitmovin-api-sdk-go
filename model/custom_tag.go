@@ -14,9 +14,9 @@ type CustomTag struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// The positioning mode that should be used when inserting the placement opportunity
+	// The positioning mode that should be used when inserting the placement opportunity (required)
 	PositionMode PositionMode `json:"positionMode,omitempty"`
 	// Id of keyframe where the custom tag should be inserted. Required, when KEYFRAME is selected as position mode.
 	KeyframeId string `json:"keyframeId,omitempty"`
@@ -24,7 +24,7 @@ type CustomTag struct {
 	Time *float64 `json:"time,omitempty"`
 	// The custom tag will be inserted before the specified segment. Required, when SEGMENT is selected as position mode.
 	Segment *int64 `json:"segment,omitempty"`
-	// The data to be contained in the custom tag.
+	// The data to be contained in the custom tag. (required)
 	Data string `json:"data,omitempty"`
 }
 

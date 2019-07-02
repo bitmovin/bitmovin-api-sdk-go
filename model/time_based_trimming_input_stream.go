@@ -14,7 +14,7 @@ type TimeBasedTrimmingInputStream struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// The id of the ingest input stream that should be trimmed
 	InputStreamId string `json:"inputStreamId,omitempty"`

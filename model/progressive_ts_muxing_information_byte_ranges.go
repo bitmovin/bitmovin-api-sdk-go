@@ -1,7 +1,7 @@
 package model
 
 type ProgressiveTsMuxingInformationByteRanges struct {
-	// Number of the segment (starting at 0)
+	// Number of the segment (starting at 0) (required)
 	SegmentNumber *int32 `json:"segmentNumber,omitempty"`
 	// The position of the first byte of the segment
 	StartBytes *int64 `json:"startBytes,omitempty"`

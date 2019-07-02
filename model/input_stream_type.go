@@ -9,4 +9,5 @@ const (
 	InputStreamType_TRIMMING_TIME_CODE_TRACK InputStreamType = "TRIMMING_TIME_CODE_TRACK"
 	InputStreamType_TRIMMING_H264_PICTURE_TIMING InputStreamType = "TRIMMING_H264_PICTURE_TIMING"
 	InputStreamType_AUDIO_MIX InputStreamType = "AUDIO_MIX"
+	InputStreamType_FILE InputStreamType = "FILE"
 )

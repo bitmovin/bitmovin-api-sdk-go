@@ -1,11 +1,11 @@
 package model
 
 type StatisticsPerLabel struct {
-	// Bytes encoded total.
+	// Bytes encoded total. (required)
 	BytesEncodedTotal *int64 `json:"bytesEncodedTotal,omitempty"`
-	// Time in seconds encoded for all contained daily statistics.
+	// Time in seconds encoded for all contained daily statistics. (required)
 	TimeEncodedTotal *int64 `json:"timeEncodedTotal,omitempty"`
-	// An optional error message, when the event is in error state (occurs at event: ERROR)
+	// An optional error message, when the event is in error state (occurs at event: ERROR) (required)
 	Label string `json:"label,omitempty"`
 	// The billable minutes.
 	BillableMinutes *float64 `json:"billableMinutes,omitempty"`

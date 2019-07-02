@@ -14,7 +14,7 @@ type StreamInfo struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// It MUST match the value of the GROUP-ID attribute of an Audio EXT-X-MEDIA tag elsewhere in the Master Playlist. Either this or `audioGroups` must be set.
 	Audio string `json:"audio,omitempty"`
@@ -24,19 +24,19 @@ type StreamInfo struct {
 	Video string `json:"video,omitempty"`
 	// It MUST match the value of the GROUP-ID attribute of a Subtitles EXT-X-MEDIA tag elsewhere in the Master Playlist
 	Subtitles string `json:"subtitles,omitempty"`
-	// If the value is not 'NONE', it MUST match the value of the GROUP-ID attribute of a Closed Captions EXT-X-MEDIA tag elsewhere in the Playlist
+	// If the value is not 'NONE', it MUST match the value of the GROUP-ID attribute of a Closed Captions EXT-X-MEDIA tag elsewhere in the Playlist (required)
 	ClosedCaptions string `json:"closedCaptions,omitempty"`
-	// Id of the encoding.
+	// Id of the encoding. (required)
 	EncodingId string `json:"encodingId,omitempty"`
-	// Id of the stream.
+	// Id of the stream. (required)
 	StreamId string `json:"streamId,omitempty"`
-	// Id of the muxing.
+	// Id of the muxing. (required)
 	MuxingId string `json:"muxingId,omitempty"`
 	// Id of the DRM.
 	DrmId string `json:"drmId,omitempty"`
-	// Path to segments.
+	// Path to segments. (required)
 	SegmentPath string `json:"segmentPath,omitempty"`
-	// The URI of the playlist file.
+	// The URI of the playlist file. (required)
 	Uri string `json:"uri,omitempty"`
 	// Number of the first segment. Default is 0.
 	StartSegmentNumber *int64 `json:"startSegmentNumber,omitempty"`

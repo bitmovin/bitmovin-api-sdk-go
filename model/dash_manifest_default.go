@@ -14,10 +14,10 @@ type DashManifestDefault struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Type ManifestType `json:"type,omitempty"`
-	// The outputs to store the manifest
+	// The outputs to store the manifest (required)
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	Profile DashProfile `json:"profile,omitempty"`
 	// The filename of your manifest
@@ -26,7 +26,7 @@ type DashManifestDefault struct {
 	Namespaces []XmlNamespace `json:"namespaces,omitempty"`
 	// List of UTC Timings to use for live streaming
 	UtcTimings []UtcTiming `json:"utcTimings,omitempty"`
-	// The id of the encoding to create a default manifest from
+	// The id of the encoding to create a default manifest from (required)
 	EncodingId string `json:"encodingId,omitempty"`
 	// The version of the default manifest generator
 	Version DashManifestDefaultVersion `json:"version,omitempty"`

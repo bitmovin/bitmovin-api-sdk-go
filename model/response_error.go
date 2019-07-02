@@ -1,11 +1,11 @@
 package model
 
 type ResponseError struct {
-	// Unique correlation id
+	// Unique correlation id (required)
 	RequestId string `json:"requestId,omitempty"`
-	// Response status information
+	// Response status information (required)
 	Status ResponseStatus `json:"status,omitempty"`
-	// Response information
+	// Response information (required)
 	Data *ResponseErrorData `json:"data,omitempty"`
 }
 

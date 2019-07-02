@@ -14,14 +14,14 @@ type GcsOutput struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Acl []AclEntry `json:"acl,omitempty"`
-	// GCS access key
+	// GCS access key (required)
 	AccessKey string `json:"accessKey,omitempty"`
-	// GCS secret key
+	// GCS secret key (required)
 	SecretKey string `json:"secretKey,omitempty"`
-	// Name of the bucket
+	// Name of the bucket (required)
 	BucketName string `json:"bucketName,omitempty"`
 	CloudRegion GoogleCloudRegion `json:"cloudRegion,omitempty"`
 }

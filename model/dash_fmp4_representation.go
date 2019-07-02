@@ -1,15 +1,15 @@
 package model
 
 type DashFmp4Representation struct {
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// UUID of an encoding
+	// UUID of an encoding (required)
 	EncodingId string `json:"encodingId,omitempty"`
-	// UUID of a muxing
+	// UUID of a muxing (required)
 	MuxingId string `json:"muxingId,omitempty"`
 	Type DashRepresentationType `json:"type,omitempty"`
 	Mode DashRepresentationTypeMode `json:"mode,omitempty"`
-	// Path to segments. Will be used as the representation id if the type is set to TEMPLATE_ADAPTATION_SET
+	// Path to segments. Will be used as the representation id if the type is set to TEMPLATE_ADAPTATION_SET (required)
 	SegmentPath string `json:"segmentPath,omitempty"`
 	// Number of the first segment
 	StartSegmentNumber *int64 `json:"startSegmentNumber,omitempty"`

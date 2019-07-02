@@ -4,11 +4,11 @@ import (
 )
 
 type Message struct {
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Message type giving a hint on the importance of the message (log level)
+	// Message type giving a hint on the importance of the message (log level) (required)
 	Type MessageType `json:"type,omitempty"`
-	// Message text
+	// Message text (required)
 	Text string `json:"text,omitempty"`
 	// Name of the field to which the message is referring to
 	Field string `json:"field,omitempty"`

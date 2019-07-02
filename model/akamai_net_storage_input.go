@@ -14,13 +14,13 @@ type AkamaiNetStorageInput struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Host to use for Akamai NetStorage transfers
+	// Host to use for Akamai NetStorage transfers (required)
 	Host string `json:"host,omitempty"`
-	// Your Akamai NetStorage Username
+	// Your Akamai NetStorage Username (required)
 	Username string `json:"username,omitempty"`
-	// Your Akamai NetStorage password
+	// Your Akamai NetStorage password (required)
 	Password string `json:"password,omitempty"`
 }
 func (o AkamaiNetStorageInput) InputType() InputType {

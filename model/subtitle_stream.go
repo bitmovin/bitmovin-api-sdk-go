@@ -1,7 +1,7 @@
 package model
 
 type SubtitleStream struct {
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// Position starts from 0 and indicates the position of the stream in the media. 0 means that this is the first stream found in the media
 	Position *int32 `json:"position,omitempty"`

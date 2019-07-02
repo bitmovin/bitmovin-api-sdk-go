@@ -14,7 +14,7 @@ type RedundantRtmpInput struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// When there is no input signal present and this threshold in seconds is reached it will switch to another ingest point
 	DelayThreshold *int32 `json:"delayThreshold,omitempty"`

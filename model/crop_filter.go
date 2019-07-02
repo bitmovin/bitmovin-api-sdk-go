@@ -14,7 +14,7 @@ type CropFilter struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// Amount of pixels which will be cropped of the input video from the left side.
 	Left *int32 `json:"left,omitempty"`

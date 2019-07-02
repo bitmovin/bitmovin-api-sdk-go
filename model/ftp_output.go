@@ -14,10 +14,10 @@ type FtpOutput struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Acl []AclEntry `json:"acl,omitempty"`
-	// Host URL or IP of the FTP server
+	// Host URL or IP of the FTP server (required)
 	Host string `json:"host,omitempty"`
 	// Port to use, standard for FTP: 21
 	Port *int32 `json:"port,omitempty"`

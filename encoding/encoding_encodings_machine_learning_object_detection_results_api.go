@@ -7,6 +7,7 @@ import (
 
 type EncodingEncodingsMachineLearningObjectDetectionResultsApi struct {
     apiClient *common.ApiClient
+    ByTimestamp *EncodingEncodingsMachineLearningObjectDetectionResultsByTimestampApi
 }
 
 func NewEncodingEncodingsMachineLearningObjectDetectionResultsApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsMachineLearningObjectDetectionResultsApi, error) {
@@ -17,6 +18,8 @@ func NewEncodingEncodingsMachineLearningObjectDetectionResultsApi(configs ...fun
 
     api := &EncodingEncodingsMachineLearningObjectDetectionResultsApi{apiClient: apiClient}
 
+    byTimestampApi, err := NewEncodingEncodingsMachineLearningObjectDetectionResultsByTimestampApi(configs...)
+    api.ByTimestamp = byTimestampApi
 
 	if err != nil {
 		return nil, err

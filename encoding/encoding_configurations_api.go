@@ -10,6 +10,7 @@ type EncodingConfigurationsApi struct {
     Type *EncodingConfigurationsTypeApi
     Video *EncodingConfigurationsVideoApi
     Audio *EncodingConfigurationsAudioApi
+    Subtitles *EncodingConfigurationsSubtitlesApi
 }
 
 func NewEncodingConfigurationsApi(configs ...func(*common.ApiClient)) (*EncodingConfigurationsApi, error) {
@@ -26,6 +27,8 @@ func NewEncodingConfigurationsApi(configs ...func(*common.ApiClient)) (*Encoding
     api.Video = videoApi
     audioApi, err := NewEncodingConfigurationsAudioApi(configs...)
     api.Audio = audioApi
+    subtitlesApi, err := NewEncodingConfigurationsSubtitlesApi(configs...)
+    api.Subtitles = subtitlesApi
 
 	if err != nil {
 		return nil, err

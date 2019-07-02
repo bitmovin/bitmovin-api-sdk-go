@@ -1,7 +1,7 @@
 package model
 
 type AnalyticsMaxQueryRequest struct {
-	// Analytics license key
+	// Analytics license key (required)
 	LicenseKey string `json:"licenseKey,omitempty"`
 	Filters []AnalyticsFilter `json:"filters,omitempty"`
 	OrderBy []AnalyticsOrderByEntry `json:"orderBy,omitempty"`

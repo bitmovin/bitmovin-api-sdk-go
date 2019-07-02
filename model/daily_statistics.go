@@ -4,11 +4,11 @@ import (
 )
 
 type DailyStatistics struct {
-	// Date for the shown data. Format: yyyy-MM-dd
+	// Date for the shown data. Format: yyyy-MM-dd (required)
 	Date *time.Time `json:"date,omitempty"`
-	// Bytes encoded.
+	// Bytes encoded. (required)
 	BytesEncoded *int64 `json:"bytesEncoded,omitempty"`
-	// Time in seconds encoded for this day.
+	// Time in seconds encoded for this day. (required)
 	TimeEncoded *int64 `json:"timeEncoded,omitempty"`
 	// The billable minutes.
 	BillableMinutes *float64 `json:"billableMinutes,omitempty"`

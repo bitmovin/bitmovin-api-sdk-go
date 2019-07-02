@@ -1,7 +1,7 @@
 package model
 
 type AdaptationSet struct {
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// Custom adaptation set attributes
 	CustomAttributes []CustomAttribute `json:"customAttributes,omitempty"`

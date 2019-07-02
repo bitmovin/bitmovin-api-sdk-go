@@ -4,13 +4,13 @@ import (
 )
 
 type Subtask struct {
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Current status
+	// Current status (required)
 	Status Status `json:"status,omitempty"`
 	// Progress in percent
 	Progress *int32 `json:"progress,omitempty"`
-	// Name of the subtask
+	// Name of the subtask (required)
 	Name string `json:"name,omitempty"`
 	// Task specific messages
 	Messages []Message `json:"messages,omitempty"`

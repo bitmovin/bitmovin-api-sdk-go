@@ -15,7 +15,7 @@ type TextFilter struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Font TextFilterFont `json:"font,omitempty"`
 	// If set to true a box is drawn around the text using the background color.
@@ -48,9 +48,9 @@ type TextFilter struct {
 	Timecode string `json:"timecode,omitempty"`
 	// String to be drawn
 	Text string `json:"text,omitempty"`
-	// X position of the text. Also an expression can be used. The following variables are valid: line_h - height of each text line; main_h - input height; main_w - input width; n - number of input frame; text_h - Text height; text_w - Text width
+	// X position of the text. Also an expression can be used. The following variables are valid: line_h - height of each text line; main_h - input height; main_w - input width; n - number of input frame; text_h - Text height; text_w - Text width (required)
 	X string `json:"x,omitempty"`
-	// Y position of the text. Also an expression can be used. The following variables are valid: line_h - height of each text line; main_h - input height; main_w - input width; n - number of input frame; text_h - Text height; text_w - Text width
+	// Y position of the text. Also an expression can be used. The following variables are valid: line_h - height of each text line; main_h - input height; main_w - input width; n - number of input frame; text_h - Text height; text_w - Text width (required)
 	Y string `json:"y,omitempty"`
 }
 func (o TextFilter) FilterType() FilterType {

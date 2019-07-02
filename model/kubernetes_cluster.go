@@ -14,11 +14,11 @@ type KubernetesCluster struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Shows if the Bitmovin Agent is alive
+	// Shows if the Bitmovin Agent is alive (required)
 	Online *bool `json:"online,omitempty"`
-	// Shows if the Kubernetes cluster is accessible by the Bitmovin Agent
+	// Shows if the Kubernetes cluster is accessible by the Bitmovin Agent (required)
 	Connected *bool `json:"connected,omitempty"`
 	AgentDeploymentDownloadUrl string `json:"agentDeploymentDownloadUrl,omitempty"`
 }

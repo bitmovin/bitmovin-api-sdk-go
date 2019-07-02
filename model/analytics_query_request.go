@@ -5,7 +5,7 @@ type AnalyticsQueryRequest struct {
 	Start string `json:"start,omitempty"`
 	// End of timeframe which is queried
 	End string `json:"end,omitempty"`
-	// Analytics license key
+	// Analytics license key (required)
 	LicenseKey string `json:"licenseKey,omitempty"`
 	Filters []AnalyticsFilter `json:"filters,omitempty"`
 	OrderBy []AnalyticsOrderByEntry `json:"orderBy,omitempty"`

@@ -1,7 +1,7 @@
 package model
 
 type AudioStream struct {
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// Position of the stream in the file
 	Position *int32 `json:"position,omitempty"`

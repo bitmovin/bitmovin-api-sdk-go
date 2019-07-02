@@ -4,9 +4,9 @@ import (
 )
 
 type ModelTask struct {
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Current status
+	// Current status (required)
 	Status Status `json:"status,omitempty"`
 	// Estimated ETA in seconds
 	Eta *float64 `json:"eta,omitempty"`

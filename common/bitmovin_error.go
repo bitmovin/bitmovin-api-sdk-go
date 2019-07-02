@@ -7,11 +7,14 @@ import (
 )
 
 type BitmovinError struct {
-	Code             *int32
-	Message          *string
-	DeveloperMessage *string
-	Details          []model.Message
-	Links            []model.Link
+	ErrorCode        *int32          `json:"code,omitempty"`
+	Message          string          `json:"message,omitempty"`
+	DeveloperMessage string          `json:"developerMessage,omitempty"`
+	Details          []model.Message `json:"details,omitempty"`
+	Links            []model.Link    `json:"links,omitempty"`
+
+	HttpStatusCode *int
+	RawResponse    string
 }
 
 func (e BitmovinError) Error() string {

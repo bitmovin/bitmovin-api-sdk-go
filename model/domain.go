@@ -14,9 +14,9 @@ type Domain struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Host where the player is allowed to play
+	// Host where the player is allowed to play (required)
 	Url string `json:"url,omitempty"`
 }
 

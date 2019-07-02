@@ -14,11 +14,11 @@ type UdpMulticastInput struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Host name or IP address to use
+	// Host name or IP address to use (required)
 	Host string `json:"host,omitempty"`
-	// Port to use
+	// Port to use (required)
 	Port *int32 `json:"port,omitempty"`
 }
 func (o UdpMulticastInput) InputType() InputType {

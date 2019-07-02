@@ -14,14 +14,14 @@ type WidevineDrm struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
-	// 16 byte Encryption key, 32 hexadecimal characters
+	// 16 byte Encryption key, 32 hexadecimal characters (required)
 	Key string `json:"key,omitempty"`
-	// 16 byte Key id, 32 hexadecimal characters
+	// 16 byte Key id, 32 hexadecimal characters (required)
 	Kid string `json:"kid,omitempty"`
-	// Base 64 Encoded
+	// Base 64 Encoded (required)
 	Pssh string `json:"pssh,omitempty"`
 }
 func (o WidevineDrm) DrmType() DrmType {

@@ -12,7 +12,10 @@ type EncodingEncodingsInputStreamsApi struct {
     AudioMix *EncodingEncodingsInputStreamsAudioMixApi
     Ingest *EncodingEncodingsInputStreamsIngestApi
     Concatenation *EncodingEncodingsInputStreamsConcatenationApi
+    File *EncodingEncodingsInputStreamsFileApi
     Trimming *EncodingEncodingsInputStreamsTrimmingApi
+    Subtitles *EncodingEncodingsInputStreamsSubtitlesApi
+    Captions *EncodingEncodingsInputStreamsCaptionsApi
 }
 
 func NewEncodingEncodingsInputStreamsApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsInputStreamsApi, error) {
@@ -31,8 +34,14 @@ func NewEncodingEncodingsInputStreamsApi(configs ...func(*common.ApiClient)) (*E
     api.Ingest = ingestApi
     concatenationApi, err := NewEncodingEncodingsInputStreamsConcatenationApi(configs...)
     api.Concatenation = concatenationApi
+    fileApi, err := NewEncodingEncodingsInputStreamsFileApi(configs...)
+    api.File = fileApi
     trimmingApi, err := NewEncodingEncodingsInputStreamsTrimmingApi(configs...)
     api.Trimming = trimmingApi
+    subtitlesApi, err := NewEncodingEncodingsInputStreamsSubtitlesApi(configs...)
+    api.Subtitles = subtitlesApi
+    captionsApi, err := NewEncodingEncodingsInputStreamsCaptionsApi(configs...)
+    api.Captions = captionsApi
 
 	if err != nil {
 		return nil, err

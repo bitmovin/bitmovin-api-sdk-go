@@ -14,13 +14,13 @@ type Stream struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	InputStreams []StreamInput `json:"inputStreams,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	// Set true to create quality metadata for this stream
 	CreateQualityMetaData *bool `json:"createQualityMetaData,omitempty"`
-	// Id of the codec configuration
+	// Id of the codec configuration (required)
 	CodecConfigId string `json:"codecConfigId,omitempty"`
 	// Number of encoded segments. Available after encoding finishes.
 	SegmentsEncoded *int32 `json:"segmentsEncoded,omitempty"`

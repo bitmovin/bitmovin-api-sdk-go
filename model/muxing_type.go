@@ -13,4 +13,6 @@ const (
 	MuxingType_PROGRESSIVE_MOV MuxingType = "PROGRESSIVE_MOV"
 	MuxingType_PROGRESSIVE_TS MuxingType = "PROGRESSIVE_TS"
 	MuxingType_BROADCAST_TS MuxingType = "BROADCAST_TS"
+	MuxingType_CHUNKED_TEXT MuxingType = "CHUNKED_TEXT"
+	MuxingType_TEXT MuxingType = "TEXT"
 )

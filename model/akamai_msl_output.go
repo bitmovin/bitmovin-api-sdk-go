@@ -14,12 +14,12 @@ type AkamaiMslOutput struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Acl []AclEntry `json:"acl,omitempty"`
-	// The Akamai stream ID
+	// The Akamai stream ID (required)
 	StreamId *int32 `json:"streamId,omitempty"`
-	// The Akamai event name
+	// The Akamai event name (required)
 	EventName string `json:"eventName,omitempty"`
 	StreamFormat AkamaiMslStreamFormat `json:"streamFormat,omitempty"`
 	MslVersion AkamaiMslVersion `json:"mslVersion,omitempty"`

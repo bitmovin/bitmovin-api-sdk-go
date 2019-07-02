@@ -18,7 +18,7 @@ type BaseOutput struct {
     ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
     // User-specific meta data. This can hold anything.
     CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-    // Id of the resource
+    // Id of the resource (required)
     Id string `json:"id"`
     Acl []AclEntry `json:"acl,omitempty"`
     Type OutputType `json:"type"`

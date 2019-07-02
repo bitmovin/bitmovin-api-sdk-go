@@ -1,7 +1,7 @@
 package model
 
 type AnalyticsImpressionDetails struct {
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// Is an ad playing. 0 indicates no, 1 indicates yes
 	Ad *int64 `json:"ad,omitempty"`
@@ -59,7 +59,7 @@ type AnalyticsImpressionDetails struct {
 	ErrorMessage string `json:"errorMessage,omitempty"`
 	// A/B test experiment name
 	ExperimentName string `json:"experimentName,omitempty"`
-	// Random UUID that is used to identify a sessions
+	// Random UUID that is used to identify a sessions (required)
 	ImpressionId string `json:"impressionId,omitempty"`
 	// IP Address of the client
 	IpAddress string `json:"ipAddress,omitempty"`

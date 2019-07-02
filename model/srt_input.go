@@ -14,13 +14,13 @@ type SrtInput struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// The SRT mode to use
+	// The SRT mode to use (required)
 	Mode SrtMode `json:"mode,omitempty"`
 	// The name or IP of the host providing the SRT stream (only used in CALLER mode)
 	Host string `json:"host,omitempty"`
-	// The port to connect to or listen on. Has to be one of [2088, 2089, 2090, 2091] when using LISTENER mode.
+	// The port to connect to or listen on. Has to be one of [2088, 2089, 2090, 2091] when using LISTENER mode. (required)
 	Port *int32 `json:"port,omitempty"`
 	// The path parameter of the SRT stream
 	Path string `json:"path,omitempty"`

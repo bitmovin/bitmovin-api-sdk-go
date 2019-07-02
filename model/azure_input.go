@@ -14,13 +14,13 @@ type AzureInput struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Azure Account Name
+	// Azure Account Name (required)
 	AccountName string `json:"accountName,omitempty"`
-	// Azure Account Key
+	// Azure Account Key (required)
 	AccountKey string `json:"accountKey,omitempty"`
-	// Name of the bucket
+	// Name of the bucket (required)
 	Container string `json:"container,omitempty"`
 }
 func (o AzureInput) InputType() InputType {

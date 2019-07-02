@@ -14,9 +14,9 @@ type WatermarkFilter struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// URL of the file to be used as watermark image. Supported image formats: PNG, JPEG, BMP, GIF
+	// URL of the file to be used as watermark image. Supported image formats: PNG, JPEG, BMP, GIF (required)
 	Image string `json:"image,omitempty"`
 	// Distance from the left edge of the input video to the left edge of the watermark image. May not be set if 'right' is set.
 	Left *int32 `json:"left,omitempty"`

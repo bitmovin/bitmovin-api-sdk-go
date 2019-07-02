@@ -1,9 +1,9 @@
 package model
 
 type AudioGroupConfiguration struct {
-	// Dropping mode
+	// Dropping mode (required)
 	DroppingMode VariantStreamDroppingMode `json:"droppingMode,omitempty"`
-	// Audio groups
+	// Audio groups (required)
 	Groups []AudioGroup `json:"groups,omitempty"`
 }
 

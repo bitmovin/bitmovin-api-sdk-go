@@ -14,7 +14,7 @@ type CmafMuxing struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Streams []MuxingStream `json:"streams,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
@@ -28,7 +28,7 @@ type CmafMuxing struct {
 	IgnoredBy []Ignoring `json:"ignoredBy,omitempty"`
 	// Specifies how to handle streams that don't fulfill stream conditions
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
-	// Length of the fragments in seconds
+	// Length of the fragments in seconds (required)
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
 	// Segment naming policy
 	SegmentNaming string `json:"segmentNaming,omitempty"`

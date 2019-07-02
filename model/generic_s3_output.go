@@ -14,16 +14,16 @@ type GenericS3Output struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	Acl []AclEntry `json:"acl,omitempty"`
-	// Your generic S3 access key
+	// Your generic S3 access key (required)
 	AccessKey string `json:"accessKey,omitempty"`
-	// Your generic S3 secret key
+	// Your generic S3 secret key (required)
 	SecretKey string `json:"secretKey,omitempty"`
-	// Name of the bucket
+	// Name of the bucket (required)
 	BucketName string `json:"bucketName,omitempty"`
-	// The Generic S3 server hostname (or IP address)
+	// The Generic S3 server hostname (or IP address) (required)
 	Host string `json:"host,omitempty"`
 	// The port on which the Generic S3 server is running on (if not provided 8000 will be used)
 	Port *int32 `json:"port,omitempty"`

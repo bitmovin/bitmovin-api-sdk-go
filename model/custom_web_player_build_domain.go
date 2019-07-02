@@ -14,9 +14,9 @@ type CustomWebPlayerBuildDomain struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Domain where the player is allowed to play
+	// Domain where the player is allowed to play (required)
 	Domain string `json:"domain,omitempty"`
 }
 

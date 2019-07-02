@@ -1,7 +1,7 @@
 package model
 
 type ObjectDetectionResult struct {
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// Name of the object that has been detected (in English)
 	DetectedObject string `json:"detectedObject,omitempty"`

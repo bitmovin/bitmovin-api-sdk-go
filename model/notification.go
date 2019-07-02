@@ -4,7 +4,7 @@ import (
 )
 
 type Notification struct {
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// Notify when condition resolves after it was met
 	Resolve *bool `json:"resolve,omitempty"`

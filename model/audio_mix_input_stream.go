@@ -14,7 +14,7 @@ type AudioMixInputStream struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// Channel layout of the audio mix input stream
 	ChannelLayout AudioMixInputChannelLayout `json:"channelLayout,omitempty"`

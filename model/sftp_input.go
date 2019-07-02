@@ -14,9 +14,9 @@ type SftpInput struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Host Url or IP of the SFTP server
+	// Host Url or IP of the SFTP server (required)
 	Host string `json:"host,omitempty"`
 	// Port to use, standard for SFTP: 22
 	Port *int32 `json:"port,omitempty"`

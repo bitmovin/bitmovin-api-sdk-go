@@ -1,7 +1,7 @@
 package model
 
 type StartLiveEncodingRequest struct {
-	// Key for the stream. (a-zA-Z, 3-20 characters)
+	// Key for the stream. (a-zA-Z, 3-20 characters) (required)
 	StreamKey string `json:"streamKey,omitempty"`
 	// List of Hls manifests to use for this live encoding
 	HlsManifests []LiveHlsManifest `json:"hlsManifests,omitempty"`

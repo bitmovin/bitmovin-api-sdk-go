@@ -14,11 +14,11 @@ type BurnInSubtitleSrt struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Character encoding of the SRT file
+	// Character encoding of the SRT file (required)
 	CharacterEncoding CaptionCharacterEncoding `json:"characterEncoding,omitempty"`
-	// The input location to get the SRT file from
+	// The input location to get the SRT file from (required)
 	Input *InputPath `json:"input,omitempty"`
 }
 

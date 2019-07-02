@@ -14,9 +14,9 @@ type AudioVolumeFilter struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Audio volume value
+	// Audio volume value (required)
 	Volume *float64 `json:"volume,omitempty"`
 	Unit AudioVolumeUnit `json:"unit,omitempty"`
 }

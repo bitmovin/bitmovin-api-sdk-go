@@ -14,13 +14,13 @@ type AwsAccount struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Amazon access key
+	// Amazon access key (required)
 	AccessKey string `json:"accessKey,omitempty"`
-	// Amazon secret key
+	// Amazon secret key (required)
 	SecretKey string `json:"secretKey,omitempty"`
-	// Amazon account number (12 digits as per AWS spec)
+	// Amazon account number (12 digits as per AWS spec) (required)
 	AccountNumber string `json:"accountNumber,omitempty"`
 }
 

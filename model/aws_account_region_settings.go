@@ -14,7 +14,7 @@ type AwsAccountRegionSettings struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	// Limit for the amount of running encodings at a time. Leave empty for no limit.
 	LimitParallelEncodings *int64 `json:"limitParallelEncodings,omitempty"`
@@ -22,9 +22,9 @@ type AwsAccountRegionSettings struct {
 	MaximumAmountOfCoordinatorsAndWorkersInRegion *int64 `json:"maximumAmountOfCoordinatorsAndWorkersInRegion,omitempty"`
 	// Limit the amount of money to spend in this region on this account. Leave empty for no limit.
 	MaxMoneyToSpendPerMonth *float64 `json:"maxMoneyToSpendPerMonth,omitempty"`
-	// Id of the security group for encoding instances
+	// Id of the security group for encoding instances (required)
 	SecurityGroupId string `json:"securityGroupId,omitempty"`
-	// Id of the subnet for encoding instances
+	// Id of the subnet for encoding instances (required)
 	SubnetId string `json:"subnetId,omitempty"`
 	// Which machine types are allowed to be deployed. Leave empty for no machine type restrictions.
 	MachineTypes []string `json:"machineTypes,omitempty"`

@@ -4,7 +4,7 @@ import (
 )
 
 type AacAudioConfiguration struct {
-	// Name of the resource. Can be freely chosen by the user.
+	// Name of the resource. Can be freely chosen by the user. (required)
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
 	Description string `json:"description,omitempty"`
@@ -14,9 +14,9 @@ type AacAudioConfiguration struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Target bitrate for the encoded audio in bps
+	// Target bitrate for the encoded audio in bps (required)
 	Bitrate *int64 `json:"bitrate,omitempty"`
 	// Audio sampling rate Hz
 	Rate *float64 `json:"rate,omitempty"`

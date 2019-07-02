@@ -15,11 +15,11 @@ type SidecarFile struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Id of input
+	// Id of input (required)
 	InputId string `json:"inputId,omitempty"`
-	// Path to sidecar file
+	// Path to sidecar file (required)
 	InputPath string `json:"inputPath,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	ErrorMode SidecarErrorMode `json:"errorMode,omitempty"`

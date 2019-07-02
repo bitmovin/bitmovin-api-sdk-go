@@ -33,7 +33,7 @@ type PathParams map[string]interface{}
 const QueryParamTagName = "query"
 const DefaultApiBaseUrl = "https://api.bitmovin.com/v1"
 const ContentTypeJson = "application/json"
-const ApiClientVersion = "1.17.2-alpha.0"
+const ApiClientVersion = "1.18.0-alpha.0"
 const ApiClientName = "bitmovin-api-sdk-go"
 const NoApiKeyErrorMsg = "there was no api key provided"
 
@@ -245,21 +245,27 @@ func (apiClient *ApiClient) request(reqMethod string, relUrl string, requestMode
 		return err
 	}
 
-	//if !headerContentTypeIsJson(resp.Header) {
-	//	// ToDo What should happen if the response content type is not json? Could there be a case where the response content type is not application/json?
-	//}
-
 	respBody, err := ioutil.ReadAll(resp.Body)
-	apiClient.logResponse(reqUrl, reqMethod, resp.Header, resp.StatusCode, respBody)
-
-	var envelope model.GenericResponseEnvelope
-	err = json.Unmarshal(respBody, &envelope)
 	if err != nil {
 		return err
 	}
 
-	if envelope.Status == model.ResponseStatus_ERROR {
-		return createBitmovinError(envelope)
+	apiClient.logResponse(reqUrl, reqMethod, resp.Header, resp.StatusCode, respBody)
+
+	var envelope model.GenericResponseEnvelope
+	err = json.Unmarshal(respBody, &envelope)
+
+	if resp.StatusCode < 200 || resp.StatusCode > 299 {
+		var bitmovinError BitmovinError
+		if err == nil {
+			bitmovinError = createBitmovinError(envelope)
+		}
+		bitmovinError.RawResponse = string(respBody)
+		bitmovinError.HttpStatusCode = &resp.StatusCode
+		return bitmovinError
+
+	} else if err != nil {
+		return err
 	}
 
 	if responseModel != nil {

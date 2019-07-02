@@ -14,11 +14,11 @@ type GenericS3Input struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Your generic S3 bucket name
+	// Your generic S3 bucket name (required)
 	BucketName string `json:"bucketName,omitempty"`
-	// The generic S3 server hostname (or IP address)
+	// The generic S3 server hostname (or IP address) (required)
 	Host string `json:"host,omitempty"`
 	// The port on which the generic S3 server is running on (if not provided 8000 will be used)
 	Port *int32 `json:"port,omitempty"`
@@ -26,9 +26,9 @@ type GenericS3Input struct {
 	Ssl *bool `json:"ssl,omitempty"`
 	// Specifies the method used for authentication
 	SignatureVersion S3SignatureVersion `json:"signatureVersion,omitempty"`
-	// Your generic S3 access key
+	// Your generic S3 access key (required)
 	AccessKey string `json:"accessKey,omitempty"`
-	// Your generic S3 secret key
+	// Your generic S3 secret key (required)
 	SecretKey string `json:"secretKey,omitempty"`
 }
 func (o GenericS3Input) InputType() InputType {

@@ -18,7 +18,7 @@ type BaseId3Tag struct {
     ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
     // User-specific meta data. This can hold anything.
     CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-    // Id of the resource
+    // Id of the resource (required)
     Id string `json:"id"`
     PositionMode Id3TagPositionMode `json:"positionMode,omitempty"`
     // Frame number at which the Tag should be inserted

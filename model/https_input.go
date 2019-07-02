@@ -14,9 +14,9 @@ type HttpsInput struct {
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource
+	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Host Url or IP of the HTTP server
+	// Host Url or IP of the HTTP server (required)
 	Host string `json:"host,omitempty"`
 	// Basic Auth Username, if required
 	Username string `json:"username,omitempty"`
