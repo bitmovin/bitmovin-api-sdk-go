@@ -14,6 +14,7 @@ type EncodingListQueryParams struct {
     CloudRegion model.CloudRegion `query:"cloudRegion"`
     EncoderVersion string `query:"encoderVersion"`
     Name string `query:"name"`
+    Search string `query:"search"`
 }
 
 func (q *EncodingListQueryParams) Params() map[string]string {

@@ -1,7 +1,7 @@
 package model
 
 type AnalyticsOrderByEntry struct {
-	Name string `json:"name,omitempty"`
+	Name AnalyticsAttribute `json:"name,omitempty"`
 	Order AnalyticsOrder `json:"order,omitempty"`
 }
 

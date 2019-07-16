@@ -18,6 +18,7 @@ type EncodingOutputsApi struct {
     Sftp *EncodingOutputsSftpApi
     AkamaiMsl *EncodingOutputsAkamaiMslApi
     AkamaiNetstorage *EncodingOutputsAkamaiNetstorageApi
+    LiveMediaIngest *EncodingOutputsLiveMediaIngestApi
 }
 
 func NewEncodingOutputsApi(configs ...func(*common.ApiClient)) (*EncodingOutputsApi, error) {
@@ -50,6 +51,8 @@ func NewEncodingOutputsApi(configs ...func(*common.ApiClient)) (*EncodingOutputs
     api.AkamaiMsl = akamaiMslApi
     akamaiNetstorageApi, err := NewEncodingOutputsAkamaiNetstorageApi(configs...)
     api.AkamaiNetstorage = akamaiNetstorageApi
+    liveMediaIngestApi, err := NewEncodingOutputsLiveMediaIngestApi(configs...)
+    api.LiveMediaIngest = liveMediaIngestApi
 
 	if err != nil {
 		return nil, err

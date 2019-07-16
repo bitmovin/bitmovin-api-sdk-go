@@ -78,6 +78,11 @@ func (o *OutputsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.OutputType_LIVE_MEDIA_INGEST:
+                    var v model.LiveMediaIngestOutput
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 default:
                     items = append(items, base)
         }

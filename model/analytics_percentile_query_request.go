@@ -3,11 +3,11 @@ package model
 type AnalyticsPercentileQueryRequest struct {
 	// Analytics license key (required)
 	LicenseKey string `json:"licenseKey,omitempty"`
-	Filters []AnalyticsFilter `json:"filters,omitempty"`
+	Filters []AnalyticsBaseFilter `json:"filters,omitempty"`
 	OrderBy []AnalyticsOrderByEntry `json:"orderBy,omitempty"`
-	Dimension string `json:"dimension,omitempty"`
+	Dimension AnalyticsAttribute `json:"dimension,omitempty"`
 	Interval AnalyticsInterval `json:"interval,omitempty"`
-	GroupBy []string `json:"groupBy,omitempty"`
+	GroupBy []AnalyticsAttribute `json:"groupBy,omitempty"`
 	// Maximum number of rows returned (max. 200)
 	Limit *int64 `json:"limit,omitempty"`
 	// Offset of data

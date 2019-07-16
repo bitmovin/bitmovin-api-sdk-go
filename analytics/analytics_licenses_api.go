@@ -57,3 +57,13 @@ func (api *AnalyticsLicensesApi) List() (*pagination.AnalyticsLicensesListPagina
     return responseModel, err
 }
 
+func (api *AnalyticsLicensesApi) Update(licenseId string, analyticsLicenseUpdateRequest model.AnalyticsLicenseUpdateRequest) (*model.AnalyticsLicense, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["license_id"] = licenseId
+    }
+
+    var responseModel *model.AnalyticsLicense
+    err := api.apiClient.Put("/analytics/licenses/{license_id}", &analyticsLicenseUpdateRequest, &responseModel, reqParams)
+    return responseModel, err
+}
+
