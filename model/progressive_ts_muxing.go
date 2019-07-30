@@ -32,8 +32,8 @@ type ProgressiveTsMuxing struct {
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
 	// Name of the new Video
 	Filename string `json:"filename,omitempty"`
-	// Offset of MPEG-TS timestamps in seconds. E.g., first packet will start with PTS 900,000 for a 10 seconds offset (90,000 MPEG-TS timescale).
-	StartOffset *float64 `json:"startOffset,omitempty"`
+	// Offset of MPEG-TS timestamps in seconds. e.g. first packet will start with PTS 900,000 for a 10 seconds offset (90,000 MPEG-TS timescale).
+	StartOffset *int32 `json:"startOffset,omitempty"`
 	// Modifies the internal chunk length used for chunked encoding
 	InternalChunkLength *InternalChunkLength `json:"internalChunkLength,omitempty"`
 }

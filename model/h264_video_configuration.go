@@ -36,6 +36,7 @@ type H264VideoConfiguration struct {
 	PresetConfiguration PresetConfiguration `json:"presetConfiguration,omitempty"`
 	// Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
 	Crf *float64 `json:"crf,omitempty"`
+	// When setting a profile, all other settings must not exceed the limits which are defined in the profile. Otherwise, a higher profile may be automatically chosen. (required)
 	Profile ProfileH264 `json:"profile,omitempty"`
 	// Sets the amount of b frames.
 	Bframes *int32 `json:"bframes,omitempty"`
@@ -66,6 +67,7 @@ type H264VideoConfiguration struct {
 	MinKeyframeInterval *float64 `json:"minKeyframeInterval,omitempty"`
 	// Maximum interval in seconds between key frames
 	MaxKeyframeInterval *float64 `json:"maxKeyframeInterval,omitempty"`
+	// If three-pass encoding is used and a level is set for the encoder, the bitrate for some segments may exceed the bitrate limit which is defined by the level.
 	Level LevelH264 `json:"level,omitempty"`
 	BAdaptiveStrategy BAdapt `json:"bAdaptiveStrategy,omitempty"`
 	MotionEstimationMethod H264MotionEstimationMethod `json:"motionEstimationMethod,omitempty"`

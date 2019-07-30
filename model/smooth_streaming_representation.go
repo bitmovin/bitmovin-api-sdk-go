@@ -26,5 +26,7 @@ type SmoothStreamingRepresentation struct {
 	Language string `json:"language,omitempty"`
 	// Track where this MP4 shoudl be added
 	TrackName string `json:"trackName,omitempty"`
+	// Specify the priority of this representation. Representations with higher priority will be listed first in the manifest.
+	Priority *int32 `json:"priority,omitempty"`
 }
 

@@ -8,8 +8,8 @@ type StreamPerTitleFixedResolutionAndBitrateSettings struct {
 	// Bitrate selection mode
 	BitrateSelectionMode BitrateSelectionMode `json:"bitrateSelectionMode,omitempty"`
 	// Low complexity boundary for max bitrate
-	LowComplexityBoundaryForMaxBitrate *float64 `json:"lowComplexityBoundaryForMaxBitrate,omitempty"`
+	LowComplexityBoundaryForMaxBitrate *int32 `json:"lowComplexityBoundaryForMaxBitrate,omitempty"`
 	// High complexity boundary for max bitrate
-	HighComplexityBoundaryForMaxBitrate *float64 `json:"highComplexityBoundaryForMaxBitrate,omitempty"`
+	HighComplexityBoundaryForMaxBitrate *int32 `json:"highComplexityBoundaryForMaxBitrate,omitempty"`
 }
 

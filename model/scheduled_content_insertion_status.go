@@ -1,0 +1,11 @@
+package model
+type ScheduledContentInsertionStatus string
+
+// List of ScheduledContentInsertionStatus
+const (
+	ScheduledContentInsertionStatus_CREATED ScheduledContentInsertionStatus = "CREATED"
+	ScheduledContentInsertionStatus_SCHEDULED ScheduledContentInsertionStatus = "SCHEDULED"
+	ScheduledContentInsertionStatus_TO_BE_DESCHEDULED ScheduledContentInsertionStatus = "TO_BE_DESCHEDULED"
+	ScheduledContentInsertionStatus_DESCHEDULED ScheduledContentInsertionStatus = "DESCHEDULED"
+	ScheduledContentInsertionStatus_ERROR ScheduledContentInsertionStatus = "ERROR"
+)

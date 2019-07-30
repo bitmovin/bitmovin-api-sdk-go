@@ -41,7 +41,7 @@ type CmafMuxing struct {
 	// Number of segments which have been encoded
 	SegmentsMuxed *int32 `json:"segmentsMuxed,omitempty"`
 	// Number of media frames per CMAF chunk. Defaults to: Length of a segment in frames. Minimum: 1. Maximum: Length of a segment in frames.
-	FramesPerCmafChunk *map[string]interface{} `json:"framesPerCmafChunk,omitempty"`
+	FramesPerCmafChunk *int32 `json:"framesPerCmafChunk,omitempty"`
 }
 func (o CmafMuxing) MuxingType() MuxingType {
     return MuxingType_CMAF

@@ -22,6 +22,14 @@ type Encoding struct {
 	// Define an external infrastructure to run the encoding on. Note If you set this value, the `cloudRegion` must be 'EXTERNAL'.
 	InfrastructureId string `json:"infrastructureId,omitempty"`
 	Infrastructure *InfrastructureSettings `json:"infrastructure,omitempty"`
+	// Will be set to the encoder version that was actually used for the encoding. This is especially useful when starting an encoding with a version tag like STABLE or BETA.
+	SelectedEncoderVersion string `json:"selectedEncoderVersion,omitempty"`
+	// Will be set to the encoding mode that was actually used for the encoding. This is especially useful when starting an encoding with encoding mode STANDARD.
+	SelectedEncodingMode EncodingMode `json:"selectedEncodingMode,omitempty"`
+	// Contains the region which was selected when cloudregion:AUTO was specified
+	SelectedCloudRegion CloudRegion `json:"selectedCloudRegion,omitempty"`
+	// The current status of the encoding.
+	Status Status `json:"status,omitempty"`
 	// You may pass a list of groups associated with this encoding. This will enable you to group results in the statistics resource
 	Labels []string `json:"labels,omitempty"`
 }
