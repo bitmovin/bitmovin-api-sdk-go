@@ -8,6 +8,9 @@ import (
 
 type EncodingEncodingsLiveInsertableContentApi struct {
     apiClient *common.ApiClient
+    Schedule *EncodingEncodingsLiveInsertableContentScheduleApi
+    Scheduled *EncodingEncodingsLiveInsertableContentScheduledApi
+    Stop *EncodingEncodingsLiveInsertableContentStopApi
 }
 
 func NewEncodingEncodingsLiveInsertableContentApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsLiveInsertableContentApi, error) {
@@ -18,6 +21,12 @@ func NewEncodingEncodingsLiveInsertableContentApi(configs ...func(*common.ApiCli
 
     api := &EncodingEncodingsLiveInsertableContentApi{apiClient: apiClient}
 
+    scheduleApi, err := NewEncodingEncodingsLiveInsertableContentScheduleApi(configs...)
+    api.Schedule = scheduleApi
+    scheduledApi, err := NewEncodingEncodingsLiveInsertableContentScheduledApi(configs...)
+    api.Scheduled = scheduledApi
+    stopApi, err := NewEncodingEncodingsLiveInsertableContentStopApi(configs...)
+    api.Stop = stopApi
 
 	if err != nil {
 		return nil, err

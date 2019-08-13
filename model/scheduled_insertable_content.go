@@ -3,7 +3,7 @@ import (
 	"time"
 )
 
-type ScheduledContentInsertion struct {
+type ScheduledInsertableContent struct {
 	// Name of the resource. Can be freely chosen by the user.
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,13 +16,13 @@ type ScheduledContentInsertion struct {
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Id of the insertable content to play instead of the live stream (required)
+	// Id of the insertable content to play instead of the live stream
 	ContentId string `json:"contentId,omitempty"`
 	// Time to to play the content in UTC: YYYY-MM-DDThh:mm:ssZ
 	RunAt *time.Time `json:"runAt,omitempty"`
 	// Duration for how long to play the content. Cut off if shorter, loop if longer than actual duration.
 	DurationInSeconds *float64 `json:"durationInSeconds,omitempty"`
-	// Status of the scheduled content insertion.
-	Status ScheduledContentInsertionStatus `json:"status,omitempty"`
+	// Status of the scheduled insertable content.
+	Status ScheduledInsertableContentStatus `json:"status,omitempty"`
 }
 

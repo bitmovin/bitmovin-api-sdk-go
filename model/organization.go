@@ -16,5 +16,11 @@ type Organization struct {
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
+	Type OrganizationType `json:"type,omitempty"`
+	// ID of the parent organization
+	ParentId string `json:"parentId,omitempty"`
+	// Hexadecimal color
+	LabelColor string `json:"labelColor,omitempty"`
+	LimitsPerResource []ResourceLimitContainer `json:"limitsPerResource,omitempty"`
 }
 

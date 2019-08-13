@@ -1,4 +1,7 @@
 package model
+import (
+	"time"
+)
 
 type AnalyticsLicense struct {
 	// Id of the resource (required)
@@ -7,8 +10,8 @@ type AnalyticsLicense struct {
 	Name string `json:"name,omitempty"`
 	// License Key
 	LicenseKey string `json:"licenseKey,omitempty"`
-	// Creation date of the Analytics License
-	CreatedAt string `json:"createdAt,omitempty"`
+	// Creation date of the Analytics License in UTC format
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Maximum number of impressions
 	MaxImpressions *int64 `json:"maxImpressions,omitempty"`
 	// Number of impressions recorded

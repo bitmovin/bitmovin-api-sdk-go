@@ -16,5 +16,7 @@ type WebVttConfiguration struct {
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
+	// If set to true, the hours section on webvtt timestamp values will explicitely have zeroes instead of being omitted for values where hours = 0.
+	AppendOptionalZeroHour *bool `json:"appendOptionalZeroHour,omitempty"`
 }
 

@@ -9,6 +9,7 @@ type AnalyticsApi struct {
     Exports *AnalyticsExportsApi
     Impressions *AnalyticsImpressionsApi
     Metrics *AnalyticsMetricsApi
+    Ads *AnalyticsAdsApi
     Queries *AnalyticsQueriesApi
     Licenses *AnalyticsLicensesApi
     Outputs *AnalyticsOutputsApi
@@ -28,6 +29,8 @@ func NewAnalyticsApi(configs ...func(*common.ApiClient)) (*AnalyticsApi, error) 
     api.Impressions = impressionsApi
     metricsApi, err := NewAnalyticsMetricsApi(configs...)
     api.Metrics = metricsApi
+    adsApi, err := NewAnalyticsAdsApi(configs...)
+    api.Ads = adsApi
     queriesApi, err := NewAnalyticsQueriesApi(configs...)
     api.Queries = queriesApi
     licensesApi, err := NewAnalyticsLicensesApi(configs...)

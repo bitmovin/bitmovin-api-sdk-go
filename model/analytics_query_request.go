@@ -1,13 +1,16 @@
 package model
+import (
+	"time"
+)
 
 type AnalyticsQueryRequest struct {
-	// Start of timeframe which is queried
-	Start string `json:"start,omitempty"`
-	// End of timeframe which is queried
-	End string `json:"end,omitempty"`
+	// Start of timeframe which is queried in UTC format.
+	Start *time.Time `json:"start,omitempty"`
+	// End of timeframe which is queried in UTC format.
+	End *time.Time `json:"end,omitempty"`
 	// Analytics license key (required)
 	LicenseKey string `json:"licenseKey,omitempty"`
-	Filters []AnalyticsBaseFilter `json:"filters,omitempty"`
+	Filters []AnalyticsAbstractFilter `json:"filters,omitempty"`
 	OrderBy []AnalyticsOrderByEntry `json:"orderBy,omitempty"`
 	Dimension AnalyticsAttribute `json:"dimension,omitempty"`
 	Interval AnalyticsInterval `json:"interval,omitempty"`

@@ -30,6 +30,8 @@ type Stream struct {
 	IgnoredBy []Ignoring `json:"ignoredBy,omitempty"`
 	// Mode of the stream
 	Mode StreamMode `json:"mode,omitempty"`
+	// The encoding mode of the stream which was applied by the assigned codec configuration
+	SelectedEncodingMode EncodingMode `json:"selectedEncodingMode,omitempty"`
 	// Settings to configure Per-Title on stream level
 	PerTitleSettings *StreamPerTitleSettings `json:"perTitleSettings,omitempty"`
 	Metadata *StreamMetadata `json:"metadata,omitempty"`

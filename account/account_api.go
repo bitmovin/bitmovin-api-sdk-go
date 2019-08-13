@@ -8,6 +8,7 @@ type AccountApi struct {
     apiClient *common.ApiClient
     Information *AccountInformationApi
     Login *AccountLoginApi
+    Limits *AccountLimitsApi
     ApiKeys *AccountApiKeysApi
     Organizations *AccountOrganizationsApi
 }
@@ -24,6 +25,8 @@ func NewAccountApi(configs ...func(*common.ApiClient)) (*AccountApi, error) {
     api.Information = informationApi
     loginApi, err := NewAccountLoginApi(configs...)
     api.Login = loginApi
+    limitsApi, err := NewAccountLimitsApi(configs...)
+    api.Limits = limitsApi
     apiKeysApi, err := NewAccountApiKeysApi(configs...)
     api.ApiKeys = apiKeysApi
     organizationsApi, err := NewAccountOrganizationsApi(configs...)

@@ -6,18 +6,18 @@ import(
     "github.com/bitmovin/bitmovin-api-sdk-go/model"
 )
 
-type ScheduledContentInsertionsListPagination struct {
+type ResourceLimitContainersListPagination struct {
 	TotalCount *int64           `json:"totalCount,omitempty"`
 	Offset     *int32           `json:"offset,omitempty"`
 	Limit      *int32           `json:"limit,omitempty"`
 	Previous   string           `json:"previous,omitempty"`
 	Next       string           `json:"next,omitempty"`
-	Items      []model.ScheduledContentInsertion `json:"items,omitempty"`
+	Items      []model.ResourceLimitContainer `json:"items,omitempty"`
 }
 
 
-  func (o *ScheduledContentInsertionsListPagination) UnmarshalJSON(b []byte) error {
-    var items []model.ScheduledContentInsertion
+  func (o *ResourceLimitContainersListPagination) UnmarshalJSON(b []byte) error {
+    var items []model.ResourceLimitContainer
 
     var pageResp model.PaginationResponse
     if err := json.Unmarshal(b, &pageResp); err != nil {
@@ -25,7 +25,7 @@ type ScheduledContentInsertionsListPagination struct {
     }
 
     for _, i := range pageResp.Items {
-      var v model.ScheduledContentInsertion
+      var v model.ResourceLimitContainer
       serialization.Decode(i, &v)
       items = append(items, v)
     }

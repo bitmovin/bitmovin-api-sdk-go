@@ -8,6 +8,7 @@ import (
 
 type AccountOrganizationsApi struct {
     apiClient *common.ApiClient
+    SubOrganizations *AccountOrganizationsSubOrganizationsApi
     Groups *AccountOrganizationsGroupsApi
 }
 
@@ -19,6 +20,8 @@ func NewAccountOrganizationsApi(configs ...func(*common.ApiClient)) (*AccountOrg
 
     api := &AccountOrganizationsApi{apiClient: apiClient}
 
+    subOrganizationsApi, err := NewAccountOrganizationsSubOrganizationsApi(configs...)
+    api.SubOrganizations = subOrganizationsApi
     groupsApi, err := NewAccountOrganizationsGroupsApi(configs...)
     api.Groups = groupsApi
 
@@ -35,16 +38,6 @@ func (api *AccountOrganizationsApi) Create(organization model.Organization) (*mo
 
     var responseModel *model.Organization
     err := api.apiClient.Post("/account/organizations", &organization, &responseModel, reqParams)
-    return responseModel, err
-}
-
-func (api *AccountOrganizationsApi) Delete(organizationId string) (*model.BitmovinResponse, error) {
-    reqParams := func(params *common.RequestParams) {
-        params.PathParams["organization_id"] = organizationId
-    }
-
-    var responseModel *model.BitmovinResponse
-    err := api.apiClient.Delete("/account/organizations/{organization_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 
