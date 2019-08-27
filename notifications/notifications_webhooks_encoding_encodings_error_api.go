@@ -38,7 +38,7 @@ func (api *NotificationsWebhooksEncodingEncodingsErrorApi) Create(webhook model.
     return responseModel, err
 }
 
-func (api *NotificationsWebhooksEncodingEncodingsErrorApi) CreatebyEncodingId(encodingId string, webhook model.Webhook) (*model.Webhook, error) {
+func (api *NotificationsWebhooksEncodingEncodingsErrorApi) CreateByEncodingId(encodingId string, webhook model.Webhook) (*model.Webhook, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
     }
