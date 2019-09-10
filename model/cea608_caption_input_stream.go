@@ -23,4 +23,7 @@ type Cea608CaptionInputStream struct {
 	// The channel number of the subtitle on the respective stream position (required)
 	Channel Cea608ChannelType `json:"channel,omitempty"`
 }
+func (o Cea608CaptionInputStream) InputStreamType() InputStreamType {
+    return InputStreamType_CAPTION_CEA608
+}
 

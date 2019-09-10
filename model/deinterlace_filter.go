@@ -19,6 +19,7 @@ type DeinterlaceFilter struct {
 	Parity PictureFieldParity `json:"parity,omitempty"`
 	Mode DeinterlaceMode `json:"mode,omitempty"`
 	FrameSelectionMode DeinterlaceFrameSelectionMode `json:"frameSelectionMode,omitempty"`
+	AutoEnable DeinterlaceAutoEnable `json:"autoEnable,omitempty"`
 }
 func (o DeinterlaceFilter) FilterType() FilterType {
     return FilterType_DEINTERLACE

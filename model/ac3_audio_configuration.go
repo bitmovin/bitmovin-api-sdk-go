@@ -22,6 +22,8 @@ type Ac3AudioConfiguration struct {
 	Rate *float64 `json:"rate,omitempty"`
 	// Channel layout of the audio codec configuration
 	ChannelLayout Ac3ChannelLayout `json:"channelLayout,omitempty"`
+	// The highest frequency that will pass the audio encoder. This value is optional.
+	CutoffFrequency *int32 `json:"cutoffFrequency,omitempty"`
 }
 func (o Ac3AudioConfiguration) CodecConfigType() CodecConfigType {
     return CodecConfigType_AC3

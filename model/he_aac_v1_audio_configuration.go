@@ -22,6 +22,8 @@ type HeAacV1AudioConfiguration struct {
 	Rate *float64 `json:"rate,omitempty"`
 	// Channel layout of the audio codec configuration
 	ChannelLayout AacChannelLayout `json:"channelLayout,omitempty"`
+	// Sets the Spectral Band Replication (SBR) and Parameteric Stereo (PS) signaling style.
+	Signaling HeAacV1Signaling `json:"signaling,omitempty"`
 }
 func (o HeAacV1AudioConfiguration) CodecConfigType() CodecConfigType {
     return CodecConfigType_HE_AAC_V1

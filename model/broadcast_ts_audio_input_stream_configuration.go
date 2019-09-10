@@ -1,7 +1,7 @@
 package model
 
 type BroadcastTsAudioInputStreamConfiguration struct {
-	// The UUID of the stream to which this configuration belongs to. This has to be a ID of a stream that has been added to the current muxing.
+	// The UUID of the audio stream to which this configuration belongs to. This has to be an ID of an audio stream that has been added to the current muxing. (required)
 	StreamId string `json:"streamId,omitempty"`
 	// An integer value. Packet Identifier (PID) for this stream.
 	PacketIdentifier *int32 `json:"packetIdentifier,omitempty"`

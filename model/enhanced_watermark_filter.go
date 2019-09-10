@@ -29,6 +29,10 @@ type EnhancedWatermarkFilter struct {
 	Unit PositionUnit `json:"unit,omitempty"`
 	// Opacity to apply on the watermark image. Valid values are from 0.0 (completely transparent) to 1.0 (not transparent at all)
 	Opacity *float64 `json:"opacity,omitempty"`
+	// Desired width of the watermark image, the unit of the parameter is specified separately by the parameter 'unit'. If both width and height are set the watermark size is fixed. If only one is set the aspect ratio of the image will be used to rescale it
+	Width *float64 `json:"width,omitempty"`
+	// Desired height of the watermark image, the unit of the parameter is specified separately by the parameter 'unit'. If both width and height are set the watermark size is fixed. If only one is set the aspect ratio of the image will be used to rescale it
+	Height *float64 `json:"height,omitempty"`
 }
 func (o EnhancedWatermarkFilter) FilterType() FilterType {
     return FilterType_ENHANCED_WATERMARK
