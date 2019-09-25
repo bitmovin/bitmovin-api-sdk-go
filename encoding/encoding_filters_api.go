@@ -7,6 +7,7 @@ import (
 
 type EncodingFiltersApi struct {
     apiClient *common.ApiClient
+    Conform *EncodingFiltersConformApi
     Watermark *EncodingFiltersWatermarkApi
     AudioVolume *EncodingFiltersAudioVolumeApi
     EnhancedWatermark *EncodingFiltersEnhancedWatermarkApi
@@ -31,6 +32,8 @@ func NewEncodingFiltersApi(configs ...func(*common.ApiClient)) (*EncodingFilters
 
     api := &EncodingFiltersApi{apiClient: apiClient}
 
+    conformApi, err := NewEncodingFiltersConformApi(configs...)
+    api.Conform = conformApi
     watermarkApi, err := NewEncodingFiltersWatermarkApi(configs...)
     api.Watermark = watermarkApi
     audioVolumeApi, err := NewEncodingFiltersAudioVolumeApi(configs...)

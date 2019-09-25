@@ -8,6 +8,7 @@ type EncodingInfrastructureApi struct {
     apiClient *common.ApiClient
     Kubernetes *EncodingInfrastructureKubernetesApi
     Aws *EncodingInfrastructureAwsApi
+    Gce *EncodingInfrastructureGceApi
 }
 
 func NewEncodingInfrastructureApi(configs ...func(*common.ApiClient)) (*EncodingInfrastructureApi, error) {
@@ -22,6 +23,8 @@ func NewEncodingInfrastructureApi(configs ...func(*common.ApiClient)) (*Encoding
     api.Kubernetes = kubernetesApi
     awsApi, err := NewEncodingInfrastructureAwsApi(configs...)
     api.Aws = awsApi
+    gceApi, err := NewEncodingInfrastructureGceApi(configs...)
+    api.Gce = gceApi
 
 	if err != nil {
 		return nil, err

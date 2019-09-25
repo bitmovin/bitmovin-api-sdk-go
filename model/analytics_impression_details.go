@@ -11,6 +11,8 @@ type AnalyticsImpressionDetails struct {
 	Asn *int64 `json:"asn,omitempty"`
 	// Audio Bitrate
 	AudioBitrate *int64 `json:"audioBitrate,omitempty"`
+	// Selected audio language
+	AudioLanguage string `json:"audioLanguage,omitempty"`
 	// Autoplay enabled
 	Autoplay *bool `json:"autoplay,omitempty"`
 	// Browser name
@@ -19,7 +21,7 @@ type AnalyticsImpressionDetails struct {
 	BrowserVersionMajor string `json:"browserVersionMajor,omitempty"`
 	// Browser version minor
 	BrowserVersionMinor string `json:"browserVersionMinor,omitempty"`
-	// Millisecond the player buffered
+	// Milliseconds the player buffered
 	Buffered *int64 `json:"buffered,omitempty"`
 	// CDN Provider
 	CdnProvider string `json:"cdnProvider,omitempty"`
@@ -121,6 +123,10 @@ type AnalyticsImpressionDetails struct {
 	State string `json:"state,omitempty"`
 	// Format of the stream (HLS, DASH, Progressive MP4)
 	StreamFormat string `json:"streamFormat,omitempty"`
+	// Subtitle enabled
+	SubtitleEnabled *bool `json:"subtitleEnabled,omitempty"`
+	// Selected subtitle language
+	SubtitleLanguage string `json:"subtitleLanguage,omitempty"`
 	// Current time in milliseconds
 	Time *int64 `json:"time,omitempty"`
 	// ID that is persisted across sessions to identify a browser

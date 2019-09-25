@@ -4,6 +4,7 @@ type FilterType string
 // List of FilterType
 const (
 	FilterType_CROP FilterType = "CROP"
+	FilterType_CONFORM FilterType = "CONFORM"
 	FilterType_WATERMARK FilterType = "WATERMARK"
 	FilterType_ENHANCED_WATERMARK FilterType = "ENHANCED_WATERMARK"
 	FilterType_ROTATE FilterType = "ROTATE"

@@ -16,9 +16,9 @@ type ScaleFilter struct {
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// The width of the output frame in pixel. If not set: codec configuration width will be used.
+	// The width of the output frame in pixels. If not set it will be based on the configured height by maintaining the original aspect ratio. If height is also not set, the original source dimensions will be applied.
 	Width *int32 `json:"width,omitempty"`
-	// The height of the output frame in pixel. If not set: codec configuration height will be used.
+	// The height of the output frame in pixels. If not set it will be based on the configured width by maintaining the original aspect ratio. If width is also not set, the original source dimensions will be applied.
 	Height *int32 `json:"height,omitempty"`
 	ScalingAlgorithm ScalingAlgorithm `json:"scalingAlgorithm,omitempty"`
 	// The numerator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioDenominator is set.

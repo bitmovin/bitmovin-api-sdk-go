@@ -33,6 +33,11 @@ func (o *FiltersListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.FilterType_CONFORM:
+                    var v model.ConformFilter
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 case model.FilterType_WATERMARK:
                     var v model.WatermarkFilter
                     serialization.Decode(i, &v)
