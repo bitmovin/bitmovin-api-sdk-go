@@ -8,6 +8,7 @@ import (
 type EncodingEncodingsMuxingsProgressiveTsDrmApi struct {
     apiClient *common.ApiClient
     Fairplay *EncodingEncodingsMuxingsProgressiveTsDrmFairplayApi
+    Speke *EncodingEncodingsMuxingsProgressiveTsDrmSpekeApi
 }
 
 func NewEncodingEncodingsMuxingsProgressiveTsDrmApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsMuxingsProgressiveTsDrmApi, error) {
@@ -20,6 +21,8 @@ func NewEncodingEncodingsMuxingsProgressiveTsDrmApi(configs ...func(*common.ApiC
 
     fairplayApi, err := NewEncodingEncodingsMuxingsProgressiveTsDrmFairplayApi(configs...)
     api.Fairplay = fairplayApi
+    spekeApi, err := NewEncodingEncodingsMuxingsProgressiveTsDrmSpekeApi(configs...)
+    api.Speke = spekeApi
 
 	if err != nil {
 		return nil, err

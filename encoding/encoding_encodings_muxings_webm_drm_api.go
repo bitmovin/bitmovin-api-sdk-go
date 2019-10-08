@@ -8,6 +8,7 @@ import (
 type EncodingEncodingsMuxingsWebmDrmApi struct {
     apiClient *common.ApiClient
     Cenc *EncodingEncodingsMuxingsWebmDrmCencApi
+    Speke *EncodingEncodingsMuxingsWebmDrmSpekeApi
 }
 
 func NewEncodingEncodingsMuxingsWebmDrmApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsMuxingsWebmDrmApi, error) {
@@ -20,6 +21,8 @@ func NewEncodingEncodingsMuxingsWebmDrmApi(configs ...func(*common.ApiClient)) (
 
     cencApi, err := NewEncodingEncodingsMuxingsWebmDrmCencApi(configs...)
     api.Cenc = cencApi
+    spekeApi, err := NewEncodingEncodingsMuxingsWebmDrmSpekeApi(configs...)
+    api.Speke = spekeApi
 
 	if err != nil {
 		return nil, err

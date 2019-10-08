@@ -9,6 +9,7 @@ type EncodingEncodingsMuxingsTsDrmApi struct {
     apiClient *common.ApiClient
     Fairplay *EncodingEncodingsMuxingsTsDrmFairplayApi
     Aes *EncodingEncodingsMuxingsTsDrmAesApi
+    Speke *EncodingEncodingsMuxingsTsDrmSpekeApi
 }
 
 func NewEncodingEncodingsMuxingsTsDrmApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsMuxingsTsDrmApi, error) {
@@ -23,6 +24,8 @@ func NewEncodingEncodingsMuxingsTsDrmApi(configs ...func(*common.ApiClient)) (*E
     api.Fairplay = fairplayApi
     aesApi, err := NewEncodingEncodingsMuxingsTsDrmAesApi(configs...)
     api.Aes = aesApi
+    spekeApi, err := NewEncodingEncodingsMuxingsTsDrmSpekeApi(configs...)
+    api.Speke = spekeApi
 
 	if err != nil {
 		return nil, err

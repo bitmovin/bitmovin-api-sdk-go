@@ -12,4 +12,5 @@ const (
 	DrmType_CLEARKEY DrmType = "CLEARKEY"
 	DrmType_AES DrmType = "AES"
 	DrmType_CENC DrmType = "CENC"
+	DrmType_SPEKE DrmType = "SPEKE"
 )

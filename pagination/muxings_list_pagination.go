@@ -88,6 +88,11 @@ func (o *MuxingsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.MuxingType_SEGMENTED_RAW:
+                    var v model.SegmentedRawMuxing
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 default:
                     items = append(items, base)
         }

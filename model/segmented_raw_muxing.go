@@ -35,4 +35,7 @@ type SegmentedRawMuxing struct {
 	// Number of segments which have been encoded
 	SegmentsMuxed *int32 `json:"segmentsMuxed,omitempty"`
 }
+func (o SegmentedRawMuxing) MuxingType() MuxingType {
+    return MuxingType_SEGMENTED_RAW
+}
 

@@ -14,6 +14,7 @@ type EncodingEncodingsMuxingsFmp4DrmApi struct {
     Marlin *EncodingEncodingsMuxingsFmp4DrmMarlinApi
     Clearkey *EncodingEncodingsMuxingsFmp4DrmClearkeyApi
     Cenc *EncodingEncodingsMuxingsFmp4DrmCencApi
+    Speke *EncodingEncodingsMuxingsFmp4DrmSpekeApi
 }
 
 func NewEncodingEncodingsMuxingsFmp4DrmApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsMuxingsFmp4DrmApi, error) {
@@ -38,6 +39,8 @@ func NewEncodingEncodingsMuxingsFmp4DrmApi(configs ...func(*common.ApiClient)) (
     api.Clearkey = clearkeyApi
     cencApi, err := NewEncodingEncodingsMuxingsFmp4DrmCencApi(configs...)
     api.Cenc = cencApi
+    spekeApi, err := NewEncodingEncodingsMuxingsFmp4DrmSpekeApi(configs...)
+    api.Speke = spekeApi
 
 	if err != nil {
 		return nil, err

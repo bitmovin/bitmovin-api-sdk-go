@@ -12,4 +12,5 @@ const (
 	InputStreamType_FILE InputStreamType = "FILE"
 	InputStreamType_CAPTION_CEA608 InputStreamType = "CAPTION_CEA608"
 	InputStreamType_CAPTION_CEA708 InputStreamType = "CAPTION_CEA708"
+	InputStreamType_DVB_TELETEXT InputStreamType = "DVB_TELETEXT"
 )

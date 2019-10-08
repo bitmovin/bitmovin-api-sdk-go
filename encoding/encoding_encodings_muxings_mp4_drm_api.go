@@ -12,6 +12,7 @@ type EncodingEncodingsMuxingsMp4DrmApi struct {
     Widevine *EncodingEncodingsMuxingsMp4DrmWidevineApi
     Marlin *EncodingEncodingsMuxingsMp4DrmMarlinApi
     Cenc *EncodingEncodingsMuxingsMp4DrmCencApi
+    Speke *EncodingEncodingsMuxingsMp4DrmSpekeApi
 }
 
 func NewEncodingEncodingsMuxingsMp4DrmApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsMuxingsMp4DrmApi, error) {
@@ -32,6 +33,8 @@ func NewEncodingEncodingsMuxingsMp4DrmApi(configs ...func(*common.ApiClient)) (*
     api.Marlin = marlinApi
     cencApi, err := NewEncodingEncodingsMuxingsMp4DrmCencApi(configs...)
     api.Cenc = cencApi
+    spekeApi, err := NewEncodingEncodingsMuxingsMp4DrmSpekeApi(configs...)
+    api.Speke = spekeApi
 
 	if err != nil {
 		return nil, err

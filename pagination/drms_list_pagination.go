@@ -68,6 +68,11 @@ func (o *DrmsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.DrmType_SPEKE:
+                    var v model.SpekeDrm
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 default:
                     items = append(items, base)
         }

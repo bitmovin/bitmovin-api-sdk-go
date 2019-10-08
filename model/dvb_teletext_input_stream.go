@@ -27,4 +27,7 @@ type DvbTeletextInputStream struct {
 	// Page number of the subtitles
 	Page *int32 `json:"page,omitempty"`
 }
+func (o DvbTeletextInputStream) InputStreamType() InputStreamType {
+    return InputStreamType_DVB_TELETEXT
+}
 

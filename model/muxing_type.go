@@ -15,4 +15,5 @@ const (
 	MuxingType_BROADCAST_TS MuxingType = "BROADCAST_TS"
 	MuxingType_CHUNKED_TEXT MuxingType = "CHUNKED_TEXT"
 	MuxingType_TEXT MuxingType = "TEXT"
+	MuxingType_SEGMENTED_RAW MuxingType = "SEGMENTED_RAW"
 )
