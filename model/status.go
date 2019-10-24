@@ -8,4 +8,5 @@ const (
 	Status_RUNNING Status = "RUNNING"
 	Status_FINISHED Status = "FINISHED"
 	Status_ERROR Status = "ERROR"
+	Status_CANCELED Status = "CANCELED"
 )

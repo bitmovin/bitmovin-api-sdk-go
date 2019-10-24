@@ -36,6 +36,8 @@ type Mp4Muxing struct {
 	FragmentedMP4MuxingManifestType FragmentedMp4MuxingManifestType `json:"fragmentedMP4MuxingManifestType,omitempty"`
 	// Modifies the internal chunk length used for chunked encoding
 	InternalChunkLength *InternalChunkLength `json:"internalChunkLength,omitempty"`
+	// Dolby Vision specific configuration
+	DolbyVisionConfiguration *DolbyVisionMuxingConfiguration `json:"dolbyVisionConfiguration,omitempty"`
 }
 func (o Mp4Muxing) MuxingType() MuxingType {
     return MuxingType_MP4

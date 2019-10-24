@@ -15,6 +15,7 @@ type EncodingEncodingsStreamsApi struct {
     BurnInSubtitles *EncodingEncodingsStreamsBurnInSubtitlesApi
     Captions *EncodingEncodingsStreamsCaptionsApi
     Bifs *EncodingEncodingsStreamsBifsApi
+    Hdr *EncodingEncodingsStreamsHdrApi
     Thumbnails *EncodingEncodingsStreamsThumbnailsApi
     Sprites *EncodingEncodingsStreamsSpritesApi
     Qc *EncodingEncodingsStreamsQcApi
@@ -42,6 +43,8 @@ func NewEncodingEncodingsStreamsApi(configs ...func(*common.ApiClient)) (*Encodi
     api.Captions = captionsApi
     bifsApi, err := NewEncodingEncodingsStreamsBifsApi(configs...)
     api.Bifs = bifsApi
+    hdrApi, err := NewEncodingEncodingsStreamsHdrApi(configs...)
+    api.Hdr = hdrApi
     thumbnailsApi, err := NewEncodingEncodingsStreamsThumbnailsApi(configs...)
     api.Thumbnails = thumbnailsApi
     spritesApi, err := NewEncodingEncodingsStreamsSpritesApi(configs...)

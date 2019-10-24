@@ -58,6 +58,11 @@ func (o *InputStreamsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.InputStreamType_SIDECAR_DOLBY_VISION_METADATA:
+                    var v model.DolbyVisionMetadataIngestInputStream
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 case model.InputStreamType_CAPTION_CEA608:
                     var v model.Cea608CaptionInputStream
                     serialization.Decode(i, &v)

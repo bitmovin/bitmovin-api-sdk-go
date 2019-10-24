@@ -11,6 +11,7 @@ type EncodingEncodingsInputStreamsApi struct {
     Type *EncodingEncodingsInputStreamsTypeApi
     AudioMix *EncodingEncodingsInputStreamsAudioMixApi
     Ingest *EncodingEncodingsInputStreamsIngestApi
+    Sidecar *EncodingEncodingsInputStreamsSidecarApi
     Concatenation *EncodingEncodingsInputStreamsConcatenationApi
     File *EncodingEncodingsInputStreamsFileApi
     Trimming *EncodingEncodingsInputStreamsTrimmingApi
@@ -32,6 +33,8 @@ func NewEncodingEncodingsInputStreamsApi(configs ...func(*common.ApiClient)) (*E
     api.AudioMix = audioMixApi
     ingestApi, err := NewEncodingEncodingsInputStreamsIngestApi(configs...)
     api.Ingest = ingestApi
+    sidecarApi, err := NewEncodingEncodingsInputStreamsSidecarApi(configs...)
+    api.Sidecar = sidecarApi
     concatenationApi, err := NewEncodingEncodingsInputStreamsConcatenationApi(configs...)
     api.Concatenation = concatenationApi
     fileApi, err := NewEncodingEncodingsInputStreamsFileApi(configs...)
