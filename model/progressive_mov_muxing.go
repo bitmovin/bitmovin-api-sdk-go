@@ -30,8 +30,6 @@ type ProgressiveMovMuxing struct {
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// The output file name
 	Filename string `json:"filename,omitempty"`
-	// Modifies the internal chunk length used for chunked encoding
-	InternalChunkLength *InternalChunkLength `json:"internalChunkLength,omitempty"`
 }
 func (o ProgressiveMovMuxing) MuxingType() MuxingType {
     return MuxingType_PROGRESSIVE_MOV

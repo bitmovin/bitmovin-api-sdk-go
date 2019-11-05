@@ -33,8 +33,6 @@ type BroadcastTsMuxing struct {
 	// Name of the new Video
 	Filename string `json:"filename,omitempty"`
 	Configuration *BroadcastTsMuxingConfiguration `json:"configuration,omitempty"`
-	// Modifies the internal chunk length used for chunked encoding
-	InternalChunkLength *InternalChunkLength `json:"internalChunkLength,omitempty"`
 }
 func (o BroadcastTsMuxing) MuxingType() MuxingType {
     return MuxingType_BROADCAST_TS

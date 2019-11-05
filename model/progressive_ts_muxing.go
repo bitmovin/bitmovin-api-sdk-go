@@ -34,8 +34,6 @@ type ProgressiveTsMuxing struct {
 	Filename string `json:"filename,omitempty"`
 	// Offset of MPEG-TS timestamps in seconds. e.g. first packet will start with PTS 900,000 for a 10 seconds offset (90,000 MPEG-TS timescale).
 	StartOffset *int32 `json:"startOffset,omitempty"`
-	// Modifies the internal chunk length used for chunked encoding
-	InternalChunkLength *InternalChunkLength `json:"internalChunkLength,omitempty"`
 }
 func (o ProgressiveTsMuxing) MuxingType() MuxingType {
     return MuxingType_PROGRESSIVE_TS

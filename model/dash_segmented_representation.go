@@ -7,6 +7,8 @@ type DashSegmentedRepresentation struct {
 	EncodingId string `json:"encodingId,omitempty"`
 	// UUID of a muxing (required)
 	MuxingId string `json:"muxingId,omitempty"`
+	// Used to signal a dependency with another representation. The representation may belong to a different adaptation set
+	DependencyId string `json:"dependencyId,omitempty"`
 	Type DashRepresentationType `json:"type,omitempty"`
 	Mode DashRepresentationTypeMode `json:"mode,omitempty"`
 	// Path to segments. Will be used as the representation id if the type is set to TEMPLATE_ADAPTATION_SET (required)

@@ -30,8 +30,6 @@ type ProgressiveWebmMuxing struct {
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// Name of the new Video
 	Filename string `json:"filename,omitempty"`
-	// Modifies the internal chunk length used for chunked encoding
-	InternalChunkLength *InternalChunkLength `json:"internalChunkLength,omitempty"`
 }
 func (o ProgressiveWebmMuxing) MuxingType() MuxingType {
     return MuxingType_PROGRESSIVE_WEBM

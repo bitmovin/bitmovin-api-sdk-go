@@ -34,8 +34,6 @@ type Mp4Muxing struct {
 	FragmentDuration *int32 `json:"fragmentDuration,omitempty"`
 	TimeCode *TimeCode `json:"timeCode,omitempty"`
 	FragmentedMP4MuxingManifestType FragmentedMp4MuxingManifestType `json:"fragmentedMP4MuxingManifestType,omitempty"`
-	// Modifies the internal chunk length used for chunked encoding
-	InternalChunkLength *InternalChunkLength `json:"internalChunkLength,omitempty"`
 	// Dolby Vision specific configuration
 	DolbyVisionConfiguration *DolbyVisionMuxingConfiguration `json:"dolbyVisionConfiguration,omitempty"`
 }
