@@ -6,7 +6,7 @@ type AudioStream struct {
 	// Position of the stream in the file
 	Position *int32 `json:"position,omitempty"`
 	// Duration of the stream in seconds
-	Duration *int64 `json:"duration,omitempty"`
+	Duration *float64 `json:"duration,omitempty"`
 	// Codec of the stream
 	Codec string `json:"codec,omitempty"`
 	// Audio sampling rate in Hz

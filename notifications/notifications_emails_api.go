@@ -7,6 +7,7 @@ import (
 
 type NotificationsEmailsApi struct {
     apiClient *common.ApiClient
+    UsageReports *NotificationsEmailsUsageReportsApi
     Encoding *NotificationsEmailsEncodingApi
 }
 
@@ -18,6 +19,8 @@ func NewNotificationsEmailsApi(configs ...func(*common.ApiClient)) (*Notificatio
 
     api := &NotificationsEmailsApi{apiClient: apiClient}
 
+    usageReportsApi, err := NewNotificationsEmailsUsageReportsApi(configs...)
+    api.UsageReports = usageReportsApi
     encodingApi, err := NewNotificationsEmailsEncodingApi(configs...)
     api.Encoding = encodingApi
 

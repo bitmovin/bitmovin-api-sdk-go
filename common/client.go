@@ -33,7 +33,7 @@ type PathParams map[string]interface{}
 const QueryParamTagName = "query"
 const DefaultApiBaseUrl = "https://api.bitmovin.com/v1"
 const ContentTypeJson = "application/json"
-const ApiClientVersion = "1.28.0-alpha.0"
+const ApiClientVersion = "1.29.0-alpha.0"
 const ApiClientName = "bitmovin-api-sdk-go"
 const NoApiKeyErrorMsg = "there was no api key provided"
 
@@ -174,6 +174,10 @@ func (apiClient *ApiClient) Get(relUrl string, requestModel interface{}, respons
 	return apiClient.request(http.MethodGet, relUrl, nil, responseModel, requestParams...)
 }
 
+func (apiClient *ApiClient) Patch(relUrl string, requestModel interface{}, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
+	return apiClient.request(http.MethodPatch, relUrl, requestModel, responseModel, requestParams...)
+}
+
 func (apiClient *ApiClient) Post(relUrl string, requestModel interface{}, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
 	return apiClient.request(http.MethodPost, relUrl, requestModel, responseModel, requestParams...)
 }
@@ -225,6 +229,10 @@ func (apiClient *ApiClient) request(reqMethod string, relUrl string, requestMode
 
 	var resp *http.Response
 	switch reqMethod {
+	case http.MethodPatch:
+		serialized := serialization.Serialize(requestModel)
+		apiClient.logRequest(reqUrl, reqMethod, headers, serialized)
+		resp, err = apiClient.restClient.Patch(reqUrl, serialized, headers)
 	case http.MethodPost:
 		serialized := serialization.Serialize(requestModel)
 		apiClient.logRequest(reqUrl, reqMethod, headers, serialized)

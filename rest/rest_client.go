@@ -19,6 +19,10 @@ func NewRestClient(configuration *Configuration) *RestClient {
 	}
 }
 
+func (rc *RestClient) Patch(url string, jsonValue []byte, headers http.Header) (*http.Response, error) {
+  return rc.request(http.MethodPatch, url, bytes.NewBuffer(jsonValue), headers)
+}
+
 func (rc *RestClient) Post(url string, jsonValue []byte, headers http.Header) (*http.Response, error) {
 	return rc.request(http.MethodPost, url, bytes.NewBuffer(jsonValue), headers)
 }

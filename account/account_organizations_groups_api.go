@@ -9,6 +9,7 @@ import (
 type AccountOrganizationsGroupsApi struct {
     apiClient *common.ApiClient
     Tenants *AccountOrganizationsGroupsTenantsApi
+    Invitations *AccountOrganizationsGroupsInvitationsApi
     Permissions *AccountOrganizationsGroupsPermissionsApi
 }
 
@@ -22,6 +23,8 @@ func NewAccountOrganizationsGroupsApi(configs ...func(*common.ApiClient)) (*Acco
 
     tenantsApi, err := NewAccountOrganizationsGroupsTenantsApi(configs...)
     api.Tenants = tenantsApi
+    invitationsApi, err := NewAccountOrganizationsGroupsInvitationsApi(configs...)
+    api.Invitations = invitationsApi
     permissionsApi, err := NewAccountOrganizationsGroupsPermissionsApi(configs...)
     api.Permissions = permissionsApi
 

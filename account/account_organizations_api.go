@@ -60,3 +60,13 @@ func (api *AccountOrganizationsApi) List() (*pagination.OrganizationsListPaginat
     return responseModel, err
 }
 
+func (api *AccountOrganizationsApi) Update(organizationId string, updateOrganizationRequest model.UpdateOrganizationRequest) (*model.Organization, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["organization_id"] = organizationId
+    }
+
+    var responseModel *model.Organization
+    err := api.apiClient.Put("/account/organizations/{organization_id}", &updateOrganizationRequest, &responseModel, reqParams)
+    return responseModel, err
+}
+
