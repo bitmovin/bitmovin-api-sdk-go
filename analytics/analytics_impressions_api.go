@@ -35,3 +35,12 @@ func (api *AnalyticsImpressionsApi) Create(impressionId string, analyticsLicense
     return responseModel, err
 }
 
+func (api *AnalyticsImpressionsApi) GetImpressions(analyticsImpressionsQuery model.AnalyticsImpressionsQuery) (*model.AnalyticsImpressionsResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+    }
+
+    var responseModel *model.AnalyticsImpressionsResponse
+    err := api.apiClient.Post("/analytics/impressions", &analyticsImpressionsQuery, &responseModel, reqParams)
+    return responseModel, err
+}
+

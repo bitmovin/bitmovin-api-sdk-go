@@ -40,7 +40,7 @@ type Vp9VideoConfiguration struct {
 	LagInFrames *int32 `json:"lagInFrames,omitempty"`
 	// Enables error resiliency feature
 	ErrorResiliencyEnabled *bool `json:"errorResiliencyEnabled,omitempty"`
-	// Number of tile columns to use, log2.
+	// Number of tile columns to use, log2. Depending on the encoding width there are limitations on this value. The minimum values are 2 for width >= 1920 and 1 for width >= 1280. The minimum width of each tile is 256 pixels so the maximum values are 0 for width < 256, 1 for width < 512, 2 for width < 1024, 3 for width < 2048, 4 for width < 4096, 5 for width < 8192. If the value is too high or too low it will be overridden.
 	TileColumns *int32 `json:"tileColumns,omitempty"`
 	// Number of tile rows to use, log2.
 	TileRows *int32 `json:"tileRows,omitempty"`
@@ -64,7 +64,7 @@ type Vp9VideoConfiguration struct {
 	BiasPct *int32 `json:"biasPct,omitempty"`
 	// Enable noise sensitivity on Y channel
 	NoiseSensitivity *bool `json:"noiseSensitivity,omitempty"`
-	// Controls the tradeoff between compression efficiency and encoding speed. Higher values indicate a faster encoding.
+	// Controls the tradeoff between compression efficiency and encoding speed. Higher values indicate a faster encoding. The minimum value for width * height >= 1280 * 720 is 2. If the value is too low it will be overridden.
 	CpuUsed *int32 `json:"cpuUsed,omitempty"`
 	// Enable automatic alternate reference frames (2pass only)
 	AutomaticAltRefFramesEnabled *bool `json:"automaticAltRefFramesEnabled,omitempty"`
