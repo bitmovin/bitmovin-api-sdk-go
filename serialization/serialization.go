@@ -56,22 +56,24 @@ func Serialize(model interface{}) []byte {
 		value = value.Elem()
 	}
 
-	for i := 0; i < value.NumField(); i++ {
-		t := value.Field(i).Type()
-		if t.String() == "time.Time" {
-			elem := value.Field(i)
-			if elem.CanSet() {
-				timeValue, _ := value.Field(i).Interface().(time.Time)
-				timeValue = timeValue.UTC().Round(time.Second)
-				elem.Set(reflect.ValueOf(timeValue))
+	if value.Kind() == reflect.Struct {
+		for i := 0; i < value.NumField(); i++ {
+			t := value.Field(i).Type()
+			if t.String() == "time.Time" {
+				elem := value.Field(i)
+				if elem.CanSet() {
+					timeValue, _ := value.Field(i).Interface().(time.Time)
+					timeValue = timeValue.UTC().Round(time.Second)
+					elem.Set(reflect.ValueOf(timeValue))
+				}
 			}
-		}
-		if t.String() == "*time.Time" {
-			elem := value.Field(i).Elem()
-			if elem.CanSet() {
-				timeValue, _ := elem.Interface().(time.Time)
-				timeValue = timeValue.UTC().Round(time.Second)
-				elem.Set(reflect.ValueOf(timeValue))
+			if t.String() == "*time.Time" {
+				elem := value.Field(i).Elem()
+				if elem.CanSet() {
+					timeValue, _ := elem.Interface().(time.Time)
+					timeValue = timeValue.UTC().Round(time.Second)
+					elem.Set(reflect.ValueOf(timeValue))
+				}
 			}
 		}
 	}
