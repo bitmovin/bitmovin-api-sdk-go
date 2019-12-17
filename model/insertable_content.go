@@ -16,7 +16,7 @@ type InsertableContent struct {
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// List of video files to be inserted in the live stream. These have to match the codec, aspect ration and frame rate of the live stream.
+	// Either a list of video files to be inserted in the live stream which have to match the codec, aspect ratio and frame rate of the live stream or a single image file. Supported image formats are: `.Y.U.V`, `Alias PIX`, `animated GIF`, `APNG`, `BMP`, `DPX`, `FITS`, `JPEG`, `JPEG 2000`, `JPEG-LS`, `PAM`, `PBM`, `PCX`, `PGM`, `PGMYUV`, `PNG`, `PPM`, `SGI`, `Sun Rasterfile`, `TIFF`, `Truevision Targa`, `WebP`, `XBM`, `XFace`, `XPM`, `XWD`
 	Inputs []InsertableContentInput `json:"inputs,omitempty"`
 	// Status of the insertable content.
 	Status InsertableContentStatus `json:"status,omitempty"`

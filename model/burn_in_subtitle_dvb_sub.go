@@ -3,7 +3,7 @@ import (
 	"time"
 )
 
-type StreamDvbSubSubtitle struct {
+type BurnInSubtitleDvbSub struct {
 	// Name of the resource. Can be freely chosen by the user.
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,7 +16,7 @@ type StreamDvbSubSubtitle struct {
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// The input stream to extract the subtitle from (required)
-	InputStream *StreamInput `json:"inputStream,omitempty"`
+	// Id of an IngestInputStream which specifies the stream of the DVB-SUB subtitles (required)
+	InputStreamId string `json:"inputStreamId,omitempty"`
 }
 

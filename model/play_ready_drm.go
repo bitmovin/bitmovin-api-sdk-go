@@ -28,6 +28,7 @@ type PlayReadyDrm struct {
 	Method PlayReadyEncryptionMethod `json:"method,omitempty"`
 	// Key identifier
 	Kid string `json:"kid,omitempty"`
+	AdditionalInformation *PlayReadyAdditionalInformation `json:"additionalInformation,omitempty"`
 }
 func (o PlayReadyDrm) DrmType() DrmType {
     return DrmType_PLAYREADY

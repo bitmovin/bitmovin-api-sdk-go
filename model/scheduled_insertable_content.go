@@ -18,9 +18,9 @@ type ScheduledInsertableContent struct {
 	Id string `json:"id,omitempty"`
 	// Id of the insertable content to play instead of the live stream
 	ContentId string `json:"contentId,omitempty"`
-	// Time to to play the content in UTC: YYYY-MM-DDThh:mm:ssZ
+	// Time to to play the content in UTC: YYYY-MM-DDThh:mm:ssZ, if this property is not set the content will be played as soon as possible.
 	RunAt *time.Time `json:"runAt,omitempty"`
-	// Duration for how long to play the content. Cut off if shorter, loop if longer than actual duration.
+	// Duration for how long to play the content. Cut off if shorter, loop if longer than actual duration. This property is required if the insertable content is an image.
 	DurationInSeconds *float64 `json:"durationInSeconds,omitempty"`
 	// Status of the scheduled insertable content.
 	Status ScheduledInsertableContentStatus `json:"status,omitempty"`

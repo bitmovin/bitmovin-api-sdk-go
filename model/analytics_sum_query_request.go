@@ -11,6 +11,8 @@ type AnalyticsSumQueryRequest struct {
 	Dimension AnalyticsAttribute `json:"dimension,omitempty"`
 	Interval AnalyticsInterval `json:"interval,omitempty"`
 	GroupBy []AnalyticsAttribute `json:"groupBy,omitempty"`
+	// Whether context data should be included in the response
+	IncludeContext *bool `json:"includeContext,omitempty"`
 	// Maximum number of rows returned (max. 200)
 	Limit *int64 `json:"limit,omitempty"`
 	// Offset of data

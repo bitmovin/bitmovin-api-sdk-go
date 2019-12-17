@@ -5,5 +5,6 @@ type AnalyticsResponse struct {
 	// Number of rows returned
 	RowCount *int64 `json:"rowCount,omitempty"`
 	ColumnLabels []AnalyticsColumnLabel `json:"columnLabels,omitempty"`
+	ContextDescription []AnalyticsContextDescription `json:"contextDescription,omitempty"`
 }
 

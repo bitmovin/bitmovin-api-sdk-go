@@ -5,5 +5,6 @@ type CencPlayReady struct {
 	LaUrl string `json:"laUrl,omitempty"`
 	// Base64 encoded pssh payload.
 	Pssh string `json:"pssh,omitempty"`
+	AdditionalInformation *PlayReadyAdditionalInformation `json:"additionalInformation,omitempty"`
 }
 

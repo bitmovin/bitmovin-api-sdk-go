@@ -11,5 +11,7 @@ type ConcatenationInputConfiguration struct {
 	PaddingBefore *PaddingSequence `json:"paddingBefore,omitempty"`
 	// Inserts a padding sequence (black frames and/or silent audio) after the input stream. If this is set, all video output streams of the encoding need to use the same ConcatenationInputStream.
 	PaddingAfter *PaddingSequence `json:"paddingAfter,omitempty"`
+	// Specifies the aspect mode that is used when adapting to the main input stream's aspect ratio
+	AspectMode AspectMode `json:"aspectMode,omitempty"`
 }
 
