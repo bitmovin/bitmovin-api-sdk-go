@@ -32,5 +32,8 @@ type StatisticsPerStream struct {
 	PsnrMode PsnrPerStreamMode `json:"psnrMode,omitempty"`
 	// The output minutes multiplicator for psnr streams
 	PsnrMultiplicator *float64 `json:"psnrMultiplicator,omitempty"`
+	DolbyVisionMode DolbyVisionPerStreamMode `json:"dolbyVisionMode,omitempty"`
+	// The output minutes multiplicator for Dolby Vision streams
+	DolbyVisionMultiplicator *float64 `json:"dolbyVisionMultiplicator,omitempty"`
 }
 
