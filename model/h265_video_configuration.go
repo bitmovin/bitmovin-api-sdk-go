@@ -214,6 +214,8 @@ type H265VideoConfiguration struct {
 	LimitSao *bool `json:"limitSao,omitempty"`
 	// Will use low-pass subband dct approximation instead of the standard dct for 16x16 and 32x32 blocks. Default false.
 	LowpassDct *bool `json:"lowpassDct,omitempty"`
+	// Defines whether CEA 608/708 subtitles are extracted from the input video stream
+	Cea608708SubtitleConfig *Cea608708SubtitleConfiguration `json:"cea608708SubtitleConfig,omitempty"`
 }
 func (o H265VideoConfiguration) CodecConfigType() CodecConfigType {
     return CodecConfigType_H265

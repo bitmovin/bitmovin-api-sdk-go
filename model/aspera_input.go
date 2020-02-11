@@ -28,6 +28,10 @@ type AsperaInput struct {
 	Password string `json:"password,omitempty"`
 	// Token used for authentication (either password and user must be set or token)
 	Token string `json:"token,omitempty"`
+	// Set the TCP port to be used for fasp session initiation
+	SshPort *int32 `json:"sshPort,omitempty"`
+	// Set the UDP port to be used by fasp for data transfer
+	FaspPort *int32 `json:"faspPort,omitempty"`
 }
 func (o AsperaInput) InputType() InputType {
     return InputType_ASPERA
