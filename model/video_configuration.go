@@ -24,6 +24,7 @@ type VideoConfiguration struct {
 	Bitrate *int64 `json:"bitrate,omitempty"`
 	// Target frame rate of the encoded video. Must be set for live encodings
 	Rate *float64 `json:"rate,omitempty"`
+	// Describes the color encoding, bit depth, and chroma subsampling of each pixel in the output image.
 	PixelFormat PixelFormat `json:"pixelFormat,omitempty"`
 	ColorConfig *ColorConfig `json:"colorConfig,omitempty"`
 	// The numerator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioDenominator is set.

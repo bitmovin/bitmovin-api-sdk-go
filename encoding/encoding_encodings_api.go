@@ -14,6 +14,7 @@ type EncodingEncodingsApi struct {
     Streams *EncodingEncodingsStreamsApi
     InputStreams *EncodingEncodingsInputStreamsApi
     Muxings *EncodingEncodingsMuxingsApi
+    TransferRetries *EncodingEncodingsTransferRetriesApi
     Captions *EncodingEncodingsCaptionsApi
     Sidecars *EncodingEncodingsSidecarsApi
     Keyframes *EncodingEncodingsKeyframesApi
@@ -39,6 +40,8 @@ func NewEncodingEncodingsApi(configs ...func(*common.ApiClient)) (*EncodingEncod
     api.InputStreams = inputStreamsApi
     muxingsApi, err := NewEncodingEncodingsMuxingsApi(configs...)
     api.Muxings = muxingsApi
+    transferRetriesApi, err := NewEncodingEncodingsTransferRetriesApi(configs...)
+    api.TransferRetries = transferRetriesApi
     captionsApi, err := NewEncodingEncodingsCaptionsApi(configs...)
     api.Captions = captionsApi
     sidecarsApi, err := NewEncodingEncodingsSidecarsApi(configs...)

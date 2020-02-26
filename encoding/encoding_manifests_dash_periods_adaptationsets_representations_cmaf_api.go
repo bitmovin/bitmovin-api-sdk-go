@@ -8,7 +8,6 @@ import (
 
 type EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi struct {
     apiClient *common.ApiClient
-    Drm *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi
     Contentprotection *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionApi
 }
 
@@ -20,8 +19,6 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi(configs
 
     api := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi{apiClient: apiClient}
 
-    drmApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafDrmApi(configs...)
-    api.Drm = drmApi
     contentprotectionApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionApi(configs...)
     api.Contentprotection = contentprotectionApi
 

@@ -30,6 +30,9 @@ type ProgressiveWebmMuxing struct {
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// Name of the new Video
 	Filename string `json:"filename,omitempty"`
+	ManifestType ProgressiveWebmMuxingManifestType `json:"manifestType,omitempty"`
+	// Determines the length of segments in seconds if manifestType is set to DASH_ON_DEMAND. Defaults to 4 seconds
+	SegmentLength *float64 `json:"segmentLength,omitempty"`
 }
 func (o ProgressiveWebmMuxing) MuxingType() MuxingType {
     return MuxingType_PROGRESSIVE_WEBM

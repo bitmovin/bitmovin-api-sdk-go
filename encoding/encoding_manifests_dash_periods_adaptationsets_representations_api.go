@@ -11,6 +11,7 @@ type EncodingManifestsDashPeriodsAdaptationsetsRepresentationsApi struct {
     Cmaf *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafApi
     Mp4 *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4Api
     Webm *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmApi
+    ProgressiveWebm *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsProgressiveWebmApi
 }
 
 func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsApi(configs ...func(*common.ApiClient)) (*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsApi, error) {
@@ -31,6 +32,8 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsApi(configs ...
     api.Mp4 = mp4Api
     webmApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmApi(configs...)
     api.Webm = webmApi
+    progressiveWebmApi, err := NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsProgressiveWebmApi(configs...)
+    api.ProgressiveWebm = progressiveWebmApi
 
 	if err != nil {
 		return nil, err

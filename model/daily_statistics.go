@@ -20,5 +20,6 @@ type DailyStatistics struct {
 	BillableTransmuxingMinutes *float64 `json:"billableTransmuxingMinutes,omitempty"`
 	// Billable minutes for features
 	BillableFeatureMinutes []BillableEncodingFeatureMinutes `json:"billableFeatureMinutes,omitempty"`
+	BillableEgressBytes []EgressInformation `json:"billableEgressBytes,omitempty"`
 }
 

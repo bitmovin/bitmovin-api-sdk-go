@@ -3,6 +3,7 @@ import (
 	"time"
 )
 
+// V2 of the default dash manifest is an experimental feature and might be subject to change in the future. 
 type DashManifestDefault struct {
 	// Name of the resource. Can be freely chosen by the user.
 	Name string `json:"name,omitempty"`
@@ -26,9 +27,11 @@ type DashManifestDefault struct {
 	Namespaces []XmlNamespace `json:"namespaces,omitempty"`
 	// List of UTC Timings to use for live streaming
 	UtcTimings []UtcTiming `json:"utcTimings,omitempty"`
-	// The id of the encoding to create a default manifest from (required)
+	// The id of the encoding to create a default manifest from. Required: encodingId or periods
 	EncodingId string `json:"encodingId,omitempty"`
 	// The version of the default manifest generator
 	Version DashManifestDefaultVersion `json:"version,omitempty"`
+	// Adds a period for every item. Required: encodingId or periods
+	Periods []DefaultDashManifestPeriod `json:"periods,omitempty"`
 }
 

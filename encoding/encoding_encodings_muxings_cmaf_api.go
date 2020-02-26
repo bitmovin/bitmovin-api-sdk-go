@@ -9,7 +9,6 @@ import (
 type EncodingEncodingsMuxingsCmafApi struct {
     apiClient *common.ApiClient
     Customdata *EncodingEncodingsMuxingsCmafCustomdataApi
-    Drm *EncodingEncodingsMuxingsCmafDrmApi
     Captions *EncodingEncodingsMuxingsCmafCaptionsApi
 }
 
@@ -23,8 +22,6 @@ func NewEncodingEncodingsMuxingsCmafApi(configs ...func(*common.ApiClient)) (*En
 
     customdataApi, err := NewEncodingEncodingsMuxingsCmafCustomdataApi(configs...)
     api.Customdata = customdataApi
-    drmApi, err := NewEncodingEncodingsMuxingsCmafDrmApi(configs...)
-    api.Drm = drmApi
     captionsApi, err := NewEncodingEncodingsMuxingsCmafCaptionsApi(configs...)
     api.Captions = captionsApi
 

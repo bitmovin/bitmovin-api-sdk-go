@@ -10,6 +10,7 @@ type EncodingEncodingsMuxingsProgressiveWebmApi struct {
     apiClient *common.ApiClient
     Customdata *EncodingEncodingsMuxingsProgressiveWebmCustomdataApi
     Information *EncodingEncodingsMuxingsProgressiveWebmInformationApi
+    Drm *EncodingEncodingsMuxingsProgressiveWebmDrmApi
 }
 
 func NewEncodingEncodingsMuxingsProgressiveWebmApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsMuxingsProgressiveWebmApi, error) {
@@ -24,6 +25,8 @@ func NewEncodingEncodingsMuxingsProgressiveWebmApi(configs ...func(*common.ApiCl
     api.Customdata = customdataApi
     informationApi, err := NewEncodingEncodingsMuxingsProgressiveWebmInformationApi(configs...)
     api.Information = informationApi
+    drmApi, err := NewEncodingEncodingsMuxingsProgressiveWebmDrmApi(configs...)
+    api.Drm = drmApi
 
 	if err != nil {
 		return nil, err

@@ -3,7 +3,7 @@ import (
 	"time"
 )
 
-type SmoothManifestDefault struct {
+type TransferRetry struct {
 	// Name of the resource. Can be freely chosen by the user.
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,16 +16,13 @@ type SmoothManifestDefault struct {
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	Type ManifestType `json:"type,omitempty"`
-	// The outputs to store the manifest (required)
-	Outputs []EncodingOutput `json:"outputs,omitempty"`
-	// Filename of the server manifest
-	ServerManifestName string `json:"serverManifestName,omitempty"`
-	// Filename of the client manifest
-	ClientManifestName string `json:"clientManifestName,omitempty"`
-	// The id of the encoding to create a default manifest from. (required)
-	EncodingId string `json:"encodingId,omitempty"`
-	// The version of the default manifest generator
-	Version SmoothManifestDefaultVersion `json:"version,omitempty"`
+	// The current status of the transfer-retry.
+	Status Status `json:"status,omitempty"`
+	// Timestamp when the transfer-retry was started, formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
+	StartedAt *time.Time `json:"startedAt,omitempty"`
+	// Timestamp when the transfer-retry status changed to 'FINISHED', formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
+	FinishedAt *time.Time `json:"finishedAt,omitempty"`
+	// Timestamp when the transfer-retry status changed to 'ERROR', formatted in UTC: YYYY-MM-DDThh:mm:ssZ 
+	ErrorAt *time.Time `json:"errorAt,omitempty"`
 }
 

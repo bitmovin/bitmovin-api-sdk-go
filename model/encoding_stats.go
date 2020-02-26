@@ -16,6 +16,8 @@ type EncodingStats struct {
 	DownloadedSize *int64 `json:"downloadedSize,omitempty"`
 	// Billable minutes
 	BillableMinutes *float64 `json:"billableMinutes,omitempty"`
+	// Billable egress output
+	BillableEgressBytes []EgressInformation `json:"billableEgressBytes,omitempty"`
 	// Detailed statistics per stream
 	BillableEncodingMinutes []BillableEncodingMinutes `json:"billableEncodingMinutes,omitempty"`
 	// Billable transmuxing minutes (required)
