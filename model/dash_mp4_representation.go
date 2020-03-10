@@ -11,5 +11,7 @@ type DashMp4Representation struct {
 	DependencyId string `json:"dependencyId,omitempty"`
 	// Path to the MP4 file (required)
 	FilePath string `json:"filePath,omitempty"`
+	// The type of the dash representation
+	Type DashOnDemandRepresentationType `json:"type,omitempty"`
 }
 
