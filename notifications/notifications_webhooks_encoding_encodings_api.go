@@ -8,6 +8,7 @@ type NotificationsWebhooksEncodingEncodingsApi struct {
     apiClient *common.ApiClient
     Finished *NotificationsWebhooksEncodingEncodingsFinishedApi
     Error *NotificationsWebhooksEncodingEncodingsErrorApi
+    TransferError *NotificationsWebhooksEncodingEncodingsTransferErrorApi
 }
 
 func NewNotificationsWebhooksEncodingEncodingsApi(configs ...func(*common.ApiClient)) (*NotificationsWebhooksEncodingEncodingsApi, error) {
@@ -22,6 +23,8 @@ func NewNotificationsWebhooksEncodingEncodingsApi(configs ...func(*common.ApiCli
     api.Finished = finishedApi
     errorApi, err := NewNotificationsWebhooksEncodingEncodingsErrorApi(configs...)
     api.Error = errorApi
+    transferErrorApi, err := NewNotificationsWebhooksEncodingEncodingsTransferErrorApi(configs...)
+    api.TransferError = transferErrorApi
 
 	if err != nil {
 		return nil, err
