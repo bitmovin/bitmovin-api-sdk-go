@@ -15,6 +15,7 @@ type EncodingInputsApi struct {
     GenericS3 *EncodingInputsGenericS3Api
     Local *EncodingInputsLocalApi
     Gcs *EncodingInputsGcsApi
+    GcsServiceAccount *EncodingInputsGcsServiceAccountApi
     Azure *EncodingInputsAzureApi
     Ftp *EncodingInputsFtpApi
     Sftp *EncodingInputsSftpApi
@@ -53,6 +54,8 @@ func NewEncodingInputsApi(configs ...func(*common.ApiClient)) (*EncodingInputsAp
     api.Local = localApi
     gcsApi, err := NewEncodingInputsGcsApi(configs...)
     api.Gcs = gcsApi
+    gcsServiceAccountApi, err := NewEncodingInputsGcsServiceAccountApi(configs...)
+    api.GcsServiceAccount = gcsServiceAccountApi
     azureApi, err := NewEncodingInputsAzureApi(configs...)
     api.Azure = azureApi
     ftpApi, err := NewEncodingInputsFtpApi(configs...)

@@ -123,6 +123,11 @@ func (o *InputsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.InputType_GCS_SERVICE_ACCOUNT:
+                    var v model.GcsServiceAccountInput
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 default:
                     items = append(items, base)
         }

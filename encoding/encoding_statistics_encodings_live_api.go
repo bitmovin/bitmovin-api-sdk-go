@@ -8,6 +8,7 @@ import (
 
 type EncodingStatisticsEncodingsLiveApi struct {
     apiClient *common.ApiClient
+    Daily *EncodingStatisticsEncodingsLiveDailyApi
 }
 
 func NewEncodingStatisticsEncodingsLiveApi(configs ...func(*common.ApiClient)) (*EncodingStatisticsEncodingsLiveApi, error) {
@@ -18,6 +19,8 @@ func NewEncodingStatisticsEncodingsLiveApi(configs ...func(*common.ApiClient)) (
 
     api := &EncodingStatisticsEncodingsLiveApi{apiClient: apiClient}
 
+    dailyApi, err := NewEncodingStatisticsEncodingsLiveDailyApi(configs...)
+    api.Daily = dailyApi
 
 	if err != nil {
 		return nil, err

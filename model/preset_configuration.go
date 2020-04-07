@@ -11,6 +11,7 @@ const (
 	PresetConfiguration_LIVE_LOWER_LATENCY PresetConfiguration = "LIVE_LOWER_LATENCY"
 	PresetConfiguration_LIVE_VERYLOW_LATENCY PresetConfiguration = "LIVE_VERYLOW_LATENCY"
 	PresetConfiguration_VOD_HIGH_QUALITY PresetConfiguration = "VOD_HIGH_QUALITY"
+	PresetConfiguration_VOD_QUALITY PresetConfiguration = "VOD_QUALITY"
 	PresetConfiguration_VOD_HIGH_SPEED PresetConfiguration = "VOD_HIGH_SPEED"
 	PresetConfiguration_VOD_SPEED PresetConfiguration = "VOD_SPEED"
 	PresetConfiguration_VOD_STANDARD PresetConfiguration = "VOD_STANDARD"

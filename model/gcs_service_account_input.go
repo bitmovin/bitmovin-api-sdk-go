@@ -3,7 +3,7 @@ import (
 	"time"
 )
 
-type Webhook struct {
+type GcsServiceAccountInput struct {
 	// Name of the resource. Can be freely chosen by the user.
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,17 +16,13 @@ type Webhook struct {
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// Webhook url (required)
-	Url string `json:"url,omitempty"`
-	// HTTP method used for the webhook
-	Method WebhookHttpMethod `json:"method,omitempty"`
-	// Whether to skip SSL certification verification or not
-	InsecureSsl *bool `json:"insecureSsl,omitempty"`
-	// Encryption used for the webhook
-	Encryption *WebhookEncryption `json:"encryption,omitempty"`
-	// Signature used for the webhook
-	Signature *WebhookSignature `json:"signature,omitempty"`
-	// The json schema of the data that is send as webhook payload
-	Schema *map[string]interface{} `json:"schema,omitempty"`
+	// GCS projectId (required)
+	ServiceAccountCredentials string `json:"serviceAccountCredentials,omitempty"`
+	// Name of the bucket (required)
+	BucketName string `json:"bucketName,omitempty"`
+	CloudRegion GoogleCloudRegion `json:"cloudRegion,omitempty"`
+}
+func (o GcsServiceAccountInput) InputType() InputType {
+    return InputType_GCS_SERVICE_ACCOUNT
 }
 

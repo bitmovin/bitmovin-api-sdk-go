@@ -3,7 +3,6 @@ import (
     "github.com/bitmovin/bitmovin-api-sdk-go/common"
     
     "github.com/bitmovin/bitmovin-api-sdk-go/model"
-    "github.com/bitmovin/bitmovin-api-sdk-go/pagination"
 )
 
 type NotificationsWebhooksEncodingManifestFinishedApi struct {
@@ -26,11 +25,11 @@ func NewNotificationsWebhooksEncodingManifestFinishedApi(configs ...func(*common
 	return api, nil
 }
 
-func (api *NotificationsWebhooksEncodingManifestFinishedApi) Create(webhook model.Webhook) (*pagination.WebhooksCreatePagination, error) {
+func (api *NotificationsWebhooksEncodingManifestFinishedApi) Create(webhook model.Webhook) (*model.Webhook, error) {
     reqParams := func(params *common.RequestParams) {
     }
 
-    var responseModel *pagination.WebhooksCreatePagination
+    var responseModel *model.Webhook
     err := api.apiClient.Post("/notifications/webhooks/encoding/manifest/finished", &webhook, &responseModel, reqParams)
     return responseModel, err
 }
@@ -42,6 +41,16 @@ func (api *NotificationsWebhooksEncodingManifestFinishedApi) CreateByManifestId(
 
     var responseModel *model.Webhook
     err := api.apiClient.Post("/notifications/webhooks/encoding/manifest/{manifest_id}/finished", &webhook, &responseModel, reqParams)
+    return responseModel, err
+}
+
+func (api *NotificationsWebhooksEncodingManifestFinishedApi) Delete(notificationId string) (*model.BitmovinResponse, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["notification_id"] = notificationId
+    }
+
+    var responseModel *model.BitmovinResponse
+    err := api.apiClient.Delete("/notifications/webhooks/encoding/manifest/finished/{notification_id}", nil, &responseModel, reqParams)
     return responseModel, err
 }
 

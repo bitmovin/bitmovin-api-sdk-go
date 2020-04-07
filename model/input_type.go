@@ -22,4 +22,5 @@ const (
 	InputType_UDP_MULTICAST InputType = "UDP_MULTICAST"
 	InputType_ZIXI InputType = "ZIXI"
 	InputType_SRT InputType = "SRT"
+	InputType_GCS_SERVICE_ACCOUNT InputType = "GCS_SERVICE_ACCOUNT"
 )
