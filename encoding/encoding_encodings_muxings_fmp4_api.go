@@ -9,6 +9,7 @@ import (
 type EncodingEncodingsMuxingsFmp4Api struct {
     apiClient *common.ApiClient
     Customdata *EncodingEncodingsMuxingsFmp4CustomdataApi
+    Information *EncodingEncodingsMuxingsFmp4InformationApi
     Drm *EncodingEncodingsMuxingsFmp4DrmApi
 }
 
@@ -22,6 +23,8 @@ func NewEncodingEncodingsMuxingsFmp4Api(configs ...func(*common.ApiClient)) (*En
 
     customdataApi, err := NewEncodingEncodingsMuxingsFmp4CustomdataApi(configs...)
     api.Customdata = customdataApi
+    informationApi, err := NewEncodingEncodingsMuxingsFmp4InformationApi(configs...)
+    api.Information = informationApi
     drmApi, err := NewEncodingEncodingsMuxingsFmp4DrmApi(configs...)
     api.Drm = drmApi
 

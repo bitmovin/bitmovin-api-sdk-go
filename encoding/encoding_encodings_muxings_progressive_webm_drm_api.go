@@ -2,6 +2,7 @@ package encoding
 import (
     "github.com/bitmovin/bitmovin-api-sdk-go/common"
     
+    "github.com/bitmovin/bitmovin-api-sdk-go/pagination"
 )
 
 type EncodingEncodingsMuxingsProgressiveWebmDrmApi struct {
@@ -28,5 +29,16 @@ func NewEncodingEncodingsMuxingsProgressiveWebmDrmApi(configs ...func(*common.Ap
 	}
 
 	return api, nil
+}
+
+func (api *EncodingEncodingsMuxingsProgressiveWebmDrmApi) List(encodingId string, muxingId string) (*pagination.DrmsListPagination, error) {
+    reqParams := func(params *common.RequestParams) {
+        params.PathParams["encoding_id"] = encodingId
+        params.PathParams["muxing_id"] = muxingId
+    }
+
+    var responseModel *pagination.DrmsListPagination
+    err := api.apiClient.Get("/encoding/encodings/{encoding_id}/muxings/progressive-webm/{muxing_id}/drm", nil, &responseModel, reqParams)
+    return responseModel, err
 }
 

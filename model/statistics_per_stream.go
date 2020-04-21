@@ -35,5 +35,13 @@ type StatisticsPerStream struct {
 	DolbyVisionMode DolbyVisionPerStreamMode `json:"dolbyVisionMode,omitempty"`
 	// The output minutes multiplicator for Dolby Vision streams
 	DolbyVisionMultiplicator *float64 `json:"dolbyVisionMultiplicator,omitempty"`
+	// Name of the preset configuration used for the codec configuration or \"CUSTOM\" if any preset values were overridden
+	Preset string `json:"preset,omitempty"`
+	// The output minutes multiplicator for the used codec configuration preset.
+	PresetMultiplicator *float64 `json:"presetMultiplicator,omitempty"`
+	// Indicates if the stream was part of a live encoding.
+	Live *bool `json:"live,omitempty"`
+	// The output minutes multiplicator for live streams.
+	LiveMultiplicator *float64 `json:"liveMultiplicator,omitempty"`
 }
 

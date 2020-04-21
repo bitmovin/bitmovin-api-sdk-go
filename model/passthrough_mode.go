@@ -6,4 +6,5 @@ type PassthroughMode string
 const (
 	PassthroughMode_VIDEO_STREAM PassthroughMode = "VIDEO_STREAM"
 	PassthroughMode_CAPTION_STREAM PassthroughMode = "CAPTION_STREAM"
+	PassthroughMode_VIDEO_CAPTION_STREAM PassthroughMode = "VIDEO_CAPTION_STREAM"
 )
