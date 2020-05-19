@@ -2,7 +2,7 @@ package model
 
 type StreamInfosDetails struct {
 	// The id of the stream (required)
-	Id *int64 `json:"id,omitempty"`
+	Id string `json:"id,omitempty"`
 	// The media type of the stream (required)
 	MediaType MediaType `json:"mediaType,omitempty"`
 	// The width of the stream, if it is a video stream
