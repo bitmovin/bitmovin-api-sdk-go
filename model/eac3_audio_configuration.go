@@ -18,7 +18,7 @@ type Eac3AudioConfiguration struct {
 	Id string `json:"id,omitempty"`
 	// Target bitrate for the encoded audio in bps (required)
 	Bitrate *int64 `json:"bitrate,omitempty"`
-	// Audio sampling rate Hz
+	// Audio sampling rate in Hz
 	Rate *float64 `json:"rate,omitempty"`
 	// Channel layout of the audio codec configuration
 	ChannelLayout Ac3ChannelLayout `json:"channelLayout,omitempty"`

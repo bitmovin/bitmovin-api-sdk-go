@@ -20,6 +20,8 @@ type DashManifestDefault struct {
 	Type ManifestType `json:"type,omitempty"`
 	// The outputs to store the manifest (required)
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
+	// Current status
+	Status Status `json:"status,omitempty"`
 	Profile DashProfile `json:"profile,omitempty"`
 	// The filename of your manifest
 	ManifestName string `json:"manifestName,omitempty"`

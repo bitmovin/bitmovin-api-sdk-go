@@ -19,6 +19,8 @@ type HlsManifestDefault struct {
 	Type ManifestType `json:"type,omitempty"`
 	// The outputs to store the manifest (required)
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
+	// Current status
+	Status Status `json:"status,omitempty"`
 	// The filename of your manifest. If this is not set, the `name` is used as output file name. Either one of `name` or `manifestName` is required. Be aware that spaces will be replaced with underlines (`_`) on the output.
 	ManifestName string `json:"manifestName,omitempty"`
 	// If this is set, the EXT-X-VERSION tags of the Media Playlists are set to the provided version

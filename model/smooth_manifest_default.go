@@ -19,6 +19,8 @@ type SmoothManifestDefault struct {
 	Type ManifestType `json:"type,omitempty"`
 	// The outputs to store the manifest (required)
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
+	// Current status
+	Status Status `json:"status,omitempty"`
 	// Filename of the server manifest
 	ServerManifestName string `json:"serverManifestName,omitempty"`
 	// Filename of the client manifest
