@@ -19,6 +19,7 @@ type AudioVolumeFilter struct {
 	// Audio volume value (required)
 	Volume *float64 `json:"volume,omitempty"`
 	Unit AudioVolumeUnit `json:"unit,omitempty"`
+	Format AudioVolumeFormat `json:"format,omitempty"`
 }
 func (o AudioVolumeFilter) FilterType() FilterType {
     return FilterType_AUDIO_VOLUME

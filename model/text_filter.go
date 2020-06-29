@@ -37,7 +37,7 @@ type TextFilter struct {
 	// An expression for the Font size. Either fontSize or fontSizeExpression can be set at the same time. The following variables are valid: main_h, h, H for input height and main_w, w, W for the input_width
 	FontSizeExpression string `json:"fontSizeExpression,omitempty"`
 	// If set, alpha blending for the text is applied. Values are valid between 0.0 and 1.0.
-	Alpha *int32 `json:"alpha,omitempty"`
+	Alpha *float64 `json:"alpha,omitempty"`
 	// Color of the shadow
 	ShadowColor string `json:"shadowColor,omitempty"`
 	// X offset of the shadow
@@ -52,6 +52,7 @@ type TextFilter struct {
 	X string `json:"x,omitempty"`
 	// Y position of the text. Also an expression can be used. The following variables are valid: line_h - height of each text line; main_h - input height; main_w - input width; n - number of input frame; text_h - Text height; text_w - Text width (required)
 	Y string `json:"y,omitempty"`
+	Rate string `json:"rate,omitempty"`
 }
 func (o TextFilter) FilterType() FilterType {
     return FilterType_TEXT
