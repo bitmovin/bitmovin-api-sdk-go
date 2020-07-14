@@ -17,6 +17,8 @@ type Encoding struct {
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
 	CloudRegion CloudRegion `json:"cloudRegion,omitempty"`
+	// Specify a list of regions which are used in case the preferred region is down. Currently there are several restrictions. - The region has to be specific or AUTO - The region has to be for the same cloud provider as the default one - You can only configure at most 3 fallback regions 
+	FallbackCloudRegions []CloudRegion `json:"fallbackCloudRegions,omitempty"`
 	// Version of the encoder
 	EncoderVersion string `json:"encoderVersion,omitempty"`
 	// Define an external infrastructure to run the encoding on. Note If you set this value, the `cloudRegion` must be 'EXTERNAL'.

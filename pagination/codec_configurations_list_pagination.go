@@ -33,6 +33,11 @@ func (o *CodecConfigurationsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.CodecConfigType_DTS_PASSTHROUGH:
+                    var v model.DtsPassthroughAudioConfiguration
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 case model.CodecConfigType_HE_AAC_V1:
                     var v model.HeAacV1AudioConfiguration
                     serialization.Decode(i, &v)

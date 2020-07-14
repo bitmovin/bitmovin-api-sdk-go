@@ -13,5 +13,7 @@ type AutoRestartConfiguration struct {
 	DashManifestsUpdateTimeout *float64 `json:"dashManifestsUpdateTimeout,omitempty"`
 	// Defines a schedule for restarts using the unix crontab syntax. This example would trigger a restart every monday at 05:30 (AM)
 	ScheduleExpression string `json:"scheduleExpression,omitempty"`
+	// Defines if the encoding should be restarted in case of an error during encoding.
+	RestartOnEncoderError *bool `json:"restartOnEncoderError,omitempty"`
 }
 

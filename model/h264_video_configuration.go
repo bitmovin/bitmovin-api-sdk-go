@@ -27,10 +27,12 @@ type H264VideoConfiguration struct {
 	// Describes the color encoding, bit depth, and chroma subsampling of each pixel in the output image.
 	PixelFormat PixelFormat `json:"pixelFormat,omitempty"`
 	ColorConfig *ColorConfig `json:"colorConfig,omitempty"`
-	// The numerator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioDenominator is set.
+	// The numerator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioDenominator is set. If set then displayAspectRatio is not allowed.
 	SampleAspectRatioNumerator *int32 `json:"sampleAspectRatioNumerator,omitempty"`
-	// The denominator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioNumerator is set.
+	// The denominator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioNumerator is set. If set then displayAspectRatio is not allowed.
 	SampleAspectRatioDenominator *int32 `json:"sampleAspectRatioDenominator,omitempty"`
+	// Specifies a display aspect ratio (DAR) to be enforced. The sample aspect ratio (SAR) will be adjusted accordingly. If set then sampleAspectRatioNumerator and sampleAspectRatioDenominator are not allowed.
+	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
 	// The mode of the encoding
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
 	// Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.

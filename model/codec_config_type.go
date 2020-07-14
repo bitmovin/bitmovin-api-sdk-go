@@ -4,6 +4,7 @@ type CodecConfigType string
 // List of CodecConfigType
 const (
 	CodecConfigType_AAC CodecConfigType = "AAC"
+	CodecConfigType_DTS_PASSTHROUGH CodecConfigType = "DTS_PASSTHROUGH"
 	CodecConfigType_HE_AAC_V1 CodecConfigType = "HE_AAC_V1"
 	CodecConfigType_HE_AAC_V2 CodecConfigType = "HE_AAC_V2"
 	CodecConfigType_H264 CodecConfigType = "H264"

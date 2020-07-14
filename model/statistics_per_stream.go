@@ -43,5 +43,6 @@ type StatisticsPerStream struct {
 	Live *bool `json:"live,omitempty"`
 	// The output minutes multiplicator for live streams.
 	LiveMultiplicator *float64 `json:"liveMultiplicator,omitempty"`
+	InputFactor *InputFactor `json:"inputFactor,omitempty"`
 }
 
