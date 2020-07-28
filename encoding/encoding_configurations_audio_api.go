@@ -8,6 +8,7 @@ type EncodingConfigurationsAudioApi struct {
     apiClient *common.ApiClient
     Aac *EncodingConfigurationsAudioAacApi
     DtsPassthrough *EncodingConfigurationsAudioDtsPassthroughApi
+    DolbyAtmos *EncodingConfigurationsAudioDolbyAtmosApi
     HeAacV1 *EncodingConfigurationsAudioHeAacV1Api
     HeAacV2 *EncodingConfigurationsAudioHeAacV2Api
     Vorbis *EncodingConfigurationsAudioVorbisApi
@@ -30,6 +31,8 @@ func NewEncodingConfigurationsAudioApi(configs ...func(*common.ApiClient)) (*Enc
     api.Aac = aacApi
     dtsPassthroughApi, err := NewEncodingConfigurationsAudioDtsPassthroughApi(configs...)
     api.DtsPassthrough = dtsPassthroughApi
+    dolbyAtmosApi, err := NewEncodingConfigurationsAudioDolbyAtmosApi(configs...)
+    api.DolbyAtmos = dolbyAtmosApi
     heAacV1Api, err := NewEncodingConfigurationsAudioHeAacV1Api(configs...)
     api.HeAacV1 = heAacV1Api
     heAacV2Api, err := NewEncodingConfigurationsAudioHeAacV2Api(configs...)

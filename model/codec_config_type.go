@@ -19,4 +19,5 @@ const (
 	CodecConfigType_VORBIS CodecConfigType = "VORBIS"
 	CodecConfigType_MJPEG CodecConfigType = "MJPEG"
 	CodecConfigType_AV1 CodecConfigType = "AV1"
+	CodecConfigType_DOLBY_ATMOS CodecConfigType = "DOLBY_ATMOS"
 )

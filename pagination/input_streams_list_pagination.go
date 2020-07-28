@@ -83,6 +83,11 @@ func (o *InputStreamsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.InputStreamType_DOLBY_ATMOS:
+                    var v model.DolbyAtmosIngestInputStream
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 default:
                     items = append(items, base)
         }

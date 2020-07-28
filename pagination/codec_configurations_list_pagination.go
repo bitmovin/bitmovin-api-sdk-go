@@ -108,6 +108,11 @@ func (o *CodecConfigurationsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.CodecConfigType_DOLBY_ATMOS:
+                    var v model.DolbyAtmosAudioConfiguration
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 default:
                     items = append(items, base)
         }

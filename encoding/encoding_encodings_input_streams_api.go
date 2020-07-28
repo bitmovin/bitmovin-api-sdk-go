@@ -17,6 +17,7 @@ type EncodingEncodingsInputStreamsApi struct {
     Trimming *EncodingEncodingsInputStreamsTrimmingApi
     Subtitles *EncodingEncodingsInputStreamsSubtitlesApi
     Captions *EncodingEncodingsInputStreamsCaptionsApi
+    DolbyAtmos *EncodingEncodingsInputStreamsDolbyAtmosApi
 }
 
 func NewEncodingEncodingsInputStreamsApi(configs ...func(*common.ApiClient)) (*EncodingEncodingsInputStreamsApi, error) {
@@ -45,6 +46,8 @@ func NewEncodingEncodingsInputStreamsApi(configs ...func(*common.ApiClient)) (*E
     api.Subtitles = subtitlesApi
     captionsApi, err := NewEncodingEncodingsInputStreamsCaptionsApi(configs...)
     api.Captions = captionsApi
+    dolbyAtmosApi, err := NewEncodingEncodingsInputStreamsDolbyAtmosApi(configs...)
+    api.DolbyAtmos = dolbyAtmosApi
 
 	if err != nil {
 		return nil, err
