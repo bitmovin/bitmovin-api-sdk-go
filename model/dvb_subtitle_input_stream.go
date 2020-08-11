@@ -3,7 +3,7 @@ import (
 	"time"
 )
 
-type TtmlEmbed struct {
+type DvbSubtitleInputStream struct {
 	// Name of the resource. Can be freely chosen by the user.
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,7 +16,16 @@ type TtmlEmbed struct {
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
-	// The input stream to extract the subtitle from (required)
-	InputStream *StreamInput `json:"inputStream,omitempty"`
+	// Id of input
+	InputId string `json:"inputId,omitempty"`
+	// Path to media file
+	InputPath string `json:"inputPath,omitempty"`
+	// Specifies the algorithm how the stream in the input file will be selected. Only POSITION_ABSOLUTE is supported.
+	SelectionMode StreamSelectionMode `json:"selectionMode,omitempty"`
+	// Position of the stream
+	Position *int32 `json:"position,omitempty"`
+}
+func (o DvbSubtitleInputStream) InputStreamType() InputStreamType {
+    return InputStreamType_DVB_SUBTITLE
 }
 

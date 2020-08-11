@@ -8,6 +8,7 @@ import (
 
 type EncodingInfrastructureGceApi struct {
     apiClient *common.ApiClient
+    Regions *EncodingInfrastructureGceRegionsApi
 }
 
 func NewEncodingInfrastructureGceApi(configs ...func(*common.ApiClient)) (*EncodingInfrastructureGceApi, error) {
@@ -18,6 +19,8 @@ func NewEncodingInfrastructureGceApi(configs ...func(*common.ApiClient)) (*Encod
 
     api := &EncodingInfrastructureGceApi{apiClient: apiClient}
 
+    regionsApi, err := NewEncodingInfrastructureGceRegionsApi(configs...)
+    api.Regions = regionsApi
 
 	if err != nil {
 		return nil, err

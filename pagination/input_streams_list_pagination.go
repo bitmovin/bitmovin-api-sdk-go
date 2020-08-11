@@ -78,6 +78,11 @@ func (o *InputStreamsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.InputStreamType_DVB_SUBTITLE:
+                    var v model.DvbSubtitleInputStream
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 case model.InputStreamType_DVB_TELETEXT:
                     var v model.DvbTeletextInputStream
                     serialization.Decode(i, &v)

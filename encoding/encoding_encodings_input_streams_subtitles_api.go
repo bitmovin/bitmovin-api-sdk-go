@@ -6,6 +6,7 @@ import (
 
 type EncodingEncodingsInputStreamsSubtitlesApi struct {
     apiClient *common.ApiClient
+    DvbSubtitle *EncodingEncodingsInputStreamsSubtitlesDvbSubtitleApi
     DvbTeletext *EncodingEncodingsInputStreamsSubtitlesDvbTeletextApi
 }
 
@@ -17,6 +18,8 @@ func NewEncodingEncodingsInputStreamsSubtitlesApi(configs ...func(*common.ApiCli
 
     api := &EncodingEncodingsInputStreamsSubtitlesApi{apiClient: apiClient}
 
+    dvbSubtitleApi, err := NewEncodingEncodingsInputStreamsSubtitlesDvbSubtitleApi(configs...)
+    api.DvbSubtitle = dvbSubtitleApi
     dvbTeletextApi, err := NewEncodingEncodingsInputStreamsSubtitlesDvbTeletextApi(configs...)
     api.DvbTeletext = dvbTeletextApi
 
