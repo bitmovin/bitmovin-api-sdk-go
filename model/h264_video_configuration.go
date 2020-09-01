@@ -1,4 +1,5 @@
 package model
+
 import (
 	"time"
 )
@@ -23,9 +24,11 @@ type H264VideoConfiguration struct {
 	// Target bitrate for the encoded video in bps. Either bitrate or crf is required.
 	Bitrate *int64 `json:"bitrate,omitempty"`
 	// Target frame rate of the encoded video. Must be set for live encodings
-	Rate *float64 `json:"rate,omitempty"`
-	PixelFormat PixelFormat `json:"pixelFormat,omitempty"`
+	Rate        *float64     `json:"rate,omitempty"`
+	PixelFormat PixelFormat  `json:"pixelFormat,omitempty"`
 	ColorConfig *ColorConfig `json:"colorConfig,omitempty"`
+	// Specifies a display aspect ratio (DAR) to be enforced. The sample aspect ratio (SAR) will be adjusted accordingly. If set then sampleAspectRatioNumerator and sampleAspectRatioDenominator are not allowed.
+	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
 	// The numerator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioDenominator is set.
 	SampleAspectRatioNumerator *int32 `json:"sampleAspectRatioNumerator,omitempty"`
 	// The denominator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioNumerator is set.
@@ -45,7 +48,7 @@ type H264VideoConfiguration struct {
 	// Sets the minimum of quantization factor.
 	QpMin *int32 `json:"qpMin,omitempty"`
 	// Sets the maximum of quantization factor.
-	QpMax *int32 `json:"qpMax,omitempty"`
+	QpMax            *int32           `json:"qpMax,omitempty"`
 	MvPredictionMode MvPredictionMode `json:"mvPredictionMode,omitempty"`
 	// Sets the maximum Motion-Vector-Search-Range
 	MvSearchRangeMax *int32 `json:"mvSearchRangeMax,omitempty"`
@@ -68,8 +71,8 @@ type H264VideoConfiguration struct {
 	// Maximum interval in seconds between key frames
 	MaxKeyframeInterval *float64 `json:"maxKeyframeInterval,omitempty"`
 	// If three-pass encoding is used and a level is set for the encoder, the bitrate for some segments may exceed the bitrate limit which is defined by the level.
-	Level LevelH264 `json:"level,omitempty"`
-	BAdaptiveStrategy BAdapt `json:"bAdaptiveStrategy,omitempty"`
+	Level                  LevelH264                  `json:"level,omitempty"`
+	BAdaptiveStrategy      BAdapt                     `json:"bAdaptiveStrategy,omitempty"`
 	MotionEstimationMethod H264MotionEstimationMethod `json:"motionEstimationMethod,omitempty"`
 	// Number of frames for frame-type decision lookahead
 	RcLookahead *int32 `json:"rcLookahead,omitempty"`
@@ -118,7 +121,7 @@ type H264VideoConfiguration struct {
 	// Higher values will improve sharpness and detail retention but might come at costs of artifacts. Needs to have trellis enabled
 	PsyTrellis *float64 `json:"psyTrellis,omitempty"`
 }
-func (o H264VideoConfiguration) CodecConfigType() CodecConfigType {
-    return CodecConfigType_H264
-}
 
+func (o H264VideoConfiguration) CodecConfigType() CodecConfigType {
+	return CodecConfigType_H264
+}

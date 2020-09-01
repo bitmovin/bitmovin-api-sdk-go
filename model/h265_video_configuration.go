@@ -1,4 +1,5 @@
 package model
+
 import (
 	"time"
 )
@@ -23,19 +24,21 @@ type H265VideoConfiguration struct {
 	// Target bitrate for the encoded video in bps. Either bitrate or crf is required.
 	Bitrate *int64 `json:"bitrate,omitempty"`
 	// Target frame rate of the encoded video. Must be set for live encodings
-	Rate *float64 `json:"rate,omitempty"`
-	PixelFormat PixelFormat `json:"pixelFormat,omitempty"`
+	Rate        *float64     `json:"rate,omitempty"`
+	PixelFormat PixelFormat  `json:"pixelFormat,omitempty"`
 	ColorConfig *ColorConfig `json:"colorConfig,omitempty"`
 	// The numerator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioDenominator is set.
 	SampleAspectRatioNumerator *int32 `json:"sampleAspectRatioNumerator,omitempty"`
 	// The denominator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioNumerator is set.
 	SampleAspectRatioDenominator *int32 `json:"sampleAspectRatioDenominator,omitempty"`
+	// Specifies a display aspect ratio (DAR) to be enforced. The sample aspect ratio (SAR) will be adjusted accordingly. If set then sampleAspectRatioNumerator and sampleAspectRatioDenominator are not allowed.
+	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
 	// The mode of the encoding
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
 	// Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.
 	PresetConfiguration PresetConfiguration `json:"presetConfiguration,omitempty"`
 	// Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
-	Crf *float64 `json:"crf,omitempty"`
+	Crf     *float64    `json:"crf,omitempty"`
 	Profile ProfileH265 `json:"profile,omitempty"`
 	// Sets the amount of b frames
 	Bframes *int32 `json:"bframes,omitempty"`
@@ -58,13 +61,13 @@ type H265VideoConfiguration struct {
 	// Minimum interval in seconds between key frames
 	MinKeyframeInterval *float64 `json:"minKeyframeInterval,omitempty"`
 	// Maximum interval in seconds between key frames
-	MaxKeyframeInterval *float64 `json:"maxKeyframeInterval,omitempty"`
-	Level LevelH265 `json:"level,omitempty"`
+	MaxKeyframeInterval *float64  `json:"maxKeyframeInterval,omitempty"`
+	Level               LevelH265 `json:"level,omitempty"`
 	// Number of frames for slice-type decision lookahead
 	RcLookahead *int32 `json:"rcLookahead,omitempty"`
 	// Set the level of effort in determining B frame placement
-	BAdapt BAdapt `json:"bAdapt,omitempty"`
-	MaxCTUSize MaxCtuSize `json:"maxCTUSize,omitempty"`
+	BAdapt       BAdapt       `json:"bAdapt,omitempty"`
+	MaxCTUSize   MaxCtuSize   `json:"maxCTUSize,omitempty"`
 	TuIntraDepth TuIntraDepth `json:"tuIntraDepth,omitempty"`
 	TuInterDepth TuInterDepth `json:"tuInterDepth,omitempty"`
 	MotionSearch MotionSearch `json:"motionSearch,omitempty"`
@@ -215,7 +218,14 @@ type H265VideoConfiguration struct {
 	// Will use low-pass subband dct approximation instead of the standard dct for 16x16 and 32x32 blocks. Default false.
 	LowpassDct *bool `json:"lowpassDct,omitempty"`
 }
-func (o H265VideoConfiguration) CodecConfigType() CodecConfigType {
-    return CodecConfigType_H265
+
+type DisplayAspectRatio struct {
+	// The numerator of the display aspect ratio (DAR). For example for a DAR of 16:9, the value 16 must be used. (required)
+	Numerator *int32 `json:"numerator,omitempty"`
+	// The denominator of the display aspect ratio (DAR). For example for a DAR of 16:9, the value 9 must be used. (required)
+	Denominator *int32 `json:"denominator,omitempty"`
 }
 
+func (o H265VideoConfiguration) CodecConfigType() CodecConfigType {
+	return CodecConfigType_H265
+}
