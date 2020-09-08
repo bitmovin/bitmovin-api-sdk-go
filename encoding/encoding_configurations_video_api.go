@@ -6,6 +6,7 @@ import (
 
 type EncodingConfigurationsVideoApi struct {
     apiClient *common.ApiClient
+    H262 *EncodingConfigurationsVideoH262Api
     H264 *EncodingConfigurationsVideoH264Api
     H265 *EncodingConfigurationsVideoH265Api
     Vp8 *EncodingConfigurationsVideoVp8Api
@@ -22,6 +23,8 @@ func NewEncodingConfigurationsVideoApi(configs ...func(*common.ApiClient)) (*Enc
 
     api := &EncodingConfigurationsVideoApi{apiClient: apiClient}
 
+    h262Api, err := NewEncodingConfigurationsVideoH262Api(configs...)
+    api.H262 = h262Api
     h264Api, err := NewEncodingConfigurationsVideoH264Api(configs...)
     api.H264 = h264Api
     h265Api, err := NewEncodingConfigurationsVideoH265Api(configs...)

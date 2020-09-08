@@ -16,6 +16,7 @@ type EncodingEncodingsMuxingsApi struct {
     Webm *EncodingEncodingsMuxingsWebmApi
     Mp3 *EncodingEncodingsMuxingsMp3Api
     Mp4 *EncodingEncodingsMuxingsMp4Api
+    Mxf *EncodingEncodingsMuxingsMxfApi
     ProgressiveTs *EncodingEncodingsMuxingsProgressiveTsApi
     BroadcastTs *EncodingEncodingsMuxingsBroadcastTsApi
     ProgressiveWebm *EncodingEncodingsMuxingsProgressiveWebmApi
@@ -48,6 +49,8 @@ func NewEncodingEncodingsMuxingsApi(configs ...func(*common.ApiClient)) (*Encodi
     api.Mp3 = mp3Api
     mp4Api, err := NewEncodingEncodingsMuxingsMp4Api(configs...)
     api.Mp4 = mp4Api
+    mxfApi, err := NewEncodingEncodingsMuxingsMxfApi(configs...)
+    api.Mxf = mxfApi
     progressiveTsApi, err := NewEncodingEncodingsMuxingsProgressiveTsApi(configs...)
     api.ProgressiveTs = progressiveTsApi
     broadcastTsApi, err := NewEncodingEncodingsMuxingsBroadcastTsApi(configs...)

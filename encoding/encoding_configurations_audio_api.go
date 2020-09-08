@@ -13,6 +13,7 @@ type EncodingConfigurationsAudioApi struct {
     HeAacV2 *EncodingConfigurationsAudioHeAacV2Api
     Vorbis *EncodingConfigurationsAudioVorbisApi
     Opus *EncodingConfigurationsAudioOpusApi
+    Pcm *EncodingConfigurationsAudioPcmApi
     Ac3 *EncodingConfigurationsAudioAc3Api
     Eac3 *EncodingConfigurationsAudioEac3Api
     Mp2 *EncodingConfigurationsAudioMp2Api
@@ -41,6 +42,8 @@ func NewEncodingConfigurationsAudioApi(configs ...func(*common.ApiClient)) (*Enc
     api.Vorbis = vorbisApi
     opusApi, err := NewEncodingConfigurationsAudioOpusApi(configs...)
     api.Opus = opusApi
+    pcmApi, err := NewEncodingConfigurationsAudioPcmApi(configs...)
+    api.Pcm = pcmApi
     ac3Api, err := NewEncodingConfigurationsAudioAc3Api(configs...)
     api.Ac3 = ac3Api
     eac3Api, err := NewEncodingConfigurationsAudioEac3Api(configs...)

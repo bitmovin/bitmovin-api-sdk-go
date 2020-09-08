@@ -6,7 +6,7 @@ import (
 type SrtStatistics struct {
 	// UUID of the statistic event
 	Id string `json:"id,omitempty"`
-	// Timestamp when the srt statistics event was created, formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+	// Timestamp when the srt statistics event was created, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// UUID of an encoding
 	EncodingId string `json:"encodingId,omitempty"`

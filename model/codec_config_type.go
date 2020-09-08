@@ -20,4 +20,7 @@ const (
 	CodecConfigType_MJPEG CodecConfigType = "MJPEG"
 	CodecConfigType_AV1 CodecConfigType = "AV1"
 	CodecConfigType_DOLBY_ATMOS CodecConfigType = "DOLBY_ATMOS"
+	CodecConfigType_H262 CodecConfigType = "H262"
+	CodecConfigType_PCM CodecConfigType = "PCM"
+	CodecConfigType_WEBVTT CodecConfigType = "WEBVTT"
 )

@@ -25,13 +25,13 @@ func NewEncodingEncodingsStreamsInputsApi(configs ...func(*common.ApiClient)) (*
 	return api, nil
 }
 
-func (api *EncodingEncodingsStreamsInputsApi) List(encodingId string, streamId string) (*pagination.StreamDetailssListPagination, error) {
+func (api *EncodingEncodingsStreamsInputsApi) List(encodingId string, streamId string) (*pagination.EncodingStreamInputsListPagination, error) {
     reqParams := func(params *common.RequestParams) {
         params.PathParams["encoding_id"] = encodingId
         params.PathParams["stream_id"] = streamId
     }
 
-    var responseModel *pagination.StreamDetailssListPagination
+    var responseModel *pagination.EncodingStreamInputsListPagination
     err := api.apiClient.Get("/encoding/encodings/{encoding_id}/streams/{stream_id}/inputs", nil, &responseModel, reqParams)
     return responseModel, err
 }

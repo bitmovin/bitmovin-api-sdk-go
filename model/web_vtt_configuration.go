@@ -4,13 +4,13 @@ import (
 )
 
 type WebVttConfiguration struct {
-	// Name of the resource. Can be freely chosen by the user.
+	// Name of the resource. Can be freely chosen by the user. (required)
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
 	Description string `json:"description,omitempty"`
-	// Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Modified timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
@@ -20,5 +20,8 @@ type WebVttConfiguration struct {
 	AppendOptionalZeroHour *bool `json:"appendOptionalZeroHour,omitempty"`
 	// If set to true, the region information of the resulting webvtt file will be omitted. Defaults to false.
 	IgnoreRegion *bool `json:"ignoreRegion,omitempty"`
+}
+func (o WebVttConfiguration) CodecConfigType() CodecConfigType {
+    return CodecConfigType_WEBVTT
 }
 

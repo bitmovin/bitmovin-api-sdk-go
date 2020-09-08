@@ -12,7 +12,7 @@ type PlayerVersion struct {
 	CdnUrl string `json:"cdnUrl,omitempty"`
 	// Download URL of the specified player package (required)
 	DownloadUrl string `json:"downloadUrl,omitempty"`
-	// Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ (required)
+	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ (required)
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 }
 

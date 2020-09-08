@@ -8,9 +8,9 @@ type CustomPlayerBuildDetails struct {
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
 	Description string `json:"description,omitempty"`
-	// Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ (required)
+	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ (required)
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Modified timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ (required)
+	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ (required)
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`

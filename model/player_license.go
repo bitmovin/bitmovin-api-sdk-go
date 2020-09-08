@@ -8,7 +8,7 @@ type PlayerLicense struct {
 	Id string `json:"id,omitempty"`
 	// Name of the resource (required)
 	Name string `json:"name,omitempty"`
-	// Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ (required)
+	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ (required)
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// License Key (required)
 	LicenseKey string `json:"licenseKey,omitempty"`

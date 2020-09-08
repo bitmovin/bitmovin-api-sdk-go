@@ -113,6 +113,21 @@ func (o *CodecConfigurationsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.CodecConfigType_H262:
+                    var v model.H262VideoConfiguration
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
+                case model.CodecConfigType_PCM:
+                    var v model.PcmAudioConfiguration
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
+                case model.CodecConfigType_WEBVTT:
+                    var v model.WebVttConfiguration
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 default:
                     items = append(items, base)
         }

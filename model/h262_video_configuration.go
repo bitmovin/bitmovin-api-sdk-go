@@ -1,0 +1,60 @@
+package model
+import (
+	"time"
+)
+
+type H262VideoConfiguration struct {
+	// Name of the resource. Can be freely chosen by the user. (required)
+	Name string `json:"name,omitempty"`
+	// Description of the resource. Can be freely chosen by the user.
+	Description string `json:"description,omitempty"`
+	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	// User-specific meta data. This can hold anything.
+	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	// Id of the resource (required)
+	Id string `json:"id,omitempty"`
+	// Width of the encoded video in pixels
+	Width *int32 `json:"width,omitempty"`
+	// Height of the encoded video in pixels
+	Height *int32 `json:"height,omitempty"`
+	// Target bitrate for the encoded video in bps. Either bitrate or crf is required.
+	Bitrate *int64 `json:"bitrate,omitempty"`
+	// Target frame rate of the encoded video. Must be set for live encodings
+	Rate *float64 `json:"rate,omitempty"`
+	// Describes the color encoding, bit depth, and chroma subsampling of each pixel in the output image.
+	PixelFormat PixelFormat `json:"pixelFormat,omitempty"`
+	ColorConfig *ColorConfig `json:"colorConfig,omitempty"`
+	// The numerator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioDenominator is set. If set then displayAspectRatio is not allowed.
+	SampleAspectRatioNumerator *int32 `json:"sampleAspectRatioNumerator,omitempty"`
+	// The denominator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioNumerator is set. If set then displayAspectRatio is not allowed.
+	SampleAspectRatioDenominator *int32 `json:"sampleAspectRatioDenominator,omitempty"`
+	// Specifies a display aspect ratio (DAR) to be enforced. The sample aspect ratio (SAR) will be adjusted accordingly. If set then sampleAspectRatioNumerator and sampleAspectRatioDenominator are not allowed.
+	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
+	// The mode of the encoding
+	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
+	// Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.
+	PresetConfiguration H262PresetConfiguration `json:"presetConfiguration,omitempty"`
+	// When setting a profile, all other settings must not exceed the limits which are defined in the profile. Otherwise, a higher profile may be automatically chosen. (required)
+	Profile ProfileH262 `json:"profile,omitempty"`
+	// Sets the amount of b frames.
+	Bframes *int32 `json:"bframes,omitempty"`
+	// Maximum Bitrate
+	MaxBitrate *int64 `json:"maxBitrate,omitempty"`
+	// Minimum Bitrate
+	MinBitrate *int64 `json:"minBitrate,omitempty"`
+	// Playback device buffer size
+	Bufsize *int64 `json:"bufsize,omitempty"`
+	// Minimum GOP length, the minimum distance between I-frames
+	GopSize *int32 `json:"gopSize,omitempty"`
+	// Specified set of constraints that indicate a degree of required decoder performance for a profile
+	Level LevelH262 `json:"level,omitempty"`
+	// Using TOP_FIELD_FIRST or BOTTOM_FIELD_FIRST will output interlaced video
+	InterlaceMode H262InterlaceMode `json:"interlaceMode,omitempty"`
+}
+func (o H262VideoConfiguration) CodecConfigType() CodecConfigType {
+    return CodecConfigType_H262
+}
+

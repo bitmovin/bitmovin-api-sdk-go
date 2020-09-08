@@ -8,14 +8,28 @@ type Encoding struct {
 	Name string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
 	Description string `json:"description,omitempty"`
-	// Creation timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Modified timestamp formatted in UTC: YYYY-MM-DDThh:mm:ssZ
+	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
 	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id string `json:"id,omitempty"`
+	// Type of the encoding
+	Type EncodingType `json:"type,omitempty"`
+	// Timestamp when the encoding was started, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+	StartedAt *time.Time `json:"startedAt,omitempty"`
+	// Timestamp when the encoding status changed to \"QUEUED\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+	QueuedAt *time.Time `json:"queuedAt,omitempty"`
+	// Timestamp when the encoding status changed to to \"RUNNING\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+	RunningAt *time.Time `json:"runningAt,omitempty"`
+	// Timestamp when the encoding status changed to \"FINISHED\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+	FinishedAt *time.Time `json:"finishedAt,omitempty"`
+	// Timestamp when the encoding status changed to \"ERROR\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+	ErrorAt *time.Time `json:"errorAt,omitempty"`
+	// Progress of the encoding in percent
+	Progress *int32 `json:"progress,omitempty"`
 	CloudRegion CloudRegion `json:"cloudRegion,omitempty"`
 	// Specify a list of regions which are used in case the preferred region is down. Currently there are several restrictions. - The region has to be specific or AUTO - The region has to be for the same cloud provider as the default one - You can only configure at most 3 fallback regions 
 	FallbackCloudRegions []CloudRegion `json:"fallbackCloudRegions,omitempty"`

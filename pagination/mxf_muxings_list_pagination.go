@@ -6,18 +6,18 @@ import(
     "github.com/bitmovin/bitmovin-api-sdk-go/model"
 )
 
-type StreamDetailssListPagination struct {
+type MxfMuxingsListPagination struct {
 	TotalCount *int64           `json:"totalCount,omitempty"`
 	Offset     *int32           `json:"offset,omitempty"`
 	Limit      *int32           `json:"limit,omitempty"`
 	Previous   string           `json:"previous,omitempty"`
 	Next       string           `json:"next,omitempty"`
-	Items      []model.StreamDetails `json:"items,omitempty"`
+	Items      []model.MxfMuxing `json:"items,omitempty"`
 }
 
 
-  func (o *StreamDetailssListPagination) UnmarshalJSON(b []byte) error {
-    var items []model.StreamDetails
+  func (o *MxfMuxingsListPagination) UnmarshalJSON(b []byte) error {
+    var items []model.MxfMuxing
 
     var pageResp model.PaginationResponse
     if err := json.Unmarshal(b, &pageResp); err != nil {
@@ -25,7 +25,7 @@ type StreamDetailssListPagination struct {
     }
 
     for _, i := range pageResp.Items {
-      var v model.StreamDetails
+      var v model.MxfMuxing
       serialization.Decode(i, &v)
       items = append(items, v)
     }

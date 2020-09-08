@@ -58,6 +58,11 @@ func (o *MuxingsListPagination) UnmarshalJSON(b []byte) error {
                     serialization.Decode(i, &v)
                     items = append(items, v)
                     break
+                case model.MuxingType_MXF:
+                    var v model.MxfMuxing
+                    serialization.Decode(i, &v)
+                    items = append(items, v)
+                    break
                 case model.MuxingType_PROGRESSIVE_WEBM:
                     var v model.ProgressiveWebmMuxing
                     serialization.Decode(i, &v)

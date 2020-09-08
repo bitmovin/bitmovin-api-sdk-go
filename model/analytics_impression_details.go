@@ -153,5 +153,8 @@ type AnalyticsImpressionDetails struct {
 	VideoWindowHeight *int32 `json:"videoWindowHeight,omitempty"`
 	// Width of the video player on the page
 	VideoWindowWidth *int32 `json:"videoWindowWidth,omitempty"`
+	// True if starting the video failed
+	VideostartFailed *bool `json:"videostartFailed,omitempty"`
+	VideostartFailedReason AnalyticsVideoStartFailedReason `json:"videostartFailedReason,omitempty"`
 }
 
