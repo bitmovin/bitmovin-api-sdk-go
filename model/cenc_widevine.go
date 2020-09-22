@@ -1,7 +1,7 @@
 package model
 
+// CencWidevine model
 type CencWidevine struct {
 	// Base64 encoded pssh payload (required)
-	Pssh string `json:"pssh,omitempty"`
+	Pssh *string `json:"pssh,omitempty"`
 }
-

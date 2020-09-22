@@ -1,144 +1,43 @@
 package pagination
 
-import(
-    "encoding/json"
-    "github.com/bitmovin/bitmovin-api-sdk-go/serialization"
-    "github.com/bitmovin/bitmovin-api-sdk-go/model"
+import (
+	"bytes"
+	"encoding/json"
+	"github.com/bitmovin/bitmovin-api-sdk-go/bitutils"
+	"github.com/bitmovin/bitmovin-api-sdk-go/model"
+	"io"
 )
 
+// CodecConfigurationsListPagination model
 type CodecConfigurationsListPagination struct {
-	TotalCount *int64           `json:"totalCount,omitempty"`
-	Offset     *int32           `json:"offset,omitempty"`
-	Limit      *int32           `json:"limit,omitempty"`
-	Previous   string           `json:"previous,omitempty"`
-	Next       string           `json:"next,omitempty"`
+	TotalCount int64                      `json:"totalCount,omitempty"`
+	Offset     int32                      `json:"offset,omitempty"`
+	Limit      int32                      `json:"limit,omitempty"`
+	Previous   string                     `json:"previous,omitempty"`
+	Next       string                     `json:"next,omitempty"`
 	Items      []model.CodecConfiguration `json:"items,omitempty"`
 }
 
-func (o *CodecConfigurationsListPagination) UnmarshalJSON(b []byte) error {
-    var items []model.CodecConfiguration
-
-    var pageResp model.PaginationResponse
-    if err := json.Unmarshal(b, &pageResp); err != nil {
+// UnmarshalJSON unmarshals pagination model CodecConfigurationsListPagination from a JSON structure
+func (m *CodecConfigurationsListPagination) UnmarshalJSON(b []byte) error {
+	var pageResp model.PaginationResponse
+	if err := json.Unmarshal(b, &pageResp); err != nil {
 		return err
 	}
+	items, err := model.UnmarshalCodecConfigurationSlice(bytes.NewBuffer(pageResp.Items), bitutils.JSONConsumer())
+	if err != nil && err != io.EOF {
+		return err
+	}
+	var result CodecConfigurationsListPagination
 
-    for _, i := range pageResp.Items {
-        var base model.BaseCodecConfiguration
-		serialization.Decode(i, &base)
+	result.TotalCount = bitutils.Int64Value(pageResp.TotalCount)
+	result.Offset = bitutils.Int32Value(pageResp.Offset)
+	result.Limit = bitutils.Int32Value(pageResp.Limit)
+	result.Previous = bitutils.StringValue(pageResp.Previous)
+	result.Next = bitutils.StringValue(pageResp.Next)
+	result.Items = items
 
-        switch base.CodecConfigType() {
-                case model.CodecConfigType_AAC:
-                    var v model.AacAudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_DTS_PASSTHROUGH:
-                    var v model.DtsPassthroughAudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_HE_AAC_V1:
-                    var v model.HeAacV1AudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_HE_AAC_V2:
-                    var v model.HeAacV2AudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_H264:
-                    var v model.H264VideoConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_H265:
-                    var v model.H265VideoConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_VP9:
-                    var v model.Vp9VideoConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_VP8:
-                    var v model.Vp8VideoConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_MP2:
-                    var v model.Mp2AudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_MP3:
-                    var v model.Mp3AudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_AC3:
-                    var v model.Ac3AudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_EAC3:
-                    var v model.Eac3AudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_OPUS:
-                    var v model.OpusAudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_VORBIS:
-                    var v model.VorbisAudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_MJPEG:
-                    var v model.MjpegVideoConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_AV1:
-                    var v model.Av1VideoConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_DOLBY_ATMOS:
-                    var v model.DolbyAtmosAudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_H262:
-                    var v model.H262VideoConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_PCM:
-                    var v model.PcmAudioConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.CodecConfigType_WEBVTT:
-                    var v model.WebVttConfiguration
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                default:
-                    items = append(items, base)
-        }
-    }
+	*m = result
 
-    o.TotalCount = pageResp.TotalCount
-    o.Offset = pageResp.Offset
-    o.Limit = pageResp.Limit
-    o.Previous = pageResp.Previous
-    o.Next = pageResp.Next
-    o.Items = items
-    return nil
+	return nil
 }
-

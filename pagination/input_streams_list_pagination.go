@@ -1,109 +1,43 @@
 package pagination
 
-import(
-    "encoding/json"
-    "github.com/bitmovin/bitmovin-api-sdk-go/serialization"
-    "github.com/bitmovin/bitmovin-api-sdk-go/model"
+import (
+	"bytes"
+	"encoding/json"
+	"github.com/bitmovin/bitmovin-api-sdk-go/bitutils"
+	"github.com/bitmovin/bitmovin-api-sdk-go/model"
+	"io"
 )
 
+// InputStreamsListPagination model
 type InputStreamsListPagination struct {
-	TotalCount *int64           `json:"totalCount,omitempty"`
-	Offset     *int32           `json:"offset,omitempty"`
-	Limit      *int32           `json:"limit,omitempty"`
-	Previous   string           `json:"previous,omitempty"`
-	Next       string           `json:"next,omitempty"`
+	TotalCount int64               `json:"totalCount,omitempty"`
+	Offset     int32               `json:"offset,omitempty"`
+	Limit      int32               `json:"limit,omitempty"`
+	Previous   string              `json:"previous,omitempty"`
+	Next       string              `json:"next,omitempty"`
 	Items      []model.InputStream `json:"items,omitempty"`
 }
 
-func (o *InputStreamsListPagination) UnmarshalJSON(b []byte) error {
-    var items []model.InputStream
-
-    var pageResp model.PaginationResponse
-    if err := json.Unmarshal(b, &pageResp); err != nil {
+// UnmarshalJSON unmarshals pagination model InputStreamsListPagination from a JSON structure
+func (m *InputStreamsListPagination) UnmarshalJSON(b []byte) error {
+	var pageResp model.PaginationResponse
+	if err := json.Unmarshal(b, &pageResp); err != nil {
 		return err
 	}
+	items, err := model.UnmarshalInputStreamSlice(bytes.NewBuffer(pageResp.Items), bitutils.JSONConsumer())
+	if err != nil && err != io.EOF {
+		return err
+	}
+	var result InputStreamsListPagination
 
-    for _, i := range pageResp.Items {
-        var base model.BaseInputStream
-		serialization.Decode(i, &base)
+	result.TotalCount = bitutils.Int64Value(pageResp.TotalCount)
+	result.Offset = bitutils.Int32Value(pageResp.Offset)
+	result.Limit = bitutils.Int32Value(pageResp.Limit)
+	result.Previous = bitutils.StringValue(pageResp.Previous)
+	result.Next = bitutils.StringValue(pageResp.Next)
+	result.Items = items
 
-        switch base.InputStreamType() {
-                case model.InputStreamType_INGEST:
-                    var v model.IngestInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_CONCATENATION:
-                    var v model.ConcatenationInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_TRIMMING_TIME_BASED:
-                    var v model.TimeBasedTrimmingInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_TRIMMING_TIME_CODE_TRACK:
-                    var v model.TimecodeTrackTrimmingInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_TRIMMING_H264_PICTURE_TIMING:
-                    var v model.H264PictureTimingTrimmingInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_AUDIO_MIX:
-                    var v model.AudioMixInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_SIDECAR_DOLBY_VISION_METADATA:
-                    var v model.DolbyVisionMetadataIngestInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_CAPTION_CEA608:
-                    var v model.Cea608CaptionInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_CAPTION_CEA708:
-                    var v model.Cea708CaptionInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_FILE:
-                    var v model.FileInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_DVB_SUBTITLE:
-                    var v model.DvbSubtitleInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_DVB_TELETEXT:
-                    var v model.DvbTeletextInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                case model.InputStreamType_DOLBY_ATMOS:
-                    var v model.DolbyAtmosIngestInputStream
-                    serialization.Decode(i, &v)
-                    items = append(items, v)
-                    break
-                default:
-                    items = append(items, base)
-        }
-    }
+	*m = result
 
-    o.TotalCount = pageResp.TotalCount
-    o.Offset = pageResp.Offset
-    o.Limit = pageResp.Limit
-    o.Previous = pageResp.Previous
-    o.Next = pageResp.Next
-    o.Items = items
-    return nil
+	return nil
 }
-

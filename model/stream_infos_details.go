@@ -1,8 +1,9 @@
 package model
 
+// StreamInfosDetails model
 type StreamInfosDetails struct {
 	// The id of the stream (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// The media type of the stream (required)
 	MediaType MediaType `json:"mediaType,omitempty"`
 	// The width of the stream, if it is a video stream
@@ -38,4 +39,3 @@ type StreamInfosDetails struct {
 	// The average amount of backup bytes used per second within the last minute. This will be written when no live stream is ingested. The last picture will be repeated with silent audio. (required)
 	BytesBackupPerSecondAvg *float64 `json:"bytesBackupPerSecondAvg,omitempty"`
 }
-

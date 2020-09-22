@@ -1,5 +1,6 @@
 package model
 
+// ObjectDetectionBoundingBox model
 type ObjectDetectionBoundingBox struct {
 	// Horizontal position of the top left corner, given as a fraction of the frame width
 	TopLeftX *float64 `json:"topLeftX,omitempty"`
@@ -10,4 +11,3 @@ type ObjectDetectionBoundingBox struct {
 	// Vertical position of the bottom right corner, given as a fraction of the frame height
 	BottomRightY *float64 `json:"bottomRightY,omitempty"`
 }
-

@@ -1,13 +1,11 @@
 package model
-import (
-	"time"
-)
 
+// EncodingStats model
 type EncodingStats struct {
 	// Date, format. yyyy-MM-dd
-	Date *time.Time `json:"date,omitempty"`
+	Date *Date `json:"date,omitempty"`
 	// The id of the encoding (required)
-	EncodingId string `json:"encodingId,omitempty"`
+	EncodingId *string `json:"encodingId,omitempty"`
 	// Total bytes encoded
 	BytesEncoded *int64 `json:"bytesEncoded,omitempty"`
 	// Total time encoded
@@ -31,4 +29,3 @@ type EncodingStats struct {
 	// Detailed statistics per feature
 	Features []BillableEncodingFeatureMinutes `json:"features,omitempty"`
 }
-

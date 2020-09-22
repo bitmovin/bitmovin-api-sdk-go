@@ -1,5 +1,6 @@
 package model
 
+// PerTitleFixedResolutionAndBitrateConfiguration model
 type PerTitleFixedResolutionAndBitrateConfiguration struct {
 	// Number of forced renditions above the highest fixed representation (e.g. FIXED_RESOLUTION_AND_BITRATE). Forced renditions will be added, also if the Per-Title algorithm chooses the user defined force rendition to be the highest one.
 	ForcedRenditionAboveHighestFixedRepresentation *int32 `json:"forcedRenditionAboveHighestFixedRepresentation,omitempty"`
@@ -8,4 +9,3 @@ type PerTitleFixedResolutionAndBitrateConfiguration struct {
 	// Mode to calculate the bitrate of the next representation
 	ForcedRenditionAboveHighestFixedRepresentationCalculationMode PerTitleFixedResolutionAndBitrateConfigurationMode `json:"forcedRenditionAboveHighestFixedRepresentationCalculationMode,omitempty"`
 }
-

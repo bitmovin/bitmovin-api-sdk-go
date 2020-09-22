@@ -1,7 +1,7 @@
 package model
 
+// AdAnalyticsOrderByEntry model
 type AdAnalyticsOrderByEntry struct {
-	Name AdAnalyticsAttribute `json:"name,omitempty"`
-	Order AnalyticsOrder `json:"order,omitempty"`
+	Name  AdAnalyticsAttribute `json:"name,omitempty"`
+	Order AnalyticsOrder       `json:"order,omitempty"`
 }
-

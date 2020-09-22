@@ -1,10 +1,11 @@
 package model
 
+// StatisticsPerStream model
 type StatisticsPerStream struct {
 	// ID of the stream (required)
-	StreamId string `json:"streamId,omitempty"`
+	StreamId *string `json:"streamId,omitempty"`
 	// ID of the condec configuration (required)
-	CodecConfigId string `json:"codecConfigId,omitempty"`
+	CodecConfigId *string `json:"codecConfigId,omitempty"`
 	// Multiplier for the encoded minutes. Depends on muxing type. (required)
 	Multiplicator *float64 `json:"multiplicator,omitempty"`
 	// Encoded bytes. (required)
@@ -20,29 +21,28 @@ type StatisticsPerStream struct {
 	// If it' a video stream this value is the FPS, for audio it's the sample rate. (required)
 	Rate *float64 `json:"rate,omitempty"`
 	// Bitrate of the stream (required)
-	Bitrate *int64 `json:"bitrate,omitempty"`
-	Codec CodecConfigType `json:"codec,omitempty"`
-	Resolution StatisticsResolution `json:"resolution,omitempty"`
-	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
+	Bitrate      *int64               `json:"bitrate,omitempty"`
+	Codec        CodecConfigType      `json:"codec,omitempty"`
+	Resolution   StatisticsResolution `json:"resolution,omitempty"`
+	EncodingMode EncodingMode         `json:"encodingMode,omitempty"`
 	// The output minutes multiplicator for the given encodingMode
-	EncodingModeMultiplicator *float64 `json:"encodingModeMultiplicator,omitempty"`
-	PerTitleResultStream StatisticsPerTitleStream `json:"perTitleResultStream,omitempty"`
+	EncodingModeMultiplicator *float64                 `json:"encodingModeMultiplicator,omitempty"`
+	PerTitleResultStream      StatisticsPerTitleStream `json:"perTitleResultStream,omitempty"`
 	// The output minutes multiplicator for per-title
-	PerTitleMultiplicator *float64 `json:"perTitleMultiplicator,omitempty"`
-	PsnrMode PsnrPerStreamMode `json:"psnrMode,omitempty"`
+	PerTitleMultiplicator *float64          `json:"perTitleMultiplicator,omitempty"`
+	PsnrMode              PsnrPerStreamMode `json:"psnrMode,omitempty"`
 	// The output minutes multiplicator for psnr streams
-	PsnrMultiplicator *float64 `json:"psnrMultiplicator,omitempty"`
-	DolbyVisionMode DolbyVisionPerStreamMode `json:"dolbyVisionMode,omitempty"`
+	PsnrMultiplicator *float64                 `json:"psnrMultiplicator,omitempty"`
+	DolbyVisionMode   DolbyVisionPerStreamMode `json:"dolbyVisionMode,omitempty"`
 	// The output minutes multiplicator for Dolby Vision streams
 	DolbyVisionMultiplicator *float64 `json:"dolbyVisionMultiplicator,omitempty"`
 	// Name of the preset configuration used for the codec configuration or \"CUSTOM\" if any preset values were overridden
-	Preset string `json:"preset,omitempty"`
+	Preset *string `json:"preset,omitempty"`
 	// The output minutes multiplicator for the used codec configuration preset.
 	PresetMultiplicator *float64 `json:"presetMultiplicator,omitempty"`
 	// Indicates if the stream was part of a live encoding.
 	Live *bool `json:"live,omitempty"`
 	// The output minutes multiplicator for live streams.
-	LiveMultiplicator *float64 `json:"liveMultiplicator,omitempty"`
-	InputFactor *InputFactor `json:"inputFactor,omitempty"`
+	LiveMultiplicator *float64     `json:"liveMultiplicator,omitempty"`
+	InputFactor       *InputFactor `json:"inputFactor,omitempty"`
 }
-

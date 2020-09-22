@@ -37,7 +37,7 @@ import (
 )
 
 func main() {
-    bitmovinApi, err := bitmovin.NewBitmovinApi(func(apiClient *common.ApiClient) {
+    bitmovinApi, err := bitmovin.NewBitmovinApi(func(apiClient *apiclient.APIClient) {
         apiClient.ApiKey = "<YOUR_API_KEY>"
     })
     if err != nil {

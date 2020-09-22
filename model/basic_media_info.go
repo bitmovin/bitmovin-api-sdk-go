@@ -1,16 +1,17 @@
 package model
 
+// BasicMediaInfo model
 type BasicMediaInfo struct {
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// The value is a quoted-string which specifies the group to which the Rendition belongs. (required)
-	GroupId string `json:"groupId,omitempty"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Primary language in the rendition.
-	Language string `json:"language,omitempty"`
+	Language *string `json:"language,omitempty"`
 	// Identifies a language that is associated with the Rendition.
-	AssocLanguage string `json:"assocLanguage,omitempty"`
+	AssocLanguage *string `json:"assocLanguage,omitempty"`
 	// Human readable description of the rendition. (required)
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// If set to true, the client SHOULD play this Rendition of the content in the absence of information from the user.
 	IsDefault *bool `json:"isDefault,omitempty"`
 	// If set to true, the client MAY choose to play this Rendition in the absence of explicit user preference.
@@ -18,4 +19,3 @@ type BasicMediaInfo struct {
 	// Contains Uniform Type Identifiers
 	Characteristics []string `json:"characteristics,omitempty"`
 }
-

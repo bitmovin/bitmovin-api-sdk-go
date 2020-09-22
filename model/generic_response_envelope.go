@@ -8,5 +8,5 @@ type GenericResponseEnvelope struct {
 	// Response status information
 	Status ResponseStatus `json:"status"`
 	// Response information
-    Data json.RawMessage `json:"data"`
+	Data json.RawMessage `json:"data"`
 }

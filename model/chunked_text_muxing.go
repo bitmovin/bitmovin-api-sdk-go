@@ -1,22 +1,24 @@
 package model
+
 import (
-	"time"
+	"encoding/json"
 )
 
+// ChunkedTextMuxing model
 type ChunkedTextMuxing struct {
 	// Name of the resource. Can be freely chosen by the user.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
-	Streams []MuxingStream `json:"streams,omitempty"`
+	Id      *string          `json:"id,omitempty"`
+	Streams []MuxingStream   `json:"streams,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	// Average bitrate. Available after encoding finishes.
 	AvgBitrate *int64 `json:"avgBitrate,omitempty"`
@@ -31,13 +33,24 @@ type ChunkedTextMuxing struct {
 	// Length of the segments in seconds (required)
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
 	// Segment naming template
-	SegmentNaming string `json:"segmentNaming,omitempty"`
+	SegmentNaming *string `json:"segmentNaming,omitempty"`
 	// Segment naming template with placeholders which will be replaced during the encoding. The result will be saved in segmentNaming. {rand:4} gets replaced with an alphanumeric string of length specified after the colon. Defaults to 32. If this field is set, segmentNaming must not be specified.
-	SegmentNamingTemplate string `json:"segmentNamingTemplate,omitempty"`
+	SegmentNamingTemplate *string `json:"segmentNamingTemplate,omitempty"`
 	// Number of segments which have been encoded
 	SegmentsMuxed *int32 `json:"segmentsMuxed,omitempty"`
 }
-func (o ChunkedTextMuxing) MuxingType() MuxingType {
-    return MuxingType_CHUNKED_TEXT
-}
 
+func (m ChunkedTextMuxing) MuxingType() MuxingType {
+	return MuxingType_CHUNKED_TEXT
+}
+func (m ChunkedTextMuxing) MarshalJSON() ([]byte, error) {
+	type M ChunkedTextMuxing
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "CHUNKED_TEXT"
+
+	return json.Marshal(x)
+}

@@ -1,8 +1,9 @@
 package model
 
+// AdaptationSet model
 type AdaptationSet struct {
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// Custom adaptation set attributes
 	CustomAttributes []CustomAttribute `json:"customAttributes,omitempty"`
 	// Roles of the adaptation set
@@ -10,4 +11,3 @@ type AdaptationSet struct {
 	// Provide signaling of CEA 607 and CEA 708
 	Accessibilities []Accessibility `json:"accessibilities,omitempty"`
 }
-

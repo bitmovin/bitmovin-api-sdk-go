@@ -1,11 +1,9 @@
 package model
-import (
-	"time"
-)
 
+// DailyStatistics model
 type DailyStatistics struct {
 	// Date for the shown data. Format: yyyy-MM-dd (required)
-	Date *time.Time `json:"date,omitempty"`
+	Date *Date `json:"date,omitempty"`
 	// Bytes encoded. (required)
 	BytesEncoded *int64 `json:"bytesEncoded,omitempty"`
 	// Time in seconds encoded for this day. (required)
@@ -13,13 +11,12 @@ type DailyStatistics struct {
 	// The billable minutes.
 	BillableMinutes *float64 `json:"billableMinutes,omitempty"`
 	// Label identifier.
-	Label string `json:"label,omitempty"`
+	Label *string `json:"label,omitempty"`
 	// Billable minutes for each encoding configuration.
 	BillableEncodingMinutes []BillableEncodingMinutes `json:"billableEncodingMinutes,omitempty"`
 	// Billable minutes for muxings.
 	BillableTransmuxingMinutes *float64 `json:"billableTransmuxingMinutes,omitempty"`
 	// Billable minutes for features
 	BillableFeatureMinutes []BillableEncodingFeatureMinutes `json:"billableFeatureMinutes,omitempty"`
-	BillableEgressBytes []EgressInformation `json:"billableEgressBytes,omitempty"`
+	BillableEgressBytes    []EgressInformation              `json:"billableEgressBytes,omitempty"`
 }
-

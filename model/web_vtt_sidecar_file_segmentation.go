@@ -5,4 +5,3 @@ type WebVttSidecarFileSegmentation struct {
 	// The length of the WebVTT fragments in seconds (required)
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
 }
-

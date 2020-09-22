@@ -1,5 +1,6 @@
 package model
 
+// StartEncodingRequest model
 type StartEncodingRequest struct {
 	// Allows to encode only part of the input. Defines start (offset) and duration of the desired section.
 	Trimming *Trimming `json:"trimming,omitempty"`
@@ -24,4 +25,3 @@ type StartEncodingRequest struct {
 	// Per-Title settings
 	PerTitle *PerTitle `json:"perTitle,omitempty"`
 }
-

@@ -1,8 +1,9 @@
 package model
 
+// EncodingStreamInputDetails model
 type EncodingStreamInputDetails struct {
 	// Format name
-	FormatName string `json:"formatName,omitempty"`
+	FormatName *string `json:"formatName,omitempty"`
 	// The start time in seconds
 	StartTime *float64 `json:"startTime,omitempty"`
 	// Duration in seconds
@@ -12,7 +13,7 @@ type EncodingStreamInputDetails struct {
 	// Bitrate in bps
 	Bitrate *int64 `json:"bitrate,omitempty"`
 	// Additional metadata saved in the input file
-	Tags *map[string]map[string]interface{} `json:"tags,omitempty"`
+	Tags *map[string]interface{} `json:"tags,omitempty"`
 	// Video streams in the input file
 	VideoStreams []VideoStream `json:"videoStreams,omitempty"`
 	// Audio stream in the input file
@@ -22,4 +23,3 @@ type EncodingStreamInputDetails struct {
 	// Subtitle streams in the input file
 	SubtitleStreams []SubtitleStream `json:"subtitleStreams,omitempty"`
 }
-

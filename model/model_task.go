@@ -1,11 +1,9 @@
 package model
-import (
-	"time"
-)
 
+// ModelTask model
 type ModelTask struct {
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// Current status (required)
 	Status Status `json:"status,omitempty"`
 	// Estimated ETA in seconds
@@ -17,16 +15,15 @@ type ModelTask struct {
 	// Task specific messages
 	Messages []Message `json:"messages,omitempty"`
 	// Timestamp when the task was created, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Timestamp when the task status changed to \"QUEUED\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	QueuedAt *time.Time `json:"queuedAt,omitempty"`
+	QueuedAt *DateTime `json:"queuedAt,omitempty"`
 	// Timestamp when the task status changed to to \"RUNNING\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	RunningAt *time.Time `json:"runningAt,omitempty"`
+	RunningAt *DateTime `json:"runningAt,omitempty"`
 	// Timestamp when the task status changed to \"FINISHED\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	FinishedAt *time.Time `json:"finishedAt,omitempty"`
+	FinishedAt *DateTime `json:"finishedAt,omitempty"`
 	// Timestamp when the task status changed to \"ERROR\", returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ErrorAt *time.Time `json:"errorAt,omitempty"`
+	ErrorAt *DateTime `json:"errorAt,omitempty"`
 	// Additional optional error details
 	Error *ErrorDetails `json:"error,omitempty"`
 }
-

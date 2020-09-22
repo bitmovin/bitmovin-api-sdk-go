@@ -1,5 +1,6 @@
 package model
 
+// PerTitle model
 type PerTitle struct {
 	// Per-Title configuration for H264
 	H264Configuration *H264PerTitleConfiguration `json:"h264Configuration,omitempty"`
@@ -8,4 +9,3 @@ type PerTitle struct {
 	// Per-Title configuration for VP9
 	Vp9Configuration *Vp9PerTitleConfiguration `json:"vp9Configuration,omitempty"`
 }
-

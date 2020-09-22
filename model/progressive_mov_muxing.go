@@ -1,22 +1,24 @@
 package model
+
 import (
-	"time"
+	"encoding/json"
 )
 
+// ProgressiveMovMuxing model
 type ProgressiveMovMuxing struct {
 	// Name of the resource. Can be freely chosen by the user.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
-	Streams []MuxingStream `json:"streams,omitempty"`
+	Id      *string          `json:"id,omitempty"`
+	Streams []MuxingStream   `json:"streams,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	// Average bitrate. Available after encoding finishes.
 	AvgBitrate *int64 `json:"avgBitrate,omitempty"`
@@ -29,9 +31,20 @@ type ProgressiveMovMuxing struct {
 	// Specifies how to handle streams that don't fulfill stream conditions
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// The output file name
-	Filename string `json:"filename,omitempty"`
-}
-func (o ProgressiveMovMuxing) MuxingType() MuxingType {
-    return MuxingType_PROGRESSIVE_MOV
+	Filename *string `json:"filename,omitempty"`
 }
 
+func (m ProgressiveMovMuxing) MuxingType() MuxingType {
+	return MuxingType_PROGRESSIVE_MOV
+}
+func (m ProgressiveMovMuxing) MarshalJSON() ([]byte, error) {
+	type M ProgressiveMovMuxing
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "PROGRESSIVE_MOV"
+
+	return json.Marshal(x)
+}

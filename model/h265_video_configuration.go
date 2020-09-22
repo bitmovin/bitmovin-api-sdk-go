@@ -1,21 +1,23 @@
 package model
+
 import (
-	"time"
+	"encoding/json"
 )
 
+// H265VideoConfiguration model
 type H265VideoConfiguration struct {
 	// Name of the resource. Can be freely chosen by the user. (required)
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// Width of the encoded video in pixels
 	Width *int32 `json:"width,omitempty"`
 	// Height of the encoded video in pixels
@@ -25,7 +27,7 @@ type H265VideoConfiguration struct {
 	// Target frame rate of the encoded video. Must be set for live encodings
 	Rate *float64 `json:"rate,omitempty"`
 	// Describes the color encoding, bit depth, and chroma subsampling of each pixel in the output image.
-	PixelFormat PixelFormat `json:"pixelFormat,omitempty"`
+	PixelFormat PixelFormat  `json:"pixelFormat,omitempty"`
 	ColorConfig *ColorConfig `json:"colorConfig,omitempty"`
 	// The numerator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioDenominator is set. If set then displayAspectRatio is not allowed.
 	SampleAspectRatioNumerator *int32 `json:"sampleAspectRatioNumerator,omitempty"`
@@ -38,7 +40,7 @@ type H265VideoConfiguration struct {
 	// Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values. Valid values [VOD_HIGH_QUALITY, VOD_STANDARD, VOD_SPEED, VOD_HIGH_SPEED, VOD_VERYHIGH_SPEED, VOD_EXTRAHIGH_SPEED, VOD_SUPERHIGH_SPEED, VOD_ULTRAHIGH_SPEED, LIVE_LOW_LATENCY, LIVE_HIGH_QUALITY]
 	PresetConfiguration PresetConfiguration `json:"presetConfiguration,omitempty"`
 	// Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
-	Crf *float64 `json:"crf,omitempty"`
+	Crf     *float64    `json:"crf,omitempty"`
 	Profile ProfileH265 `json:"profile,omitempty"`
 	// Sets the amount of b frames
 	Bframes *int32 `json:"bframes,omitempty"`
@@ -61,13 +63,13 @@ type H265VideoConfiguration struct {
 	// Minimum interval in seconds between key frames
 	MinKeyframeInterval *float64 `json:"minKeyframeInterval,omitempty"`
 	// Maximum interval in seconds between key frames
-	MaxKeyframeInterval *float64 `json:"maxKeyframeInterval,omitempty"`
-	Level LevelH265 `json:"level,omitempty"`
+	MaxKeyframeInterval *float64  `json:"maxKeyframeInterval,omitempty"`
+	Level               LevelH265 `json:"level,omitempty"`
 	// Number of frames for slice-type decision lookahead
 	RcLookahead *int32 `json:"rcLookahead,omitempty"`
 	// Set the level of effort in determining B frame placement
-	BAdapt BAdapt `json:"bAdapt,omitempty"`
-	MaxCTUSize MaxCtuSize `json:"maxCTUSize,omitempty"`
+	BAdapt       BAdapt       `json:"bAdapt,omitempty"`
+	MaxCTUSize   MaxCtuSize   `json:"maxCTUSize,omitempty"`
 	TuIntraDepth TuIntraDepth `json:"tuIntraDepth,omitempty"`
 	TuInterDepth TuInterDepth `json:"tuInterDepth,omitempty"`
 	MotionSearch MotionSearch `json:"motionSearch,omitempty"`
@@ -82,7 +84,7 @@ type H265VideoConfiguration struct {
 	// Toggle sample adaptive offset loop filter
 	Sao *bool `json:"sao,omitempty"`
 	// Set the mastering display color volume SEI info (SMPTE ST 2086). For example `G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,1)` describes a P3D65 1000-nits monitor, where G(x=0.265, y=0.690), B(x=0.150, y=0.060), R(x=0.680, y=0.320), WP(x=0.3127, y=0.3290), L(max=1000, min=0.0001). Part of HDR-10 metadata. If used on a Dolby Vision stream, this value must be set to `G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,1)`.
-	MasterDisplay string `json:"masterDisplay,omitempty"`
+	MasterDisplay *string `json:"masterDisplay,omitempty"`
 	// Set the max content light level (MaxCLL). Use together with maxPictureAverageLightLevel (which will be 0 if not set). Part of HDR-10 metadata.
 	MaxContentLightLevel *int32 `json:"maxContentLightLevel,omitempty"`
 	// Set the maximum picture average light level (MaxFALL). Use together with maxContentLightLevel (which will be 0 if not set). Part of HDR-10 metadata.
@@ -220,7 +222,18 @@ type H265VideoConfiguration struct {
 	// Defines whether CEA 608/708 subtitles are extracted from the input video stream
 	Cea608708SubtitleConfig *Cea608708SubtitleConfiguration `json:"cea608708SubtitleConfig,omitempty"`
 }
-func (o H265VideoConfiguration) CodecConfigType() CodecConfigType {
-    return CodecConfigType_H265
-}
 
+func (m H265VideoConfiguration) CodecConfigType() CodecConfigType {
+	return CodecConfigType_H265
+}
+func (m H265VideoConfiguration) MarshalJSON() ([]byte, error) {
+	type M H265VideoConfiguration
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "H265"
+
+	return json.Marshal(x)
+}

@@ -1,50 +1,47 @@
 package bitmovin
+
 import (
-    "github.com/bitmovin/bitmovin-api-sdk-go/common"
-    
-    "github.com/bitmovin/bitmovin-api-sdk-go/account"
-    "github.com/bitmovin/bitmovin-api-sdk-go/analytics"
-    "github.com/bitmovin/bitmovin-api-sdk-go/encoding"
-    "github.com/bitmovin/bitmovin-api-sdk-go/general"
-    "github.com/bitmovin/bitmovin-api-sdk-go/notifications"
-    "github.com/bitmovin/bitmovin-api-sdk-go/player"
+	"github.com/bitmovin/bitmovin-api-sdk-go/api"
+	"github.com/bitmovin/bitmovin-api-sdk-go/apiclient"
 )
 
-type BitmovinApi struct {
-    apiClient *common.ApiClient
-    Account *account.AccountApi
-    Analytics *analytics.AnalyticsApi
-    Encoding *encoding.EncodingApi
-    General *general.GeneralApi
-    Notifications *notifications.NotificationsApi
-    Player *player.PlayerApi
+// BitmovinAPI intermediary API object with no endpoints
+type BitmovinAPI struct {
+	apiClient *apiclient.APIClient
+
+	// Account intermediary API object with no endpoints
+	Account *api.AccountAPI
+	// Analytics intermediary API object with no endpoints
+	Analytics *api.AnalyticsAPI
+	// Encoding intermediary API object with no endpoints
+	Encoding *api.EncodingAPI
+	// General intermediary API object with no endpoints
+	General *api.GeneralAPI
+	// Notifications communicates with '/notifications' endpoints
+	Notifications *api.NotificationsAPI
+	// Player intermediary API object with no endpoints
+	Player *api.PlayerAPI
 }
 
-func NewBitmovinApi(configs ...func(*common.ApiClient)) (*BitmovinApi, error) {
-	apiClient, err := common.NewApiClient(configs...)
+// NewBitmovinAPI constructor for BitmovinAPI that takes options as argument
+func NewBitmovinAPI(options ...apiclient.APIClientOption) (*BitmovinAPI, error) {
+	apiClient, err := apiclient.NewAPIClient(options...)
 	if err != nil {
 		return nil, err
 	}
 
-    api := &BitmovinApi{apiClient: apiClient}
-
-    accountApi, err := account.NewAccountApi(configs...)
-    api.Account = accountApi
-    analyticsApi, err := analytics.NewAnalyticsApi(configs...)
-    api.Analytics = analyticsApi
-    encodingApi, err := encoding.NewEncodingApi(configs...)
-    api.Encoding = encodingApi
-    generalApi, err := general.NewGeneralApi(configs...)
-    api.General = generalApi
-    notificationsApi, err := notifications.NewNotificationsApi(configs...)
-    api.Notifications = notificationsApi
-    playerApi, err := player.NewPlayerApi(configs...)
-    api.Player = playerApi
-
-	if err != nil {
-		return nil, err
-	}
-
-	return api, nil
+	return NewBitmovinAPIWithClient(apiClient), nil
 }
 
+// NewBitmovinAPIWithClient constructor for BitmovinAPI that takes an APIClient as argument
+func NewBitmovinAPIWithClient(apiClient *apiclient.APIClient) *BitmovinAPI {
+	a := &BitmovinAPI{apiClient: apiClient}
+	a.Account = api.NewAccountAPIWithClient(apiClient)
+	a.Analytics = api.NewAnalyticsAPIWithClient(apiClient)
+	a.Encoding = api.NewEncodingAPIWithClient(apiClient)
+	a.General = api.NewGeneralAPIWithClient(apiClient)
+	a.Notifications = api.NewNotificationsAPIWithClient(apiClient)
+	a.Player = api.NewPlayerAPIWithClient(apiClient)
+
+	return a
+}

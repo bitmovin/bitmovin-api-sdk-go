@@ -1,40 +1,42 @@
 package pagination
 
-import(
-    "encoding/json"
-    "github.com/bitmovin/bitmovin-api-sdk-go/serialization"
-    "github.com/bitmovin/bitmovin-api-sdk-go/model"
+import (
+	"encoding/json"
+	"github.com/bitmovin/bitmovin-api-sdk-go/bitutils"
+	"github.com/bitmovin/bitmovin-api-sdk-go/model"
 )
 
+// Fmp4MuxingsListPagination model
 type Fmp4MuxingsListPagination struct {
-	TotalCount *int64           `json:"totalCount,omitempty"`
-	Offset     *int32           `json:"offset,omitempty"`
-	Limit      *int32           `json:"limit,omitempty"`
-	Previous   string           `json:"previous,omitempty"`
-	Next       string           `json:"next,omitempty"`
+	TotalCount int64              `json:"totalCount,omitempty"`
+	Offset     int32              `json:"offset,omitempty"`
+	Limit      int32              `json:"limit,omitempty"`
+	Previous   string             `json:"previous,omitempty"`
+	Next       string             `json:"next,omitempty"`
 	Items      []model.Fmp4Muxing `json:"items,omitempty"`
 }
 
+// UnmarshalJSON unmarshals pagination model Fmp4MuxingsListPagination from a JSON structure
+func (m *Fmp4MuxingsListPagination) UnmarshalJSON(b []byte) error {
+	var pageResp model.PaginationResponse
+	if err := json.Unmarshal(b, &pageResp); err != nil {
+		return err
+	}
 
-  func (o *Fmp4MuxingsListPagination) UnmarshalJSON(b []byte) error {
-    var items []model.Fmp4Muxing
+	var items []model.Fmp4Muxing
+	if err := json.Unmarshal(pageResp.Items, &items); err != nil {
+		return err
+	}
+	var result Fmp4MuxingsListPagination
 
-    var pageResp model.PaginationResponse
-    if err := json.Unmarshal(b, &pageResp); err != nil {
-      return err
-    }
+	result.TotalCount = bitutils.Int64Value(pageResp.TotalCount)
+	result.Offset = bitutils.Int32Value(pageResp.Offset)
+	result.Limit = bitutils.Int32Value(pageResp.Limit)
+	result.Previous = bitutils.StringValue(pageResp.Previous)
+	result.Next = bitutils.StringValue(pageResp.Next)
+	result.Items = items
 
-    for _, i := range pageResp.Items {
-      var v model.Fmp4Muxing
-      serialization.Decode(i, &v)
-      items = append(items, v)
-    }
+	*m = result
 
-    o.TotalCount = pageResp.TotalCount
-    o.Offset = pageResp.Offset
-    o.Limit = pageResp.Limit
-    o.Previous = pageResp.Previous
-    o.Next = pageResp.Next
-    o.Items = items
-    return nil
-  }
+	return nil
+}

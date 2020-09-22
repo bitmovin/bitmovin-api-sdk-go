@@ -1,5 +1,6 @@
 package model
 
+// ProgressiveTsMuxingInformationByteRanges model
 type ProgressiveTsMuxingInformationByteRanges struct {
 	// Number of the segment (starting at 0) (required)
 	SegmentNumber *int32 `json:"segmentNumber,omitempty"`
@@ -10,4 +11,3 @@ type ProgressiveTsMuxingInformationByteRanges struct {
 	// The duration of the segment in seconds
 	Duration *float64 `json:"duration,omitempty"`
 }
-

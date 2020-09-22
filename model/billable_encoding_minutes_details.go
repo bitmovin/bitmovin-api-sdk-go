@@ -1,5 +1,6 @@
 package model
 
+// BillableEncodingMinutesDetails model
 type BillableEncodingMinutesDetails struct {
 	// Only set if resolution information is not present.
 	UNKNOWN *float64 `json:"UNKNOWN,omitempty"`
@@ -12,4 +13,3 @@ type BillableEncodingMinutesDetails struct {
 	// Billable minutes for UHD resolutions.
 	UHD *float64 `json:"UHD,omitempty"`
 }
-

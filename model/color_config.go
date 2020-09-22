@@ -1,5 +1,6 @@
 package model
 
+// ColorConfig model
 type ColorConfig struct {
 	// Copy the chroma location setting from the input source
 	CopyChromaLocationFlag *bool `json:"copyChromaLocationFlag,omitempty"`
@@ -26,4 +27,3 @@ type ColorConfig struct {
 	// Override the color range detected in the input file. If not set the input color range will be automatically detected if possible.
 	InputColorRange InputColorRange `json:"inputColorRange,omitempty"`
 }
-

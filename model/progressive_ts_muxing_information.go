@@ -1,12 +1,13 @@
 package model
 
+// ProgressiveTsMuxingInformation model
 type ProgressiveTsMuxingInformation struct {
 	// The mime type of the muxing
-	MimeType string `json:"mimeType,omitempty"`
+	MimeType *string `json:"mimeType,omitempty"`
 	// The file size of the muxing in bytes
 	FileSize *int64 `json:"fileSize,omitempty"`
 	// The container format used
-	ContainerFormat string `json:"containerFormat,omitempty"`
+	ContainerFormat *string `json:"containerFormat,omitempty"`
 	// The bitrate of the container if available (tracks + container overhead)
 	ContainerBitrate *int64 `json:"containerBitrate,omitempty"`
 	// The duration of the container in seconds
@@ -18,4 +19,3 @@ type ProgressiveTsMuxingInformation struct {
 	// Byte ranges for the segments within the TS file
 	ByteRanges []ProgressiveTsMuxingInformationByteRanges `json:"byteRanges,omitempty"`
 }
-

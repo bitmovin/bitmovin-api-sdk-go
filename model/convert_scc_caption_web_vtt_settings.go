@@ -1,5 +1,6 @@
 package model
 
+// ConvertSccCaptionWebVttSettings model
 type ConvertSccCaptionWebVttSettings struct {
 	PositionMode ConvertSccPositionMode `json:"positionMode,omitempty"`
 	// Remove flash (blinking) information when converting SCC to WebVTT
@@ -7,4 +8,3 @@ type ConvertSccCaptionWebVttSettings struct {
 	// Remove color information when converting SCC to WebVTT
 	RemoveColor *bool `json:"removeColor,omitempty"`
 }
-

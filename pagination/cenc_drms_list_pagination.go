@@ -1,40 +1,42 @@
 package pagination
 
-import(
-    "encoding/json"
-    "github.com/bitmovin/bitmovin-api-sdk-go/serialization"
-    "github.com/bitmovin/bitmovin-api-sdk-go/model"
+import (
+	"encoding/json"
+	"github.com/bitmovin/bitmovin-api-sdk-go/bitutils"
+	"github.com/bitmovin/bitmovin-api-sdk-go/model"
 )
 
+// CencDrmsListPagination model
 type CencDrmsListPagination struct {
-	TotalCount *int64           `json:"totalCount,omitempty"`
-	Offset     *int32           `json:"offset,omitempty"`
-	Limit      *int32           `json:"limit,omitempty"`
-	Previous   string           `json:"previous,omitempty"`
-	Next       string           `json:"next,omitempty"`
+	TotalCount int64           `json:"totalCount,omitempty"`
+	Offset     int32           `json:"offset,omitempty"`
+	Limit      int32           `json:"limit,omitempty"`
+	Previous   string          `json:"previous,omitempty"`
+	Next       string          `json:"next,omitempty"`
 	Items      []model.CencDrm `json:"items,omitempty"`
 }
 
+// UnmarshalJSON unmarshals pagination model CencDrmsListPagination from a JSON structure
+func (m *CencDrmsListPagination) UnmarshalJSON(b []byte) error {
+	var pageResp model.PaginationResponse
+	if err := json.Unmarshal(b, &pageResp); err != nil {
+		return err
+	}
 
-  func (o *CencDrmsListPagination) UnmarshalJSON(b []byte) error {
-    var items []model.CencDrm
+	var items []model.CencDrm
+	if err := json.Unmarshal(pageResp.Items, &items); err != nil {
+		return err
+	}
+	var result CencDrmsListPagination
 
-    var pageResp model.PaginationResponse
-    if err := json.Unmarshal(b, &pageResp); err != nil {
-      return err
-    }
+	result.TotalCount = bitutils.Int64Value(pageResp.TotalCount)
+	result.Offset = bitutils.Int32Value(pageResp.Offset)
+	result.Limit = bitutils.Int32Value(pageResp.Limit)
+	result.Previous = bitutils.StringValue(pageResp.Previous)
+	result.Next = bitutils.StringValue(pageResp.Next)
+	result.Items = items
 
-    for _, i := range pageResp.Items {
-      var v model.CencDrm
-      serialization.Decode(i, &v)
-      items = append(items, v)
-    }
+	*m = result
 
-    o.TotalCount = pageResp.TotalCount
-    o.Offset = pageResp.Offset
-    o.Limit = pageResp.Limit
-    o.Previous = pageResp.Previous
-    o.Next = pageResp.Next
-    o.Items = items
-    return nil
-  }
+	return nil
+}

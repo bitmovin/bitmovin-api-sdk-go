@@ -1,26 +1,28 @@
 package model
+
 import (
-	"time"
+	"encoding/json"
 )
 
+// CencDrm model
 type CencDrm struct {
 	// Name of the resource. Can be freely chosen by the user.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id      *string          `json:"id,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	// 16 byte encryption key, 32 hexadecimal characters (required)
-	Key string `json:"key,omitempty"`
+	Key *string `json:"key,omitempty"`
 	// 16 byte encryption key id. Required for any other DRM but FairPlay
-	Kid string `json:"kid,omitempty"`
+	Kid *string `json:"kid,omitempty"`
 	// The encryption method to use. Default is `CTR` (required)
 	EncryptionMode EncryptionMode `json:"encryptionMode,omitempty"`
 	// Size of the initialization vector
@@ -36,7 +38,18 @@ type CencDrm struct {
 	// Configuration for FairPlay DRM
 	FairPlay *CencFairPlay `json:"fairPlay,omitempty"`
 }
-func (o CencDrm) DrmType() DrmType {
-    return DrmType_CENC
-}
 
+func (m CencDrm) DrmType() DrmType {
+	return DrmType_CENC
+}
+func (m CencDrm) MarshalJSON() ([]byte, error) {
+	type M CencDrm
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "CENC"
+
+	return json.Marshal(x)
+}

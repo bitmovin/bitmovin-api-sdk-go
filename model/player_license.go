@@ -1,17 +1,15 @@
 package model
-import (
-	"time"
-)
 
+// PlayerLicense model
 type PlayerLicense struct {
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// Name of the resource (required)
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ (required)
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// License Key (required)
-	LicenseKey string `json:"licenseKey,omitempty"`
+	LicenseKey *string `json:"licenseKey,omitempty"`
 	// Number of impressions recorded (required)
 	Impressions *int32 `json:"impressions,omitempty"`
 	// Maximum number of impressions (required)
@@ -21,6 +19,5 @@ type PlayerLicense struct {
 	// Whitelisted domains (required)
 	Domains []Domain `json:"domains,omitempty"`
 	// Analytics License Key
-	AnalyticsKey string `json:"analyticsKey,omitempty"`
+	AnalyticsKey *string `json:"analyticsKey,omitempty"`
 }
-

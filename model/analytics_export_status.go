@@ -1,10 +1,12 @@
 package model
+
+// AnalyticsExportStatus : AnalyticsExportStatus model
 type AnalyticsExportStatus string
 
-// List of AnalyticsExportStatus
+// List of possible AnalyticsExportStatus values
 const (
-	AnalyticsExportStatus_STARTED AnalyticsExportStatus = "STARTED"
+	AnalyticsExportStatus_STARTED  AnalyticsExportStatus = "STARTED"
 	AnalyticsExportStatus_FINISHED AnalyticsExportStatus = "FINISHED"
-	AnalyticsExportStatus_QUEUED AnalyticsExportStatus = "QUEUED"
-	AnalyticsExportStatus_ERROR AnalyticsExportStatus = "ERROR"
+	AnalyticsExportStatus_QUEUED   AnalyticsExportStatus = "QUEUED"
+	AnalyticsExportStatus_ERROR    AnalyticsExportStatus = "ERROR"
 )

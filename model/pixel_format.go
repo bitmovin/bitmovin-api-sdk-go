@@ -1,20 +1,21 @@
 package model
+
 // PixelFormat : The pixel format to be set
 type PixelFormat string
 
-// List of PixelFormat
+// List of possible PixelFormat values
 const (
-	PixelFormat_YUV410P PixelFormat = "YUV410P"
-	PixelFormat_YUV411P PixelFormat = "YUV411P"
-	PixelFormat_YUV420P PixelFormat = "YUV420P"
-	PixelFormat_YUV422P PixelFormat = "YUV422P"
-	PixelFormat_YUV440P PixelFormat = "YUV440P"
-	PixelFormat_YUV444P PixelFormat = "YUV444P"
-	PixelFormat_YUVJ411P PixelFormat = "YUVJ411P"
-	PixelFormat_YUVJ420P PixelFormat = "YUVJ420P"
-	PixelFormat_YUVJ422P PixelFormat = "YUVJ422P"
-	PixelFormat_YUVJ440P PixelFormat = "YUVJ440P"
-	PixelFormat_YUVJ444P PixelFormat = "YUVJ444P"
+	PixelFormat_YUV410P     PixelFormat = "YUV410P"
+	PixelFormat_YUV411P     PixelFormat = "YUV411P"
+	PixelFormat_YUV420P     PixelFormat = "YUV420P"
+	PixelFormat_YUV422P     PixelFormat = "YUV422P"
+	PixelFormat_YUV440P     PixelFormat = "YUV440P"
+	PixelFormat_YUV444P     PixelFormat = "YUV444P"
+	PixelFormat_YUVJ411P    PixelFormat = "YUVJ411P"
+	PixelFormat_YUVJ420P    PixelFormat = "YUVJ420P"
+	PixelFormat_YUVJ422P    PixelFormat = "YUVJ422P"
+	PixelFormat_YUVJ440P    PixelFormat = "YUVJ440P"
+	PixelFormat_YUVJ444P    PixelFormat = "YUVJ444P"
 	PixelFormat_YUV420P10LE PixelFormat = "YUV420P10LE"
 	PixelFormat_YUV422P10LE PixelFormat = "YUV422P10LE"
 	PixelFormat_YUV440P10LE PixelFormat = "YUV440P10LE"

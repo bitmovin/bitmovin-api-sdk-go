@@ -1,27 +1,40 @@
 package model
+
 import (
-	"time"
+	"encoding/json"
 )
 
+// WebVttConfiguration model
 type WebVttConfiguration struct {
 	// Name of the resource. Can be freely chosen by the user. (required)
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// If set to true, the hours section on webvtt timestamp values will explicitely have zeroes instead of being omitted for values where hours = 0.
 	AppendOptionalZeroHour *bool `json:"appendOptionalZeroHour,omitempty"`
 	// If set to true, the region information of the resulting webvtt file will be omitted. Defaults to false.
 	IgnoreRegion *bool `json:"ignoreRegion,omitempty"`
 }
-func (o WebVttConfiguration) CodecConfigType() CodecConfigType {
-    return CodecConfigType_WEBVTT
-}
 
+func (m WebVttConfiguration) CodecConfigType() CodecConfigType {
+	return CodecConfigType_WEBVTT
+}
+func (m WebVttConfiguration) MarshalJSON() ([]byte, error) {
+	type M WebVttConfiguration
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "WEBVTT"
+
+	return json.Marshal(x)
+}

@@ -1,7 +1,9 @@
 package model
+
+// DolbyVisionProfile : DolbyVisionProfile model
 type DolbyVisionProfile string
 
-// List of DolbyVisionProfile
+// List of possible DolbyVisionProfile values
 const (
 	DolbyVisionProfile_DVHE_04 DolbyVisionProfile = "DVHE_04"
 	DolbyVisionProfile_DVHE_05 DolbyVisionProfile = "DVHE_05"

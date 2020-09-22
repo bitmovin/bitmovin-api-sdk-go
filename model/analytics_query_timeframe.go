@@ -1,12 +1,9 @@
 package model
-import (
-	"time"
-)
 
+// AnalyticsQueryTimeframe model
 type AnalyticsQueryTimeframe struct {
 	// Start of timeframe which is queried in UTC format.
-	Start *time.Time `json:"start,omitempty"`
+	Start *DateTime `json:"start,omitempty"`
 	// End of timeframe which is queried in UTC format.
-	End *time.Time `json:"end,omitempty"`
+	End *DateTime `json:"end,omitempty"`
 }
-

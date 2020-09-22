@@ -1,21 +1,23 @@
 package model
+
 import (
-	"time"
+	"encoding/json"
 )
 
+// Vp8VideoConfiguration model
 type Vp8VideoConfiguration struct {
 	// Name of the resource. Can be freely chosen by the user. (required)
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// Width of the encoded video in pixels
 	Width *int32 `json:"width,omitempty"`
 	// Height of the encoded video in pixels
@@ -25,7 +27,7 @@ type Vp8VideoConfiguration struct {
 	// Target frame rate of the encoded video. Must be set for live encodings
 	Rate *float64 `json:"rate,omitempty"`
 	// Describes the color encoding, bit depth, and chroma subsampling of each pixel in the output image.
-	PixelFormat PixelFormat `json:"pixelFormat,omitempty"`
+	PixelFormat PixelFormat  `json:"pixelFormat,omitempty"`
 	ColorConfig *ColorConfig `json:"colorConfig,omitempty"`
 	// The numerator of the sample aspect ratio (also known as pixel aspect ratio). Must be set if sampleAspectRatioDenominator is set. If set then displayAspectRatio is not allowed.
 	SampleAspectRatioNumerator *int32 `json:"sampleAspectRatioNumerator,omitempty"`
@@ -48,8 +50,8 @@ type Vp8VideoConfiguration struct {
 	// Datarate undershoot (min) target (percentage).
 	RateUndershootPct *int32 `json:"rateUndershootPct,omitempty"`
 	// Datarate overshoot (max) target (percentage).
-	RateOvershootPct *int32 `json:"rateOvershootPct,omitempty"`
-	CpuUsed *int32 `json:"cpuUsed,omitempty"`
+	RateOvershootPct *int32              `json:"rateOvershootPct,omitempty"`
+	CpuUsed          *int32              `json:"cpuUsed,omitempty"`
 	NoiseSensitivity Vp8NoiseSensitivity `json:"noiseSensitivity,omitempty"`
 	// Loop filter sharpness.
 	Sharpness *int32 `json:"sharpness,omitempty"`
@@ -60,17 +62,28 @@ type Vp8VideoConfiguration struct {
 	// Minimum interval in seconds between key frames
 	MinKeyframeInterval *float64 `json:"minKeyframeInterval,omitempty"`
 	// Maximum interval in seconds between key frames
-	MaxKeyframeInterval *float64 `json:"maxKeyframeInterval,omitempty"`
-	Quality Vp8Quality `json:"quality,omitempty"`
+	MaxKeyframeInterval *float64   `json:"maxKeyframeInterval,omitempty"`
+	Quality             Vp8Quality `json:"quality,omitempty"`
 	// A change threshold on blocks below which they will be skipped by the encoder.
 	StaticThresh *int32 `json:"staticThresh,omitempty"`
 	// altref noise reduction max frame count.
 	ArnrMaxFrames *int32 `json:"arnrMaxFrames,omitempty"`
 	// altref noise reduction filter strength.
-	ArnrStrength *int32 `json:"arnrStrength,omitempty"`
-	ArnrType Vp8ArnrType `json:"arnrType,omitempty"`
-}
-func (o Vp8VideoConfiguration) CodecConfigType() CodecConfigType {
-    return CodecConfigType_VP8
+	ArnrStrength *int32      `json:"arnrStrength,omitempty"`
+	ArnrType     Vp8ArnrType `json:"arnrType,omitempty"`
 }
 
+func (m Vp8VideoConfiguration) CodecConfigType() CodecConfigType {
+	return CodecConfigType_VP8
+}
+func (m Vp8VideoConfiguration) MarshalJSON() ([]byte, error) {
+	type M Vp8VideoConfiguration
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "VP8"
+
+	return json.Marshal(x)
+}

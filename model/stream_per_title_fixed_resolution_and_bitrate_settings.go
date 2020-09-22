@@ -1,5 +1,6 @@
 package model
 
+// StreamPerTitleFixedResolutionAndBitrateSettings model
 type StreamPerTitleFixedResolutionAndBitrateSettings struct {
 	// The minimum bitrate that will be used for that template.
 	MinBitrate *int32 `json:"minBitrate,omitempty"`
@@ -12,4 +13,3 @@ type StreamPerTitleFixedResolutionAndBitrateSettings struct {
 	// High complexity boundary for max bitrate
 	HighComplexityBoundaryForMaxBitrate *int32 `json:"highComplexityBoundaryForMaxBitrate,omitempty"`
 }
-

@@ -1,23 +1,21 @@
 package model
-import (
-	"time"
-)
 
+// Webhook model
 type Webhook struct {
 	// Name of the resource. Can be freely chosen by the user.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// Webhook url (required)
-	Url string `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 	// HTTP method used for the webhook
 	Method WebhookHttpMethod `json:"method,omitempty"`
 	// Whether to skip SSL certification verification or not
@@ -29,4 +27,3 @@ type Webhook struct {
 	// The json schema of the data that is send as webhook payload
 	Schema *map[string]interface{} `json:"schema,omitempty"`
 }
-

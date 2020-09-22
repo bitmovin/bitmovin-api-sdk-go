@@ -1,23 +1,36 @@
 package model
+
 import (
-	"time"
+	"encoding/json"
 )
 
+// UdpInput model
 type UdpInput struct {
 	// Name of the resource. Can be freely chosen by the user.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
-}
-func (o UdpInput) InputType() InputType {
-    return InputType_UDP
+	Id *string `json:"id,omitempty"`
 }
 
+func (m UdpInput) InputType() InputType {
+	return InputType_UDP
+}
+func (m UdpInput) MarshalJSON() ([]byte, error) {
+	type M UdpInput
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "UDP"
+
+	return json.Marshal(x)
+}

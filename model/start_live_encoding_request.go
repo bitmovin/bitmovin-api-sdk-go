@@ -1,8 +1,9 @@
 package model
 
+// StartLiveEncodingRequest model
 type StartLiveEncodingRequest struct {
 	// Key for the stream. (a-zA-Z, 3-20 characters) (required)
-	StreamKey string `json:"streamKey,omitempty"`
+	StreamKey *string `json:"streamKey,omitempty"`
 	// List of Hls manifests to use for this live encoding
 	HlsManifests []LiveHlsManifest `json:"hlsManifests,omitempty"`
 	// List of Dash manifests to use for this live encoding
@@ -14,4 +15,3 @@ type StartLiveEncodingRequest struct {
 	// Configuration for auto restarting the live encoding
 	AutoRestartConfiguration *AutoRestartConfiguration `json:"autoRestartConfiguration,omitempty"`
 }
-

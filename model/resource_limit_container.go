@@ -1,7 +1,7 @@
 package model
 
+// ResourceLimitContainer model
 type ResourceLimitContainer struct {
-	Resource ResourceType `json:"resource,omitempty"`
-	Limits []ResourceLimit `json:"limits,omitempty"`
+	Resource ResourceType    `json:"resource,omitempty"`
+	Limits   []ResourceLimit `json:"limits,omitempty"`
 }
-

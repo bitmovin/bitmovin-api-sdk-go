@@ -1,22 +1,24 @@
 package model
+
 import (
-	"time"
+	"encoding/json"
 )
 
+// Mp4Muxing model
 type Mp4Muxing struct {
 	// Name of the resource. Can be freely chosen by the user.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
-	Streams []MuxingStream `json:"streams,omitempty"`
+	Id      *string          `json:"id,omitempty"`
+	Streams []MuxingStream   `json:"streams,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	// Average bitrate. Available after encoding finishes.
 	AvgBitrate *int64 `json:"avgBitrate,omitempty"`
@@ -29,15 +31,26 @@ type Mp4Muxing struct {
 	// Specifies how to handle streams that don't fulfill stream conditions
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// Name of the new Video
-	Filename string `json:"filename,omitempty"`
+	Filename *string `json:"filename,omitempty"`
 	//  Duration of fragments in milliseconds. Required for Fragmented MP4 Muxing (for Smooth Streaming or DASH On-Demand). Not setting this will result in unfragmented mp4.
-	FragmentDuration *int32 `json:"fragmentDuration,omitempty"`
-	TimeCode *TimeCode `json:"timeCode,omitempty"`
+	FragmentDuration                *int32                          `json:"fragmentDuration,omitempty"`
+	TimeCode                        *TimeCode                       `json:"timeCode,omitempty"`
 	FragmentedMP4MuxingManifestType FragmentedMp4MuxingManifestType `json:"fragmentedMP4MuxingManifestType,omitempty"`
 	// Dolby Vision specific configuration
 	DolbyVisionConfiguration *DolbyVisionMuxingConfiguration `json:"dolbyVisionConfiguration,omitempty"`
 }
-func (o Mp4Muxing) MuxingType() MuxingType {
-    return MuxingType_MP4
-}
 
+func (m Mp4Muxing) MuxingType() MuxingType {
+	return MuxingType_MP4
+}
+func (m Mp4Muxing) MarshalJSON() ([]byte, error) {
+	type M Mp4Muxing
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "MP4"
+
+	return json.Marshal(x)
+}

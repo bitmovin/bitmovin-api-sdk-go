@@ -1,7 +1,9 @@
 package model
+
+// StreamCaptionOutputFormat : StreamCaptionOutputFormat model
 type StreamCaptionOutputFormat string
 
-// List of StreamCaptionOutputFormat
+// List of possible StreamCaptionOutputFormat values
 const (
 	StreamCaptionOutputFormat_WEBVTT StreamCaptionOutputFormat = "WEBVTT"
 )

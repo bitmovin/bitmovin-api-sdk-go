@@ -1,5 +1,6 @@
 package model
 
+// BroadcastTsTransportConfiguration model
 type BroadcastTsTransportConfiguration struct {
 	// Output rate in bps. The value zero implies to use minimal rate. The minimal rate leaves approximately 15kbps of null packets in the stream.
 	Muxrate *float64 `json:"muxrate,omitempty"`
@@ -18,4 +19,3 @@ type BroadcastTsTransportConfiguration struct {
 	// Sets the Program Clock Reference value at the beginning of the first packet for the transport stream. The PCR is specified in the timescale of 90000. Default: 0
 	InitialProgramClockReference *float64 `json:"initialProgramClockReference,omitempty"`
 }
-

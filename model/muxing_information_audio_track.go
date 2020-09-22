@@ -1,15 +1,16 @@
 package model
 
+// MuxingInformationAudioTrack model
 type MuxingInformationAudioTrack struct {
 	// The stream index in the container
 	Index *int32 `json:"index,omitempty"`
 	// The codec used for the track
-	Codec string `json:"codec,omitempty"`
+	Codec *string `json:"codec,omitempty"`
 	// The codec string of the track
-	CodecIso string `json:"codecIso,omitempty"`
+	CodecIso *string `json:"codecIso,omitempty"`
 	// The bitrate of the audio track
 	BitRate *int64 `json:"bitRate,omitempty"`
-	Rate *int64 `json:"rate,omitempty"`
+	Rate    *int64 `json:"rate,omitempty"`
 	// The sampling rate of the audio stream
 	SampleRate *int32 `json:"sampleRate,omitempty"`
 	// The number of channels in this audio stream
@@ -17,4 +18,3 @@ type MuxingInformationAudioTrack struct {
 	// TODO add description
 	Duration *float64 `json:"duration,omitempty"`
 }
-

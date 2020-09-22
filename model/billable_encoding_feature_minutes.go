@@ -1,8 +1,9 @@
 package model
 
+// BillableEncodingFeatureMinutes model
 type BillableEncodingFeatureMinutes struct {
 	// The name of the feature.
-	FeatureType string `json:"featureType,omitempty"`
+	FeatureType *string `json:"featureType,omitempty"`
 	// Encoded minutes related to this feature.
 	EncodedMinutes *float64 `json:"encodedMinutes,omitempty"`
 	// The multiplier used for this feature.
@@ -10,4 +11,3 @@ type BillableEncodingFeatureMinutes struct {
 	// The billable minutes related to this feature.
 	BillableMinutes *float64 `json:"billableMinutes,omitempty"`
 }
-

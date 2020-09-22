@@ -1,5 +1,6 @@
 package model
 
+// ReuploadSettings model
 type ReuploadSettings struct {
 	// Interval in seconds to reupload the DASH manifest. Valid values are either `null` to never reupload the dash manifest or at least `30`.
 	DashManifestInterval *float64 `json:"dashManifestInterval,omitempty"`
@@ -8,4 +9,3 @@ type ReuploadSettings struct {
 	// The interval in seconds to reupload the init file for segmented muxings, e.g. fMP4, WebM. Valid values are either `null` to never reupload the init file for segmented muxings or at least `30`.
 	MuxingInitFileInterval *float64 `json:"muxingInitFileInterval,omitempty"`
 }
-

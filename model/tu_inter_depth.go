@@ -1,8 +1,9 @@
 package model
+
 // TuInterDepth : Extra recursion depth for intra coded units
 type TuInterDepth string
 
-// List of TuInterDepth
+// List of possible TuInterDepth values
 const (
 	TuInterDepth_D1 TuInterDepth = "1"
 	TuInterDepth_D2 TuInterDepth = "2"

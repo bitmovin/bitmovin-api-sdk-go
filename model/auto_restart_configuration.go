@@ -1,5 +1,6 @@
 package model
 
+// AutoRestartConfiguration model
 type AutoRestartConfiguration struct {
 	// If no segments were generated for the given number of seconds, a restart is triggered. Minimum: 30.0
 	SegmentsWrittenTimeout *float64 `json:"segmentsWrittenTimeout,omitempty"`
@@ -12,8 +13,7 @@ type AutoRestartConfiguration struct {
 	// If DASH manifests were not updated for the given number of seconds, a restart is triggered. Minimum: 30.0
 	DashManifestsUpdateTimeout *float64 `json:"dashManifestsUpdateTimeout,omitempty"`
 	// Defines a schedule for restarts using the unix crontab syntax. This example would trigger a restart every monday at 05:30 (AM)
-	ScheduleExpression string `json:"scheduleExpression,omitempty"`
+	ScheduleExpression *string `json:"scheduleExpression,omitempty"`
 	// Defines if the encoding should be restarted in case of an error during encoding.
 	RestartOnEncoderError *bool `json:"restartOnEncoderError,omitempty"`
 }
-

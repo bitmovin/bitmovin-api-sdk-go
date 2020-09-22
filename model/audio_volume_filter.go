@@ -1,27 +1,40 @@
 package model
+
 import (
-	"time"
+	"encoding/json"
 )
 
+// AudioVolumeFilter model
 type AudioVolumeFilter struct {
 	// Name of the resource. Can be freely chosen by the user.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// Audio volume value (required)
-	Volume *float64 `json:"volume,omitempty"`
-	Unit AudioVolumeUnit `json:"unit,omitempty"`
+	Volume *float64          `json:"volume,omitempty"`
+	Unit   AudioVolumeUnit   `json:"unit,omitempty"`
 	Format AudioVolumeFormat `json:"format,omitempty"`
 }
-func (o AudioVolumeFilter) FilterType() FilterType {
-    return FilterType_AUDIO_VOLUME
-}
 
+func (m AudioVolumeFilter) FilterType() FilterType {
+	return FilterType_AUDIO_VOLUME
+}
+func (m AudioVolumeFilter) MarshalJSON() ([]byte, error) {
+	type M AudioVolumeFilter
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "AUDIO_VOLUME"
+
+	return json.Marshal(x)
+}

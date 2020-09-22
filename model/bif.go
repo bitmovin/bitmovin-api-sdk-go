@@ -1,22 +1,19 @@
 package model
-import (
-	"time"
-)
 
 // Either height or width is required. It is also possible to set both properties.
 type Bif struct {
 	// Name of the resource. Can be freely chosen by the user.
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *time.Time `json:"modifiedAt,omitempty"`
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]map[string]interface{} `json:"customData,omitempty"`
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	// Height of one thumbnail
 	Height *int32 `json:"height,omitempty"`
 	// Width of one thumbnail. Roku recommends a width of 240 for SD and 320 for HD.
@@ -24,7 +21,6 @@ type Bif struct {
 	// Distance in seconds between a screenshot
 	Distance *float64 `json:"distance,omitempty"`
 	// Filename of the Bif image. (required)
-	Filename string `json:"filename,omitempty"`
-	Outputs []EncodingOutput `json:"outputs,omitempty"`
+	Filename *string          `json:"filename,omitempty"`
+	Outputs  []EncodingOutput `json:"outputs,omitempty"`
 }
-

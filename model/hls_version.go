@@ -1,7 +1,9 @@
 package model
+
+// HlsVersion : HlsVersion model
 type HlsVersion string
 
-// List of HlsVersion
+// List of possible HlsVersion values
 const (
 	HlsVersion_HLS_V3 HlsVersion = "3"
 	HlsVersion_HLS_V4 HlsVersion = "4"
