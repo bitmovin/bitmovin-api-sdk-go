@@ -29,7 +29,7 @@ type DenoiseHqdn3dFilter struct {
 }
 
 func (m DenoiseHqdn3dFilter) FilterType() FilterType {
-	return FilterType_DENOISE_HQDN3_D
+	return FilterType_DENOISE_HQDN3D
 }
 func (m DenoiseHqdn3dFilter) MarshalJSON() ([]byte, error) {
 	type M DenoiseHqdn3dFilter

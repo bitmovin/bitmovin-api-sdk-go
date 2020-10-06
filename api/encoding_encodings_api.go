@@ -175,15 +175,18 @@ func (api *EncodingEncodingsAPI) Stop(encodingId string) (*model.BitmovinRespons
 
 // EncodingEncodingsAPIListQueryParams contains all query parameters for the List endpoint
 type EncodingEncodingsAPIListQueryParams struct {
-	Offset         int32             `query:"offset"`
-	Limit          int32             `query:"limit"`
-	Sort           string            `query:"sort"`
-	Type_          string            `query:"type"`
-	Status         string            `query:"status"`
-	CloudRegion    model.CloudRegion `query:"cloudRegion"`
-	EncoderVersion string            `query:"encoderVersion"`
-	Name           string            `query:"name"`
-	Search         string            `query:"search"`
+	Offset                 int32              `query:"offset"`
+	Limit                  int32              `query:"limit"`
+	Sort                   string             `query:"sort"`
+	Type_                  string             `query:"type"`
+	Status                 string             `query:"status"`
+	CloudRegion            model.CloudRegion  `query:"cloudRegion"`
+	SelectedCloudRegion    model.CloudRegion  `query:"selectedCloudRegion"`
+	EncoderVersion         string             `query:"encoderVersion"`
+	SelectedEncoderVersion string             `query:"selectedEncoderVersion"`
+	SelectedEncodingMode   model.EncodingMode `query:"selectedEncodingMode"`
+	Name                   string             `query:"name"`
+	Search                 string             `query:"search"`
 }
 
 // Params will return a map of query parameters

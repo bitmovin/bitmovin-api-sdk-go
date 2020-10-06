@@ -12,7 +12,7 @@ const (
 	FilterType_ROTATE               FilterType = "ROTATE"
 	FilterType_DEINTERLACE          FilterType = "DEINTERLACE"
 	FilterType_AUDIO_MIX            FilterType = "AUDIO_MIX"
-	FilterType_DENOISE_HQDN3_D      FilterType = "DENOISE_HQDN3D"
+	FilterType_DENOISE_HQDN3D       FilterType = "DENOISE_HQDN3D"
 	FilterType_TEXT                 FilterType = "TEXT"
 	FilterType_UNSHARP              FilterType = "UNSHARP"
 	FilterType_SCALE                FilterType = "SCALE"

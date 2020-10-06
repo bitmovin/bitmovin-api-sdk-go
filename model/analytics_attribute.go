@@ -49,7 +49,7 @@ const (
 	AnalyticsAttribute_LANGUAGE                       AnalyticsAttribute = "LANGUAGE"
 	AnalyticsAttribute_LATENCY                        AnalyticsAttribute = "LATENCY"
 	AnalyticsAttribute_LICENSE_KEY                    AnalyticsAttribute = "LICENSE_KEY"
-	AnalyticsAttribute_M3_U8_URL                      AnalyticsAttribute = "M3U8_URL"
+	AnalyticsAttribute_M3U8_URL                       AnalyticsAttribute = "M3U8_URL"
 	AnalyticsAttribute_MINUTE                         AnalyticsAttribute = "MINUTE"
 	AnalyticsAttribute_MONTH                          AnalyticsAttribute = "MONTH"
 	AnalyticsAttribute_MPD_URL                        AnalyticsAttribute = "MPD_URL"
