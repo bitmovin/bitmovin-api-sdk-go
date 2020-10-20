@@ -43,6 +43,10 @@ type StatisticsPerStream struct {
 	// Indicates if the stream was part of a live encoding.
 	Live *bool `json:"live,omitempty"`
 	// The output minutes multiplicator for live streams.
-	LiveMultiplicator *float64     `json:"liveMultiplicator,omitempty"`
-	InputFactor       *InputFactor `json:"inputFactor,omitempty"`
+	LiveMultiplicator *float64 `json:"liveMultiplicator,omitempty"`
+	// Indicates if an enhanced interlace filter was used.
+	EnhancedDeinterlace *bool `json:"enhancedDeinterlace,omitempty"`
+	// The output minutes multiplicator for streams using an enhanced deinterlace filter.
+	EnhancedDeinterlaceMultiplicator *float64     `json:"enhancedDeinterlaceMultiplicator,omitempty"`
+	InputFactor                      *InputFactor `json:"inputFactor,omitempty"`
 }

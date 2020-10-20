@@ -11,6 +11,7 @@ const (
 	FilterType_ENHANCED_WATERMARK   FilterType = "ENHANCED_WATERMARK"
 	FilterType_ROTATE               FilterType = "ROTATE"
 	FilterType_DEINTERLACE          FilterType = "DEINTERLACE"
+	FilterType_ENHANCED_DEINTERLACE FilterType = "ENHANCED_DEINTERLACE"
 	FilterType_AUDIO_MIX            FilterType = "AUDIO_MIX"
 	FilterType_DENOISE_HQDN3D       FilterType = "DENOISE_HQDN3D"
 	FilterType_TEXT                 FilterType = "TEXT"

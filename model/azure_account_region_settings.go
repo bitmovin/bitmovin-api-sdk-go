@@ -1,7 +1,7 @@
 package model
 
-// SccCaption model
-type SccCaption struct {
+// AzureAccountRegionSettings model
+type AzureAccountRegionSettings struct {
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -14,7 +14,8 @@ type SccCaption struct {
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id *string `json:"id,omitempty"`
-	// Input location of the SCC file (required)
-	Input               *InputPath          `json:"input,omitempty"`
-	SmpteTimecodeFlavor SmpteTimecodeFlavor `json:"smpteTimecodeFlavor,omitempty"`
+	// Name of the virtual network (required)
+	NetworkName *string `json:"networkName,omitempty"`
+	// Name of the subnet (required)
+	SubnetName *string `json:"subnetName,omitempty"`
 }

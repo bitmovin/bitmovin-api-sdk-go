@@ -26,6 +26,8 @@ type EncodingFiltersAPI struct {
 	Rotate *EncodingFiltersRotateAPI
 	// Deinterlace communicates with '/encoding/filters/deinterlace' endpoints
 	Deinterlace *EncodingFiltersDeinterlaceAPI
+	// EnhancedDeinterlace communicates with '/encoding/filters/enhanced-deinterlace' endpoints
+	EnhancedDeinterlace *EncodingFiltersEnhancedDeinterlaceAPI
 	// AudioMix communicates with '/encoding/filters/audio-mix' endpoints
 	AudioMix *EncodingFiltersAudioMixAPI
 	// DenoiseHqdn3d communicates with '/encoding/filters/denoise-hqdn3d' endpoints
@@ -63,6 +65,7 @@ func NewEncodingFiltersAPIWithClient(apiClient *apiclient.APIClient) *EncodingFi
 	a.Crop = NewEncodingFiltersCropAPIWithClient(apiClient)
 	a.Rotate = NewEncodingFiltersRotateAPIWithClient(apiClient)
 	a.Deinterlace = NewEncodingFiltersDeinterlaceAPIWithClient(apiClient)
+	a.EnhancedDeinterlace = NewEncodingFiltersEnhancedDeinterlaceAPIWithClient(apiClient)
 	a.AudioMix = NewEncodingFiltersAudioMixAPIWithClient(apiClient)
 	a.DenoiseHqdn3d = NewEncodingFiltersDenoiseHqdn3dAPIWithClient(apiClient)
 	a.EbuR128SinglePass = NewEncodingFiltersEbuR128SinglePassAPIWithClient(apiClient)

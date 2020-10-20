@@ -33,13 +33,11 @@ package main
 
 import (
     "github.com/bitmovin/bitmovin-api-sdk-go"
-    "github.com/bitmovin/bitmovin-api-sdk-go/common"
+    "github.com/bitmovin/bitmovin-api-sdk-go/apiclient"
 )
 
 func main() {
-    bitmovinApi, err := bitmovin.NewBitmovinApi(func(apiClient *apiclient.APIClient) {
-        apiClient.ApiKey = "<YOUR_API_KEY>"
-    })
+    bitmovinAPI, err := bitmovin.NewBitmovinAPI(apiclient.WithAPIKey("<YOUR_API_KEY>"))
     if err != nil {
         panic(err)
     }

@@ -117,6 +117,13 @@ func unmarshalFilter(data []byte, consumer bitutils.Consumer) (Filter, error) {
 		}
 		return result, nil
 
+	case "ENHANCED_DEINTERLACE":
+		var result EnhancedDeinterlaceFilter
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case "AUDIO_MIX":
 		var result AudioMixFilter
 		if err := consumer.Consume(buf2, &result); err != nil {

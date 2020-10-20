@@ -9,6 +9,8 @@ type BillableEncodingMinutes struct {
 	// Name of the preset configuration used for the codec configuration or \"CUSTOM\" if any preset values were overridden
 	Preset *string `json:"preset,omitempty"`
 	// Indicates if the stream was part of a live encoding.
-	Live            *bool                           `json:"live,omitempty"`
-	BillableMinutes *BillableEncodingMinutesDetails `json:"billableMinutes,omitempty"`
+	Live *bool `json:"live,omitempty"`
+	// Indicates if an enhanced interlace filter was used.
+	EnhancedDeinterlace *bool                           `json:"enhancedDeinterlace,omitempty"`
+	BillableMinutes     *BillableEncodingMinutesDetails `json:"billableMinutes,omitempty"`
 }

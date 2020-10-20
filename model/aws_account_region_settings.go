@@ -16,16 +16,10 @@ type AwsAccountRegionSettings struct {
 	Id *string `json:"id,omitempty"`
 	// Limit for the amount of running encodings at a time. Leave empty for no limit.
 	LimitParallelEncodings *int64 `json:"limitParallelEncodings,omitempty"`
-	// Maximum amount of encoding coordinators and workers allowed in this region at any time. Leave empty for no limit.
-	MaximumAmountOfCoordinatorsAndWorkersInRegion *int64 `json:"maximumAmountOfCoordinatorsAndWorkersInRegion,omitempty"`
-	// Limit the amount of money to spend in this region on this account. Leave empty for no limit.
-	MaxMoneyToSpendPerMonth *float64 `json:"maxMoneyToSpendPerMonth,omitempty"`
 	// Id of the security group for encoding instances (required)
 	SecurityGroupId *string `json:"securityGroupId,omitempty"`
 	// Id of the subnet for encoding instances (required)
 	SubnetId *string `json:"subnetId,omitempty"`
-	// Which machine types are allowed to be deployed. Leave empty for no machine type restrictions.
-	MachineTypes []string `json:"machineTypes,omitempty"`
 	// Custom SSH port. Valid values: 1 - 65535. Leave empty if the default SSH port 22 is OK.
 	SshPort *int32 `json:"sshPort,omitempty"`
 }
