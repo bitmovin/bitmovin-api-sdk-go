@@ -76,7 +76,7 @@ func (t DateTime) String() string {
 }
 
 func (t DateTime) StringUTC() string {
-	return time.Time(t).Format(ISO8601UTC)
+	return time.Time(t).In(time.UTC).Format(ISO8601UTC)
 }
 
 // MarshalJSON returns the DateTime as JSON

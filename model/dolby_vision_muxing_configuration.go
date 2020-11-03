@@ -1,6 +1,10 @@
 package model
 
+
 // DolbyVisionMuxingConfiguration model
 type DolbyVisionMuxingConfiguration struct {
-	TrackSampleEntryName DolbyVisionTrackSampleEntryName `json:"trackSampleEntryName,omitempty"`
+    TrackSampleEntryName DolbyVisionTrackSampleEntryName `json:"trackSampleEntryName,omitempty"`
 }
+
+
+

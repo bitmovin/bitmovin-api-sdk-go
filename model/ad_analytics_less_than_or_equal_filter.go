@@ -1,26 +1,28 @@
 package model
 
 import (
-	"encoding/json"
+    "encoding/json"
 )
 
 // AdAnalyticsLessThanOrEqualFilter model
 type AdAnalyticsLessThanOrEqualFilter struct {
-	Name  *map[string]interface{} `json:"name,omitempty"`
-	Value *map[string]interface{} `json:"value,omitempty"`
+    Name *map[string]interface{} `json:"name,omitempty"`
+    Value *map[string]interface{} `json:"value,omitempty"`
 }
 
 func (m AdAnalyticsLessThanOrEqualFilter) AnalyticsQueryOperator() AnalyticsQueryOperator {
-	return AnalyticsQueryOperator_LTE
+    return AnalyticsQueryOperator_LTE
 }
 func (m AdAnalyticsLessThanOrEqualFilter) MarshalJSON() ([]byte, error) {
-	type M AdAnalyticsLessThanOrEqualFilter
-	x := struct {
-		Operator string `json:"operator"`
-		M
-	}{M: M(m)}
+    type M AdAnalyticsLessThanOrEqualFilter
+    x := struct {
+        Operator string `json:"operator"`
+        M
+    }{M: M(m)}
 
-	x.Operator = "LTE"
+    x.Operator = "LTE"
 
-	return json.Marshal(x)
+    return json.Marshal(x)
 }
+
+

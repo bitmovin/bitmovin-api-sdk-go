@@ -63,7 +63,7 @@ type PathParams map[string]interface{}
 const QueryParamTagName = "query"
 const DefaultAPIBaseURL = "https://api.bitmovin.com/v1"
 const ContentTypeJson = "application/json"
-const APIClientVersion = "1.51.0-alpha.0"
+const APIClientVersion = "1.52.0-alpha.0"
 const APIClientName = "bitmovin-api-sdk-go"
 const NoAPIKeyErrorMsg = "there was no api key provided"
 
@@ -121,9 +121,18 @@ func GetParamsMap(u interface{}) map[string]string {
 			if len(value) > 0 {
 				queryParamMap[tag] = value
 			}
-			//ToDo check more cases e.g. date/time and format it correctly if that is needed at the moment?
+		case reflect.Struct:
+			emptyTime := time.Time{}.Unix()
+			value := valueField.Interface()
+			date, ok := value.(Date)
+			if ok && time.Time(date).Unix() != emptyTime {
+				queryParamMap[tag] = date.String()
+			}
+			datetime, ok := value.(DateTime)
+			if ok && time.Time(datetime).Unix() != emptyTime {
+				queryParamMap[tag] = datetime.StringUTC()
+			}
 		}
-
 	}
 	return queryParamMap
 }
@@ -303,33 +312,33 @@ func buildErrorMessage(bitmovinError BitmovinError, method string, reqURL string
 }
 
 func buildDetails(details []Message) string {
-	var sb strings.Builder
-	var detail Message
-	sb.WriteString("details:")
-	for _, detail = range details {
-		if detail.Id != nil {
-			sb.WriteString("\n")
-			sb.WriteString("  - id: " + *detail.Id)
-		}
+  var sb strings.Builder
+  var detail Message
+  sb.WriteString("details:")
+  for _, detail = range details {
+    if detail.Id != nil {
+      sb.WriteString("\n")
+      sb.WriteString("  - id: " + *detail.Id)
+    }
 
-		if detail.Date != nil {
-			sb.WriteString("\n")
-			sb.WriteString("    date: ")
-			sb.WriteString(detail.Date.StringUTC())
-		}
+    if detail.Date != nil {
+      sb.WriteString("\n")
+      sb.WriteString("    date: ")
+      sb.WriteString(detail.Date.StringUTC())
+    }
 
-		sb.WriteString("\n")
-		sb.WriteString(fmt.Sprintf("    type: %v", detail.Type))
-		sb.WriteString("\n")
-		sb.WriteString(fmt.Sprintf("    text: %s", StringValue(detail.Text)))
+    sb.WriteString("\n")
+    sb.WriteString(fmt.Sprintf("    type: %v", detail.Type))
+    sb.WriteString("\n")
+    sb.WriteString(fmt.Sprintf("    text: %s", StringValue(detail.Text)))
 
-		if detail.Field != nil {
-			sb.WriteString("\n")
-			sb.WriteString(fmt.Sprintf("    field: %s", StringValue(detail.Field)))
-		}
-	}
+    if detail.Field != nil {
+      sb.WriteString("\n")
+      sb.WriteString(fmt.Sprintf("    field: %s", StringValue(detail.Field)))
+    }
+  }
 
-	return sb.String()
+  return sb.String()
 }
 
 func buildLinks(links []Link) string {

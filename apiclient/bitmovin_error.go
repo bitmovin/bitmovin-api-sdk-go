@@ -1,9 +1,9 @@
 package apiclient
 
 import (
+	"github.com/bitmovin/bitmovin-api-sdk-go/model"
 	"encoding/json"
 	"fmt"
-	"github.com/bitmovin/bitmovin-api-sdk-go/model"
 )
 
 type BitmovinError struct {

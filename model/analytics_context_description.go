@@ -1,7 +1,11 @@
 package model
 
+
 // AnalyticsContextDescription model
 type AnalyticsContextDescription struct {
-	Label       *string `json:"label,omitempty"`
-	Description *string `json:"description,omitempty"`
+    Label *string `json:"label,omitempty"`
+    Description *string `json:"description,omitempty"`
 }
+
+
+

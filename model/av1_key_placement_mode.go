@@ -1,11 +1,14 @@
 package model
 
+
 // Av1KeyPlacementMode : Specifies whether keyframes should be placed at fixed intervals or the encoder may determine optimal placement automatically
 type Av1KeyPlacementMode string
 
 // List of possible Av1KeyPlacementMode values
 const (
-	Av1KeyPlacementMode_AUTO     Av1KeyPlacementMode = "AUTO"
-	Av1KeyPlacementMode_FIXED    Av1KeyPlacementMode = "FIXED"
-	Av1KeyPlacementMode_DISABLED Av1KeyPlacementMode = "DISABLED"
+    Av1KeyPlacementMode_AUTO Av1KeyPlacementMode = "AUTO"
+    Av1KeyPlacementMode_FIXED Av1KeyPlacementMode = "FIXED"
+    Av1KeyPlacementMode_DISABLED Av1KeyPlacementMode = "DISABLED"
 )
+
+
