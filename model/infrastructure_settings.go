@@ -1,12 +1,8 @@
 package model
 
-
 // InfrastructureSettings model
 type InfrastructureSettings struct {
-    // Id of a custom infrastructure, e.g., Kubernetes Cluster
-    InfrastructureId *string `json:"infrastructureId,omitempty"`
-    CloudRegion CloudRegion `json:"cloudRegion,omitempty"`
+	// Id of a custom infrastructure, e.g., Kubernetes Cluster
+	InfrastructureId *string     `json:"infrastructureId,omitempty"`
+	CloudRegion      CloudRegion `json:"cloudRegion,omitempty"`
 }
-
-
-

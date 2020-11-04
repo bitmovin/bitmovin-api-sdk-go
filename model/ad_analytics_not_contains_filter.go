@@ -1,28 +1,26 @@
 package model
 
 import (
-    "encoding/json"
+	"encoding/json"
 )
 
 // AdAnalyticsNotContainsFilter model
 type AdAnalyticsNotContainsFilter struct {
-    Name *map[string]interface{} `json:"name,omitempty"`
-    Value *map[string]interface{} `json:"value,omitempty"`
+	Name  *map[string]interface{} `json:"name,omitempty"`
+	Value *map[string]interface{} `json:"value,omitempty"`
 }
 
 func (m AdAnalyticsNotContainsFilter) AnalyticsQueryOperator() AnalyticsQueryOperator {
-    return AnalyticsQueryOperator_NOTCONTAINS
+	return AnalyticsQueryOperator_NOTCONTAINS
 }
 func (m AdAnalyticsNotContainsFilter) MarshalJSON() ([]byte, error) {
-    type M AdAnalyticsNotContainsFilter
-    x := struct {
-        Operator string `json:"operator"`
-        M
-    }{M: M(m)}
+	type M AdAnalyticsNotContainsFilter
+	x := struct {
+		Operator string `json:"operator"`
+		M
+	}{M: M(m)}
 
-    x.Operator = "NOTCONTAINS"
+	x.Operator = "NOTCONTAINS"
 
-    return json.Marshal(x)
+	return json.Marshal(x)
 }
-
-

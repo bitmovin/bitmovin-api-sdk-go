@@ -1,45 +1,43 @@
 package model
 
 import (
-    "encoding/json"
+	"encoding/json"
 )
 
 // AzureOutput model
 type AzureOutput struct {
-    // Name of the resource. Can be freely chosen by the user.
-    Name *string `json:"name,omitempty"`
-    // Description of the resource. Can be freely chosen by the user.
-    Description *string `json:"description,omitempty"`
-    // Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-    CreatedAt *DateTime `json:"createdAt,omitempty"`
-    // Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-    ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
-    // User-specific meta data. This can hold anything.
-    CustomData *map[string]interface{} `json:"customData,omitempty"`
-    // Id of the resource (required)
-    Id *string `json:"id,omitempty"`
-    Acl []AclEntry `json:"acl,omitempty"`
-    // Azure Account Name (required)
-    AccountName *string `json:"accountName,omitempty"`
-    // Azure Account Key (required)
-    AccountKey *string `json:"accountKey,omitempty"`
-    // Name of the bucket (required)
-    Container *string `json:"container,omitempty"`
+	// Name of the resource. Can be freely chosen by the user.
+	Name *string `json:"name,omitempty"`
+	// Description of the resource. Can be freely chosen by the user.
+	Description *string `json:"description,omitempty"`
+	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+	CreatedAt *DateTime `json:"createdAt,omitempty"`
+	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
+	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
+	// User-specific meta data. This can hold anything.
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
+	// Id of the resource (required)
+	Id  *string    `json:"id,omitempty"`
+	Acl []AclEntry `json:"acl,omitempty"`
+	// Azure Account Name (required)
+	AccountName *string `json:"accountName,omitempty"`
+	// Azure Account Key (required)
+	AccountKey *string `json:"accountKey,omitempty"`
+	// Name of the bucket (required)
+	Container *string `json:"container,omitempty"`
 }
 
 func (m AzureOutput) OutputType() OutputType {
-    return OutputType_AZURE
+	return OutputType_AZURE
 }
 func (m AzureOutput) MarshalJSON() ([]byte, error) {
-    type M AzureOutput
-    x := struct {
-        Type string `json:"type"`
-        M
-    }{M: M(m)}
+	type M AzureOutput
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
 
-    x.Type = "AZURE"
+	x.Type = "AZURE"
 
-    return json.Marshal(x)
+	return json.Marshal(x)
 }
-
-
