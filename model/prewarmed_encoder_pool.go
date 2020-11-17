@@ -1,7 +1,7 @@
 package model
 
-// Webhook model
-type Webhook struct {
+// PrewarmedEncoderPool model
+type PrewarmedEncoderPool struct {
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -14,14 +14,13 @@ type Webhook struct {
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id *string `json:"id,omitempty"`
-	// Webhook url (required)
-	Url *string `json:"url,omitempty"`
-	// HTTP method used for the webhook
-	Method WebhookHttpMethod `json:"method,omitempty"`
-	// Whether to skip SSL certification verification or not
-	InsecureSsl *bool `json:"insecureSsl,omitempty"`
-	// Signature used for the webhook
-	Signature *WebhookSignature `json:"signature,omitempty"`
-	// The json schema of the data that is send as webhook payload
-	Schema *map[string]interface{} `json:"schema,omitempty"`
+	// The encoder version which the pool's instances will be running (required)
+	EncoderVersion *string     `json:"encoderVersion,omitempty"`
+	CloudRegion    CloudRegion `json:"cloudRegion,omitempty"`
+	// Define an external infrastructure to run the pool on.
+	InfrastructureId *string                  `json:"infrastructureId,omitempty"`
+	DiskSize         PrewarmedEncoderDiskSize `json:"diskSize,omitempty"`
+	// Number of instances to keep prewarmed while the pool is running (required)
+	TargetPoolSize *int32                     `json:"targetPoolSize,omitempty"`
+	Status         PrewarmedEncoderPoolStatus `json:"status,omitempty"`
 }

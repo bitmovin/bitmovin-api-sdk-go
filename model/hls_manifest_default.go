@@ -25,6 +25,8 @@ type HlsManifestDefault struct {
 	HlsMediaPlaylistVersion HlsVersion `json:"hlsMediaPlaylistVersion,omitempty"`
 	// If this is set, the EXT-X-VERSION tag of the Master Playlist is set to the provided version
 	HlsMasterPlaylistVersion HlsVersion `json:"hlsMasterPlaylistVersion,omitempty"`
+	// Controls the behaviour of the CHANNELS attribute for the EXT-X-VERSION tag
+	ChannelsAttributeForAudio ChannelsAttributeForAudio `json:"channelsAttributeForAudio,omitempty"`
 	// The id of the encoding to create a default manifest from. (required)
 	EncodingId *string `json:"encodingId,omitempty"`
 	// The version of the default manifest generator

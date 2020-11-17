@@ -25,4 +25,6 @@ type HlsManifest struct {
 	HlsMediaPlaylistVersion HlsVersion `json:"hlsMediaPlaylistVersion,omitempty"`
 	// If this is set, the EXT-X-VERSION tag of the Master Playlist is set to the provided version
 	HlsMasterPlaylistVersion HlsVersion `json:"hlsMasterPlaylistVersion,omitempty"`
+	// Controls the behaviour of the CHANNELS attribute for the EXT-X-VERSION tag
+	ChannelsAttributeForAudio ChannelsAttributeForAudio `json:"channelsAttributeForAudio,omitempty"`
 }

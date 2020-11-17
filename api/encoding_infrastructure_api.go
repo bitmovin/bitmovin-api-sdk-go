@@ -16,6 +16,8 @@ type EncodingInfrastructureAPI struct {
 	Azure *EncodingInfrastructureAzureAPI
 	// Gce communicates with '/encoding/infrastructure/gce' endpoints
 	Gce *EncodingInfrastructureGceAPI
+	// PrewarmedEncoderPools communicates with '/encoding/infrastructure/prewarmed-encoder-pools' endpoints
+	PrewarmedEncoderPools *EncodingInfrastructurePrewarmedEncoderPoolsAPI
 }
 
 // NewEncodingInfrastructureAPI constructor for EncodingInfrastructureAPI that takes options as argument
@@ -35,6 +37,7 @@ func NewEncodingInfrastructureAPIWithClient(apiClient *apiclient.APIClient) *Enc
 	a.Aws = NewEncodingInfrastructureAwsAPIWithClient(apiClient)
 	a.Azure = NewEncodingInfrastructureAzureAPIWithClient(apiClient)
 	a.Gce = NewEncodingInfrastructureGceAPIWithClient(apiClient)
+	a.PrewarmedEncoderPools = NewEncodingInfrastructurePrewarmedEncoderPoolsAPIWithClient(apiClient)
 
 	return a
 }
