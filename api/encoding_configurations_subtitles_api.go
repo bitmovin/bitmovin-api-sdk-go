@@ -8,7 +8,7 @@ import (
 type EncodingConfigurationsSubtitlesAPI struct {
 	apiClient *apiclient.APIClient
 
-	// Webvtt communicates with '/encoding/configurations/subtitles/webvtt/' endpoints
+	// Webvtt communicates with '/encoding/configurations/subtitles/webvtt' endpoints
 	Webvtt *EncodingConfigurationsSubtitlesWebvttAPI
 }
 

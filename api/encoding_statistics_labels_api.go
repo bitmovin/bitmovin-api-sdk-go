@@ -6,7 +6,7 @@ import (
 	"github.com/bitmovin/bitmovin-api-sdk-go/pagination"
 )
 
-// EncodingStatisticsLabelsAPI communicates with '/encoding/statistics/labels/' endpoints
+// EncodingStatisticsLabelsAPI communicates with '/encoding/statistics/labels' endpoints
 type EncodingStatisticsLabelsAPI struct {
 	apiClient *apiclient.APIClient
 
@@ -44,7 +44,7 @@ func (api *EncodingStatisticsLabelsAPI) List(queryParams ...func(*EncodingStatis
 	}
 
 	var responseModel pagination.StatisticsPerLabelsListPagination
-	err := api.apiClient.Get("/encoding/statistics/labels/", nil, &responseModel, reqParams)
+	err := api.apiClient.Get("/encoding/statistics/labels", nil, &responseModel, reqParams)
 	return &responseModel, err
 }
 

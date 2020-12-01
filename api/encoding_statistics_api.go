@@ -14,7 +14,7 @@ type EncodingStatisticsAPI struct {
 	Daily *EncodingStatisticsDailyAPI
 	// Encodings communicates with '/encoding/statistics/encodings/{encoding_id}' endpoints
 	Encodings *EncodingStatisticsEncodingsAPI
-	// Labels communicates with '/encoding/statistics/labels/' endpoints
+	// Labels communicates with '/encoding/statistics/labels' endpoints
 	Labels *EncodingStatisticsLabelsAPI
 }
 

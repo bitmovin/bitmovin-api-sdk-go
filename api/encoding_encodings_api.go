@@ -191,6 +191,8 @@ type EncodingEncodingsAPIListQueryParams struct {
 	CreatedAtOlderThan     model.DateTime     `query:"createdAtOlderThan"`
 	StartedAtNewerThan     model.DateTime     `query:"startedAtNewerThan"`
 	StartedAtOlderThan     model.DateTime     `query:"startedAtOlderThan"`
+	FinishedAtNewerThan    model.DateTime     `query:"finishedAtNewerThan"`
+	FinishedAtOlderThan    model.DateTime     `query:"finishedAtOlderThan"`
 }
 
 // Params will return a map of query parameters

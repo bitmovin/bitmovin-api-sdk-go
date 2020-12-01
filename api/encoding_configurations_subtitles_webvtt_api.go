@@ -6,7 +6,7 @@ import (
 	"github.com/bitmovin/bitmovin-api-sdk-go/pagination"
 )
 
-// EncodingConfigurationsSubtitlesWebvttAPI communicates with '/encoding/configurations/subtitles/webvtt/' endpoints
+// EncodingConfigurationsSubtitlesWebvttAPI communicates with '/encoding/configurations/subtitles/webvtt' endpoints
 type EncodingConfigurationsSubtitlesWebvttAPI struct {
 	apiClient *apiclient.APIClient
 
@@ -32,17 +32,17 @@ func NewEncodingConfigurationsSubtitlesWebvttAPIWithClient(apiClient *apiclient.
 	return a
 }
 
-// Create WebVtt Subtitle Configuration
+// Create WebVtt subtitle configuration
 func (api *EncodingConfigurationsSubtitlesWebvttAPI) Create(webVttConfiguration model.WebVttConfiguration) (*model.WebVttConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
 
 	var responseModel model.WebVttConfiguration
-	err := api.apiClient.Post("/encoding/configurations/subtitles/webvtt/", &webVttConfiguration, &responseModel, reqParams)
+	err := api.apiClient.Post("/encoding/configurations/subtitles/webvtt", &webVttConfiguration, &responseModel, reqParams)
 	return &responseModel, err
 }
 
-// Delete WebVtt Subtitle Configuration
+// Delete WebVtt subtitle configuration
 func (api *EncodingConfigurationsSubtitlesWebvttAPI) Delete(configurationId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId
@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsSubtitlesWebvttAPI) Delete(configurationId stri
 	return &responseModel, err
 }
 
-// Get WebVtt Subtitle Configuration Details
+// Get WebVtt subtitle configuration details
 func (api *EncodingConfigurationsSubtitlesWebvttAPI) Get(configurationId string) (*model.WebVttConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId
@@ -64,7 +64,7 @@ func (api *EncodingConfigurationsSubtitlesWebvttAPI) Get(configurationId string)
 	return &responseModel, err
 }
 
-// List WebVtt Configurations
+// List WebVtt subtitle configurations
 func (api *EncodingConfigurationsSubtitlesWebvttAPI) List(queryParams ...func(*EncodingConfigurationsSubtitlesWebvttAPIListQueryParams)) (*pagination.WebVttConfigurationsListPagination, error) {
 	queryParameters := &EncodingConfigurationsSubtitlesWebvttAPIListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -76,7 +76,7 @@ func (api *EncodingConfigurationsSubtitlesWebvttAPI) List(queryParams ...func(*E
 	}
 
 	var responseModel pagination.WebVttConfigurationsListPagination
-	err := api.apiClient.Get("/encoding/configurations/subtitles/webvtt/", nil, &responseModel, reqParams)
+	err := api.apiClient.Get("/encoding/configurations/subtitles/webvtt", nil, &responseModel, reqParams)
 	return &responseModel, err
 }
 

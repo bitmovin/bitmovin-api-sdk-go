@@ -26,7 +26,7 @@ func NewEncodingConfigurationsSubtitlesWebvttCustomdataAPIWithClient(apiClient *
 	return a
 }
 
-// Get WebVtt Subtitle Configuration Custom Data
+// Get WebVtt subtitle configuration custom data
 func (api *EncodingConfigurationsSubtitlesWebvttCustomdataAPI) Get(configurationId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId
