@@ -16,6 +16,8 @@ type NotificationsWebhooksEncodingEncodingsAPI struct {
 	TransferError *NotificationsWebhooksEncodingEncodingsTransferErrorAPI
 	// LiveInputStreamChanged communicates with '/notifications/webhooks/encoding/encodings/live-input-stream-changed' endpoints
 	LiveInputStreamChanged *NotificationsWebhooksEncodingEncodingsLiveInputStreamChangedAPI
+	// EncodingStatusChanged communicates with '/notifications/webhooks/encoding/encodings/encoding-status-changed' endpoints
+	EncodingStatusChanged *NotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPI
 }
 
 // NewNotificationsWebhooksEncodingEncodingsAPI constructor for NotificationsWebhooksEncodingEncodingsAPI that takes options as argument
@@ -35,6 +37,7 @@ func NewNotificationsWebhooksEncodingEncodingsAPIWithClient(apiClient *apiclient
 	a.Error = NewNotificationsWebhooksEncodingEncodingsErrorAPIWithClient(apiClient)
 	a.TransferError = NewNotificationsWebhooksEncodingEncodingsTransferErrorAPIWithClient(apiClient)
 	a.LiveInputStreamChanged = NewNotificationsWebhooksEncodingEncodingsLiveInputStreamChangedAPIWithClient(apiClient)
+	a.EncodingStatusChanged = NewNotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPIWithClient(apiClient)
 
 	return a
 }
