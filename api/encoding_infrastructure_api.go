@@ -12,6 +12,8 @@ type EncodingInfrastructureAPI struct {
 	Kubernetes *EncodingInfrastructureKubernetesAPI
 	// Aws communicates with '/encoding/infrastructure/aws' endpoints
 	Aws *EncodingInfrastructureAwsAPI
+	// StaticIps communicates with '/encoding/infrastructure/static-ips' endpoints
+	StaticIps *EncodingInfrastructureStaticIpsAPI
 	// Azure communicates with '/encoding/infrastructure/azure' endpoints
 	Azure *EncodingInfrastructureAzureAPI
 	// Gce communicates with '/encoding/infrastructure/gce' endpoints
@@ -35,6 +37,7 @@ func NewEncodingInfrastructureAPIWithClient(apiClient *apiclient.APIClient) *Enc
 	a := &EncodingInfrastructureAPI{apiClient: apiClient}
 	a.Kubernetes = NewEncodingInfrastructureKubernetesAPIWithClient(apiClient)
 	a.Aws = NewEncodingInfrastructureAwsAPIWithClient(apiClient)
+	a.StaticIps = NewEncodingInfrastructureStaticIpsAPIWithClient(apiClient)
 	a.Azure = NewEncodingInfrastructureAzureAPIWithClient(apiClient)
 	a.Gce = NewEncodingInfrastructureGceAPIWithClient(apiClient)
 	a.PrewarmedEncoderPools = NewEncodingInfrastructurePrewarmedEncoderPoolsAPIWithClient(apiClient)

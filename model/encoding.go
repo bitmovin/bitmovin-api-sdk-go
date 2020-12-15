@@ -36,6 +36,8 @@ type Encoding struct {
 	// Define an external infrastructure to run the encoding on. Note If you set this value, the `cloudRegion` must be 'EXTERNAL'.
 	InfrastructureId *string                 `json:"infrastructureId,omitempty"`
 	Infrastructure   *InfrastructureSettings `json:"infrastructure,omitempty"`
+	// Specify an ID of a Static IP infrastructure resource this encoding should use. A Static IP cannot be used by multiple encodings at once. The encoding will go to an error state if the Static IP is already in use. This is currently only supported for live encodings.
+	StaticIpId *string `json:"staticIpId,omitempty"`
 	// After the encoding has been started, this will contain the encoder version that was actually used. Especially useful when starting an encoding with a version tag like STABLE or BETA.
 	SelectedEncoderVersion *string `json:"selectedEncoderVersion,omitempty"`
 	// After the encoding has been started, this will contain the encoding mode that was actually used. Especially useful when starting an encoding with encoding mode STANDARD.

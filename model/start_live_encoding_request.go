@@ -14,6 +14,4 @@ type StartLiveEncodingRequest struct {
 	ReuploadSettings *ReuploadSettings `json:"reuploadSettings,omitempty"`
 	// Configuration for auto restarting the live encoding
 	AutoRestartConfiguration *AutoRestartConfiguration `json:"autoRestartConfiguration,omitempty"`
-	// The static IP that will be used for the live encoding. If the provider and the region do not match the encoding start call will fail.
-	StaticIpId []string `json:"staticIpId,omitempty"`
 }

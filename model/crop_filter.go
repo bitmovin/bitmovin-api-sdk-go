@@ -18,13 +18,13 @@ type CropFilter struct {
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id *string `json:"id,omitempty"`
-	// Amount of pixels which will be cropped of the input video from the left side.
+	// Amount of pixels that will be cropped of the input video from the left side. Must be zero or a positive value.
 	Left *int32 `json:"left,omitempty"`
-	// Amount of pixels which will be cropped of the input video from the right side.
+	// Amount of pixels that will be cropped of the input video from the right side. Must be zero or a positive value.
 	Right *int32 `json:"right,omitempty"`
-	// Amount of pixels which will be cropped of the input video from the top.
+	// Amount of pixels that will be cropped of the input video from the top. Must be zero or a positive value.
 	Top *int32 `json:"top,omitempty"`
-	// Amount of pixels which will be cropped of the input video from the bottom.
+	// Amount of pixels that will be cropped of the input video from the bottom. Must be zero or a positive value.
 	Bottom *int32       `json:"bottom,omitempty"`
 	Unit   PositionUnit `json:"unit,omitempty"`
 }

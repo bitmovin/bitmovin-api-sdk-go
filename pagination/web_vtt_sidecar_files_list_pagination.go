@@ -6,28 +6,28 @@ import (
 	"github.com/bitmovin/bitmovin-api-sdk-go/model"
 )
 
-// AnalyticsIncidentsListByLicenseKeyPagination model
-type AnalyticsIncidentsListByLicenseKeyPagination struct {
+// WebVttSidecarFilesListPagination model
+type WebVttSidecarFilesListPagination struct {
 	TotalCount int64                     `json:"totalCount,omitempty"`
 	Offset     int32                     `json:"offset,omitempty"`
 	Limit      int32                     `json:"limit,omitempty"`
 	Previous   string                    `json:"previous,omitempty"`
 	Next       string                    `json:"next,omitempty"`
-	Items      []model.AnalyticsIncident `json:"items,omitempty"`
+	Items      []model.WebVttSidecarFile `json:"items,omitempty"`
 }
 
-// UnmarshalJSON unmarshals pagination model AnalyticsIncidentsListByLicenseKeyPagination from a JSON structure
-func (m *AnalyticsIncidentsListByLicenseKeyPagination) UnmarshalJSON(b []byte) error {
+// UnmarshalJSON unmarshals pagination model WebVttSidecarFilesListPagination from a JSON structure
+func (m *WebVttSidecarFilesListPagination) UnmarshalJSON(b []byte) error {
 	var pageResp model.PaginationResponse
 	if err := json.Unmarshal(b, &pageResp); err != nil {
 		return err
 	}
 
-	var items []model.AnalyticsIncident
+	var items []model.WebVttSidecarFile
 	if err := json.Unmarshal(pageResp.Items, &items); err != nil {
 		return err
 	}
-	var result AnalyticsIncidentsListByLicenseKeyPagination
+	var result WebVttSidecarFilesListPagination
 
 	result.TotalCount = bitutils.Int64Value(pageResp.TotalCount)
 	result.Offset = bitutils.Int32Value(pageResp.Offset)

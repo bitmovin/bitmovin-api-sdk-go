@@ -6,28 +6,28 @@ import (
 	"github.com/bitmovin/bitmovin-api-sdk-go/model"
 )
 
-// AnalyticsAlertingRulesListPagination model
-type AnalyticsAlertingRulesListPagination struct {
+// Mp2AudioConfigurationsListPagination model
+type Mp2AudioConfigurationsListPagination struct {
 	TotalCount int64                         `json:"totalCount,omitempty"`
 	Offset     int32                         `json:"offset,omitempty"`
 	Limit      int32                         `json:"limit,omitempty"`
 	Previous   string                        `json:"previous,omitempty"`
 	Next       string                        `json:"next,omitempty"`
-	Items      []model.AnalyticsAlertingRule `json:"items,omitempty"`
+	Items      []model.Mp2AudioConfiguration `json:"items,omitempty"`
 }
 
-// UnmarshalJSON unmarshals pagination model AnalyticsAlertingRulesListPagination from a JSON structure
-func (m *AnalyticsAlertingRulesListPagination) UnmarshalJSON(b []byte) error {
+// UnmarshalJSON unmarshals pagination model Mp2AudioConfigurationsListPagination from a JSON structure
+func (m *Mp2AudioConfigurationsListPagination) UnmarshalJSON(b []byte) error {
 	var pageResp model.PaginationResponse
 	if err := json.Unmarshal(b, &pageResp); err != nil {
 		return err
 	}
 
-	var items []model.AnalyticsAlertingRule
+	var items []model.Mp2AudioConfiguration
 	if err := json.Unmarshal(pageResp.Items, &items); err != nil {
 		return err
 	}
-	var result AnalyticsAlertingRulesListPagination
+	var result Mp2AudioConfigurationsListPagination
 
 	result.TotalCount = bitutils.Int64Value(pageResp.TotalCount)
 	result.Offset = bitutils.Int32Value(pageResp.Offset)

@@ -7,4 +7,5 @@ type FileInputStreamType string
 const (
 	FileInputStreamType_TTML   FileInputStreamType = "TTML"
 	FileInputStreamType_WEBVTT FileInputStreamType = "WEBVTT"
+	FileInputStreamType_SRT    FileInputStreamType = "SRT"
 )

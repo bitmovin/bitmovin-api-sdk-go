@@ -24,8 +24,6 @@ type AnalyticsAPI struct {
 	Licenses *AnalyticsLicensesAPI
 	// Outputs intermediary API object with no endpoints
 	Outputs *AnalyticsOutputsAPI
-	// Alerting intermediary API object with no endpoints
-	Alerting *AnalyticsAlertingAPI
 }
 
 // NewAnalyticsAPI constructor for AnalyticsAPI that takes options as argument
@@ -49,7 +47,6 @@ func NewAnalyticsAPIWithClient(apiClient *apiclient.APIClient) *AnalyticsAPI {
 	a.Queries = NewAnalyticsQueriesAPIWithClient(apiClient)
 	a.Licenses = NewAnalyticsLicensesAPIWithClient(apiClient)
 	a.Outputs = NewAnalyticsOutputsAPIWithClient(apiClient)
-	a.Alerting = NewAnalyticsAlertingAPIWithClient(apiClient)
 
 	return a
 }
