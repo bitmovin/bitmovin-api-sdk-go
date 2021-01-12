@@ -17,5 +17,6 @@ type AzureAccountRegionSettings struct {
 	// Name of the virtual network (required)
 	NetworkName *string `json:"networkName,omitempty"`
 	// Name of the subnet (required)
-	SubnetName *string `json:"subnetName,omitempty"`
+	SubnetName *string          `json:"subnetName,omitempty"`
+	Region     AzureCloudRegion `json:"region,omitempty"`
 }

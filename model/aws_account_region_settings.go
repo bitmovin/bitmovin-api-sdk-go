@@ -21,5 +21,6 @@ type AwsAccountRegionSettings struct {
 	// Id of the subnet for encoding instances (required)
 	SubnetId *string `json:"subnetId,omitempty"`
 	// Custom SSH port. Valid values: 1 - 65535. Leave empty if the default SSH port 22 is OK.
-	SshPort *int32 `json:"sshPort,omitempty"`
+	SshPort *int32         `json:"sshPort,omitempty"`
+	Region  AwsCloudRegion `json:"region,omitempty"`
 }

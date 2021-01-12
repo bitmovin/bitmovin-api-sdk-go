@@ -17,5 +17,6 @@ type GceAccountRegionSettings struct {
 	// Id of the network for encoding instances (required)
 	Network *string `json:"network,omitempty"`
 	// Id of the subnet for encoding instances (required)
-	SubnetId *string `json:"subnetId,omitempty"`
+	SubnetId *string           `json:"subnetId,omitempty"`
+	Region   GoogleCloudRegion `json:"region,omitempty"`
 }
