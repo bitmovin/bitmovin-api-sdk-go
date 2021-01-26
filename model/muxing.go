@@ -185,6 +185,13 @@ func unmarshalMuxing(data []byte, consumer bitutils.Consumer) (Muxing, error) {
 		}
 		return result, nil
 
+	case "PACKED_AUDIO":
+		var result PackedAudioMuxing
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}

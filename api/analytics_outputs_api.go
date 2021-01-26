@@ -10,6 +10,8 @@ type AnalyticsOutputsAPI struct {
 
 	// S3RoleBased communicates with '/analytics/outputs/s3-role-based' endpoints
 	S3RoleBased *AnalyticsOutputsS3RoleBasedAPI
+	// GcsServiceAccount communicates with '/analytics/outputs/gcs-service-account' endpoints
+	GcsServiceAccount *AnalyticsOutputsGcsServiceAccountAPI
 }
 
 // NewAnalyticsOutputsAPI constructor for AnalyticsOutputsAPI that takes options as argument
@@ -26,6 +28,7 @@ func NewAnalyticsOutputsAPI(options ...apiclient.APIClientOption) (*AnalyticsOut
 func NewAnalyticsOutputsAPIWithClient(apiClient *apiclient.APIClient) *AnalyticsOutputsAPI {
 	a := &AnalyticsOutputsAPI{apiClient: apiClient}
 	a.S3RoleBased = NewAnalyticsOutputsS3RoleBasedAPIWithClient(apiClient)
+	a.GcsServiceAccount = NewAnalyticsOutputsGcsServiceAccountAPIWithClient(apiClient)
 
 	return a
 }

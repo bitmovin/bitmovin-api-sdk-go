@@ -19,4 +19,5 @@ const (
 	MuxingType_CHUNKED_TEXT     MuxingType = "CHUNKED_TEXT"
 	MuxingType_TEXT             MuxingType = "TEXT"
 	MuxingType_SEGMENTED_RAW    MuxingType = "SEGMENTED_RAW"
+	MuxingType_PACKED_AUDIO     MuxingType = "PACKED_AUDIO"
 )

@@ -8,4 +8,6 @@ type BroadcastTsProgramConfiguration struct {
 	PidForPMT *int32 `json:"pidForPMT,omitempty"`
 	// Insert Program Clock References (PCRs) on all packetized elemementary stream packets. When false, indicates that PCRs should be inserted on every PES header. This parameter is effective only when the PCR packet identifier is the same as a video or audio elementary stream.
 	InsertProgramClockRefOnPes *bool `json:"insertProgramClockRefOnPes,omitempty"`
+	// Interval between Program Clock References (PCRs) in milliseconds. Defines the period between PCR fields inserted in the stream. The default value is 90ms.
+	ProgramClockRefInterval *int32 `json:"programClockRefInterval,omitempty"`
 }

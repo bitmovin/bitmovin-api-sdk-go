@@ -18,6 +18,8 @@ type EncodingEncodingsMuxingsAPI struct {
 	Cmaf *EncodingEncodingsMuxingsCmafAPI
 	// SegmentedRaw communicates with '/encoding/encodings/{encoding_id}/muxings/segmented-raw' endpoints
 	SegmentedRaw *EncodingEncodingsMuxingsSegmentedRawAPI
+	// PackedAudio communicates with '/encoding/encodings/{encoding_id}/muxings/packed-audio' endpoints
+	PackedAudio *EncodingEncodingsMuxingsPackedAudioAPI
 	// Text communicates with '/encoding/encodings/{encoding_id}/muxings/text' endpoints
 	Text *EncodingEncodingsMuxingsTextAPI
 	// Ts communicates with '/encoding/encodings/{encoding_id}/muxings/ts' endpoints
@@ -57,6 +59,7 @@ func NewEncodingEncodingsMuxingsAPIWithClient(apiClient *apiclient.APIClient) *E
 	a.ChunkedText = NewEncodingEncodingsMuxingsChunkedTextAPIWithClient(apiClient)
 	a.Cmaf = NewEncodingEncodingsMuxingsCmafAPIWithClient(apiClient)
 	a.SegmentedRaw = NewEncodingEncodingsMuxingsSegmentedRawAPIWithClient(apiClient)
+	a.PackedAudio = NewEncodingEncodingsMuxingsPackedAudioAPIWithClient(apiClient)
 	a.Text = NewEncodingEncodingsMuxingsTextAPIWithClient(apiClient)
 	a.Ts = NewEncodingEncodingsMuxingsTsAPIWithClient(apiClient)
 	a.Webm = NewEncodingEncodingsMuxingsWebmAPIWithClient(apiClient)
