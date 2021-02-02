@@ -47,6 +47,9 @@ type StatisticsPerStream struct {
 	// Indicates if an enhanced interlace filter was used.
 	EnhancedDeinterlace *bool `json:"enhancedDeinterlace,omitempty"`
 	// The output minutes multiplicator for streams using an enhanced deinterlace filter.
-	EnhancedDeinterlaceMultiplicator *float64     `json:"enhancedDeinterlaceMultiplicator,omitempty"`
-	InputFactor                      *InputFactor `json:"inputFactor,omitempty"`
+	EnhancedDeinterlaceMultiplicator *float64                       `json:"enhancedDeinterlaceMultiplicator,omitempty"`
+	NexGuardABWatermarkingType       *NexGuardAbWatermarkingFeature `json:"nexGuardABWatermarkingType,omitempty"`
+	// The output minutes multiplicator for streams using a NexGuard A/B Watermarking.
+	NexGuardABWatermarkingMultiplicator *float64     `json:"nexGuardABWatermarkingMultiplicator,omitempty"`
+	InputFactor                         *InputFactor `json:"inputFactor,omitempty"`
 }

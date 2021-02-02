@@ -21,7 +21,8 @@ type WebVttConfiguration struct {
 	// If set to true, the hours section on webvtt timestamp values will explicitely have zeroes instead of being omitted for values where hours = 0.
 	AppendOptionalZeroHour *bool `json:"appendOptionalZeroHour,omitempty"`
 	// If set to true, the region information of the resulting webvtt file will be omitted. Defaults to false.
-	IgnoreRegion *bool `json:"ignoreRegion,omitempty"`
+	IgnoreRegion        *bool                     `json:"ignoreRegion,omitempty"`
+	CueIdentifierPolicy WebVttCueIdentifierPolicy `json:"cueIdentifierPolicy,omitempty"`
 }
 
 func (m WebVttConfiguration) CodecConfigType() CodecConfigType {

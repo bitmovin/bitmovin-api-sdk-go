@@ -11,6 +11,7 @@ type BillableEncodingMinutes struct {
 	// Indicates if the stream was part of a live encoding.
 	Live *bool `json:"live,omitempty"`
 	// Indicates if an enhanced interlace filter was used.
-	EnhancedDeinterlace *bool                           `json:"enhancedDeinterlace,omitempty"`
-	BillableMinutes     *BillableEncodingMinutesDetails `json:"billableMinutes,omitempty"`
+	EnhancedDeinterlace        *bool                           `json:"enhancedDeinterlace,omitempty"`
+	NexGuardABWatermarkingType *NexGuardAbWatermarkingFeature  `json:"nexGuardABWatermarkingType,omitempty"`
+	BillableMinutes            *BillableEncodingMinutesDetails `json:"billableMinutes,omitempty"`
 }

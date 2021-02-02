@@ -20,6 +20,8 @@ type EncodingEncodingsStreamsAPI struct {
 	Filters *EncodingEncodingsStreamsFiltersAPI
 	// BurnInSubtitles intermediary API object with no endpoints
 	BurnInSubtitles *EncodingEncodingsStreamsBurnInSubtitlesAPI
+	// Watermarking intermediary API object with no endpoints
+	Watermarking *EncodingEncodingsStreamsWatermarkingAPI
 	// Captions intermediary API object with no endpoints
 	Captions *EncodingEncodingsStreamsCaptionsAPI
 	// Bifs communicates with '/encoding/encodings/{encoding_id}/streams/{stream_id}/bifs' endpoints
@@ -52,6 +54,7 @@ func NewEncodingEncodingsStreamsAPIWithClient(apiClient *apiclient.APIClient) *E
 	a.Inputs = NewEncodingEncodingsStreamsInputsAPIWithClient(apiClient)
 	a.Filters = NewEncodingEncodingsStreamsFiltersAPIWithClient(apiClient)
 	a.BurnInSubtitles = NewEncodingEncodingsStreamsBurnInSubtitlesAPIWithClient(apiClient)
+	a.Watermarking = NewEncodingEncodingsStreamsWatermarkingAPIWithClient(apiClient)
 	a.Captions = NewEncodingEncodingsStreamsCaptionsAPIWithClient(apiClient)
 	a.Bifs = NewEncodingEncodingsStreamsBifsAPIWithClient(apiClient)
 	a.Hdr = NewEncodingEncodingsStreamsHdrAPIWithClient(apiClient)
