@@ -33,12 +33,12 @@ func NewAnalyticsOutputsS3RoleBasedAPIWithClient(apiClient *apiclient.APIClient)
 }
 
 // Create S3 Role-based Output
-func (api *AnalyticsOutputsS3RoleBasedAPI) Create(s3RoleBasedOutput model.S3RoleBasedOutput) (*model.S3RoleBasedOutput, error) {
+func (api *AnalyticsOutputsS3RoleBasedAPI) Create(analyticsS3RoleBasedOutput model.AnalyticsS3RoleBasedOutput) (*model.AnalyticsS3RoleBasedOutput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
 
-	var responseModel model.S3RoleBasedOutput
-	err := api.apiClient.Post("/analytics/outputs/s3-role-based", &s3RoleBasedOutput, &responseModel, reqParams)
+	var responseModel model.AnalyticsS3RoleBasedOutput
+	err := api.apiClient.Post("/analytics/outputs/s3-role-based", &analyticsS3RoleBasedOutput, &responseModel, reqParams)
 	return &responseModel, err
 }
 
@@ -65,7 +65,7 @@ func (api *AnalyticsOutputsS3RoleBasedAPI) Get(outputId string) (*model.S3RoleBa
 }
 
 // List S3 Role-based Outputs
-func (api *AnalyticsOutputsS3RoleBasedAPI) List(queryParams ...func(*AnalyticsOutputsS3RoleBasedAPIListQueryParams)) (*pagination.S3RoleBasedOutputsListPagination, error) {
+func (api *AnalyticsOutputsS3RoleBasedAPI) List(queryParams ...func(*AnalyticsOutputsS3RoleBasedAPIListQueryParams)) (*pagination.AnalyticsS3RoleBasedOutputsListPagination, error) {
 	queryParameters := &AnalyticsOutputsS3RoleBasedAPIListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
@@ -75,7 +75,7 @@ func (api *AnalyticsOutputsS3RoleBasedAPI) List(queryParams ...func(*AnalyticsOu
 		params.QueryParams = queryParameters
 	}
 
-	var responseModel pagination.S3RoleBasedOutputsListPagination
+	var responseModel pagination.AnalyticsS3RoleBasedOutputsListPagination
 	err := api.apiClient.Get("/analytics/outputs/s3-role-based", nil, &responseModel, reqParams)
 	return &responseModel, err
 }

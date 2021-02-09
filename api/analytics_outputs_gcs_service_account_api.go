@@ -33,12 +33,12 @@ func NewAnalyticsOutputsGcsServiceAccountAPIWithClient(apiClient *apiclient.APIC
 }
 
 // Create Service Account based GCS Output
-func (api *AnalyticsOutputsGcsServiceAccountAPI) Create(gcsServiceAccountOutput model.GcsServiceAccountOutput) (*model.GcsServiceAccountOutput, error) {
+func (api *AnalyticsOutputsGcsServiceAccountAPI) Create(analyticsGcsServiceAccountOutput model.AnalyticsGcsServiceAccountOutput) (*model.AnalyticsGcsServiceAccountOutput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
 
-	var responseModel model.GcsServiceAccountOutput
-	err := api.apiClient.Post("/analytics/outputs/gcs-service-account", &gcsServiceAccountOutput, &responseModel, reqParams)
+	var responseModel model.AnalyticsGcsServiceAccountOutput
+	err := api.apiClient.Post("/analytics/outputs/gcs-service-account", &analyticsGcsServiceAccountOutput, &responseModel, reqParams)
 	return &responseModel, err
 }
 
@@ -65,7 +65,7 @@ func (api *AnalyticsOutputsGcsServiceAccountAPI) Get(outputId string) (*model.Gc
 }
 
 // List Service Account based GCS Outputs
-func (api *AnalyticsOutputsGcsServiceAccountAPI) List(queryParams ...func(*AnalyticsOutputsGcsServiceAccountAPIListQueryParams)) (*pagination.GcsServiceAccountOutputsListPagination, error) {
+func (api *AnalyticsOutputsGcsServiceAccountAPI) List(queryParams ...func(*AnalyticsOutputsGcsServiceAccountAPIListQueryParams)) (*pagination.AnalyticsGcsServiceAccountOutputsListPagination, error) {
 	queryParameters := &AnalyticsOutputsGcsServiceAccountAPIListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
@@ -75,7 +75,7 @@ func (api *AnalyticsOutputsGcsServiceAccountAPI) List(queryParams ...func(*Analy
 		params.QueryParams = queryParameters
 	}
 
-	var responseModel pagination.GcsServiceAccountOutputsListPagination
+	var responseModel pagination.AnalyticsGcsServiceAccountOutputsListPagination
 	err := api.apiClient.Get("/analytics/outputs/gcs-service-account", nil, &responseModel, reqParams)
 	return &responseModel, err
 }
