@@ -8,8 +8,6 @@ import (
 type EncodingInfrastructureAPI struct {
 	apiClient *apiclient.APIClient
 
-	// Kubernetes communicates with '/encoding/infrastructure/kubernetes' endpoints
-	Kubernetes *EncodingInfrastructureKubernetesAPI
 	// Aws communicates with '/encoding/infrastructure/aws' endpoints
 	Aws *EncodingInfrastructureAwsAPI
 	// StaticIps communicates with '/encoding/infrastructure/static-ips' endpoints
@@ -35,7 +33,6 @@ func NewEncodingInfrastructureAPI(options ...apiclient.APIClientOption) (*Encodi
 // NewEncodingInfrastructureAPIWithClient constructor for EncodingInfrastructureAPI that takes an APIClient as argument
 func NewEncodingInfrastructureAPIWithClient(apiClient *apiclient.APIClient) *EncodingInfrastructureAPI {
 	a := &EncodingInfrastructureAPI{apiClient: apiClient}
-	a.Kubernetes = NewEncodingInfrastructureKubernetesAPIWithClient(apiClient)
 	a.Aws = NewEncodingInfrastructureAwsAPIWithClient(apiClient)
 	a.StaticIps = NewEncodingInfrastructureStaticIpsAPIWithClient(apiClient)
 	a.Azure = NewEncodingInfrastructureAzureAPIWithClient(apiClient)

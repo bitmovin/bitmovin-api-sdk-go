@@ -50,7 +50,6 @@ const (
 	CloudRegion_AUSTRALIA                       CloudRegion = "AUSTRALIA"
 	CloudRegion_AWS                             CloudRegion = "AWS"
 	CloudRegion_GOOGLE                          CloudRegion = "GOOGLE"
-	CloudRegion_KUBERNETES                      CloudRegion = "KUBERNETES"
 	CloudRegion_EXTERNAL                        CloudRegion = "EXTERNAL"
 	CloudRegion_AUTO                            CloudRegion = "AUTO"
 )
