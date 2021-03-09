@@ -12,4 +12,6 @@ type StreamInput struct {
 	Position *int32 `json:"position,omitempty"`
 	// Set this property instead of all others to reference an ingest, trimming or concatenation input stream
 	InputStreamId *string `json:"inputStreamId,omitempty"`
+	// Input analysis details  This property is populated after the encoding has finished
+	AnalysisDetails *EncodingStreamInputDetails `json:"analysisDetails,omitempty"`
 }

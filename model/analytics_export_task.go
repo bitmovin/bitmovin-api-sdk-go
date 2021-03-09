@@ -21,5 +21,7 @@ type AnalyticsExportTask struct {
 	// UTC timestamp when the export task started
 	StartedAt *DateTime `json:"startedAt,omitempty"`
 	// UTC timestamp when the export task finished
-	FinishedAt *DateTime `json:"finishedAt,omitempty"`
+	FinishedAt *DateTime           `json:"finishedAt,omitempty"`
+	Type       AnalyticsExportType `json:"type,omitempty"`
+	Columns    []string            `json:"columns,omitempty"`
 }

@@ -14,6 +14,8 @@ type EncodingEncodingsMuxingsPackedAudioAPI struct {
 	Customdata *EncodingEncodingsMuxingsPackedAudioCustomdataAPI
 	// Information communicates with '/encoding/encodings/{encoding_id}/muxings/packed-audio/{muxing_id}/information' endpoints
 	Information *EncodingEncodingsMuxingsPackedAudioInformationAPI
+	// Drm intermediary API object with no endpoints
+	Drm *EncodingEncodingsMuxingsPackedAudioDrmAPI
 }
 
 // NewEncodingEncodingsMuxingsPackedAudioAPI constructor for EncodingEncodingsMuxingsPackedAudioAPI that takes options as argument
@@ -31,6 +33,7 @@ func NewEncodingEncodingsMuxingsPackedAudioAPIWithClient(apiClient *apiclient.AP
 	a := &EncodingEncodingsMuxingsPackedAudioAPI{apiClient: apiClient}
 	a.Customdata = NewEncodingEncodingsMuxingsPackedAudioCustomdataAPIWithClient(apiClient)
 	a.Information = NewEncodingEncodingsMuxingsPackedAudioInformationAPIWithClient(apiClient)
+	a.Drm = NewEncodingEncodingsMuxingsPackedAudioDrmAPIWithClient(apiClient)
 
 	return a
 }
