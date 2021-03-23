@@ -15,6 +15,6 @@ type MuxingInformationAudioTrack struct {
 	SampleRate *int32 `json:"sampleRate,omitempty"`
 	// The number of channels in this audio stream
 	Channels *int32 `json:"channels,omitempty"`
-	// TODO add description
+	// The duration in seconds
 	Duration *float64 `json:"duration,omitempty"`
 }

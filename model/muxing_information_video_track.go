@@ -10,8 +10,7 @@ type MuxingInformationVideoTrack struct {
 	CodecIso *string `json:"codecIso,omitempty"`
 	// The bitrate of the video track
 	BitRate *int64 `json:"bitRate,omitempty"`
-	// TODO add description
-	Rate *int64 `json:"rate,omitempty"`
+	Rate    *int64 `json:"rate,omitempty"`
 	// The pixel format used
 	PixelFormat *string `json:"pixelFormat,omitempty"`
 	// The frame mode (e.g. progressive)
