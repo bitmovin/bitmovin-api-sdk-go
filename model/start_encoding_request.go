@@ -22,6 +22,8 @@ type StartEncodingRequest struct {
 	VodHlsManifests []ManifestResource `json:"vodHlsManifests,omitempty"`
 	// List of VoD SMOOTH manifests to be created after encoding finished successfully
 	VodSmoothManifests []ManifestResource `json:"vodSmoothManifests,omitempty"`
+	// Sets the version of the manifest generation engine
+	ManifestGenerator ManifestGenerator `json:"manifestGenerator,omitempty"`
 	// Per-Title settings
 	PerTitle *PerTitle `json:"perTitle,omitempty"`
 }
