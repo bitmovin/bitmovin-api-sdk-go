@@ -2,7 +2,7 @@ package model
 
 // LiveHlsManifest model
 type LiveHlsManifest struct {
-	// HLS manifest ids (required)
+	// HLS manifest id (required)
 	ManifestId *string `json:"manifestId,omitempty"`
 	// Timeshift in seconds
 	Timeshift *float64 `json:"timeshift,omitempty"`

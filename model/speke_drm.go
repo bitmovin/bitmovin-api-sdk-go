@@ -23,7 +23,7 @@ type SpekeDrm struct {
 	ContentId *string `json:"contentId,omitempty"`
 	// Optional key identifier, will be generated if not set. For SPEKE DRM Configurations with the same contentId and kid the key provider will provide the same keys.
 	Kid *string `json:"kid,omitempty"`
-	// 16 byte initialization vector represented by a 32-character text string. It is mandatory if systemIds contains AES128 and FairPlay.
+	// 16 byte initialization vector represented by a 32-character text string. It is mandatory if systemIds contains AES128 or FairPlay.
 	Iv *string `json:"iv,omitempty"`
 	// Key provider configuration for SPEKE (required)
 	Provider *SpekeDrmProvider `json:"provider,omitempty"`

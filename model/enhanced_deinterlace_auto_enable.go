@@ -1,6 +1,6 @@
 package model
 
-// EnhancedDeinterlaceAutoEnable : Specifies if the Enhanced Deinterlace filter should be applied unconditionally or only on demand.
+// EnhancedDeinterlaceAutoEnable : Specifies if the Enhanced Deinterlace Filter should be applied unconditionally or only on demand.
 type EnhancedDeinterlaceAutoEnable string
 
 // List of possible EnhancedDeinterlaceAutoEnable values

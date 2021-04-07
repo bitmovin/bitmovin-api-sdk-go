@@ -1,5 +1,9 @@
 package model
 
+import (
+	"encoding/json"
+)
+
 // An external WebVTT file that is added to an encoding. The size limit for a sidecar file is 10 MB
 type WebVttSidecarFile struct {
 	// Id of input (required)
@@ -21,4 +25,19 @@ type WebVttSidecarFile struct {
 	// Id of the resource (required)
 	Id           *string                        `json:"id,omitempty"`
 	Segmentation *WebVttSidecarFileSegmentation `json:"segmentation,omitempty"`
+}
+
+func (m WebVttSidecarFile) SidecarFileType() SidecarFileType {
+	return SidecarFileType_WEB_VTT
+}
+func (m WebVttSidecarFile) MarshalJSON() ([]byte, error) {
+	type M WebVttSidecarFile
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "WEB_VTT"
+
+	return json.Marshal(x)
 }

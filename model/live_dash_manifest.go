@@ -2,7 +2,7 @@ package model
 
 // LiveDashManifest model
 type LiveDashManifest struct {
-	// Dash manifest ids (required)
+	// Dash manifest id (required)
 	ManifestId *string `json:"manifestId,omitempty"`
 	// Timeshift in seconds
 	Timeshift *float64 `json:"timeshift,omitempty"`

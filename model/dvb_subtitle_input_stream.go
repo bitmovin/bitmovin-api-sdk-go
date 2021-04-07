@@ -22,7 +22,7 @@ type DvbSubtitleInputStream struct {
 	InputId *string `json:"inputId,omitempty"`
 	// Path to media file
 	InputPath *string `json:"inputPath,omitempty"`
-	// Specifies the algorithm how the stream in the input file will be selected. Only POSITION_ABSOLUTE is supported.
+	// Specifies the algorithm for selecting a stream from the input file. Supported values for VOD encodings: AUTO, POSITION_ABSOLUTE, SUBTITLE_RELATIVE. Supported values for LIVE encodings: POSITION_ABSOLUTE
 	SelectionMode StreamSelectionMode `json:"selectionMode,omitempty"`
 	// Position of the stream
 	Position *int32 `json:"position,omitempty"`

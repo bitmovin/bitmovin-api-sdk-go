@@ -25,9 +25,9 @@ type Sprite struct {
 	SpriteName *string `json:"spriteName,omitempty"`
 	// Filename of the sprite image. If not set, spriteName will be used, but without an extension.
 	Filename *string `json:"filename,omitempty"`
-	// Filename of the vtt-file. The file-extension \".vtt\" is required. (required)
+	// Filename of the vtt-file. The file-extension \".vtt\" is required.
 	VttName *string          `json:"vttName,omitempty"`
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
-	// Number of images per file. If more images are generated than specified in this value, multiple sprites will be created. You can use the placeholder '%number%' in the spriteName to specify the naming policy.
+	// Number of images per file. If more images are generated than specified in this value, multiple sprites will be created. You can use the placeholder '%number%' in the spriteName to specify the naming policy. Either this property must be set or hTiles and vTiles.
 	ImagesPerFile *int32 `json:"imagesPerFile,omitempty"`
 }

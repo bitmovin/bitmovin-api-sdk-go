@@ -1,6 +1,6 @@
 package model
 
-// DeinterlaceAutoEnable : Specifies if the deinterlace filter should be applied unconditionally or only on demand.
+// DeinterlaceAutoEnable : Specifies if the Deinterlace Filter should be applied unconditionally or only on demand.
 type DeinterlaceAutoEnable string
 
 // List of possible DeinterlaceAutoEnable values

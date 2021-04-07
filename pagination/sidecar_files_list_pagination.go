@@ -1,9 +1,11 @@
 package pagination
 
 import (
+	"bytes"
 	"encoding/json"
 	"github.com/bitmovin/bitmovin-api-sdk-go/bitutils"
 	"github.com/bitmovin/bitmovin-api-sdk-go/model"
+	"io"
 )
 
 // SidecarFilesListPagination model
@@ -22,9 +24,8 @@ func (m *SidecarFilesListPagination) UnmarshalJSON(b []byte) error {
 	if err := json.Unmarshal(b, &pageResp); err != nil {
 		return err
 	}
-
-	var items []model.SidecarFile
-	if err := json.Unmarshal(pageResp.Items, &items); err != nil {
+	items, err := model.UnmarshalSidecarFileSlice(bytes.NewBuffer(pageResp.Items), bitutils.JSONConsumer())
+	if err != nil && err != io.EOF {
 		return err
 	}
 	var result SidecarFilesListPagination
