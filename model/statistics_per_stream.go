@@ -50,6 +50,9 @@ type StatisticsPerStream struct {
 	EnhancedDeinterlaceMultiplicator *float64                       `json:"enhancedDeinterlaceMultiplicator,omitempty"`
 	NexGuardABWatermarkingType       *NexGuardAbWatermarkingFeature `json:"nexGuardABWatermarkingType,omitempty"`
 	// The output minutes multiplicator for streams using a NexGuard A/B Watermarking.
-	NexGuardABWatermarkingMultiplicator *float64     `json:"nexGuardABWatermarkingMultiplicator,omitempty"`
-	InputFactor                         *InputFactor `json:"inputFactor,omitempty"`
+	NexGuardABWatermarkingMultiplicator *float64            `json:"nexGuardABWatermarkingMultiplicator,omitempty"`
+	PixelFormatBitDepth                 PixelFormatBitDepth `json:"pixelFormatBitDepth,omitempty"`
+	// The output minutes multiplicator for the pixel format bit depth
+	PixelFormatMultiplicator *float64     `json:"pixelFormatMultiplicator,omitempty"`
+	InputFactor              *InputFactor `json:"inputFactor,omitempty"`
 }
