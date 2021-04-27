@@ -23,6 +23,7 @@ type WebVttConfiguration struct {
 	// If set to true, the region information of the resulting webvtt file will be omitted. Defaults to false.
 	IgnoreRegion        *bool                     `json:"ignoreRegion,omitempty"`
 	CueIdentifierPolicy WebVttCueIdentifierPolicy `json:"cueIdentifierPolicy,omitempty"`
+	Styling             *WebVttStyling            `json:"styling,omitempty"`
 }
 
 func (m WebVttConfiguration) CodecConfigType() CodecConfigType {
