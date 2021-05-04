@@ -11,7 +11,7 @@ type StreamInfosDetails struct {
 	// The height of the stream, if it is a video stream
 	Height *int32 `json:"height,omitempty"`
 	// The rate (sample rate / fps) of the stream (required)
-	Rate *int64 `json:"rate,omitempty"`
+	Rate *float64 `json:"rate,omitempty"`
 	// The codec of the input stream (required)
 	Codec LiveEncodingCodec `json:"codec,omitempty"`
 	// The minimum samples read per second within the last minute (required)
