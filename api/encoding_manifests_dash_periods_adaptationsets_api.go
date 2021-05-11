@@ -14,6 +14,8 @@ type EncodingManifestsDashPeriodsAdaptationsetsAPI struct {
 	Video *EncodingManifestsDashPeriodsAdaptationsetsVideoAPI
 	// Subtitle communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/subtitle' endpoints
 	Subtitle *EncodingManifestsDashPeriodsAdaptationsetsSubtitleAPI
+	// Image communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/image' endpoints
+	Image *EncodingManifestsDashPeriodsAdaptationsetsImageAPI
 	// Representations intermediary API object with no endpoints
 	Representations *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsAPI
 	// Contentprotection communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/contentprotection' endpoints
@@ -36,6 +38,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsAPIWithClient(apiClient *apicl
 	a.Audio = NewEncodingManifestsDashPeriodsAdaptationsetsAudioAPIWithClient(apiClient)
 	a.Video = NewEncodingManifestsDashPeriodsAdaptationsetsVideoAPIWithClient(apiClient)
 	a.Subtitle = NewEncodingManifestsDashPeriodsAdaptationsetsSubtitleAPIWithClient(apiClient)
+	a.Image = NewEncodingManifestsDashPeriodsAdaptationsetsImageAPIWithClient(apiClient)
 	a.Representations = NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsAPIWithClient(apiClient)
 	a.Contentprotection = NewEncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPIWithClient(apiClient)
 

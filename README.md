@@ -18,7 +18,16 @@ Using this API client requires an active account.
 
 > Don't have an account yet? [Sign up for a free Bitmovin trial plan](https://dashboard.bitmovin.com/signup)!
 
-For full documentation of all available API endpoints, see the [Bitmovin API reference](https://bitmovin.com/docs).
+---
+
+## Documentation & Release Notes
++ Full Bitmovin API reference documentation: https://bitmovin.com/docs/encoding/api-reference
++ Release Notes: https://bitmovin.com/docs/encoding/changelogs/rest
+
+## Support
+If you have any questions regarding the SDK, provided examples or our services, please log in to your Bitmovin Dashboard at https://bitmovin.com/dashboard and [create a support ticket](https://bitmovin.com/dashboard/support/cases/create?tab=encoding). Our team will get back to you as soon as possible :+1:
+
+---
 
 ## Installation:
 
