@@ -90,6 +90,13 @@ func unmarshalAnalyticsOutput(data []byte, consumer bitutils.Consumer) (Analytic
 		}
 		return result, nil
 
+	case "AZURE":
+		var result AnalyticsAzureOutput
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}

@@ -7,4 +7,5 @@ type AnalyticsOutputType string
 const (
 	AnalyticsOutputType_S3_ROLE_BASED       AnalyticsOutputType = "S3_ROLE_BASED"
 	AnalyticsOutputType_GCS_SERVICE_ACCOUNT AnalyticsOutputType = "GCS_SERVICE_ACCOUNT"
+	AnalyticsOutputType_AZURE               AnalyticsOutputType = "AZURE"
 )
