@@ -27,4 +27,6 @@ type HlsManifest struct {
 	HlsMasterPlaylistVersion HlsVersion `json:"hlsMasterPlaylistVersion,omitempty"`
 	// Controls the behaviour of the CHANNELS attribute for the EXT-X-VERSION tag
 	ChannelsAttributeForAudio ChannelsAttributeForAudio `json:"channelsAttributeForAudio,omitempty"`
+	// The rounding applied to target duration. Two possible rouding modes exist: NORMAL_ROUNDING, when the target duration is rounded to the nearest integer, or UPWARDS_ROUNDING, when the target duration is rounded to the highest integer.
+	TargetDurationRoundingMode HlsTargetDurationRoundingMode `json:"targetDurationRoundingMode,omitempty"`
 }
