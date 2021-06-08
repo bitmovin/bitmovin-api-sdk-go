@@ -11,6 +11,8 @@ type EncodingEncodingsLiveAPI struct {
 
 	// InsertableContent communicates with '/encoding/encodings/{encoding_id}/live/insertable-content' endpoints
 	InsertableContent *EncodingEncodingsLiveInsertableContentAPI
+	// Scte35Cue communicates with '/encoding/encodings/{encoding_id}/live/scte-35-cue' endpoints
+	Scte35Cue *EncodingEncodingsLiveScte35CueAPI
 }
 
 // NewEncodingEncodingsLiveAPI constructor for EncodingEncodingsLiveAPI that takes options as argument
@@ -27,6 +29,7 @@ func NewEncodingEncodingsLiveAPI(options ...apiclient.APIClientOption) (*Encodin
 func NewEncodingEncodingsLiveAPIWithClient(apiClient *apiclient.APIClient) *EncodingEncodingsLiveAPI {
 	a := &EncodingEncodingsLiveAPI{apiClient: apiClient}
 	a.InsertableContent = NewEncodingEncodingsLiveInsertableContentAPIWithClient(apiClient)
+	a.Scte35Cue = NewEncodingEncodingsLiveScte35CueAPIWithClient(apiClient)
 
 	return a
 }
