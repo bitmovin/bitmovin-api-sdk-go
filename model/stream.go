@@ -20,7 +20,8 @@ type Stream struct {
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
-	Id           *string          `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
+	// Determines the input source(s) for the stream. All video streams of an encoding need to have identical input configurations (required)
 	InputStreams []StreamInput    `json:"inputStreams,omitempty"`
 	Outputs      []EncodingOutput `json:"outputs,omitempty"`
 	// Set true to create quality metadata for this stream
