@@ -17,6 +17,8 @@ const (
 	CodecConfigType_MP3             CodecConfigType = "MP3"
 	CodecConfigType_AC3             CodecConfigType = "AC3"
 	CodecConfigType_EAC3            CodecConfigType = "EAC3"
+	CodecConfigType_DD              CodecConfigType = "DD"
+	CodecConfigType_DDPLUS          CodecConfigType = "DDPLUS"
 	CodecConfigType_OPUS            CodecConfigType = "OPUS"
 	CodecConfigType_VORBIS          CodecConfigType = "VORBIS"
 	CodecConfigType_MJPEG           CodecConfigType = "MJPEG"

@@ -26,6 +26,10 @@ type EncodingConfigurationsAudioAPI struct {
 	Pcm *EncodingConfigurationsAudioPcmAPI
 	// Ac3 communicates with '/encoding/configurations/audio/ac3' endpoints
 	Ac3 *EncodingConfigurationsAudioAc3API
+	// DolbyDigital communicates with '/encoding/configurations/audio/dolby-digital' endpoints
+	DolbyDigital *EncodingConfigurationsAudioDolbyDigitalAPI
+	// DolbyDigitalPlus communicates with '/encoding/configurations/audio/dolby-digital-plus' endpoints
+	DolbyDigitalPlus *EncodingConfigurationsAudioDolbyDigitalPlusAPI
 	// Eac3 communicates with '/encoding/configurations/audio/eac3' endpoints
 	Eac3 *EncodingConfigurationsAudioEac3API
 	// Mp2 communicates with '/encoding/configurations/audio/mp2' endpoints
@@ -56,6 +60,8 @@ func NewEncodingConfigurationsAudioAPIWithClient(apiClient *apiclient.APIClient)
 	a.Opus = NewEncodingConfigurationsAudioOpusAPIWithClient(apiClient)
 	a.Pcm = NewEncodingConfigurationsAudioPcmAPIWithClient(apiClient)
 	a.Ac3 = NewEncodingConfigurationsAudioAc3APIWithClient(apiClient)
+	a.DolbyDigital = NewEncodingConfigurationsAudioDolbyDigitalAPIWithClient(apiClient)
+	a.DolbyDigitalPlus = NewEncodingConfigurationsAudioDolbyDigitalPlusAPIWithClient(apiClient)
 	a.Eac3 = NewEncodingConfigurationsAudioEac3APIWithClient(apiClient)
 	a.Mp2 = NewEncodingConfigurationsAudioMp2APIWithClient(apiClient)
 	a.Mp3 = NewEncodingConfigurationsAudioMp3APIWithClient(apiClient)

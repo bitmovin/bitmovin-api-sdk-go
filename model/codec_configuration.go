@@ -159,8 +159,22 @@ func unmarshalCodecConfiguration(data []byte, consumer bitutils.Consumer) (Codec
 		}
 		return result, nil
 
+	case "DD":
+		var result DolbyDigitalAudioConfiguration
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case "EAC3":
 		var result Eac3AudioConfiguration
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
+	case "DDPLUS":
+		var result DolbyDigitalPlusAudioConfiguration
 		if err := consumer.Consume(buf2, &result); err != nil {
 			return nil, err
 		}

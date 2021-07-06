@@ -14,9 +14,9 @@ type Sprite struct {
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Id of the resource (required)
 	Id *string `json:"id,omitempty"`
-	// Height of one thumbnail (required)
+	// Height of one thumbnail, either height or width are required fields. If only one is given the encoder will calculate the other way value based on the aspect ratio of the video file. If the encoder version is below 2.83.0 both are required
 	Height *int32 `json:"height,omitempty"`
-	// Width of one thumbnail (required)
+	// Width of one thumbnail, either height or width are required fields. If only one is given the encoder will calculate the other way value based on the aspect ratio of the video file. If the encoder version is below 2.83.0 both are required
 	Width *int32     `json:"width,omitempty"`
 	Unit  SpriteUnit `json:"unit,omitempty"`
 	// Distance in the given unit between a screenshot
