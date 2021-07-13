@@ -10,6 +10,8 @@ type EncodingManifestsDashPeriodsAdaptationsetsRepresentationsAPI struct {
 
 	// Vtt communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/vtt' endpoints
 	Vtt *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttAPI
+	// Imsc communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/imsc' endpoints
+	Imsc *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsImscAPI
 	// Sprite communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/sprite' endpoints
 	Sprite *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsSpriteAPI
 	// Fmp4 communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations/fmp4' endpoints
@@ -40,6 +42,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsAPI(options ...
 func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsAPIWithClient(apiClient *apiclient.APIClient) *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsAPI {
 	a := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsAPI{apiClient: apiClient}
 	a.Vtt = NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttAPIWithClient(apiClient)
+	a.Imsc = NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsImscAPIWithClient(apiClient)
 	a.Sprite = NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsSpriteAPIWithClient(apiClient)
 	a.Fmp4 = NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4APIWithClient(apiClient)
 	a.ChunkedText = NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsChunkedTextAPIWithClient(apiClient)

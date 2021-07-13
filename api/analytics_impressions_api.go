@@ -8,6 +8,9 @@ import (
 // AnalyticsImpressionsAPI communicates with '/analytics/impressions' endpoints
 type AnalyticsImpressionsAPI struct {
 	apiClient *apiclient.APIClient
+
+	// Ads communicates with '/analytics/impressions/{impression_id}/ads' endpoints
+	Ads *AnalyticsImpressionsAdsAPI
 }
 
 // NewAnalyticsImpressionsAPI constructor for AnalyticsImpressionsAPI that takes options as argument
@@ -23,6 +26,8 @@ func NewAnalyticsImpressionsAPI(options ...apiclient.APIClientOption) (*Analytic
 // NewAnalyticsImpressionsAPIWithClient constructor for AnalyticsImpressionsAPI that takes an APIClient as argument
 func NewAnalyticsImpressionsAPIWithClient(apiClient *apiclient.APIClient) *AnalyticsImpressionsAPI {
 	a := &AnalyticsImpressionsAPI{apiClient: apiClient}
+	a.Ads = NewAnalyticsImpressionsAdsAPIWithClient(apiClient)
+
 	return a
 }
 

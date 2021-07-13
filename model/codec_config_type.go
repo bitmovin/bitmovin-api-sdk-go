@@ -27,5 +27,6 @@ const (
 	CodecConfigType_H262            CodecConfigType = "H262"
 	CodecConfigType_PCM             CodecConfigType = "PCM"
 	CodecConfigType_WEBVTT          CodecConfigType = "WEBVTT"
+	CodecConfigType_IMSC            CodecConfigType = "IMSC"
 	CodecConfigType_DVB_SUBTITLE    CodecConfigType = "DVB_SUBTITLE"
 )

@@ -236,6 +236,13 @@ func unmarshalCodecConfiguration(data []byte, consumer bitutils.Consumer) (Codec
 		}
 		return result, nil
 
+	case "IMSC":
+		var result ImscConfiguration
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}

@@ -12,6 +12,8 @@ type EncodingConfigurationsSubtitlesAPI struct {
 	DvbSubtitle *EncodingConfigurationsSubtitlesDvbSubtitleAPI
 	// Webvtt communicates with '/encoding/configurations/subtitles/webvtt' endpoints
 	Webvtt *EncodingConfigurationsSubtitlesWebvttAPI
+	// Imsc communicates with '/encoding/configurations/subtitles/imsc' endpoints
+	Imsc *EncodingConfigurationsSubtitlesImscAPI
 }
 
 // NewEncodingConfigurationsSubtitlesAPI constructor for EncodingConfigurationsSubtitlesAPI that takes options as argument
@@ -29,6 +31,7 @@ func NewEncodingConfigurationsSubtitlesAPIWithClient(apiClient *apiclient.APICli
 	a := &EncodingConfigurationsSubtitlesAPI{apiClient: apiClient}
 	a.DvbSubtitle = NewEncodingConfigurationsSubtitlesDvbSubtitleAPIWithClient(apiClient)
 	a.Webvtt = NewEncodingConfigurationsSubtitlesWebvttAPIWithClient(apiClient)
+	a.Imsc = NewEncodingConfigurationsSubtitlesImscAPIWithClient(apiClient)
 
 	return a
 }
