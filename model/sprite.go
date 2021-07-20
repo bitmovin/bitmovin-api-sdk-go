@@ -2,6 +2,8 @@ package model
 
 // Sprite model
 type Sprite struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -12,8 +14,6 @@ type Sprite struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// Height of one thumbnail, either height or width are required fields. If only one is given the encoder will calculate the other way value based on the aspect ratio of the video file. If the encoder version is below 2.83.0 both are required
 	Height *int32 `json:"height,omitempty"`
 	// Width of one thumbnail, either height or width are required fields. If only one is given the encoder will calculate the other way value based on the aspect ratio of the video file. If the encoder version is below 2.83.0 both are required
@@ -38,4 +38,6 @@ type Sprite struct {
 	JpegConfig *SpriteJpegConfig `json:"jpegConfig,omitempty"`
 	// The creation mode for the thumbnails in the Sprite.  Two possible creation modes exist: generate thumbnails starting with the beginning of the video or after the first configured period.  When using distance=10 and unit=SECONDS and INTERVAL_END, the first image of the sprite is from the second 10 of the video. When using distance=10 and unit=SECONDS and INTERVAL_START, the first image of the sprite is from the very start of the video, while the second image is from second 10 of the video.  It is recommended to use 'INTERVAL_START' when using the sprites for trick play so that there is an additional thumbnail from the beginning of the video.  Only supported starting with encoder version `2.76.0`.
 	CreationMode SpriteCreationMode `json:"creationMode,omitempty"`
+	// Specifies the aspect mode that is used when both height and width are specified Only supported starting with encoder version `2.85.0`.
+	AspectMode ThumbnailAspectMode `json:"aspectMode,omitempty"`
 }

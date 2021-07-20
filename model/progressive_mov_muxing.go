@@ -6,6 +6,8 @@ import (
 
 // ProgressiveMovMuxing model
 type ProgressiveMovMuxing struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,10 +18,8 @@ type ProgressiveMovMuxing struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id      *string          `json:"id,omitempty"`
-	Streams []MuxingStream   `json:"streams,omitempty"`
-	Outputs []EncodingOutput `json:"outputs,omitempty"`
+	Streams    []MuxingStream          `json:"streams,omitempty"`
+	Outputs    []EncodingOutput        `json:"outputs,omitempty"`
 	// Average bitrate. Available after encoding finishes.
 	AvgBitrate *int64 `json:"avgBitrate,omitempty"`
 	// Min bitrate. Available after encoding finishes.

@@ -6,6 +6,8 @@ import (
 
 // FrameIdId3Tag model
 type FrameIdId3Tag struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -15,10 +17,8 @@ type FrameIdId3Tag struct {
 	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
-	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id           *string            `json:"id,omitempty"`
-	PositionMode Id3TagPositionMode `json:"positionMode,omitempty"`
+	CustomData   *map[string]interface{} `json:"customData,omitempty"`
+	PositionMode Id3TagPositionMode      `json:"positionMode,omitempty"`
 	// Frame number at which the Tag should be inserted
 	Frame *int64 `json:"frame,omitempty"`
 	// Time in seconds where the Tag should be inserted

@@ -2,6 +2,8 @@ package model
 
 // TransferRetry model
 type TransferRetry struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -12,8 +14,6 @@ type TransferRetry struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// The current status of the transfer-retry.
 	Status Status `json:"status,omitempty"`
 	// Timestamp when the transfer-retry was started, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ

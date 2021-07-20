@@ -9,6 +9,10 @@ import (
 
 // AdAnalyticsVarianceQueryRequest model
 type AdAnalyticsVarianceQueryRequest struct {
+	// Start of timeframe which is queried in UTC format.
+	Start *DateTime `json:"start,omitempty"`
+	// End of timeframe which is queried in UTC format.
+	End *DateTime `json:"end,omitempty"`
 	// Analytics license key (required)
 	LicenseKey *string                     `json:"licenseKey,omitempty"`
 	Filters    []AdAnalyticsAbstractFilter `json:"filters,omitempty"`
@@ -20,15 +24,13 @@ type AdAnalyticsVarianceQueryRequest struct {
 	Limit *int64 `json:"limit,omitempty"`
 	// Offset of data
 	Offset *int64 `json:"offset,omitempty"`
-	// Start of timeframe which is queried in UTC format.
-	Start *DateTime `json:"start,omitempty"`
-	// End of timeframe which is queried in UTC format.
-	End *DateTime `json:"end,omitempty"`
 }
 
 // UnmarshalJSON unmarshals model AdAnalyticsVarianceQueryRequest from a JSON structure
 func (m *AdAnalyticsVarianceQueryRequest) UnmarshalJSON(raw []byte) error {
 	var data struct {
+		Start      *DateTime                 `json:"start"`
+		End        *DateTime                 `json:"end"`
 		LicenseKey *string                   `json:"licenseKey"`
 		Filters    json.RawMessage           `json:"filters"`
 		OrderBy    []AdAnalyticsOrderByEntry `json:"orderBy"`
@@ -37,8 +39,6 @@ func (m *AdAnalyticsVarianceQueryRequest) UnmarshalJSON(raw []byte) error {
 		GroupBy    []AdAnalyticsAttribute    `json:"groupBy"`
 		Limit      *int64                    `json:"limit"`
 		Offset     *int64                    `json:"offset"`
-		Start      *DateTime                 `json:"start"`
-		End        *DateTime                 `json:"end"`
 	}
 
 	buf := bytes.NewBuffer(raw)
@@ -51,6 +51,8 @@ func (m *AdAnalyticsVarianceQueryRequest) UnmarshalJSON(raw []byte) error {
 
 	var result AdAnalyticsVarianceQueryRequest
 
+	result.Start = data.Start
+	result.End = data.End
 	result.LicenseKey = data.LicenseKey
 	result.OrderBy = data.OrderBy
 	result.Dimension = data.Dimension
@@ -58,8 +60,6 @@ func (m *AdAnalyticsVarianceQueryRequest) UnmarshalJSON(raw []byte) error {
 	result.GroupBy = data.GroupBy
 	result.Limit = data.Limit
 	result.Offset = data.Offset
-	result.Start = data.Start
-	result.End = data.End
 
 	allOfFilters, err := UnmarshalAdAnalyticsAbstractFilterSlice(bytes.NewBuffer(data.Filters), bitutils.JSONConsumer())
 	if err != nil && err != io.EOF {

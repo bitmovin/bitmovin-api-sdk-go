@@ -9,6 +9,8 @@ import (
 
 // Stream model
 type Stream struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -19,8 +21,6 @@ type Stream struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// Determines the input source(s) for the stream. All video streams of an encoding need to have identical input configurations (required)
 	InputStreams []StreamInput    `json:"inputStreams,omitempty"`
 	Outputs      []EncodingOutput `json:"outputs,omitempty"`
@@ -50,12 +50,12 @@ type Stream struct {
 // UnmarshalJSON unmarshals model Stream from a JSON structure
 func (m *Stream) UnmarshalJSON(raw []byte) error {
 	var data struct {
+		Id                    *string                 `json:"id"`
 		Name                  *string                 `json:"name"`
 		Description           *string                 `json:"description"`
 		CreatedAt             *DateTime               `json:"createdAt"`
 		ModifiedAt            *DateTime               `json:"modifiedAt"`
 		CustomData            *map[string]interface{} `json:"customData"`
-		Id                    *string                 `json:"id"`
 		InputStreams          []StreamInput           `json:"inputStreams"`
 		Outputs               []EncodingOutput        `json:"outputs"`
 		CreateQualityMetaData *bool                   `json:"createQualityMetaData"`
@@ -81,12 +81,12 @@ func (m *Stream) UnmarshalJSON(raw []byte) error {
 
 	var result Stream
 
+	result.Id = data.Id
 	result.Name = data.Name
 	result.Description = data.Description
 	result.CreatedAt = data.CreatedAt
 	result.ModifiedAt = data.ModifiedAt
 	result.CustomData = data.CustomData
-	result.Id = data.Id
 	result.InputStreams = data.InputStreams
 	result.Outputs = data.Outputs
 	result.CreateQualityMetaData = data.CreateQualityMetaData

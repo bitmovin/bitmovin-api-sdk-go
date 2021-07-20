@@ -2,6 +2,8 @@ package model
 
 // CustomTag model
 type CustomTag struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -12,8 +14,6 @@ type CustomTag struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// The positioning mode that should be used when inserting the placement opportunity (required)
 	PositionMode PositionMode `json:"positionMode,omitempty"`
 	// Id of keyframe where the custom tag should be inserted. Required, when KEYFRAME is selected as position mode.

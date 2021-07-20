@@ -6,6 +6,8 @@ import (
 
 // WatermarkFilter model
 type WatermarkFilter struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,8 +18,6 @@ type WatermarkFilter struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// URL of the file to be used as watermark image. Supported image formats: PNG, JPEG, BMP, GIF (required)
 	Image *string `json:"image,omitempty"`
 	// Distance from the left edge of the input video to the left edge of the watermark image. May not be set if 'right' is set.

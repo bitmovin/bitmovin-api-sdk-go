@@ -16,6 +16,8 @@ type CodecConfiguration interface {
 
 // BaseCodecConfiguration is the fallback type for the polymorphic model CodecConfiguration.
 type BaseCodecConfiguration struct {
+	// Id of the resource (required)
+	Id *string `json:"id"`
 	// Name of the resource. Can be freely chosen by the user. (required)
 	Name *string `json:"name"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -26,9 +28,7 @@ type BaseCodecConfiguration struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id   *string         `json:"id"`
-	Type CodecConfigType `json:"type"`
+	Type       CodecConfigType         `json:"type"`
 }
 
 func (m BaseCodecConfiguration) CodecConfigType() CodecConfigType {

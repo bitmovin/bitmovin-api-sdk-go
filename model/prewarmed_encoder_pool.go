@@ -2,6 +2,8 @@ package model
 
 // PrewarmedEncoderPool model
 type PrewarmedEncoderPool struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -12,8 +14,6 @@ type PrewarmedEncoderPool struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// The encoder version which the pool's instances will be running (required)
 	EncoderVersion *string     `json:"encoderVersion,omitempty"`
 	CloudRegion    CloudRegion `json:"cloudRegion,omitempty"`

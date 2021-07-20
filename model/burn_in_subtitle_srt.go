@@ -2,6 +2,8 @@ package model
 
 // BurnInSubtitleSrt model
 type BurnInSubtitleSrt struct {
+	// Id of the burn-in SRT subtitle (required)
+	Id *map[string]interface{} `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -12,8 +14,6 @@ type BurnInSubtitleSrt struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// Character encoding of the SRT file (required)
 	CharacterEncoding CaptionCharacterEncoding `json:"characterEncoding,omitempty"`
 	// The input location to get the SRT file from (required)

@@ -6,6 +6,8 @@ import (
 
 // WidevineDrm model
 type WidevineDrm struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,9 +18,7 @@ type WidevineDrm struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id      *string          `json:"id,omitempty"`
-	Outputs []EncodingOutput `json:"outputs,omitempty"`
+	Outputs    []EncodingOutput        `json:"outputs,omitempty"`
 	// 16 byte Encryption key, 32 hexadecimal characters (required)
 	Key *string `json:"key,omitempty"`
 	// 16 byte Key id, 32 hexadecimal characters (required)

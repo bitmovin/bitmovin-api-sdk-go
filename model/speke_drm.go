@@ -6,6 +6,8 @@ import (
 
 // SpekeDrm model
 type SpekeDrm struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,9 +18,7 @@ type SpekeDrm struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id      *string          `json:"id,omitempty"`
-	Outputs []EncodingOutput `json:"outputs,omitempty"`
+	Outputs    []EncodingOutput        `json:"outputs,omitempty"`
 	// Unique Identifier of the content, will be generated if not set
 	ContentId *string `json:"contentId,omitempty"`
 	// Optional key identifier, will be generated if not set. For SPEKE DRM Configurations with the same contentId and kid the key provider will provide the same keys.

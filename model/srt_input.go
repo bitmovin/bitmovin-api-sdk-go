@@ -6,6 +6,8 @@ import (
 
 // SrtInput model
 type SrtInput struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,8 +18,6 @@ type SrtInput struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// The SRT mode to use (required)
 	Mode SrtMode `json:"mode,omitempty"`
 	// The name or IP of the host providing the SRT stream (only used in CALLER mode)

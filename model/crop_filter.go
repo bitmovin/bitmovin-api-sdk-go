@@ -6,6 +6,8 @@ import (
 
 // CropFilter model
 type CropFilter struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,8 +18,6 @@ type CropFilter struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// Amount of pixels that will be cropped of the input video from the left side. Must be zero or a positive value.
 	Left *int32 `json:"left,omitempty"`
 	// Amount of pixels that will be cropped of the input video from the right side. Must be zero or a positive value.

@@ -6,6 +6,8 @@ import (
 
 // DenoiseHqdn3dFilter model
 type DenoiseHqdn3dFilter struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,8 +18,6 @@ type DenoiseHqdn3dFilter struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// A non-negative floating point number which specifies spatial luma strength. It defaults to 4.0.
 	LumaSpatial *float64 `json:"lumaSpatial,omitempty"`
 	// A non-negative floating point number which specifies spatial chroma strength. It defaults to 3.0*luma_spatial/4.0.

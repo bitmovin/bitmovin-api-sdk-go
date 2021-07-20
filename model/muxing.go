@@ -16,6 +16,8 @@ type Muxing interface {
 
 // BaseMuxing is the fallback type for the polymorphic model Muxing.
 type BaseMuxing struct {
+	// Id of the resource (required)
+	Id *string `json:"id"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -26,10 +28,8 @@ type BaseMuxing struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id      *string          `json:"id"`
-	Streams []MuxingStream   `json:"streams"`
-	Outputs []EncodingOutput `json:"outputs,omitempty"`
+	Streams    []MuxingStream          `json:"streams"`
+	Outputs    []EncodingOutput        `json:"outputs,omitempty"`
 	// Average bitrate. Available after encoding finishes.
 	AvgBitrate *int64 `json:"avgBitrate,omitempty"`
 	// Min bitrate. Available after encoding finishes.

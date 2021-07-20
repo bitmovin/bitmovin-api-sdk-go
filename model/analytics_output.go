@@ -16,6 +16,8 @@ type AnalyticsOutput interface {
 
 // BaseAnalyticsOutput is the fallback type for the polymorphic model AnalyticsOutput.
 type BaseAnalyticsOutput struct {
+	// Id of the resource (required)
+	Id *string `json:"id"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -26,10 +28,8 @@ type BaseAnalyticsOutput struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id   *string             `json:"id"`
-	Acl  []AclEntry          `json:"acl,omitempty"`
-	Type AnalyticsOutputType `json:"type"`
+	Acl        []AclEntry              `json:"acl,omitempty"`
+	Type       AnalyticsOutputType     `json:"type"`
 }
 
 func (m BaseAnalyticsOutput) AnalyticsOutputType() AnalyticsOutputType {

@@ -2,6 +2,8 @@ package model
 
 // Thumbnail model
 type Thumbnail struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -12,8 +14,6 @@ type Thumbnail struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// Height of the thumbnail, either height or width are required fields. If only one is given the encoder will calculate the other way value based on the aspect ratio of the video file. If the encoder version is below 2.83.0 only height is supported and mandatory.
 	Height *int32 `json:"height,omitempty"`
 	// Width of the thumbnail, either height or width are required fields. If only one is given the encoder will calculate the other way value based on the aspect ratio of the video file. If the encoder version is below 2.83.0 only height is supported
@@ -27,4 +27,6 @@ type Thumbnail struct {
 	Outputs   []EncodingOutput `json:"outputs,omitempty"`
 	// Unit of the values in the positions array.
 	Unit ThumbnailUnit `json:"unit,omitempty"`
+	// Specifies the aspect mode that is used when both height and width are specified Only supported starting with encoder version `2.85.0`.
+	AspectMode ThumbnailAspectMode `json:"aspectMode,omitempty"`
 }

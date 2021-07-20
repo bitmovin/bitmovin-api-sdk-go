@@ -6,6 +6,8 @@ import (
 
 // GenericS3Output model
 type GenericS3Output struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,9 +18,7 @@ type GenericS3Output struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id  *string    `json:"id,omitempty"`
-	Acl []AclEntry `json:"acl,omitempty"`
+	Acl        []AclEntry              `json:"acl,omitempty"`
 	// Your generic S3 access key (required)
 	AccessKey *string `json:"accessKey,omitempty"`
 	// Your generic S3 secret key (required)

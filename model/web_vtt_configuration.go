@@ -6,6 +6,8 @@ import (
 
 // WebVttConfiguration model
 type WebVttConfiguration struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user. (required)
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,8 +18,6 @@ type WebVttConfiguration struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// If set to true, the hours section on webvtt timestamp values will explicitely have zeroes instead of being omitted for values where hours = 0.
 	AppendOptionalZeroHour *bool `json:"appendOptionalZeroHour,omitempty"`
 	// If set to true, the region information of the resulting webvtt file will be omitted. Defaults to false.

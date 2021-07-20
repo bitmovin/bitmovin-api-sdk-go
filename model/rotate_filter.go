@@ -6,6 +6,8 @@ import (
 
 // RotateFilter model
 type RotateFilter struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,8 +18,6 @@ type RotateFilter struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// Rotation of the video in degrees. A positive value will rotate the video clockwise and a negative one counter clockwise. (required)
 	Rotation *int32 `json:"rotation,omitempty"`
 }

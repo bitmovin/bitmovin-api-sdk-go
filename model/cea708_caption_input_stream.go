@@ -6,6 +6,8 @@ import (
 
 // Cea708CaptionInputStream model
 type Cea708CaptionInputStream struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -16,8 +18,6 @@ type Cea708CaptionInputStream struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// Id of the Input (required)
 	InputId *string `json:"inputId,omitempty"`
 	// Path to media file (required)

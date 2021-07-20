@@ -2,6 +2,8 @@ package model
 
 // VttMediaInfo model
 type VttMediaInfo struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// The value is a quoted-string which specifies the group to which the Rendition belongs. (required)
 	GroupId *string `json:"groupId,omitempty"`
 	// Primary language in the rendition.
@@ -16,8 +18,6 @@ type VttMediaInfo struct {
 	Autoselect *bool `json:"autoselect,omitempty"`
 	// Contains Uniform Type Identifiers
 	Characteristics []string `json:"characteristics,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// The URL of the referenced VTT file (required)
 	VttUrl *string `json:"vttUrl,omitempty"`
 	// The URI of the Rendition (required)

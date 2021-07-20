@@ -2,6 +2,8 @@ package model
 
 // AzureAccount model
 type AzureAccount struct {
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -12,8 +14,6 @@ type AzureAccount struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id *string `json:"id,omitempty"`
 	// Your Azure Subscription ID (The ID of your subscription where you intend to run the Encoding VMs) (required)
 	SubscriptionId *string `json:"subscriptionId,omitempty"`
 	// The name of the resource group where you intend to run the Encoding VMs (required)

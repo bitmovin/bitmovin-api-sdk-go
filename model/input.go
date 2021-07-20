@@ -16,6 +16,8 @@ type Input interface {
 
 // BaseInput is the fallback type for the polymorphic model Input.
 type BaseInput struct {
+	// Id of the resource (required)
+	Id *string `json:"id"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
@@ -26,9 +28,7 @@ type BaseInput struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of the resource (required)
-	Id   *string   `json:"id"`
-	Type InputType `json:"type"`
+	Type       InputType               `json:"type"`
 }
 
 func (m BaseInput) InputType() InputType {

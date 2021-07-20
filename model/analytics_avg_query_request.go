@@ -9,6 +9,10 @@ import (
 
 // AnalyticsAvgQueryRequest model
 type AnalyticsAvgQueryRequest struct {
+	// Start of timeframe which is queried in UTC format.
+	Start *DateTime `json:"start,omitempty"`
+	// End of timeframe which is queried in UTC format.
+	End *DateTime `json:"end,omitempty"`
 	// Analytics license key (required)
 	LicenseKey *string                   `json:"licenseKey,omitempty"`
 	Filters    []AnalyticsAbstractFilter `json:"filters,omitempty"`
@@ -22,15 +26,13 @@ type AnalyticsAvgQueryRequest struct {
 	Limit *int64 `json:"limit,omitempty"`
 	// Offset of data
 	Offset *int64 `json:"offset,omitempty"`
-	// Start of timeframe which is queried in UTC format.
-	Start *DateTime `json:"start,omitempty"`
-	// End of timeframe which is queried in UTC format.
-	End *DateTime `json:"end,omitempty"`
 }
 
 // UnmarshalJSON unmarshals model AnalyticsAvgQueryRequest from a JSON structure
 func (m *AnalyticsAvgQueryRequest) UnmarshalJSON(raw []byte) error {
 	var data struct {
+		Start          *DateTime               `json:"start"`
+		End            *DateTime               `json:"end"`
 		LicenseKey     *string                 `json:"licenseKey"`
 		Filters        json.RawMessage         `json:"filters"`
 		OrderBy        []AnalyticsOrderByEntry `json:"orderBy"`
@@ -40,8 +42,6 @@ func (m *AnalyticsAvgQueryRequest) UnmarshalJSON(raw []byte) error {
 		IncludeContext *bool                   `json:"includeContext"`
 		Limit          *int64                  `json:"limit"`
 		Offset         *int64                  `json:"offset"`
-		Start          *DateTime               `json:"start"`
-		End            *DateTime               `json:"end"`
 	}
 
 	buf := bytes.NewBuffer(raw)
@@ -54,6 +54,8 @@ func (m *AnalyticsAvgQueryRequest) UnmarshalJSON(raw []byte) error {
 
 	var result AnalyticsAvgQueryRequest
 
+	result.Start = data.Start
+	result.End = data.End
 	result.LicenseKey = data.LicenseKey
 	result.OrderBy = data.OrderBy
 	result.Dimension = data.Dimension
@@ -62,8 +64,6 @@ func (m *AnalyticsAvgQueryRequest) UnmarshalJSON(raw []byte) error {
 	result.IncludeContext = data.IncludeContext
 	result.Limit = data.Limit
 	result.Offset = data.Offset
-	result.Start = data.Start
-	result.End = data.End
 
 	allOfFilters, err := UnmarshalAnalyticsAbstractFilterSlice(bytes.NewBuffer(data.Filters), bitutils.JSONConsumer())
 	if err != nil && err != io.EOF {

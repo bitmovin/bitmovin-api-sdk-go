@@ -9,6 +9,10 @@ import (
 
 // AdAnalyticsPercentileQueryRequest model
 type AdAnalyticsPercentileQueryRequest struct {
+	// Start of timeframe which is queried in UTC format.
+	Start *DateTime `json:"start,omitempty"`
+	// End of timeframe which is queried in UTC format.
+	End *DateTime `json:"end,omitempty"`
 	// Analytics license key (required)
 	LicenseKey *string                     `json:"licenseKey,omitempty"`
 	Filters    []AdAnalyticsAbstractFilter `json:"filters,omitempty"`
@@ -20,10 +24,6 @@ type AdAnalyticsPercentileQueryRequest struct {
 	Limit *int64 `json:"limit,omitempty"`
 	// Offset of data
 	Offset *int64 `json:"offset,omitempty"`
-	// Start of timeframe which is queried in UTC format.
-	Start *DateTime `json:"start,omitempty"`
-	// End of timeframe which is queried in UTC format.
-	End *DateTime `json:"end,omitempty"`
 	// The percentage (0-99) used for percentile queries.
 	Percentile *int64 `json:"percentile,omitempty"`
 }
@@ -31,6 +31,8 @@ type AdAnalyticsPercentileQueryRequest struct {
 // UnmarshalJSON unmarshals model AdAnalyticsPercentileQueryRequest from a JSON structure
 func (m *AdAnalyticsPercentileQueryRequest) UnmarshalJSON(raw []byte) error {
 	var data struct {
+		Start      *DateTime                 `json:"start"`
+		End        *DateTime                 `json:"end"`
 		LicenseKey *string                   `json:"licenseKey"`
 		Filters    json.RawMessage           `json:"filters"`
 		OrderBy    []AdAnalyticsOrderByEntry `json:"orderBy"`
@@ -39,8 +41,6 @@ func (m *AdAnalyticsPercentileQueryRequest) UnmarshalJSON(raw []byte) error {
 		GroupBy    []AdAnalyticsAttribute    `json:"groupBy"`
 		Limit      *int64                    `json:"limit"`
 		Offset     *int64                    `json:"offset"`
-		Start      *DateTime                 `json:"start"`
-		End        *DateTime                 `json:"end"`
 		Percentile *int64                    `json:"percentile"`
 	}
 
@@ -54,6 +54,8 @@ func (m *AdAnalyticsPercentileQueryRequest) UnmarshalJSON(raw []byte) error {
 
 	var result AdAnalyticsPercentileQueryRequest
 
+	result.Start = data.Start
+	result.End = data.End
 	result.LicenseKey = data.LicenseKey
 	result.OrderBy = data.OrderBy
 	result.Dimension = data.Dimension
@@ -61,8 +63,6 @@ func (m *AdAnalyticsPercentileQueryRequest) UnmarshalJSON(raw []byte) error {
 	result.GroupBy = data.GroupBy
 	result.Limit = data.Limit
 	result.Offset = data.Offset
-	result.Start = data.Start
-	result.End = data.End
 	result.Percentile = data.Percentile
 
 	allOfFilters, err := UnmarshalAdAnalyticsAbstractFilterSlice(bytes.NewBuffer(data.Filters), bitutils.JSONConsumer())
