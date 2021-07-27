@@ -17,6 +17,7 @@ const (
 	AnalyticsAttribute_BROWSER_IS_BOT                 AnalyticsAttribute = "BROWSER_IS_BOT"
 	AnalyticsAttribute_BUFFERED                       AnalyticsAttribute = "BUFFERED"
 	AnalyticsAttribute_CDN_PROVIDER                   AnalyticsAttribute = "CDN_PROVIDER"
+	AnalyticsAttribute_CAST_TECH                      AnalyticsAttribute = "CAST_TECH"
 	AnalyticsAttribute_CITY                           AnalyticsAttribute = "CITY"
 	AnalyticsAttribute_CLIENT_TIME                    AnalyticsAttribute = "CLIENT_TIME"
 	AnalyticsAttribute_COUNTRY                        AnalyticsAttribute = "COUNTRY"

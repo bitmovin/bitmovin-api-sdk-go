@@ -24,6 +24,8 @@ type AnalyticsImpressionSample struct {
 	Buffered *int64 `json:"buffered,omitempty"`
 	// CDN Provider
 	CdnProvider *string `json:"cdn_provider,omitempty"`
+	// Casting Technology
+	CastTech *string `json:"cast_tech,omitempty"`
 	// City
 	City *string `json:"city,omitempty"`
 	// Current time of the client
@@ -175,6 +177,7 @@ type AnalyticsImpressionSample struct {
 	// Width of the video player on the page
 	VideoWindowWidth *int32 `json:"video_window_width,omitempty"`
 	// True if starting the video failed
-	VideostartFailed       *bool                           `json:"videostart_failed,omitempty"`
+	VideostartFailed *bool `json:"videostart_failed,omitempty"`
+	// Reason why starting the video failed
 	VideostartFailedReason AnalyticsVideoStartFailedReason `json:"videostart_failed_reason,omitempty"`
 }

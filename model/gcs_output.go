@@ -24,7 +24,8 @@ type GcsOutput struct {
 	// GCS secret key (required)
 	SecretKey *string `json:"secretKey,omitempty"`
 	// Name of the bucket (required)
-	BucketName  *string           `json:"bucketName,omitempty"`
+	BucketName *string `json:"bucketName,omitempty"`
+	// The cloud region in which the bucket is located. Is used to determine the ideal location for your encodings automatically.
 	CloudRegion GoogleCloudRegion `json:"cloudRegion,omitempty"`
 }
 

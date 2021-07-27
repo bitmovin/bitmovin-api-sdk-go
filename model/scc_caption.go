@@ -15,6 +15,7 @@ type SccCaption struct {
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Input location of the SCC file (required)
-	Input               *InputPath          `json:"input,omitempty"`
+	Input *InputPath `json:"input,omitempty"`
+	// Flavor of SMPTE timecodes in the SCC file (drop-frame or non-drop)
 	SmpteTimecodeFlavor SmpteTimecodeFlavor `json:"smpteTimecodeFlavor,omitempty"`
 }

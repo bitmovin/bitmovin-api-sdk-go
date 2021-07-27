@@ -14,7 +14,8 @@ type Organization struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	Type       OrganizationType        `json:"type,omitempty"`
+	// Specifies the type of the organization in the hierachy. Only sub-organizations can be newly created. (required)
+	Type OrganizationType `json:"type,omitempty"`
 	// ID of the parent organization
 	ParentId *string `json:"parentId,omitempty"`
 	// Hexadecimal color

@@ -21,8 +21,9 @@ type WebVttSidecarFile struct {
 	// Id of input (required)
 	InputId *string `json:"inputId,omitempty"`
 	// Path to sidecar file (required)
-	InputPath    *string                        `json:"inputPath,omitempty"`
-	Outputs      []EncodingOutput               `json:"outputs,omitempty"`
+	InputPath *string          `json:"inputPath,omitempty"`
+	Outputs   []EncodingOutput `json:"outputs,omitempty"`
+	// This defines how errors should be handled
 	ErrorMode    SidecarErrorMode               `json:"errorMode,omitempty"`
 	Segmentation *WebVttSidecarFileSegmentation `json:"segmentation,omitempty"`
 }

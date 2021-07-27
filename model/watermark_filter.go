@@ -27,8 +27,9 @@ type WatermarkFilter struct {
 	// Distance from the top edge of the input video to the top edge of the watermark image. May not be set if 'bottom' is set.
 	Top *int32 `json:"top,omitempty"`
 	// Distance from the bottom edge of the input video to the bottom edge of the watermark image. May not be set if 'top' is set.
-	Bottom *int32       `json:"bottom,omitempty"`
-	Unit   PositionUnit `json:"unit,omitempty"`
+	Bottom *int32 `json:"bottom,omitempty"`
+	// Specifies if the values of 'left', 'right', 'top' and 'bottom' are interpreted as pixels or as a percentage of the input video's dimensions.
+	Unit PositionUnit `json:"unit,omitempty"`
 }
 
 func (m WatermarkFilter) FilterType() FilterType {

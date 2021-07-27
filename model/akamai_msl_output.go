@@ -22,9 +22,11 @@ type AkamaiMslOutput struct {
 	// The Akamai stream ID (required)
 	StreamId *int32 `json:"streamId,omitempty"`
 	// The Akamai event name (required)
-	EventName    *string               `json:"eventName,omitempty"`
+	EventName *string `json:"eventName,omitempty"`
+	// The stream format. Only DASH is supported at the moment. (required)
 	StreamFormat AkamaiMslStreamFormat `json:"streamFormat,omitempty"`
-	MslVersion   AkamaiMslVersion      `json:"mslVersion,omitempty"`
+	// The Akamai MSL Version. Only MSL4 is supported at the moment. (required)
+	MslVersion AkamaiMslVersion `json:"mslVersion,omitempty"`
 }
 
 func (m AkamaiMslOutput) OutputType() OutputType {

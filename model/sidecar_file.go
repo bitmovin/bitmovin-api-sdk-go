@@ -33,6 +33,7 @@ type BaseSidecarFile struct {
 	// Path to sidecar file (required)
 	InputPath *string          `json:"inputPath"`
 	Outputs   []EncodingOutput `json:"outputs,omitempty"`
+	// This defines how errors should be handled
 	ErrorMode SidecarErrorMode `json:"errorMode,omitempty"`
 	Type      SidecarFileType  `json:"type"`
 }

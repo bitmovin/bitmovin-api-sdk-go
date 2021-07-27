@@ -15,12 +15,15 @@ type PrewarmedEncoderPool struct {
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// The encoder version which the pool's instances will be running (required)
-	EncoderVersion *string     `json:"encoderVersion,omitempty"`
-	CloudRegion    CloudRegion `json:"cloudRegion,omitempty"`
+	EncoderVersion *string `json:"encoderVersion,omitempty"`
+	// The cloud region in which the pool's instances will be running. Must be a specific region (e.g. not 'AUTO', 'GOOGLE' or 'EUROPE') (required)
+	CloudRegion CloudRegion `json:"cloudRegion,omitempty"`
 	// Define an external infrastructure to run the pool on.
-	InfrastructureId *string                  `json:"infrastructureId,omitempty"`
-	DiskSize         PrewarmedEncoderDiskSize `json:"diskSize,omitempty"`
+	InfrastructureId *string `json:"infrastructureId,omitempty"`
+	// Disk size of the prewarmed instances in GB. Needs to be chosen depending on input file sizes and encoding features used. (required)
+	DiskSize PrewarmedEncoderDiskSize `json:"diskSize,omitempty"`
 	// Number of instances to keep prewarmed while the pool is running (required)
-	TargetPoolSize *int32                     `json:"targetPoolSize,omitempty"`
-	Status         PrewarmedEncoderPoolStatus `json:"status,omitempty"`
+	TargetPoolSize *int32 `json:"targetPoolSize,omitempty"`
+	// Current status of the pool.
+	Status PrewarmedEncoderPoolStatus `json:"status,omitempty"`
 }
