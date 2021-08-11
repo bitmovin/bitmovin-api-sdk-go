@@ -89,6 +89,20 @@ func unmarshalCodecConfiguration(data []byte, consumer bitutils.Consumer) (Codec
 		}
 		return result, nil
 
+	case "DTS":
+		var result DtsAudioConfiguration
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
+	case "DTSX":
+		var result DtsXAudioConfiguration
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case "DVB_SUBTITLE":
 		var result DvbSubtitleConfiguration
 		if err := consumer.Consume(buf2, &result); err != nil {

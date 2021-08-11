@@ -12,6 +12,10 @@ type EncodingConfigurationsAudioAPI struct {
 	Aac *EncodingConfigurationsAudioAacAPI
 	// DtsPassthrough communicates with '/encoding/configurations/audio/dts-passthrough' endpoints
 	DtsPassthrough *EncodingConfigurationsAudioDtsPassthroughAPI
+	// Dts communicates with '/encoding/configurations/audio/dts' endpoints
+	Dts *EncodingConfigurationsAudioDtsAPI
+	// Dtsx communicates with '/encoding/configurations/audio/dtsx' endpoints
+	Dtsx *EncodingConfigurationsAudioDtsxAPI
 	// DolbyAtmos communicates with '/encoding/configurations/audio/dolby-atmos' endpoints
 	DolbyAtmos *EncodingConfigurationsAudioDolbyAtmosAPI
 	// HeAacV1 communicates with '/encoding/configurations/audio/he-aac-v1' endpoints
@@ -53,6 +57,8 @@ func NewEncodingConfigurationsAudioAPIWithClient(apiClient *apiclient.APIClient)
 	a := &EncodingConfigurationsAudioAPI{apiClient: apiClient}
 	a.Aac = NewEncodingConfigurationsAudioAacAPIWithClient(apiClient)
 	a.DtsPassthrough = NewEncodingConfigurationsAudioDtsPassthroughAPIWithClient(apiClient)
+	a.Dts = NewEncodingConfigurationsAudioDtsAPIWithClient(apiClient)
+	a.Dtsx = NewEncodingConfigurationsAudioDtsxAPIWithClient(apiClient)
 	a.DolbyAtmos = NewEncodingConfigurationsAudioDolbyAtmosAPIWithClient(apiClient)
 	a.HeAacV1 = NewEncodingConfigurationsAudioHeAacV1APIWithClient(apiClient)
 	a.HeAacV2 = NewEncodingConfigurationsAudioHeAacV2APIWithClient(apiClient)
