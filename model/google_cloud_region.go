@@ -17,6 +17,7 @@ const (
 	GoogleCloudRegion_AUSTRALIA_SOUTHEAST_1    GoogleCloudRegion = "AUSTRALIA_SOUTHEAST_1"
 	GoogleCloudRegion_EUROPE_NORTH_1           GoogleCloudRegion = "EUROPE_NORTH_1"
 	GoogleCloudRegion_EUROPE_WEST_2            GoogleCloudRegion = "EUROPE_WEST_2"
+	GoogleCloudRegion_EUROPE_WEST_3            GoogleCloudRegion = "EUROPE_WEST_3"
 	GoogleCloudRegion_EUROPE_WEST_4            GoogleCloudRegion = "EUROPE_WEST_4"
 	GoogleCloudRegion_NORTHAMERICA_NORTHEAST_1 GoogleCloudRegion = "NORTHAMERICA_NORTHEAST_1"
 	GoogleCloudRegion_SOUTHAMERICA_EAST_1      GoogleCloudRegion = "SOUTHAMERICA_EAST_1"
