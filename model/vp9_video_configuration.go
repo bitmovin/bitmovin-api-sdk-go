@@ -37,7 +37,7 @@ type Vp9VideoConfiguration struct {
 	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
 	// The mode of the encoding
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
-	// Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values. Valid values [VOD_HIGH_QUALITY, VOD_STANDARD, VOD_SPEED]
+	// Choose from a set of preset configurations tailored for common use cases. Check out [VP9 Presets](https://bitmovin.com/docs/encoding/tutorials/vp9-presets) to see which values get applied by each preset. Explicitly setting a property to a different value will override the preset's value for that property.
 	PresetConfiguration PresetConfiguration `json:"presetConfiguration,omitempty"`
 	// Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
 	Crf *int32 `json:"crf,omitempty"`
