@@ -100,6 +100,17 @@ func (api *EncodingManifestsHlsAPI) Start(manifestId string) (*model.BitmovinRes
 	return &responseModel, err
 }
 
+// Start HLS Manifest Creation
+func (api *EncodingManifestsHlsAPI) StartWithRequestBody(manifestId string, body map[string]interface{}) (*model.BitmovinResponse, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["manifest_id"] = manifestId
+	}
+
+	var responseModel model.BitmovinResponse
+	err := api.apiClient.Post("/encoding/manifests/hls/{manifest_id}/start", &body, &responseModel, reqParams)
+	return &responseModel, err
+}
+
 // Status HLS Manifest Creation Status
 func (api *EncodingManifestsHlsAPI) Status(manifestId string) (*model.ModelTask, error) {
 	reqParams := func(params *apiclient.RequestParams) {

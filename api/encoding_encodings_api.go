@@ -141,7 +141,18 @@ func (api *EncodingEncodingsAPI) Reschedule(encodingId string, rescheduleEncodin
 }
 
 // Start Encoding
-func (api *EncodingEncodingsAPI) Start(encodingId string, startEncodingRequest model.StartEncodingRequest) (*model.BitmovinResponse, error) {
+func (api *EncodingEncodingsAPI) Start(encodingId string) (*model.BitmovinResponse, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["encoding_id"] = encodingId
+	}
+
+	var responseModel model.BitmovinResponse
+	err := api.apiClient.Post("/encoding/encodings/{encoding_id}/start", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
+// Start Encoding
+func (api *EncodingEncodingsAPI) StartWithRequestBody(encodingId string, startEncodingRequest model.StartEncodingRequest) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
 	}

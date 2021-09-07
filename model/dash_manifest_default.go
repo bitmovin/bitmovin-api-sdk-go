@@ -26,6 +26,8 @@ type DashManifestDefault struct {
 	Namespaces []XmlNamespace `json:"namespaces,omitempty"`
 	// List of UTC Timings to use for live streaming
 	UtcTimings []UtcTiming `json:"utcTimings,omitempty"`
+	// The manifest compatibility with the standard DASH Edition.
+	DashEditionCompatibility DashEditionCompatibility `json:"dashEditionCompatibility,omitempty"`
 	// The id of the encoding to create a default manifest from. Required: encodingId or periods
 	EncodingId *string `json:"encodingId,omitempty"`
 	// The version of the default manifest generator
