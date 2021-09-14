@@ -16,4 +16,6 @@ type StartLiveEncodingRequest struct {
 	ManifestGenerator ManifestGenerator `json:"manifestGenerator,omitempty"`
 	// Configuration for auto restarting the live encoding
 	AutoRestartConfiguration *AutoRestartConfiguration `json:"autoRestartConfiguration,omitempty"`
+	// Configuration for auto shutdown of the live encoding
+	AutoShutdownConfiguration *LiveAutoShutdownConfiguration `json:"autoShutdownConfiguration,omitempty"`
 }

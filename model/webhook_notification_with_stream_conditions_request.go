@@ -22,6 +22,8 @@ type WebhookNotificationWithStreamConditionsRequest struct {
 	Category     *string   `json:"category,omitempty"`
 	ResourceType *string   `json:"resourceType,omitempty"`
 	Muted        *bool     `json:"muted,omitempty"`
+	// User-specific meta data. This can hold anything.
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// The destination URL where the webhook data is send to (required)
 	Url        *string            `json:"url,omitempty"`
 	Conditions *AbstractCondition `json:"conditions,omitempty"`
@@ -30,17 +32,18 @@ type WebhookNotificationWithStreamConditionsRequest struct {
 // UnmarshalJSON unmarshals model WebhookNotificationWithStreamConditionsRequest from a JSON structure
 func (m *WebhookNotificationWithStreamConditionsRequest) UnmarshalJSON(raw []byte) error {
 	var data struct {
-		Id           *string         `json:"id"`
-		Resolve      *bool           `json:"resolve"`
-		ResourceId   *string         `json:"resourceId"`
-		TriggeredAt  *DateTime       `json:"triggeredAt"`
-		Type         *string         `json:"type"`
-		EventType    *string         `json:"eventType"`
-		Category     *string         `json:"category"`
-		ResourceType *string         `json:"resourceType"`
-		Muted        *bool           `json:"muted"`
-		Url          *string         `json:"url"`
-		Conditions   json.RawMessage `json:"conditions"`
+		Id           *string                 `json:"id"`
+		Resolve      *bool                   `json:"resolve"`
+		ResourceId   *string                 `json:"resourceId"`
+		TriggeredAt  *DateTime               `json:"triggeredAt"`
+		Type         *string                 `json:"type"`
+		EventType    *string                 `json:"eventType"`
+		Category     *string                 `json:"category"`
+		ResourceType *string                 `json:"resourceType"`
+		Muted        *bool                   `json:"muted"`
+		CustomData   *map[string]interface{} `json:"customData"`
+		Url          *string                 `json:"url"`
+		Conditions   json.RawMessage         `json:"conditions"`
 	}
 
 	buf := bytes.NewBuffer(raw)
@@ -62,6 +65,7 @@ func (m *WebhookNotificationWithStreamConditionsRequest) UnmarshalJSON(raw []byt
 	result.Category = data.Category
 	result.ResourceType = data.ResourceType
 	result.Muted = data.Muted
+	result.CustomData = data.CustomData
 	result.Url = data.Url
 
 	allOfConditions, err := UnmarshalAbstractCondition(bytes.NewBuffer(data.Conditions), bitutils.JSONConsumer())

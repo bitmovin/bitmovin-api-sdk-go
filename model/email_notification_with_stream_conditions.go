@@ -16,30 +16,33 @@ type EmailNotificationWithStreamConditions struct {
 	// Specific resource, e.g. encoding id
 	ResourceId *string `json:"resourceId,omitempty"`
 	// Last time the notification was triggered
-	TriggeredAt  *DateTime          `json:"triggeredAt,omitempty"`
-	Type         *string            `json:"type,omitempty"`
-	EventType    *string            `json:"eventType,omitempty"`
-	Category     *string            `json:"category,omitempty"`
-	ResourceType *string            `json:"resourceType,omitempty"`
-	Muted        *bool              `json:"muted,omitempty"`
-	Emails       []string           `json:"emails,omitempty"`
-	Conditions   *AbstractCondition `json:"conditions,omitempty"`
+	TriggeredAt  *DateTime `json:"triggeredAt,omitempty"`
+	Type         *string   `json:"type,omitempty"`
+	EventType    *string   `json:"eventType,omitempty"`
+	Category     *string   `json:"category,omitempty"`
+	ResourceType *string   `json:"resourceType,omitempty"`
+	Muted        *bool     `json:"muted,omitempty"`
+	// User-specific meta data. This can hold anything.
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
+	Emails     []string                `json:"emails,omitempty"`
+	Conditions *AbstractCondition      `json:"conditions,omitempty"`
 }
 
 // UnmarshalJSON unmarshals model EmailNotificationWithStreamConditions from a JSON structure
 func (m *EmailNotificationWithStreamConditions) UnmarshalJSON(raw []byte) error {
 	var data struct {
-		Id           *string         `json:"id"`
-		Resolve      *bool           `json:"resolve"`
-		ResourceId   *string         `json:"resourceId"`
-		TriggeredAt  *DateTime       `json:"triggeredAt"`
-		Type         *string         `json:"type"`
-		EventType    *string         `json:"eventType"`
-		Category     *string         `json:"category"`
-		ResourceType *string         `json:"resourceType"`
-		Muted        *bool           `json:"muted"`
-		Emails       []string        `json:"emails"`
-		Conditions   json.RawMessage `json:"conditions"`
+		Id           *string                 `json:"id"`
+		Resolve      *bool                   `json:"resolve"`
+		ResourceId   *string                 `json:"resourceId"`
+		TriggeredAt  *DateTime               `json:"triggeredAt"`
+		Type         *string                 `json:"type"`
+		EventType    *string                 `json:"eventType"`
+		Category     *string                 `json:"category"`
+		ResourceType *string                 `json:"resourceType"`
+		Muted        *bool                   `json:"muted"`
+		CustomData   *map[string]interface{} `json:"customData"`
+		Emails       []string                `json:"emails"`
+		Conditions   json.RawMessage         `json:"conditions"`
 	}
 
 	buf := bytes.NewBuffer(raw)
@@ -61,6 +64,7 @@ func (m *EmailNotificationWithStreamConditions) UnmarshalJSON(raw []byte) error 
 	result.Category = data.Category
 	result.ResourceType = data.ResourceType
 	result.Muted = data.Muted
+	result.CustomData = data.CustomData
 	result.Emails = data.Emails
 
 	allOfConditions, err := UnmarshalAbstractCondition(bytes.NewBuffer(data.Conditions), bitutils.JSONConsumer())

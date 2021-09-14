@@ -27,12 +27,29 @@ func NewAccountOrganizationsSubOrganizationsAPIWithClient(apiClient *apiclient.A
 }
 
 // List Organizations under given parent organization
-func (api *AccountOrganizationsSubOrganizationsAPI) List(organizationId string) (*pagination.OrganizationsListPagination, error) {
+func (api *AccountOrganizationsSubOrganizationsAPI) List(organizationId string, queryParams ...func(*AccountOrganizationsSubOrganizationsAPIListQueryParams)) (*pagination.OrganizationsListPagination, error) {
+	queryParameters := &AccountOrganizationsSubOrganizationsAPIListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+	}
+
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["organization_id"] = organizationId
+		params.QueryParams = queryParameters
 	}
 
 	var responseModel pagination.OrganizationsListPagination
 	err := api.apiClient.Get("/account/organizations/{organization_id}/sub-organizations", nil, &responseModel, reqParams)
 	return &responseModel, err
+}
+
+// AccountOrganizationsSubOrganizationsAPIListQueryParams contains all query parameters for the List endpoint
+type AccountOrganizationsSubOrganizationsAPIListQueryParams struct {
+	Offset int32 `query:"offset"`
+	Limit  int32 `query:"limit"`
+}
+
+// Params will return a map of query parameters
+func (q *AccountOrganizationsSubOrganizationsAPIListQueryParams) Params() map[string]string {
+	return apiclient.GetParamsMap(q)
 }

@@ -15,4 +15,6 @@ type Notification struct {
 	Category     *string   `json:"category,omitempty"`
 	ResourceType *string   `json:"resourceType,omitempty"`
 	Muted        *bool     `json:"muted,omitempty"`
+	// User-specific meta data. This can hold anything.
+	CustomData *map[string]interface{} `json:"customData,omitempty"`
 }

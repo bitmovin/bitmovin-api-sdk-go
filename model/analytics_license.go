@@ -22,4 +22,5 @@ type AnalyticsLicense struct {
 	TimeZone *string `json:"timeZone,omitempty"`
 	// Labels for CustomData fields
 	CustomDataFieldLabels *AnalyticsLicenseCustomDataFieldLabels `json:"customDataFieldLabels,omitempty"`
+	Features              *AnalyticsLicenseFeatures              `json:"features,omitempty"`
 }

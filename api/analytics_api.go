@@ -22,6 +22,8 @@ type AnalyticsAPI struct {
 	Queries *AnalyticsQueriesAPI
 	// Licenses communicates with '/analytics/licenses' endpoints
 	Licenses *AnalyticsLicensesAPI
+	// VirtualLicenses communicates with '/analytics/virtual-licenses' endpoints
+	VirtualLicenses *AnalyticsVirtualLicensesAPI
 	// Outputs intermediary API object with no endpoints
 	Outputs *AnalyticsOutputsAPI
 }
@@ -46,6 +48,7 @@ func NewAnalyticsAPIWithClient(apiClient *apiclient.APIClient) *AnalyticsAPI {
 	a.Ads = NewAnalyticsAdsAPIWithClient(apiClient)
 	a.Queries = NewAnalyticsQueriesAPIWithClient(apiClient)
 	a.Licenses = NewAnalyticsLicensesAPIWithClient(apiClient)
+	a.VirtualLicenses = NewAnalyticsVirtualLicensesAPIWithClient(apiClient)
 	a.Outputs = NewAnalyticsOutputsAPIWithClient(apiClient)
 
 	return a
