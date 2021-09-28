@@ -3,6 +3,7 @@ package api
 import (
 	"github.com/bitmovin/bitmovin-api-sdk-go/apiclient"
 	"github.com/bitmovin/bitmovin-api-sdk-go/model"
+	"github.com/bitmovin/bitmovin-api-sdk-go/pagination"
 )
 
 // AnalyticsVirtualLicensesAPI communicates with '/analytics/virtual-licenses' endpoints
@@ -26,12 +27,61 @@ func NewAnalyticsVirtualLicensesAPIWithClient(apiClient *apiclient.APIClient) *A
 	return a
 }
 
-// Create Virtual License
-func (api *AnalyticsVirtualLicensesAPI) Create(virtualLicenseCreateRequest model.VirtualLicenseCreateRequest) (*model.VirtualLicense, error) {
+// Create Analytics Virtual License
+func (api *AnalyticsVirtualLicensesAPI) Create(analyticsVirtualLicenseRequest model.AnalyticsVirtualLicenseRequest) (*model.AnalyticsVirtualLicense, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
 
-	var responseModel model.VirtualLicense
-	err := api.apiClient.Post("/analytics/virtual-licenses", &virtualLicenseCreateRequest, &responseModel, reqParams)
+	var responseModel model.AnalyticsVirtualLicense
+	err := api.apiClient.Post("/analytics/virtual-licenses", &analyticsVirtualLicenseRequest, &responseModel, reqParams)
 	return &responseModel, err
+}
+
+// Delete Analytics Virtual License
+func (api *AnalyticsVirtualLicensesAPI) Delete(virtualLicenseId string) (*model.BitmovinResponse, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["virtual_license_id"] = virtualLicenseId
+	}
+
+	var responseModel model.BitmovinResponse
+	err := api.apiClient.Delete("/analytics/virtual-licenses/{virtual_license_id}", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
+// List Analytics Virtual Licenses
+func (api *AnalyticsVirtualLicensesAPI) List(queryParams ...func(*AnalyticsVirtualLicensesAPIListQueryParams)) (*pagination.AnalyticsVirtualLicensesListPagination, error) {
+	queryParameters := &AnalyticsVirtualLicensesAPIListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+	}
+
+	reqParams := func(params *apiclient.RequestParams) {
+		params.QueryParams = queryParameters
+	}
+
+	var responseModel pagination.AnalyticsVirtualLicensesListPagination
+	err := api.apiClient.Get("/analytics/virtual-licenses", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
+// Update Analytics Virtual License
+func (api *AnalyticsVirtualLicensesAPI) Update(virtualLicenseId string, analyticsVirtualLicenseRequest model.AnalyticsVirtualLicenseRequest) (*model.AnalyticsVirtualLicense, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["virtual_license_id"] = virtualLicenseId
+	}
+
+	var responseModel model.AnalyticsVirtualLicense
+	err := api.apiClient.Put("/analytics/virtual-licenses/{virtual_license_id}", &analyticsVirtualLicenseRequest, &responseModel, reqParams)
+	return &responseModel, err
+}
+
+// AnalyticsVirtualLicensesAPIListQueryParams contains all query parameters for the List endpoint
+type AnalyticsVirtualLicensesAPIListQueryParams struct {
+	Offset int32 `query:"offset"`
+	Limit  int32 `query:"limit"`
+}
+
+// Params will return a map of query parameters
+func (q *AnalyticsVirtualLicensesAPIListQueryParams) Params() map[string]string {
+	return apiclient.GetParamsMap(q)
 }

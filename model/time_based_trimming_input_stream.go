@@ -22,7 +22,7 @@ type TimeBasedTrimmingInputStream struct {
 	InputStreamId *string `json:"inputStreamId,omitempty"`
 	// Defines the offset in seconds at which the encoding should start, beginning at 0. The frame indicated by this value will be included in the encoding
 	Offset *float64 `json:"offset,omitempty"`
-	// Defines how many seconds of the input will be encoded
+	// Defines how many seconds of the input will be encoded. Not defining or setting it to null indicates that the remaining input (considering offset) will be encoded.
 	Duration *float64 `json:"duration,omitempty"`
 }
 

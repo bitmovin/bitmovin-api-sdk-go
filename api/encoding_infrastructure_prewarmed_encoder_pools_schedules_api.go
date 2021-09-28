@@ -63,7 +63,7 @@ func (api *EncodingInfrastructurePrewarmedEncoderPoolsSchedulesAPI) Get(poolId s
 }
 
 // List prewarmed encoder pool schedules
-func (api *EncodingInfrastructurePrewarmedEncoderPoolsSchedulesAPI) List(poolId string, queryParams ...func(*EncodingInfrastructurePrewarmedEncoderPoolsSchedulesAPIListQueryParams)) (*pagination.PrewarmedEncoderPoolsListPagination, error) {
+func (api *EncodingInfrastructurePrewarmedEncoderPoolsSchedulesAPI) List(poolId string, queryParams ...func(*EncodingInfrastructurePrewarmedEncoderPoolsSchedulesAPIListQueryParams)) (*pagination.PrewarmedEncoderPoolSchedulesListPagination, error) {
 	queryParameters := &EncodingInfrastructurePrewarmedEncoderPoolsSchedulesAPIListQueryParams{}
 	for _, queryParam := range queryParams {
 		queryParam(queryParameters)
@@ -74,7 +74,7 @@ func (api *EncodingInfrastructurePrewarmedEncoderPoolsSchedulesAPI) List(poolId 
 		params.QueryParams = queryParameters
 	}
 
-	var responseModel pagination.PrewarmedEncoderPoolsListPagination
+	var responseModel pagination.PrewarmedEncoderPoolSchedulesListPagination
 	err := api.apiClient.Get("/encoding/infrastructure/prewarmed-encoder-pools/{pool_id}/schedules", nil, &responseModel, reqParams)
 	return &responseModel, err
 }

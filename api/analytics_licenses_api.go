@@ -54,8 +54,14 @@ func (api *AnalyticsLicensesAPI) Get(licenseId string) (*model.AnalyticsLicense,
 }
 
 // List Analytics Licenses
-func (api *AnalyticsLicensesAPI) List() (*pagination.AnalyticsLicensesListPagination, error) {
+func (api *AnalyticsLicensesAPI) List(queryParams ...func(*AnalyticsLicensesAPIListQueryParams)) (*pagination.AnalyticsLicensesListPagination, error) {
+	queryParameters := &AnalyticsLicensesAPIListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+	}
+
 	reqParams := func(params *apiclient.RequestParams) {
+		params.QueryParams = queryParameters
 	}
 
 	var responseModel pagination.AnalyticsLicensesListPagination
@@ -72,4 +78,15 @@ func (api *AnalyticsLicensesAPI) Update(licenseId string, analyticsLicenseUpdate
 	var responseModel model.AnalyticsLicense
 	err := api.apiClient.Put("/analytics/licenses/{license_id}", &analyticsLicenseUpdateRequest, &responseModel, reqParams)
 	return &responseModel, err
+}
+
+// AnalyticsLicensesAPIListQueryParams contains all query parameters for the List endpoint
+type AnalyticsLicensesAPIListQueryParams struct {
+	Offset int32 `query:"offset"`
+	Limit  int32 `query:"limit"`
+}
+
+// Params will return a map of query parameters
+func (q *AnalyticsLicensesAPIListQueryParams) Params() map[string]string {
+	return apiclient.GetParamsMap(q)
 }
