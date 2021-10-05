@@ -47,8 +47,16 @@ type StatisticsPerStream struct {
 	// Indicates if an enhanced interlace filter was used.
 	EnhancedDeinterlace *bool `json:"enhancedDeinterlace,omitempty"`
 	// The output minutes multiplicator for streams using an enhanced Deinterlace Filter.
-	EnhancedDeinterlaceMultiplicator *float64                       `json:"enhancedDeinterlaceMultiplicator,omitempty"`
-	NexGuardABWatermarkingType       *NexGuardAbWatermarkingFeature `json:"nexGuardABWatermarkingType,omitempty"`
+	EnhancedDeinterlaceMultiplicator *float64 `json:"enhancedDeinterlaceMultiplicator,omitempty"`
+	// Indicates if the conversion from Dolby Vision to HDR was triggered.
+	DolbyVisionToHdr *bool `json:"dolbyVisionToHdr,omitempty"`
+	// The output minutes multiplicator for streams using the conversion from Dolby Vision to HDR.
+	DolbyVisionToHdrMultiplicator *float64 `json:"dolbyVisionToHdrMultiplicator,omitempty"`
+	// Indicates if the conversion from Dolby Vision to SDR was triggered.
+	DolbyVisionToSdr *bool `json:"dolbyVisionToSdr,omitempty"`
+	// The output minutes multiplicator for streams using the conversion from Dolby Vision to SDR.
+	DolbyVisionToSdrMultiplicator *float64                       `json:"dolbyVisionToSdrMultiplicator,omitempty"`
+	NexGuardABWatermarkingType    *NexGuardAbWatermarkingFeature `json:"nexGuardABWatermarkingType,omitempty"`
 	// The output minutes multiplicator for streams using a NexGuard A/B Watermarking.
 	NexGuardABWatermarkingMultiplicator *float64            `json:"nexGuardABWatermarkingMultiplicator,omitempty"`
 	PixelFormatBitDepth                 PixelFormatBitDepth `json:"pixelFormatBitDepth,omitempty"`

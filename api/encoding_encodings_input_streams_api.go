@@ -30,6 +30,8 @@ type EncodingEncodingsInputStreamsAPI struct {
 	Captions *EncodingEncodingsInputStreamsCaptionsAPI
 	// DolbyAtmos communicates with '/encoding/encodings/{encoding_id}/input-streams/dolby-atmos' endpoints
 	DolbyAtmos *EncodingEncodingsInputStreamsDolbyAtmosAPI
+	// DolbyVision communicates with '/encoding/encodings/{encoding_id}/input-streams/dolby-vision' endpoints
+	DolbyVision *EncodingEncodingsInputStreamsDolbyVisionAPI
 }
 
 // NewEncodingEncodingsInputStreamsAPI constructor for EncodingEncodingsInputStreamsAPI that takes options as argument
@@ -55,6 +57,7 @@ func NewEncodingEncodingsInputStreamsAPIWithClient(apiClient *apiclient.APIClien
 	a.Subtitles = NewEncodingEncodingsInputStreamsSubtitlesAPIWithClient(apiClient)
 	a.Captions = NewEncodingEncodingsInputStreamsCaptionsAPIWithClient(apiClient)
 	a.DolbyAtmos = NewEncodingEncodingsInputStreamsDolbyAtmosAPIWithClient(apiClient)
+	a.DolbyVision = NewEncodingEncodingsInputStreamsDolbyVisionAPIWithClient(apiClient)
 
 	return a
 }

@@ -48,6 +48,17 @@ func (api *AnalyticsVirtualLicensesAPI) Delete(virtualLicenseId string) (*model.
 	return &responseModel, err
 }
 
+// Get Analytics Virtual License
+func (api *AnalyticsVirtualLicensesAPI) Get(virtualLicenseId string) (*model.AnalyticsVirtualLicense, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["virtual_license_id"] = virtualLicenseId
+	}
+
+	var responseModel model.AnalyticsVirtualLicense
+	err := api.apiClient.Get("/analytics/virtual-licenses/{virtual_license_id}", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
 // List Analytics Virtual Licenses
 func (api *AnalyticsVirtualLicensesAPI) List(queryParams ...func(*AnalyticsVirtualLicensesAPIListQueryParams)) (*pagination.AnalyticsVirtualLicensesListPagination, error) {
 	queryParameters := &AnalyticsVirtualLicensesAPIListQueryParams{}

@@ -166,6 +166,13 @@ func unmarshalInputStream(data []byte, consumer bitutils.Consumer) (InputStream,
 		}
 		return result, nil
 
+	case "DOLBY_VISION":
+		var result DolbyVisionInputStream
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}
