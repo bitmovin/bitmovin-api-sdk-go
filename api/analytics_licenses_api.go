@@ -70,13 +70,13 @@ func (api *AnalyticsLicensesAPI) List(queryParams ...func(*AnalyticsLicensesAPIL
 }
 
 // Update Analytics License
-func (api *AnalyticsLicensesAPI) Update(licenseId string, analyticsLicenseUpdateRequest model.AnalyticsLicenseUpdateRequest) (*model.AnalyticsLicense, error) {
+func (api *AnalyticsLicensesAPI) Update(licenseId string, analyticsLicense model.AnalyticsLicense) (*model.AnalyticsLicense, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["license_id"] = licenseId
 	}
 
 	var responseModel model.AnalyticsLicense
-	err := api.apiClient.Put("/analytics/licenses/{license_id}", &analyticsLicenseUpdateRequest, &responseModel, reqParams)
+	err := api.apiClient.Put("/analytics/licenses/{license_id}", &analyticsLicense, &responseModel, reqParams)
 	return &responseModel, err
 }
 

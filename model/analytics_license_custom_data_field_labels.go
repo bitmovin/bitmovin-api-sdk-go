@@ -12,4 +12,8 @@ type AnalyticsLicenseCustomDataFieldLabels struct {
 	CustomData4 *string `json:"customData4,omitempty"`
 	// Custom Data 5
 	CustomData5 *string `json:"customData5,omitempty"`
+	// Custom Data 6
+	CustomData6 *string `json:"customData6,omitempty"`
+	// Custom Data 7
+	CustomData7 *string `json:"customData7,omitempty"`
 }
