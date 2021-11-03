@@ -26,7 +26,7 @@ func NewNotificationsWebhooksEncodingManifestFinishedAPIWithClient(apiClient *ap
 	return a
 }
 
-// Create Add Manifest Finished Successfully Webhook (All Manifests)
+// Create Add &#39;Manifest Finished Successfully&#39; Webhook (All Manifests)
 func (api *NotificationsWebhooksEncodingManifestFinishedAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -36,7 +36,7 @@ func (api *NotificationsWebhooksEncodingManifestFinishedAPI) Create(webhook mode
 	return &responseModel, err
 }
 
-// CreateByManifestId Add Manifest Finished Successfully Webhook Notification (Specific Manifest)
+// CreateByManifestId Add &#39;Manifest Finished Successfully&#39; Webhook Notification (Specific Manifest)
 func (api *NotificationsWebhooksEncodingManifestFinishedAPI) CreateByManifestId(manifestId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId

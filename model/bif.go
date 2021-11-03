@@ -18,7 +18,7 @@ type Bif struct {
 	Height *int32 `json:"height,omitempty"`
 	// Width of one thumbnail. Roku recommends a width of 240 for SD and 320 for HD.
 	Width *int32 `json:"width,omitempty"`
-	// Distance in seconds between a screenshot
+	// Distance in seconds between a screenshot (required)
 	Distance *float64 `json:"distance,omitempty"`
 	// Filename of the Bif image. (required)
 	Filename *string          `json:"filename,omitempty"`

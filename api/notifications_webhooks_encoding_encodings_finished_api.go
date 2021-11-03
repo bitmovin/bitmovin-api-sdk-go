@@ -32,7 +32,7 @@ func NewNotificationsWebhooksEncodingEncodingsFinishedAPIWithClient(apiClient *a
 	return a
 }
 
-// Create Add Encoding Finished Webhook
+// Create Add &#39;Encoding Finished&#39; Webhook
 func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -42,7 +42,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) Create(webhook mod
 	return &responseModel, err
 }
 
-// CreateByEncodingId Add Encoding Finished Webhook for specific Encoding Resource.
+// CreateByEncodingId Add &#39;Encoding Finished&#39; Webhook for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) CreateByEncodingId(encodingId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -53,7 +53,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) CreateByEncodingId
 	return &responseModel, err
 }
 
-// DeleteByEncodingIdAndWebhookId Delete Encoding Finished Webhook for specific Encoding Resource
+// DeleteByEncodingIdAndWebhookId Delete &#39;Encoding Finished&#39; Webhook for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) DeleteByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -65,7 +65,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) DeleteByEncodingId
 	return &responseModel, err
 }
 
-// DeleteByWebhookId Delete Encoding Finished Webhook
+// DeleteByWebhookId Delete &#39;Encoding Finished&#39; Webhook
 func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) DeleteByWebhookId(webhookId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["webhook_id"] = webhookId
@@ -76,7 +76,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) DeleteByWebhookId(
 	return &responseModel, err
 }
 
-// GetByEncodingIdAndWebhookId Encoding Finished Webhook Details for specific Encoding Resource
+// GetByEncodingIdAndWebhookId &#39;Encoding Finished&#39; Webhook Details for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) GetByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -88,7 +88,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) GetByEncodingIdAnd
 	return &responseModel, err
 }
 
-// GetByWebhookId Encoding Finished Webhook Details
+// GetByWebhookId &#39;Encoding Finished&#39; Webhook Details
 func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) GetByWebhookId(webhookId string) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["webhook_id"] = webhookId
@@ -99,7 +99,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) GetByWebhookId(web
 	return &responseModel, err
 }
 
-// List Encoding Finished Webhooks
+// List &#39;Encoding Finished&#39; Webhooks
 func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) List(queryParams ...func(*NotificationsWebhooksEncodingEncodingsFinishedAPIListQueryParams)) (*pagination.WebhooksListPagination, error) {
 	queryParameters := &NotificationsWebhooksEncodingEncodingsFinishedAPIListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -115,7 +115,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) List(queryParams .
 	return &responseModel, err
 }
 
-// ListByEncodingId List Encoding Finished Webhooks for specific Encoding Resource
+// ListByEncodingId List &#39;Encoding Finished&#39; Webhooks for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) ListByEncodingId(encodingId string, queryParams ...func(*NotificationsWebhooksEncodingEncodingsFinishedAPIListByEncodingIdQueryParams)) (*pagination.WebhooksListByEncodingIdPagination, error) {
 	queryParameters := &NotificationsWebhooksEncodingEncodingsFinishedAPIListByEncodingIdQueryParams{}
 	for _, queryParam := range queryParams {

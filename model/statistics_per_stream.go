@@ -55,8 +55,12 @@ type StatisticsPerStream struct {
 	// Indicates if the conversion from Dolby Vision to SDR was triggered.
 	DolbyVisionToSdr *bool `json:"dolbyVisionToSdr,omitempty"`
 	// The output minutes multiplicator for streams using the conversion from Dolby Vision to SDR.
-	DolbyVisionToSdrMultiplicator *float64                       `json:"dolbyVisionToSdrMultiplicator,omitempty"`
-	NexGuardABWatermarkingType    *NexGuardAbWatermarkingFeature `json:"nexGuardABWatermarkingType,omitempty"`
+	DolbyVisionToSdrMultiplicator *float64 `json:"dolbyVisionToSdrMultiplicator,omitempty"`
+	// Indicates if the conversion from HDR10/HLG to SDR was triggered.
+	HdrHlgToSdr *bool `json:"hdrHlgToSdr,omitempty"`
+	// The output minutes multiplicator for streams using the conversion from HDR10/HLG to SDR.
+	HdrHlgToSdrMultiplicator   *float64                       `json:"hdrHlgToSdrMultiplicator,omitempty"`
+	NexGuardABWatermarkingType *NexGuardAbWatermarkingFeature `json:"nexGuardABWatermarkingType,omitempty"`
 	// The output minutes multiplicator for streams using a NexGuard A/B Watermarking.
 	NexGuardABWatermarkingMultiplicator *float64            `json:"nexGuardABWatermarkingMultiplicator,omitempty"`
 	PixelFormatBitDepth                 PixelFormatBitDepth `json:"pixelFormatBitDepth,omitempty"`

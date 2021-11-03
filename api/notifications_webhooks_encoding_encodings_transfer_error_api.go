@@ -32,7 +32,7 @@ func NewNotificationsWebhooksEncodingEncodingsTransferErrorAPIWithClient(apiClie
 	return a
 }
 
-// Create Add Encoding Transfer Error Webhook
+// Create Add &#39;Encoding Transfer Error&#39; Webhook
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -42,7 +42,7 @@ func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) Create(webhoo
 	return &responseModel, err
 }
 
-// CreateByEncodingId Add Encoding Transfer Error Webhook for specific Encoding Resource
+// CreateByEncodingId Add &#39;Encoding Transfer Error&#39; Webhook for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) CreateByEncodingId(encodingId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -53,7 +53,7 @@ func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) CreateByEncod
 	return &responseModel, err
 }
 
-// DeleteByEncodingIdAndWebhookId Delete Encoding Transfer Error Webhook for specific Encoding Resource
+// DeleteByEncodingIdAndWebhookId Delete &#39;Encoding Transfer Error&#39; Webhook for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) DeleteByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -65,7 +65,7 @@ func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) DeleteByEncod
 	return &responseModel, err
 }
 
-// DeleteByWebhookId Delete Encoding Transfer Error Webhook
+// DeleteByWebhookId Delete &#39;Encoding Transfer Error&#39; Webhook
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) DeleteByWebhookId(webhookId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["webhook_id"] = webhookId
@@ -76,7 +76,7 @@ func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) DeleteByWebho
 	return &responseModel, err
 }
 
-// GetByEncodingIdAndWebhookId Encoding Transfer Error Webhook Details for specific Encoding Resource
+// GetByEncodingIdAndWebhookId &#39;Encoding Transfer Error&#39; Webhook Details for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) GetByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -88,7 +88,7 @@ func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) GetByEncoding
 	return &responseModel, err
 }
 
-// GetByWebhookId Encoding Transfer Error Webhook Details
+// GetByWebhookId &#39;Encoding Transfer Error&#39; Webhook Details
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) GetByWebhookId(webhookId string) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["webhook_id"] = webhookId
@@ -99,7 +99,7 @@ func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) GetByWebhookI
 	return &responseModel, err
 }
 
-// List Encoding Transfer-Error Webhooks
+// List &#39;Encoding Transfer Error&#39; Webhooks
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) List(queryParams ...func(*NotificationsWebhooksEncodingEncodingsTransferErrorAPIListQueryParams)) (*pagination.WebhooksListPagination, error) {
 	queryParameters := &NotificationsWebhooksEncodingEncodingsTransferErrorAPIListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -115,7 +115,7 @@ func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) List(queryPar
 	return &responseModel, err
 }
 
-// ListByEncodingId List Encoding Transfer Error Webhooks for specific Encoding Resource
+// ListByEncodingId List &#39;Encoding Transfer Error&#39; Webhooks for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) ListByEncodingId(encodingId string, queryParams ...func(*NotificationsWebhooksEncodingEncodingsTransferErrorAPIListByEncodingIdQueryParams)) (*pagination.WebhooksListByEncodingIdPagination, error) {
 	queryParameters := &NotificationsWebhooksEncodingEncodingsTransferErrorAPIListByEncodingIdQueryParams{}
 	for _, queryParam := range queryParams {

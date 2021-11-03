@@ -26,7 +26,7 @@ func NewNotificationsWebhooksEncodingManifestErrorAPIWithClient(apiClient *apicl
 	return a
 }
 
-// Create Add Manifest Error Webhook (All Manifests)
+// Create Add &#39;Manifest Error&#39; Webhook (All Manifests)
 func (api *NotificationsWebhooksEncodingManifestErrorAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -36,7 +36,7 @@ func (api *NotificationsWebhooksEncodingManifestErrorAPI) Create(webhook model.W
 	return &responseModel, err
 }
 
-// CreateByManifestId Add Manifest Error Webhook Notification (Specific Manifest)
+// CreateByManifestId Add &#39;Manifest Error&#39; Webhook Notification (Specific Manifest)
 func (api *NotificationsWebhooksEncodingManifestErrorAPI) CreateByManifestId(manifestId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -47,7 +47,7 @@ func (api *NotificationsWebhooksEncodingManifestErrorAPI) CreateByManifestId(man
 	return &responseModel, err
 }
 
-// Delete Manifest Error Webhook
+// Delete &#39;Manifest Error&#39; Webhook
 func (api *NotificationsWebhooksEncodingManifestErrorAPI) Delete(notificationId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["notification_id"] = notificationId
@@ -58,7 +58,7 @@ func (api *NotificationsWebhooksEncodingManifestErrorAPI) Delete(notificationId 
 	return &responseModel, err
 }
 
-// Update Replace Manifest Error Webhook Notification
+// Update Replace &#39;Manifest Error&#39; Webhook Notification
 func (api *NotificationsWebhooksEncodingManifestErrorAPI) Update(notificationId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["notification_id"] = notificationId

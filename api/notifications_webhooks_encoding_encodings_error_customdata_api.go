@@ -26,7 +26,7 @@ func NewNotificationsWebhooksEncodingEncodingsErrorCustomdataAPIWithClient(apiCl
 	return a
 }
 
-// GetCustomDataByEncodingIdAndWebhookId Encoding Error Webhook Custom Data for specific Encoding Resource
+// GetCustomDataByEncodingIdAndWebhookId &#39;Encoding Error&#39; Webhook Custom Data for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsErrorCustomdataAPI) GetCustomDataByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -38,7 +38,7 @@ func (api *NotificationsWebhooksEncodingEncodingsErrorCustomdataAPI) GetCustomDa
 	return &responseModel, err
 }
 
-// GetCustomDataByWebhookId Encoding Error Webhook Custom Data
+// GetCustomDataByWebhookId &#39;Encoding Error&#39; Webhook Custom Data
 func (api *NotificationsWebhooksEncodingEncodingsErrorCustomdataAPI) GetCustomDataByWebhookId(webhookId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["webhook_id"] = webhookId
