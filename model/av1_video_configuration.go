@@ -36,55 +36,7 @@ type Av1VideoConfiguration struct {
 	// Specifies a display aspect ratio (DAR) to be enforced. The sample aspect ratio (SAR) will be adjusted accordingly. If set then sampleAspectRatioNumerator and sampleAspectRatioDenominator are not allowed.
 	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
 	// The mode of the encoding
-	EncodingMode      EncodingMode         `json:"encodingMode,omitempty"`
-	KeyPlacementMode  Av1KeyPlacementMode  `json:"keyPlacementMode,omitempty"`
-	AdaptiveQuantMode Av1AdaptiveQuantMode `json:"adaptiveQuantMode,omitempty"`
-	// Number of frames to look ahead for alternate reference frame selection
-	LagInFrames *int32 `json:"lagInFrames,omitempty"`
-	// Minimum (best quality) quantizer
-	MinQ *int32 `json:"minQ,omitempty"`
-	// Maximum (worst quality) quantizer
-	MaxQ *int32 `json:"maxQ,omitempty"`
-	// Rate control adaptation undershoot control
-	UndershootPct *int32 `json:"undershootPct,omitempty"`
-	// Rate control adaptation overshoot control
-	OvershootPct *int32 `json:"overshootPct,omitempty"`
-	// Decoder buffer size in milliseconds
-	ClientBufferSize *int64 `json:"clientBufferSize,omitempty"`
-	// Decoder buffer initial size in milliseconds
-	ClientInitialBufferSize *int64 `json:"clientInitialBufferSize,omitempty"`
-	// Decoder buffer optimal size in milliseconds
-	ClientOptimalBufferSize *int64 `json:"clientOptimalBufferSize,omitempty"`
-	// Number of tile columns to use, log2
-	TileColumns *int32 `json:"tileColumns,omitempty"`
-	// Number of tile rows to use, log2
-	TileRows *int32 `json:"tileRows,omitempty"`
-	// Enable automatic set and use alf frames
-	IsAutomaticAltRefFramesEnabled *bool `json:"isAutomaticAltRefFramesEnabled,omitempty"`
-	// The max number of frames to create arf
-	ArnrMaxFrames *int32 `json:"arnrMaxFrames,omitempty"`
-	// The filter strength for the arf
-	ArnrStrength *int32 `json:"arnrStrength,omitempty"`
-	// Maximum data rate for intra frames, expressed as a percentage of the average per-frame bitrate. Default value 0 meaning unlimited
-	MaxIntraRate *int64 `json:"maxIntraRate,omitempty"`
-	// Lossless encoding mode
-	IsLossless *bool `json:"isLossless,omitempty"`
-	// Enable frame parallel decoding feature
-	IsFrameParallel *bool `json:"isFrameParallel,omitempty"`
-	// Sets the sharpness
-	Sharpness *int32 `json:"sharpness,omitempty"`
-	// Enable quality boost by lowering frame level Q periodically
-	IsFrameBoostEnabled *bool `json:"isFrameBoostEnabled,omitempty"`
-	// Enable noise sensitivity on Y channel
-	NoiseSensitivity *bool `json:"noiseSensitivity,omitempty"`
-	// Minimum interval between GF/ARF frames
-	MinGfInterval *int32 `json:"minGfInterval,omitempty"`
-	// Maximum interval between GF/ARF frames
-	MaxGfInterval *int32 `json:"maxGfInterval,omitempty"`
-	// Maximum number of tile groups
-	NumTileGroups *int32 `json:"numTileGroups,omitempty"`
-	// Maximum number of bytes in a tile group
-	MtuSize *int32 `json:"mtuSize,omitempty"`
+	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
 }
 
 func (m Av1VideoConfiguration) CodecConfigType() CodecConfigType {

@@ -39,6 +39,8 @@ type H264VideoConfiguration struct {
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
 	// Choose from a set of preset configurations tailored for common use cases. Check out [H264 Presets](https://bitmovin.com/docs/encoding/tutorials/h264-presets) to see which values get applied by each preset. Explicitly setting a property to a different value will override the preset's value for that property.
 	PresetConfiguration PresetConfiguration `json:"presetConfiguration,omitempty"`
+	// Automatically configures the H264 Video Codec to be compatible with the given SDR format. Bitmovin recommends to use the dynamic range format together with a preset configuration to achieve good results. Explicitly configured properties will take precedence over dynamic range format settings, which in turn will take precedence over preset configurations.
+	DynamicRangeFormat H264DynamicRangeFormat `json:"dynamicRangeFormat,omitempty"`
 	// Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
 	Crf *float64 `json:"crf,omitempty"`
 	// When setting a profile, all other settings must not exceed the limits which are defined in the profile. Otherwise, a higher profile may be automatically chosen. (required)

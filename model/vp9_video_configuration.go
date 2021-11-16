@@ -39,6 +39,8 @@ type Vp9VideoConfiguration struct {
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
 	// Choose from a set of preset configurations tailored for common use cases. Check out [VP9 Presets](https://bitmovin.com/docs/encoding/tutorials/vp9-presets) to see which values get applied by each preset. Explicitly setting a property to a different value will override the preset's value for that property.
 	PresetConfiguration PresetConfiguration `json:"presetConfiguration,omitempty"`
+	// Automatically configures the VP9 Video Codec to be compatible with the given SDR/HLG format. Bitmovin recommends to use the dynamic range format together with a preset configuration to achieve good results. Explicitly configured properties will take precedence over dynamic range format settings, which in turn will take precedence over preset configurations.
+	DynamicRangeFormat Vp9DynamicRangeFormat `json:"dynamicRangeFormat,omitempty"`
 	// Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
 	Crf *int32 `json:"crf,omitempty"`
 	// Number of frames to look ahead for alternate reference frame selection.

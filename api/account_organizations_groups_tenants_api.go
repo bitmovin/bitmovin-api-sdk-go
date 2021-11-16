@@ -66,13 +66,30 @@ func (api *AccountOrganizationsGroupsTenantsAPI) Get(organizationId string, grou
 }
 
 // List Tenants
-func (api *AccountOrganizationsGroupsTenantsAPI) List(organizationId string, groupId string) (*pagination.TenantsListPagination, error) {
+func (api *AccountOrganizationsGroupsTenantsAPI) List(organizationId string, groupId string, queryParams ...func(*AccountOrganizationsGroupsTenantsAPIListQueryParams)) (*pagination.TenantsListPagination, error) {
+	queryParameters := &AccountOrganizationsGroupsTenantsAPIListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+	}
+
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["organization_id"] = organizationId
 		params.PathParams["group_id"] = groupId
+		params.QueryParams = queryParameters
 	}
 
 	var responseModel pagination.TenantsListPagination
 	err := api.apiClient.Get("/account/organizations/{organization_id}/groups/{group_id}/tenants", nil, &responseModel, reqParams)
 	return &responseModel, err
+}
+
+// AccountOrganizationsGroupsTenantsAPIListQueryParams contains all query parameters for the List endpoint
+type AccountOrganizationsGroupsTenantsAPIListQueryParams struct {
+	Offset int32 `query:"offset"`
+	Limit  int32 `query:"limit"`
+}
+
+// Params will return a map of query parameters
+func (q *AccountOrganizationsGroupsTenantsAPIListQueryParams) Params() map[string]string {
+	return apiclient.GetParamsMap(q)
 }
