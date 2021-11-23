@@ -10,4 +10,6 @@ type AdaptationSet struct {
 	Roles []AdaptationSetRole `json:"roles,omitempty"`
 	// Provide signaling of CEA 607 and CEA 708
 	Accessibilities []Accessibility `json:"accessibilities,omitempty"`
+	// List of labels
+	Labels []Label `json:"labels,omitempty"`
 }

@@ -10,6 +10,8 @@ type SubtitleAdaptationSet struct {
 	Roles []AdaptationSetRole `json:"roles,omitempty"`
 	// Provide signaling of CEA 607 and CEA 708
 	Accessibilities []Accessibility `json:"accessibilities,omitempty"`
+	// List of labels
+	Labels []Label `json:"labels,omitempty"`
 	// ISO 639-1 (Alpha-2) code identifying the language of the subtitle adaptation set (required)
 	Lang *string `json:"lang,omitempty"`
 }

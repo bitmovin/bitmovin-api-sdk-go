@@ -27,7 +27,7 @@ func NewEncodingManifestsHlsMediaCustomTagsAPIWithClient(apiClient *apiclient.AP
 	return a
 }
 
-// Create Add Custom Tag to Audio Media
+// Create Add Custom Tag to a Audio Media or a Subtitle media
 func (api *EncodingManifestsHlsMediaCustomTagsAPI) Create(manifestId string, mediaId string, customTag model.CustomTag) (*model.CustomTag, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -65,7 +65,7 @@ func (api *EncodingManifestsHlsMediaCustomTagsAPI) Get(manifestId string, mediaI
 	return &responseModel, err
 }
 
-// List all Custom Tags of a Audio media
+// List all Custom Tags of a Audio media or a Subtitle media
 func (api *EncodingManifestsHlsMediaCustomTagsAPI) List(manifestId string, mediaId string, queryParams ...func(*EncodingManifestsHlsMediaCustomTagsAPIListQueryParams)) (*pagination.CustomTagsListPagination, error) {
 	queryParameters := &EncodingManifestsHlsMediaCustomTagsAPIListQueryParams{}
 	for _, queryParam := range queryParams {

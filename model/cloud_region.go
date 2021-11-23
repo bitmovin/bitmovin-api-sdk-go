@@ -45,7 +45,6 @@ const (
 	CloudRegion_AZURE_AUSTRALIA_SOUTHEAST       CloudRegion = "AZURE_AUSTRALIA_SOUTHEAST"
 	CloudRegion_AZURE_AUSTRALIA_EAST            CloudRegion = "AZURE_AUSTRALIA_EAST"
 	CloudRegion_AZURE_GERMANY_WESTCENTRAL       CloudRegion = "AZURE_GERMANY_WESTCENTRAL"
-	CloudRegion_AZURE_UAE_CENTRAL               CloudRegion = "AZURE_UAE_CENTRAL"
 	CloudRegion_AZURE_UAE_NORTH                 CloudRegion = "AZURE_UAE_NORTH"
 	CloudRegion_NORTH_AMERICA                   CloudRegion = "NORTH_AMERICA"
 	CloudRegion_SOUTH_AMERICA                   CloudRegion = "SOUTH_AMERICA"
