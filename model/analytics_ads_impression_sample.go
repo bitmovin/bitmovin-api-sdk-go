@@ -120,6 +120,42 @@ type AnalyticsAdsImpressionSample struct {
 	CustomData6 *string `json:"custom_data_6,omitempty"`
 	// Free form data set via the customData7 field in the analytics collector configuration
 	CustomData7 *string `json:"custom_data_7,omitempty"`
+	// Free form data set via the customData8 field in the analytics collector configuration
+	CustomData8 *string `json:"custom_data_8,omitempty"`
+	// Free form data set via the customData9 field in the analytics collector configuration
+	CustomData9 *string `json:"custom_data_9,omitempty"`
+	// Free form data set via the customData10 field in the analytics collector configuration
+	CustomData10 *string `json:"custom_data_10,omitempty"`
+	// Free form data set via the customData11 field in the analytics collector configuration
+	CustomData11 *string `json:"custom_data_11,omitempty"`
+	// Free form data set via the customData12 field in the analytics collector configuration
+	CustomData12 *string `json:"custom_data_12,omitempty"`
+	// Free form data set via the customData13 field in the analytics collector configuration
+	CustomData13 *string `json:"custom_data_13,omitempty"`
+	// Free form data set via the customData14 field in the analytics collector configuration
+	CustomData14 *string `json:"custom_data_14,omitempty"`
+	// Free form data set via the customData15 field in the analytics collector configuration
+	CustomData15 *string `json:"custom_data_15,omitempty"`
+	// Free form data set via the customData16 field in the analytics collector configuration
+	CustomData16 *string `json:"custom_data_16,omitempty"`
+	// Free form data set via the customData17 field in the analytics collector configuration
+	CustomData17 *string `json:"custom_data_17,omitempty"`
+	// Free form data set via the customData18 field in the analytics collector configuration
+	CustomData18 *string `json:"custom_data_18,omitempty"`
+	// Free form data set via the customData19 field in the analytics collector configuration
+	CustomData19 *string `json:"custom_data_19,omitempty"`
+	// Free form data set via the customData20 field in the analytics collector configuration
+	CustomData20 *string `json:"custom_data_20,omitempty"`
+	// Free form data set via the customData21 field in the analytics collector configuration
+	CustomData21 *string `json:"custom_data_21,omitempty"`
+	// Free form data set via the customData22 field in the analytics collector configuration
+	CustomData22 *string `json:"custom_data_22,omitempty"`
+	// Free form data set via the customData23 field in the analytics collector configuration
+	CustomData23 *string `json:"custom_data_23,omitempty"`
+	// Free form data set via the customData24 field in the analytics collector configuration
+	CustomData24 *string `json:"custom_data_24,omitempty"`
+	// Free form data set via the customData25 field in the analytics collector configuration
+	CustomData25 *string `json:"custom_data_25,omitempty"`
 	// Custom user ID
 	CustomUserId *string `json:"custom_user_id,omitempty"`
 	// Deal id
