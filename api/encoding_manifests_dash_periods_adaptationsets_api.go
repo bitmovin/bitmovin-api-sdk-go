@@ -2,12 +2,15 @@ package api
 
 import (
 	"github.com/bitmovin/bitmovin-api-sdk-go/apiclient"
+	"github.com/bitmovin/bitmovin-api-sdk-go/pagination"
 )
 
-// EncodingManifestsDashPeriodsAdaptationsetsAPI intermediary API object with no endpoints
+// EncodingManifestsDashPeriodsAdaptationsetsAPI communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets' endpoints
 type EncodingManifestsDashPeriodsAdaptationsetsAPI struct {
 	apiClient *apiclient.APIClient
 
+	// Type communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/type' endpoints
+	Type *EncodingManifestsDashPeriodsAdaptationsetsTypeAPI
 	// Audio communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/audio' endpoints
 	Audio *EncodingManifestsDashPeriodsAdaptationsetsAudioAPI
 	// Video communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/video' endpoints
@@ -35,6 +38,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsAPI(options ...apiclient.APICl
 // NewEncodingManifestsDashPeriodsAdaptationsetsAPIWithClient constructor for EncodingManifestsDashPeriodsAdaptationsetsAPI that takes an APIClient as argument
 func NewEncodingManifestsDashPeriodsAdaptationsetsAPIWithClient(apiClient *apiclient.APIClient) *EncodingManifestsDashPeriodsAdaptationsetsAPI {
 	a := &EncodingManifestsDashPeriodsAdaptationsetsAPI{apiClient: apiClient}
+	a.Type = NewEncodingManifestsDashPeriodsAdaptationsetsTypeAPIWithClient(apiClient)
 	a.Audio = NewEncodingManifestsDashPeriodsAdaptationsetsAudioAPIWithClient(apiClient)
 	a.Video = NewEncodingManifestsDashPeriodsAdaptationsetsVideoAPIWithClient(apiClient)
 	a.Subtitle = NewEncodingManifestsDashPeriodsAdaptationsetsSubtitleAPIWithClient(apiClient)
@@ -43,4 +47,33 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsAPIWithClient(apiClient *apicl
 	a.Contentprotection = NewEncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPIWithClient(apiClient)
 
 	return a
+}
+
+// List all AdaptationSets
+func (api *EncodingManifestsDashPeriodsAdaptationsetsAPI) List(manifestId string, periodId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsAPIListQueryParams)) (*pagination.AdaptationSetsListPagination, error) {
+	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsAPIListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+	}
+
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["manifest_id"] = manifestId
+		params.PathParams["period_id"] = periodId
+		params.QueryParams = queryParameters
+	}
+
+	var responseModel pagination.AdaptationSetsListPagination
+	err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
+// EncodingManifestsDashPeriodsAdaptationsetsAPIListQueryParams contains all query parameters for the List endpoint
+type EncodingManifestsDashPeriodsAdaptationsetsAPIListQueryParams struct {
+	Offset int32 `query:"offset"`
+	Limit  int32 `query:"limit"`
+}
+
+// Params will return a map of query parameters
+func (q *EncodingManifestsDashPeriodsAdaptationsetsAPIListQueryParams) Params() map[string]string {
+	return apiclient.GetParamsMap(q)
 }

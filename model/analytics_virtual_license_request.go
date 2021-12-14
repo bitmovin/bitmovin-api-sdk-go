@@ -8,4 +8,6 @@ type AnalyticsVirtualLicenseRequest struct {
 	Timezone *string `json:"timezone,omitempty"`
 	// List of Analytics Licenses (required)
 	Licenses []AnalyticsVirtualLicenseLicensesListItem `json:"licenses,omitempty"`
+	// Labels for Custom Data fields
+	CustomDataFieldLabels *AnalyticsLicenseCustomDataFieldLabels `json:"customDataFieldLabels,omitempty"`
 }

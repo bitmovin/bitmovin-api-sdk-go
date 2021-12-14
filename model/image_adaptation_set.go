@@ -1,5 +1,9 @@
 package model
 
+import (
+	"encoding/json"
+)
+
 // ImageAdaptationSet model
 type ImageAdaptationSet struct {
 	// Id of the resource (required)
@@ -12,4 +16,19 @@ type ImageAdaptationSet struct {
 	Accessibilities []Accessibility `json:"accessibilities,omitempty"`
 	// List of labels
 	Labels []Label `json:"labels,omitempty"`
+}
+
+func (m ImageAdaptationSet) AdaptationSetType() AdaptationSetType {
+	return AdaptationSetType_IMAGE
+}
+func (m ImageAdaptationSet) MarshalJSON() ([]byte, error) {
+	type M ImageAdaptationSet
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "IMAGE"
+
+	return json.Marshal(x)
 }

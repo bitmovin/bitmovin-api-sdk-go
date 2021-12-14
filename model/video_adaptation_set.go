@@ -1,5 +1,9 @@
 package model
 
+import (
+	"encoding/json"
+)
+
 // VideoAdaptationSet model
 type VideoAdaptationSet struct {
 	// Id of the resource (required)
@@ -12,4 +16,19 @@ type VideoAdaptationSet struct {
 	Accessibilities []Accessibility `json:"accessibilities,omitempty"`
 	// List of labels
 	Labels []Label `json:"labels,omitempty"`
+}
+
+func (m VideoAdaptationSet) AdaptationSetType() AdaptationSetType {
+	return AdaptationSetType_VIDEO
+}
+func (m VideoAdaptationSet) MarshalJSON() ([]byte, error) {
+	type M VideoAdaptationSet
+	x := struct {
+		Type string `json:"type"`
+		M
+	}{M: M(m)}
+
+	x.Type = "VIDEO"
+
+	return json.Marshal(x)
 }

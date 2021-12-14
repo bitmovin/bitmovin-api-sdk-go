@@ -12,7 +12,7 @@ type EncodingManifestsDashPeriodsAPI struct {
 
 	// CustomXmlElements communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/custom-xml-elements' endpoints
 	CustomXmlElements *EncodingManifestsDashPeriodsCustomXmlElementsAPI
-	// Adaptationsets intermediary API object with no endpoints
+	// Adaptationsets communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets' endpoints
 	Adaptationsets *EncodingManifestsDashPeriodsAdaptationsetsAPI
 }
 
