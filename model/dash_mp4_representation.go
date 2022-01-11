@@ -1,5 +1,9 @@
 package model
 
+import (
+	"encoding/json"
+)
+
 // DashMp4Representation model
 type DashMp4Representation struct {
 	// Id of the resource (required)
@@ -14,4 +18,19 @@ type DashMp4Representation struct {
 	FilePath *string `json:"filePath,omitempty"`
 	// The type of the dash representation
 	Type DashOnDemandRepresentationType `json:"type,omitempty"`
+}
+
+func (m DashMp4Representation) DashRepresentationTypeDiscriminator() DashRepresentationTypeDiscriminator {
+	return DashRepresentationTypeDiscriminator_MP4
+}
+func (m DashMp4Representation) MarshalJSON() ([]byte, error) {
+	type M DashMp4Representation
+	x := struct {
+		TypeDiscriminator string `json:"typeDiscriminator"`
+		M
+	}{M: M(m)}
+
+	x.TypeDiscriminator = "MP4"
+
+	return json.Marshal(x)
 }

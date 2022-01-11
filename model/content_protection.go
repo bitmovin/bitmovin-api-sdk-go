@@ -1,5 +1,9 @@
 package model
 
+import (
+	"encoding/json"
+)
+
 // ContentProtection model
 type ContentProtection struct {
 	// Id of the resource (required)
@@ -12,4 +16,19 @@ type ContentProtection struct {
 	DependencyId *string `json:"dependencyId,omitempty"`
 	// DRM Id (required)
 	DrmId *string `json:"drmId,omitempty"`
+}
+
+func (m ContentProtection) DashRepresentationTypeDiscriminator() DashRepresentationTypeDiscriminator {
+	return DashRepresentationTypeDiscriminator_CONTENT_PROTECTION
+}
+func (m ContentProtection) MarshalJSON() ([]byte, error) {
+	type M ContentProtection
+	x := struct {
+		TypeDiscriminator string `json:"typeDiscriminator"`
+		M
+	}{M: M(m)}
+
+	x.TypeDiscriminator = "CONTENT_PROTECTION"
+
+	return json.Marshal(x)
 }

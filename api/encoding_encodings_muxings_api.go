@@ -10,6 +10,8 @@ import (
 type EncodingEncodingsMuxingsAPI struct {
 	apiClient *apiclient.APIClient
 
+	// Type communicates with '/encoding/encodings/{encoding_id}/muxings/{muxing_id}/type' endpoints
+	Type *EncodingEncodingsMuxingsTypeAPI
 	// Fmp4 communicates with '/encoding/encodings/{encoding_id}/muxings/fmp4' endpoints
 	Fmp4 *EncodingEncodingsMuxingsFmp4API
 	// ChunkedText communicates with '/encoding/encodings/{encoding_id}/muxings/chunked-text' endpoints
@@ -55,6 +57,7 @@ func NewEncodingEncodingsMuxingsAPI(options ...apiclient.APIClientOption) (*Enco
 // NewEncodingEncodingsMuxingsAPIWithClient constructor for EncodingEncodingsMuxingsAPI that takes an APIClient as argument
 func NewEncodingEncodingsMuxingsAPIWithClient(apiClient *apiclient.APIClient) *EncodingEncodingsMuxingsAPI {
 	a := &EncodingEncodingsMuxingsAPI{apiClient: apiClient}
+	a.Type = NewEncodingEncodingsMuxingsTypeAPIWithClient(apiClient)
 	a.Fmp4 = NewEncodingEncodingsMuxingsFmp4APIWithClient(apiClient)
 	a.ChunkedText = NewEncodingEncodingsMuxingsChunkedTextAPIWithClient(apiClient)
 	a.Cmaf = NewEncodingEncodingsMuxingsCmafAPIWithClient(apiClient)

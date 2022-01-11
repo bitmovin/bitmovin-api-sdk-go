@@ -1,5 +1,9 @@
 package model
 
+import (
+	"encoding/json"
+)
+
 // DashChunkedTextRepresentation model
 type DashChunkedTextRepresentation struct {
 	// Id of the resource (required)
@@ -22,4 +26,19 @@ type DashChunkedTextRepresentation struct {
 	StartKeyframeId *string `json:"startKeyframeId,omitempty"`
 	// Id of the Keyframe to end with
 	EndKeyframeId *string `json:"endKeyframeId,omitempty"`
+}
+
+func (m DashChunkedTextRepresentation) DashRepresentationTypeDiscriminator() DashRepresentationTypeDiscriminator {
+	return DashRepresentationTypeDiscriminator_CHUNKED_TEXT
+}
+func (m DashChunkedTextRepresentation) MarshalJSON() ([]byte, error) {
+	type M DashChunkedTextRepresentation
+	x := struct {
+		TypeDiscriminator string `json:"typeDiscriminator"`
+		M
+	}{M: M(m)}
+
+	x.TypeDiscriminator = "CHUNKED_TEXT"
+
+	return json.Marshal(x)
 }

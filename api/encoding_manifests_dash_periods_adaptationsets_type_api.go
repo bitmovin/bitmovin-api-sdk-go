@@ -26,7 +26,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsTypeAPIWithClient(apiClient *a
 	return a
 }
 
-// Get Input Type
+// Get adaptation set type
 func (api *EncodingManifestsDashPeriodsAdaptationsetsTypeAPI) Get(manifestId string, periodId string, adaptationsetId string) (*model.AdaptationSetTypeResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId

@@ -1,5 +1,9 @@
 package model
 
+import (
+	"encoding/json"
+)
+
 // DashFmp4DrmRepresentation model
 type DashFmp4DrmRepresentation struct {
 	// Id of the resource (required)
@@ -24,4 +28,19 @@ type DashFmp4DrmRepresentation struct {
 	EndKeyframeId *string `json:"endKeyframeId,omitempty"`
 	// DRM Id (required)
 	DrmId *string `json:"drmId,omitempty"`
+}
+
+func (m DashFmp4DrmRepresentation) DashRepresentationTypeDiscriminator() DashRepresentationTypeDiscriminator {
+	return DashRepresentationTypeDiscriminator_DRM_FMP4
+}
+func (m DashFmp4DrmRepresentation) MarshalJSON() ([]byte, error) {
+	type M DashFmp4DrmRepresentation
+	x := struct {
+		TypeDiscriminator string `json:"typeDiscriminator"`
+		M
+	}{M: M(m)}
+
+	x.TypeDiscriminator = "DRM_FMP4"
+
+	return json.Marshal(x)
 }

@@ -1,5 +1,9 @@
 package model
 
+import (
+	"encoding/json"
+)
+
 // DashWebmRepresentation model
 type DashWebmRepresentation struct {
 	// Id of the resource (required)
@@ -22,4 +26,19 @@ type DashWebmRepresentation struct {
 	StartKeyframeId *string `json:"startKeyframeId,omitempty"`
 	// Id of the Keyframe to end with
 	EndKeyframeId *string `json:"endKeyframeId,omitempty"`
+}
+
+func (m DashWebmRepresentation) DashRepresentationTypeDiscriminator() DashRepresentationTypeDiscriminator {
+	return DashRepresentationTypeDiscriminator_WEBM
+}
+func (m DashWebmRepresentation) MarshalJSON() ([]byte, error) {
+	type M DashWebmRepresentation
+	x := struct {
+		TypeDiscriminator string `json:"typeDiscriminator"`
+		M
+	}{M: M(m)}
+
+	x.TypeDiscriminator = "WEBM"
+
+	return json.Marshal(x)
 }

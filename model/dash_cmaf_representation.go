@@ -1,5 +1,9 @@
 package model
 
+import (
+	"encoding/json"
+)
+
 // DashCmafRepresentation model
 type DashCmafRepresentation struct {
 	// Id of the resource (required)
@@ -22,4 +26,19 @@ type DashCmafRepresentation struct {
 	StartKeyframeId *string `json:"startKeyframeId,omitempty"`
 	// Id of the Keyframe to end with
 	EndKeyframeId *string `json:"endKeyframeId,omitempty"`
+}
+
+func (m DashCmafRepresentation) DashRepresentationTypeDiscriminator() DashRepresentationTypeDiscriminator {
+	return DashRepresentationTypeDiscriminator_CMAF
+}
+func (m DashCmafRepresentation) MarshalJSON() ([]byte, error) {
+	type M DashCmafRepresentation
+	x := struct {
+		TypeDiscriminator string `json:"typeDiscriminator"`
+		M
+	}{M: M(m)}
+
+	x.TypeDiscriminator = "CMAF"
+
+	return json.Marshal(x)
 }

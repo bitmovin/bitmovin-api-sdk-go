@@ -44,6 +44,8 @@ type Fmp4Muxing struct {
 	WriteDurationPerSample *bool `json:"writeDurationPerSample,omitempty"`
 	// Number of segments which have been encoded
 	SegmentsMuxed *int32 `json:"segmentsMuxed,omitempty"`
+	// Alignment mode for composition / presentation timestamps (CTS/PTS). Only applies to h.264 and h.265
+	PtsAlignMode *PtsAlignMode `json:"ptsAlignMode,omitempty"`
 }
 
 func (m Fmp4Muxing) MuxingType() MuxingType {

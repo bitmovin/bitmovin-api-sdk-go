@@ -19,7 +19,7 @@ type EncodingManifestsDashPeriodsAdaptationsetsAPI struct {
 	Subtitle *EncodingManifestsDashPeriodsAdaptationsetsSubtitleAPI
 	// Image communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/image' endpoints
 	Image *EncodingManifestsDashPeriodsAdaptationsetsImageAPI
-	// Representations intermediary API object with no endpoints
+	// Representations communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/representations' endpoints
 	Representations *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsAPI
 	// Contentprotection communicates with '/encoding/manifests/dash/{manifest_id}/periods/{period_id}/adaptationsets/{adaptationset_id}/contentprotection' endpoints
 	Contentprotection *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPI

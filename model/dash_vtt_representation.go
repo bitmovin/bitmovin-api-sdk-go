@@ -1,19 +1,28 @@
 package model
 
+import (
+	"encoding/json"
+)
+
 // DashVttRepresentation model
 type DashVttRepresentation struct {
 	// Id of the resource (required)
 	Id *string `json:"id,omitempty"`
-	// Name of the resource. Can be freely chosen by the user.
-	Name *string `json:"name,omitempty"`
-	// Description of the resource. Can be freely chosen by the user.
-	Description *string `json:"description,omitempty"`
-	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	CreatedAt *DateTime `json:"createdAt,omitempty"`
-	// Modified timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
-	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
-	// User-specific meta data. This can hold anything.
-	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// URL of the referenced VTT file (required)
 	VttUrl *string `json:"vttUrl,omitempty"`
+}
+
+func (m DashVttRepresentation) DashRepresentationTypeDiscriminator() DashRepresentationTypeDiscriminator {
+	return DashRepresentationTypeDiscriminator_VTT
+}
+func (m DashVttRepresentation) MarshalJSON() ([]byte, error) {
+	type M DashVttRepresentation
+	x := struct {
+		TypeDiscriminator string `json:"typeDiscriminator"`
+		M
+	}{M: M(m)}
+
+	x.TypeDiscriminator = "VTT"
+
+	return json.Marshal(x)
 }
