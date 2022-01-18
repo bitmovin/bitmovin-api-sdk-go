@@ -25,7 +25,7 @@ func NewEncodingEncodingsLiveInsertableContentStopAPIWithClient(apiClient *apicl
 	return a
 }
 
-// Create Stops Currently Running Inserted Content
+// Create Stops currently running Inserted Content
 func (api *EncodingEncodingsLiveInsertableContentStopAPI) Create(encodingId string) error {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

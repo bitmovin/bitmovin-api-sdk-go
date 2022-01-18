@@ -9,6 +9,9 @@ import (
 // EncodingStatisticsEncodingsVodAPI communicates with '/encoding/statistics/encodings/vod' endpoints
 type EncodingStatisticsEncodingsVodAPI struct {
 	apiClient *apiclient.APIClient
+
+	// Daily communicates with '/encoding/statistics/encodings/vod/daily/{from}/{to}' endpoints
+	Daily *EncodingStatisticsEncodingsVodDailyAPI
 }
 
 // NewEncodingStatisticsEncodingsVodAPI constructor for EncodingStatisticsEncodingsVodAPI that takes options as argument
@@ -24,6 +27,8 @@ func NewEncodingStatisticsEncodingsVodAPI(options ...apiclient.APIClientOption) 
 // NewEncodingStatisticsEncodingsVodAPIWithClient constructor for EncodingStatisticsEncodingsVodAPI that takes an APIClient as argument
 func NewEncodingStatisticsEncodingsVodAPIWithClient(apiClient *apiclient.APIClient) *EncodingStatisticsEncodingsVodAPI {
 	a := &EncodingStatisticsEncodingsVodAPI{apiClient: apiClient}
+	a.Daily = NewEncodingStatisticsEncodingsVodDailyAPIWithClient(apiClient)
+
 	return a
 }
 

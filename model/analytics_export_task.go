@@ -24,4 +24,6 @@ type AnalyticsExportTask struct {
 	FinishedAt *DateTime           `json:"finishedAt,omitempty"`
 	Type       AnalyticsExportType `json:"type,omitempty"`
 	Columns    []string            `json:"columns,omitempty"`
+	// File format of export file
+	FileFormat AnalyticsExportFileFormat `json:"fileFormat,omitempty"`
 }

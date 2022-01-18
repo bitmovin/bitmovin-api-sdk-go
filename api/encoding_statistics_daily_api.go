@@ -44,16 +44,10 @@ func (api *EncodingStatisticsDailyAPI) List(queryParams ...func(*EncodingStatist
 }
 
 // ListByDateRange List daily statistics within specific dates
-func (api *EncodingStatisticsDailyAPI) ListByDateRange(from model.Date, to model.Date, queryParams ...func(*EncodingStatisticsDailyAPIListByDateRangeQueryParams)) (*pagination.DailyStatisticssListByDateRangePagination, error) {
-	queryParameters := &EncodingStatisticsDailyAPIListByDateRangeQueryParams{}
-	for _, queryParam := range queryParams {
-		queryParam(queryParameters)
-	}
-
+func (api *EncodingStatisticsDailyAPI) ListByDateRange(from model.Date, to model.Date) (*pagination.DailyStatisticssListByDateRangePagination, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["from"] = from.String()
 		params.PathParams["to"] = to.String()
-		params.QueryParams = queryParameters
 	}
 
 	var responseModel pagination.DailyStatisticssListByDateRangePagination
@@ -69,16 +63,5 @@ type EncodingStatisticsDailyAPIListQueryParams struct {
 
 // Params will return a map of query parameters
 func (q *EncodingStatisticsDailyAPIListQueryParams) Params() map[string]string {
-	return apiclient.GetParamsMap(q)
-}
-
-// EncodingStatisticsDailyAPIListByDateRangeQueryParams contains all query parameters for the ListByDateRange endpoint
-type EncodingStatisticsDailyAPIListByDateRangeQueryParams struct {
-	Offset int32 `query:"offset"`
-	Limit  int32 `query:"limit"`
-}
-
-// Params will return a map of query parameters
-func (q *EncodingStatisticsDailyAPIListByDateRangeQueryParams) Params() map[string]string {
 	return apiclient.GetParamsMap(q)
 }
