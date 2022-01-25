@@ -20,4 +20,5 @@ const (
 	AwsCloudRegion_EU_WEST_2      AwsCloudRegion = "EU_WEST_2"
 	AwsCloudRegion_EU_WEST_3      AwsCloudRegion = "EU_WEST_3"
 	AwsCloudRegion_CA_CENTRAL_1   AwsCloudRegion = "CA_CENTRAL_1"
+	AwsCloudRegion_EU_NORTH_1     AwsCloudRegion = "EU_NORTH_1"
 )

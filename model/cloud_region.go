@@ -20,6 +20,7 @@ const (
 	CloudRegion_AWS_EU_WEST_2                   CloudRegion = "AWS_EU_WEST_2"
 	CloudRegion_AWS_EU_WEST_3                   CloudRegion = "AWS_EU_WEST_3"
 	CloudRegion_AWS_CA_CENTRAL_1                CloudRegion = "AWS_CA_CENTRAL_1"
+	CloudRegion_AWS_EU_NORTH_1                  CloudRegion = "AWS_EU_NORTH_1"
 	CloudRegion_GOOGLE_US_CENTRAL_1             CloudRegion = "GOOGLE_US_CENTRAL_1"
 	CloudRegion_GOOGLE_US_EAST_1                CloudRegion = "GOOGLE_US_EAST_1"
 	CloudRegion_GOOGLE_ASIA_EAST_1              CloudRegion = "GOOGLE_ASIA_EAST_1"
