@@ -101,13 +101,13 @@ func (api *EncodingManifestsSmoothAPI) Start(manifestId string) (*model.Bitmovin
 }
 
 // Start Smooth Streaming Manifest Creation
-func (api *EncodingManifestsSmoothAPI) StartWithRequestBody(manifestId string, body map[string]interface{}) (*model.BitmovinResponse, error) {
+func (api *EncodingManifestsSmoothAPI) StartWithRequestBody(manifestId string, startManifestRequest model.StartManifestRequest) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
 	}
 
 	var responseModel model.BitmovinResponse
-	err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/start", &body, &responseModel, reqParams)
+	err := api.apiClient.Post("/encoding/manifests/smooth/{manifest_id}/start", &startManifestRequest, &responseModel, reqParams)
 	return &responseModel, err
 }
 
