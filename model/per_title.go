@@ -8,4 +8,6 @@ type PerTitle struct {
 	H265Configuration *H265PerTitleConfiguration `json:"h265Configuration,omitempty"`
 	// Per-Title configuration for VP9
 	Vp9Configuration *Vp9PerTitleConfiguration `json:"vp9Configuration,omitempty"`
+	// Per-Title configuration for AV1
+	Av1Configuration *Av1PerTitleConfiguration `json:"av1Configuration,omitempty"`
 }
