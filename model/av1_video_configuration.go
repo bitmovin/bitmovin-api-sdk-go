@@ -37,6 +37,8 @@ type Av1VideoConfiguration struct {
 	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
 	// The mode of the encoding
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
+	// Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.
+	PresetConfiguration Av1PresetConfiguration `json:"presetConfiguration,omitempty"`
 }
 
 func (m Av1VideoConfiguration) CodecConfigType() CodecConfigType {

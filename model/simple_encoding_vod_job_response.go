@@ -6,6 +6,8 @@ type SimpleEncodingVodJobResponse struct {
 	Id *string `json:"id,omitempty"`
 	// The current status of the Simple Encoding VOD Job
 	Status SimpleEncodingVodJobStatus `json:"status,omitempty"`
+	// The template that has been used for the encoding.
+	EncodingTemplate EncodingTemplate `json:"encodingTemplate,omitempty"`
 	// The identifier of the encoding that has been created based on the job request. This is only returned once the job execution has been successful and the encoding could be started.
 	EncodingId *string                         `json:"encodingId,omitempty"`
 	Inputs     []SimpleEncodingVodJobUrlInput  `json:"inputs,omitempty"`

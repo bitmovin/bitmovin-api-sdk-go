@@ -215,6 +215,13 @@ func unmarshalInput(data []byte, consumer bitutils.Consumer) (Input, error) {
 		}
 		return result, nil
 
+	case "DIRECT_FILE_UPLOAD":
+		var result DirectFileUploadInput
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}
