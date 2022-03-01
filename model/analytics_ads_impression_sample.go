@@ -254,18 +254,10 @@ type AnalyticsAdsImpressionSample struct {
 	SurveyUrl *string `json:"survey_url,omitempty"`
 	// Current time in milliseconds
 	Time *int64 `json:"time,omitempty"`
-	// Time from content
-	TimeFromContent *int64 `json:"time_from_content,omitempty"`
-	// Time hovered
-	TimeHovered *int64 `json:"time_hovered,omitempty"`
 	// Time in viewport
 	TimeInViewport *int64 `json:"time_in_viewport,omitempty"`
 	// Time played
 	TimePlayed *int64 `json:"time_played,omitempty"`
-	// Time to content
-	TimeToContent *int64 `json:"time_to_content,omitempty"`
-	// Time to hover
-	TimeToHover *int64 `json:"time_to_hover,omitempty"`
 	// Universal ad id registry
 	UniversalAdIdRegistry *string `json:"universal_ad_id_registry,omitempty"`
 	// Universal ad id value

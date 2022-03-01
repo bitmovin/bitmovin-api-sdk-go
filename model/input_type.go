@@ -25,5 +25,4 @@ const (
 	InputType_ZIXI                InputType = "ZIXI"
 	InputType_SRT                 InputType = "SRT"
 	InputType_GCS_SERVICE_ACCOUNT InputType = "GCS_SERVICE_ACCOUNT"
-	InputType_DIRECT_FILE_UPLOAD  InputType = "DIRECT_FILE_UPLOAD"
 )
