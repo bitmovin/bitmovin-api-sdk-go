@@ -10,6 +10,8 @@ type EncodingSimpleJobsAPI struct {
 
 	// Vod communicates with '/encoding/simple/jobs/vod' endpoints
 	Vod *EncodingSimpleJobsVodAPI
+	// Live communicates with '/encoding/simple/jobs/live' endpoints
+	Live *EncodingSimpleJobsLiveAPI
 }
 
 // NewEncodingSimpleJobsAPI constructor for EncodingSimpleJobsAPI that takes options as argument
@@ -26,6 +28,7 @@ func NewEncodingSimpleJobsAPI(options ...apiclient.APIClientOption) (*EncodingSi
 func NewEncodingSimpleJobsAPIWithClient(apiClient *apiclient.APIClient) *EncodingSimpleJobsAPI {
 	a := &EncodingSimpleJobsAPI{apiClient: apiClient}
 	a.Vod = NewEncodingSimpleJobsVodAPIWithClient(apiClient)
+	a.Live = NewEncodingSimpleJobsLiveAPIWithClient(apiClient)
 
 	return a
 }
