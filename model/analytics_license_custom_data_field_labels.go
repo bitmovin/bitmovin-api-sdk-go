@@ -52,4 +52,14 @@ type AnalyticsLicenseCustomDataFieldLabels struct {
 	CustomData24 *string `json:"customData24,omitempty"`
 	// Label for field Custom Data 25
 	CustomData25 *string `json:"customData25,omitempty"`
+	// Label for field Custom Data 26
+	CustomData26 *string `json:"customData26,omitempty"`
+	// Label for field Custom Data 27
+	CustomData27 *string `json:"customData27,omitempty"`
+	// Label for field Custom Data 28
+	CustomData28 *string `json:"customData28,omitempty"`
+	// Label for field Custom Data 29
+	CustomData29 *string `json:"customData29,omitempty"`
+	// Label for field Custom Data 30
+	CustomData30 *string `json:"customData30,omitempty"`
 }

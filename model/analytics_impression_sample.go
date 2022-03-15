@@ -84,6 +84,16 @@ type AnalyticsImpressionSample struct {
 	CustomData24 *string `json:"custom_data_24,omitempty"`
 	// Free form data set via the customData25 field in the analytics collector configuration
 	CustomData25 *string `json:"custom_data_25,omitempty"`
+	// Free form data set via the customData26 field in the analytics collector configuration
+	CustomData26 *string `json:"custom_data_26,omitempty"`
+	// Free form data set via the customData27 field in the analytics collector configuration
+	CustomData27 *string `json:"custom_data_27,omitempty"`
+	// Free form data set via the customData28 field in the analytics collector configuration
+	CustomData28 *string `json:"custom_data_28,omitempty"`
+	// Free form data set via the customData29 field in the analytics collector configuration
+	CustomData29 *string `json:"custom_data_29,omitempty"`
+	// Free form data set via the customData30 field in the analytics collector configuration
+	CustomData30 *string `json:"custom_data_30,omitempty"`
 	// Type of device (Desktop, Phone, Tablet)
 	DeviceClass *string `json:"device_class,omitempty"`
 	// Type of the device detected via User Agent
