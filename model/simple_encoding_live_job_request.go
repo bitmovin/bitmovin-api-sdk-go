@@ -7,4 +7,6 @@ type SimpleEncodingLiveJobRequest struct {
 	Outputs []SimpleEncodingLiveJobUrlOutput `json:"outputs,omitempty"`
 	// The cloud region that will be used for the live encoding. This value has to be set.
 	CloudRegion SimpleEncodingLiveCloudRegion `json:"cloudRegion,omitempty"`
+	// This property will be used for naming the encoding.
+	Name *string `json:"name,omitempty"`
 }

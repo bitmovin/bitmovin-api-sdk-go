@@ -14,7 +14,7 @@ type SimpleEncodingLiveJobResponse struct {
 	StreamKey *string                          `json:"streamKey,omitempty"`
 	Input     *SimpleEncodingLiveJobInput      `json:"input,omitempty"`
 	Outputs   []SimpleEncodingLiveJobUrlOutput `json:"outputs,omitempty"`
-	// Describes all the errors in cases the status of the job is 'error'.   TODO right now this is the same for VOD and LIVE? maybe rename the schema and use the same for both?
+	// Describes all the errors in cases the status of the job is 'error'.
 	Errors []SimpleEncodingVodJobErrors `json:"errors,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
 	CreatedAt *DateTime `json:"createdAt,omitempty"`
