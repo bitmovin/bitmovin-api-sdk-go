@@ -23,6 +23,6 @@ type AccountInformation struct {
 	// Phone number of the tenant.
 	Phone *string `json:"phone,omitempty"`
 	// Company name of the tenant.
-	Company    *string `json:"company,omitempty"`
-	IsVerified *bool   `json:"isVerified,omitempty"`
+	Company  *string `json:"company,omitempty"`
+	Verified *bool   `json:"verified,omitempty"`
 }

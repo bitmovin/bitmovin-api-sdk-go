@@ -90,6 +90,13 @@ func unmarshalOutput(data []byte, consumer bitutils.Consumer) (Output, error) {
 		}
 		return result, nil
 
+	case "CDN":
+		var result CdnOutput
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case "GENERIC_S3":
 		var result GenericS3Output
 		if err := consumer.Consume(buf2, &result); err != nil {

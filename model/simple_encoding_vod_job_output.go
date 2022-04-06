@@ -70,6 +70,13 @@ func unmarshalSimpleEncodingVodJobOutput(data []byte, consumer bitutils.Consumer
 		}
 		return result, nil
 
+	case "CDN":
+		var result SimpleEncodingVodJobCdnOutput
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}

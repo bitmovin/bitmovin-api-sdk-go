@@ -36,6 +36,8 @@ type EncodingOutputsAPI struct {
 	AkamaiNetstorage *EncodingOutputsAkamaiNetstorageAPI
 	// LiveMediaIngest communicates with '/encoding/outputs/live-media-ingest' endpoints
 	LiveMediaIngest *EncodingOutputsLiveMediaIngestAPI
+	// Cdn communicates with '/encoding/outputs/cdn' endpoints
+	Cdn *EncodingOutputsCdnAPI
 }
 
 // NewEncodingOutputsAPI constructor for EncodingOutputsAPI that takes options as argument
@@ -64,6 +66,7 @@ func NewEncodingOutputsAPIWithClient(apiClient *apiclient.APIClient) *EncodingOu
 	a.AkamaiMsl = NewEncodingOutputsAkamaiMslAPIWithClient(apiClient)
 	a.AkamaiNetstorage = NewEncodingOutputsAkamaiNetstorageAPIWithClient(apiClient)
 	a.LiveMediaIngest = NewEncodingOutputsLiveMediaIngestAPIWithClient(apiClient)
+	a.Cdn = NewEncodingOutputsCdnAPIWithClient(apiClient)
 
 	return a
 }

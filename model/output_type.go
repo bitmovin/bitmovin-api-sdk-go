@@ -17,4 +17,5 @@ const (
 	OutputType_AKAMAI_MSL          OutputType = "AKAMAI_MSL"
 	OutputType_LIVE_MEDIA_INGEST   OutputType = "LIVE_MEDIA_INGEST"
 	OutputType_GCS_SERVICE_ACCOUNT OutputType = "GCS_SERVICE_ACCOUNT"
+	OutputType_CDN                 OutputType = "CDN"
 )
