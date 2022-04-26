@@ -6,6 +6,8 @@ import (
 
 // SimpleEncodingVodJobCdnOutput model
 type SimpleEncodingVodJobCdnOutput struct {
+	// This sets the maximum output resolution that will be generated.
+	MaxResolution SimpleEncodingLiveMaxResolution `json:"maxResolution,omitempty"`
 }
 
 func (m SimpleEncodingVodJobCdnOutput) SimpleEncodingVodJobOutputType() SimpleEncodingVodJobOutputType {
