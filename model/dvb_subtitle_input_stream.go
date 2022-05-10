@@ -18,13 +18,13 @@ type DvbSubtitleInputStream struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of input
+	// ID of an Input resource defining the input storage
 	InputId *string `json:"inputId,omitempty"`
-	// Path to media file
+	// Path to an input media file
 	InputPath *string `json:"inputPath,omitempty"`
-	// Specifies the algorithm for selecting a stream from the input file. Supported values for VOD encodings: AUTO, POSITION_ABSOLUTE, SUBTITLE_RELATIVE. Supported values for LIVE encodings: POSITION_ABSOLUTE
+	// Specifies the strategy for selecting a stream from the input file. Supported values for VOD encodings: AUTO, POSITION_ABSOLUTE, SUBTITLE_RELATIVE. Supported values for LIVE encodings: POSITION_ABSOLUTE
 	SelectionMode StreamSelectionMode `json:"selectionMode,omitempty"`
-	// Position of the stream, starting from 0.
+	// Position of the stream to be selected from the input file (zero-based). Must not be set in combination with selectionMode 'AUTO', defaults to 0 for any other selectionMode.
 	Position *int32 `json:"position,omitempty"`
 }
 

@@ -18,13 +18,13 @@ type DvbTeletextInputStream struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	// Id of input
+	// ID of an Input resource defining the input storage
 	InputId *string `json:"inputId,omitempty"`
-	// Path to media file
+	// Path to an input media file
 	InputPath *string `json:"inputPath,omitempty"`
-	// Specifies the algorithm how the stream in the input file will be selected
+	// Specifies the strategy for selecting a stream from the input file
 	SelectionMode StreamSelectionMode `json:"selectionMode,omitempty"`
-	// Position of the stream, starting from 0.
+	// Position of the stream to be selected from the input file (zero-based). Must not be set in combination with selectionMode 'AUTO', defaults to 0 for any other selectionMode.
 	Position *int32 `json:"position,omitempty"`
 	// Page number of the subtitles
 	Page *int32 `json:"page,omitempty"`

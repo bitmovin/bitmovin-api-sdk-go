@@ -114,7 +114,7 @@ type AnalyticsImpressionSample struct {
 	ErrorMessage *string `json:"error_message,omitempty"`
 	// A/B test experiment name
 	ExperimentName *string `json:"experiment_name,omitempty"`
-	// Random UUID that is used to identify a sessions (required)
+	// Random UUID that is used to identify a session (required)
 	ImpressionId *string `json:"impression_id,omitempty"`
 	// IP Address of the client
 	IpAddress *string `json:"ip_address,omitempty"`

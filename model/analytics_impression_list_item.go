@@ -2,6 +2,6 @@ package model
 
 // AnalyticsImpressionListItem model
 type AnalyticsImpressionListItem struct {
-	// Impression ID (required)
+	// Random UUID that is used to identify a session (required)
 	ImpressionId *string `json:"impressionId,omitempty"`
 }
