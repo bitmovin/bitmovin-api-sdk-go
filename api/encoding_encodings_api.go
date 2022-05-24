@@ -24,6 +24,8 @@ type EncodingEncodingsAPI struct {
 	Muxings *EncodingEncodingsMuxingsAPI
 	// TransferRetries communicates with '/encoding/encodings/{encoding_id}/transfer-retries' endpoints
 	TransferRetries *EncodingEncodingsTransferRetriesAPI
+	// OutputPaths communicates with '/encoding/encodings/{encoding_id}/output-paths' endpoints
+	OutputPaths *EncodingEncodingsOutputPathsAPI
 	// Captions intermediary API object with no endpoints
 	Captions *EncodingEncodingsCaptionsAPI
 	// Sidecars communicates with '/encoding/encodings/{encoding_id}/sidecars' endpoints
@@ -52,6 +54,7 @@ func NewEncodingEncodingsAPIWithClient(apiClient *apiclient.APIClient) *Encoding
 	a.InputStreams = NewEncodingEncodingsInputStreamsAPIWithClient(apiClient)
 	a.Muxings = NewEncodingEncodingsMuxingsAPIWithClient(apiClient)
 	a.TransferRetries = NewEncodingEncodingsTransferRetriesAPIWithClient(apiClient)
+	a.OutputPaths = NewEncodingEncodingsOutputPathsAPIWithClient(apiClient)
 	a.Captions = NewEncodingEncodingsCaptionsAPIWithClient(apiClient)
 	a.Sidecars = NewEncodingEncodingsSidecarsAPIWithClient(apiClient)
 	a.Keyframes = NewEncodingEncodingsKeyframesAPIWithClient(apiClient)

@@ -44,12 +44,6 @@ type EncodingInputsAPI struct {
 	AkamaiNetstorage *EncodingInputsAkamaiNetstorageAPI
 	// Srt communicates with '/encoding/inputs/srt' endpoints
 	Srt *EncodingInputsSrtAPI
-	// Tcp communicates with '/encoding/inputs/tcp' endpoints
-	Tcp *EncodingInputsTcpAPI
-	// Udp communicates with '/encoding/inputs/udp' endpoints
-	Udp *EncodingInputsUdpAPI
-	// UdpMulticast communicates with '/encoding/inputs/udp-multicast' endpoints
-	UdpMulticast *EncodingInputsUdpMulticastAPI
 	// Zixi communicates with '/encoding/inputs/zixi' endpoints
 	Zixi *EncodingInputsZixiAPI
 }
@@ -84,9 +78,6 @@ func NewEncodingInputsAPIWithClient(apiClient *apiclient.APIClient) *EncodingInp
 	a.Aspera = NewEncodingInputsAsperaAPIWithClient(apiClient)
 	a.AkamaiNetstorage = NewEncodingInputsAkamaiNetstorageAPIWithClient(apiClient)
 	a.Srt = NewEncodingInputsSrtAPIWithClient(apiClient)
-	a.Tcp = NewEncodingInputsTcpAPIWithClient(apiClient)
-	a.Udp = NewEncodingInputsUdpAPIWithClient(apiClient)
-	a.UdpMulticast = NewEncodingInputsUdpMulticastAPIWithClient(apiClient)
 	a.Zixi = NewEncodingInputsZixiAPIWithClient(apiClient)
 
 	return a

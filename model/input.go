@@ -173,27 +173,6 @@ func unmarshalInput(data []byte, consumer bitutils.Consumer) (Input, error) {
 		}
 		return result, nil
 
-	case "TCP":
-		var result TcpInput
-		if err := consumer.Consume(buf2, &result); err != nil {
-			return nil, err
-		}
-		return result, nil
-
-	case "UDP":
-		var result UdpInput
-		if err := consumer.Consume(buf2, &result); err != nil {
-			return nil, err
-		}
-		return result, nil
-
-	case "UDP_MULTICAST":
-		var result UdpMulticastInput
-		if err := consumer.Consume(buf2, &result); err != nil {
-			return nil, err
-		}
-		return result, nil
-
 	case "ZIXI":
 		var result ZixiInput
 		if err := consumer.Consume(buf2, &result); err != nil {

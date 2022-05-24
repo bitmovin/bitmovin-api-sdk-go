@@ -28,7 +28,7 @@ type BaseDrm struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	Outputs    []EncodingOutput        `json:"outputs,omitempty"`
+	Outputs    []EncodingOutput        `json:"outputs"`
 	Type       DrmType                 `json:"type"`
 }
 
