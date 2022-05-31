@@ -45,14 +45,15 @@ type TextFilter struct {
 	ShadowX *int32 `json:"shadowX,omitempty"`
 	// Y offset of the shadow
 	ShadowY *int32 `json:"shadowY,omitempty"`
-	// If set, the timecode representation in \"hh:mm:ss[:;.]ff\" format will be applied
+	// If set, the timecode representation in \"hh:mm:ss[:;.]ff\" format will be applied. Drop-frame timecodes (containing \";\" or \".\") must only be used with video frame rates of 29.97, 30, 59.94 or 60 FPS, according to the SMPTE standard
 	Timecode *string `json:"timecode,omitempty"`
 	// String to be drawn
 	Text *string `json:"text,omitempty"`
 	// X position of the text. Also an expression can be used. The following variables are valid: line_h - height of each text line; main_h - input height; main_w - input width; n - number of input frame; text_h - Text height; text_w - Text width (required)
 	X *string `json:"x,omitempty"`
 	// Y position of the text. Also an expression can be used. The following variables are valid: line_h - height of each text line; main_h - input height; main_w - input width; n - number of input frame; text_h - Text height; text_w - Text width (required)
-	Y    *string `json:"y,omitempty"`
+	Y *string `json:"y,omitempty"`
+	// Video frame rate
 	Rate *string `json:"rate,omitempty"`
 }
 

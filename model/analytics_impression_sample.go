@@ -178,7 +178,7 @@ type AnalyticsImpressionSample struct {
 	SegmentDownloadSize *int32 `json:"segment_download_size,omitempty"`
 	// Cumulative time needed to download video segments
 	SegmentDownloadTime *int32 `json:"segment_download_time,omitempty"`
-	// Sequence number of the sample in which it occured in the session
+	// Sequence number of the sample in which it occurred in the session
 	SequenceNumber *int64 `json:"sequence_number,omitempty"`
 	// Video size (FULLSCREEN or WINDOW)
 	Size *string `json:"size,omitempty"`

@@ -2,7 +2,7 @@ package model
 
 // StartEncodingRequest model
 type StartEncodingRequest struct {
-	// Allows to encode only part of the input. Defines start (offset) and duration of the desired section.
+	// Allows to encode only part of the input. Defines start (offset) and duration of the desired section. This is not allowed when the Encoding uses any kind of Input Stream resource.
 	Trimming *Trimming `json:"trimming,omitempty"`
 	// Set scheduling parameters of the encoding.
 	Scheduling *Scheduling `json:"scheduling,omitempty"`
