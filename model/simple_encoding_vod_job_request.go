@@ -10,8 +10,8 @@ import (
 // SimpleEncodingVodJobRequest model
 type SimpleEncodingVodJobRequest struct {
 	// The template that will be used for the encoding.
-	EncodingTemplate EncodingTemplate               `json:"encodingTemplate,omitempty"`
-	Inputs           []SimpleEncodingVodJobUrlInput `json:"inputs,omitempty"`
+	EncodingTemplate EncodingTemplate            `json:"encodingTemplate,omitempty"`
+	Inputs           []SimpleEncodingVodJobInput `json:"inputs,omitempty"`
 	// Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api#inputs-outputs) (required)
 	Outputs []SimpleEncodingVodJobOutput `json:"outputs,omitempty"`
 	// This property will be used for naming the encoding and the manifests.
@@ -21,10 +21,10 @@ type SimpleEncodingVodJobRequest struct {
 // UnmarshalJSON unmarshals model SimpleEncodingVodJobRequest from a JSON structure
 func (m *SimpleEncodingVodJobRequest) UnmarshalJSON(raw []byte) error {
 	var data struct {
-		EncodingTemplate EncodingTemplate               `json:"encodingTemplate"`
-		Inputs           []SimpleEncodingVodJobUrlInput `json:"inputs"`
-		Outputs          json.RawMessage                `json:"outputs"`
-		Name             *string                        `json:"name"`
+		EncodingTemplate EncodingTemplate `json:"encodingTemplate"`
+		Inputs           json.RawMessage  `json:"inputs"`
+		Outputs          json.RawMessage  `json:"outputs"`
+		Name             *string          `json:"name"`
 	}
 
 	buf := bytes.NewBuffer(raw)
@@ -38,9 +38,14 @@ func (m *SimpleEncodingVodJobRequest) UnmarshalJSON(raw []byte) error {
 	var result SimpleEncodingVodJobRequest
 
 	result.EncodingTemplate = data.EncodingTemplate
-	result.Inputs = data.Inputs
 	result.Name = data.Name
 
+	allOfInputs, err := UnmarshalSimpleEncodingVodJobInputSlice(bytes.NewBuffer(data.Inputs), bitutils.JSONConsumer())
+	if err != nil && err != io.EOF {
+		return err
+	}
+
+	result.Inputs = allOfInputs
 	allOfOutputs, err := UnmarshalSimpleEncodingVodJobOutputSlice(bytes.NewBuffer(data.Outputs), bitutils.JSONConsumer())
 	if err != nil && err != io.EOF {
 		return err
