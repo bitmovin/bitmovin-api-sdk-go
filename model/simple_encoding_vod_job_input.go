@@ -70,6 +70,13 @@ func unmarshalSimpleEncodingVodJobInput(data []byte, consumer bitutils.Consumer)
 		}
 		return result, nil
 
+	case "DIRECT_FILE_UPLOAD":
+		var result SimpleEncodingVodJobDirectFileUploadInput
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}

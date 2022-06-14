@@ -46,6 +46,8 @@ type EncodingInputsAPI struct {
 	Srt *EncodingInputsSrtAPI
 	// Zixi communicates with '/encoding/inputs/zixi' endpoints
 	Zixi *EncodingInputsZixiAPI
+	// DirectFileUpload communicates with '/encoding/inputs/direct-file-upload' endpoints
+	DirectFileUpload *EncodingInputsDirectFileUploadAPI
 }
 
 // NewEncodingInputsAPI constructor for EncodingInputsAPI that takes options as argument
@@ -79,6 +81,7 @@ func NewEncodingInputsAPIWithClient(apiClient *apiclient.APIClient) *EncodingInp
 	a.AkamaiNetstorage = NewEncodingInputsAkamaiNetstorageAPIWithClient(apiClient)
 	a.Srt = NewEncodingInputsSrtAPIWithClient(apiClient)
 	a.Zixi = NewEncodingInputsZixiAPIWithClient(apiClient)
+	a.DirectFileUpload = NewEncodingInputsDirectFileUploadAPIWithClient(apiClient)
 
 	return a
 }
