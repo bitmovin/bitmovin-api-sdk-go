@@ -14,17 +14,18 @@ type AdAnalyticsPercentileQueryRequest struct {
 	// End of timeframe which is queried in UTC format.
 	End *DateTime `json:"end,omitempty"`
 	// Analytics license key (required)
-	LicenseKey *string                     `json:"licenseKey,omitempty"`
-	Filters    []AdAnalyticsAbstractFilter `json:"filters,omitempty"`
-	OrderBy    []AdAnalyticsOrderByEntry   `json:"orderBy,omitempty"`
-	Dimension  AdAnalyticsAttribute        `json:"dimension,omitempty"`
-	Interval   AnalyticsInterval           `json:"interval,omitempty"`
-	GroupBy    []AdAnalyticsAttribute      `json:"groupBy,omitempty"`
+	LicenseKey *string `json:"licenseKey,omitempty"`
+	// Analytics Query Filters  Each filter requires 3 properties: name, operator and value.   Valid operators are [IN, EQ, NE, LT, LTE, GT, GTE, CONTAINS, NOTCONTAINS]
+	Filters   []AdAnalyticsAbstractFilter `json:"filters,omitempty"`
+	OrderBy   []AdAnalyticsOrderByEntry   `json:"orderBy,omitempty"`
+	Dimension AdAnalyticsAttribute        `json:"dimension,omitempty"`
+	Interval  AnalyticsInterval           `json:"interval,omitempty"`
+	GroupBy   []AdAnalyticsAttribute      `json:"groupBy,omitempty"`
 	// Maximum number of rows returned (max. 200)
 	Limit *int64 `json:"limit,omitempty"`
 	// Offset of data
 	Offset *int64 `json:"offset,omitempty"`
-	// The percentage (0-99) used for percentile queries.
+	// The percentage (0-99) used for percentile queries. (required)
 	Percentile *int64 `json:"percentile,omitempty"`
 }
 

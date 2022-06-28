@@ -9,13 +9,14 @@ import (
 
 // AnalyticsImpressionsQuery model
 type AnalyticsImpressionsQuery struct {
-	// Start of timeframe which is queried in UTC format.
+	// Start of timeframe which is queried in UTC format. (required)
 	Start *DateTime `json:"start,omitempty"`
-	// End of timeframe which is queried in UTC format.
+	// End of timeframe which is queried in UTC format. (required)
 	End *DateTime `json:"end,omitempty"`
-	// Analytics license key
-	LicenseKey *string                   `json:"licenseKey,omitempty"`
-	Filters    []AnalyticsAbstractFilter `json:"filters,omitempty"`
+	// Analytics license key (required)
+	LicenseKey *string `json:"licenseKey,omitempty"`
+	// Analytics Query Filters  Each filter requires 3 properties: name, operator and value.  Valid operators are [IN, EQ, NE, LT, LTE, GT, GTE, CONTAINS, NOTCONTAINS]
+	Filters []AnalyticsAbstractFilter `json:"filters,omitempty"`
 	// Number of returned impressions
 	Limit *int32 `json:"limit,omitempty"`
 }
