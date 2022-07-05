@@ -10,6 +10,8 @@ import (
 type EncodingStatisticsAPI struct {
 	apiClient *apiclient.APIClient
 
+	// Cdn intermediary API object with no endpoints
+	Cdn *EncodingStatisticsCdnAPI
 	// Daily communicates with '/encoding/statistics/daily' endpoints
 	Daily *EncodingStatisticsDailyAPI
 	// Encodings communicates with '/encoding/statistics/encodings/{encoding_id}' endpoints
@@ -31,6 +33,7 @@ func NewEncodingStatisticsAPI(options ...apiclient.APIClientOption) (*EncodingSt
 // NewEncodingStatisticsAPIWithClient constructor for EncodingStatisticsAPI that takes an APIClient as argument
 func NewEncodingStatisticsAPIWithClient(apiClient *apiclient.APIClient) *EncodingStatisticsAPI {
 	a := &EncodingStatisticsAPI{apiClient: apiClient}
+	a.Cdn = NewEncodingStatisticsCdnAPIWithClient(apiClient)
 	a.Daily = NewEncodingStatisticsDailyAPIWithClient(apiClient)
 	a.Encodings = NewEncodingStatisticsEncodingsAPIWithClient(apiClient)
 	a.Labels = NewEncodingStatisticsLabelsAPIWithClient(apiClient)
