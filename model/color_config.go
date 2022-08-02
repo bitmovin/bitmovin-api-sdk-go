@@ -26,4 +26,8 @@ type ColorConfig struct {
 	InputColorSpace InputColorSpace `json:"inputColorSpace,omitempty"`
 	// Override the color range detected in the input file. If not set the input color range will be automatically detected if possible.
 	InputColorRange InputColorRange `json:"inputColorRange,omitempty"`
+	// Override the color primaries detected in the input file. If not set the input color primaries will be automatically detected if possible.
+	InputColorPrimaries InputColorPrimaries `json:"inputColorPrimaries,omitempty"`
+	// Override the color transfer detected in the input file. If not set the input color transfer will be automatically detected if possible.
+	InputColorTransfer InputColorTransfer `json:"inputColorTransfer,omitempty"`
 }

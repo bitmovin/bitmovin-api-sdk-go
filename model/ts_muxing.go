@@ -26,9 +26,9 @@ type TsMuxing struct {
 	MinBitrate *int64 `json:"minBitrate,omitempty"`
 	// Max bitrate. Available after encoding finishes.
 	MaxBitrate *int64 `json:"maxBitrate,omitempty"`
-	// If this is set and contains objects, then this muxing has been ignored during the encoding process
+	// This read-only property is set during the analysis step of the encoding. If it contains items, the Muxing has been ignored during the encoding process according to its 'streamConditionsMode'
 	IgnoredBy []Ignoring `json:"ignoredBy,omitempty"`
-	// Specifies how to handle streams that don't fulfill stream conditions
+	// Specifies how to proceed with the Muxing when some of its Streams are ignored (see 'condition' property of the Stream resource). The settings only make a difference for Muxings with more than one Stream. When retrieving the resource after the analysis step of the encoding has finished, 'ignoredBy' will indicate if and why it has been ignored.
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// Length of the fragments in seconds (required)
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
