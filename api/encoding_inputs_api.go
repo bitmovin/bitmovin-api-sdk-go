@@ -118,6 +118,7 @@ type EncodingInputsAPIListQueryParams struct {
 	Offset int32  `query:"offset"`
 	Limit  int32  `query:"limit"`
 	Name   string `query:"name"`
+	Type_  string `query:"type"`
 	Sort   string `query:"sort"`
 }
 
