@@ -12,8 +12,6 @@ type EncodingEncodingsAPI struct {
 
 	// Live communicates with '/encoding/encodings/{encoding_id}/live' endpoints
 	Live *EncodingEncodingsLiveAPI
-	// MachineLearning intermediary API object with no endpoints
-	MachineLearning *EncodingEncodingsMachineLearningAPI
 	// Customdata communicates with '/encoding/encodings/{encoding_id}/customData' endpoints
 	Customdata *EncodingEncodingsCustomdataAPI
 	// Streams communicates with '/encoding/encodings/{encoding_id}/streams' endpoints
@@ -48,7 +46,6 @@ func NewEncodingEncodingsAPI(options ...apiclient.APIClientOption) (*EncodingEnc
 func NewEncodingEncodingsAPIWithClient(apiClient *apiclient.APIClient) *EncodingEncodingsAPI {
 	a := &EncodingEncodingsAPI{apiClient: apiClient}
 	a.Live = NewEncodingEncodingsLiveAPIWithClient(apiClient)
-	a.MachineLearning = NewEncodingEncodingsMachineLearningAPIWithClient(apiClient)
 	a.Customdata = NewEncodingEncodingsCustomdataAPIWithClient(apiClient)
 	a.Streams = NewEncodingEncodingsStreamsAPIWithClient(apiClient)
 	a.InputStreams = NewEncodingEncodingsInputStreamsAPIWithClient(apiClient)
