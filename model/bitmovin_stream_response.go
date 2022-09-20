@@ -14,8 +14,10 @@ type BitmovinStreamResponse struct {
 	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// The status of the Stream
 	Status BitmovinStreamStatus `json:"status,omitempty"`
-	// The target quality of the Stream
+	// The target quality of the Stream (OBSOLETE!)
 	TargetQuality BitmovinStreamQuality `json:"targetQuality,omitempty"`
-	// List of available stream qualities
+	// List of available stream qualities (OBSOLETE!)
 	AvailableQualities []BitmovinStreamQuality `json:"availableQualities,omitempty"`
+	// List of encoding status information
+	EncodingTasks []BitmovinStreamEncodingTask `json:"encodingTasks,omitempty"`
 }
