@@ -97,7 +97,7 @@ type H265VideoConfiguration struct {
 	SceneCutThreshold *int32 `json:"sceneCutThreshold,omitempty"`
 	// Controls the adaptive quantization algorithm
 	AdaptiveQuantizationMode AdaptiveQuantMode `json:"adaptiveQuantizationMode,omitempty"`
-	// By enabling this video stream will be signaled as HLG
+	// Enable SDR compatible HLG signaling. The container and bitstream will indicate BT.2020 but ARIB STD-B67 will be signaled in the alternative transfer characteristics SEI message.
 	EnableHlgSignaling *bool `json:"enableHlgSignaling,omitempty"`
 	// Specifies the source format of the original analog video prior to digitizing and encoding
 	VideoFormat VideoFormat `json:"videoFormat,omitempty"`
