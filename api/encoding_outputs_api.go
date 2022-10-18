@@ -100,9 +100,10 @@ func (api *EncodingOutputsAPI) List(queryParams ...func(*EncodingOutputsAPIListQ
 
 // EncodingOutputsAPIListQueryParams contains all query parameters for the List endpoint
 type EncodingOutputsAPIListQueryParams struct {
-	Offset int32  `query:"offset"`
-	Limit  int32  `query:"limit"`
-	Name   string `query:"name"`
+	Offset int32            `query:"offset"`
+	Limit  int32            `query:"limit"`
+	Name   string           `query:"name"`
+	Type_  model.OutputType `query:"type"`
 }
 
 // Params will return a map of query parameters
