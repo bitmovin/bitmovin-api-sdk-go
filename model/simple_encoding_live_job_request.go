@@ -9,7 +9,9 @@ import (
 
 // SimpleEncodingLiveJobRequest model
 type SimpleEncodingLiveJobRequest struct {
-	Input *SimpleEncodingLiveJobInput `json:"input,omitempty"`
+	// The profile that will be used for the live encoding.
+	EncodingProfile SimpleEncodingLiveProfile   `json:"encodingProfile,omitempty"`
+	Input           *SimpleEncodingLiveJobInput `json:"input,omitempty"`
 	// Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api-live#outputs) (required)
 	Outputs []SimpleEncodingLiveJobOutput `json:"outputs,omitempty"`
 	// The cloud region that will be used for the live encoding. This value has to be set.
@@ -21,10 +23,11 @@ type SimpleEncodingLiveJobRequest struct {
 // UnmarshalJSON unmarshals model SimpleEncodingLiveJobRequest from a JSON structure
 func (m *SimpleEncodingLiveJobRequest) UnmarshalJSON(raw []byte) error {
 	var data struct {
-		Input       *SimpleEncodingLiveJobInput   `json:"input"`
-		Outputs     json.RawMessage               `json:"outputs"`
-		CloudRegion SimpleEncodingLiveCloudRegion `json:"cloudRegion"`
-		Name        *string                       `json:"name"`
+		EncodingProfile SimpleEncodingLiveProfile     `json:"encodingProfile"`
+		Input           *SimpleEncodingLiveJobInput   `json:"input"`
+		Outputs         json.RawMessage               `json:"outputs"`
+		CloudRegion     SimpleEncodingLiveCloudRegion `json:"cloudRegion"`
+		Name            *string                       `json:"name"`
 	}
 
 	buf := bytes.NewBuffer(raw)
@@ -37,6 +40,7 @@ func (m *SimpleEncodingLiveJobRequest) UnmarshalJSON(raw []byte) error {
 
 	var result SimpleEncodingLiveJobRequest
 
+	result.EncodingProfile = data.EncodingProfile
 	result.Input = data.Input
 	result.CloudRegion = data.CloudRegion
 	result.Name = data.Name

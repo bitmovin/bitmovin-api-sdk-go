@@ -31,23 +31,26 @@ type SimpleEncodingLiveJobResponse struct {
 	Name *string `json:"name,omitempty"`
 	// The cloud region that will be used for the live encoding
 	CloudRegion SimpleEncodingLiveCloudRegion `json:"cloudRegion,omitempty"`
+	// The profile that will be used for the live encoding.
+	EncodingProfile SimpleEncodingLiveProfile `json:"encodingProfile,omitempty"`
 }
 
 // UnmarshalJSON unmarshals model SimpleEncodingLiveJobResponse from a JSON structure
 func (m *SimpleEncodingLiveJobResponse) UnmarshalJSON(raw []byte) error {
 	var data struct {
-		Id          *string                       `json:"id"`
-		Status      SimpleEncodingLiveJobStatus   `json:"status"`
-		EncodingId  *string                       `json:"encodingId"`
-		EncoderIp   *string                       `json:"encoderIp"`
-		StreamKey   *string                       `json:"streamKey"`
-		Input       *SimpleEncodingLiveJobInput   `json:"input"`
-		Outputs     json.RawMessage               `json:"outputs"`
-		Errors      []SimpleEncodingVodJobErrors  `json:"errors"`
-		CreatedAt   *DateTime                     `json:"createdAt"`
-		ModifiedAt  *DateTime                     `json:"modifiedAt"`
-		Name        *string                       `json:"name"`
-		CloudRegion SimpleEncodingLiveCloudRegion `json:"cloudRegion"`
+		Id              *string                       `json:"id"`
+		Status          SimpleEncodingLiveJobStatus   `json:"status"`
+		EncodingId      *string                       `json:"encodingId"`
+		EncoderIp       *string                       `json:"encoderIp"`
+		StreamKey       *string                       `json:"streamKey"`
+		Input           *SimpleEncodingLiveJobInput   `json:"input"`
+		Outputs         json.RawMessage               `json:"outputs"`
+		Errors          []SimpleEncodingVodJobErrors  `json:"errors"`
+		CreatedAt       *DateTime                     `json:"createdAt"`
+		ModifiedAt      *DateTime                     `json:"modifiedAt"`
+		Name            *string                       `json:"name"`
+		CloudRegion     SimpleEncodingLiveCloudRegion `json:"cloudRegion"`
+		EncodingProfile SimpleEncodingLiveProfile     `json:"encodingProfile"`
 	}
 
 	buf := bytes.NewBuffer(raw)
@@ -71,6 +74,7 @@ func (m *SimpleEncodingLiveJobResponse) UnmarshalJSON(raw []byte) error {
 	result.ModifiedAt = data.ModifiedAt
 	result.Name = data.Name
 	result.CloudRegion = data.CloudRegion
+	result.EncodingProfile = data.EncodingProfile
 
 	allOfOutputs, err := UnmarshalSimpleEncodingLiveJobOutputSlice(bytes.NewBuffer(data.Outputs), bitutils.JSONConsumer())
 	if err != nil && err != io.EOF {
