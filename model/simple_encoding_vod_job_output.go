@@ -16,7 +16,9 @@ type SimpleEncodingVodJobOutput interface {
 
 // BaseSimpleEncodingVodJobOutput is the fallback type for the polymorphic model SimpleEncodingVodJobOutput.
 type BaseSimpleEncodingVodJobOutput struct {
-	Type SimpleEncodingVodJobOutputType `json:"type"`
+	// List of artifacts created by the encoding job. Artifacts are files essential for playback of the generated content, e.g. manifests.
+	Artifacts []SimpleEncodingVodJobOutputArtifact `json:"artifacts,omitempty"`
+	Type      SimpleEncodingVodJobOutputType       `json:"type"`
 }
 
 func (m BaseSimpleEncodingVodJobOutput) SimpleEncodingVodJobOutputType() SimpleEncodingVodJobOutputType {

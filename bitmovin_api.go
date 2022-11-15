@@ -13,8 +13,6 @@ type BitmovinAPI struct {
 	Account *api.AccountAPI
 	// Analytics intermediary API object with no endpoints
 	Analytics *api.AnalyticsAPI
-	// Streams communicates with '/streams' endpoints
-	Streams *api.StreamsAPI
 	// Encoding intermediary API object with no endpoints
 	Encoding *api.EncodingAPI
 	// General intermediary API object with no endpoints
@@ -23,6 +21,8 @@ type BitmovinAPI struct {
 	Notifications *api.NotificationsAPI
 	// Player intermediary API object with no endpoints
 	Player *api.PlayerAPI
+	// Streams intermediary API object with no endpoints
+	Streams *api.StreamsAPI
 }
 
 // NewBitmovinAPI constructor for BitmovinAPI that takes options as argument
@@ -40,11 +40,11 @@ func NewBitmovinAPIWithClient(apiClient *apiclient.APIClient) *BitmovinAPI {
 	a := &BitmovinAPI{apiClient: apiClient}
 	a.Account = api.NewAccountAPIWithClient(apiClient)
 	a.Analytics = api.NewAnalyticsAPIWithClient(apiClient)
-	a.Streams = api.NewStreamsAPIWithClient(apiClient)
 	a.Encoding = api.NewEncodingAPIWithClient(apiClient)
 	a.General = api.NewGeneralAPIWithClient(apiClient)
 	a.Notifications = api.NewNotificationsAPIWithClient(apiClient)
 	a.Player = api.NewPlayerAPIWithClient(apiClient)
+	a.Streams = api.NewStreamsAPIWithClient(apiClient)
 
 	return a
 }
