@@ -18,7 +18,8 @@ type AkamaiNetStorageOutput struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	Acl        []AclEntry              `json:"acl,omitempty"`
+	// Deprecation notice: This property does not have any effect and will not be returned by GET endpoints
+	Acl []AclEntry `json:"acl,omitempty"`
 	// Host to use for Akamai NetStorage transfers (required)
 	Host *string `json:"host,omitempty"`
 	// Your Akamai NetStorage Username (required)

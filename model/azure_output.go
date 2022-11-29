@@ -18,7 +18,8 @@ type AzureOutput struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	Acl        []AclEntry              `json:"acl,omitempty"`
+	// Deprecation notice: This property does not have any effect and will not be returned by GET endpoints
+	Acl []AclEntry `json:"acl,omitempty"`
 	// Azure Account Name (required)
 	AccountName *string `json:"accountName,omitempty"`
 	// Azure Account Key (required)

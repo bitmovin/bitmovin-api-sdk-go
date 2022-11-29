@@ -28,8 +28,9 @@ type BaseOutput struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	Acl        []AclEntry              `json:"acl,omitempty"`
-	Type       OutputType              `json:"type"`
+	// Deprecation notice: This property does not have any effect and will not be returned by GET endpoints
+	Acl  []AclEntry `json:"acl,omitempty"`
+	Type OutputType `json:"type"`
 }
 
 func (m BaseOutput) OutputType() OutputType {

@@ -10,6 +10,8 @@ type StreamsAPI struct {
 
 	// Video communicates with '/streams/video' endpoints
 	Video *StreamsVideoAPI
+	// Live communicates with '/streams/live/{stream_id}' endpoints
+	Live *StreamsLiveAPI
 }
 
 // NewStreamsAPI constructor for StreamsAPI that takes options as argument
@@ -26,6 +28,7 @@ func NewStreamsAPI(options ...apiclient.APIClientOption) (*StreamsAPI, error) {
 func NewStreamsAPIWithClient(apiClient *apiclient.APIClient) *StreamsAPI {
 	a := &StreamsAPI{apiClient: apiClient}
 	a.Video = NewStreamsVideoAPIWithClient(apiClient)
+	a.Live = NewStreamsLiveAPIWithClient(apiClient)
 
 	return a
 }

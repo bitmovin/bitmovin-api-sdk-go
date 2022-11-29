@@ -9,10 +9,10 @@ import (
 
 // AnalyticsImpressionsQuery model
 type AnalyticsImpressionsQuery struct {
-	// Start of timeframe which is queried in UTC format. (required)
-	Start *DateTime `json:"start,omitempty"`
-	// End of timeframe which is queried in UTC format. (required)
-	End *DateTime `json:"end,omitempty"`
+	// Start date (required)
+	Start *string `json:"start,omitempty"`
+	// End date (required)
+	End *string `json:"end,omitempty"`
 	// Analytics license key (required)
 	LicenseKey *string `json:"licenseKey,omitempty"`
 	// Analytics Query Filters  Each filter requires 3 properties: name, operator and value.  Valid operators are [IN, EQ, NE, LT, LTE, GT, GTE, CONTAINS, NOTCONTAINS]
@@ -24,8 +24,8 @@ type AnalyticsImpressionsQuery struct {
 // UnmarshalJSON unmarshals model AnalyticsImpressionsQuery from a JSON structure
 func (m *AnalyticsImpressionsQuery) UnmarshalJSON(raw []byte) error {
 	var data struct {
-		Start      *DateTime       `json:"start"`
-		End        *DateTime       `json:"end"`
+		Start      *string         `json:"start"`
+		End        *string         `json:"end"`
 		LicenseKey *string         `json:"licenseKey"`
 		Filters    json.RawMessage `json:"filters"`
 		Limit      *int32          `json:"limit"`
