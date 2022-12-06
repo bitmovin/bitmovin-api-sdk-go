@@ -41,14 +41,14 @@ type H265VideoConfiguration struct {
 	PresetConfiguration PresetConfiguration `json:"presetConfiguration,omitempty"`
 	// Automatically configures the H265 Video Codec to be compatible with the given SDR/HDR format. Bitmovin recommends to use the dynamic range format together with a preset configuration to achieve good results. Explicitly configured properties will take precedence over dynamic range format settings, which in turn will take precedence over preset configurations.
 	DynamicRangeFormat H265DynamicRangeFormat `json:"dynamicRangeFormat,omitempty"`
-	// Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
+	// Constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
 	Crf     *float64    `json:"crf,omitempty"`
 	Profile ProfileH265 `json:"profile,omitempty"`
-	// Sets the amount of b frames
+	// Amount of b frames
 	Bframes *int32 `json:"bframes,omitempty"`
-	// Sets the amount of reference frames
+	// Amount of reference frames
 	RefFrames *int32 `json:"refFrames,omitempty"`
-	// Sets the quantization factor
+	// Quantization factor
 	Qp *int32 `json:"qp,omitempty"`
 	// Maximum Bitrate
 	MaxBitrate *int64 `json:"maxBitrate,omitempty"`
@@ -137,9 +137,9 @@ type H265VideoConfiguration struct {
 	RateDistortionLevelForModeDecision *int32 `json:"rateDistortionLevelForModeDecision,omitempty"`
 	// Specify the amount of rate-distortion analysis to use within quantization.
 	RateDistortionLevelForQuantization RateDistortionLevelForQuantization `json:"rateDistortionLevelForQuantization,omitempty"`
-	// Sets the minimum of quantization factor. Valid value range: 0 - 69
+	// Minimum quantization factor. Valid value range: 0 - 69
 	QpMin *int32 `json:"qpMin,omitempty"`
-	// Sets the maximum of quantization factor. Valid value range: 0 - 69
+	// Maximum quantization factor. Valid value range: 0 - 69
 	QpMax *int32 `json:"qpMax,omitempty"`
 	// The encoder may begin encoding a row as soon as the row above it is at least two CTUs ahead in the encode process. Default is enabled.
 	WavefrontParallelProcessing *bool `json:"wavefrontParallelProcessing,omitempty"`
@@ -205,7 +205,7 @@ type H265VideoConfiguration struct {
 	IpRatio *float64 `json:"ipRatio,omitempty"`
 	// QP ratio factor between P and B slices. This ratio is used in all of the rate control modes. Default 1.3
 	PbRatio *float64 `json:"pbRatio,omitempty"`
-	// Sets the quantizer curve compression factor. It weights the frame quantizer based on the complexity of residual (measured by lookahead). Default 0.6
+	// Quantizer curve compression factor. It weights the frame quantizer based on the complexity of residual (measured by lookahead). Default 0.6
 	QuantizerCurveCompressionFactor *float64 `json:"quantizerCurveCompressionFactor,omitempty"`
 	// The maximum single adjustment in QP allowed to rate control. Default 4
 	QpStep *int32 `json:"qpStep,omitempty"`

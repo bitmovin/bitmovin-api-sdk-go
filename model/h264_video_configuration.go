@@ -41,20 +41,20 @@ type H264VideoConfiguration struct {
 	PresetConfiguration PresetConfiguration `json:"presetConfiguration,omitempty"`
 	// Automatically configures the H264 Video Codec to be compatible with the given SDR format. Bitmovin recommends to use the dynamic range format together with a preset configuration to achieve good results. Explicitly configured properties will take precedence over dynamic range format settings, which in turn will take precedence over preset configurations.
 	DynamicRangeFormat H264DynamicRangeFormat `json:"dynamicRangeFormat,omitempty"`
-	// Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
+	// Constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
 	Crf *float64 `json:"crf,omitempty"`
 	// When setting a profile, all other settings must not exceed the limits which are defined in the profile. Otherwise, a higher profile may be automatically chosen. (required)
 	Profile ProfileH264 `json:"profile,omitempty"`
-	// Sets the amount of b frames.
+	// Amount of b frames
 	Bframes *int32 `json:"bframes,omitempty"`
-	// Sets the amount of reference frames.
+	// Amount of reference frames.
 	RefFrames *int32 `json:"refFrames,omitempty"`
-	// Sets the minimum of quantization factor.
+	// Minimum quantization factor
 	QpMin *int32 `json:"qpMin,omitempty"`
-	// Sets the maximum of quantization factor.
+	// Maximum quantization factor
 	QpMax            *int32           `json:"qpMax,omitempty"`
 	MvPredictionMode MvPredictionMode `json:"mvPredictionMode,omitempty"`
-	// Sets the maximum Motion-Vector-Search-Range
+	// Maximum motion vector search range
 	MvSearchRangeMax *int32 `json:"mvSearchRangeMax,omitempty"`
 	// Enable or disable CABAC
 	Cabac *bool `json:"cabac,omitempty"`

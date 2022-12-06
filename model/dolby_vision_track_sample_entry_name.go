@@ -1,6 +1,6 @@
 package model
 
-// DolbyVisionTrackSampleEntryName : Sets the Dolby Vision track's sample entry name
+// DolbyVisionTrackSampleEntryName : Dolby Vision track's sample entry name
 type DolbyVisionTrackSampleEntryName string
 
 // List of possible DolbyVisionTrackSampleEntryName values

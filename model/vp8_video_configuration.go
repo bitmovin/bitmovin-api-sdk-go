@@ -37,15 +37,15 @@ type Vp8VideoConfiguration struct {
 	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
 	// The mode of the encoding
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
-	// Sets the constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
+	// Constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
 	Crf *int32 `json:"crf,omitempty"`
 	// Number of frames to look ahead for alternate reference frame selection.
 	LagInFrames *int32 `json:"lagInFrames,omitempty"`
 	// Maximum I-frame bitrate (percentage) 0=unlimited
 	MaxIntraRate *int64 `json:"maxIntraRate,omitempty"`
-	// Sets the minimum of quantization factor.
+	// Minimum quantization factor.
 	QpMin *int32 `json:"qpMin,omitempty"`
-	// Sets the maximum of quantization factor.
+	// Maximum quantization factor.
 	QpMax *int32 `json:"qpMax,omitempty"`
 	// Datarate undershoot (min) target (percentage).
 	RateUndershootPct *int32 `json:"rateUndershootPct,omitempty"`

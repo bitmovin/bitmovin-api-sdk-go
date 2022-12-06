@@ -41,7 +41,7 @@ type H262VideoConfiguration struct {
 	PresetConfiguration H262PresetConfiguration `json:"presetConfiguration,omitempty"`
 	// When setting a profile, all other settings must not exceed the limits which are defined in the profile. Otherwise, a higher profile may be automatically chosen. (required)
 	Profile ProfileH262 `json:"profile,omitempty"`
-	// Sets the amount of b frames.
+	// Amount of b frames.
 	Bframes *int32 `json:"bframes,omitempty"`
 	// Maximum Bitrate
 	MaxBitrate *int64 `json:"maxBitrate,omitempty"`

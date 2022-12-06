@@ -12,7 +12,7 @@ type StartLiveEncodingRequest struct {
 	LiveEncodingMode EncodingMode `json:"liveEncodingMode,omitempty"`
 	// Reupload specific files during a live encoding. This can be helpful if an automatic life cycle policy is enabled on the output storage
 	ReuploadSettings *ReuploadSettings `json:"reuploadSettings,omitempty"`
-	// Sets the version of the manifest generation engine
+	// Version of the manifest generation engine to be used
 	ManifestGenerator ManifestGenerator `json:"manifestGenerator,omitempty"`
 	// Configuration for auto restarting the live encoding
 	AutoRestartConfiguration *AutoRestartConfiguration `json:"autoRestartConfiguration,omitempty"`

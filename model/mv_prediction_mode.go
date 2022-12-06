@@ -1,6 +1,6 @@
 package model
 
-// MvPredictionMode : Sets the Motion Vector Prediction Mode.
+// MvPredictionMode : Motion vector prediction mode
 type MvPredictionMode string
 
 // List of possible MvPredictionMode values

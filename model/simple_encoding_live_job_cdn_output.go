@@ -6,7 +6,7 @@ import (
 
 // SimpleEncodingLiveJobCdnOutput model
 type SimpleEncodingLiveJobCdnOutput struct {
-	// This sets the maximum output resolution that will be generated.
+	// The maximum output resolution to be generated
 	MaxResolution SimpleEncodingLiveMaxResolution `json:"maxResolution,omitempty"`
 }
 

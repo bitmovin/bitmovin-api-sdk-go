@@ -16,7 +16,7 @@ type SimpleEncodingLiveJobOutput interface {
 
 // BaseSimpleEncodingLiveJobOutput is the fallback type for the polymorphic model SimpleEncodingLiveJobOutput.
 type BaseSimpleEncodingLiveJobOutput struct {
-	// This sets the maximum output resolution that will be generated.
+	// The maximum output resolution to be generated
 	MaxResolution SimpleEncodingLiveMaxResolution `json:"maxResolution,omitempty"`
 	Type          SimpleEncodingLiveJobOutputType `json:"type"`
 }
