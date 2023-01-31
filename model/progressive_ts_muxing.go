@@ -32,7 +32,7 @@ type ProgressiveTsMuxing struct {
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// Length of the segments in seconds
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
-	// Name of the new Video
+	// Name of the output file
 	Filename *string `json:"filename,omitempty"`
 	// Offset of MPEG-TS timestamps in seconds. e.g. first packet will start with PTS 900,000 for a 10 seconds offset (90,000 MPEG-TS timescale).
 	StartOffset *int32 `json:"startOffset,omitempty"`

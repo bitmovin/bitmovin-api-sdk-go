@@ -32,7 +32,7 @@ type BroadcastTsMuxing struct {
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// Length of the segments in seconds.
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
-	// Name of the new Video
+	// Name of the output file
 	Filename      *string                         `json:"filename,omitempty"`
 	Configuration *BroadcastTsMuxingConfiguration `json:"configuration,omitempty"`
 }

@@ -30,7 +30,7 @@ type ProgressiveMovMuxing struct {
 	IgnoredBy []Ignoring `json:"ignoredBy,omitempty"`
 	// Specifies how to proceed with the Muxing when some of its Streams are ignored (see 'condition' property of the Stream resource). The settings only make a difference for Muxings with more than one Stream. When retrieving the resource after the analysis step of the encoding has finished, 'ignoredBy' will indicate if and why it has been ignored.
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
-	// The output file name
+	// Name of the output file
 	Filename *string `json:"filename,omitempty"`
 }
 

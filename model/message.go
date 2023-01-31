@@ -14,6 +14,6 @@ type Message struct {
 	Links []Link `json:"links,omitempty"`
 	// Service-specific information
 	More *map[string]interface{} `json:"more,omitempty"`
-	// Timestamp when the message occured
+	// Timestamp when the message occurred
 	Date *DateTime `json:"date,omitempty"`
 }

@@ -30,7 +30,7 @@ type ProgressiveWebmMuxing struct {
 	IgnoredBy []Ignoring `json:"ignoredBy,omitempty"`
 	// Specifies how to proceed with the Muxing when some of its Streams are ignored (see 'condition' property of the Stream resource). The settings only make a difference for Muxings with more than one Stream. When retrieving the resource after the analysis step of the encoding has finished, 'ignoredBy' will indicate if and why it has been ignored.
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
-	// Name of the new Video
+	// Name of the output file
 	Filename     *string                           `json:"filename,omitempty"`
 	ManifestType ProgressiveWebmMuxingManifestType `json:"manifestType,omitempty"`
 	// Determines the length of segments in seconds if manifestType is set to DASH_ON_DEMAND. Defaults to 4 seconds

@@ -32,7 +32,7 @@ type ChunkedTextMuxing struct {
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// Length of the segments in seconds (required)
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
-	// Segment naming template
+	// Segment naming policy
 	SegmentNaming *string `json:"segmentNaming,omitempty"`
 	// Segment naming template with placeholders which will be replaced during the encoding. The result will be saved in segmentNaming. {rand:4} gets replaced with an alphanumeric string of length specified after the colon. Defaults to 32. If this field is set, segmentNaming must not be specified.
 	SegmentNamingTemplate *string `json:"segmentNamingTemplate,omitempty"`

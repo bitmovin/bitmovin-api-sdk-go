@@ -71,6 +71,28 @@ func NewEncodingOutputsAPIWithClient(apiClient *apiclient.APIClient) *EncodingOu
 	return a
 }
 
+// CheckPermissions Check output permissions (S3 only)
+func (api *EncodingOutputsAPI) CheckPermissions(outputId string) (*model.CheckOutputPermissionsResponse, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["output_id"] = outputId
+	}
+
+	var responseModel model.CheckOutputPermissionsResponse
+	err := api.apiClient.Post("/encoding/outputs/{output_id}/check-permissions", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
+// CheckPermissions Check output permissions (S3 only)
+func (api *EncodingOutputsAPI) CheckPermissionsWithRequestBody(outputId string, checkOutputPermissionsRequest model.CheckOutputPermissionsRequest) (*model.CheckOutputPermissionsResponse, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["output_id"] = outputId
+	}
+
+	var responseModel model.CheckOutputPermissionsResponse
+	err := api.apiClient.Post("/encoding/outputs/{output_id}/check-permissions", &checkOutputPermissionsRequest, &responseModel, reqParams)
+	return &responseModel, err
+}
+
 // Get Output Details
 func (api *EncodingOutputsAPI) Get(outputId string) (*model.Output, error) {
 	reqParams := func(params *apiclient.RequestParams) {
