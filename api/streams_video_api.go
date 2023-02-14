@@ -27,7 +27,7 @@ func NewStreamsVideoAPIWithClient(apiClient *apiclient.APIClient) *StreamsVideoA
 	return a
 }
 
-// PatchStreamsVideo Update stream by id
+// PatchStreamsVideo Update Streams video by id
 func (api *StreamsVideoAPI) PatchStreamsVideo(streamId string, streamsVideoUpdateRequest model.StreamsVideoUpdateRequest) (*model.StreamsVideoResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["stream_id"] = streamId
@@ -38,7 +38,7 @@ func (api *StreamsVideoAPI) PatchStreamsVideo(streamId string, streamsVideoUpdat
 	return &responseModel, err
 }
 
-// Create new Stream
+// Create new Streams video
 func (api *StreamsVideoAPI) Create(streamsVideoCreateRequest model.StreamsVideoCreateRequest) (*model.StreamsVideoResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -48,7 +48,7 @@ func (api *StreamsVideoAPI) Create(streamsVideoCreateRequest model.StreamsVideoC
 	return &responseModel, err
 }
 
-// Get stream by id
+// Get Streams video by id
 func (api *StreamsVideoAPI) Get(streamId string) (*model.StreamsVideoResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["stream_id"] = streamId
@@ -59,7 +59,7 @@ func (api *StreamsVideoAPI) Get(streamId string) (*model.StreamsVideoResponse, e
 	return &responseModel, err
 }
 
-// List Get paginated list of streams
+// List Get paginated list of Streams videos
 func (api *StreamsVideoAPI) List(queryParams ...func(*StreamsVideoAPIListQueryParams)) (*pagination.StreamsVideoResponsesListPagination, error) {
 	queryParameters := &StreamsVideoAPIListQueryParams{}
 	for _, queryParam := range queryParams {

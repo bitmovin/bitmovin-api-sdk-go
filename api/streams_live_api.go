@@ -26,7 +26,7 @@ func NewStreamsLiveAPIWithClient(apiClient *apiclient.APIClient) *StreamsLiveAPI
 	return a
 }
 
-// PatchStreamsLive Update stream by id
+// PatchStreamsLive Update live stream by id
 func (api *StreamsLiveAPI) PatchStreamsLive(streamId string, streamsLiveUpdateRequest model.StreamsLiveUpdateRequest) (*model.StreamsLiveUpdateRequest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["stream_id"] = streamId
