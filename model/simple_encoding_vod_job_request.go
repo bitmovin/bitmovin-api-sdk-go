@@ -10,8 +10,9 @@ import (
 // SimpleEncodingVodJobRequest model
 type SimpleEncodingVodJobRequest struct {
 	// The template that will be used for the encoding.
-	EncodingTemplate EncodingTemplate            `json:"encodingTemplate,omitempty"`
-	Inputs           []SimpleEncodingVodJobInput `json:"inputs,omitempty"`
+	EncodingTemplate EncodingTemplate `json:"encodingTemplate,omitempty"`
+	// Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api#inputs-outputs) (required)
+	Inputs []SimpleEncodingVodJobInput `json:"inputs,omitempty"`
 	// Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api#inputs-outputs) (required)
 	Outputs []SimpleEncodingVodJobOutput `json:"outputs,omitempty"`
 	// This property will be used for naming the encoding and the manifests.

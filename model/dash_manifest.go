@@ -18,7 +18,8 @@ type DashManifest struct {
 	// The outputs to store the manifest (required)
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	// Current status
-	Status  Status      `json:"status,omitempty"`
+	Status Status `json:"status,omitempty"`
+	// Determines if segmented or progressive representations can appear in the manifest
 	Profile DashProfile `json:"profile,omitempty"`
 	// The filename of your manifest
 	ManifestName *string `json:"manifestName,omitempty"`

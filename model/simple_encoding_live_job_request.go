@@ -10,8 +10,9 @@ import (
 // SimpleEncodingLiveJobRequest model
 type SimpleEncodingLiveJobRequest struct {
 	// The profile that will be used for the live encoding.
-	EncodingProfile SimpleEncodingLiveProfile   `json:"encodingProfile,omitempty"`
-	Input           *SimpleEncodingLiveJobInput `json:"input,omitempty"`
+	EncodingProfile SimpleEncodingLiveProfile `json:"encodingProfile,omitempty"`
+	// Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api-live#inputs) (required)
+	Input *SimpleEncodingLiveJobInput `json:"input,omitempty"`
 	// Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api-live#outputs) (required)
 	Outputs []SimpleEncodingLiveJobOutput `json:"outputs,omitempty"`
 	// The cloud region that will be used for the live encoding. This value has to be set.
