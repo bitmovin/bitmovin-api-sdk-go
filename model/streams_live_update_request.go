@@ -6,4 +6,6 @@ type StreamsLiveUpdateRequest struct {
 	Title *string `json:"title,omitempty"`
 	// The new description of the stream
 	Description *string `json:"description,omitempty"`
+	// Id of the stream config to use
+	ConfigId *string `json:"configId,omitempty"`
 }

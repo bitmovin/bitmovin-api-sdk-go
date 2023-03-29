@@ -8,6 +8,8 @@ import (
 type StreamsAPI struct {
 	apiClient *apiclient.APIClient
 
+	// Configs communicates with '/streams/configs/{config_id}' endpoints
+	Configs *StreamsConfigsAPI
 	// Video communicates with '/streams/video' endpoints
 	Video *StreamsVideoAPI
 	// Live communicates with '/streams/live/{stream_id}' endpoints
@@ -27,6 +29,7 @@ func NewStreamsAPI(options ...apiclient.APIClientOption) (*StreamsAPI, error) {
 // NewStreamsAPIWithClient constructor for StreamsAPI that takes an APIClient as argument
 func NewStreamsAPIWithClient(apiClient *apiclient.APIClient) *StreamsAPI {
 	a := &StreamsAPI{apiClient: apiClient}
+	a.Configs = NewStreamsConfigsAPIWithClient(apiClient)
 	a.Video = NewStreamsVideoAPIWithClient(apiClient)
 	a.Live = NewStreamsLiveAPIWithClient(apiClient)
 
