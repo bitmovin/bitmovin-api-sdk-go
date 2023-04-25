@@ -8,4 +8,8 @@ type StreamsConfigResponse struct {
 	OrgId *string `json:"orgId,omitempty"`
 	// Player style config
 	PlayerStyle *map[string]interface{} `json:"playerStyle,omitempty"`
+	// URL of the watermark image
+	WatermarkUrl *string `json:"watermarkUrl,omitempty"`
+	// Target link of the watermark image
+	WatermarkTargetLink *string `json:"watermarkTargetLink,omitempty"`
 }
