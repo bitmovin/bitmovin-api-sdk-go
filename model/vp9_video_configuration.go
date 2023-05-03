@@ -100,6 +100,8 @@ type Vp9VideoConfiguration struct {
 	// altref noise reduction filter strength.
 	ArnrStrength *int32      `json:"arnrStrength,omitempty"`
 	ArnrType     Vp9ArnrType `json:"arnrType,omitempty"`
+	// Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. Explicitly setting targetLevel, rateOvershootPct, or clientBufferSize properties will automatically disable the calculation.
+	AutoLevelSetup AutoLevelSetup `json:"autoLevelSetup,omitempty"`
 }
 
 func (m Vp9VideoConfiguration) CodecConfigType() CodecConfigType {

@@ -124,6 +124,8 @@ type H264VideoConfiguration struct {
 	PsyRateDistortionOptimization *float64 `json:"psyRateDistortionOptimization,omitempty"`
 	// Higher values will improve sharpness and detail retention but might come at costs of artifacts. Needs to have trellis enabled
 	PsyTrellis *float64 `json:"psyTrellis,omitempty"`
+	// Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. Explicitly setting level, maxBitrate, or bufsize properties will automatically disable the calculation.
+	AutoLevelSetup AutoLevelSetup `json:"autoLevelSetup,omitempty"`
 }
 
 func (m H264VideoConfiguration) CodecConfigType() CodecConfigType {

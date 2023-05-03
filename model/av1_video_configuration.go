@@ -39,6 +39,8 @@ type Av1VideoConfiguration struct {
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
 	// Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.
 	PresetConfiguration Av1PresetConfiguration `json:"presetConfiguration,omitempty"`
+	// Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate.
+	AutoLevelSetup AutoLevelSetup `json:"autoLevelSetup,omitempty"`
 }
 
 func (m Av1VideoConfiguration) CodecConfigType() CodecConfigType {

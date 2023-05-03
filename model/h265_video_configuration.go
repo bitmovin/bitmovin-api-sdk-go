@@ -223,6 +223,8 @@ type H265VideoConfiguration struct {
 	LowpassDct *bool `json:"lowpassDct,omitempty"`
 	// Defines whether CEA 608/708 subtitles are extracted from the input video stream
 	Cea608708SubtitleConfig *Cea608708SubtitleConfiguration `json:"cea608708SubtitleConfig,omitempty"`
+	// Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. Explicitly setting level, maxBitrate, or bufsize properties will automatically disable the calculation.
+	AutoLevelSetup AutoLevelSetup `json:"autoLevelSetup,omitempty"`
 }
 
 func (m H265VideoConfiguration) CodecConfigType() CodecConfigType {

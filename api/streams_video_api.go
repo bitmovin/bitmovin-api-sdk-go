@@ -27,7 +27,7 @@ func NewStreamsVideoAPIWithClient(apiClient *apiclient.APIClient) *StreamsVideoA
 	return a
 }
 
-// PatchStreamsVideo Update Streams video by id
+// PatchStreamsVideo Partially update stream config by id
 func (api *StreamsVideoAPI) PatchStreamsVideo(streamId string, streamsVideoUpdateRequest model.StreamsVideoUpdateRequest) (*model.StreamsVideoResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["stream_id"] = streamId

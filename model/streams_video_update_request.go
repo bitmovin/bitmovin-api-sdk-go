@@ -10,4 +10,6 @@ type StreamsVideoUpdateRequest struct {
 	Description *string `json:"description,omitempty"`
 	// Id of the stream config to use
 	ConfigId *string `json:"configId,omitempty"`
+	// URL to hosted poster image
+	PosterUrl *string `json:"posterUrl,omitempty"`
 }
