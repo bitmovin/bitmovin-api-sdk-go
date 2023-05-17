@@ -223,7 +223,7 @@ type H265VideoConfiguration struct {
 	LowpassDct *bool `json:"lowpassDct,omitempty"`
 	// Defines whether CEA 608/708 subtitles are extracted from the input video stream
 	Cea608708SubtitleConfig *Cea608708SubtitleConfiguration `json:"cea608708SubtitleConfig,omitempty"`
-	// Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. Explicitly setting level, maxBitrate, or bufsize properties will automatically disable the calculation.
+	// Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. In the case the target level is set explicitly, the maximum bitrate and buffer size are calculated based on the defined level. Explicitly setting maxBitrate, or bufsize properties will disable the automatic calculation.
 	AutoLevelSetup AutoLevelSetup `json:"autoLevelSetup,omitempty"`
 }
 

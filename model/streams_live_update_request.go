@@ -10,4 +10,6 @@ type StreamsLiveUpdateRequest struct {
 	ConfigId *string `json:"configId,omitempty"`
 	// URL to hosted poster image
 	PosterUrl *string `json:"posterUrl,omitempty"`
+	// Id of the advertisement config to use
+	AdConfigId *string `json:"adConfigId,omitempty"`
 }

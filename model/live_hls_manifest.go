@@ -10,4 +10,6 @@ type LiveHlsManifest struct {
 	LiveEdgeOffset *float64 `json:"liveEdgeOffset,omitempty"`
 	// Specifies if the EXT-X-PROGRAM-DATETIME tag will be included
 	InsertProgramDateTime *bool `json:"insertProgramDateTime,omitempty"`
+	// Configuration for the EXT-X-PROGRAM-DATETIME tag
+	ProgramDateTimeSettings *ProgramDateTimeSettings `json:"programDateTimeSettings,omitempty"`
 }

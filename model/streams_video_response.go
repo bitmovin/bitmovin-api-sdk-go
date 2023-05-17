@@ -18,5 +18,6 @@ type StreamsVideoResponse struct {
 	// List of encoding status information
 	EncodingTasks []StreamsVideoEncodingTask `json:"encodingTasks,omitempty"`
 	// Poster URL
-	PosterUrl *string `json:"posterUrl,omitempty"`
+	PosterUrl *string                  `json:"posterUrl,omitempty"`
+	AdConfig  *StreamsAdConfigResponse `json:"adConfig,omitempty"`
 }
