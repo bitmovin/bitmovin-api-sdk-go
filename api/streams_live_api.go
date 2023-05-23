@@ -36,12 +36,12 @@ func NewStreamsLiveAPIWithClient(apiClient *apiclient.APIClient) *StreamsLiveAPI
 }
 
 // PatchStreamsLive Partially update live stream by id
-func (api *StreamsLiveAPI) PatchStreamsLive(streamId string, streamsLiveUpdateRequest model.StreamsLiveUpdateRequest) (*model.StreamsLiveUpdateRequest, error) {
+func (api *StreamsLiveAPI) PatchStreamsLive(streamId string, streamsLiveUpdateRequest model.StreamsLiveUpdateRequest) (*model.StreamsLiveResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["stream_id"] = streamId
 	}
 
-	var responseModel model.StreamsLiveUpdateRequest
+	var responseModel model.StreamsLiveResponse
 	err := api.apiClient.Patch("/streams/live/{stream_id}", &streamsLiveUpdateRequest, &responseModel, reqParams)
 	return &responseModel, err
 }
@@ -84,12 +84,12 @@ func (api *StreamsLiveAPI) List(queryParams ...func(*StreamsLiveAPIListQueryPara
 }
 
 // Update live stream by id
-func (api *StreamsLiveAPI) Update(streamId string, streamsLiveUpdateRequest model.StreamsLiveUpdateRequest) (*model.StreamsLiveUpdateRequest, error) {
+func (api *StreamsLiveAPI) Update(streamId string, streamsLiveUpdateRequest model.StreamsLiveUpdateRequest) (*model.StreamsLiveResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["stream_id"] = streamId
 	}
 
-	var responseModel model.StreamsLiveUpdateRequest
+	var responseModel model.StreamsLiveResponse
 	err := api.apiClient.Put("/streams/live/{stream_id}", &streamsLiveUpdateRequest, &responseModel, reqParams)
 	return &responseModel, err
 }
