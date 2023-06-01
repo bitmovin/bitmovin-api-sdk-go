@@ -1,6 +1,6 @@
 package model
 
-// V2 of the default dash manifest is an experimental feature and might be subject to change in the future.
+// DashManifestDefault model
 type DashManifestDefault struct {
 	// Id of the resource (required)
 	Id *string `json:"id,omitempty"`
@@ -29,10 +29,10 @@ type DashManifestDefault struct {
 	UtcTimings []UtcTiming `json:"utcTimings,omitempty"`
 	// The manifest compatibility with the standard DASH Edition.
 	DashEditionCompatibility DashEditionCompatibility `json:"dashEditionCompatibility,omitempty"`
-	// The id of the encoding to create a default manifest from. Required: encodingId or periods
+	// The id of the encoding to create a default manifest from. Either \"encodingId\" or \"periods\" is required.
 	EncodingId *string `json:"encodingId,omitempty"`
-	// The version of the default manifest generator
+	// Specifies the algorithm that determines which output of the given encoding is included into the manifest. Note that this is not related to the \"manifestGenerator\" version of the \"Start\" request.
 	Version DashManifestDefaultVersion `json:"version,omitempty"`
-	// Adds a period for every item. Required: encodingId or periods
+	// Adds a period for every item. Either \"periods\" or \"encodingId\" is required.
 	Periods []DefaultDashManifestPeriod `json:"periods,omitempty"`
 }

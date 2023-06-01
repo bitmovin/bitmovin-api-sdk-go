@@ -26,7 +26,7 @@ func NewEncodingManifestsHlsDefaultAPIWithClient(apiClient *apiclient.APIClient)
 	return a
 }
 
-// Create HLS Manifest Default
+// Create Default HLS Manifest
 func (api *EncodingManifestsHlsDefaultAPI) Create(hlsManifestDefault model.HlsManifestDefault) (*model.HlsManifestDefault, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

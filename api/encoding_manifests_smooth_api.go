@@ -73,6 +73,17 @@ func (api *EncodingManifestsSmoothAPI) Get(manifestId string) (*model.SmoothStre
 	return &responseModel, err
 }
 
+// GetStartRequest Manifest Start Details
+func (api *EncodingManifestsSmoothAPI) GetStartRequest(manifestId string) (*model.StartManifestRequest, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["manifest_id"] = manifestId
+	}
+
+	var responseModel model.StartManifestRequest
+	err := api.apiClient.Get("/encoding/manifests/smooth/{manifest_id}/start", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
 // List Smooth Streaming Manifests
 func (api *EncodingManifestsSmoothAPI) List(queryParams ...func(*EncodingManifestsSmoothAPIListQueryParams)) (*pagination.SmoothStreamingManifestsListPagination, error) {
 	queryParameters := &EncodingManifestsSmoothAPIListQueryParams{}

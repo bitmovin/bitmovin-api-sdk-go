@@ -54,7 +54,7 @@ type H265VideoConfiguration struct {
 	MaxBitrate *int64 `json:"maxBitrate,omitempty"`
 	// Minimum Bitrate
 	MinBitrate *int64 `json:"minBitrate,omitempty"`
-	// Specify the size of the VBV buffer (kbits)
+	// Size of the VBV buffer (kbits)
 	Bufsize *int64 `json:"bufsize,omitempty"`
 	// Minimum GOP length, the minimum distance between I-frames
 	MinGop *int32 `json:"minGop,omitempty"`
@@ -135,7 +135,7 @@ type H265VideoConfiguration struct {
 	SignHide *bool `json:"signHide,omitempty"`
 	// Level of rate-distortion optimization in mode decision. The lower the value the faster the encode, the higher the value higher the compression efficiency. Valid range: 0 - 4
 	RateDistortionLevelForModeDecision *int32 `json:"rateDistortionLevelForModeDecision,omitempty"`
-	// Specify the amount of rate-distortion analysis to use within quantization.
+	// Specifies the amount of rate-distortion analysis to use within quantization.
 	RateDistortionLevelForQuantization RateDistortionLevelForQuantization `json:"rateDistortionLevelForQuantization,omitempty"`
 	// Minimum quantization factor. Valid value range: 0 - 69
 	QpMin *int32 `json:"qpMin,omitempty"`

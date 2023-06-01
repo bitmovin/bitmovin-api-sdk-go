@@ -26,7 +26,7 @@ func NewEncodingManifestsDashDefaultAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Create DASH Manifest Default
+// Create Default DASH Manifest
 func (api *EncodingManifestsDashDefaultAPI) Create(dashManifestDefault model.DashManifestDefault) (*model.DashManifestDefault, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

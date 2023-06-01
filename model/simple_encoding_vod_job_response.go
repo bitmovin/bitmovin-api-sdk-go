@@ -19,6 +19,8 @@ type SimpleEncodingVodJobResponse struct {
 	EncodingId *string                      `json:"encodingId,omitempty"`
 	Inputs     []SimpleEncodingVodJobInput  `json:"inputs,omitempty"`
 	Outputs    []SimpleEncodingVodJobOutput `json:"outputs,omitempty"`
+	// Options to customize the Simple Encoding Job
+	Options *SimpleEncodingVodJobOptions `json:"options,omitempty"`
 	// Describes all the errors in cases the status of the job is 'error'.
 	Errors []SimpleEncodingVodJobErrors `json:"errors,omitempty"`
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
@@ -38,6 +40,7 @@ func (m *SimpleEncodingVodJobResponse) UnmarshalJSON(raw []byte) error {
 		EncodingId       *string                      `json:"encodingId"`
 		Inputs           json.RawMessage              `json:"inputs"`
 		Outputs          json.RawMessage              `json:"outputs"`
+		Options          *SimpleEncodingVodJobOptions `json:"options"`
 		Errors           []SimpleEncodingVodJobErrors `json:"errors"`
 		CreatedAt        *DateTime                    `json:"createdAt"`
 		ModifiedAt       *DateTime                    `json:"modifiedAt"`
@@ -58,6 +61,7 @@ func (m *SimpleEncodingVodJobResponse) UnmarshalJSON(raw []byte) error {
 	result.Status = data.Status
 	result.EncodingTemplate = data.EncodingTemplate
 	result.EncodingId = data.EncodingId
+	result.Options = data.Options
 	result.Errors = data.Errors
 	result.CreatedAt = data.CreatedAt
 	result.ModifiedAt = data.ModifiedAt

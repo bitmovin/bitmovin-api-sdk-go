@@ -26,7 +26,7 @@ func NewEncodingManifestsSmoothDefaultAPIWithClient(apiClient *apiclient.APIClie
 	return a
 }
 
-// Create Smooth Streaming Manifest Default
+// Create Default Smooth Streaming Manifest
 func (api *EncodingManifestsSmoothDefaultAPI) Create(smoothManifestDefault model.SmoothManifestDefault) (*model.SmoothManifestDefault, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

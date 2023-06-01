@@ -38,7 +38,7 @@ func NewEncodingManifestsDashAPIWithClient(apiClient *apiclient.APIClient) *Enco
 	return a
 }
 
-// Create DASH Manifest
+// Create Custom DASH Manifest
 func (api *EncodingManifestsDashAPI) Create(dashManifest model.DashManifest) (*model.DashManifest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -67,6 +67,17 @@ func (api *EncodingManifestsDashAPI) Get(manifestId string) (*model.DashManifest
 
 	var responseModel model.DashManifest
 	err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
+// GetStartRequest Manifest Start Details
+func (api *EncodingManifestsDashAPI) GetStartRequest(manifestId string) (*model.StartManifestRequest, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["manifest_id"] = manifestId
+	}
+
+	var responseModel model.StartManifestRequest
+	err := api.apiClient.Get("/encoding/manifests/dash/{manifest_id}/start", nil, &responseModel, reqParams)
 	return &responseModel, err
 }
 

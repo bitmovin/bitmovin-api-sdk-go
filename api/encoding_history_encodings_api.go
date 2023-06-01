@@ -60,6 +60,7 @@ func (api *EncodingHistoryEncodingsAPI) List(queryParams ...func(*EncodingHistor
 type EncodingHistoryEncodingsAPIListQueryParams struct {
 	Offset                 int32              `query:"offset"`
 	Limit                  int32              `query:"limit"`
+	IncludeTotalCount      bool               `query:"includeTotalCount"`
 	Sort                   string             `query:"sort"`
 	Type_                  string             `query:"type"`
 	Status                 string             `query:"status"`

@@ -41,7 +41,7 @@ func NewEncodingManifestsHlsAPIWithClient(apiClient *apiclient.APIClient) *Encod
 	return a
 }
 
-// Create HLS Manifest
+// Create Custom HLS Manifest
 func (api *EncodingManifestsHlsAPI) Create(hlsManifest model.HlsManifest) (*model.HlsManifest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -70,6 +70,17 @@ func (api *EncodingManifestsHlsAPI) Get(manifestId string) (*model.HlsManifest, 
 
 	var responseModel model.HlsManifest
 	err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
+// GetStartRequest Manifest Start Details
+func (api *EncodingManifestsHlsAPI) GetStartRequest(manifestId string) (*model.StartManifestRequest, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["manifest_id"] = manifestId
+	}
+
+	var responseModel model.StartManifestRequest
+	err := api.apiClient.Get("/encoding/manifests/hls/{manifest_id}/start", nil, &responseModel, reqParams)
 	return &responseModel, err
 }
 

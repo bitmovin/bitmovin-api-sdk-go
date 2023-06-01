@@ -15,6 +15,8 @@ type SimpleEncodingVodJobRequest struct {
 	Inputs []SimpleEncodingVodJobInput `json:"inputs,omitempty"`
 	// Please take a look at the [documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api#inputs-outputs) (required)
 	Outputs []SimpleEncodingVodJobOutput `json:"outputs,omitempty"`
+	// Options to customize the Simple Encoding Job
+	Options *SimpleEncodingVodJobOptions `json:"options,omitempty"`
 	// This property will be used for naming the encoding and the manifests.
 	Name *string `json:"name,omitempty"`
 }
@@ -22,10 +24,11 @@ type SimpleEncodingVodJobRequest struct {
 // UnmarshalJSON unmarshals model SimpleEncodingVodJobRequest from a JSON structure
 func (m *SimpleEncodingVodJobRequest) UnmarshalJSON(raw []byte) error {
 	var data struct {
-		EncodingTemplate EncodingTemplate `json:"encodingTemplate"`
-		Inputs           json.RawMessage  `json:"inputs"`
-		Outputs          json.RawMessage  `json:"outputs"`
-		Name             *string          `json:"name"`
+		EncodingTemplate EncodingTemplate             `json:"encodingTemplate"`
+		Inputs           json.RawMessage              `json:"inputs"`
+		Outputs          json.RawMessage              `json:"outputs"`
+		Options          *SimpleEncodingVodJobOptions `json:"options"`
+		Name             *string                      `json:"name"`
 	}
 
 	buf := bytes.NewBuffer(raw)
@@ -39,6 +42,7 @@ func (m *SimpleEncodingVodJobRequest) UnmarshalJSON(raw []byte) error {
 	var result SimpleEncodingVodJobRequest
 
 	result.EncodingTemplate = data.EncodingTemplate
+	result.Options = data.Options
 	result.Name = data.Name
 
 	allOfInputs, err := UnmarshalSimpleEncodingVodJobInputSlice(bytes.NewBuffer(data.Inputs), bitutils.JSONConsumer())
