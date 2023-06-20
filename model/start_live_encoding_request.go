@@ -4,9 +4,9 @@ package model
 type StartLiveEncodingRequest struct {
 	// Key for the stream. (a-zA-Z, 3-20 characters) (required)
 	StreamKey *string `json:"streamKey,omitempty"`
-	// List of Hls manifests to use for this live encoding
+	// HLS manifests to be generated during the encoding. See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
 	HlsManifests []LiveHlsManifest `json:"hlsManifests,omitempty"`
-	// List of Dash manifests to use for this live encoding
+	// DASH manifests to be generated during the encoding. See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
 	DashManifests []LiveDashManifest `json:"dashManifests,omitempty"`
 	// The pass mode of the encoding
 	LiveEncodingMode EncodingMode `json:"liveEncodingMode,omitempty"`

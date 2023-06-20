@@ -97,7 +97,7 @@ func (api *EncodingManifestsDashAPI) List(queryParams ...func(*EncodingManifests
 	return &responseModel, err
 }
 
-// Start DASH Manifest Creation
+// Start DASH manifest generation
 func (api *EncodingManifestsDashAPI) Start(manifestId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -108,7 +108,7 @@ func (api *EncodingManifestsDashAPI) Start(manifestId string) (*model.BitmovinRe
 	return &responseModel, err
 }
 
-// Start DASH Manifest Creation
+// Start DASH manifest generation
 func (api *EncodingManifestsDashAPI) StartWithRequestBody(manifestId string, startManifestRequest model.StartManifestRequest) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -119,7 +119,7 @@ func (api *EncodingManifestsDashAPI) StartWithRequestBody(manifestId string, sta
 	return &responseModel, err
 }
 
-// Status DASH Manifest Creation Status
+// Status DASH manifest generation status
 func (api *EncodingManifestsDashAPI) Status(manifestId string) (*model.ModelTask, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -130,7 +130,7 @@ func (api *EncodingManifestsDashAPI) Status(manifestId string) (*model.ModelTask
 	return &responseModel, err
 }
 
-// Stop DASH Manifest Creation
+// Stop DASH manifest generation
 func (api *EncodingManifestsDashAPI) Stop(manifestId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId

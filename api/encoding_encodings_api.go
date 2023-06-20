@@ -103,6 +103,7 @@ func (api *EncodingEncodingsAPI) GetStartRequest(encodingId string) (*model.Star
 }
 
 // List all Encodings
+// Bitmovin retains historical encoding jobs data for a period of 90 days. Should you require the data to be stored for an extended duration, it is necessary to store it within your own data repository.
 func (api *EncodingEncodingsAPI) List(queryParams ...func(*EncodingEncodingsAPIListQueryParams)) (*pagination.EncodingsListPagination, error) {
 	queryParameters := &EncodingEncodingsAPIListQueryParams{}
 	for _, queryParam := range queryParams {
@@ -140,7 +141,7 @@ func (api *EncodingEncodingsAPI) Reschedule(encodingId string, rescheduleEncodin
 	return &responseModel, err
 }
 
-// Start Encoding
+// Start VoD Encoding
 func (api *EncodingEncodingsAPI) Start(encodingId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -151,7 +152,7 @@ func (api *EncodingEncodingsAPI) Start(encodingId string) (*model.BitmovinRespon
 	return &responseModel, err
 }
 
-// Start Encoding
+// Start VoD Encoding
 func (api *EncodingEncodingsAPI) StartWithRequestBody(encodingId string, startEncodingRequest model.StartEncodingRequest) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

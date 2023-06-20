@@ -16,6 +16,7 @@ type StreamsLiveResponse struct {
 	LifeCycle StreamsLiveLifeCycle   `json:"lifeCycle,omitempty"`
 	Config    *StreamsConfigResponse `json:"config,omitempty"`
 	// Poster URL
-	PosterUrl *string                  `json:"posterUrl,omitempty"`
-	AdConfig  *StreamsAdConfigResponse `json:"adConfig,omitempty"`
+	PosterUrl         *string                           `json:"posterUrl,omitempty"`
+	AdConfig          *StreamsAdConfigResponse          `json:"adConfig,omitempty"`
+	ContentProtection *StreamsContentProtectionResponse `json:"contentProtection,omitempty"`
 }

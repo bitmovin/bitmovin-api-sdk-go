@@ -12,15 +12,15 @@ type StartEncodingRequest struct {
 	HandleVariableInputFps *bool `json:"handleVariableInputFps,omitempty"`
 	// The pass mode of the encoding
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
-	// List of preview DASH manifests to be created
+	// DASH manifests to be generated for previewing while the encoding is still running. See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
 	PreviewDashManifests []ManifestResource `json:"previewDashManifests,omitempty"`
-	// List of preview HLS manifests to be created
+	// HLS manifests to be generated for previewing while the encoding is still running. See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
 	PreviewHlsManifests []ManifestResource `json:"previewHlsManifests,omitempty"`
-	// List of VoD DASH manifests to be created after encoding finished successfully
+	// DASH manifests to be generated right after encoding (just-in-time). See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
 	VodDashManifests []ManifestResource `json:"vodDashManifests,omitempty"`
-	// List of VoD HLS manifests to be created after encoding finished successfully
+	// HLS manifests to be generated right after encoding (just-in-time). See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
 	VodHlsManifests []ManifestResource `json:"vodHlsManifests,omitempty"`
-	// List of VoD SMOOTH manifests to be created after encoding finished successfully
+	// Smooth Streaming manifests to be generated right after encoding (just-in-time). See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
 	VodSmoothManifests []ManifestResource `json:"vodSmoothManifests,omitempty"`
 	// Major version of the manifest generator to be used for manifests referenced in this request (by properties vodDashManifests, vodHlsManifests, vodSmoothManifests, previewDashManifests, previewHlsManifests). `V2` is available for encoder versions 2.70.0 and above and is the recommended option. The default value depends on the sign-up date of your organization. See [documentation](https://developer.bitmovin.com/encoding/docs/manifest-generator-v2) page for a detailed explanation.
 	ManifestGenerator ManifestGenerator `json:"manifestGenerator,omitempty"`

@@ -100,7 +100,7 @@ func (api *EncodingManifestsSmoothAPI) List(queryParams ...func(*EncodingManifes
 	return &responseModel, err
 }
 
-// Start Smooth Streaming Manifest Creation
+// Start Smooth Streaming manifest generation
 func (api *EncodingManifestsSmoothAPI) Start(manifestId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -111,7 +111,7 @@ func (api *EncodingManifestsSmoothAPI) Start(manifestId string) (*model.Bitmovin
 	return &responseModel, err
 }
 
-// Start Smooth Streaming Manifest Creation
+// Start Smooth Streaming manifest generation
 func (api *EncodingManifestsSmoothAPI) StartWithRequestBody(manifestId string, startManifestRequest model.StartManifestRequest) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -122,7 +122,7 @@ func (api *EncodingManifestsSmoothAPI) StartWithRequestBody(manifestId string, s
 	return &responseModel, err
 }
 
-// Status Smooth Streaming Manifest Creation Status
+// Status Smooth Streaming manifest generation status
 func (api *EncodingManifestsSmoothAPI) Status(manifestId string) (*model.ModelTask, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -133,7 +133,7 @@ func (api *EncodingManifestsSmoothAPI) Status(manifestId string) (*model.ModelTa
 	return &responseModel, err
 }
 
-// Stop Smooth Streaming Manifest Creation
+// Stop Smooth Streaming manifest generation
 func (api *EncodingManifestsSmoothAPI) Stop(manifestId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId

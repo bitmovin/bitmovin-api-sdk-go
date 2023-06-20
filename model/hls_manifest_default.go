@@ -29,8 +29,8 @@ type HlsManifestDefault struct {
 	ChannelsAttributeForAudio ChannelsAttributeForAudio `json:"channelsAttributeForAudio,omitempty"`
 	// The rounding applied to target duration. Two possible rouding modes exist: NORMAL_ROUNDING, when the target duration is rounded to the nearest integer, or UPWARDS_ROUNDING, when the target duration is rounded to the highest integer.
 	TargetDurationRoundingMode HlsTargetDurationRoundingMode `json:"targetDurationRoundingMode,omitempty"`
-	// The id of the encoding to create a default manifest from. (required)
+	// The id of the encoding to create a default manifest for (required)
 	EncodingId *string `json:"encodingId,omitempty"`
-	// Specifies the algorithm that determines which output of the given encoding is included into the manifest. Note that this is not related to the \"manifestGenerator\" version of the \"Start\" request.
+	// Currently not in use
 	Version HlsManifestDefaultVersion `json:"version,omitempty"`
 }

@@ -23,8 +23,8 @@ type SmoothManifestDefault struct {
 	ServerManifestName *string `json:"serverManifestName,omitempty"`
 	// Filename of the client manifest
 	ClientManifestName *string `json:"clientManifestName,omitempty"`
-	// The id of the encoding to create a default manifest from. (required)
+	// The id of the encoding to create a default manifest for (required)
 	EncodingId *string `json:"encodingId,omitempty"`
-	// Specifies the algorithm that determines which output of the given encoding is included into the manifest. Note that this is not related to the \"manifestGenerator\" version of the \"Start\" request.
+	// Currently not in use
 	Version SmoothManifestDefaultVersion `json:"version,omitempty"`
 }

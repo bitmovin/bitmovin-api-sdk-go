@@ -29,10 +29,10 @@ type DashManifestDefault struct {
 	UtcTimings []UtcTiming `json:"utcTimings,omitempty"`
 	// The manifest compatibility with the standard DASH Edition.
 	DashEditionCompatibility DashEditionCompatibility `json:"dashEditionCompatibility,omitempty"`
-	// The id of the encoding to create a default manifest from. Either \"encodingId\" or \"periods\" is required.
+	// The id of the encoding to create a default manifest for. Either \"encodingId\" or \"periods\" is required.
 	EncodingId *string `json:"encodingId,omitempty"`
 	// Specifies the algorithm that determines which output of the given encoding is included into the manifest. Note that this is not related to the \"manifestGenerator\" version of the \"Start\" request.
 	Version DashManifestDefaultVersion `json:"version,omitempty"`
-	// Adds a period for every item. Either \"periods\" or \"encodingId\" is required.
+	// Adds a period for every item. Can only be used when setting \"version\" to \"V2\". Either \"periods\" or \"encodingId\" is required.
 	Periods []DefaultDashManifestPeriod `json:"periods,omitempty"`
 }
