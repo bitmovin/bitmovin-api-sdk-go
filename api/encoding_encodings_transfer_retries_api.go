@@ -27,7 +27,8 @@ func NewEncodingEncodingsTransferRetriesAPIWithClient(apiClient *apiclient.APICl
 	return a
 }
 
-// Create Starts transfer retry. A transfer retry is only possible within 72 hours.
+// Create Transfer retry
+// Triggers a retry attempt for a failed transfer. This is possible within 72 hours after the initial failure.
 func (api *EncodingEncodingsTransferRetriesAPI) Create(encodingId string) (*model.TransferRetry, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

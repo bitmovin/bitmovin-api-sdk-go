@@ -12,4 +12,6 @@ type StreamsLiveUpdateRequest struct {
 	PosterUrl *string `json:"posterUrl,omitempty"`
 	// Id of the advertisement config to use
 	AdConfigId *string `json:"adConfigId,omitempty"`
+	// Id of the content protection config to use
+	ContentProtectionId *string `json:"contentProtectionId,omitempty"`
 }

@@ -33,6 +33,7 @@ func NewNotificationsWebhooksEncodingEncodingsErrorAPIWithClient(apiClient *apic
 }
 
 // Create Add &#39;Encoding Error&#39; Webhook
+// Add a new webhook notification that triggers if an encoding fails. A maximum number of 5 webhooks is allowed
 func (api *NotificationsWebhooksEncodingEncodingsErrorAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

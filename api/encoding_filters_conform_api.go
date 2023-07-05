@@ -32,7 +32,8 @@ func NewEncodingFiltersConformAPIWithClient(apiClient *apiclient.APIClient) *Enc
 	return a
 }
 
-// Create Conform Filter. Keeps all the frames of the input. The playback time of the output will be slower or faster.
+// Create Conform Filter
+// Retains all frames of the input. The playback speed of the output will be slower or faster.
 func (api *EncodingFiltersConformAPI) Create(conformFilter model.ConformFilter) (*model.ConformFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

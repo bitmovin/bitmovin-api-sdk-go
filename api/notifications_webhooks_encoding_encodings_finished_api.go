@@ -33,6 +33,7 @@ func NewNotificationsWebhooksEncodingEncodingsFinishedAPIWithClient(apiClient *a
 }
 
 // Create Add &#39;Encoding Finished&#39; Webhook
+// Add a new webhook notification that triggers if an encoding finishes successfully. A maximum number of 5 webhooks is allowed
 func (api *NotificationsWebhooksEncodingEncodingsFinishedAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

@@ -8,7 +8,7 @@ type StartLiveEncodingRequest struct {
 	HlsManifests []LiveHlsManifest `json:"hlsManifests,omitempty"`
 	// DASH manifests to be generated during the encoding. See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
 	DashManifests []LiveDashManifest `json:"dashManifests,omitempty"`
-	// The pass mode of the encoding
+	// The pass mode of the encoding. Must only be set when `encodingMode` is not set on any codec configuration used by this encoding.
 	LiveEncodingMode EncodingMode `json:"liveEncodingMode,omitempty"`
 	// Reupload specific files during a live encoding. This can be helpful if an automatic life cycle policy is enabled on the output storage
 	ReuploadSettings *ReuploadSettings `json:"reuploadSettings,omitempty"`

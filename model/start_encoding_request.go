@@ -10,7 +10,7 @@ type StartEncodingRequest struct {
 	Tweaks *Tweaks `json:"tweaks,omitempty"`
 	// Enable frame dropping/duplication to handle variable frames per seconds of video input streams
 	HandleVariableInputFps *bool `json:"handleVariableInputFps,omitempty"`
-	// The pass mode of the encoding
+	// The pass mode of the encoding. Must only be set when `encodingMode` is not set on any codec configuration used by this encoding.
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
 	// DASH manifests to be generated for previewing while the encoding is still running. See [documentation](https://developer.bitmovin.com/encoding/docs/how-to-create-manifests-for-your-encodings#just-in-time-jit)
 	PreviewDashManifests []ManifestResource `json:"previewDashManifests,omitempty"`

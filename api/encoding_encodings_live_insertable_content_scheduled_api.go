@@ -26,7 +26,8 @@ func NewEncodingEncodingsLiveInsertableContentScheduledAPIWithClient(apiClient *
 	return a
 }
 
-// List All Scheduled Insertable Content For A Live Encoding
+// List Scheduled Insertable Content
+// List all Scheduled Insertable Content for a live encoding
 func (api *EncodingEncodingsLiveInsertableContentScheduledAPI) List(encodingId string, queryParams ...func(*EncodingEncodingsLiveInsertableContentScheduledAPIListQueryParams)) (*pagination.ScheduledInsertableContentsListPagination, error) {
 	queryParameters := &EncodingEncodingsLiveInsertableContentScheduledAPIListQueryParams{}
 	for _, queryParam := range queryParams {

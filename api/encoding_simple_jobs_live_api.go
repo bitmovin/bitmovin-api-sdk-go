@@ -27,6 +27,7 @@ func NewEncodingSimpleJobsLiveAPIWithClient(apiClient *apiclient.APIClient) *Enc
 }
 
 // Create a Simple Encoding Live Job
+// Check out our [Simple Encoding API Live Documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api-live) for additional information about the Simple Encoding API Live.
 func (api *EncodingSimpleJobsLiveAPI) Create(simpleEncodingLiveJobRequest model.SimpleEncodingLiveJobRequest) (*model.SimpleEncodingLiveJobResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

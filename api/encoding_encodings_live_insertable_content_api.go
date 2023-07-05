@@ -38,7 +38,8 @@ func NewEncodingEncodingsLiveInsertableContentAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Create Make Insertable Content Available For A Live Encoding
+// Create Insertable Content
+// Make Insertable Content available for a live encoding
 func (api *EncodingEncodingsLiveInsertableContentAPI) Create(encodingId string, insertableContent model.InsertableContent) (*model.InsertableContent, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -49,7 +50,8 @@ func (api *EncodingEncodingsLiveInsertableContentAPI) Create(encodingId string, 
 	return &responseModel, err
 }
 
-// List All Insertable Content Available For A Live Encoding
+// List Insertable Content
+// List all Insertable Content available for a live encoding
 func (api *EncodingEncodingsLiveInsertableContentAPI) List(encodingId string, queryParams ...func(*EncodingEncodingsLiveInsertableContentAPIListQueryParams)) (*pagination.InsertableContentsListPagination, error) {
 	queryParameters := &EncodingEncodingsLiveInsertableContentAPIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -26,7 +26,8 @@ func NewEncodingEncodingsLiveInsertableContentScheduleAPIWithClient(apiClient *a
 	return a
 }
 
-// Create Schedule Insertable Content For a Live Encoding
+// Create Schedule Insertable Content
+// Schedule Insertable Content for a live encoding
 func (api *EncodingEncodingsLiveInsertableContentScheduleAPI) Create(encodingId string, contentId string, scheduledInsertableContent model.ScheduledInsertableContent) (*model.ScheduledInsertableContent, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

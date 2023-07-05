@@ -27,6 +27,7 @@ func NewNotificationsWebhooksEncodingManifestErrorAPIWithClient(apiClient *apicl
 }
 
 // Create Add &#39;Manifest Error&#39; Webhook (All Manifests)
+// Add a new webhook notification that triggers if a manifest generation fails. A maximum number of 5 webhooks is allowed
 func (api *NotificationsWebhooksEncodingManifestErrorAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

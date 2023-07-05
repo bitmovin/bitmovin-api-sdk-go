@@ -38,7 +38,7 @@ type Encoding struct {
 	StaticIpId *string `json:"staticIpId,omitempty"`
 	// After the encoding has been started, this will contain the encoder version that was actually used. Especially useful when starting an encoding with a version tag like STABLE or BETA.
 	SelectedEncoderVersion *string `json:"selectedEncoderVersion,omitempty"`
-	// After the encoding has been started, this will contain the encoding mode that was actually used. Especially useful when starting an encoding with encoding mode STANDARD.
+	// After the encoding has been started, this will contain the encoding mode that was actually used. Especially useful when `encodingMode` was not set explicitly or set to STANDARD (which translates to one of the other possible values on encoding start).
 	SelectedEncodingMode EncodingMode `json:"selectedEncodingMode,omitempty"`
 	// After the encoding has been started, this will contain the cloud region that was actually used. This will differ from cloudRegion if cloudRegion was set to an unspecific region (e.g. 'AUTO')
 	SelectedCloudRegion CloudRegion `json:"selectedCloudRegion,omitempty"`
@@ -46,4 +46,6 @@ type Encoding struct {
 	Status Status `json:"status,omitempty"`
 	// You may pass a list of groups associated with this encoding. This will enable you to group results in the statistics resource
 	Labels []string `json:"labels,omitempty"`
+	// The chosen live option type of the live encoding
+	LiveOptionsType LiveOptionsType `json:"liveOptionsType,omitempty"`
 }

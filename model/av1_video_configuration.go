@@ -35,7 +35,7 @@ type Av1VideoConfiguration struct {
 	SampleAspectRatioDenominator *int32 `json:"sampleAspectRatioDenominator,omitempty"`
 	// Specifies a display aspect ratio (DAR) to be enforced. The sample aspect ratio (SAR) will be adjusted accordingly. If set then sampleAspectRatioNumerator and sampleAspectRatioDenominator are not allowed.
 	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
-	// The mode of the encoding
+	// The mode of the encoding. When this is set, `encodingMode` (`liveEncodingMode`) must not be set in the (live) encoding start request.
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
 	// Use a set of well defined configurations preset to support certain use cases. Can be overwritten with more specific values.
 	PresetConfiguration Av1PresetConfiguration `json:"presetConfiguration,omitempty"`

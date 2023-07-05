@@ -39,6 +39,7 @@ func NewEncodingManifestsDashAPIWithClient(apiClient *apiclient.APIClient) *Enco
 }
 
 // Create Custom DASH Manifest
+// A Custom DASH Manifest gives you full control over its contents. Add Periods, Adaptation Sets, Representations, Content Protections or Custom XML Elements via the respective endpoints. If you need a simpler solution, create a Default Manifest resource instead. See [documentation](https://developer.bitmovin.com/encoding/docs/default-vs-custom-manifest) page for a comparison
 func (api *EncodingManifestsDashAPI) Create(dashManifest model.DashManifest) (*model.DashManifest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

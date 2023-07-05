@@ -42,6 +42,7 @@ func NewEncodingManifestsHlsAPIWithClient(apiClient *apiclient.APIClient) *Encod
 }
 
 // Create Custom HLS Manifest
+// A Custom HLS Manifest gives you full control over its contents. Add Variant Streams and Media elements via the respective endpoints. If you need a simpler solution, create a Default Manifest resource instead. See [documentation](https://developer.bitmovin.com/encoding/docs/default-vs-custom-manifest) page for a comparison
 func (api *EncodingManifestsHlsAPI) Create(hlsManifest model.HlsManifest) (*model.HlsManifest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

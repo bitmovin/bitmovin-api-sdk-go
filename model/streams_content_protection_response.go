@@ -8,4 +8,6 @@ type StreamsContentProtectionResponse struct {
 	AllowedDomains []string `json:"allowedDomains,omitempty"`
 	// Controls if requests to content protected streams without referer header should be allowed or denied
 	AllowNoReferer *bool `json:"allowNoReferer,omitempty"`
+	// Controls if Stream is accessible via sharing URL or not
+	AllowShare *bool `json:"allowShare,omitempty"`
 }

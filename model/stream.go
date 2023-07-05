@@ -36,7 +36,7 @@ type Stream struct {
 	IgnoredBy []Ignoring `json:"ignoredBy,omitempty"`
 	// Mode of the stream
 	Mode StreamMode `json:"mode,omitempty"`
-	// The encoding mode of the stream which was applied by the assigned codec configuration
+	// The encoding mode that was used for this stream. This is derived from `encodingMode`, which can be specified in the codec configuration or in the encoding start request. Note that all streams of an encoding need to use the same encoding mode. This will therefore always match `selectedEncodingMode` of the related Encoding resource. Especially useful when `encodingMode` was not set explicitly or set to STANDARD (which translates to one of the other possible values on encoding start).
 	SelectedEncodingMode EncodingMode `json:"selectedEncodingMode,omitempty"`
 	// Settings to configure Per-Title on stream level
 	PerTitleSettings *StreamPerTitleSettings `json:"perTitleSettings,omitempty"`

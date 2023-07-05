@@ -33,6 +33,7 @@ func NewNotificationsWebhooksEncodingEncodingsTransferErrorAPIWithClient(apiClie
 }
 
 // Create Add &#39;Encoding Transfer Error&#39; Webhook
+// Add a new webhook notification that triggers if a transfer fails. A maximum number of 5 webhooks is allowed
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

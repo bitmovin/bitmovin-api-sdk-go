@@ -35,7 +35,7 @@ type Vp9VideoConfiguration struct {
 	SampleAspectRatioDenominator *int32 `json:"sampleAspectRatioDenominator,omitempty"`
 	// Specifies a display aspect ratio (DAR) to be enforced. The sample aspect ratio (SAR) will be adjusted accordingly. If set then sampleAspectRatioNumerator and sampleAspectRatioDenominator are not allowed.
 	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
-	// The mode of the encoding
+	// The mode of the encoding. When this is set, `encodingMode` (`liveEncodingMode`) must not be set in the (live) encoding start request.
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
 	// Choose from a set of preset configurations tailored for common use cases. Check out [VP9 Presets](https://bitmovin.com/docs/encoding/tutorials/vp9-presets) to see which values get applied by each preset. Explicitly setting a property to a different value will override the preset's value for that property.
 	PresetConfiguration PresetConfiguration `json:"presetConfiguration,omitempty"`

@@ -27,7 +27,8 @@ func NewEncodingEncodingsStreamsQcPsnrAPIWithClient(apiClient *apiclient.APIClie
 	return a
 }
 
-// Create Activate PSNR quality metrics for the selected stream
+// Create PSNR quality metrics
+// Activates PSNR quality metrics for the selected stream
 func (api *EncodingEncodingsStreamsQcPsnrAPI) Create(encodingId string, streamId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

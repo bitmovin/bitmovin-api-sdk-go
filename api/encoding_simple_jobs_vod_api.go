@@ -28,6 +28,7 @@ func NewEncodingSimpleJobsVodAPIWithClient(apiClient *apiclient.APIClient) *Enco
 }
 
 // Create a Simple Encoding VOD Job
+// Check out our [Simple Encoding API Documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api) for additional information about the Simple Encoding API.
 func (api *EncodingSimpleJobsVodAPI) Create(simpleEncodingVodJobRequest model.SimpleEncodingVodJobRequest) (*model.SimpleEncodingVodJobResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -38,7 +39,7 @@ func (api *EncodingSimpleJobsVodAPI) Create(simpleEncodingVodJobRequest model.Si
 }
 
 // Get Simple Encoding VOD Job details
-// Get the details of a Simple Encoding VOD Job.  Check out our [Simple Encoding API Documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api) for additional information about the Simple Encoding API.
+// Get the details of a Simple VOD Encoding Job.  Check out our [Simple Encoding API Documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api) for additional information about the Simple Encoding API.
 func (api *EncodingSimpleJobsVodAPI) Get(simpleEncodingJobId string) (*model.SimpleEncodingVodJobResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["simple_encoding_job_id"] = simpleEncodingJobId

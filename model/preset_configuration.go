@@ -21,4 +21,5 @@ const (
 	PresetConfiguration_VOD_EXTRAHIGH_SPEED    PresetConfiguration = "VOD_EXTRAHIGH_SPEED"
 	PresetConfiguration_VOD_SUPERHIGH_SPEED    PresetConfiguration = "VOD_SUPERHIGH_SPEED"
 	PresetConfiguration_VOD_ULTRAHIGH_SPEED    PresetConfiguration = "VOD_ULTRAHIGH_SPEED"
+	PresetConfiguration_VOD_HARDWARE_SHORTFORM PresetConfiguration = "VOD_HARDWARE_SHORTFORM"
 )

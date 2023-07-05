@@ -32,7 +32,8 @@ func NewEncodingConfigurationsAudioAc3APIWithClient(apiClient *apiclient.APIClie
 	return a
 }
 
-// Create AC3 Codec Configuration.  Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
+// Create AC3 Codec Configuration
+// Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
 func (api *EncodingConfigurationsAudioAc3API) Create(ac3AudioConfiguration model.Ac3AudioConfiguration) (*model.Ac3AudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -42,7 +43,8 @@ func (api *EncodingConfigurationsAudioAc3API) Create(ac3AudioConfiguration model
 	return &responseModel, err
 }
 
-// Delete AC3 Codec Configuration.  Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
+// Delete AC3 Codec Configuration
+// Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
 func (api *EncodingConfigurationsAudioAc3API) Delete(configurationId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId
@@ -53,7 +55,8 @@ func (api *EncodingConfigurationsAudioAc3API) Delete(configurationId string) (*m
 	return &responseModel, err
 }
 
-// Get AC3 Codec Configuration Details  Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
+// Get AC3 Codec Configuration Details
+// Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
 func (api *EncodingConfigurationsAudioAc3API) Get(configurationId string) (*model.Ac3AudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId
@@ -64,7 +67,8 @@ func (api *EncodingConfigurationsAudioAc3API) Get(configurationId string) (*mode
 	return &responseModel, err
 }
 
-// List AC3 Configurations.  Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here:  https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
+// List AC3 Configurations
+// Deprecation notice: use Dolby Digital instead. For more information check out our tutorial here:  https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
 func (api *EncodingConfigurationsAudioAc3API) List(queryParams ...func(*EncodingConfigurationsAudioAc3APIListQueryParams)) (*pagination.Ac3AudioConfigurationsListPagination, error) {
 	queryParameters := &EncodingConfigurationsAudioAc3APIListQueryParams{}
 	for _, queryParam := range queryParams {

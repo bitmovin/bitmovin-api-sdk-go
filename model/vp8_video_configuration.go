@@ -35,7 +35,7 @@ type Vp8VideoConfiguration struct {
 	SampleAspectRatioDenominator *int32 `json:"sampleAspectRatioDenominator,omitempty"`
 	// Specifies a display aspect ratio (DAR) to be enforced. The sample aspect ratio (SAR) will be adjusted accordingly. If set then sampleAspectRatioNumerator and sampleAspectRatioDenominator are not allowed.
 	DisplayAspectRatio *DisplayAspectRatio `json:"displayAspectRatio,omitempty"`
-	// The mode of the encoding
+	// The mode of the encoding. When this is set, `encodingMode` (`liveEncodingMode`) must not be set in the (live) encoding start request.
 	EncodingMode EncodingMode `json:"encodingMode,omitempty"`
 	// Constant rate factor for quality-based variable bitrate. Either bitrate or crf is required.
 	Crf *int32 `json:"crf,omitempty"`
