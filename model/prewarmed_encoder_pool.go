@@ -24,6 +24,8 @@ type PrewarmedEncoderPool struct {
 	DiskSize PrewarmedEncoderDiskSize `json:"diskSize,omitempty"`
 	// Number of instances to keep prewarmed while the pool is running (required)
 	TargetPoolSize *int32 `json:"targetPoolSize,omitempty"`
+	// Create pool with GPU instances for hardware encoding presets (e.g., VOD_HARDWARE_SHORTFORM).
+	GpuEnabled *bool `json:"gpuEnabled,omitempty"`
 	// Current status of the pool.
 	Status PrewarmedEncoderPoolStatus `json:"status,omitempty"`
 }

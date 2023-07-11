@@ -13,8 +13,8 @@ type StreamsLiveResponse struct {
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
 	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// The life cycle of the stream
-	LifeCycle StreamsLiveLifeCycle   `json:"lifeCycle,omitempty"`
-	Config    *StreamsConfigResponse `json:"config,omitempty"`
+	LifeCycle   StreamsLiveLifeCycle        `json:"lifeCycle,omitempty"`
+	StyleConfig *StreamsStyleConfigResponse `json:"styleConfig,omitempty"`
 	// Poster URL
 	PosterUrl         *string                           `json:"posterUrl,omitempty"`
 	AdConfig          *StreamsAdConfigResponse          `json:"adConfig,omitempty"`

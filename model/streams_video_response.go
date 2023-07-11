@@ -13,8 +13,8 @@ type StreamsVideoResponse struct {
 	// Creation timestamp, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
 	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// The status of the stream
-	Status StreamsVideoStatus     `json:"status,omitempty"`
-	Config *StreamsConfigResponse `json:"config,omitempty"`
+	Status      StreamsVideoStatus          `json:"status,omitempty"`
+	StyleConfig *StreamsStyleConfigResponse `json:"styleConfig,omitempty"`
 	// List of encoding status information
 	EncodingTasks []StreamsVideoEncodingTask `json:"encodingTasks,omitempty"`
 	// Poster URL

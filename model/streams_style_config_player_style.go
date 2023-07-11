@@ -1,7 +1,7 @@
 package model
 
 // Player style config
-type StreamsConfigPlayerStyle struct {
+type StreamsStyleConfigPlayerStyle struct {
 	// Playback marker background color
 	PlaybackMarkerBgColor *string `json:"playbackMarkerBgColor,omitempty"`
 	// Playback marker border color

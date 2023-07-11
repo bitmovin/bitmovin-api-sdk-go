@@ -4,7 +4,7 @@ package model
 type AnalyticsLicense struct {
 	// Id of the Analytics License
 	Id *string `json:"id,omitempty"`
-	// Creation date of the Analytics License in UTC format
+	// Creation date of the Analytics License, returned as ISO 8601 date-time format
 	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
@@ -39,4 +39,6 @@ type AnalyticsLicense struct {
 	// The rate limit of this license
 	RateLimit *string                   `json:"rateLimit,omitempty"`
 	Features  *AnalyticsLicenseFeatures `json:"features,omitempty"`
+	// The expiration date of the license if applicable, returned as ISO 8601 date-time format
+	PlanExpiredAt *DateTime `json:"planExpiredAt,omitempty"`
 }

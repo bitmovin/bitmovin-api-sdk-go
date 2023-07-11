@@ -1,12 +1,12 @@
 package model
 
-// StreamsConfigResponse model
-type StreamsConfigResponse struct {
-	// The identifier of the stream config
+// StreamsStyleConfigResponse model
+type StreamsStyleConfigResponse struct {
+	// The identifier of the style config
 	Id *string `json:"id,omitempty"`
 	// UUID of the associated organization
-	OrgId       *string                   `json:"orgId,omitempty"`
-	PlayerStyle *StreamsConfigPlayerStyle `json:"playerStyle,omitempty"`
+	OrgId       *string                        `json:"orgId,omitempty"`
+	PlayerStyle *StreamsStyleConfigPlayerStyle `json:"playerStyle,omitempty"`
 	// URL of the watermark image
 	WatermarkUrl *string `json:"watermarkUrl,omitempty"`
 	// Target link of the watermark image

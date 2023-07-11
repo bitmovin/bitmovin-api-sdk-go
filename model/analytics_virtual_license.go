@@ -16,4 +16,6 @@ type AnalyticsVirtualLicense struct {
 	CustomDataFieldsCount *int32 `json:"customDataFieldsCount,omitempty"`
 	// Labels for Custom Data fields
 	CustomDataFieldLabels *AnalyticsLicenseCustomDataFieldLabels `json:"customDataFieldLabels,omitempty"`
+	// The expiration date of the license if applicable, returned as ISO 8601 date-time format
+	PlanExpiredAt *DateTime `json:"planExpiredAt,omitempty"`
 }

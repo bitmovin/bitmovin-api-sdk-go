@@ -6,8 +6,8 @@ type StreamsLiveCreateRequest struct {
 	Title *string `json:"title,omitempty"`
 	// Description of the stream
 	Description *string `json:"description,omitempty"`
-	// Id of the stream config to use
-	ConfigId *string `json:"configId,omitempty"`
+	// Id of the style config to use
+	StyleConfigId *string `json:"styleConfigId,omitempty"`
 	// Id of the advertisement config to use
 	AdConfigId *string `json:"adConfigId,omitempty"`
 }
