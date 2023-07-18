@@ -99,6 +99,7 @@ const (
 	AnalyticsAttribute_SCALE_FACTOR                   AnalyticsAttribute = "SCALE_FACTOR"
 	AnalyticsAttribute_SCREEN_HEIGHT                  AnalyticsAttribute = "SCREEN_HEIGHT"
 	AnalyticsAttribute_SCREEN_WIDTH                   AnalyticsAttribute = "SCREEN_WIDTH"
+	AnalyticsAttribute_SCREEN_ORIENTATION             AnalyticsAttribute = "SCREEN_ORIENTATION"
 	AnalyticsAttribute_SEEKED                         AnalyticsAttribute = "SEEKED"
 	AnalyticsAttribute_SEQUENCE_NUMBER                AnalyticsAttribute = "SEQUENCE_NUMBER"
 	AnalyticsAttribute_SIZE                           AnalyticsAttribute = "SIZE"

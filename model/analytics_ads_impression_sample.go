@@ -248,6 +248,8 @@ type AnalyticsAdsImpressionSample struct {
 	ScreenHeight *int32 `json:"screen_height,omitempty"`
 	// Screen as reported by the browser
 	ScreenWidth *int32 `json:"screen_width,omitempty"`
+	// Screen orientation (PORTRAIT, LANDSCAPE OR UNKNOWN)
+	ScreenOrientation *string `json:"screen_orientation,omitempty"`
 	// Video size (FULLSCREEN or WINDOW)
 	Size *string `json:"size,omitempty"`
 	// Skip percentage

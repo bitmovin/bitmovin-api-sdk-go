@@ -12,6 +12,8 @@ type EncodingStatisticsEncodingsLiveAPI struct {
 
 	// Daily communicates with '/encoding/statistics/encodings/live/daily/{from}/{to}' endpoints
 	Daily *EncodingStatisticsEncodingsLiveDailyAPI
+	// Options communicates with '/encoding/statistics/encodings/live/options' endpoints
+	Options *EncodingStatisticsEncodingsLiveOptionsAPI
 }
 
 // NewEncodingStatisticsEncodingsLiveAPI constructor for EncodingStatisticsEncodingsLiveAPI that takes options as argument
@@ -28,6 +30,7 @@ func NewEncodingStatisticsEncodingsLiveAPI(options ...apiclient.APIClientOption)
 func NewEncodingStatisticsEncodingsLiveAPIWithClient(apiClient *apiclient.APIClient) *EncodingStatisticsEncodingsLiveAPI {
 	a := &EncodingStatisticsEncodingsLiveAPI{apiClient: apiClient}
 	a.Daily = NewEncodingStatisticsEncodingsLiveDailyAPIWithClient(apiClient)
+	a.Options = NewEncodingStatisticsEncodingsLiveOptionsAPIWithClient(apiClient)
 
 	return a
 }

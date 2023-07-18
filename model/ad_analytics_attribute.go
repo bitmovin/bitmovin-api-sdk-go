@@ -127,6 +127,7 @@ const (
 	AdAnalyticsAttribute_SCALE_FACTOR                  AdAnalyticsAttribute = "SCALE_FACTOR"
 	AdAnalyticsAttribute_SCREEN_HEIGHT                 AdAnalyticsAttribute = "SCREEN_HEIGHT"
 	AdAnalyticsAttribute_SCREEN_WIDTH                  AdAnalyticsAttribute = "SCREEN_WIDTH"
+	AdAnalyticsAttribute_SCREEN_ORIENTATION            AdAnalyticsAttribute = "SCREEN_ORIENTATION"
 	AdAnalyticsAttribute_SIZE                          AdAnalyticsAttribute = "SIZE"
 	AdAnalyticsAttribute_SKIP_PERCENTAGE               AdAnalyticsAttribute = "SKIP_PERCENTAGE"
 	AdAnalyticsAttribute_SKIP_POSITION                 AdAnalyticsAttribute = "SKIP_POSITION"

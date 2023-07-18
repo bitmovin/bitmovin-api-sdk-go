@@ -170,6 +170,8 @@ type AnalyticsImpressionSample struct {
 	ScreenHeight *int32 `json:"screen_height,omitempty"`
 	// Screen as reported by the browser
 	ScreenWidth *int32 `json:"screen_width,omitempty"`
+	// Screen orientation (PORTRAIT, LANDSCAPE OR UNKNOWN)
+	ScreenOrientation *string `json:"screen_orientation,omitempty"`
 	// Milliseconds it took the player to seek
 	Seeked *int64 `json:"seeked,omitempty"`
 	// Number of video segments downloaded
