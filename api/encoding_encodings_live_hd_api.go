@@ -36,3 +36,14 @@ func (api *EncodingEncodingsLiveHdAPI) GetStartRequest(encodingId string) (*mode
 	err := api.apiClient.Get("/encoding/encodings/{encoding_id}/live/hd/start", nil, &responseModel, reqParams)
 	return &responseModel, err
 }
+
+// Start Live Encoding
+func (api *EncodingEncodingsLiveHdAPI) Start(encodingId string, startLiveChannelEncodingRequest model.StartLiveChannelEncodingRequest) (*model.BitmovinResponse, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["encoding_id"] = encodingId
+	}
+
+	var responseModel model.BitmovinResponse
+	err := api.apiClient.Post("/encoding/encodings/{encoding_id}/live/hd/start", &startLiveChannelEncodingRequest, &responseModel, reqParams)
+	return &responseModel, err
+}
