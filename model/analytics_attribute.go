@@ -125,4 +125,5 @@ const (
 	AnalyticsAttribute_VIDEOTIME_START                AnalyticsAttribute = "VIDEOTIME_START"
 	AnalyticsAttribute_VIDEOSTART_FAILED              AnalyticsAttribute = "VIDEOSTART_FAILED"
 	AnalyticsAttribute_VIDEOSTART_FAILED_REASON       AnalyticsAttribute = "VIDEOSTART_FAILED_REASON"
+	AnalyticsAttribute_VIEWTIME                       AnalyticsAttribute = "VIEWTIME"
 )

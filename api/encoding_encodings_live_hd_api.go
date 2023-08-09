@@ -37,7 +37,7 @@ func (api *EncodingEncodingsLiveHdAPI) GetStartRequest(encodingId string) (*mode
 	return &responseModel, err
 }
 
-// Start Live Encoding
+// Start HD Options Live Encoding
 func (api *EncodingEncodingsLiveHdAPI) Start(encodingId string, startLiveChannelEncodingRequest model.StartLiveChannelEncodingRequest) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
