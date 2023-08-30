@@ -16,7 +16,7 @@ type NexGuardFileMarker struct {
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Use the base64 license string that Nagra provides you. (required)
 	License *string `json:"license,omitempty"`
-	// The type of watermarking to be used. Usually, OTT is the one recommended in production.
+	// The type of watermarking to be used: * `OTT` - A/B watermarking (for video streams only) * `DUPLICATED` - Stream duplication to match A/B video streams in CDN delivery (for audio streams only)
 	WatermarkType NexGuardWatermarkingType `json:"watermarkType,omitempty"`
 	// Specify the payload ID that you want to be associated with this output. Valid values vary depending on your Nagra NexGuard forensic watermarking workflow. For PreRelease Content (NGPR), specify an integer from 1 through 4,194,303. You must generate a unique ID for each asset you watermark, and keep a record of th ID. Neither Nagra nor Bitmovin keep track of this for you.
 	Payload *int32 `json:"payload,omitempty"`

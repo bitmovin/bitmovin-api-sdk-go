@@ -21,4 +21,6 @@ type StreamsVideoResponse struct {
 	PosterUrl         *string                           `json:"posterUrl,omitempty"`
 	AdConfig          *StreamsAdConfigResponse          `json:"adConfig,omitempty"`
 	ContentProtection *StreamsContentProtectionResponse `json:"contentProtection,omitempty"`
+	// Stream trimming information
+	Trimming StreamsTrimmingStatus `json:"trimming,omitempty"`
 }
