@@ -63,6 +63,7 @@ const (
 	AnalyticsAttribute_ERROR_CODE                     AnalyticsAttribute = "ERROR_CODE"
 	AnalyticsAttribute_ERROR_MESSAGE                  AnalyticsAttribute = "ERROR_MESSAGE"
 	AnalyticsAttribute_ERROR_RATE                     AnalyticsAttribute = "ERROR_RATE"
+	AnalyticsAttribute_ERROR_PERCENTAGE               AnalyticsAttribute = "ERROR_PERCENTAGE"
 	AnalyticsAttribute_EXPERIMENT_NAME                AnalyticsAttribute = "EXPERIMENT_NAME"
 	AnalyticsAttribute_FUNCTION                       AnalyticsAttribute = "FUNCTION"
 	AnalyticsAttribute_HOUR                           AnalyticsAttribute = "HOUR"
