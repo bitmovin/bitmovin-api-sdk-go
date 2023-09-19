@@ -48,6 +48,16 @@ func (api *StreamsVideoAPI) Create(streamsVideoCreateRequest model.StreamsVideoC
 	return &responseModel, err
 }
 
+// Delete Stream
+func (api *StreamsVideoAPI) Delete(streamId string) error {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["stream_id"] = streamId
+	}
+
+	err := api.apiClient.Delete("/streams/video/{stream_id}", nil, nil, reqParams)
+	return err
+}
+
 // Get Streams video by id
 func (api *StreamsVideoAPI) Get(streamId string) (*model.StreamsVideoResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {

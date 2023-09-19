@@ -56,6 +56,16 @@ func (api *StreamsLiveAPI) Create(streamsLiveCreateRequest model.StreamsLiveCrea
 	return &responseModel, err
 }
 
+// Delete Stream
+func (api *StreamsLiveAPI) Delete(streamId string) error {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["stream_id"] = streamId
+	}
+
+	err := api.apiClient.Delete("/streams/live/{stream_id}", nil, nil, reqParams)
+	return err
+}
+
 // Get live stream by id
 func (api *StreamsLiveAPI) Get(streamId string) (*model.StreamsLiveResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
