@@ -22,5 +22,5 @@ type EncodingStatisticsVod struct {
 	// Time in seconds encoded for this encoding. (required)
 	TimeEnqueued *int64 `json:"timeEnqueued,omitempty"`
 	// The realtime factor. (required)
-	RealTimeFactor *float64 `json:"realTimeFactor,omitempty"`
+	RealtimeFactor *float64 `json:"realtimeFactor,omitempty"`
 }

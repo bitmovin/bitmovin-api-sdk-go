@@ -42,6 +42,8 @@ type Encoding struct {
 	SelectedEncodingMode EncodingMode `json:"selectedEncodingMode,omitempty"`
 	// After the encoding has been started, this will contain the cloud region that was actually used. This will differ from cloudRegion if cloudRegion was set to an unspecific region (e.g. 'AUTO')
 	SelectedCloudRegion CloudRegion `json:"selectedCloudRegion,omitempty"`
+	// After the encoding has been started, this will contain the fallback cloud regions that were actually used. This will differ from fallbackCloudRegions if any of the fallbackCloudRegions were set to an unspecific region (e.g. 'AUTO')
+	SelectedFallbackCloudRegions []CloudRegion `json:"selectedFallbackCloudRegions,omitempty"`
 	// The current status of the encoding.
 	Status Status `json:"status,omitempty"`
 	// You may pass a list of groups associated with this encoding. This will enable you to group results in the statistics resource
