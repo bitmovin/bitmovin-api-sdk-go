@@ -93,17 +93,6 @@ func (api *StreamsLiveAPI) List(queryParams ...func(*StreamsLiveAPIListQueryPara
 	return &responseModel, err
 }
 
-// Update live stream by id
-func (api *StreamsLiveAPI) Update(streamId string, streamsLiveUpdateRequest model.StreamsLiveUpdateRequest) (*model.StreamsLiveResponse, error) {
-	reqParams := func(params *apiclient.RequestParams) {
-		params.PathParams["stream_id"] = streamId
-	}
-
-	var responseModel model.StreamsLiveResponse
-	err := api.apiClient.Put("/streams/live/{stream_id}", &streamsLiveUpdateRequest, &responseModel, reqParams)
-	return &responseModel, err
-}
-
 // StreamsLiveAPIListQueryParams contains all query parameters for the List endpoint
 type StreamsLiveAPIListQueryParams struct {
 	Offset int32  `query:"offset"`

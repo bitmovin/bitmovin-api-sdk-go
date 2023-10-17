@@ -109,6 +109,8 @@ type EncodingFiltersAPIListQueryParams struct {
 	Offset int32  `query:"offset"`
 	Limit  int32  `query:"limit"`
 	Name   string `query:"name"`
+	Sort   string `query:"sort"`
+	Type_  string `query:"type"`
 }
 
 // Params will return a map of query parameters

@@ -21,4 +21,6 @@ type Organization struct {
 	// Hexadecimal color
 	LabelColor        *string                  `json:"labelColor,omitempty"`
 	LimitsPerResource []ResourceLimitContainer `json:"limitsPerResource,omitempty"`
+	// which platform initiated organisation creation
+	SignupSource SignupSource `json:"signupSource,omitempty"`
 }
