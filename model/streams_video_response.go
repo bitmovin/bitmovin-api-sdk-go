@@ -23,4 +23,6 @@ type StreamsVideoResponse struct {
 	ContentProtection *StreamsContentProtectionResponse `json:"contentProtection,omitempty"`
 	// Stream trimming information
 	Trimming StreamsTrimmingStatus `json:"trimming,omitempty"`
+	// Single-file download URL of the unaltered video in the best available quality
+	DownloadUrl *string `json:"downloadUrl,omitempty"`
 }
