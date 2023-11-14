@@ -12,6 +12,8 @@ type AccountOrganizationsAPI struct {
 
 	// SubOrganizations communicates with '/account/organizations/{organization_id}/sub-organizations' endpoints
 	SubOrganizations *AccountOrganizationsSubOrganizationsAPI
+	// Tenants communicates with '/account/organizations/{organization_id}/tenants' endpoints
+	Tenants *AccountOrganizationsTenantsAPI
 	// Groups communicates with '/account/organizations/{organization_id}/groups' endpoints
 	Groups *AccountOrganizationsGroupsAPI
 }
@@ -30,6 +32,7 @@ func NewAccountOrganizationsAPI(options ...apiclient.APIClientOption) (*AccountO
 func NewAccountOrganizationsAPIWithClient(apiClient *apiclient.APIClient) *AccountOrganizationsAPI {
 	a := &AccountOrganizationsAPI{apiClient: apiClient}
 	a.SubOrganizations = NewAccountOrganizationsSubOrganizationsAPIWithClient(apiClient)
+	a.Tenants = NewAccountOrganizationsTenantsAPIWithClient(apiClient)
 	a.Groups = NewAccountOrganizationsGroupsAPIWithClient(apiClient)
 
 	return a

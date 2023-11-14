@@ -10,4 +10,6 @@ type StreamsVideoCreateRequest struct {
 	Description *string `json:"description,omitempty"`
 	// Profile to be used in encoding
 	EncodingProfile StreamsEncodingProfile `json:"encodingProfile,omitempty"`
+	// If set to true the Stream is only accessible via a token
+	Signed *bool `json:"signed,omitempty"`
 }

@@ -25,4 +25,6 @@ type StreamsVideoResponse struct {
 	Trimming StreamsTrimmingStatus `json:"trimming,omitempty"`
 	// Single-file download URL of the unaltered video in the best available quality
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
+	// True if the stream is signature protected
+	Signed *bool `json:"signed,omitempty"`
 }

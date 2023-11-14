@@ -26,4 +26,5 @@ type AccountInformation struct {
 	Company     *string     `json:"company,omitempty"`
 	Verified    *bool       `json:"verified,omitempty"`
 	Marketplace Marketplace `json:"marketplace,omitempty"`
+	MfaEnabled  *bool       `json:"mfaEnabled,omitempty"`
 }

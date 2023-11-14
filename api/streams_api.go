@@ -14,6 +14,8 @@ type StreamsAPI struct {
 	Video *StreamsVideoAPI
 	// Live communicates with '/streams/live' endpoints
 	Live *StreamsLiveAPI
+	// SigningKeys communicates with '/streams/signing-keys' endpoints
+	SigningKeys *StreamsSigningKeysAPI
 }
 
 // NewStreamsAPI constructor for StreamsAPI that takes options as argument
@@ -32,6 +34,7 @@ func NewStreamsAPIWithClient(apiClient *apiclient.APIClient) *StreamsAPI {
 	a.Search = NewStreamsSearchAPIWithClient(apiClient)
 	a.Video = NewStreamsVideoAPIWithClient(apiClient)
 	a.Live = NewStreamsLiveAPIWithClient(apiClient)
+	a.SigningKeys = NewStreamsSigningKeysAPIWithClient(apiClient)
 
 	return a
 }
