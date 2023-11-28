@@ -125,6 +125,7 @@ type EncodingOutputsAPIListQueryParams struct {
 	Offset int32            `query:"offset"`
 	Limit  int32            `query:"limit"`
 	Name   string           `query:"name"`
+	Sort   string           `query:"sort"`
 	Type_  model.OutputType `query:"type"`
 }
 
