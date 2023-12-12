@@ -23,8 +23,9 @@ type AccountInformation struct {
 	// Phone number of the tenant.
 	Phone *string `json:"phone,omitempty"`
 	// Company name of the tenant.
-	Company     *string     `json:"company,omitempty"`
-	Verified    *bool       `json:"verified,omitempty"`
-	Marketplace Marketplace `json:"marketplace,omitempty"`
-	MfaEnabled  *bool       `json:"mfaEnabled,omitempty"`
+	Company                *string     `json:"company,omitempty"`
+	Verified               *bool       `json:"verified,omitempty"`
+	Marketplace            Marketplace `json:"marketplace,omitempty"`
+	MfaEnabled             *bool       `json:"mfaEnabled,omitempty"`
+	IntercomIdVerification *string     `json:"intercomIdVerification,omitempty"`
 }
