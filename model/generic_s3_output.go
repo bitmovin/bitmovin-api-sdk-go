@@ -32,8 +32,12 @@ type GenericS3Output struct {
 	Port *int32 `json:"port,omitempty"`
 	// Controls whether SSL is used or not
 	Ssl *bool `json:"ssl,omitempty"`
+	// The signing region to use
+	SigningRegion *string `json:"signingRegion,omitempty"`
 	// Specifies the method used for authentication
 	SignatureVersion S3SignatureVersion `json:"signatureVersion,omitempty"`
+	// Specifies the URL access style to use
+	AccessStyle S3AccessStyle `json:"accessStyle,omitempty"`
 }
 
 func (m GenericS3Output) OutputType() OutputType {

@@ -149,6 +149,7 @@ func (api *EncodingManifestsHlsAPI) Stop(manifestId string) (*model.BitmovinResp
 type EncodingManifestsHlsAPIListQueryParams struct {
 	Offset     int32  `query:"offset"`
 	Limit      int32  `query:"limit"`
+	Sort       string `query:"sort"`
 	EncodingId string `query:"encodingId"`
 }
 

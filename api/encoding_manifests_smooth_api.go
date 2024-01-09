@@ -149,6 +149,7 @@ func (api *EncodingManifestsSmoothAPI) Stop(manifestId string) (*model.BitmovinR
 type EncodingManifestsSmoothAPIListQueryParams struct {
 	Offset     int32  `query:"offset"`
 	Limit      int32  `query:"limit"`
+	Sort       string `query:"sort"`
 	EncodingId string `query:"encodingId"`
 }
 

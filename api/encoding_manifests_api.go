@@ -58,8 +58,9 @@ func (api *EncodingManifestsAPI) List(queryParams ...func(*EncodingManifestsAPIL
 
 // EncodingManifestsAPIListQueryParams contains all query parameters for the List endpoint
 type EncodingManifestsAPIListQueryParams struct {
-	Offset int32 `query:"offset"`
-	Limit  int32 `query:"limit"`
+	Offset int32  `query:"offset"`
+	Limit  int32  `query:"limit"`
+	Sort   string `query:"sort"`
 }
 
 // Params will return a map of query parameters

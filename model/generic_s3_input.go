@@ -26,12 +26,16 @@ type GenericS3Input struct {
 	Port *int32 `json:"port,omitempty"`
 	// Controls whether SSL is used or not
 	Ssl *bool `json:"ssl,omitempty"`
+	// The signing region to use
+	SigningRegion *string `json:"signingRegion,omitempty"`
 	// Specifies the method used for authentication
 	SignatureVersion S3SignatureVersion `json:"signatureVersion,omitempty"`
 	// Your generic S3 access key (required)
 	AccessKey *string `json:"accessKey,omitempty"`
 	// Your generic S3 secret key (required)
 	SecretKey *string `json:"secretKey,omitempty"`
+	// Specifies the URL access style to use
+	AccessStyle S3AccessStyle `json:"accessStyle,omitempty"`
 }
 
 func (m GenericS3Input) InputType() InputType {

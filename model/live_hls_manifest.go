@@ -12,4 +12,6 @@ type LiveHlsManifest struct {
 	InsertProgramDateTime *bool `json:"insertProgramDateTime,omitempty"`
 	// Configuration for the EXT-X-PROGRAM-DATETIME tag
 	ProgramDateTimeSettings *ProgramDateTimeSettings `json:"programDateTimeSettings,omitempty"`
+	// Configuration for tags related to ad markers (e.g. Scte35)
+	AdMarkerSettings *HlsManifestAdMarkerSettings `json:"adMarkerSettings,omitempty"`
 }

@@ -146,6 +146,7 @@ func (api *EncodingManifestsDashAPI) Stop(manifestId string) (*model.BitmovinRes
 type EncodingManifestsDashAPIListQueryParams struct {
 	Offset     int32  `query:"offset"`
 	Limit      int32  `query:"limit"`
+	Sort       string `query:"sort"`
 	EncodingId string `query:"encodingId"`
 }
 
