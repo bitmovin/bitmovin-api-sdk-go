@@ -8,4 +8,6 @@ const (
 	HlsManifestAdMarkerType_EXT_X_CUE_OUT_IN         HlsManifestAdMarkerType = "EXT_X_CUE_OUT_IN"
 	HlsManifestAdMarkerType_EXT_OATCLS_SCTE35        HlsManifestAdMarkerType = "EXT_OATCLS_SCTE35"
 	HlsManifestAdMarkerType_EXT_X_SPLICEPOINT_SCTE35 HlsManifestAdMarkerType = "EXT_X_SPLICEPOINT_SCTE35"
+	HlsManifestAdMarkerType_EXT_X_DATERANGE          HlsManifestAdMarkerType = "EXT_X_DATERANGE"
+	HlsManifestAdMarkerType_EXT_X_SCTE35             HlsManifestAdMarkerType = "EXT_X_SCTE35"
 )
