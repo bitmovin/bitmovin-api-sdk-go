@@ -19,8 +19,11 @@ type RedundantRtmpInput struct {
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// When there is no input signal present and this threshold in seconds is reached it will switch to another ingest point
-	DelayThreshold *int32            `json:"delayThreshold,omitempty"`
-	IngestPoints   []RtmpIngestPoint `json:"ingestPoints,omitempty"`
+	DelayThreshold *int32 `json:"delayThreshold,omitempty"`
+	// Configuration for ingest points that use a dynamic IP based endpoint to stream to e.g.: rtmp://41.167.11.21/live Either ingestPoints **or** staticIngestPoints can be set
+	IngestPoints []RtmpIngestPoint `json:"ingestPoints,omitempty"`
+	// Configuration for static ingest points. These ingest points use a consistent endpoint to stream to e.g.: rtmps://live-ingest.bitmovin.com/live Either ingestPoints **or** staticIngestPoints can be set
+	StaticIngestPoints []StaticRtmpIngestPoint `json:"staticIngestPoints,omitempty"`
 }
 
 func (m RedundantRtmpInput) InputType() InputType {

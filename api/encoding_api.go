@@ -18,6 +18,8 @@ type EncodingAPI struct {
 	Filters *EncodingFiltersAPI
 	// Encodings communicates with '/encoding/encodings' endpoints
 	Encodings *EncodingEncodingsAPI
+	// Live intermediary API object with no endpoints
+	Live *EncodingLiveAPI
 	// Manifests communicates with '/encoding/manifests' endpoints
 	Manifests *EncodingManifestsAPI
 	// Infrastructure intermediary API object with no endpoints
@@ -52,6 +54,7 @@ func NewEncodingAPIWithClient(apiClient *apiclient.APIClient) *EncodingAPI {
 	a.Configurations = NewEncodingConfigurationsAPIWithClient(apiClient)
 	a.Filters = NewEncodingFiltersAPIWithClient(apiClient)
 	a.Encodings = NewEncodingEncodingsAPIWithClient(apiClient)
+	a.Live = NewEncodingLiveAPIWithClient(apiClient)
 	a.Manifests = NewEncodingManifestsAPIWithClient(apiClient)
 	a.Infrastructure = NewEncodingInfrastructureAPIWithClient(apiClient)
 	a.Statistics = NewEncodingStatisticsAPIWithClient(apiClient)
