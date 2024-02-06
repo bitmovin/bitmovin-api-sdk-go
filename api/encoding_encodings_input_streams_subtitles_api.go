@@ -10,8 +10,6 @@ type EncodingEncodingsInputStreamsSubtitlesAPI struct {
 
 	// DvbSubtitle communicates with '/encoding/encodings/{encoding_id}/input-streams/subtitles/dvb-subtitle' endpoints
 	DvbSubtitle *EncodingEncodingsInputStreamsSubtitlesDvbSubtitleAPI
-	// DvbTeletext communicates with '/encoding/encodings/{encoding_id}/input-streams/subtitles/dvb-teletext' endpoints
-	DvbTeletext *EncodingEncodingsInputStreamsSubtitlesDvbTeletextAPI
 }
 
 // NewEncodingEncodingsInputStreamsSubtitlesAPI constructor for EncodingEncodingsInputStreamsSubtitlesAPI that takes options as argument
@@ -28,7 +26,6 @@ func NewEncodingEncodingsInputStreamsSubtitlesAPI(options ...apiclient.APIClient
 func NewEncodingEncodingsInputStreamsSubtitlesAPIWithClient(apiClient *apiclient.APIClient) *EncodingEncodingsInputStreamsSubtitlesAPI {
 	a := &EncodingEncodingsInputStreamsSubtitlesAPI{apiClient: apiClient}
 	a.DvbSubtitle = NewEncodingEncodingsInputStreamsSubtitlesDvbSubtitleAPIWithClient(apiClient)
-	a.DvbTeletext = NewEncodingEncodingsInputStreamsSubtitlesDvbTeletextAPIWithClient(apiClient)
 
 	return a
 }

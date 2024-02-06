@@ -16,7 +16,6 @@ const (
 	InputStreamType_CAPTION_CEA608                InputStreamType = "CAPTION_CEA608"
 	InputStreamType_CAPTION_CEA708                InputStreamType = "CAPTION_CEA708"
 	InputStreamType_DVB_SUBTITLE                  InputStreamType = "DVB_SUBTITLE"
-	InputStreamType_DVB_TELETEXT                  InputStreamType = "DVB_TELETEXT"
 	InputStreamType_DOLBY_ATMOS                   InputStreamType = "DOLBY_ATMOS"
 	InputStreamType_DOLBY_VISION                  InputStreamType = "DOLBY_VISION"
 )
