@@ -10,6 +10,8 @@ type AnalyticsVirtualLicense struct {
 	Timezone *string `json:"timezone,omitempty"`
 	// Retention time of impressions, returned as ISO 8601 duration format: P(n)Y(n)M(n)DT(n)H(n)M(n)S
 	RetentionTime *string `json:"retentionTime,omitempty"`
+	// Retention time for compressed data, returned as ISO 8601 duration format: P(n)Y(n)M(n)DT(n)H(n)M(n)S
+	CompressedRetentionTime *string `json:"compressedRetentionTime,omitempty"`
 	// List of Analytics Licenses
 	Licenses []AnalyticsVirtualLicenseLicensesListItem `json:"licenses,omitempty"`
 	// The number of customData fields available

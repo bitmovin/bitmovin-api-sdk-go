@@ -19,4 +19,10 @@ type WebhookNotification struct {
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// The destination URL where the webhook data is send to (required)
 	Url *string `json:"url,omitempty"`
+	// HTTP method used for the webhook
+	Method WebhookHttpMethod `json:"method,omitempty"`
+	// Skip verification of the SSL certificate
+	InsecureSsl *bool `json:"insecureSsl,omitempty"`
+	// Signature used for the webhook
+	Signature *WebhookSignature `json:"signature,omitempty"`
 }

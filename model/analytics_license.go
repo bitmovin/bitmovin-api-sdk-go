@@ -26,6 +26,8 @@ type AnalyticsLicense struct {
 	TimeZone *string `json:"timeZone,omitempty"`
 	// Retention time of impressions, returned as ISO 8601 duration format: P(n)Y(n)M(n)DT(n)H(n)M(n)S
 	RetentionTime *string `json:"retentionTime,omitempty"`
+	// Retention time for compressed data, returned as ISO 8601 duration format: P(n)Y(n)M(n)DT(n)H(n)M(n)S
+	CompressedRetentionTime *string `json:"compressedRetentionTime,omitempty"`
 	// Whitelisted domains
 	Domains []AnalyticsLicenseDomain `json:"domains,omitempty"`
 	// Whether the data of this license should be included in the industry insights or not

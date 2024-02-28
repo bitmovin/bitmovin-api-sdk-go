@@ -25,7 +25,13 @@ type WebhookNotificationWithStreamConditions struct {
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// The destination URL where the webhook data is send to (required)
-	Url        *string            `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
+	// HTTP method used for the webhook
+	Method WebhookHttpMethod `json:"method,omitempty"`
+	// Skip verification of the SSL certificate
+	InsecureSsl *bool `json:"insecureSsl,omitempty"`
+	// Signature used for the webhook
+	Signature  *WebhookSignature  `json:"signature,omitempty"`
 	Conditions *AbstractCondition `json:"conditions,omitempty"`
 }
 
@@ -43,6 +49,9 @@ func (m *WebhookNotificationWithStreamConditions) UnmarshalJSON(raw []byte) erro
 		Muted        *bool                   `json:"muted"`
 		CustomData   *map[string]interface{} `json:"customData"`
 		Url          *string                 `json:"url"`
+		Method       WebhookHttpMethod       `json:"method"`
+		InsecureSsl  *bool                   `json:"insecureSsl"`
+		Signature    *WebhookSignature       `json:"signature"`
 		Conditions   json.RawMessage         `json:"conditions"`
 	}
 
@@ -67,6 +76,9 @@ func (m *WebhookNotificationWithStreamConditions) UnmarshalJSON(raw []byte) erro
 	result.Muted = data.Muted
 	result.CustomData = data.CustomData
 	result.Url = data.Url
+	result.Method = data.Method
+	result.InsecureSsl = data.InsecureSsl
+	result.Signature = data.Signature
 
 	allOfConditions, err := UnmarshalAbstractCondition(bytes.NewBuffer(data.Conditions), bitutils.JSONConsumer())
 	if err != nil && err != io.EOF {
