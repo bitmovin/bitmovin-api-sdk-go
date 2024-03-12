@@ -6,4 +6,6 @@ type StreamsLiveCreateRequest struct {
 	Title *string `json:"title,omitempty"`
 	// Description of the stream
 	Description *string `json:"description,omitempty"`
+	// Id of the domain restriction config to use
+	DomainRestrictionId *string `json:"domainRestrictionId,omitempty"`
 }

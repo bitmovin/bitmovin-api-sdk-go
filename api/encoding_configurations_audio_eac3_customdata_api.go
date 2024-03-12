@@ -26,7 +26,8 @@ func NewEncodingConfigurationsAudioEac3CustomdataAPIWithClient(apiClient *apicli
 	return a
 }
 
-// Get E-AC3 Codec Configuration Custom Data.  Deprecation notice: use Dolby Digital Plus instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
+// Get E-AC3 Codec Configuration Custom Data
+// Deprecation notice: use Dolby Digital Plus instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
 func (api *EncodingConfigurationsAudioEac3CustomdataAPI) Get(configurationId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

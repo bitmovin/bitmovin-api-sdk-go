@@ -24,7 +24,7 @@ type StreamsLiveResponse struct {
 	// Poster URL
 	PosterUrl         *string                           `json:"posterUrl,omitempty"`
 	AdConfig          *StreamsAdConfigResponse          `json:"adConfig,omitempty"`
-	ContentProtection *StreamsContentProtectionResponse `json:"contentProtection,omitempty"`
+	DomainRestriction *StreamsDomainRestrictionResponse `json:"domainRestriction,omitempty"`
 	// Stream trimming information
 	Trimming StreamsTrimmingStatus `json:"trimming,omitempty"`
 }

@@ -27,7 +27,7 @@ func NewEncodingSimpleJobsLiveAPIWithClient(apiClient *apiclient.APIClient) *Enc
 }
 
 // Create a Simple Encoding Live Job
-// Check out our [Simple Encoding API Live Documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api-live) for additional information about the Simple Encoding API Live.
+// Deprecation notice: use the more capable full API instead. Get started at https://developer.bitmovin.com/encoding/docs/java-sdk
 func (api *EncodingSimpleJobsLiveAPI) Create(simpleEncodingLiveJobRequest model.SimpleEncodingLiveJobRequest) (*model.SimpleEncodingLiveJobResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -38,7 +38,7 @@ func (api *EncodingSimpleJobsLiveAPI) Create(simpleEncodingLiveJobRequest model.
 }
 
 // Get Simple Encoding Live Job details
-// Get the details of a Simple Live Encoding Job.  Check out our [Simple Encoding API Live Documentation](https://bitmovin.com/docs/encoding/articles/simple-encoding-api-live) for additional information about the Simple Encoding API Live.
+// Get the details of a Simple Live Encoding Job. Deprecation notice: use the more capable full API instead. Get started at https://developer.bitmovin.com/encoding/docs/java-sdk
 func (api *EncodingSimpleJobsLiveAPI) Get(simpleEncodingJobId string) (*model.SimpleEncodingLiveJobResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["simple_encoding_job_id"] = simpleEncodingJobId

@@ -8,4 +8,6 @@ type StreamsLiveUpdateRequest struct {
 	Description *string `json:"description,omitempty"`
 	// URL to hosted poster image
 	PosterUrl *string `json:"posterUrl,omitempty"`
+	// Id of the domain restriction config to use
+	DomainRestrictionId *string `json:"domainRestrictionId,omitempty"`
 }

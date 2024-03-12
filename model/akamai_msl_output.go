@@ -24,7 +24,7 @@ type AkamaiMslOutput struct {
 	StreamId *int32 `json:"streamId,omitempty"`
 	// The Akamai event name (required)
 	EventName *string `json:"eventName,omitempty"`
-	// The stream format. Only DASH is supported at the moment. (required)
+	// - DASH: configure the Encoding with fMP4 or CMAF muxings and a DASH manifest. - HLS: configure the Encoding with TS muxings and an HLS manifest. - CMAF: configure the Encoding with fMP4 or CMAF muxings with both DASH and HLS manifests. (required)
 	StreamFormat AkamaiMslStreamFormat `json:"streamFormat,omitempty"`
 	// The Akamai MSL Version. Only MSL4 is supported at the moment. (required)
 	MslVersion AkamaiMslVersion `json:"mslVersion,omitempty"`
