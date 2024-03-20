@@ -35,12 +35,12 @@ func NewAnalyticsImpressionsAPIWithClient(apiClient *apiclient.APIClient) *Analy
 }
 
 // Create Impression Details
-func (api *AnalyticsImpressionsAPI) Create(impressionId string, analyticsLicenseKey model.AnalyticsLicenseKey) (*model.AnalyticsImpressionDetails, error) {
+func (api *AnalyticsImpressionsAPI) Create(impressionId string, analyticsLicenseKey model.AnalyticsLicenseKey) (*[]model.AnalyticsImpressionSample, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["impression_id"] = impressionId
 	}
 
-	var responseModel model.AnalyticsImpressionDetails
+	var responseModel []model.AnalyticsImpressionSample
 	err := api.apiClient.Post("/analytics/impressions/{impression_id}", &analyticsLicenseKey, &responseModel, reqParams)
 	return &responseModel, err
 }

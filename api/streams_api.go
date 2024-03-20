@@ -12,6 +12,8 @@ type StreamsAPI struct {
 	Video *StreamsVideoAPI
 	// Live communicates with '/streams/live' endpoints
 	Live *StreamsLiveAPI
+	// Config intermediary API object with no endpoints
+	Config *StreamsConfigAPI
 	// Search communicates with '/streams/search' endpoints
 	Search *StreamsSearchAPI
 	// SigningKeys communicates with '/streams/signing-keys' endpoints
@@ -33,6 +35,7 @@ func NewStreamsAPIWithClient(apiClient *apiclient.APIClient) *StreamsAPI {
 	a := &StreamsAPI{apiClient: apiClient}
 	a.Video = NewStreamsVideoAPIWithClient(apiClient)
 	a.Live = NewStreamsLiveAPIWithClient(apiClient)
+	a.Config = NewStreamsConfigAPIWithClient(apiClient)
 	a.Search = NewStreamsSearchAPIWithClient(apiClient)
 	a.SigningKeys = NewStreamsSigningKeysAPIWithClient(apiClient)
 
