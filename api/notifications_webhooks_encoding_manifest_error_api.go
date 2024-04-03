@@ -3,6 +3,7 @@ package api
 import (
 	"github.com/bitmovin/bitmovin-api-sdk-go/apiclient"
 	"github.com/bitmovin/bitmovin-api-sdk-go/model"
+	"github.com/bitmovin/bitmovin-api-sdk-go/pagination"
 )
 
 // NotificationsWebhooksEncodingManifestErrorAPI communicates with '/notifications/webhooks/encoding/manifest/error' endpoints
@@ -56,6 +57,17 @@ func (api *NotificationsWebhooksEncodingManifestErrorAPI) Delete(notificationId 
 
 	var responseModel model.BitmovinResponse
 	err := api.apiClient.Delete("/notifications/webhooks/encoding/manifest/error/{notification_id}", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
+// List Get &#39;Manifest Error&#39; Webhooks (All Manifests)
+// Get all webhook notifications triggering when a manifest generation fails
+func (api *NotificationsWebhooksEncodingManifestErrorAPI) List() (*pagination.WebhooksListPagination, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+	}
+
+	var responseModel pagination.WebhooksListPagination
+	err := api.apiClient.Get("/notifications/webhooks/encoding/manifest/error", nil, &responseModel, reqParams)
 	return &responseModel, err
 }
 

@@ -3,6 +3,7 @@ package api
 import (
 	"github.com/bitmovin/bitmovin-api-sdk-go/apiclient"
 	"github.com/bitmovin/bitmovin-api-sdk-go/model"
+	"github.com/bitmovin/bitmovin-api-sdk-go/pagination"
 )
 
 // NotificationsWebhooksEncodingManifestFinishedAPI communicates with '/notifications/webhooks/encoding/manifest/finished' endpoints
@@ -55,6 +56,17 @@ func (api *NotificationsWebhooksEncodingManifestFinishedAPI) Delete(notification
 
 	var responseModel model.BitmovinResponse
 	err := api.apiClient.Delete("/notifications/webhooks/encoding/manifest/finished/{notification_id}", nil, &responseModel, reqParams)
+	return &responseModel, err
+}
+
+// List Get &#39;Manifest Finished&#39; Webhooks (All Manifests)
+// Get all webhook notifications triggering when a manifest generation finishes successfully
+func (api *NotificationsWebhooksEncodingManifestFinishedAPI) List() (*pagination.WebhooksListPagination, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+	}
+
+	var responseModel pagination.WebhooksListPagination
+	err := api.apiClient.Get("/notifications/webhooks/encoding/manifest/finished", nil, &responseModel, reqParams)
 	return &responseModel, err
 }
 
