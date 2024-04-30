@@ -9,6 +9,9 @@ import (
 // EncodingLiveStreamKeysAPI communicates with '/encoding/live/stream-keys' endpoints
 type EncodingLiveStreamKeysAPI struct {
 	apiClient *apiclient.APIClient
+
+	// Actions communicates with '/encoding/live/stream-keys/actions/unassign' endpoints
+	Actions *EncodingLiveStreamKeysActionsAPI
 }
 
 // NewEncodingLiveStreamKeysAPI constructor for EncodingLiveStreamKeysAPI that takes options as argument
@@ -24,6 +27,8 @@ func NewEncodingLiveStreamKeysAPI(options ...apiclient.APIClientOption) (*Encodi
 // NewEncodingLiveStreamKeysAPIWithClient constructor for EncodingLiveStreamKeysAPI that takes an APIClient as argument
 func NewEncodingLiveStreamKeysAPIWithClient(apiClient *apiclient.APIClient) *EncodingLiveStreamKeysAPI {
 	a := &EncodingLiveStreamKeysAPI{apiClient: apiClient}
+	a.Actions = NewEncodingLiveStreamKeysActionsAPIWithClient(apiClient)
+
 	return a
 }
 

@@ -23,4 +23,6 @@ type Organization struct {
 	LimitsPerResource []ResourceLimitContainer `json:"limitsPerResource,omitempty"`
 	// which platform initiated organisation creation
 	SignupSource SignupSource `json:"signupSource,omitempty"`
+	// Flag indicating if MFA is required for the organization
+	MfaRequired *bool `json:"mfaRequired,omitempty"`
 }
