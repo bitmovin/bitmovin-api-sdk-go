@@ -22,6 +22,8 @@ type EncodingConfigurationsAudioAPI struct {
 	HeAacV1 *EncodingConfigurationsAudioHeAacV1API
 	// HeAacV2 communicates with '/encoding/configurations/audio/he-aac-v2' endpoints
 	HeAacV2 *EncodingConfigurationsAudioHeAacV2API
+	// Passthrough communicates with '/encoding/configurations/audio/passthrough' endpoints
+	Passthrough *EncodingConfigurationsAudioPassthroughAPI
 	// Vorbis communicates with '/encoding/configurations/audio/vorbis' endpoints
 	Vorbis *EncodingConfigurationsAudioVorbisAPI
 	// Opus communicates with '/encoding/configurations/audio/opus' endpoints
@@ -62,6 +64,7 @@ func NewEncodingConfigurationsAudioAPIWithClient(apiClient *apiclient.APIClient)
 	a.DolbyAtmos = NewEncodingConfigurationsAudioDolbyAtmosAPIWithClient(apiClient)
 	a.HeAacV1 = NewEncodingConfigurationsAudioHeAacV1APIWithClient(apiClient)
 	a.HeAacV2 = NewEncodingConfigurationsAudioHeAacV2APIWithClient(apiClient)
+	a.Passthrough = NewEncodingConfigurationsAudioPassthroughAPIWithClient(apiClient)
 	a.Vorbis = NewEncodingConfigurationsAudioVorbisAPIWithClient(apiClient)
 	a.Opus = NewEncodingConfigurationsAudioOpusAPIWithClient(apiClient)
 	a.Pcm = NewEncodingConfigurationsAudioPcmAPIWithClient(apiClient)

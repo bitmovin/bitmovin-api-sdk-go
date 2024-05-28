@@ -61,6 +61,8 @@ const (
 	CloudRegion_AZURE_US_WEST                   CloudRegion = "AZURE_US_WEST"
 	CloudRegion_AZURE_US_WEST2                  CloudRegion = "AZURE_US_WEST2"
 	CloudRegion_AZURE_US_SOUTH_CENTRAL          CloudRegion = "AZURE_US_SOUTH_CENTRAL"
+	CloudRegion_AZURE_US_NORTH_CENTRAL          CloudRegion = "AZURE_US_NORTH_CENTRAL"
+	CloudRegion_AZURE_UK_SOUTH                  CloudRegion = "AZURE_UK_SOUTH"
 	CloudRegion_AKAMAI_BR_GRU                   CloudRegion = "AKAMAI_BR_GRU"
 	CloudRegion_AKAMAI_FR_PAR                   CloudRegion = "AKAMAI_FR_PAR"
 	CloudRegion_AKAMAI_JP_OSA                   CloudRegion = "AKAMAI_JP_OSA"

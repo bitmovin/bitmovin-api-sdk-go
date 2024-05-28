@@ -82,6 +82,13 @@ func unmarshalCodecConfiguration(data []byte, consumer bitutils.Consumer) (Codec
 		}
 		return result, nil
 
+	case "AUDIO_PASSTHROUGH":
+		var result PassthroughAudioConfiguration
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case "DTS_PASSTHROUGH":
 		var result DtsPassthroughAudioConfiguration
 		if err := consumer.Consume(buf2, &result); err != nil {

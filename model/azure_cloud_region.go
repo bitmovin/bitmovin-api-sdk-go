@@ -27,4 +27,6 @@ const (
 	AzureCloudRegion_US_WEST             AzureCloudRegion = "US_WEST"
 	AzureCloudRegion_US_WEST2            AzureCloudRegion = "US_WEST2"
 	AzureCloudRegion_US_SOUTH_CENTRAL    AzureCloudRegion = "US_SOUTH_CENTRAL"
+	AzureCloudRegion_US_NORTH_CENTRAL    AzureCloudRegion = "US_NORTH_CENTRAL"
+	AzureCloudRegion_UK_SOUTH            AzureCloudRegion = "UK_SOUTH"
 )
