@@ -67,6 +67,8 @@ const (
 	CloudRegion_AKAMAI_FR_PAR                   CloudRegion = "AKAMAI_FR_PAR"
 	CloudRegion_AKAMAI_JP_OSA                   CloudRegion = "AKAMAI_JP_OSA"
 	CloudRegion_AKAMAI_US_SEA                   CloudRegion = "AKAMAI_US_SEA"
+	CloudRegion_OCI_EU_FRANKFURT_1              CloudRegion = "OCI_EU_FRANKFURT_1"
+	CloudRegion_OCI_US_ASHBURN_1                CloudRegion = "OCI_US_ASHBURN_1"
 	CloudRegion_NORTH_AMERICA                   CloudRegion = "NORTH_AMERICA"
 	CloudRegion_SOUTH_AMERICA                   CloudRegion = "SOUTH_AMERICA"
 	CloudRegion_EUROPE                          CloudRegion = "EUROPE"
