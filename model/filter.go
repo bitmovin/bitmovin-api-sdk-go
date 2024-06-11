@@ -180,6 +180,13 @@ func unmarshalFilter(data []byte, consumer bitutils.Consumer) (Filter, error) {
 		}
 		return result, nil
 
+	case "AZURE_SPEECH_TO_CAPTIONS":
+		var result AzureSpeechToCaptionsFilter
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}

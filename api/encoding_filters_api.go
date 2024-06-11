@@ -18,6 +18,8 @@ type EncodingFiltersAPI struct {
 	Watermark *EncodingFiltersWatermarkAPI
 	// AudioVolume communicates with '/encoding/filters/audio-volume' endpoints
 	AudioVolume *EncodingFiltersAudioVolumeAPI
+	// AzureSpeechToCaptions communicates with '/encoding/filters/azure-speech-to-captions' endpoints
+	AzureSpeechToCaptions *EncodingFiltersAzureSpeechToCaptionsAPI
 	// EnhancedWatermark communicates with '/encoding/filters/enhanced-watermark' endpoints
 	EnhancedWatermark *EncodingFiltersEnhancedWatermarkAPI
 	// Crop communicates with '/encoding/filters/crop' endpoints
@@ -61,6 +63,7 @@ func NewEncodingFiltersAPIWithClient(apiClient *apiclient.APIClient) *EncodingFi
 	a.Conform = NewEncodingFiltersConformAPIWithClient(apiClient)
 	a.Watermark = NewEncodingFiltersWatermarkAPIWithClient(apiClient)
 	a.AudioVolume = NewEncodingFiltersAudioVolumeAPIWithClient(apiClient)
+	a.AzureSpeechToCaptions = NewEncodingFiltersAzureSpeechToCaptionsAPIWithClient(apiClient)
 	a.EnhancedWatermark = NewEncodingFiltersEnhancedWatermarkAPIWithClient(apiClient)
 	a.Crop = NewEncodingFiltersCropAPIWithClient(apiClient)
 	a.Rotate = NewEncodingFiltersRotateAPIWithClient(apiClient)

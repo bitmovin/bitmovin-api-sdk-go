@@ -9,6 +9,8 @@ import (
 type EncodingEncodingsLiveAPI struct {
 	apiClient *apiclient.APIClient
 
+	// ResetLiveManifestTimeshift communicates with '/encoding/encodings/{encoding_id}/live/reset-live-manifest-timeshift' endpoints
+	ResetLiveManifestTimeshift *EncodingEncodingsLiveResetLiveManifestTimeshiftAPI
 	// Hd communicates with '/encoding/encodings/{encoding_id}/live/hd/start' endpoints
 	Hd *EncodingEncodingsLiveHdAPI
 	// InsertableContent communicates with '/encoding/encodings/{encoding_id}/live/insertable-content' endpoints
@@ -30,6 +32,7 @@ func NewEncodingEncodingsLiveAPI(options ...apiclient.APIClientOption) (*Encodin
 // NewEncodingEncodingsLiveAPIWithClient constructor for EncodingEncodingsLiveAPI that takes an APIClient as argument
 func NewEncodingEncodingsLiveAPIWithClient(apiClient *apiclient.APIClient) *EncodingEncodingsLiveAPI {
 	a := &EncodingEncodingsLiveAPI{apiClient: apiClient}
+	a.ResetLiveManifestTimeshift = NewEncodingEncodingsLiveResetLiveManifestTimeshiftAPIWithClient(apiClient)
 	a.Hd = NewEncodingEncodingsLiveHdAPIWithClient(apiClient)
 	a.InsertableContent = NewEncodingEncodingsLiveInsertableContentAPIWithClient(apiClient)
 	a.Scte35Cue = NewEncodingEncodingsLiveScte35CueAPIWithClient(apiClient)

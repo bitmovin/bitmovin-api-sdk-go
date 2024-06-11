@@ -34,7 +34,7 @@ type PackedAudioMuxing struct {
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
 	// Segment naming policy. The required filename extension depends on the codec (e.g. '.aac' for AAC). Either this or *segmentNamingTemplate* must be set.
 	SegmentNaming *string `json:"segmentNaming,omitempty"`
-	// Segment naming policy containing a placeholder of the format '{rand_chars:x}', which will be replaced by a random alphanumeric string of length x (default 32) on each (re)start of the encoding. The resulting string will be copied to the segmentNaming property. Intended to avoid re-use of segment names after restarting a live encoding. Either this or *segmentNaming* must be set. The required filename extension depends on the codec (e.g. '.aac' for AAC).
+	// Segment naming policy containing one or both of the following placeholders: - '{rand_chars:x}', which will be replaced by a random alphanumeric string of length x (default 32)   on each (re)start of the encoding. The resulting string will be copied to the segmentNaming property.   Intended to avoid re-use of segment names after restarting a live encoding. - '{segment_rand_chars:x}', which will be replaced by a random alphanumeric string of length x (default 32)   for each different segment. This is intended to avoid guessing segment URLs by replacing segment numbers.  If segmentNamingTemplate is set, segmentNaming must not be set. The required filename extension depends on the codec (e.g. '.aac' for AAC).
 	SegmentNamingTemplate *string `json:"segmentNamingTemplate,omitempty"`
 	// Offset of MPEG-TS timestamps in seconds. E.g., first packet will start with PTS 900,000 for a 10 seconds offset (90,000 MPEG-TS timescale).
 	StartOffset *int32 `json:"startOffset,omitempty"`
