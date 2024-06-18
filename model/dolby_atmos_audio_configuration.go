@@ -19,9 +19,9 @@ type DolbyAtmosAudioConfiguration struct {
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Target bitrate for the encoded audio in bps. Allowed values are: 384000, 448000, 576000, 640000, 768000, 1024000 (required)
-	Bitrate *map[string]interface{} `json:"bitrate,omitempty"`
+	Bitrate *int64 `json:"bitrate,omitempty"`
 	// Audio sampling rate in Hz. Only 48000 is allowed.
-	Rate *map[string]interface{} `json:"rate,omitempty"`
+	Rate *float64 `json:"rate,omitempty"`
 	// Settings for loudness control (required)
 	LoudnessControl *DolbyAtmosLoudnessControl `json:"loudnessControl,omitempty"`
 }

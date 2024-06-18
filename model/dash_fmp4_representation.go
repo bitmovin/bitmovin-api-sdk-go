@@ -22,9 +22,9 @@ type DashFmp4Representation struct {
 	StartSegmentNumber *int64 `json:"startSegmentNumber,omitempty"`
 	// Number of the last segment. Default is the last one that was encoded
 	EndSegmentNumber *int64 `json:"endSegmentNumber,omitempty"`
-	// Id of the Keyframe to start with
+	// Id of the keyframe to start with. It takes precedence over startSegmentNumber
 	StartKeyframeId *string `json:"startKeyframeId,omitempty"`
-	// Id of the Keyframe to end with
+	// Id of the keyframe to end with. It takes precedence over endSegmentNumber. The segment containing the end keyframe is not included in the representation.
 	EndKeyframeId *string `json:"endKeyframeId,omitempty"`
 }
 
