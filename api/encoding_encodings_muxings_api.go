@@ -38,6 +38,8 @@ type EncodingEncodingsMuxingsAPI struct {
 	ProgressiveTs *EncodingEncodingsMuxingsProgressiveTsAPI
 	// BroadcastTs communicates with '/encoding/encodings/{encoding_id}/muxings/broadcast-ts' endpoints
 	BroadcastTs *EncodingEncodingsMuxingsBroadcastTsAPI
+	// ProgressiveWav communicates with '/encoding/encodings/{encoding_id}/muxings/progressive-wav' endpoints
+	ProgressiveWav *EncodingEncodingsMuxingsProgressiveWavAPI
 	// ProgressiveWebm communicates with '/encoding/encodings/{encoding_id}/muxings/progressive-webm' endpoints
 	ProgressiveWebm *EncodingEncodingsMuxingsProgressiveWebmAPI
 	// ProgressiveMov communicates with '/encoding/encodings/{encoding_id}/muxings/progressive-mov' endpoints
@@ -71,6 +73,7 @@ func NewEncodingEncodingsMuxingsAPIWithClient(apiClient *apiclient.APIClient) *E
 	a.Mxf = NewEncodingEncodingsMuxingsMxfAPIWithClient(apiClient)
 	a.ProgressiveTs = NewEncodingEncodingsMuxingsProgressiveTsAPIWithClient(apiClient)
 	a.BroadcastTs = NewEncodingEncodingsMuxingsBroadcastTsAPIWithClient(apiClient)
+	a.ProgressiveWav = NewEncodingEncodingsMuxingsProgressiveWavAPIWithClient(apiClient)
 	a.ProgressiveWebm = NewEncodingEncodingsMuxingsProgressiveWebmAPIWithClient(apiClient)
 	a.ProgressiveMov = NewEncodingEncodingsMuxingsProgressiveMovAPIWithClient(apiClient)
 

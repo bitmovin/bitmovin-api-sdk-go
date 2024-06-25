@@ -136,6 +136,13 @@ func unmarshalMuxing(data []byte, consumer bitutils.Consumer) (Muxing, error) {
 		}
 		return result, nil
 
+	case "PROGRESSIVE_WAV":
+		var result ProgressiveWavMuxing
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case "PROGRESSIVE_WEBM":
 		var result ProgressiveWebmMuxing
 		if err := consumer.Consume(buf2, &result); err != nil {

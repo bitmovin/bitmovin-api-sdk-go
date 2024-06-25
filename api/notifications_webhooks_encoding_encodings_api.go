@@ -12,6 +12,8 @@ type NotificationsWebhooksEncodingEncodingsAPI struct {
 	Finished *NotificationsWebhooksEncodingEncodingsFinishedAPI
 	// Error communicates with '/notifications/webhooks/encoding/encodings/error' endpoints
 	Error *NotificationsWebhooksEncodingEncodingsErrorAPI
+	// LiveEncodingHeartbeat communicates with '/notifications/webhooks/encoding/encodings/live-encoding-heartbeat' endpoints
+	LiveEncodingHeartbeat *NotificationsWebhooksEncodingEncodingsLiveEncodingHeartbeatAPI
 	// TransferError communicates with '/notifications/webhooks/encoding/encodings/transfer-error' endpoints
 	TransferError *NotificationsWebhooksEncodingEncodingsTransferErrorAPI
 	// LiveInputStreamChanged communicates with '/notifications/webhooks/encoding/encodings/live-input-stream-changed' endpoints
@@ -35,6 +37,7 @@ func NewNotificationsWebhooksEncodingEncodingsAPIWithClient(apiClient *apiclient
 	a := &NotificationsWebhooksEncodingEncodingsAPI{apiClient: apiClient}
 	a.Finished = NewNotificationsWebhooksEncodingEncodingsFinishedAPIWithClient(apiClient)
 	a.Error = NewNotificationsWebhooksEncodingEncodingsErrorAPIWithClient(apiClient)
+	a.LiveEncodingHeartbeat = NewNotificationsWebhooksEncodingEncodingsLiveEncodingHeartbeatAPIWithClient(apiClient)
 	a.TransferError = NewNotificationsWebhooksEncodingEncodingsTransferErrorAPIWithClient(apiClient)
 	a.LiveInputStreamChanged = NewNotificationsWebhooksEncodingEncodingsLiveInputStreamChangedAPIWithClient(apiClient)
 	a.EncodingStatusChanged = NewNotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPIWithClient(apiClient)

@@ -12,6 +12,7 @@ const (
 	MuxingType_WEBM             MuxingType = "WEBM"
 	MuxingType_MP3              MuxingType = "MP3"
 	MuxingType_MXF              MuxingType = "MXF"
+	MuxingType_PROGRESSIVE_WAV  MuxingType = "PROGRESSIVE_WAV"
 	MuxingType_PROGRESSIVE_WEBM MuxingType = "PROGRESSIVE_WEBM"
 	MuxingType_PROGRESSIVE_MOV  MuxingType = "PROGRESSIVE_MOV"
 	MuxingType_PROGRESSIVE_TS   MuxingType = "PROGRESSIVE_TS"
