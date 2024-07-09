@@ -23,4 +23,5 @@ const (
 	GoogleCloudRegion_SOUTHAMERICA_EAST_1      GoogleCloudRegion = "SOUTHAMERICA_EAST_1"
 	GoogleCloudRegion_US_EAST_4                GoogleCloudRegion = "US_EAST_4"
 	GoogleCloudRegion_US_WEST_2                GoogleCloudRegion = "US_WEST_2"
+	GoogleCloudRegion_ME_CENTRAL_2             GoogleCloudRegion = "ME_CENTRAL_2"
 )

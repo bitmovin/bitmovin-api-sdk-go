@@ -58,11 +58,11 @@ type H264VideoConfiguration struct {
 	MvSearchRangeMax *int32 `json:"mvSearchRangeMax,omitempty"`
 	// Enable or disable CABAC
 	Cabac *bool `json:"cabac,omitempty"`
-	// Maximum Bitrate
+	// Maximum Bitrate (bps)
 	MaxBitrate *int64 `json:"maxBitrate,omitempty"`
-	// Minimum Bitrate
+	// Minimum Bitrate (bps)
 	MinBitrate *int64 `json:"minBitrate,omitempty"`
-	// Playback device buffer size
+	// Playback device buffer size (bits)
 	Bufsize *int64 `json:"bufsize,omitempty"`
 	// Minimum GOP length, the minimum distance between I-frames
 	MinGop *int32 `json:"minGop,omitempty"`

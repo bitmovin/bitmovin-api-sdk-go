@@ -39,6 +39,7 @@ const (
 	CloudRegion_GOOGLE_SOUTHAMERICA_EAST_1      CloudRegion = "GOOGLE_SOUTHAMERICA_EAST_1"
 	CloudRegion_GOOGLE_US_EAST_4                CloudRegion = "GOOGLE_US_EAST_4"
 	CloudRegion_GOOGLE_US_WEST_2                CloudRegion = "GOOGLE_US_WEST_2"
+	CloudRegion_GOOGLE_ME_CENTRAL_2             CloudRegion = "GOOGLE_ME_CENTRAL_2"
 	CloudRegion_AZURE_ASIA_EAST                 CloudRegion = "AZURE_ASIA_EAST"
 	CloudRegion_AZURE_ASIA_SOUTHEAST            CloudRegion = "AZURE_ASIA_SOUTHEAST"
 	CloudRegion_AZURE_AUSTRALIA_EAST            CloudRegion = "AZURE_AUSTRALIA_EAST"

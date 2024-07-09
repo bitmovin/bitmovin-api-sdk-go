@@ -5,5 +5,6 @@ type PcmChannelLayout string
 
 // List of possible PcmChannelLayout values
 const (
-	PcmChannelLayout_MONO PcmChannelLayout = "MONO"
+	PcmChannelLayout_MONO   PcmChannelLayout = "MONO"
+	PcmChannelLayout_STEREO PcmChannelLayout = "STEREO"
 )

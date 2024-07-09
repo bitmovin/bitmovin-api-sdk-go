@@ -50,11 +50,11 @@ type H265VideoConfiguration struct {
 	RefFrames *int32 `json:"refFrames,omitempty"`
 	// Quantization factor
 	Qp *int32 `json:"qp,omitempty"`
-	// Maximum Bitrate
+	// Maximum Bitrate (bps)
 	MaxBitrate *int64 `json:"maxBitrate,omitempty"`
-	// Minimum Bitrate
+	// Minimum Bitrate (bps)
 	MinBitrate *int64 `json:"minBitrate,omitempty"`
-	// Size of the VBV buffer (kbits)
+	// Size of the VBV buffer (bits)
 	Bufsize *int64 `json:"bufsize,omitempty"`
 	// Minimum GOP length, the minimum distance between I-frames
 	MinGop *int32 `json:"minGop,omitempty"`

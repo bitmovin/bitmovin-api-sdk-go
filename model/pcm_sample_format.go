@@ -7,4 +7,5 @@ type PcmSampleFormat string
 const (
 	PcmSampleFormat_S16LE PcmSampleFormat = "S16LE"
 	PcmSampleFormat_S24LE PcmSampleFormat = "S24LE"
+	PcmSampleFormat_S32LE PcmSampleFormat = "S32LE"
 )
