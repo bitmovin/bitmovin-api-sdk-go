@@ -16,6 +16,4 @@ type Keyframe struct {
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Time in seconds where the keyframe should be inserted (required)
 	Time *float64 `json:"time,omitempty"`
-	// Instructs the encoder to cut the segment at this position
-	SegmentCut *bool `json:"segmentCut,omitempty"`
 }

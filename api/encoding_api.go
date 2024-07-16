@@ -30,8 +30,6 @@ type EncodingAPI struct {
 	WatchFolders *EncodingWatchFoldersAPI
 	// Simple intermediary API object with no endpoints
 	Simple *EncodingSimpleAPI
-	// History intermediary API object with no endpoints
-	History *EncodingHistoryAPI
 	// ErrorDefinitions communicates with '/encoding/error-definitions' endpoints
 	ErrorDefinitions *EncodingErrorDefinitionsAPI
 }
@@ -60,7 +58,6 @@ func NewEncodingAPIWithClient(apiClient *apiclient.APIClient) *EncodingAPI {
 	a.Statistics = NewEncodingStatisticsAPIWithClient(apiClient)
 	a.WatchFolders = NewEncodingWatchFoldersAPIWithClient(apiClient)
 	a.Simple = NewEncodingSimpleAPIWithClient(apiClient)
-	a.History = NewEncodingHistoryAPIWithClient(apiClient)
 	a.ErrorDefinitions = NewEncodingErrorDefinitionsAPIWithClient(apiClient)
 
 	return a
