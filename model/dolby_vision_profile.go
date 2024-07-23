@@ -5,9 +5,10 @@ type DolbyVisionProfile string
 
 // List of possible DolbyVisionProfile values
 const (
-	DolbyVisionProfile_DVHE_04 DolbyVisionProfile = "DVHE_04"
-	DolbyVisionProfile_DVHE_05 DolbyVisionProfile = "DVHE_05"
-	DolbyVisionProfile_DVHE_07 DolbyVisionProfile = "DVHE_07"
-	DolbyVisionProfile_HEV1_08 DolbyVisionProfile = "HEV1_08"
-	DolbyVisionProfile_AVC3_09 DolbyVisionProfile = "AVC3_09"
+	DolbyVisionProfile_DVHE_04   DolbyVisionProfile = "DVHE_04"
+	DolbyVisionProfile_DVHE_05   DolbyVisionProfile = "DVHE_05"
+	DolbyVisionProfile_DVHE_07   DolbyVisionProfile = "DVHE_07"
+	DolbyVisionProfile_DVHE_08_1 DolbyVisionProfile = "DVHE_08_1"
+	DolbyVisionProfile_HEV1_08   DolbyVisionProfile = "HEV1_08"
+	DolbyVisionProfile_AVC3_09   DolbyVisionProfile = "AVC3_09"
 )
