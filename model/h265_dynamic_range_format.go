@@ -5,8 +5,10 @@ type H265DynamicRangeFormat string
 
 // List of possible H265DynamicRangeFormat values
 const (
-	H265DynamicRangeFormat_DOLBY_VISION H265DynamicRangeFormat = "DOLBY_VISION"
-	H265DynamicRangeFormat_HDR10        H265DynamicRangeFormat = "HDR10"
-	H265DynamicRangeFormat_HLG          H265DynamicRangeFormat = "HLG"
-	H265DynamicRangeFormat_SDR          H265DynamicRangeFormat = "SDR"
+	H265DynamicRangeFormat_DOLBY_VISION             H265DynamicRangeFormat = "DOLBY_VISION"
+	H265DynamicRangeFormat_DOLBY_VISION_PROFILE_5   H265DynamicRangeFormat = "DOLBY_VISION_PROFILE_5"
+	H265DynamicRangeFormat_DOLBY_VISION_PROFILE_8_1 H265DynamicRangeFormat = "DOLBY_VISION_PROFILE_8_1"
+	H265DynamicRangeFormat_HDR10                    H265DynamicRangeFormat = "HDR10"
+	H265DynamicRangeFormat_HLG                      H265DynamicRangeFormat = "HLG"
+	H265DynamicRangeFormat_SDR                      H265DynamicRangeFormat = "SDR"
 )
