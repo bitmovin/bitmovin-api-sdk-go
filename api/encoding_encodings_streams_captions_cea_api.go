@@ -10,6 +10,8 @@ type EncodingEncodingsStreamsCaptionsCeaAPI struct {
 
 	// Scc communicates with '/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/scc' endpoints
 	Scc *EncodingEncodingsStreamsCaptionsCeaSccAPI
+	// Srt communicates with '/encoding/encodings/{encoding_id}/streams/{stream_id}/captions/608-708/srt' endpoints
+	Srt *EncodingEncodingsStreamsCaptionsCeaSrtAPI
 }
 
 // NewEncodingEncodingsStreamsCaptionsCeaAPI constructor for EncodingEncodingsStreamsCaptionsCeaAPI that takes options as argument
@@ -26,6 +28,7 @@ func NewEncodingEncodingsStreamsCaptionsCeaAPI(options ...apiclient.APIClientOpt
 func NewEncodingEncodingsStreamsCaptionsCeaAPIWithClient(apiClient *apiclient.APIClient) *EncodingEncodingsStreamsCaptionsCeaAPI {
 	a := &EncodingEncodingsStreamsCaptionsCeaAPI{apiClient: apiClient}
 	a.Scc = NewEncodingEncodingsStreamsCaptionsCeaSccAPIWithClient(apiClient)
+	a.Srt = NewEncodingEncodingsStreamsCaptionsCeaSrtAPIWithClient(apiClient)
 
 	return a
 }

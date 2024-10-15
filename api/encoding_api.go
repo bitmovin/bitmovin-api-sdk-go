@@ -32,6 +32,8 @@ type EncodingAPI struct {
 	Simple *EncodingSimpleAPI
 	// ErrorDefinitions communicates with '/encoding/error-definitions' endpoints
 	ErrorDefinitions *EncodingErrorDefinitionsAPI
+	// Templates communicates with '/encoding/templates/start' endpoints
+	Templates *EncodingTemplatesAPI
 }
 
 // NewEncodingAPI constructor for EncodingAPI that takes options as argument
@@ -59,6 +61,7 @@ func NewEncodingAPIWithClient(apiClient *apiclient.APIClient) *EncodingAPI {
 	a.WatchFolders = NewEncodingWatchFoldersAPIWithClient(apiClient)
 	a.Simple = NewEncodingSimpleAPIWithClient(apiClient)
 	a.ErrorDefinitions = NewEncodingErrorDefinitionsAPIWithClient(apiClient)
+	a.Templates = NewEncodingTemplatesAPIWithClient(apiClient)
 
 	return a
 }
