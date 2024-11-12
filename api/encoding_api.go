@@ -32,7 +32,7 @@ type EncodingAPI struct {
 	Simple *EncodingSimpleAPI
 	// ErrorDefinitions communicates with '/encoding/error-definitions' endpoints
 	ErrorDefinitions *EncodingErrorDefinitionsAPI
-	// Templates communicates with '/encoding/templates/start' endpoints
+	// Templates communicates with '/encoding/templates' endpoints
 	Templates *EncodingTemplatesAPI
 }
 
