@@ -10,6 +10,8 @@ type EncodingLiveAPI struct {
 
 	// StreamKeys communicates with '/encoding/live/stream-keys' endpoints
 	StreamKeys *EncodingLiveStreamKeysAPI
+	// StandbyPools communicates with '/encoding/live/standby-pools' endpoints
+	StandbyPools *EncodingLiveStandbyPoolsAPI
 }
 
 // NewEncodingLiveAPI constructor for EncodingLiveAPI that takes options as argument
@@ -26,6 +28,7 @@ func NewEncodingLiveAPI(options ...apiclient.APIClientOption) (*EncodingLiveAPI,
 func NewEncodingLiveAPIWithClient(apiClient *apiclient.APIClient) *EncodingLiveAPI {
 	a := &EncodingLiveAPI{apiClient: apiClient}
 	a.StreamKeys = NewEncodingLiveStreamKeysAPIWithClient(apiClient)
+	a.StandbyPools = NewEncodingLiveStandbyPoolsAPIWithClient(apiClient)
 
 	return a
 }

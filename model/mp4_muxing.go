@@ -34,7 +34,6 @@ type Mp4Muxing struct {
 	Filename *string `json:"filename,omitempty"`
 	//  Duration of fragments in milliseconds. Required for Fragmented MP4 Muxing (for Smooth Streaming or DASH On-Demand). Not setting this will result in unfragmented mp4.
 	FragmentDuration                *int32                          `json:"fragmentDuration,omitempty"`
-	TimeCode                        *TimeCode                       `json:"timeCode,omitempty"`
 	FragmentedMP4MuxingManifestType FragmentedMp4MuxingManifestType `json:"fragmentedMP4MuxingManifestType,omitempty"`
 	// Dolby Vision specific configuration
 	DolbyVisionConfiguration *DolbyVisionMuxingConfiguration `json:"dolbyVisionConfiguration,omitempty"`
