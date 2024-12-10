@@ -22,6 +22,8 @@ type CdnOutput struct {
 	Acl []AclEntry `json:"acl,omitempty"`
 	// Domain name for public access to CDN content
 	DomainName *string `json:"domainName,omitempty"`
+	// CDN Provider of the Output
+	CdnProvider CdnProvider `json:"cdnProvider,omitempty"`
 }
 
 func (m CdnOutput) OutputType() OutputType {

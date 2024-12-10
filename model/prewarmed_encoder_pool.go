@@ -24,7 +24,7 @@ type PrewarmedEncoderPool struct {
 	DiskSize PrewarmedEncoderDiskSize `json:"diskSize,omitempty"`
 	// Number of instances to keep prewarmed while the pool is running (required)
 	TargetPoolSize *int32 `json:"targetPoolSize,omitempty"`
-	// Activate dynamic pool behaviour. Pool will increase/decrease based on usage. Minimum pool size is set by targetPoolSize.
+	// Activate dynamic pool behaviour. Pool will increase/decrease based on usage up until a size of 10 instances. Minimum pool size is set by targetPoolSize
 	DynamicPool *bool `json:"dynamicPool,omitempty"`
 	// Create pool with GPU instances for hardware encoding presets (e.g., VOD_HARDWARE_SHORTFORM).
 	GpuEnabled *bool `json:"gpuEnabled,omitempty"`
