@@ -30,6 +30,8 @@ type EncodingEncodingsAPI struct {
 	Sidecars *EncodingEncodingsSidecarsAPI
 	// Keyframes communicates with '/encoding/encodings/{encoding_id}/keyframes' endpoints
 	Keyframes *EncodingEncodingsKeyframesAPI
+	// Scte35Triggers communicates with '/encoding/encodings/{encoding_id}/scte-35-triggers' endpoints
+	Scte35Triggers *EncodingEncodingsScte35TriggersAPI
 }
 
 // NewEncodingEncodingsAPI constructor for EncodingEncodingsAPI that takes options as argument
@@ -55,6 +57,7 @@ func NewEncodingEncodingsAPIWithClient(apiClient *apiclient.APIClient) *Encoding
 	a.Captions = NewEncodingEncodingsCaptionsAPIWithClient(apiClient)
 	a.Sidecars = NewEncodingEncodingsSidecarsAPIWithClient(apiClient)
 	a.Keyframes = NewEncodingEncodingsKeyframesAPIWithClient(apiClient)
+	a.Scte35Triggers = NewEncodingEncodingsScte35TriggersAPIWithClient(apiClient)
 
 	return a
 }
