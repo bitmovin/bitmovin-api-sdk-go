@@ -19,7 +19,7 @@ type H264PerTitleConfiguration struct {
 	TargetQualityCrf *float64 `json:"targetQualityCrf,omitempty"`
 	// This factor influences the resolution selection of the per-title algorithm. The default value is 0.0. negative values will lead to results where the algorithm will choose lower resolutions for given bitrates. A positive value will result in higher resolutions to be selected. The range of the factor is -5.0 to +5.0. Please note that changing this factor might also lead to slightly different bitrate selection by the algorithm.
 	ResolutionScaleFactor *float64 `json:"resolutionScaleFactor,omitempty"`
-	// This factor is used to calculate the minBitrate of the codec configuration for the generated representations as a multiple of the targetBitrate
+	// This factor doesn't have any impact!
 	CodecMinBitrateFactor *float64 `json:"codecMinBitrateFactor,omitempty"`
 	// This factor is used to calculate the maxBitrate of the codec configuration for the generated representations as a multiple of the targetBitrate
 	CodecMaxBitrateFactor *float64 `json:"codecMaxBitrateFactor,omitempty"`
