@@ -29,6 +29,8 @@ type DashManifestDefault struct {
 	UtcTimings []UtcTiming `json:"utcTimings,omitempty"`
 	// The manifest compatibility with the standard DASH Edition.
 	DashEditionCompatibility DashEditionCompatibility `json:"dashEditionCompatibility,omitempty"`
+	// Determines how timestamps should appear in the manifest
+	Iso8601TimestampFormat *DashIso8601TimestampFormat `json:"iso8601TimestampFormat,omitempty"`
 	// The id of the encoding to create a default manifest for. Either \"encodingId\" or \"periods\" is required.
 	EncodingId *string `json:"encodingId,omitempty"`
 	// Specifies the algorithm that determines which output of the given encoding is included into the manifest. Note that this is not related to the \"manifestGenerator\" version of the \"Start\" request.

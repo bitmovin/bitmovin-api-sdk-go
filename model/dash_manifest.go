@@ -29,4 +29,6 @@ type DashManifest struct {
 	UtcTimings []UtcTiming `json:"utcTimings,omitempty"`
 	// The manifest compatibility with the standard DASH Edition.
 	DashEditionCompatibility DashEditionCompatibility `json:"dashEditionCompatibility,omitempty"`
+	// Determines how timestamps should appear in the manifest
+	Iso8601TimestampFormat *DashIso8601TimestampFormat `json:"iso8601TimestampFormat,omitempty"`
 }
