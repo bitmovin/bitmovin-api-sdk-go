@@ -62,4 +62,44 @@ type AnalyticsLicenseCustomDataFieldLabels struct {
 	CustomData29 *string `json:"customData29,omitempty"`
 	// Label for field Custom Data 30
 	CustomData30 *string `json:"customData30,omitempty"`
+	// Label for field Custom Data 31
+	CustomData31 *string `json:"customData31,omitempty"`
+	// Label for field Custom Data 32
+	CustomData32 *string `json:"customData32,omitempty"`
+	// Label for field Custom Data 33
+	CustomData33 *string `json:"customData33,omitempty"`
+	// Label for field Custom Data 34
+	CustomData34 *string `json:"customData34,omitempty"`
+	// Label for field Custom Data 35
+	CustomData35 *string `json:"customData35,omitempty"`
+	// Label for field Custom Data 36
+	CustomData36 *string `json:"customData36,omitempty"`
+	// Label for field Custom Data 37
+	CustomData37 *string `json:"customData37,omitempty"`
+	// Label for field Custom Data 38
+	CustomData38 *string `json:"customData38,omitempty"`
+	// Label for field Custom Data 39
+	CustomData39 *string `json:"customData39,omitempty"`
+	// Label for field Custom Data 40
+	CustomData40 *string `json:"customData40,omitempty"`
+	// Label for field Custom Data 41
+	CustomData41 *string `json:"customData41,omitempty"`
+	// Label for field Custom Data 42
+	CustomData42 *string `json:"customData42,omitempty"`
+	// Label for field Custom Data 43
+	CustomData43 *string `json:"customData43,omitempty"`
+	// Label for field Custom Data 44
+	CustomData44 *string `json:"customData44,omitempty"`
+	// Label for field Custom Data 45
+	CustomData45 *string `json:"customData45,omitempty"`
+	// Label for field Custom Data 46
+	CustomData46 *string `json:"customData46,omitempty"`
+	// Label for field Custom Data 47
+	CustomData47 *string `json:"customData47,omitempty"`
+	// Label for field Custom Data 48
+	CustomData48 *string `json:"customData48,omitempty"`
+	// Label for field Custom Data 49
+	CustomData49 *string `json:"customData49,omitempty"`
+	// Label for field Custom Data 50
+	CustomData50 *string `json:"customData50,omitempty"`
 }
