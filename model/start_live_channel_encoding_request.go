@@ -18,4 +18,8 @@ type StartLiveChannelEncodingRequest struct {
 	AutoRestartConfiguration *AutoRestartConfiguration `json:"autoRestartConfiguration,omitempty"`
 	// Configuration for auto shutdown of the live encoding
 	AutoShutdownConfiguration *LiveAutoShutdownConfiguration `json:"autoShutdownConfiguration,omitempty"`
+	// Configuration for Event Signaling and Management (ESAM) system,  allowing the encoder to communicate with an ESAM server for signal processing and dynamic ad insertion update.'
+	EsamSettings *EsamSettings `json:"esamSettings,omitempty"`
+	// Configuration of cache control policies for media segments, HLS, and DASH manifests.  You can set caching for the HLS multivariant playlist, HLS media playlist, DASH timeline manifest,  DASH template manifest, initialization segment, and media segment.
+	CacheControlSettings *CacheControlSettings `json:"cacheControlSettings,omitempty"`
 }

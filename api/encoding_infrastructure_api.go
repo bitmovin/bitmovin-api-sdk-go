@@ -18,6 +18,8 @@ type EncodingInfrastructureAPI struct {
 	Gce *EncodingInfrastructureGceAPI
 	// Akamai communicates with '/encoding/infrastructure/akamai' endpoints
 	Akamai *EncodingInfrastructureAkamaiAPI
+	// Oci communicates with '/encoding/infrastructure/oci' endpoints
+	Oci *EncodingInfrastructureOciAPI
 	// PrewarmedEncoderPools communicates with '/encoding/infrastructure/prewarmed-encoder-pools' endpoints
 	PrewarmedEncoderPools *EncodingInfrastructurePrewarmedEncoderPoolsAPI
 }
@@ -40,6 +42,7 @@ func NewEncodingInfrastructureAPIWithClient(apiClient *apiclient.APIClient) *Enc
 	a.Azure = NewEncodingInfrastructureAzureAPIWithClient(apiClient)
 	a.Gce = NewEncodingInfrastructureGceAPIWithClient(apiClient)
 	a.Akamai = NewEncodingInfrastructureAkamaiAPIWithClient(apiClient)
+	a.Oci = NewEncodingInfrastructureOciAPIWithClient(apiClient)
 	a.PrewarmedEncoderPools = NewEncodingInfrastructurePrewarmedEncoderPoolsAPIWithClient(apiClient)
 
 	return a

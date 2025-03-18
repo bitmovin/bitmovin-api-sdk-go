@@ -75,6 +75,17 @@ func (api *PlayerLicensesAPI) List(queryParams ...func(*PlayerLicensesAPIListQue
 	return &responseModel, err
 }
 
+// Update License
+func (api *PlayerLicensesAPI) Update(licenseId string, playerLicenseUpdateRequest model.PlayerLicenseUpdateRequest) (*model.PlayerLicense, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["license_id"] = licenseId
+	}
+
+	var responseModel model.PlayerLicense
+	err := api.apiClient.Put("/player/licenses/{license_id}", &playerLicenseUpdateRequest, &responseModel, reqParams)
+	return &responseModel, err
+}
+
 // PlayerLicensesAPIListQueryParams contains all query parameters for the List endpoint
 type PlayerLicensesAPIListQueryParams struct {
 	Offset int32 `query:"offset"`
