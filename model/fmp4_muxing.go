@@ -42,6 +42,8 @@ type Fmp4Muxing struct {
 	InitSegmentNameTemplate *string `json:"initSegmentNameTemplate,omitempty"`
 	// Writes the duration per sample into the sample entry in the Track Fragment Run Box. This could help to fix playback issues on legacy players. Enabling this flag increases the muxing overhead by 4 bytes per sample/frame.
 	WriteDurationPerSample *bool `json:"writeDurationPerSample,omitempty"`
+	// Insert scte35 triggers as emsg boxes into the fMP4 segments.
+	SignalScte35AsEmsg *bool `json:"signalScte35AsEmsg,omitempty"`
 	// Number of segments which have been encoded
 	SegmentsMuxed *int32 `json:"segmentsMuxed,omitempty"`
 	// Alignment mode for composition / presentation timestamps (CTS/PTS). Only applies to h.264 and h.265

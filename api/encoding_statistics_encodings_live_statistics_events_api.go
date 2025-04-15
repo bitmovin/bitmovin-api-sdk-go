@@ -45,8 +45,9 @@ func (api *EncodingStatisticsEncodingsLiveStatisticsEventsAPI) List(encodingId s
 
 // EncodingStatisticsEncodingsLiveStatisticsEventsAPIListQueryParams contains all query parameters for the List endpoint
 type EncodingStatisticsEncodingsLiveStatisticsEventsAPIListQueryParams struct {
-	Offset int32 `query:"offset"`
-	Limit  int32 `query:"limit"`
+	Offset     int32 `query:"offset"`
+	Limit      int32 `query:"limit"`
+	SortByTime bool  `query:"sortByTime"`
 }
 
 // Params will return a map of query parameters

@@ -11,6 +11,8 @@ type BitmovinAPI struct {
 
 	// Account intermediary API object with no endpoints
 	Account *api.AccountAPI
+	// AiSceneAnalysis intermediary API object with no endpoints
+	AiSceneAnalysis *api.AiSceneAnalysisAPI
 	// Analytics intermediary API object with no endpoints
 	Analytics *api.AnalyticsAPI
 	// Encoding intermediary API object with no endpoints
@@ -39,6 +41,7 @@ func NewBitmovinAPI(options ...apiclient.APIClientOption) (*BitmovinAPI, error) 
 func NewBitmovinAPIWithClient(apiClient *apiclient.APIClient) *BitmovinAPI {
 	a := &BitmovinAPI{apiClient: apiClient}
 	a.Account = api.NewAccountAPIWithClient(apiClient)
+	a.AiSceneAnalysis = api.NewAiSceneAnalysisAPIWithClient(apiClient)
 	a.Analytics = api.NewAnalyticsAPIWithClient(apiClient)
 	a.Encoding = api.NewEncodingAPIWithClient(apiClient)
 	a.General = api.NewGeneralAPIWithClient(apiClient)
