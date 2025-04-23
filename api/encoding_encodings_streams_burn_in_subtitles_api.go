@@ -12,6 +12,8 @@ type EncodingEncodingsStreamsBurnInSubtitlesAPI struct {
 	Dvbsub *EncodingEncodingsStreamsBurnInSubtitlesDvbsubAPI
 	// Srt communicates with '/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/srt' endpoints
 	Srt *EncodingEncodingsStreamsBurnInSubtitlesSrtAPI
+	// Assa communicates with '/encoding/encodings/{encoding_id}/streams/{stream_id}/burn-in-subtitles/assa' endpoints
+	Assa *EncodingEncodingsStreamsBurnInSubtitlesAssaAPI
 }
 
 // NewEncodingEncodingsStreamsBurnInSubtitlesAPI constructor for EncodingEncodingsStreamsBurnInSubtitlesAPI that takes options as argument
@@ -29,6 +31,7 @@ func NewEncodingEncodingsStreamsBurnInSubtitlesAPIWithClient(apiClient *apiclien
 	a := &EncodingEncodingsStreamsBurnInSubtitlesAPI{apiClient: apiClient}
 	a.Dvbsub = NewEncodingEncodingsStreamsBurnInSubtitlesDvbsubAPIWithClient(apiClient)
 	a.Srt = NewEncodingEncodingsStreamsBurnInSubtitlesSrtAPIWithClient(apiClient)
+	a.Assa = NewEncodingEncodingsStreamsBurnInSubtitlesAssaAPIWithClient(apiClient)
 
 	return a
 }
