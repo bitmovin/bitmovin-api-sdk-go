@@ -1,7 +1,7 @@
 package model
 
-// AiContentAnalysisAutomaticAdPlacement model
-type AiContentAnalysisAutomaticAdPlacement struct {
+// AiSceneAnalysisAutomaticAdPlacement model
+type AiSceneAnalysisAutomaticAdPlacement struct {
 	// Ad placements schedule
 	Schedule []AutomaticAdPlacementPosition `json:"schedule,omitempty"`
 }

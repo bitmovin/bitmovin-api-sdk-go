@@ -74,12 +74,29 @@ func (api *AccountOrganizationsGroupsAPI) Get(organizationId string, groupId str
 }
 
 // List Groups
-func (api *AccountOrganizationsGroupsAPI) List(organizationId string) (*pagination.GroupsListPagination, error) {
+func (api *AccountOrganizationsGroupsAPI) List(organizationId string, queryParams ...func(*AccountOrganizationsGroupsAPIListQueryParams)) (*pagination.GroupsListPagination, error) {
+	queryParameters := &AccountOrganizationsGroupsAPIListQueryParams{}
+	for _, queryParam := range queryParams {
+		queryParam(queryParameters)
+	}
+
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["organization_id"] = organizationId
+		params.QueryParams = queryParameters
 	}
 
 	var responseModel pagination.GroupsListPagination
 	err := api.apiClient.Get("/account/organizations/{organization_id}/groups", nil, &responseModel, reqParams)
 	return &responseModel, err
+}
+
+// AccountOrganizationsGroupsAPIListQueryParams contains all query parameters for the List endpoint
+type AccountOrganizationsGroupsAPIListQueryParams struct {
+	Offset int32 `query:"offset"`
+	Limit  int32 `query:"limit"`
+}
+
+// Params will return a map of query parameters
+func (q *AccountOrganizationsGroupsAPIListQueryParams) Params() map[string]string {
+	return apiclient.GetParamsMap(q)
 }

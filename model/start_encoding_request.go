@@ -26,6 +26,6 @@ type StartEncodingRequest struct {
 	ManifestGenerator ManifestGenerator `json:"manifestGenerator,omitempty"`
 	// Per-Title settings
 	PerTitle *PerTitle `json:"perTitle,omitempty"`
-	// AI content analysis settings
-	AiContentAnalysis *AiContentAnalysis `json:"aiContentAnalysis,omitempty"`
+	// AI scene analysis settings
+	AiSceneAnalysis *AiSceneAnalysis `json:"aiSceneAnalysis,omitempty"`
 }
