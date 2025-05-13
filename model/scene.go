@@ -2,6 +2,7 @@ package model
 
 // Scene model
 type Scene struct {
+	Title           *string      `json:"title,omitempty"`
 	StartInSeconds  *float32     `json:"startInSeconds,omitempty"`
 	EndInSeconds    *float32     `json:"endInSeconds,omitempty"`
 	Id              *string      `json:"id,omitempty"`
