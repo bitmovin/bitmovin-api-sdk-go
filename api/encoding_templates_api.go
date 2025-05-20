@@ -77,7 +77,7 @@ func (api *EncodingTemplatesAPI) List(queryParams ...func(*EncodingTemplatesAPIL
 	return &responseModel, err
 }
 
-// Start BETA: Start an Encoding defined with an Encoding Template
+// Start an Encoding defined with an Encoding Template
 func (api *EncodingTemplatesAPI) Start(encodingTemplateRequest interface{}) (*model.EncodingTemplateStartResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

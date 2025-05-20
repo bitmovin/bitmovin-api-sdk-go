@@ -28,4 +28,6 @@ type AccountInformation struct {
 	Marketplace            Marketplace `json:"marketplace,omitempty"`
 	MfaEnabled             *bool       `json:"mfaEnabled,omitempty"`
 	IntercomIdVerification *string     `json:"intercomIdVerification,omitempty"`
+	// The Saml Domain of this Account
+	SamlDomain *string `json:"samlDomain,omitempty"`
 }
