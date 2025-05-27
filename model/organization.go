@@ -25,4 +25,6 @@ type Organization struct {
 	SignupSource SignupSource `json:"signupSource,omitempty"`
 	// Flag indicating if MFA is required for the organization
 	MfaRequired *bool `json:"mfaRequired,omitempty"`
+	// ID of the user who owns the organization
+	OwnerUserId *string `json:"ownerUserId,omitempty"`
 }
