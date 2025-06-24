@@ -10,6 +10,7 @@ const (
 	InputType_AZURE               InputType = "AZURE"
 	InputType_REDUNDANT_RTMP      InputType = "REDUNDANT_RTMP"
 	InputType_FTP                 InputType = "FTP"
+	InputType_HLS                 InputType = "HLS"
 	InputType_GENERIC_S3          InputType = "GENERIC_S3"
 	InputType_GCS                 InputType = "GCS"
 	InputType_HTTP                InputType = "HTTP"

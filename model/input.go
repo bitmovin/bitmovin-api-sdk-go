@@ -138,6 +138,13 @@ func unmarshalInput(data []byte, consumer bitutils.Consumer) (Input, error) {
 		}
 		return result, nil
 
+	case "HLS":
+		var result HlsInput
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case "LOCAL":
 		var result LocalInput
 		if err := consumer.Consume(buf2, &result); err != nil {
