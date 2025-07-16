@@ -32,6 +32,8 @@ type EncodingInputsAPI struct {
 	Azure *EncodingInputsAzureAPI
 	// Ftp communicates with '/encoding/inputs/ftp' endpoints
 	Ftp *EncodingInputsFtpAPI
+	// Hls communicates with '/encoding/inputs/hls' endpoints
+	Hls *EncodingInputsHlsAPI
 	// Sftp communicates with '/encoding/inputs/sftp' endpoints
 	Sftp *EncodingInputsSftpAPI
 	// Http communicates with '/encoding/inputs/http' endpoints
@@ -74,6 +76,7 @@ func NewEncodingInputsAPIWithClient(apiClient *apiclient.APIClient) *EncodingInp
 	a.GcsServiceAccount = NewEncodingInputsGcsServiceAccountAPIWithClient(apiClient)
 	a.Azure = NewEncodingInputsAzureAPIWithClient(apiClient)
 	a.Ftp = NewEncodingInputsFtpAPIWithClient(apiClient)
+	a.Hls = NewEncodingInputsHlsAPIWithClient(apiClient)
 	a.Sftp = NewEncodingInputsSftpAPIWithClient(apiClient)
 	a.Http = NewEncodingInputsHttpAPIWithClient(apiClient)
 	a.Https = NewEncodingInputsHttpsAPIWithClient(apiClient)

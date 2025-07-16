@@ -13,5 +13,6 @@ type LiveDashManifest struct {
 	// The minimumUpdatePeriod to be set in the DASH manifest. If nothing is set, the segment duration will be set.
 	MinimumUpdatePeriod *float64 `json:"minimumUpdatePeriod,omitempty"`
 	// The mode to trigger the availabilityStartTime initialization.
-	AvailabilityStartTimeMode AvailabilityStartTimeMode `json:"availabilityStartTimeMode,omitempty"`
+	AvailabilityStartTimeMode AvailabilityStartTimeMode     `json:"availabilityStartTimeMode,omitempty"`
+	AdMarkerSettings          *DashManifestAdMarkerSettings `json:"adMarkerSettings,omitempty"`
 }

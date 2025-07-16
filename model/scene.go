@@ -8,6 +8,7 @@ type Scene struct {
 	Id              *string      `json:"id,omitempty"`
 	Content         *Content     `json:"content,omitempty"`
 	Summary         *string      `json:"summary,omitempty"`
+	VerboseSummary  *string      `json:"verboseSummary,omitempty"`
 	SensitiveTopics []string     `json:"sensitiveTopics,omitempty"`
 	Keywords        []string     `json:"keywords,omitempty"`
 	Iab             *IabTaxonomy `json:"iab,omitempty"`
