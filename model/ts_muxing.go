@@ -32,6 +32,8 @@ type TsMuxing struct {
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// Length of the fragments in seconds
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
+	// Prevents creation of very short final segments (in seconds). If the last segment is shorter than minimumSegmentLength, it will be merged with the previous one, creating a segment of a size up to segmentLength + minimumSegmentLength.
+	MinimumSegmentLength *float64 `json:"minimumSegmentLength,omitempty"`
 	// Segment naming policy
 	SegmentNaming *string `json:"segmentNaming,omitempty"`
 	// Segment naming policy containing one or both of the following placeholders: - '{rand_chars:x}', which will be replaced by a random alphanumeric string of length x (default 32)   on each (re)start of the encoding. The resulting string will be copied to the segmentNaming property.   Intended to avoid re-use of segment names after restarting a live encoding. - '{segment_rand_chars:x}', which will be replaced by a random alphanumeric string of length x (default 32)   for each different segment. This is intended to avoid guessing segment URLs by replacing segment numbers.  If segmentNamingTemplate is set, segmentNaming must not be set.
