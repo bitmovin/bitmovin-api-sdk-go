@@ -8,6 +8,9 @@ import (
 // AiSceneAnalysisAnalysesByEncodingIdDetailsAPI communicates with '/ai-scene-analysis/analyses/by-encoding-id/{encoding_id}/details' endpoints
 type AiSceneAnalysisAnalysesByEncodingIdDetailsAPI struct {
 	apiClient *apiclient.APIClient
+
+	// Language communicates with '/ai-scene-analysis/analyses/by-encoding-id/{encoding_id}/details/language/{language_code}' endpoints
+	Language *AiSceneAnalysisAnalysesByEncodingIdDetailsLanguageAPI
 }
 
 // NewAiSceneAnalysisAnalysesByEncodingIdDetailsAPI constructor for AiSceneAnalysisAnalysesByEncodingIdDetailsAPI that takes options as argument
@@ -23,6 +26,8 @@ func NewAiSceneAnalysisAnalysesByEncodingIdDetailsAPI(options ...apiclient.APICl
 // NewAiSceneAnalysisAnalysesByEncodingIdDetailsAPIWithClient constructor for AiSceneAnalysisAnalysesByEncodingIdDetailsAPI that takes an APIClient as argument
 func NewAiSceneAnalysisAnalysesByEncodingIdDetailsAPIWithClient(apiClient *apiclient.APIClient) *AiSceneAnalysisAnalysesByEncodingIdDetailsAPI {
 	a := &AiSceneAnalysisAnalysesByEncodingIdDetailsAPI{apiClient: apiClient}
+	a.Language = NewAiSceneAnalysisAnalysesByEncodingIdDetailsLanguageAPIWithClient(apiClient)
+
 	return a
 }
 
