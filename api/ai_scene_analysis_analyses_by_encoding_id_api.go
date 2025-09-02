@@ -12,6 +12,8 @@ type AiSceneAnalysisAnalysesByEncodingIdAPI struct {
 	Details *AiSceneAnalysisAnalysesByEncodingIdDetailsAPI
 	// Languages communicates with '/ai-scene-analysis/analyses/by-encoding-id/{encoding_id}/languages' endpoints
 	Languages *AiSceneAnalysisAnalysesByEncodingIdLanguagesAPI
+	// AdPlacements communicates with '/ai-scene-analysis/analyses/by-encoding-id/{encoding_id}/ad-placements' endpoints
+	AdPlacements *AiSceneAnalysisAnalysesByEncodingIdAdPlacementsAPI
 }
 
 // NewAiSceneAnalysisAnalysesByEncodingIdAPI constructor for AiSceneAnalysisAnalysesByEncodingIdAPI that takes options as argument
@@ -29,6 +31,7 @@ func NewAiSceneAnalysisAnalysesByEncodingIdAPIWithClient(apiClient *apiclient.AP
 	a := &AiSceneAnalysisAnalysesByEncodingIdAPI{apiClient: apiClient}
 	a.Details = NewAiSceneAnalysisAnalysesByEncodingIdDetailsAPIWithClient(apiClient)
 	a.Languages = NewAiSceneAnalysisAnalysesByEncodingIdLanguagesAPIWithClient(apiClient)
+	a.AdPlacements = NewAiSceneAnalysisAnalysesByEncodingIdAdPlacementsAPIWithClient(apiClient)
 
 	return a
 }
