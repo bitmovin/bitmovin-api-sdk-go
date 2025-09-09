@@ -32,7 +32,7 @@ type TsMuxing struct {
 	StreamConditionsMode StreamConditionsMode `json:"streamConditionsMode,omitempty"`
 	// Length of the fragments in seconds
 	SegmentLength *float64 `json:"segmentLength,omitempty"`
-	// Prevents creation of very short final segments (in seconds). If the last segment is shorter than minimumSegmentLength, it will be merged with the previous one, creating a segment of a size up to segmentLength + minimumSegmentLength.
+	// Prevents creation of very short segments (in seconds). If the last segment is shorter than minimumSegmentLength or there is a custom keyframe too close to a segment boundary, short segments will be omitted by removing segment boundaries, resulting in a segment of a size up to segmentLength + minimumSegmentLength.
 	MinimumSegmentLength *float64 `json:"minimumSegmentLength,omitempty"`
 	// Segment naming policy
 	SegmentNaming *string `json:"segmentNaming,omitempty"`

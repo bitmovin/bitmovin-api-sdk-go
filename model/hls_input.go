@@ -20,6 +20,8 @@ type HlsInput struct {
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// URL of HLS input
 	Url *string `json:"url,omitempty"`
+	// Specifies the source for ad markers messages: - MANIFEST: Ad marker messages are read from tags in the HLS manifest - SEGMENTS: Ad marker messages are read from the content segments from the data stream
+	AdMarkersSource AdMarkersSource `json:"adMarkersSource,omitempty"`
 }
 
 func (m HlsInput) InputType() InputType {
