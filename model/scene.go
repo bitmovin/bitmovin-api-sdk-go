@@ -14,6 +14,4 @@ type Scene struct {
 	Iab             *IabTaxonomy `json:"iab,omitempty"`
 	// The detected type of scene based on content analysis
 	Type SceneType `json:"type,omitempty"`
-	// Confidence score for the detected scene type (0.0 to 1.0)
-	TypeConfidence *float64 `json:"typeConfidence,omitempty"`
 }

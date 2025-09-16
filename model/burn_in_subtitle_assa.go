@@ -2,8 +2,8 @@ package model
 
 // BurnInSubtitleAssa model
 type BurnInSubtitleAssa struct {
-	// Id of the burn-in ASSA subtitle (required)
-	Id *map[string]interface{} `json:"id,omitempty"`
+	// Id of the resource (required)
+	Id *string `json:"id,omitempty"`
 	// Name of the resource. Can be freely chosen by the user.
 	Name *string `json:"name,omitempty"`
 	// Description of the resource. Can be freely chosen by the user.
