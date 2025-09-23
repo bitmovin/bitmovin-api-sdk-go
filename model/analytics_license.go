@@ -30,6 +30,8 @@ type AnalyticsLicense struct {
 	CompressedRetentionTime *string `json:"compressedRetentionTime,omitempty"`
 	// Whitelisted domains
 	Domains []AnalyticsLicenseDomain `json:"domains,omitempty"`
+	// Allowlisted player domains
+	PlayerDomains []string `json:"playerDomains,omitempty"`
 	// Whether the data of this license should be included in the industry insights or not
 	IncludeInInsights *bool `json:"includeInInsights,omitempty"`
 	// Labels for CustomData fields
