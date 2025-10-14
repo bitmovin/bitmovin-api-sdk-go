@@ -90,6 +90,7 @@ const (
 	AdAnalyticsAttribute_DEVICE_TYPE                   AdAnalyticsAttribute = "DEVICE_TYPE"
 	AdAnalyticsAttribute_DOMAIN                        AdAnalyticsAttribute = "DOMAIN"
 	AdAnalyticsAttribute_ERROR_CODE                    AdAnalyticsAttribute = "ERROR_CODE"
+	AdAnalyticsAttribute_ERROR_SEVERITY                AdAnalyticsAttribute = "ERROR_SEVERITY"
 	AdAnalyticsAttribute_ERROR_PERCENTAGE              AdAnalyticsAttribute = "ERROR_PERCENTAGE"
 	AdAnalyticsAttribute_ERROR_POSITION                AdAnalyticsAttribute = "ERROR_POSITION"
 	AdAnalyticsAttribute_EXIT_POSITION                 AdAnalyticsAttribute = "EXIT_POSITION"

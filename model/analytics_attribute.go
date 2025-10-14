@@ -81,6 +81,7 @@ const (
 	AnalyticsAttribute_DROPPED_FRAMES                 AnalyticsAttribute = "DROPPED_FRAMES"
 	AnalyticsAttribute_DURATION                       AnalyticsAttribute = "DURATION"
 	AnalyticsAttribute_ERROR_CODE                     AnalyticsAttribute = "ERROR_CODE"
+	AnalyticsAttribute_ERROR_SEVERITY                 AnalyticsAttribute = "ERROR_SEVERITY"
 	AnalyticsAttribute_ERROR_MESSAGE                  AnalyticsAttribute = "ERROR_MESSAGE"
 	AnalyticsAttribute_ERROR_RATE                     AnalyticsAttribute = "ERROR_RATE"
 	AnalyticsAttribute_ERROR_PERCENTAGE               AnalyticsAttribute = "ERROR_PERCENTAGE"
