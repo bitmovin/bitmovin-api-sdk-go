@@ -14,4 +14,6 @@ type Scene struct {
 	Iab             *IabTaxonomy `json:"iab,omitempty"`
 	// The detected type of scene based on content analysis
 	Type SceneType `json:"type,omitempty"`
+	// A detailed breakdown of individual camera shots within this scene, providing granular analysis of visual content and subjects
+	Shots []Shot `json:"shots,omitempty"`
 }

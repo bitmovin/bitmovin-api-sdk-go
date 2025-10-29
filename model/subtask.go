@@ -12,6 +12,8 @@ type Subtask struct {
 	Name *string `json:"name,omitempty"`
 	// Task specific messages
 	Messages []Message `json:"messages,omitempty"`
+	// Task specific metadata
+	Metadata []SubtaskMetadata `json:"metadata,omitempty"`
 	// Timestamp when the subtask was created, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ
 	CreatedAt *DateTime `json:"createdAt,omitempty"`
 	// Timestamp when the subtask was last updated, returned as UTC expressed in ISO 8601 format: YYYY-MM-DDThh:mm:ssZ

@@ -28,6 +28,8 @@ type AnalyticsLicense struct {
 	RetentionTime *string `json:"retentionTime,omitempty"`
 	// Retention time for compressed data, returned as ISO 8601 duration format: P(n)Y(n)M(n)DT(n)H(n)M(n)S
 	CompressedRetentionTime *string `json:"compressedRetentionTime,omitempty"`
+	// The date and time up until which the compressed data is available. Returned as ISO 8601 date-time format
+	CompressionAvailableTo *DateTime `json:"compressionAvailableTo,omitempty"`
 	// Whitelisted domains
 	Domains []AnalyticsLicenseDomain `json:"domains,omitempty"`
 	// Allowlisted player domains
