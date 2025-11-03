@@ -11,7 +11,9 @@ type AnalyticsErrorDetail struct {
 	// Error code
 	Code *int32 `json:"code,omitempty"`
 	// Error message
-	Message      *string                `json:"message,omitempty"`
-	ErrorData    *AnalyticsErrorData    `json:"errorData,omitempty"`
+	Message   *string             `json:"message,omitempty"`
+	ErrorData *AnalyticsErrorData `json:"errorData,omitempty"`
+	// Severity of the error
+	Severity     *string                `json:"severity,omitempty"`
 	HttpRequests []AnalyticsHttpRequest `json:"httpRequests,omitempty"`
 }
