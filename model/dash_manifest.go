@@ -31,4 +31,6 @@ type DashManifest struct {
 	DashEditionCompatibility DashEditionCompatibility `json:"dashEditionCompatibility,omitempty"`
 	// Determines how timestamps should appear in the manifest
 	Iso8601TimestampFormat *DashIso8601TimestampFormat `json:"iso8601TimestampFormat,omitempty"`
+	// The minimum buffer time in seconds that the client should maintain to ensure uninterrupted playback. Default is 2 seconds. Note: For VOD ON_DEMAND dash manifests, the default value may differ from 2.0 seconds if not explicitly set.
+	MinBufferTime *float64 `json:"minBufferTime,omitempty"`
 }
