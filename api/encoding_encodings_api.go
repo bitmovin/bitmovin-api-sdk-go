@@ -30,6 +30,8 @@ type EncodingEncodingsAPI struct {
 	Captions *EncodingEncodingsCaptionsAPI
 	// Sidecars communicates with '/encoding/encodings/{encoding_id}/sidecars' endpoints
 	Sidecars *EncodingEncodingsSidecarsAPI
+	// KantarWatermark communicates with '/encoding/encodings/{encoding_id}/kantar-watermark' endpoints
+	KantarWatermark *EncodingEncodingsKantarWatermarkAPI
 	// Keyframes communicates with '/encoding/encodings/{encoding_id}/keyframes' endpoints
 	Keyframes *EncodingEncodingsKeyframesAPI
 	// Scte35Triggers communicates with '/encoding/encodings/{encoding_id}/scte-35-triggers' endpoints
@@ -59,6 +61,7 @@ func NewEncodingEncodingsAPIWithClient(apiClient *apiclient.APIClient) *Encoding
 	a.OutputPaths = NewEncodingEncodingsOutputPathsAPIWithClient(apiClient)
 	a.Captions = NewEncodingEncodingsCaptionsAPIWithClient(apiClient)
 	a.Sidecars = NewEncodingEncodingsSidecarsAPIWithClient(apiClient)
+	a.KantarWatermark = NewEncodingEncodingsKantarWatermarkAPIWithClient(apiClient)
 	a.Keyframes = NewEncodingEncodingsKeyframesAPIWithClient(apiClient)
 	a.Scte35Triggers = NewEncodingEncodingsScte35TriggersAPIWithClient(apiClient)
 
