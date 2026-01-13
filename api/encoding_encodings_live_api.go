@@ -9,6 +9,8 @@ import (
 type EncodingEncodingsLiveAPI struct {
 	apiClient *apiclient.APIClient
 
+	// Esam intermediary API object with no endpoints
+	Esam *EncodingEncodingsLiveEsamAPI
 	// ResetLiveManifestTimeshift communicates with '/encoding/encodings/{encoding_id}/live/reset-live-manifest-timeshift' endpoints
 	ResetLiveManifestTimeshift *EncodingEncodingsLiveResetLiveManifestTimeshiftAPI
 	// Heartbeat communicates with '/encoding/encodings/{encoding_id}/live/heartbeat' endpoints
@@ -34,6 +36,7 @@ func NewEncodingEncodingsLiveAPI(options ...apiclient.APIClientOption) (*Encodin
 // NewEncodingEncodingsLiveAPIWithClient constructor for EncodingEncodingsLiveAPI that takes an APIClient as argument
 func NewEncodingEncodingsLiveAPIWithClient(apiClient *apiclient.APIClient) *EncodingEncodingsLiveAPI {
 	a := &EncodingEncodingsLiveAPI{apiClient: apiClient}
+	a.Esam = NewEncodingEncodingsLiveEsamAPIWithClient(apiClient)
 	a.ResetLiveManifestTimeshift = NewEncodingEncodingsLiveResetLiveManifestTimeshiftAPIWithClient(apiClient)
 	a.Heartbeat = NewEncodingEncodingsLiveHeartbeatAPIWithClient(apiClient)
 	a.Hd = NewEncodingEncodingsLiveHdAPIWithClient(apiClient)

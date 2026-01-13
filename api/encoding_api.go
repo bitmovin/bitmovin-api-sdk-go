@@ -8,6 +8,8 @@ import (
 type EncodingAPI struct {
 	apiClient *apiclient.APIClient
 
+	// Encodings communicates with '/encoding/encodings' endpoints
+	Encodings *EncodingEncodingsAPI
 	// Inputs communicates with '/encoding/inputs' endpoints
 	Inputs *EncodingInputsAPI
 	// Outputs communicates with '/encoding/outputs' endpoints
@@ -16,8 +18,6 @@ type EncodingAPI struct {
 	Configurations *EncodingConfigurationsAPI
 	// Filters communicates with '/encoding/filters' endpoints
 	Filters *EncodingFiltersAPI
-	// Encodings communicates with '/encoding/encodings' endpoints
-	Encodings *EncodingEncodingsAPI
 	// Live intermediary API object with no endpoints
 	Live *EncodingLiveAPI
 	// Manifests communicates with '/encoding/manifests' endpoints
@@ -47,11 +47,11 @@ func NewEncodingAPI(options ...apiclient.APIClientOption) (*EncodingAPI, error) 
 // NewEncodingAPIWithClient constructor for EncodingAPI that takes an APIClient as argument
 func NewEncodingAPIWithClient(apiClient *apiclient.APIClient) *EncodingAPI {
 	a := &EncodingAPI{apiClient: apiClient}
+	a.Encodings = NewEncodingEncodingsAPIWithClient(apiClient)
 	a.Inputs = NewEncodingInputsAPIWithClient(apiClient)
 	a.Outputs = NewEncodingOutputsAPIWithClient(apiClient)
 	a.Configurations = NewEncodingConfigurationsAPIWithClient(apiClient)
 	a.Filters = NewEncodingFiltersAPIWithClient(apiClient)
-	a.Encodings = NewEncodingEncodingsAPIWithClient(apiClient)
 	a.Live = NewEncodingLiveAPIWithClient(apiClient)
 	a.Manifests = NewEncodingManifestsAPIWithClient(apiClient)
 	a.Infrastructure = NewEncodingInfrastructureAPIWithClient(apiClient)

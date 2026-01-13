@@ -22,6 +22,8 @@ type LiveMediaIngestOutput struct {
 	Acl []AclEntry `json:"acl,omitempty"`
 	// URL specifying the publishing point for the output. Can use either http or https. (required)
 	PublishingPoint *string `json:"publishingPoint,omitempty"`
+	// Enable passthrough of SCTE-35 messages from input to output. Default is false.
+	Scte35Passthrough *bool `json:"scte35Passthrough,omitempty"`
 }
 
 func (m LiveMediaIngestOutput) OutputType() OutputType {

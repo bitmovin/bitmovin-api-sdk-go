@@ -22,4 +22,6 @@ type StartLiveChannelEncodingRequest struct {
 	EsamSettings *EsamSettings `json:"esamSettings,omitempty"`
 	// Configuration of cache control policies for media segments, HLS, and DASH manifests.  You can set caching for the HLS multivariant playlist, HLS media playlist, DASH timeline manifest,  DASH template manifest, initialization segment, and media segment.
 	CacheControlSettings *CacheControlSettings `json:"cacheControlSettings,omitempty"`
+	// Configuration for ad insertion features like ESAM MediaPoint insertion
+	AdInsertionSettings *AdInsertionSettings `json:"adInsertionSettings,omitempty"`
 }
