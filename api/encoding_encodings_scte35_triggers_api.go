@@ -28,6 +28,7 @@ func NewEncodingEncodingsScte35TriggersAPIWithClient(apiClient *apiclient.APICli
 }
 
 // Create SCTE 35 trigger
+// This endpoint supports VOD encodings only. Requests made with a live encoding ID will fail.
 func (api *EncodingEncodingsScte35TriggersAPI) Create(encodingId string, scte35Trigger model.Scte35Trigger) (*model.Scte35Trigger, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -39,6 +40,7 @@ func (api *EncodingEncodingsScte35TriggersAPI) Create(encodingId string, scte35T
 }
 
 // Delete SCTE 35 trigger
+// This endpoint supports VOD encodings only. Requests made with a live encoding ID will fail.
 func (api *EncodingEncodingsScte35TriggersAPI) Delete(encodingId string, scte35triggerId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -51,6 +53,7 @@ func (api *EncodingEncodingsScte35TriggersAPI) Delete(encodingId string, scte35t
 }
 
 // Get SCTE 35 trigger Details
+// This endpoint supports VOD encodings only. Requests made with a live encoding ID will fail.
 func (api *EncodingEncodingsScte35TriggersAPI) Get(encodingId string, scte35triggerId string) (*model.Scte35Trigger, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -63,6 +66,7 @@ func (api *EncodingEncodingsScte35TriggersAPI) Get(encodingId string, scte35trig
 }
 
 // List all SCTE 35 triggers for an encoding
+// This endpoint supports VOD encodings only. Requests made with a live encoding ID will fail.
 func (api *EncodingEncodingsScte35TriggersAPI) List(encodingId string, queryParams ...func(*EncodingEncodingsScte35TriggersAPIListQueryParams)) (*pagination.Scte35TriggersListPagination, error) {
 	queryParameters := &EncodingEncodingsScte35TriggersAPIListQueryParams{}
 	for _, queryParam := range queryParams {

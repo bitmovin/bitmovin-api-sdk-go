@@ -37,6 +37,17 @@ func (api *EncodingLiveStandbyPoolsActionsAPI) AcquireEncoding(poolId string) (*
 	return &responseModel, err
 }
 
+// AcquireEncoding Acquire an encoding from a standby pool
+func (api *EncodingLiveStandbyPoolsActionsAPI) AcquireEncodingWithRequestBody(poolId string, liveStandbyPoolAcquireEncoding model.LiveStandbyPoolAcquireEncoding) (*model.LiveStandbyPoolEncoding, error) {
+	reqParams := func(params *apiclient.RequestParams) {
+		params.PathParams["pool_id"] = poolId
+	}
+
+	var responseModel model.LiveStandbyPoolEncoding
+	err := api.apiClient.Post("/encoding/live/standby-pools/{pool_id}/actions/acquire-encoding", &liveStandbyPoolAcquireEncoding, &responseModel, reqParams)
+	return &responseModel, err
+}
+
 // DeleteErrorEncodings Delete error encodings from the standby pool
 func (api *EncodingLiveStandbyPoolsActionsAPI) DeleteErrorEncodings(poolId string) (*model.LiveStandbyPoolEncoding, error) {
 	reqParams := func(params *apiclient.RequestParams) {
