@@ -24,6 +24,7 @@ type DolbyAtmosAudioConfiguration struct {
 	Rate *float64 `json:"rate,omitempty"`
 	// Settings for loudness control (required)
 	LoudnessControl *DolbyAtmosLoudnessControl `json:"loudnessControl,omitempty"`
+	Preprocessing   *DolbyAtmosPreprocessing   `json:"preprocessing,omitempty"`
 }
 
 func (m DolbyAtmosAudioConfiguration) CodecConfigType() CodecConfigType {

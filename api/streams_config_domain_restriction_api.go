@@ -6,7 +6,7 @@ import (
 	"github.com/bitmovin/bitmovin-api-sdk-go/pagination"
 )
 
-// StreamsConfigDomainRestrictionAPI communicates with '/streams/config/domain-restriction/' endpoints
+// StreamsConfigDomainRestrictionAPI communicates with '/streams/config/domain-restriction' endpoints
 type StreamsConfigDomainRestrictionAPI struct {
 	apiClient *apiclient.APIClient
 }
@@ -44,7 +44,7 @@ func (api *StreamsConfigDomainRestrictionAPI) Create(streamsDomainRestrictionCre
 	}
 
 	var responseModel model.StreamsDomainRestrictionResponse
-	err := api.apiClient.Post("/streams/config/domain-restriction/", &streamsDomainRestrictionCreateRequest, &responseModel, reqParams)
+	err := api.apiClient.Post("/streams/config/domain-restriction", &streamsDomainRestrictionCreateRequest, &responseModel, reqParams)
 	return &responseModel, err
 }
 
@@ -81,7 +81,7 @@ func (api *StreamsConfigDomainRestrictionAPI) List(queryParams ...func(*StreamsC
 	}
 
 	var responseModel pagination.StreamsDomainRestrictionResponsesListPagination
-	err := api.apiClient.Get("/streams/config/domain-restriction/", nil, &responseModel, reqParams)
+	err := api.apiClient.Get("/streams/config/domain-restriction", nil, &responseModel, reqParams)
 	return &responseModel, err
 }
 

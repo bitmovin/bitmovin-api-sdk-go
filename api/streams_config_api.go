@@ -8,7 +8,7 @@ import (
 type StreamsConfigAPI struct {
 	apiClient *apiclient.APIClient
 
-	// DomainRestriction communicates with '/streams/config/domain-restriction/' endpoints
+	// DomainRestriction communicates with '/streams/config/domain-restriction' endpoints
 	DomainRestriction *StreamsConfigDomainRestrictionAPI
 }
 
