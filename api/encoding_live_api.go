@@ -8,6 +8,10 @@ import (
 type EncodingLiveAPI struct {
 	apiClient *apiclient.APIClient
 
+	// Encodings intermediary API object with no endpoints
+	Encodings *EncodingLiveEncodingsAPI
+	// DnsMappings communicates with '/encoding/live/dns-mappings' endpoints
+	DnsMappings *EncodingLiveDnsMappingsAPI
 	// StreamKeys communicates with '/encoding/live/stream-keys' endpoints
 	StreamKeys *EncodingLiveStreamKeysAPI
 	// StandbyPools communicates with '/encoding/live/standby-pools' endpoints
@@ -27,6 +31,8 @@ func NewEncodingLiveAPI(options ...apiclient.APIClientOption) (*EncodingLiveAPI,
 // NewEncodingLiveAPIWithClient constructor for EncodingLiveAPI that takes an APIClient as argument
 func NewEncodingLiveAPIWithClient(apiClient *apiclient.APIClient) *EncodingLiveAPI {
 	a := &EncodingLiveAPI{apiClient: apiClient}
+	a.Encodings = NewEncodingLiveEncodingsAPIWithClient(apiClient)
+	a.DnsMappings = NewEncodingLiveDnsMappingsAPIWithClient(apiClient)
 	a.StreamKeys = NewEncodingLiveStreamKeysAPIWithClient(apiClient)
 	a.StandbyPools = NewEncodingLiveStandbyPoolsAPIWithClient(apiClient)
 
