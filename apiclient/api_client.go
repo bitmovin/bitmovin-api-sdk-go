@@ -1,9 +1,7 @@
 package apiclient
 
 import (
-	. "github.com/bitmovin/bitmovin-api-sdk-go/bitutils"
-	. "github.com/bitmovin/bitmovin-api-sdk-go/model"
-
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -15,6 +13,9 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	. "github.com/bitmovin/bitmovin-api-sdk-go/bitutils"
+	. "github.com/bitmovin/bitmovin-api-sdk-go/model"
 )
 
 // APIClient tha will execute all HTTP requests to the Bitmovin API
@@ -60,12 +61,14 @@ func WithLogger(logger Logger) APIClientOption {
 
 type PathParams map[string]interface{}
 
-const QueryParamTagName = "query"
-const DefaultAPIBaseURL = "https://api.bitmovin.com/v1"
-const ContentTypeJson = "application/json"
-const APIClientVersion = "1.256.0"
-const APIClientName = "bitmovin-api-sdk-go"
-const NoAPIKeyErrorMsg = "there was no api key provided"
+const (
+	QueryParamTagName = "query"
+	DefaultAPIBaseURL = "https://api.bitmovin.com/v1"
+	ContentTypeJson   = "application/json"
+	APIClientVersion  = "1.256.0"
+	APIClientName     = "bitmovin-api-sdk-go"
+	NoAPIKeyErrorMsg  = "there was no api key provided"
+)
 
 type QueryParams interface {
 	Params() map[string]string
@@ -377,8 +380,21 @@ func buildResponse(httpStatusCode *int, responseString string) string {
 	return sb.String()
 }
 
-func (apiClient *APIClient) request(reqMethod string, relURL string, requestModel interface{}, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
+func marshalJSON(v interface{}) ([]byte, error) {
+	var buf bytes.Buffer
 
+	encoder := json.NewEncoder(&buf)
+	encoder.SetEscapeHTML(false)
+
+	err := encoder.Encode(v)
+	if err != nil {
+		return nil, err
+	}
+
+	return bytes.TrimRight(buf.Bytes(), "\n"), nil
+}
+
+func (apiClient *APIClient) request(reqMethod string, relURL string, requestModel interface{}, responseModel interface{}, requestParams ...func(params *RequestParams)) error {
 	reqURL, err := apiClient.prepareURL(relURL, requestParams...)
 	if err != nil {
 		return err
@@ -393,17 +409,17 @@ func (apiClient *APIClient) request(reqMethod string, relURL string, requestMode
 	var requestString string
 	switch reqMethod {
 	case http.MethodPost:
-		serialized, _ := json.Marshal(requestModel)
+		serialized, _ := marshalJSON(requestModel)
 		apiClient.logRequest(reqURL, reqMethod, headers, serialized)
 		resp, err = apiClient.restClient.Post(reqURL, serialized, headers)
 		requestString = string(serialized)
 	case http.MethodPatch:
-		serialized, _ := json.Marshal(requestModel)
+		serialized, _ := marshalJSON(requestModel)
 		apiClient.logRequest(reqURL, reqMethod, headers, serialized)
 		resp, err = apiClient.restClient.Patch(reqURL, serialized, headers)
 		requestString = string(serialized)
 	case http.MethodPut:
-		serialized, _ := json.Marshal(requestModel)
+		serialized, _ := marshalJSON(requestModel)
 		apiClient.logRequest(reqURL, reqMethod, headers, serialized)
 		resp, err = apiClient.restClient.Put(reqURL, serialized, headers)
 		requestString = string(serialized)
