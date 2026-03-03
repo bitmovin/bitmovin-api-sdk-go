@@ -7,4 +7,5 @@ type DolbyAtmosInputFormat string
 const (
 	DolbyAtmosInputFormat_DAMF DolbyAtmosInputFormat = "DAMF"
 	DolbyAtmosInputFormat_ADM  DolbyAtmosInputFormat = "ADM"
+	DolbyAtmosInputFormat_MXF  DolbyAtmosInputFormat = "MXF"
 )
