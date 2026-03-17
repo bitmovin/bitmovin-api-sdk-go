@@ -77,6 +77,13 @@ func unmarshalAgentChatMessagePart(data []byte, consumer bitutils.Consumer) (Age
 		}
 		return result, nil
 
+	case "dynamic-tool":
+		var result AgentChatDynamicToolPart
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}

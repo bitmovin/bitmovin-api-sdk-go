@@ -7,4 +7,5 @@ type AgentChatMessagePartType string
 const (
 	AgentChatMessagePartType_TEXT             AgentChatMessagePartType = "text"
 	AgentChatMessagePartType_DATA_ATTACHMENTS AgentChatMessagePartType = "data-attachments"
+	AgentChatMessagePartType_DYNAMIC_TOOL     AgentChatMessagePartType = "dynamic-tool"
 )

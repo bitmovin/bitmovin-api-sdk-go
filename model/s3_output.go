@@ -32,6 +32,8 @@ type S3Output struct {
 	CloudRegion AwsCloudRegion `json:"cloudRegion,omitempty"`
 	// Specifies the method used for authentication. Must be set to S3_V2 if the region supports both V2 and V4, but the bucket allows V2 only (see https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
 	SignatureVersion S3SignatureVersion `json:"signatureVersion,omitempty"`
+	// Specifies the storage class used for the bucket. This depends on the requirements of workloads, like performance, data access, resiliency, and cost.
+	StorageClass S3StorageClass `json:"storageClass,omitempty"`
 }
 
 func (m S3Output) OutputType() OutputType {
