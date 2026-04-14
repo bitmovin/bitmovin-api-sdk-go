@@ -1,6 +1,7 @@
 package model
 
 import (
+	"bytes"
 	"encoding/json"
 )
 
@@ -49,5 +50,11 @@ func (m ProgressiveWebmMuxing) MarshalJSON() ([]byte, error) {
 
 	x.Type = "PROGRESSIVE_WEBM"
 
-	return json.Marshal(x)
+	var buf bytes.Buffer
+	encoder := json.NewEncoder(&buf)
+	encoder.SetEscapeHTML(false)
+	if err := encoder.Encode(x); err != nil {
+		return nil, err
+	}
+	return bytes.TrimRight(buf.Bytes(), "\n"), nil
 }

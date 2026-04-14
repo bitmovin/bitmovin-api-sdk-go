@@ -1,6 +1,7 @@
 package model
 
 import (
+	"bytes"
 	"encoding/json"
 )
 
@@ -38,5 +39,11 @@ func (m TimecodeTrackTrimmingInputStream) MarshalJSON() ([]byte, error) {
 
 	x.Type = "TRIMMING_TIME_CODE_TRACK"
 
-	return json.Marshal(x)
+	var buf bytes.Buffer
+	encoder := json.NewEncoder(&buf)
+	encoder.SetEscapeHTML(false)
+	if err := encoder.Encode(x); err != nil {
+		return nil, err
+	}
+	return bytes.TrimRight(buf.Bytes(), "\n"), nil
 }

@@ -1,6 +1,7 @@
 package model
 
 import (
+	"bytes"
 	"encoding/json"
 )
 
@@ -33,5 +34,11 @@ func (m AzureSpeechToCaptionsFilter) MarshalJSON() ([]byte, error) {
 
 	x.Type = "AZURE_SPEECH_TO_CAPTIONS"
 
-	return json.Marshal(x)
+	var buf bytes.Buffer
+	encoder := json.NewEncoder(&buf)
+	encoder.SetEscapeHTML(false)
+	if err := encoder.Encode(x); err != nil {
+		return nil, err
+	}
+	return bytes.TrimRight(buf.Bytes(), "\n"), nil
 }

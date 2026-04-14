@@ -1,6 +1,7 @@
 package model
 
 import (
+	"bytes"
 	"encoding/json"
 )
 
@@ -32,5 +33,11 @@ func (m DashMp4Representation) MarshalJSON() ([]byte, error) {
 
 	x.TypeDiscriminator = "MP4"
 
-	return json.Marshal(x)
+	var buf bytes.Buffer
+	encoder := json.NewEncoder(&buf)
+	encoder.SetEscapeHTML(false)
+	if err := encoder.Encode(x); err != nil {
+		return nil, err
+	}
+	return bytes.TrimRight(buf.Bytes(), "\n"), nil
 }

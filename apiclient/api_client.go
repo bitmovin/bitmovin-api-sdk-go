@@ -4,6 +4,7 @@ import (
 	. "github.com/bitmovin/bitmovin-api-sdk-go/bitutils"
 	. "github.com/bitmovin/bitmovin-api-sdk-go/model"
 
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -63,7 +64,7 @@ type PathParams map[string]interface{}
 const QueryParamTagName = "query"
 const DefaultAPIBaseURL = "https://api.bitmovin.com/v1"
 const ContentTypeJson = "application/json"
-const APIClientVersion = "1.262.0"
+const APIClientVersion = "1.263.0"
 const APIClientName = "bitmovin-api-sdk-go"
 const NoAPIKeyErrorMsg = "there was no api key provided"
 
@@ -393,17 +394,26 @@ func (apiClient *APIClient) request(reqMethod string, relURL string, requestMode
 	var requestString string
 	switch reqMethod {
 	case http.MethodPost:
-		serialized, _ := json.Marshal(requestModel)
+		serialized, serErr := marshal(requestModel)
+		if serErr != nil {
+			return serErr
+		}
 		apiClient.logRequest(reqURL, reqMethod, headers, serialized)
 		resp, err = apiClient.restClient.Post(reqURL, serialized, headers)
 		requestString = string(serialized)
 	case http.MethodPatch:
-		serialized, _ := json.Marshal(requestModel)
+		serialized, serErr := marshal(requestModel)
+		if serErr != nil {
+			return serErr
+		}
 		apiClient.logRequest(reqURL, reqMethod, headers, serialized)
 		resp, err = apiClient.restClient.Patch(reqURL, serialized, headers)
 		requestString = string(serialized)
 	case http.MethodPut:
-		serialized, _ := json.Marshal(requestModel)
+		serialized, serErr := marshal(requestModel)
+		if serErr != nil {
+			return serErr
+		}
 		apiClient.logRequest(reqURL, reqMethod, headers, serialized)
 		resp, err = apiClient.restClient.Put(reqURL, serialized, headers)
 		requestString = string(serialized)
@@ -462,6 +472,16 @@ func buildRequestFailedErrorMessage(respBody string, resp *http.Response, reqMet
 		return bitmovinError
 	}
 	return bitmovinError
+}
+
+func marshal(v interface{}) ([]byte, error) {
+	var buf bytes.Buffer
+	encoder := json.NewEncoder(&buf)
+	encoder.SetEscapeHTML(false)
+	if err := encoder.Encode(v); err != nil {
+		return nil, err
+	}
+	return bytes.TrimRight(buf.Bytes(), "\n"), nil
 }
 
 func convertToModel(envelope GenericResponseEnvelope, out interface{}) {

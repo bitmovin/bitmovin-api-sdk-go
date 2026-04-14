@@ -10,6 +10,8 @@ type AgentsAPI struct {
 
 	// Aisa intermediary API object with no endpoints
 	Aisa *AgentsAisaAPI
+	// Assistant intermediary API object with no endpoints
+	Assistant *AgentsAssistantAPI
 }
 
 // NewAgentsAPI constructor for AgentsAPI that takes options as argument
@@ -26,6 +28,7 @@ func NewAgentsAPI(options ...apiclient.APIClientOption) (*AgentsAPI, error) {
 func NewAgentsAPIWithClient(apiClient *apiclient.APIClient) *AgentsAPI {
 	a := &AgentsAPI{apiClient: apiClient}
 	a.Aisa = NewAgentsAisaAPIWithClient(apiClient)
+	a.Assistant = NewAgentsAssistantAPIWithClient(apiClient)
 
 	return a
 }
