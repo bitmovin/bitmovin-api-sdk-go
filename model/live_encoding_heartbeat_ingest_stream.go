@@ -26,6 +26,10 @@ type LiveEncodingHeartbeatIngestStream struct {
 	KeyFrameIntervalMax *int32 `json:"keyFrameIntervalMax,omitempty"`
 	// Average key-frame interval in milliseconds.
 	KeyFrameIntervalAvg *float64 `json:"keyFrameIntervalAvg,omitempty"`
+	// Largest key-frame interval observed over the last minute, in milliseconds. Absent until the rolling window has at least one sample.
+	KeyFrameIntervalMaxLastMinute *int32 `json:"keyFrameIntervalMaxLastMinute,omitempty"`
+	// Average key-frame interval over the last minute, in milliseconds. Absent until the rolling window has at least one sample.
+	KeyFrameIntervalAvgLastMinute *float64 `json:"keyFrameIntervalAvgLastMinute,omitempty"`
 	// Last presentation timestamp (PTS) of the stream.
 	LastTimestamp *int32 `json:"lastTimestamp,omitempty"`
 	// Timescale of lastTimestamp
