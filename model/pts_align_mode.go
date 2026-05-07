@@ -1,6 +1,6 @@
 package model
 
-// PtsAlignMode : Alignmet mode for PTS
+// PtsAlignMode : Alignment mode for PTS
 type PtsAlignMode string
 
 // List of possible PTSAlignMode values

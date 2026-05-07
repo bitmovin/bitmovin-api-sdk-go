@@ -21,8 +21,9 @@ type AzureInput struct {
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
 	// Azure Account Name (required)
 	AccountName *string `json:"accountName,omitempty"`
-	// Azure Account Key (required)
-	AccountKey *string `json:"accountKey,omitempty"`
+	// Azure Account Key
+	AccountKey       *string                `json:"accountKey,omitempty"`
+	ServicePrincipal *AzureServicePrincipal `json:"servicePrincipal,omitempty"`
 	// Name of the bucket (required)
 	Container *string `json:"container,omitempty"`
 }
