@@ -64,7 +64,7 @@ type PathParams map[string]interface{}
 const QueryParamTagName = "query"
 const DefaultAPIBaseURL = "https://api.bitmovin.com/v1"
 const ContentTypeJson = "application/json"
-const APIClientVersion = "1.266.0"
+const APIClientVersion = "1.267.0"
 const APIClientName = "bitmovin-api-sdk-go"
 const NoAPIKeyErrorMsg = "there was no api key provided"
 
