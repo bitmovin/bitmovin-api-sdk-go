@@ -10,4 +10,12 @@ type LiveEncodingHeartbeatIngest struct {
 	// Data about individual streams within the active live ingest.
 	Streams            []LiveEncodingHeartbeatIngestStream `json:"streams,omitempty"`
 	RtmpUserIngestInfo *RtmpUserIngestInfo                 `json:"rtmpUserIngestInfo,omitempty"`
+	// Total number of dropped video packets since the live encoding started.
+	DroppedPacketsVideo *int64 `json:"droppedPacketsVideo,omitempty"`
+	// Total number of dropped audio packets since the live encoding started.
+	DroppedPacketsAudio *int64 `json:"droppedPacketsAudio,omitempty"`
+	// Total number of corrupt video packets since the live encoding started.
+	CorruptPacketsVideo *int64 `json:"corruptPacketsVideo,omitempty"`
+	// Total number of corrupt audio packets since the live encoding started.
+	CorruptPacketsAudio *int64 `json:"corruptPacketsAudio,omitempty"`
 }

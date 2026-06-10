@@ -30,4 +30,6 @@ type AccountInformation struct {
 	IntercomIdVerification *string     `json:"intercomIdVerification,omitempty"`
 	// The Saml Domain of this Account
 	SamlDomain *string `json:"samlDomain,omitempty"`
+	// Whether the user has accepted the Terms of Service. Users created via SAML SSO start as `false` because the SAML flow bypasses the registration form that normally captures TOS acceptance; all other signup paths default to `true`. Acceptance is one-way: sending `true` accepts the TOS, sending `false` is ignored.
+	TosAccepted *bool `json:"tosAccepted,omitempty"`
 }

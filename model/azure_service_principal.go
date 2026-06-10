@@ -1,6 +1,6 @@
 package model
 
-// Azure service principal credentials for Microsoft Entra ID authentication
+// Azure service principal credentials for Microsoft Entra ID authentication. This authentication method is usable from encoder version 2.273.0 onwards.
 type AzureServicePrincipal struct {
 	// Tenant ID (Directory ID) of the Azure service principal (required)
 	TenantId *string `json:"tenantId,omitempty"`

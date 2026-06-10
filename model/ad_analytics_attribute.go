@@ -143,6 +143,7 @@ const (
 	AdAnalyticsAttribute_HOUR                          AdAnalyticsAttribute = "HOUR"
 	AdAnalyticsAttribute_IP_ADDRESS                    AdAnalyticsAttribute = "IP_ADDRESS"
 	AdAnalyticsAttribute_IS_LINEAR                     AdAnalyticsAttribute = "IS_LINEAR"
+	AdAnalyticsAttribute_IS_SLATE                      AdAnalyticsAttribute = "IS_SLATE"
 	AdAnalyticsAttribute_ISP                           AdAnalyticsAttribute = "ISP"
 	AdAnalyticsAttribute_LANGUAGE                      AdAnalyticsAttribute = "LANGUAGE"
 	AdAnalyticsAttribute_LICENSE_KEY                   AdAnalyticsAttribute = "LICENSE_KEY"
