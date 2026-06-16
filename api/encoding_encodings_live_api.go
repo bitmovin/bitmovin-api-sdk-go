@@ -15,6 +15,8 @@ type EncodingEncodingsLiveAPI struct {
 	ResetLiveManifestTimeshift *EncodingEncodingsLiveResetLiveManifestTimeshiftAPI
 	// Heartbeat communicates with '/encoding/encodings/{encoding_id}/live/heartbeat' endpoints
 	Heartbeat *EncodingEncodingsLiveHeartbeatAPI
+	// HeartbeatFinal communicates with '/encoding/encodings/{encoding_id}/live/heartbeat-final' endpoints
+	HeartbeatFinal *EncodingEncodingsLiveHeartbeatFinalAPI
 	// Hd communicates with '/encoding/encodings/{encoding_id}/live/hd/start' endpoints
 	Hd *EncodingEncodingsLiveHdAPI
 	// InsertableContent communicates with '/encoding/encodings/{encoding_id}/live/insertable-content' endpoints
@@ -39,6 +41,7 @@ func NewEncodingEncodingsLiveAPIWithClient(apiClient *apiclient.APIClient) *Enco
 	a.Esam = NewEncodingEncodingsLiveEsamAPIWithClient(apiClient)
 	a.ResetLiveManifestTimeshift = NewEncodingEncodingsLiveResetLiveManifestTimeshiftAPIWithClient(apiClient)
 	a.Heartbeat = NewEncodingEncodingsLiveHeartbeatAPIWithClient(apiClient)
+	a.HeartbeatFinal = NewEncodingEncodingsLiveHeartbeatFinalAPIWithClient(apiClient)
 	a.Hd = NewEncodingEncodingsLiveHdAPIWithClient(apiClient)
 	a.InsertableContent = NewEncodingEncodingsLiveInsertableContentAPIWithClient(apiClient)
 	a.Scte35Cue = NewEncodingEncodingsLiveScte35CueAPIWithClient(apiClient)
