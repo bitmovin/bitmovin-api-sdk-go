@@ -90,8 +90,8 @@ func (api *EncodingEncodingsMuxingsProgressiveTsDrmSpekeAPI) List(encodingId str
 
 // EncodingEncodingsMuxingsProgressiveTsDrmSpekeAPIListQueryParams contains all query parameters for the List endpoint
 type EncodingEncodingsMuxingsProgressiveTsDrmSpekeAPIListQueryParams struct {
-	Offset string `query:"offset"`
-	Limit  string `query:"limit"`
+	Offset int32 `query:"offset"`
+	Limit  int32 `query:"limit"`
 }
 
 // Params will return a map of query parameters

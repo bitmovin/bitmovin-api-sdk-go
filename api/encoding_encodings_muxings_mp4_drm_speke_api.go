@@ -90,8 +90,8 @@ func (api *EncodingEncodingsMuxingsMp4DrmSpekeAPI) List(encodingId string, muxin
 
 // EncodingEncodingsMuxingsMp4DrmSpekeAPIListQueryParams contains all query parameters for the List endpoint
 type EncodingEncodingsMuxingsMp4DrmSpekeAPIListQueryParams struct {
-	Offset string `query:"offset"`
-	Limit  string `query:"limit"`
+	Offset int32 `query:"offset"`
+	Limit  int32 `query:"limit"`
 }
 
 // Params will return a map of query parameters
