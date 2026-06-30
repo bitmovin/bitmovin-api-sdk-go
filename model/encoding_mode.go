@@ -9,4 +9,5 @@ const (
 	EncodingMode_SINGLE_PASS EncodingMode = "SINGLE_PASS"
 	EncodingMode_TWO_PASS    EncodingMode = "TWO_PASS"
 	EncodingMode_THREE_PASS  EncodingMode = "THREE_PASS"
+	EncodingMode_SMART_PASS  EncodingMode = "SMART_PASS"
 )
