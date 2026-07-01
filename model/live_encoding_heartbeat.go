@@ -8,4 +8,6 @@ type LiveEncodingHeartbeat struct {
 	Ingest *LiveEncodingHeartbeatIngest `json:"ingest,omitempty"`
 	// Live encoding heartbeat events
 	Events []LiveEncodingHeartbeatEvent `json:"events,omitempty"`
+	// Output statistics for the live encoding
+	Output *LiveEncodingHeartbeatOutput `json:"output,omitempty"`
 }

@@ -32,4 +32,5 @@ const (
 	CodecConfigType_WEBVTT            CodecConfigType = "WEBVTT"
 	CodecConfigType_IMSC              CodecConfigType = "IMSC"
 	CodecConfigType_DVB_SUBTITLE      CodecConfigType = "DVB_SUBTITLE"
+	CodecConfigType_H265V2            CodecConfigType = "H265V2"
 )

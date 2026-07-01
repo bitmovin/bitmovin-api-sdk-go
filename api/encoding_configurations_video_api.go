@@ -14,6 +14,8 @@ type EncodingConfigurationsVideoAPI struct {
 	H264 *EncodingConfigurationsVideoH264API
 	// H265 communicates with '/encoding/configurations/video/h265' endpoints
 	H265 *EncodingConfigurationsVideoH265API
+	// H265v2 communicates with '/encoding/configurations/video/h265v2' endpoints
+	H265v2 *EncodingConfigurationsVideoH265v2API
 	// Vp8 communicates with '/encoding/configurations/video/vp8' endpoints
 	Vp8 *EncodingConfigurationsVideoVp8API
 	// Vp9 communicates with '/encoding/configurations/video/vp9' endpoints
@@ -40,6 +42,7 @@ func NewEncodingConfigurationsVideoAPIWithClient(apiClient *apiclient.APIClient)
 	a.H262 = NewEncodingConfigurationsVideoH262APIWithClient(apiClient)
 	a.H264 = NewEncodingConfigurationsVideoH264APIWithClient(apiClient)
 	a.H265 = NewEncodingConfigurationsVideoH265APIWithClient(apiClient)
+	a.H265v2 = NewEncodingConfigurationsVideoH265v2APIWithClient(apiClient)
 	a.Vp8 = NewEncodingConfigurationsVideoVp8APIWithClient(apiClient)
 	a.Vp9 = NewEncodingConfigurationsVideoVp9APIWithClient(apiClient)
 	a.Av1 = NewEncodingConfigurationsVideoAv1APIWithClient(apiClient)
