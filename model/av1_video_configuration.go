@@ -42,6 +42,12 @@ type Av1VideoConfiguration struct {
 	PresetConfiguration Av1PresetConfiguration `json:"presetConfiguration,omitempty"`
 	// Enable/disable automatic calculation of level, maxBitrate, and bufsize based on the least level that satisfies maximum property values for picture resolution, frame rate, and bit rate. In the case the target level is set explicitly, the maximum bitrate and buffer size are calculated based on the defined level. Explicitly setting maxBitrate, or bufsize properties will disable the automatic calculation.
 	AutoLevelSetup AutoLevelSetup `json:"autoLevelSetup,omitempty"`
+	// Set the mastering display color volume metadata. The chromaticity coordinates for the green (G), blue (B), red (R) primaries and the white point (WP) are given in increments of 0.00002 (i.e. multiply the actual value by 50000), and the luminance values (L) are given in increments of 0.0001 cd/m² (i.e. multiply the actual value by 10000). For example `G(13250,34500)B(7500,3000)R(34000,16000)WP(15635,16450)L(10000000,1)` describes a P3D65 1000-nits monitor, where G(x=0.265, y=0.690), B(x=0.150, y=0.060), R(x=0.680, y=0.320), WP(x=0.3127, y=0.3290), L(max=1000, min=0.0001). Part of HDR-10 metadata.
+	MasterDisplay *string `json:"masterDisplay,omitempty"`
+	// Set the max content light level (MaxCLL). Use together with maxPictureAverageLightLevel (which will be 0 if not set). Part of HDR-10 metadata.
+	MaxContentLightLevel *int32 `json:"maxContentLightLevel,omitempty"`
+	// Set the maximum picture average light level (MaxFALL). Use together with maxContentLightLevel (which will be 0 if not set). Part of HDR-10 metadata.
+	MaxPictureAverageLightLevel *int32 `json:"maxPictureAverageLightLevel,omitempty"`
 }
 
 func (m Av1VideoConfiguration) CodecConfigType() CodecConfigType {
