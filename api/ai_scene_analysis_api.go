@@ -8,7 +8,7 @@ import (
 type AiSceneAnalysisAPI struct {
 	apiClient *apiclient.APIClient
 
-	// Analyses intermediary API object with no endpoints
+	// Analyses communicates with '/ai-scene-analysis/analyses' endpoints
 	Analyses *AiSceneAnalysisAnalysesAPI
 }
 

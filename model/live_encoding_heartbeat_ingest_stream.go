@@ -17,7 +17,7 @@ type LiveEncodingHeartbeatIngestStream struct {
 	// Aspect ratio of the video.
 	AspectRatio *string `json:"aspectRatio,omitempty"`
 	// Container format's bitrate of the stream, in bits per second.
-	Bitrate *int32 `json:"bitrate,omitempty"`
+	Bitrate *int64 `json:"bitrate,omitempty"`
 	// Average number of samples/frames read per second.
 	SamplesReadPerSecondAvg *float64 `json:"samplesReadPerSecondAvg,omitempty"`
 	// Incoming bitrate measured in bits per second.
@@ -31,7 +31,7 @@ type LiveEncodingHeartbeatIngestStream struct {
 	// Average key-frame interval over the last minute, in milliseconds. Absent until the rolling window has at least one sample.
 	KeyFrameIntervalAvgLastMinute *float64 `json:"keyFrameIntervalAvgLastMinute,omitempty"`
 	// Last presentation timestamp (PTS) of the stream.
-	LastTimestamp *int32 `json:"lastTimestamp,omitempty"`
+	LastTimestamp *int64 `json:"lastTimestamp,omitempty"`
 	// Timescale of lastTimestamp
 	LastTimestampTimescale *int32 `json:"lastTimestampTimescale,omitempty"`
 	// Number of audio channels.

@@ -2,7 +2,8 @@ package model
 
 // Character model
 type Character struct {
-	Appearance  *string `json:"appearance,omitempty"`
-	Name        *string `json:"name,omitempty"`
-	Description *string `json:"description,omitempty"`
+	CharacterAppearance *CharacterAppearance `json:"characterAppearance,omitempty"`
+	Name                *string              `json:"name,omitempty"`
+	PlayedBy            *string              `json:"playedBy,omitempty"`
+	Description         *string              `json:"description,omitempty"`
 }
