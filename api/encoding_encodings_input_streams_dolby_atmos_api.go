@@ -27,7 +27,7 @@ func NewEncodingEncodingsInputStreamsDolbyAtmosAPIWithClient(apiClient *apiclien
 	return a
 }
 
-// Create Add Dolby Atmos input stream
+// Create Dolby Atmos input stream
 func (api *EncodingEncodingsInputStreamsDolbyAtmosAPI) Create(encodingId string, dolbyAtmosIngestInputStream model.DolbyAtmosIngestInputStream) (*model.DolbyAtmosIngestInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

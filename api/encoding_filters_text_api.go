@@ -53,7 +53,7 @@ func (api *EncodingFiltersTextAPI) Delete(filterId string) (*model.BitmovinRespo
 	return &responseModel, err
 }
 
-// Get Text Filter Details
+// Get Text Filter details
 func (api *EncodingFiltersTextAPI) Get(filterId string) (*model.TextFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

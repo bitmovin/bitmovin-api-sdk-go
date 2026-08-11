@@ -27,7 +27,7 @@ func NewNotificationsWebhooksEncodingManifestFinishedAPIWithClient(apiClient *ap
 	return a
 }
 
-// Create Add &#39;Manifest Finished Successfully&#39; Webhook (All Manifests)
+// Create &#39;Manifest Finished&#39; Webhook
 func (api *NotificationsWebhooksEncodingManifestFinishedAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -37,7 +37,7 @@ func (api *NotificationsWebhooksEncodingManifestFinishedAPI) Create(webhook mode
 	return &responseModel, err
 }
 
-// CreateByManifestId Add &#39;Manifest Finished Successfully&#39; Webhook Notification (Specific Manifest)
+// CreateByManifestId Create &#39;Manifest Finished&#39; Webhook for a specific Manifest
 func (api *NotificationsWebhooksEncodingManifestFinishedAPI) CreateByManifestId(manifestId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -48,7 +48,7 @@ func (api *NotificationsWebhooksEncodingManifestFinishedAPI) CreateByManifestId(
 	return &responseModel, err
 }
 
-// Delete Manifest Finished Webhook
+// Delete &#39;Manifest Finished&#39; Webhook
 func (api *NotificationsWebhooksEncodingManifestFinishedAPI) Delete(notificationId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["notification_id"] = notificationId
@@ -59,7 +59,7 @@ func (api *NotificationsWebhooksEncodingManifestFinishedAPI) Delete(notification
 	return &responseModel, err
 }
 
-// List Get &#39;Manifest Finished&#39; Webhooks (All Manifests)
+// List &#39;Manifest Finished&#39; Webhooks
 // Get all webhook notifications triggering when a manifest generation finishes successfully
 func (api *NotificationsWebhooksEncodingManifestFinishedAPI) List() (*pagination.WebhooksListPagination, error) {
 	reqParams := func(params *apiclient.RequestParams) {
@@ -70,7 +70,7 @@ func (api *NotificationsWebhooksEncodingManifestFinishedAPI) List() (*pagination
 	return &responseModel, err
 }
 
-// Update Replace Manifest Finished Webhook Notification
+// Update &#39;Manifest Finished&#39; Webhook
 func (api *NotificationsWebhooksEncodingManifestFinishedAPI) Update(notificationId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["notification_id"] = notificationId

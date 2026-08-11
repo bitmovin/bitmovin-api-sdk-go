@@ -48,7 +48,7 @@ func (api *EncodingConfigurationsVideoH265v2API) Delete(configurationId string) 
 	return &responseModel, err
 }
 
-// Get H265 V2 Codec Configuration Details
+// Get H265 V2 Codec Configuration details
 func (api *EncodingConfigurationsVideoH265v2API) Get(configurationId string) (*model.H265V2VideoConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

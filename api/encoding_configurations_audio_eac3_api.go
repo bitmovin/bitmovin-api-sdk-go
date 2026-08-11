@@ -55,7 +55,7 @@ func (api *EncodingConfigurationsAudioEac3API) Delete(configurationId string) (*
 	return &responseModel, err
 }
 
-// Get E-AC3 Codec Configuration Details
+// Get E-AC3 Codec Configuration details
 // Deprecation notice: use Dolby Digital Plus instead. For more information check out our tutorial here: https://bitmovin.com/docs/encoding/tutorials/how-to-create-dolby-digital-plus-encodings
 func (api *EncodingConfigurationsAudioEac3API) Get(configurationId string) (*model.Eac3AudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {

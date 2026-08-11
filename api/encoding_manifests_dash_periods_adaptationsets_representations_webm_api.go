@@ -32,7 +32,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmAPIWithClie
 	return a
 }
 
-// Create Add WebM Representation
+// Create WebM Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmAPI) Create(manifestId string, periodId string, adaptationsetId string, dashWebmRepresentation model.DashWebmRepresentation) (*model.DashWebmRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -59,7 +59,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmAPI) Del
 	return &responseModel, err
 }
 
-// Get WebM Representation Details
+// Get WebM Representation details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmAPI) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashWebmRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -73,7 +73,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmAPI) Get
 	return &responseModel, err
 }
 
-// List all WebM Representations
+// List WebM Representations
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmAPI) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmAPIListQueryParams)) (*pagination.DashWebmRepresentationsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmAPIListQueryParams{}
 	for _, queryParam := range queryParams {

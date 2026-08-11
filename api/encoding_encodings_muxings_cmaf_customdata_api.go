@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsCmafCustomdataAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Get CMAF muxing custom data
+// Get CMAF muxing Custom Data
 func (api *EncodingEncodingsMuxingsCmafCustomdataAPI) Get(encodingId string, muxingId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

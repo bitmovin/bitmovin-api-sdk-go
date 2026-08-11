@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsChunkedTextAPIW
 	return a
 }
 
-// Create Add Chunked Text Representation
+// Create Chunked Text Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsChunkedTextAPI) Create(manifestId string, periodId string, adaptationsetId string, dashChunkedTextRepresentation model.DashChunkedTextRepresentation) (*model.DashChunkedTextRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -54,7 +54,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsChunkedTextA
 	return &responseModel, err
 }
 
-// Get Chunked Text Representation Details
+// Get Chunked Text Representation details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsChunkedTextAPI) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashChunkedTextRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -68,7 +68,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsChunkedTextA
 	return &responseModel, err
 }
 
-// List all Chunked Text Representations
+// List Chunked Text Representations
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsChunkedTextAPI) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsChunkedTextAPIListQueryParams)) (*pagination.DashChunkedTextRepresentationsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsChunkedTextAPIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -35,7 +35,7 @@ func NewEncodingEncodingsMuxingsBroadcastTsAPIWithClient(apiClient *apiclient.AP
 	return a
 }
 
-// Create Add Broadcast TS muxing
+// Create Broadcast TS muxing
 func (api *EncodingEncodingsMuxingsBroadcastTsAPI) Create(encodingId string, broadcastTsMuxing model.BroadcastTsMuxing) (*model.BroadcastTsMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

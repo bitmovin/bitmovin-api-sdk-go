@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsMxfAPIWithClient(apiClient *apiclient.APIClient)
 	return a
 }
 
-// Create Add MXF muxing
+// Create MXF muxing
 func (api *EncodingEncodingsMuxingsMxfAPI) Create(encodingId string, mxfMuxing model.MxfMuxing) (*model.MxfMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

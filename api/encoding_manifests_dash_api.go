@@ -60,7 +60,7 @@ func (api *EncodingManifestsDashAPI) Delete(manifestId string) (*model.BitmovinR
 	return &responseModel, err
 }
 
-// Get DASH Manifest Details
+// Get DASH Manifest details
 func (api *EncodingManifestsDashAPI) Get(manifestId string) (*model.DashManifest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -71,7 +71,7 @@ func (api *EncodingManifestsDashAPI) Get(manifestId string) (*model.DashManifest
 	return &responseModel, err
 }
 
-// GetStartRequest Manifest Start Details
+// GetStartRequest DASH Manifest Start Details
 func (api *EncodingManifestsDashAPI) GetStartRequest(manifestId string) (*model.StartManifestRequest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId

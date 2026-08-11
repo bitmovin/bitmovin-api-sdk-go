@@ -32,7 +32,7 @@ func NewEncodingInfrastructureAwsAPIWithClient(apiClient *apiclient.APIClient) *
 	return a
 }
 
-// Create Add AWS Account
+// Create AWS Account
 func (api *EncodingInfrastructureAwsAPI) Create(awsAccount model.AwsAccount) (*model.AwsAccount, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -53,7 +53,7 @@ func (api *EncodingInfrastructureAwsAPI) Delete(infrastructureId string) (*model
 	return &responseModel, err
 }
 
-// Get AWS Account Details
+// Get AWS Account details
 func (api *EncodingInfrastructureAwsAPI) Get(infrastructureId string) (*model.AwsAccount, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["infrastructure_id"] = infrastructureId

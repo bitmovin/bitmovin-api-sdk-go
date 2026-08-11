@@ -26,7 +26,7 @@ func NewEncodingEncodingsStreamsFiltersAPIWithClient(apiClient *apiclient.APICli
 	return a
 }
 
-// Create Add Filters to Stream
+// Create Filters to Stream
 func (api *EncodingEncodingsStreamsFiltersAPI) Create(encodingId string, streamId string, streamFilter []model.StreamFilter) (*model.StreamFilterList, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -63,7 +63,7 @@ func (api *EncodingEncodingsStreamsFiltersAPI) DeleteAll(encodingId string, stre
 	return &responseModel, err
 }
 
-// List the filters of a stream
+// List Filters of a Stream
 func (api *EncodingEncodingsStreamsFiltersAPI) List(encodingId string, streamId string, queryParams ...func(*EncodingEncodingsStreamsFiltersAPIListQueryParams)) (*model.StreamFilterList, error) {
 	queryParameters := &EncodingEncodingsStreamsFiltersAPIListQueryParams{}
 	for _, queryParam := range queryParams {

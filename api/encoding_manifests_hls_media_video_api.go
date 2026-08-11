@@ -27,7 +27,7 @@ func NewEncodingManifestsHlsMediaVideoAPIWithClient(apiClient *apiclient.APIClie
 	return a
 }
 
-// Create Add Video Media
+// Create Video Media
 func (api *EncodingManifestsHlsMediaVideoAPI) Create(manifestId string, videoMediaInfo model.VideoMediaInfo) (*model.VideoMediaInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -50,7 +50,7 @@ func (api *EncodingManifestsHlsMediaVideoAPI) Delete(manifestId string, mediaId 
 	return &responseModel, err
 }
 
-// Get Video Media Details
+// Get Video Media details
 func (api *EncodingManifestsHlsMediaVideoAPI) Get(manifestId string, mediaId string) (*model.VideoMediaInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -62,7 +62,7 @@ func (api *EncodingManifestsHlsMediaVideoAPI) Get(manifestId string, mediaId str
 	return &responseModel, err
 }
 
-// List all Video Media
+// List Video Media
 func (api *EncodingManifestsHlsMediaVideoAPI) List(manifestId string, queryParams ...func(*EncodingManifestsHlsMediaVideoAPIListQueryParams)) (*pagination.VideoMediaInfosListPagination, error) {
 	queryParameters := &EncodingManifestsHlsMediaVideoAPIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -38,7 +38,7 @@ func NewEncodingEncodingsMuxingsMp4APIWithClient(apiClient *apiclient.APIClient)
 	return a
 }
 
-// Create Add MP4 muxing
+// Create MP4 muxing
 func (api *EncodingEncodingsMuxingsMp4API) Create(encodingId string, mp4Muxing model.Mp4Muxing) (*model.Mp4Muxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

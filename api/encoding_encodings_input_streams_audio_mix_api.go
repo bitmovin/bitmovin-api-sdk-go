@@ -27,7 +27,7 @@ func NewEncodingEncodingsInputStreamsAudioMixAPIWithClient(apiClient *apiclient.
 	return a
 }
 
-// Create Add audio mix input stream
+// Create audio mix input stream
 func (api *EncodingEncodingsInputStreamsAudioMixAPI) Create(encodingId string, audioMixInputStream model.AudioMixInputStream) (*model.AudioMixInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -38,7 +38,7 @@ func (api *EncodingEncodingsInputStreamsAudioMixAPI) Create(encodingId string, a
 	return &responseModel, err
 }
 
-// Delete audio mix input stream
+// Delete Audio mix input stream
 func (api *EncodingEncodingsInputStreamsAudioMixAPI) Delete(encodingId string, inputStreamId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

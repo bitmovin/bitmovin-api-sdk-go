@@ -27,7 +27,7 @@ func NewEncodingOutputsCdnAPIWithClient(apiClient *apiclient.APIClient) *Encodin
 	return a
 }
 
-// Get CDN Output Details
+// Get CDN Output details
 func (api *EncodingOutputsCdnAPI) Get(outputId string) (*model.CdnOutput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["output_id"] = outputId

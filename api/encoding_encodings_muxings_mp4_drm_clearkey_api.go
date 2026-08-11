@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsMp4DrmClearkeyAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Create Add ClearKey DRM to an MP4 muxing
+// Create ClearKey DRM to an MP4 muxing
 func (api *EncodingEncodingsMuxingsMp4DrmClearkeyAPI) Create(encodingId string, muxingId string, clearKeyDrm model.ClearKeyDrm) (*model.ClearKeyDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsMp4DrmClearkeyAPI) Delete(encodingId string, 
 	return &responseModel, err
 }
 
-// Get ClearKey DRM Details of an MP4 muxing
+// Get ClearKey DRM from an MP4 muxing details
 func (api *EncodingEncodingsMuxingsMp4DrmClearkeyAPI) Get(encodingId string, muxingId string, drmId string) (*model.ClearKeyDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

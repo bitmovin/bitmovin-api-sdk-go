@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPIWithClient
 	return a
 }
 
-// Create Add Content Protection to AdaptationSet
+// Create Content Protection to AdaptationSet
 func (api *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPI) Create(manifestId string, periodId string, adaptationsetId string, contentProtection model.ContentProtection) (*model.ContentProtection, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -54,7 +54,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPI) Delet
 	return &responseModel, err
 }
 
-// Get AdaptationSet Content Protection Details
+// Get AdaptationSet Content Protection details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPI) Get(manifestId string, periodId string, adaptationsetId string, contentprotectionId string) (*model.ContentProtection, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -68,7 +68,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPI) Get(m
 	return &responseModel, err
 }
 
-// List all AdaptationSet Content Protections
+// List AdaptationSet Content Protections
 func (api *EncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPI) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPIListQueryParams)) (*pagination.ContentProtectionsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsContentprotectionAPIListQueryParams{}
 	for _, queryParam := range queryParams {

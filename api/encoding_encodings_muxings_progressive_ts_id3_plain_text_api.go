@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsProgressiveTsId3PlainTextAPIWithClient(apiClient
 	return a
 }
 
-// Create Add Plain Text ID3 Tag to a Progressive TS muxing
+// Create Plain Text ID3 Tag to a Progressive TS muxing
 func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextAPI) Create(encodingId string, muxingId string, plaintextId3Tag model.PlaintextId3Tag) (*model.PlaintextId3Tag, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextAPI) Delete(encoding
 	return &responseModel, err
 }
 
-// Get Plain Text ID3 Tag Details of a Progressive TS muxing
+// Get Plain Text ID3 Tag of a Progressive TS muxing details
 func (api *EncodingEncodingsMuxingsProgressiveTsId3PlainTextAPI) Get(encodingId string, muxingId string, id3TagId string) (*model.PlaintextId3Tag, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

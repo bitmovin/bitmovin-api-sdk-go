@@ -32,7 +32,7 @@ func NewEncodingLiveStreamKeysAPIWithClient(apiClient *apiclient.APIClient) *Enc
 	return a
 }
 
-// Create new stream key
+// Create Stream Key
 func (api *EncodingLiveStreamKeysAPI) Create(streamKey model.StreamKey) (*model.StreamKey, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

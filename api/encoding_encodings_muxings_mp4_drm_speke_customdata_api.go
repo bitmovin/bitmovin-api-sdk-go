@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsMp4DrmSpekeCustomdataAPIWithClient(apiClient *ap
 	return a
 }
 
-// Get SPEKE DRM Custom Data of an MP4 muxing
+// Get SPEKE DRM from an MP4 muxing Custom Data
 func (api *EncodingEncodingsMuxingsMp4DrmSpekeCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

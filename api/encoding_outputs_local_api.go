@@ -53,7 +53,7 @@ func (api *EncodingOutputsLocalAPI) Delete(outputId string) (*model.LocalOutput,
 	return &responseModel, err
 }
 
-// Get Local Output Details
+// Get Local Output details
 func (api *EncodingOutputsLocalAPI) Get(outputId string) (*model.LocalOutput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["output_id"] = outputId

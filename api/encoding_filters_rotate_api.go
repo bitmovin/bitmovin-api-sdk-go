@@ -53,7 +53,7 @@ func (api *EncodingFiltersRotateAPI) Delete(filterId string) (*model.BitmovinRes
 	return &responseModel, err
 }
 
-// Get Rotate Filter Details
+// Get Rotate Filter details
 func (api *EncodingFiltersRotateAPI) Get(filterId string) (*model.RotateFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

@@ -41,7 +41,7 @@ func NewEncodingEncodingsMuxingsProgressiveTsAPIWithClient(apiClient *apiclient.
 	return a
 }
 
-// Create Add Progressive TS muxing
+// Create Progressive TS muxing
 func (api *EncodingEncodingsMuxingsProgressiveTsAPI) Create(encodingId string, progressiveTsMuxing model.ProgressiveTsMuxing) (*model.ProgressiveTsMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

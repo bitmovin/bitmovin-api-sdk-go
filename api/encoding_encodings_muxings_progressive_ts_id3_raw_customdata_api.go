@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsProgressiveTsId3RawCustomdataAPIWithClient(apiCl
 	return a
 }
 
-// Get Raw ID3 Tag Custom Data of a Progressive TS muxing
+// Get Raw ID3 Tag of a Progressive TS muxing Custom Data
 func (api *EncodingEncodingsMuxingsProgressiveTsId3RawCustomdataAPI) Get(encodingId string, muxingId string, id3TagId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

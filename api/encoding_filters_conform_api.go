@@ -54,7 +54,7 @@ func (api *EncodingFiltersConformAPI) Delete(filterId string) (*model.BitmovinRe
 	return &responseModel, err
 }
 
-// Get Conform Filter Details
+// Get Conform Filter details
 func (api *EncodingFiltersConformAPI) Get(filterId string) (*model.ConformFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

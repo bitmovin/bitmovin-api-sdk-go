@@ -27,7 +27,7 @@ func NewEncodingEncodingsInputStreamsSidecarDolbyVisionMetadataIngestAPIWithClie
 	return a
 }
 
-// Create Add Dolby Vision Metadata Ingest Input Stream
+// Create Dolby Vision Metadata Ingest Input Stream
 func (api *EncodingEncodingsInputStreamsSidecarDolbyVisionMetadataIngestAPI) Create(encodingId string, dolbyVisionMetadataIngestInputStream model.DolbyVisionMetadataIngestInputStream) (*model.DolbyVisionMetadataIngestInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -50,7 +50,7 @@ func (api *EncodingEncodingsInputStreamsSidecarDolbyVisionMetadataIngestAPI) Del
 	return &responseModel, err
 }
 
-// Get Dolby Vision Metadata Ingest Input Stream Details
+// Get Dolby Vision Metadata Ingest Input Stream details
 func (api *EncodingEncodingsInputStreamsSidecarDolbyVisionMetadataIngestAPI) Get(encodingId string, inputStreamId string) (*model.DolbyVisionMetadataIngestInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

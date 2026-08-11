@@ -26,7 +26,7 @@ func NewEncodingInputsSftpCustomdataAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Get SFTP Custom Data
+// Get SFTP Input Custom Data
 func (api *EncodingInputsSftpCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

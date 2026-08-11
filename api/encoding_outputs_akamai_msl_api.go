@@ -53,7 +53,7 @@ func (api *EncodingOutputsAkamaiMslAPI) Delete(outputId string) (*model.Bitmovin
 	return &responseModel, err
 }
 
-// Get Akamai MSL Output Details
+// Get Akamai MSL Output details
 func (api *EncodingOutputsAkamaiMslAPI) Get(outputId string) (*model.AkamaiMslOutput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["output_id"] = outputId

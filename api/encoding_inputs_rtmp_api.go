@@ -27,7 +27,7 @@ func NewEncodingInputsRtmpAPIWithClient(apiClient *apiclient.APIClient) *Encodin
 	return a
 }
 
-// Get RTMP Input Details
+// Get RTMP Input details
 func (api *EncodingInputsRtmpAPI) Get(inputId string) (*model.RtmpInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

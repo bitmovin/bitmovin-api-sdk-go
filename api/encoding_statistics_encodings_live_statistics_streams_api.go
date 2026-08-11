@@ -26,7 +26,7 @@ func NewEncodingStatisticsEncodingsLiveStatisticsStreamsAPIWithClient(apiClient 
 	return a
 }
 
-// List Stream Infos of Live Statistics from an Encoding
+// List Live Statistics Stream Infos
 func (api *EncodingStatisticsEncodingsLiveStatisticsStreamsAPI) List(encodingId string, queryParams ...func(*EncodingStatisticsEncodingsLiveStatisticsStreamsAPIListQueryParams)) (*pagination.StreamInfossListPagination, error) {
 	queryParameters := &EncodingStatisticsEncodingsLiveStatisticsStreamsAPIListQueryParams{}
 	for _, queryParam := range queryParams {

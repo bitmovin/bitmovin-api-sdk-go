@@ -38,7 +38,7 @@ func NewEncodingEncodingsMuxingsPackedAudioAPIWithClient(apiClient *apiclient.AP
 	return a
 }
 
-// Create Add Packed Audio muxing
+// Create Packed Audio muxing
 func (api *EncodingEncodingsMuxingsPackedAudioAPI) Create(encodingId string, packedAudioMuxing model.PackedAudioMuxing) (*model.PackedAudioMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

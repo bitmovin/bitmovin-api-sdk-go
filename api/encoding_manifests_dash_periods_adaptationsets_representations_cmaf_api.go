@@ -32,7 +32,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafAPIWithClie
 	return a
 }
 
-// Create Add CMAF Representation
+// Create CMAF Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafAPI) Create(manifestId string, periodId string, adaptationsetId string, dashCmafRepresentation model.DashCmafRepresentation) (*model.DashCmafRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -59,7 +59,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafAPI) Del
 	return &responseModel, err
 }
 
-// Get CMAF Representation Details
+// Get CMAF Representation details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafAPI) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashCmafRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -73,7 +73,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafAPI) Get
 	return &responseModel, err
 }
 
-// List all CMAF Representations
+// List CMAF Representations
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafAPI) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafAPIListQueryParams)) (*pagination.DashCmafRepresentationsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafAPIListQueryParams{}
 	for _, queryParam := range queryParams {

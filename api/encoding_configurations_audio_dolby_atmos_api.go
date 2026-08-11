@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioDolbyAtmosAPI) Delete(configurationId stri
 	return &responseModel, err
 }
 
-// Get Dolby Atmos Codec Configuration Details
+// Get Dolby Atmos Codec Configuration details
 func (api *EncodingConfigurationsAudioDolbyAtmosAPI) Get(configurationId string) (*model.DolbyAtmosAudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

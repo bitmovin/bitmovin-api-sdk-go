@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmContentprot
 	return a
 }
 
-// Create Add Content Protection to WebM Representation
+// Create Content Protection to WebM Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmContentprotectionAPI) Create(manifestId string, periodId string, adaptationsetId string, representationId string, contentProtection model.ContentProtection) (*model.ContentProtection, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -56,7 +56,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmContentp
 	return &responseModel, err
 }
 
-// Get WebM Representation Content Protection Details
+// Get WebM Representation Content Protection details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmContentprotectionAPI) Get(manifestId string, periodId string, adaptationsetId string, representationId string, contentprotectionId string) (*model.ContentProtection, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -71,7 +71,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmContentp
 	return &responseModel, err
 }
 
-// List all WebM Representation Content Protections
+// List WebM Representation Content Protections
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmContentprotectionAPI) List(manifestId string, periodId string, adaptationsetId string, representationId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmContentprotectionAPIListQueryParams)) (*pagination.ContentProtectionsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsWebmContentprotectionAPIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -42,7 +42,7 @@ func (api *EncodingInputsZixiAPI) Create(zixiInput model.ZixiInput) (*model.Zixi
 	return &responseModel, err
 }
 
-// Delete Zixi input
+// Delete Zixi Input
 func (api *EncodingInputsZixiAPI) Delete(inputId string) (*model.ZixiInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId
@@ -53,7 +53,7 @@ func (api *EncodingInputsZixiAPI) Delete(inputId string) (*model.ZixiInput, erro
 	return &responseModel, err
 }
 
-// Get Zixi Input Details
+// Get Zixi Input details
 func (api *EncodingInputsZixiAPI) Get(inputId string) (*model.ZixiInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

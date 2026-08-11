@@ -53,7 +53,7 @@ func (api *EncodingInputsAzureAPI) Delete(inputId string) (*model.AzureInput, er
 	return &responseModel, err
 }
 
-// Get Azure Input Details
+// Get Azure Input details
 func (api *EncodingInputsAzureAPI) Get(inputId string) (*model.AzureInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

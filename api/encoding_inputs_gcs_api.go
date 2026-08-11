@@ -53,7 +53,7 @@ func (api *EncodingInputsGcsAPI) Delete(inputId string) (*model.GcsInput, error)
 	return &responseModel, err
 }
 
-// Get GCS Input Details
+// Get GCS Input details
 func (api *EncodingInputsGcsAPI) Get(inputId string) (*model.GcsInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

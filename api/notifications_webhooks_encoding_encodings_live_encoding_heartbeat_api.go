@@ -27,7 +27,7 @@ func NewNotificationsWebhooksEncodingEncodingsLiveEncodingHeartbeatAPIWithClient
 	return a
 }
 
-// Create Add &#39;Live Encoding Heartbeat&#39; Webhook
+// Create &#39;Live Encoding Heartbeat&#39; Webhook
 // Add a new webhook notification that triggers a heartbeat webhook with a fixed &#x60;interval&#x60; for all Live Encodings.
 func (api *NotificationsWebhooksEncodingEncodingsLiveEncodingHeartbeatAPI) Create(liveEncodingHeartbeatWebhook model.LiveEncodingHeartbeatWebhook) (*model.LiveEncodingHeartbeatWebhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
@@ -49,7 +49,7 @@ func (api *NotificationsWebhooksEncodingEncodingsLiveEncodingHeartbeatAPI) Delet
 	return &responseModel, err
 }
 
-// GetByWebhookId &#39;Live Encoding Heartbeat&#39; Webhook Details
+// GetByWebhookId Get &#39;Live Encoding Heartbeat&#39; Webhook details
 func (api *NotificationsWebhooksEncodingEncodingsLiveEncodingHeartbeatAPI) GetByWebhookId(webhookId string) (*model.LiveEncodingHeartbeatWebhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["webhook_id"] = webhookId

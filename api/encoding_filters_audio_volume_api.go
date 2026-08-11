@@ -53,7 +53,7 @@ func (api *EncodingFiltersAudioVolumeAPI) Delete(filterId string) (*model.Bitmov
 	return &responseModel, err
 }
 
-// Get Audio Volume Filter Details
+// Get Audio Volume Filter details
 func (api *EncodingFiltersAudioVolumeAPI) Get(filterId string) (*model.AudioVolumeFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

@@ -26,7 +26,7 @@ func NewEncodingInputsAzureCustomdataAPIWithClient(apiClient *apiclient.APIClien
 	return a
 }
 
-// Get Azure Custom Data
+// Get Azure Input Custom Data
 func (api *EncodingInputsAzureCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

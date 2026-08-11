@@ -26,7 +26,7 @@ func NewEncodingEncodingsKantarWatermarkAPIWithClient(apiClient *apiclient.APICl
 	return a
 }
 
-// Create or replace the Kantar Watermark for an encoding
+// Create or replace Kantar Watermark
 func (api *EncodingEncodingsKantarWatermarkAPI) Create(encodingId string, kantarWatermark model.KantarWatermark) (*model.KantarWatermark, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -37,7 +37,7 @@ func (api *EncodingEncodingsKantarWatermarkAPI) Create(encodingId string, kantar
 	return &responseModel, err
 }
 
-// Delete the Kantar Watermark for an encoding
+// Delete Kantar Watermark
 func (api *EncodingEncodingsKantarWatermarkAPI) Delete(encodingId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -48,7 +48,7 @@ func (api *EncodingEncodingsKantarWatermarkAPI) Delete(encodingId string) (*mode
 	return &responseModel, err
 }
 
-// Get the Kantar Watermark for an encoding
+// Get Kantar Watermark
 func (api *EncodingEncodingsKantarWatermarkAPI) Get(encodingId string) (*model.KantarWatermark, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

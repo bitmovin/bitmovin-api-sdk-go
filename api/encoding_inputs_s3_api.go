@@ -53,7 +53,7 @@ func (api *EncodingInputsS3API) Delete(inputId string) (*model.BitmovinResponse,
 	return &responseModel, err
 }
 
-// Get S3 Input Details
+// Get S3 Input details
 func (api *EncodingInputsS3API) Get(inputId string) (*model.S3Input, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

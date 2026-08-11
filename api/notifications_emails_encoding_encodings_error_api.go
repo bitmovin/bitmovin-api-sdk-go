@@ -26,7 +26,7 @@ func NewNotificationsEmailsEncodingEncodingsErrorAPIWithClient(apiClient *apicli
 	return a
 }
 
-// CreateByEncodingId Add Encoding Error Email Notification (Specific Encoding)
+// CreateByEncodingId Create &#39;Encoding Error&#39; Email Notification for a specific Encoding
 func (api *NotificationsEmailsEncodingEncodingsErrorAPI) CreateByEncodingId(encodingId string, emailNotification model.EmailNotification) (*model.EmailNotification, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -37,7 +37,7 @@ func (api *NotificationsEmailsEncodingEncodingsErrorAPI) CreateByEncodingId(enco
 	return &responseModel, err
 }
 
-// Update Replace Encoding Error Email Notification
+// Update &#39;Encoding Error&#39; Email Notification
 func (api *NotificationsEmailsEncodingEncodingsErrorAPI) Update(notificationId string, emailNotification model.EmailNotification) (*model.EmailNotification, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["notification_id"] = notificationId

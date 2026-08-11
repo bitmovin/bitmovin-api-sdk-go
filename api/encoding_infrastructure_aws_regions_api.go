@@ -51,7 +51,7 @@ func (api *EncodingInfrastructureAwsRegionsAPI) Delete(infrastructureId string, 
 	return &responseModel, err
 }
 
-// Get AWS Region Settings Details
+// Get AWS Region Settings details
 func (api *EncodingInfrastructureAwsRegionsAPI) Get(infrastructureId string, region model.AwsCloudRegion) (*model.AwsAccountRegionSettings, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["infrastructure_id"] = infrastructureId

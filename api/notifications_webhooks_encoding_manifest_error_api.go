@@ -27,7 +27,7 @@ func NewNotificationsWebhooksEncodingManifestErrorAPIWithClient(apiClient *apicl
 	return a
 }
 
-// Create Add &#39;Manifest Error&#39; Webhook (All Manifests)
+// Create &#39;Manifest Error&#39; Webhook
 // Add a new webhook notification that triggers if a manifest generation fails. A maximum number of 5 webhooks is allowed
 func (api *NotificationsWebhooksEncodingManifestErrorAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
@@ -38,7 +38,7 @@ func (api *NotificationsWebhooksEncodingManifestErrorAPI) Create(webhook model.W
 	return &responseModel, err
 }
 
-// CreateByManifestId Add &#39;Manifest Error&#39; Webhook Notification (Specific Manifest)
+// CreateByManifestId Create &#39;Manifest Error&#39; Webhook for a specific Manifest
 func (api *NotificationsWebhooksEncodingManifestErrorAPI) CreateByManifestId(manifestId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -60,7 +60,7 @@ func (api *NotificationsWebhooksEncodingManifestErrorAPI) Delete(notificationId 
 	return &responseModel, err
 }
 
-// List Get &#39;Manifest Error&#39; Webhooks (All Manifests)
+// List &#39;Manifest Error&#39; Webhooks
 // Get all webhook notifications triggering when a manifest generation fails
 func (api *NotificationsWebhooksEncodingManifestErrorAPI) List() (*pagination.WebhooksListPagination, error) {
 	reqParams := func(params *apiclient.RequestParams) {
@@ -71,7 +71,7 @@ func (api *NotificationsWebhooksEncodingManifestErrorAPI) List() (*pagination.We
 	return &responseModel, err
 }
 
-// Update Replace &#39;Manifest Error&#39; Webhook Notification
+// Update &#39;Manifest Error&#39; Webhook
 func (api *NotificationsWebhooksEncodingManifestErrorAPI) Update(notificationId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["notification_id"] = notificationId

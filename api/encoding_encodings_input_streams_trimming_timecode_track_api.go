@@ -27,7 +27,7 @@ func NewEncodingEncodingsInputStreamsTrimmingTimecodeTrackAPIWithClient(apiClien
 	return a
 }
 
-// Create Add Timecode Track Trimming Input Stream
+// Create Timecode Track Trimming Input Stream
 func (api *EncodingEncodingsInputStreamsTrimmingTimecodeTrackAPI) Create(encodingId string, timecodeTrackTrimmingInputStream model.TimecodeTrackTrimmingInputStream) (*model.TimecodeTrackTrimmingInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -50,7 +50,7 @@ func (api *EncodingEncodingsInputStreamsTrimmingTimecodeTrackAPI) Delete(encodin
 	return &responseModel, err
 }
 
-// Get Timecode Track Trimming Input Stream Details
+// Get Timecode Track Trimming Input Stream details
 func (api *EncodingEncodingsInputStreamsTrimmingTimecodeTrackAPI) Get(encodingId string, inputStreamId string) (*model.TimecodeTrackTrimmingInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

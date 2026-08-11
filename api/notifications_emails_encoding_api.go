@@ -31,7 +31,7 @@ func NewNotificationsEmailsEncodingAPIWithClient(apiClient *apiclient.APIClient)
 	return a
 }
 
-// List Email Notifications (All Encodings)
+// List Encoding Email Notifications
 func (api *NotificationsEmailsEncodingAPI) List(queryParams ...func(*NotificationsEmailsEncodingAPIListQueryParams)) (*pagination.EmailNotificationsListPagination, error) {
 	queryParameters := &NotificationsEmailsEncodingAPIListQueryParams{}
 	for _, queryParam := range queryParams {

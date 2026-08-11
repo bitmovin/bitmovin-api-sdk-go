@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsCustomXmlElementsAPIWithClient(apiClient *ap
 	return a
 }
 
-// Create Add Custom XML Element to Period
+// Create Custom XML Element to Period
 func (api *EncodingManifestsDashPeriodsCustomXmlElementsAPI) Create(manifestId string, periodId string, customXmlElement model.CustomXmlElement) (*model.CustomXmlElement, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -52,7 +52,7 @@ func (api *EncodingManifestsDashPeriodsCustomXmlElementsAPI) Delete(manifestId s
 	return &responseModel, err
 }
 
-// Get Custom XML Element Details
+// Get Custom XML Element details
 func (api *EncodingManifestsDashPeriodsCustomXmlElementsAPI) Get(manifestId string, periodId string, customXmlElementId string) (*model.CustomXmlElement, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -65,7 +65,7 @@ func (api *EncodingManifestsDashPeriodsCustomXmlElementsAPI) Get(manifestId stri
 	return &responseModel, err
 }
 
-// List all Custom XML Elements of Period
+// List Custom XML Elements of Period
 func (api *EncodingManifestsDashPeriodsCustomXmlElementsAPI) List(manifestId string, periodId string, queryParams ...func(*EncodingManifestsDashPeriodsCustomXmlElementsAPIListQueryParams)) (*pagination.CustomXmlElementsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsCustomXmlElementsAPIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -32,7 +32,7 @@ func NewEncodingInfrastructureOciAPIWithClient(apiClient *apiclient.APIClient) *
 	return a
 }
 
-// Create Add OCI account
+// Create OCI account
 func (api *EncodingInfrastructureOciAPI) Create(ociAccount model.OciAccount) (*model.OciAccount, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

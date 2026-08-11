@@ -27,7 +27,7 @@ func NewEncodingManifestsSmoothRepresentationsMp4APIWithClient(apiClient *apicli
 	return a
 }
 
-// Create Add MP4 Representation to Smooth Streaming Manifest
+// Create MP4 Representation to Smooth Streaming Manifest
 func (api *EncodingManifestsSmoothRepresentationsMp4API) Create(manifestId string, smoothStreamingRepresentation model.SmoothStreamingRepresentation) (*model.SmoothStreamingRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -50,7 +50,7 @@ func (api *EncodingManifestsSmoothRepresentationsMp4API) Delete(manifestId strin
 	return &responseModel, err
 }
 
-// Get Smooth Streaming MP4 Representation Details
+// Get Smooth Streaming MP4 Representation details
 func (api *EncodingManifestsSmoothRepresentationsMp4API) Get(manifestId string, representationId string) (*model.SmoothStreamingRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId

@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsFmp4DrmFairplayAPIWithClient(apiClient *apiclien
 	return a
 }
 
-// Create Add FairPlay DRM to an fMP4 muxing
+// Create FairPlay DRM to an fMP4 muxing
 func (api *EncodingEncodingsMuxingsFmp4DrmFairplayAPI) Create(encodingId string, muxingId string, fairPlayDrm model.FairPlayDrm) (*model.FairPlayDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsFmp4DrmFairplayAPI) Delete(encodingId string,
 	return &responseModel, err
 }
 
-// Get FairPlay DRM Details of an fMP4 muxing
+// Get FairPlay DRM from an fMP4 muxing details
 func (api *EncodingEncodingsMuxingsFmp4DrmFairplayAPI) Get(encodingId string, muxingId string, drmId string) (*model.FairPlayDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

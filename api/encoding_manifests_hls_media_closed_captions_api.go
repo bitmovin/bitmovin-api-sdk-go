@@ -27,7 +27,7 @@ func NewEncodingManifestsHlsMediaClosedCaptionsAPIWithClient(apiClient *apiclien
 	return a
 }
 
-// Create Add Closed Captions Media
+// Create Closed Captions Media
 func (api *EncodingManifestsHlsMediaClosedCaptionsAPI) Create(manifestId string, closedCaptionsMediaInfo model.ClosedCaptionsMediaInfo) (*model.ClosedCaptionsMediaInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -50,7 +50,7 @@ func (api *EncodingManifestsHlsMediaClosedCaptionsAPI) Delete(manifestId string,
 	return &responseModel, err
 }
 
-// Get Closed Captions Media Details
+// Get Closed Captions Media details
 func (api *EncodingManifestsHlsMediaClosedCaptionsAPI) Get(manifestId string, mediaId string) (*model.ClosedCaptionsMediaInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -62,7 +62,7 @@ func (api *EncodingManifestsHlsMediaClosedCaptionsAPI) Get(manifestId string, me
 	return &responseModel, err
 }
 
-// List all Closed Captions Media
+// List Closed Captions Media
 func (api *EncodingManifestsHlsMediaClosedCaptionsAPI) List(manifestId string, queryParams ...func(*EncodingManifestsHlsMediaClosedCaptionsAPIListQueryParams)) (*pagination.ClosedCaptionsMediaInfosListPagination, error) {
 	queryParameters := &EncodingManifestsHlsMediaClosedCaptionsAPIListQueryParams{}
 	for _, queryParam := range queryParams {

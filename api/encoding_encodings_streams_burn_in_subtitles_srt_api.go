@@ -27,7 +27,7 @@ func NewEncodingEncodingsStreamsBurnInSubtitlesSrtAPIWithClient(apiClient *apicl
 	return a
 }
 
-// Create Burn-In SRT Subtitle into Stream
+// Create Burn-In SRT Subtitle
 func (api *EncodingEncodingsStreamsBurnInSubtitlesSrtAPI) Create(encodingId string, streamId string, burnInSubtitleSrt model.BurnInSubtitleSrt) (*model.BurnInSubtitleSrt, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -39,7 +39,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesSrtAPI) Create(encodingId stri
 	return &responseModel, err
 }
 
-// Delete Burn-In SRT Subtitle from Stream
+// Delete Burn-In SRT Subtitle
 func (api *EncodingEncodingsStreamsBurnInSubtitlesSrtAPI) Delete(encodingId string, streamId string, subtitleId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -52,7 +52,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesSrtAPI) Delete(encodingId stri
 	return &responseModel, err
 }
 
-// Get Burn-In SRT Subtitle Details
+// Get Burn-In SRT Subtitle details
 func (api *EncodingEncodingsStreamsBurnInSubtitlesSrtAPI) Get(encodingId string, streamId string, subtitleId string) (*model.BurnInSubtitleSrt, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -65,7 +65,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesSrtAPI) Get(encodingId string,
 	return &responseModel, err
 }
 
-// List the Burn-In SRT subtitles of a stream
+// List Burn-In SRT Subtitles
 func (api *EncodingEncodingsStreamsBurnInSubtitlesSrtAPI) List(encodingId string, streamId string, queryParams ...func(*EncodingEncodingsStreamsBurnInSubtitlesSrtAPIListQueryParams)) (*pagination.BurnInSubtitleSrtsListPagination, error) {
 	queryParameters := &EncodingEncodingsStreamsBurnInSubtitlesSrtAPIListQueryParams{}
 	for _, queryParam := range queryParams {

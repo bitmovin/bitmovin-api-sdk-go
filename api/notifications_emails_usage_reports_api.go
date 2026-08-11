@@ -26,7 +26,7 @@ func NewNotificationsEmailsUsageReportsAPIWithClient(apiClient *apiclient.APICli
 	return a
 }
 
-// List Email Notifications (All Usage Reports)
+// List Usage Report Email Notifications
 func (api *NotificationsEmailsUsageReportsAPI) List(queryParams ...func(*NotificationsEmailsUsageReportsAPIListQueryParams)) (*pagination.EmailNotificationsListPagination, error) {
 	queryParameters := &NotificationsEmailsUsageReportsAPIListQueryParams{}
 	for _, queryParam := range queryParams {

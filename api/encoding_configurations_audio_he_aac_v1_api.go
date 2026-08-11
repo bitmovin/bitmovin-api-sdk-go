@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioHeAacV1API) Delete(configurationId string)
 	return &responseModel, err
 }
 
-// Get HE-AAC v1 Codec Configuration Details
+// Get HE-AAC v1 Codec Configuration details
 func (api *EncodingConfigurationsAudioHeAacV1API) Get(configurationId string) (*model.HeAacV1AudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

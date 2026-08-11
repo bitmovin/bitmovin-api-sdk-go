@@ -35,7 +35,7 @@ func NewEncodingManifestsHlsStreamsAPIWithClient(apiClient *apiclient.APIClient)
 	return a
 }
 
-// Create Add Variant Stream
+// Create Variant Stream
 func (api *EncodingManifestsHlsStreamsAPI) Create(manifestId string, streamInfo model.StreamInfo) (*model.StreamInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -58,7 +58,7 @@ func (api *EncodingManifestsHlsStreamsAPI) Delete(manifestId string, streamId st
 	return &responseModel, err
 }
 
-// Get Variant Stream Details
+// Get Variant Stream details
 func (api *EncodingManifestsHlsStreamsAPI) Get(manifestId string, streamId string) (*model.StreamInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -70,7 +70,7 @@ func (api *EncodingManifestsHlsStreamsAPI) Get(manifestId string, streamId strin
 	return &responseModel, err
 }
 
-// List all Variant Streams
+// List Variant Streams
 func (api *EncodingManifestsHlsStreamsAPI) List(manifestId string, queryParams ...func(*EncodingManifestsHlsStreamsAPIListQueryParams)) (*pagination.StreamInfosListPagination, error) {
 	queryParameters := &EncodingManifestsHlsStreamsAPIListQueryParams{}
 	for _, queryParam := range queryParams {

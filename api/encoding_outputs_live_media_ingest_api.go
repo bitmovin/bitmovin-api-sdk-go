@@ -53,7 +53,7 @@ func (api *EncodingOutputsLiveMediaIngestAPI) Delete(outputId string) (*model.Bi
 	return &responseModel, err
 }
 
-// Get Live Media Ingest Output Details
+// Get Live Media Ingest Output details
 func (api *EncodingOutputsLiveMediaIngestAPI) Get(outputId string) (*model.LiveMediaIngestOutput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["output_id"] = outputId

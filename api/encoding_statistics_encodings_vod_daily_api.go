@@ -27,7 +27,7 @@ func NewEncodingStatisticsEncodingsVodDailyAPIWithClient(apiClient *apiclient.AP
 	return a
 }
 
-// ListByDateRange List daily VoD encoding statistics within specific dates
+// ListByDateRange List daily VOD encoding statistics within specific dates
 func (api *EncodingStatisticsEncodingsVodDailyAPI) ListByDateRange(from model.Date, to model.Date) (*pagination.EncodingStatisticssListByDateRangePagination, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["from"] = from.String()

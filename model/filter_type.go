@@ -21,4 +21,5 @@ const (
 	FilterType_AUDIO_VOLUME             FilterType = "AUDIO_VOLUME"
 	FilterType_EBU_R128_SINGLE_PASS     FilterType = "EBU_R128_SINGLE_PASS"
 	FilterType_AZURE_SPEECH_TO_CAPTIONS FilterType = "AZURE_SPEECH_TO_CAPTIONS"
+	FilterType_DOLBY_LOUDNESS           FilterType = "DOLBY_LOUDNESS"
 )

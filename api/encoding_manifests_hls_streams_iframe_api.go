@@ -27,7 +27,7 @@ func NewEncodingManifestsHlsStreamsIframeAPIWithClient(apiClient *apiclient.APIC
 	return a
 }
 
-// Create Add I-frame playlist to variant stream
+// Create I-frame playlist to variant stream
 func (api *EncodingManifestsHlsStreamsIframeAPI) Create(manifestId string, streamId string, iFramePlaylist model.IFramePlaylist) (*model.IFramePlaylist, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -52,7 +52,7 @@ func (api *EncodingManifestsHlsStreamsIframeAPI) Delete(manifestId string, strea
 	return &responseModel, err
 }
 
-// Get I-frame playlist Details
+// Get I-frame playlist details
 func (api *EncodingManifestsHlsStreamsIframeAPI) Get(manifestId string, streamId string, iframeId string) (*model.IFramePlaylist, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -65,7 +65,7 @@ func (api *EncodingManifestsHlsStreamsIframeAPI) Get(manifestId string, streamId
 	return &responseModel, err
 }
 
-// List all I-frame playlists of a variant stream
+// List I-frame playlists of a variant stream
 func (api *EncodingManifestsHlsStreamsIframeAPI) List(manifestId string, streamId string, queryParams ...func(*EncodingManifestsHlsStreamsIframeAPIListQueryParams)) (*pagination.IFramePlaylistsListPagination, error) {
 	queryParameters := &EncodingManifestsHlsStreamsIframeAPIListQueryParams{}
 	for _, queryParam := range queryParams {

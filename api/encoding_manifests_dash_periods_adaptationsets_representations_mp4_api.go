@@ -32,7 +32,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4APIWithClien
 	return a
 }
 
-// Create Add MP4 Representation
+// Create MP4 Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4API) Create(manifestId string, periodId string, adaptationsetId string, dashMp4Representation model.DashMp4Representation) (*model.DashMp4Representation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -59,7 +59,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4API) Dele
 	return &responseModel, err
 }
 
-// Get MP4 Representation Details
+// Get MP4 Representation details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4API) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashMp4Representation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -73,7 +73,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4API) Get(
 	return &responseModel, err
 }
 
-// List all MP4 Representations
+// List MP4 Representations
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4API) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4APIListQueryParams)) (*pagination.DashMp4RepresentationsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4APIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -37,7 +37,7 @@ func NewEncodingStatisticsEncodingsLiveStatisticsAPIWithClient(apiClient *apicli
 	return a
 }
 
-// Get List Live Statistics from an Encoding
+// Get List Live Statistics
 func (api *EncodingStatisticsEncodingsLiveStatisticsAPI) Get(encodingId string) (*model.LiveEncodingStats, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

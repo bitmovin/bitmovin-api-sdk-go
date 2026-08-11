@@ -26,7 +26,7 @@ func NewEncodingEncodingsCaptionsSccCustomdataAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Get Convert SCC captions Custom Data
+// Get SCC Caption Conversion Custom Data
 func (api *EncodingEncodingsCaptionsSccCustomdataAPI) Get(encodingId string, captionsId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

@@ -53,7 +53,7 @@ func (api *EncodingInputsLocalAPI) Delete(inputId string) (*model.BitmovinRespon
 	return &responseModel, err
 }
 
-// Get Local Input Details
+// Get Local Input details
 func (api *EncodingInputsLocalAPI) Get(inputId string) (*model.LocalInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

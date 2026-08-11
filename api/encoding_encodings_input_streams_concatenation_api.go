@@ -27,7 +27,7 @@ func NewEncodingEncodingsInputStreamsConcatenationAPIWithClient(apiClient *apicl
 	return a
 }
 
-// Create Add Concatenation Input Stream
+// Create Concatenation Input Stream
 func (api *EncodingEncodingsInputStreamsConcatenationAPI) Create(encodingId string, concatenationInputStream model.ConcatenationInputStream) (*model.ConcatenationInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -50,7 +50,7 @@ func (api *EncodingEncodingsInputStreamsConcatenationAPI) Delete(encodingId stri
 	return &responseModel, err
 }
 
-// Get Concatenation Input Stream Details
+// Get Concatenation Input Stream details
 func (api *EncodingEncodingsInputStreamsConcatenationAPI) Get(encodingId string, inputStreamId string) (*model.ConcatenationInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

@@ -26,7 +26,7 @@ func NewEncodingInputsGcsServiceAccountCustomdataAPIWithClient(apiClient *apicli
 	return a
 }
 
-// Get GCS input Custom Data
+// Get Service Account based GCS Input Custom Data
 func (api *EncodingInputsGcsServiceAccountCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

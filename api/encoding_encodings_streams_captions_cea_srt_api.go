@@ -32,7 +32,7 @@ func NewEncodingEncodingsStreamsCaptionsCeaSrtAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Create Embed SRT captions as 608/708 into Stream
+// Create SRT captions as 608/708
 func (api *EncodingEncodingsStreamsCaptionsCeaSrtAPI) Create(encodingId string, streamId string, srtToCea608708Caption model.SrtToCea608708Caption) (*model.SrtToCea608708Caption, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -44,7 +44,7 @@ func (api *EncodingEncodingsStreamsCaptionsCeaSrtAPI) Create(encodingId string, 
 	return &responseModel, err
 }
 
-// Delete SRT captions as 608/708 from Stream
+// Delete SRT captions as 608/708
 func (api *EncodingEncodingsStreamsCaptionsCeaSrtAPI) Delete(encodingId string, streamId string, captionsId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsStreamsCaptionsCeaSrtAPI) Delete(encodingId string, 
 	return &responseModel, err
 }
 
-// Get Embed SRT captions as 608/708 Details
+// Get SRT captions as 608/708 details
 func (api *EncodingEncodingsStreamsCaptionsCeaSrtAPI) Get(encodingId string, streamId string, captionsId string) (*model.SrtToCea608708Caption, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -70,7 +70,7 @@ func (api *EncodingEncodingsStreamsCaptionsCeaSrtAPI) Get(encodingId string, str
 	return &responseModel, err
 }
 
-// List SRT captions as 608/708 from Stream
+// List SRT captions as 608/708
 func (api *EncodingEncodingsStreamsCaptionsCeaSrtAPI) List(encodingId string, streamId string, queryParams ...func(*EncodingEncodingsStreamsCaptionsCeaSrtAPIListQueryParams)) (*pagination.SrtToCea608708CaptionsListPagination, error) {
 	queryParameters := &EncodingEncodingsStreamsCaptionsCeaSrtAPIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -53,7 +53,7 @@ func (api *EncodingFiltersEnhancedDeinterlaceAPI) Delete(filterId string) (*mode
 	return &responseModel, err
 }
 
-// Get Enhanced Deinterlace Filter Details
+// Get Enhanced Deinterlace Filter details
 func (api *EncodingFiltersEnhancedDeinterlaceAPI) Get(filterId string) (*model.EnhancedDeinterlaceFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

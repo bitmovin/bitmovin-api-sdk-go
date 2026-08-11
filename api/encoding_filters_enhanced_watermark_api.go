@@ -53,7 +53,7 @@ func (api *EncodingFiltersEnhancedWatermarkAPI) Delete(filterId string) (*model.
 	return &responseModel, err
 }
 
-// Get Enhanced Watermark Filter Details
+// Get Enhanced Watermark Filter details
 func (api *EncodingFiltersEnhancedWatermarkAPI) Get(filterId string) (*model.EnhancedWatermarkFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

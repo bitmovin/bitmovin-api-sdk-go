@@ -53,7 +53,7 @@ func (api *EncodingFiltersAudioMixAPI) Delete(filterId string) (*model.BitmovinR
 	return &responseModel, err
 }
 
-// Get Audio Mix Filter Details
+// Get Audio Mix Filter details
 func (api *EncodingFiltersAudioMixAPI) Get(filterId string) (*model.AudioMixFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

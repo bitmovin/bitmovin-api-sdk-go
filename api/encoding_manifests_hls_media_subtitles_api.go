@@ -27,7 +27,7 @@ func NewEncodingManifestsHlsMediaSubtitlesAPIWithClient(apiClient *apiclient.API
 	return a
 }
 
-// Create Add Subtitles Media
+// Create Subtitles Media
 func (api *EncodingManifestsHlsMediaSubtitlesAPI) Create(manifestId string, subtitlesMediaInfo model.SubtitlesMediaInfo) (*model.SubtitlesMediaInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -50,7 +50,7 @@ func (api *EncodingManifestsHlsMediaSubtitlesAPI) Delete(manifestId string, medi
 	return &responseModel, err
 }
 
-// Get Subtitles Media Details
+// Get Subtitles Media details
 func (api *EncodingManifestsHlsMediaSubtitlesAPI) Get(manifestId string, mediaId string) (*model.SubtitlesMediaInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -62,7 +62,7 @@ func (api *EncodingManifestsHlsMediaSubtitlesAPI) Get(manifestId string, mediaId
 	return &responseModel, err
 }
 
-// List all Subtitles Media
+// List Subtitles Media
 func (api *EncodingManifestsHlsMediaSubtitlesAPI) List(manifestId string, queryParams ...func(*EncodingManifestsHlsMediaSubtitlesAPIListQueryParams)) (*pagination.SubtitlesMediaInfosListPagination, error) {
 	queryParameters := &EncodingManifestsHlsMediaSubtitlesAPIListQueryParams{}
 	for _, queryParam := range queryParams {

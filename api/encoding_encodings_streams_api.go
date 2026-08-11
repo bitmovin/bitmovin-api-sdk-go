@@ -65,7 +65,7 @@ func NewEncodingEncodingsStreamsAPIWithClient(apiClient *apiclient.APIClient) *E
 	return a
 }
 
-// Create Add Stream
+// Create Stream
 func (api *EncodingEncodingsStreamsAPI) Create(encodingId string, stream model.Stream) (*model.Stream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -88,7 +88,7 @@ func (api *EncodingEncodingsStreamsAPI) Delete(encodingId string, streamId strin
 	return &responseModel, err
 }
 
-// Get Stream Details
+// Get Stream details
 func (api *EncodingEncodingsStreamsAPI) Get(encodingId string, streamId string) (*model.Stream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

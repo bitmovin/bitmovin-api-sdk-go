@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsAudioAPIWithClient(apiClient *
 	return a
 }
 
-// Create Add Audio AdaptationSet
+// Create Audio AdaptationSet
 func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioAPI) Create(manifestId string, periodId string, audioAdaptationSet model.AudioAdaptationSet) (*model.AudioAdaptationSet, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -52,7 +52,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioAPI) Delete(manifestId
 	return &responseModel, err
 }
 
-// Get Audio AdaptationSet Details
+// Get Audio AdaptationSet details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioAPI) Get(manifestId string, periodId string, adaptationsetId string) (*model.AudioAdaptationSet, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -65,7 +65,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioAPI) Get(manifestId st
 	return &responseModel, err
 }
 
-// List all Audio AdaptationSets
+// List Audio AdaptationSets
 func (api *EncodingManifestsDashPeriodsAdaptationsetsAudioAPI) List(manifestId string, periodId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsAudioAPIListQueryParams)) (*pagination.AudioAdaptationSetsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsAudioAPIListQueryParams{}
 	for _, queryParam := range queryParams {

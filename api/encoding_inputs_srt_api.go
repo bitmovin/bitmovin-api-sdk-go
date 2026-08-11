@@ -42,7 +42,7 @@ func (api *EncodingInputsSrtAPI) Create(srtInput model.SrtInput) (*model.SrtInpu
 	return &responseModel, err
 }
 
-// Delete SRT input
+// Delete SRT Input
 func (api *EncodingInputsSrtAPI) Delete(inputId string) (*model.SrtInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId
@@ -53,7 +53,7 @@ func (api *EncodingInputsSrtAPI) Delete(inputId string) (*model.SrtInput, error)
 	return &responseModel, err
 }
 
-// Get SRT Input Details
+// Get SRT Input details
 func (api *EncodingInputsSrtAPI) Get(inputId string) (*model.SrtInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

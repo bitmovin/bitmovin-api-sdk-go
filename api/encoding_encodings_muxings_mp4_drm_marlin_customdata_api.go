@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsMp4DrmMarlinCustomdataAPIWithClient(apiClient *a
 	return a
 }
 
-// Get Marlin DRM Custom Data of an MP4 muxing
+// Get Marlin DRM from an MP4 muxing Custom Data
 func (api *EncodingEncodingsMuxingsMp4DrmMarlinCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

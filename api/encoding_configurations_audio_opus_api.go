@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioOpusAPI) Delete(configurationId string) (*
 	return &responseModel, err
 }
 
-// Get Opus Codec Configuration Details
+// Get Opus Codec Configuration details
 func (api *EncodingConfigurationsAudioOpusAPI) Get(configurationId string) (*model.OpusAudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

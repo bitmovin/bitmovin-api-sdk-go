@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsImageAPIWithClient(apiClient *
 	return a
 }
 
-// Create Add Image AdaptationSet
+// Create Image AdaptationSet
 func (api *EncodingManifestsDashPeriodsAdaptationsetsImageAPI) Create(manifestId string, periodId string, imageAdaptationSet model.ImageAdaptationSet) (*model.ImageAdaptationSet, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -52,7 +52,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsImageAPI) Delete(manifestId
 	return &responseModel, err
 }
 
-// Get Image AdaptationSet Details
+// Get Image AdaptationSet details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsImageAPI) Get(manifestId string, periodId string, adaptationsetId string) (*model.ImageAdaptationSet, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -65,7 +65,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsImageAPI) Get(manifestId st
 	return &responseModel, err
 }
 
-// List all Image AdaptationSets
+// List Image AdaptationSets
 func (api *EncodingManifestsDashPeriodsAdaptationsetsImageAPI) List(manifestId string, periodId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsImageAPIListQueryParams)) (*pagination.ImageAdaptationSetsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsImageAPIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsTextCustomdataAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Get Text muxing custom data
+// Get Text muxing Custom Data
 func (api *EncodingEncodingsMuxingsTextCustomdataAPI) Get(encodingId string, muxingId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

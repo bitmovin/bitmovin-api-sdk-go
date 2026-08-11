@@ -35,7 +35,7 @@ func NewEncodingEncodingsMuxingsMp3APIWithClient(apiClient *apiclient.APIClient)
 	return a
 }
 
-// Create Add MP3 muxing
+// Create MP3 muxing
 func (api *EncodingEncodingsMuxingsMp3API) Create(encodingId string, mp3Muxing model.Mp3Muxing) (*model.Mp3Muxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

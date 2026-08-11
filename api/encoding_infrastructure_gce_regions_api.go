@@ -51,7 +51,7 @@ func (api *EncodingInfrastructureGceRegionsAPI) Delete(infrastructureId string, 
 	return &responseModel, err
 }
 
-// Get Google Cloud Region Settings Details
+// Get Google Cloud Region Settings details
 func (api *EncodingInfrastructureGceRegionsAPI) Get(infrastructureId string, region model.GoogleCloudRegion) (*model.GceAccountRegionSettings, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["infrastructure_id"] = infrastructureId

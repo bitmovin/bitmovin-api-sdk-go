@@ -35,7 +35,7 @@ func NewEncodingEncodingsSidecarsAPIWithClient(apiClient *apiclient.APIClient) *
 	return a
 }
 
-// Create Add Sidecar
+// Create Sidecar
 func (api *EncodingEncodingsSidecarsAPI) Create(encodingId string, sidecarFile model.SidecarFile) (*model.SidecarFile, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -58,7 +58,7 @@ func (api *EncodingEncodingsSidecarsAPI) Delete(encodingId string, sidecarId str
 	return &responseModel, err
 }
 
-// Get Sidecar Details
+// Get Sidecar details
 func (api *EncodingEncodingsSidecarsAPI) Get(encodingId string, sidecarId string) (*model.SidecarFile, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

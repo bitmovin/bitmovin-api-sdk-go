@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsProgressiveTsDrmFairplayAPIWithClient(apiClient 
 	return a
 }
 
-// Create Add FairPlay DRM to a Progressive TS muxing
+// Create FairPlay DRM to a Progressive TS muxing
 func (api *EncodingEncodingsMuxingsProgressiveTsDrmFairplayAPI) Create(encodingId string, muxingId string, fairPlayDrm model.FairPlayDrm) (*model.FairPlayDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsProgressiveTsDrmFairplayAPI) Delete(encodingI
 	return &responseModel, err
 }
 
-// Get FairPlay DRM Details of a Progressive TS
+// Get FairPlay DRM from a Progressive TS muxing details
 func (api *EncodingEncodingsMuxingsProgressiveTsDrmFairplayAPI) Get(encodingId string, muxingId string, drmId string) (*model.FairPlayDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

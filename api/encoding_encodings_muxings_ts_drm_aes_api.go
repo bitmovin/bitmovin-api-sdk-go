@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsTsDrmAesAPIWithClient(apiClient *apiclient.APICl
 	return a
 }
 
-// Create Add AES encryption configuration to a TS muxing
+// Create AES encryption configuration to a TS muxing
 func (api *EncodingEncodingsMuxingsTsDrmAesAPI) Create(encodingId string, muxingId string, aesEncryptionDrm model.AesEncryptionDrm) (*model.AesEncryptionDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsTsDrmAesAPI) Delete(encodingId string, muxing
 	return &responseModel, err
 }
 
-// Get AES encryption Details of a TS muxing
+// Get AES encryption configuration from a TS muxing details
 func (api *EncodingEncodingsMuxingsTsDrmAesAPI) Get(encodingId string, muxingId string, drmId string) (*model.AesEncryptionDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

@@ -48,7 +48,7 @@ func (api *EncodingConfigurationsAudioPassthroughAPI) Delete(configurationId str
 	return &responseModel, err
 }
 
-// Get Audio Passthrough Configuration Details
+// Get Audio Passthrough Codec Configuration details
 func (api *EncodingConfigurationsAudioPassthroughAPI) Get(configurationId string) (*model.PassthroughAudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsVideoMjpegAPI) Delete(configurationId string) (
 	return &responseModel, err
 }
 
-// Get MJPEG Codec Configuration Details
+// Get MJPEG Codec Configuration details
 func (api *EncodingConfigurationsVideoMjpegAPI) Get(configurationId string) (*model.MjpegVideoConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

@@ -32,7 +32,7 @@ func NewEncodingEncodingsStreamsSpritesAPIWithClient(apiClient *apiclient.APICli
 	return a
 }
 
-// Create Add Sprite
+// Create Sprite
 func (api *EncodingEncodingsStreamsSpritesAPI) Create(encodingId string, streamId string, sprite model.Sprite) (*model.Sprite, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsStreamsSpritesAPI) Delete(encodingId string, streamI
 	return &responseModel, err
 }
 
-// Get Sprite Details
+// Get Sprite details
 func (api *EncodingEncodingsStreamsSpritesAPI) Get(encodingId string, streamId string, spriteId string) (*model.Sprite, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

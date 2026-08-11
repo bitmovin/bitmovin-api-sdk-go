@@ -32,7 +32,7 @@ func NewEncodingInfrastructureAkamaiAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Create Add Akamai account
+// Create Akamai account
 func (api *EncodingInfrastructureAkamaiAPI) Create(akamaiAccount model.AkamaiAccount) (*model.AkamaiAccount, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

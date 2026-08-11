@@ -38,7 +38,7 @@ func NewEncodingEncodingsMuxingsProgressiveWebmAPIWithClient(apiClient *apiclien
 	return a
 }
 
-// Create Add Progressive WebM muxing
+// Create Progressive WebM muxing
 func (api *EncodingEncodingsMuxingsProgressiveWebmAPI) Create(encodingId string, progressiveWebmMuxing model.ProgressiveWebmMuxing) (*model.ProgressiveWebmMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsFmp4DrmPrimetimeAPIWithClient(apiClient *apiclie
 	return a
 }
 
-// Create Add PrimeTime DRM to an fMP4 muxing
+// Create PrimeTime DRM to an fMP4 muxing
 func (api *EncodingEncodingsMuxingsFmp4DrmPrimetimeAPI) Create(encodingId string, muxingId string, primeTimeDrm model.PrimeTimeDrm) (*model.PrimeTimeDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsFmp4DrmPrimetimeAPI) Delete(encodingId string
 	return &responseModel, err
 }
 
-// Get PrimeTime DRM Details of an fMP4 muxing
+// Get PrimeTime DRM from an fMP4 muxing details
 func (api *EncodingEncodingsMuxingsFmp4DrmPrimetimeAPI) Get(encodingId string, muxingId string, drmId string) (*model.PrimeTimeDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

@@ -32,7 +32,7 @@ func NewNotificationsWebhooksEncodingEncodingsLiveManifestReadyAPIWithClient(api
 	return a
 }
 
-// Create Add &#39;Live Manifest Ready&#39; Webhook
+// Create &#39;Live Manifest Ready&#39; Webhook
 // Add a webhook notification that is triggered when a live manifest is ready, meaning at least one segment is available in every playlist. A maximum number of 5 webhooks is allowed
 func (api *NotificationsWebhooksEncodingEncodingsLiveManifestReadyAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
@@ -43,7 +43,7 @@ func (api *NotificationsWebhooksEncodingEncodingsLiveManifestReadyAPI) Create(we
 	return &responseModel, err
 }
 
-// CreateByEncodingId Add &#39;Live Manifest Ready&#39; Webhook for a specific Encoding
+// CreateByEncodingId Create &#39;Live Manifest Ready&#39; Webhook for a specific Encoding
 // Add a webhook notification that triggers when a live manifest is ready for a specific encoding. A maximum number of 5 webhooks per Encoding is allowed. For a running live encoding (V2 manifest generator, encoder version &#x60;2.276.0&#x60; or above) it is propagated asynchronously (eventually consistent, typically sub-second) and does not require a restart; if the manifest is already ready, it fires immediately and exactly once. Org-level webhooks apply on the next start.
 func (api *NotificationsWebhooksEncodingEncodingsLiveManifestReadyAPI) CreateByEncodingId(encodingId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
@@ -79,7 +79,7 @@ func (api *NotificationsWebhooksEncodingEncodingsLiveManifestReadyAPI) DeleteByW
 	return &responseModel, err
 }
 
-// GetByEncodingIdAndWebhookId &#39;Live Manifest Ready&#39; Webhook Details for a specific Encoding
+// GetByEncodingIdAndWebhookId Get &#39;Live Manifest Ready&#39; Webhook details for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsLiveManifestReadyAPI) GetByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -91,7 +91,7 @@ func (api *NotificationsWebhooksEncodingEncodingsLiveManifestReadyAPI) GetByEnco
 	return &responseModel, err
 }
 
-// GetByWebhookId &#39;Live Manifest Ready&#39; Webhook Details
+// GetByWebhookId Get &#39;Live Manifest Ready&#39; Webhook details
 func (api *NotificationsWebhooksEncodingEncodingsLiveManifestReadyAPI) GetByWebhookId(webhookId string) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["webhook_id"] = webhookId

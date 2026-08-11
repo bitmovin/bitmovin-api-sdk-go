@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsCmafAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Create Add CMAF muxing
+// Create CMAF muxing
 func (api *EncodingEncodingsMuxingsCmafAPI) Create(encodingId string, cmafMuxing model.CmafMuxing) (*model.CmafMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

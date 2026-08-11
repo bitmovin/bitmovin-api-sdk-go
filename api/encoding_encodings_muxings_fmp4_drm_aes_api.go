@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsFmp4DrmAesAPIWithClient(apiClient *apiclient.API
 	return a
 }
 
-// Create Add AES encryption configuration to fMP4
+// Create AES encryption configuration to fMP4
 func (api *EncodingEncodingsMuxingsFmp4DrmAesAPI) Create(encodingId string, muxingId string, aesEncryptionDrm model.AesEncryptionDrm) (*model.AesEncryptionDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsFmp4DrmAesAPI) Delete(encodingId string, muxi
 	return &responseModel, err
 }
 
-// Get AES encryption Details of an fMP4 muxing
+// Get AES encryption configuration from an fMP4 muxing details
 func (api *EncodingEncodingsMuxingsFmp4DrmAesAPI) Get(encodingId string, muxingId string, drmId string) (*model.AesEncryptionDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

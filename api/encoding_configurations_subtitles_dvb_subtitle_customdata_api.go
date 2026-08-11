@@ -26,7 +26,7 @@ func NewEncodingConfigurationsSubtitlesDvbSubtitleCustomdataAPIWithClient(apiCli
 	return a
 }
 
-// Get DVB-SUB subtitle configuration custom data
+// Get DVB-SUB subtitle configuration Custom Data
 func (api *EncodingConfigurationsSubtitlesDvbSubtitleCustomdataAPI) Get(configurationId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

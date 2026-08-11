@@ -53,7 +53,7 @@ func (api *EncodingInputsS3RoleBasedAPI) Delete(inputId string) (*model.S3RoleBa
 	return &responseModel, err
 }
 
-// Get S3 Role-based Input Details
+// Get S3 Role-based Input details
 func (api *EncodingInputsS3RoleBasedAPI) Get(inputId string) (*model.S3RoleBasedInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

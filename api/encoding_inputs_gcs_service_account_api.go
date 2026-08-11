@@ -53,7 +53,7 @@ func (api *EncodingInputsGcsServiceAccountAPI) Delete(inputId string) (*model.Gc
 	return &responseModel, err
 }
 
-// Get List Service Account based GCS Input Details
+// Get Service Account based GCS Input details
 func (api *EncodingInputsGcsServiceAccountAPI) Get(inputId string) (*model.GcsServiceAccountInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

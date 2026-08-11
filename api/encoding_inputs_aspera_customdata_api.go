@@ -26,7 +26,7 @@ func NewEncodingInputsAsperaCustomdataAPIWithClient(apiClient *apiclient.APIClie
 	return a
 }
 
-// Get Aspera Custom Data
+// Get Aspera Input Custom Data
 func (api *EncodingInputsAsperaCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

@@ -53,7 +53,7 @@ func (api *EncodingInputsAkamaiNetstorageAPI) Delete(inputId string) (*model.Aka
 	return &responseModel, err
 }
 
-// Get Akamai NetStorage Input Details
+// Get Akamai NetStorage Input details
 func (api *EncodingInputsAkamaiNetstorageAPI) Get(inputId string) (*model.AkamaiNetStorageInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

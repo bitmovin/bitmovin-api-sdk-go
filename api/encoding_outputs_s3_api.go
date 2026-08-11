@@ -53,7 +53,7 @@ func (api *EncodingOutputsS3API) Delete(outputId string) (*model.S3Output, error
 	return &responseModel, err
 }
 
-// Get S3 Output Details
+// Get S3 Output details
 func (api *EncodingOutputsS3API) Get(outputId string) (*model.S3Output, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["output_id"] = outputId

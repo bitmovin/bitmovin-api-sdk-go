@@ -26,7 +26,7 @@ func NewEncodingInputsAkamaiNetstorageCustomdataAPIWithClient(apiClient *apiclie
 	return a
 }
 
-// Get Akamai NetStorage Custom Data
+// Get Akamai NetStorage Input Custom Data
 func (api *EncodingInputsAkamaiNetstorageCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

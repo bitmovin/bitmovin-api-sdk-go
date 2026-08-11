@@ -63,7 +63,7 @@ func (api *EncodingManifestsHlsAPI) Delete(manifestId string) (*model.BitmovinRe
 	return &responseModel, err
 }
 
-// Get HLS Manifest Details
+// Get HLS Manifest details
 func (api *EncodingManifestsHlsAPI) Get(manifestId string) (*model.HlsManifest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -74,7 +74,7 @@ func (api *EncodingManifestsHlsAPI) Get(manifestId string) (*model.HlsManifest, 
 	return &responseModel, err
 }
 
-// GetStartRequest Manifest Start Details
+// GetStartRequest HLS Manifest Start Details
 func (api *EncodingManifestsHlsAPI) GetStartRequest(manifestId string) (*model.StartManifestRequest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId

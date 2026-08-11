@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsSubtitleAPIWithClient(apiClien
 	return a
 }
 
-// Create Add Subtitle AdaptationSet
+// Create Subtitle AdaptationSet
 func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleAPI) Create(manifestId string, periodId string, subtitleAdaptationSet model.SubtitleAdaptationSet) (*model.SubtitleAdaptationSet, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -52,7 +52,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleAPI) Delete(manifes
 	return &responseModel, err
 }
 
-// Get Subtitle AdaptationSet Details
+// Get Subtitle AdaptationSet details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleAPI) Get(manifestId string, periodId string, adaptationsetId string) (*model.SubtitleAdaptationSet, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -65,7 +65,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleAPI) Get(manifestId
 	return &responseModel, err
 }
 
-// List all Subtitle AdaptationSets
+// List Subtitle AdaptationSets
 func (api *EncodingManifestsDashPeriodsAdaptationsetsSubtitleAPI) List(manifestId string, periodId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsSubtitleAPIListQueryParams)) (*pagination.SubtitleAdaptationSetsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsSubtitleAPIListQueryParams{}
 	for _, queryParam := range queryParams {

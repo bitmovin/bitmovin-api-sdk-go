@@ -53,7 +53,7 @@ func (api *EncodingFiltersDeinterlaceAPI) Delete(filterId string) (*model.Bitmov
 	return &responseModel, err
 }
 
-// Get Deinterlace Filter Details
+// Get Deinterlace Filter details
 func (api *EncodingFiltersDeinterlaceAPI) Get(filterId string) (*model.DeinterlaceFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

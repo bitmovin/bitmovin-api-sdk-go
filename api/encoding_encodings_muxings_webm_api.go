@@ -35,7 +35,7 @@ func NewEncodingEncodingsMuxingsWebmAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Create Add WebM muxing
+// Create WebM muxing
 func (api *EncodingEncodingsMuxingsWebmAPI) Create(encodingId string, webmMuxing model.WebmMuxing) (*model.WebmMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

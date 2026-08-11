@@ -34,7 +34,7 @@ func NewNotificationsWebhooksEncodingManifestAPIWithClient(apiClient *apiclient.
 	return a
 }
 
-// List Webhook Notifications (Specific Manifest)
+// List Webhooks for a specific Manifest
 func (api *NotificationsWebhooksEncodingManifestAPI) List(manifestId string, queryParams ...func(*NotificationsWebhooksEncodingManifestAPIListQueryParams)) (*pagination.NotificationsListPagination, error) {
 	queryParameters := &NotificationsWebhooksEncodingManifestAPIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -38,7 +38,7 @@ func (api *EncodingEncodingsSidecarsWebvttAPI) Create(encodingId string, webVttS
 	return &responseModel, err
 }
 
-// Delete Sidecar
+// Delete WebVTT Sidecar
 func (api *EncodingEncodingsSidecarsWebvttAPI) Delete(encodingId string, sidecarId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -50,7 +50,7 @@ func (api *EncodingEncodingsSidecarsWebvttAPI) Delete(encodingId string, sidecar
 	return &responseModel, err
 }
 
-// Get WebVTT Sidecar Details
+// Get WebVTT Sidecar details
 func (api *EncodingEncodingsSidecarsWebvttAPI) Get(encodingId string, sidecarId string) (*model.WebVttSidecarFile, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

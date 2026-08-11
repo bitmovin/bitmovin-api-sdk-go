@@ -26,7 +26,7 @@ func NewEncodingEncodingsStreamsWatermarkingNexguardFileMarkerCustomdataAPIWithC
 	return a
 }
 
-// Get Nexguard file marker watermarking configuration Custom Data
+// Get Nexguard file marker watermarking configurations Custom Data
 func (api *EncodingEncodingsStreamsWatermarkingNexguardFileMarkerCustomdataAPI) Get(encodingId string, streamId string, nexguardId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

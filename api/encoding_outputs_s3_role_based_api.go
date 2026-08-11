@@ -53,7 +53,7 @@ func (api *EncodingOutputsS3RoleBasedAPI) Delete(outputId string) (*model.S3Role
 	return &responseModel, err
 }
 
-// Get S3 Role-based Output Details
+// Get S3 Role-based Output details
 func (api *EncodingOutputsS3RoleBasedAPI) Get(outputId string) (*model.S3RoleBasedOutput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["output_id"] = outputId

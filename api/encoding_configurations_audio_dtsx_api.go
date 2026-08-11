@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioDtsxAPI) Delete(configurationId string) (*
 	return &responseModel, err
 }
 
-// Get DTS:X Codec Configuration Details
+// Get DTS:X Codec Configuration details
 func (api *EncodingConfigurationsAudioDtsxAPI) Get(configurationId string) (*model.DtsXAudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

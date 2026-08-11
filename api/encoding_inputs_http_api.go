@@ -53,7 +53,7 @@ func (api *EncodingInputsHttpAPI) Delete(inputId string) (*model.HttpInput, erro
 	return &responseModel, err
 }
 
-// Get HTTP Input Details
+// Get HTTP Input details
 func (api *EncodingInputsHttpAPI) Get(inputId string) (*model.HttpInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

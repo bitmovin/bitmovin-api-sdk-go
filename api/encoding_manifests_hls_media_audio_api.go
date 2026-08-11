@@ -27,7 +27,7 @@ func NewEncodingManifestsHlsMediaAudioAPIWithClient(apiClient *apiclient.APIClie
 	return a
 }
 
-// Create Add Audio Media
+// Create Audio Media
 func (api *EncodingManifestsHlsMediaAudioAPI) Create(manifestId string, audioMediaInfo model.AudioMediaInfo) (*model.AudioMediaInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -50,7 +50,7 @@ func (api *EncodingManifestsHlsMediaAudioAPI) Delete(manifestId string, mediaId 
 	return &responseModel, err
 }
 
-// Get Audio Media Details
+// Get Audio Media details
 func (api *EncodingManifestsHlsMediaAudioAPI) Get(manifestId string, mediaId string) (*model.AudioMediaInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -62,7 +62,7 @@ func (api *EncodingManifestsHlsMediaAudioAPI) Get(manifestId string, mediaId str
 	return &responseModel, err
 }
 
-// List all Audio Media
+// List Audio Media
 func (api *EncodingManifestsHlsMediaAudioAPI) List(manifestId string, queryParams ...func(*EncodingManifestsHlsMediaAudioAPIListQueryParams)) (*pagination.AudioMediaInfosListPagination, error) {
 	queryParameters := &EncodingManifestsHlsMediaAudioAPIListQueryParams{}
 	for _, queryParam := range queryParams {

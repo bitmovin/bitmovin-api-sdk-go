@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsMp4DrmPlayreadyAPIWithClient(apiClient *apiclien
 	return a
 }
 
-// Create Add PlayReady DRM to an MP4 muxing
+// Create PlayReady DRM to an MP4 muxing
 func (api *EncodingEncodingsMuxingsMp4DrmPlayreadyAPI) Create(encodingId string, muxingId string, playReadyDrm model.PlayReadyDrm) (*model.PlayReadyDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsMp4DrmPlayreadyAPI) Delete(encodingId string,
 	return &responseModel, err
 }
 
-// Get PlayReady DRM Details of an MP4 muxing
+// Get PlayReady DRM from an MP4 muxing details
 func (api *EncodingEncodingsMuxingsMp4DrmPlayreadyAPI) Get(encodingId string, muxingId string, drmId string) (*model.PlayReadyDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

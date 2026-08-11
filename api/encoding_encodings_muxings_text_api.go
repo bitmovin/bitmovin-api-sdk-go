@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsTextAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Create Add Text muxing
+// Create Text muxing
 func (api *EncodingEncodingsMuxingsTextAPI) Create(encodingId string, textMuxing model.TextMuxing) (*model.TextMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

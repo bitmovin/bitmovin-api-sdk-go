@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsProgressiveWebmDrmSpekeCustomdataAPIWithClient(a
 	return a
 }
 
-// Get SPEKE DRM Custom Data of a Progressive WebM muxing
+// Get SPEKE DRM from a Progressive WebM muxing Custom Data
 func (api *EncodingEncodingsMuxingsProgressiveWebmDrmSpekeCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

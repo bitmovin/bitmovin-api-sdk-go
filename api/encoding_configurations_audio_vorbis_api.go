@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioVorbisAPI) Delete(configurationId string) 
 	return &responseModel, err
 }
 
-// Get Vorbis Codec Configuration Details
+// Get Vorbis Codec Configuration details
 func (api *EncodingConfigurationsAudioVorbisAPI) Get(configurationId string) (*model.VorbisAudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

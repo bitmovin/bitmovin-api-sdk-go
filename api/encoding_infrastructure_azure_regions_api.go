@@ -51,7 +51,7 @@ func (api *EncodingInfrastructureAzureRegionsAPI) Delete(infrastructureId string
 	return &responseModel, err
 }
 
-// Get Azure Region Settings Details
+// Get Azure Region Settings details
 func (api *EncodingInfrastructureAzureRegionsAPI) Get(infrastructureId string, region model.AzureCloudRegion) (*model.AzureAccountRegionSettings, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["infrastructure_id"] = infrastructureId

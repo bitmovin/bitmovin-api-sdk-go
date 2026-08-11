@@ -27,7 +27,7 @@ func NewEncodingInfrastructureStaticIpsAPIWithClient(apiClient *apiclient.APICli
 	return a
 }
 
-// Create Add Static IP Address
+// Create Static IP Address
 func (api *EncodingInfrastructureStaticIpsAPI) Create(staticIp model.StaticIp) (*model.StaticIp, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -48,7 +48,7 @@ func (api *EncodingInfrastructureStaticIpsAPI) Delete(id string) (*model.Bitmovi
 	return &responseModel, err
 }
 
-// Get Static IP Address Details
+// Get Static IP Address details
 func (api *EncodingInfrastructureStaticIpsAPI) Get(id string) (*model.StaticIp, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["id"] = id
@@ -59,7 +59,7 @@ func (api *EncodingInfrastructureStaticIpsAPI) Get(id string) (*model.StaticIp, 
 	return &responseModel, err
 }
 
-// List all Static IP Addresses
+// List Static IP Addresses
 func (api *EncodingInfrastructureStaticIpsAPI) List(queryParams ...func(*EncodingInfrastructureStaticIpsAPIListQueryParams)) (*pagination.StaticIpsListPagination, error) {
 	queryParameters := &EncodingInfrastructureStaticIpsAPIListQueryParams{}
 	for _, queryParam := range queryParams {

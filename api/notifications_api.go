@@ -49,7 +49,7 @@ func (api *NotificationsAPI) Delete(notificationId string) (*model.BitmovinRespo
 	return &responseModel, err
 }
 
-// Get Notification
+// Get Notification details
 func (api *NotificationsAPI) Get(notificationId string) (*model.Notification, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["notification_id"] = notificationId
@@ -76,7 +76,7 @@ func (api *NotificationsAPI) List(queryParams ...func(*NotificationsAPIListQuery
 	return &responseModel, err
 }
 
-// ListByNotificationId List Notification State History (All Resources)
+// ListByNotificationId List Notification State History
 func (api *NotificationsAPI) ListByNotificationId(notificationId string, queryParams ...func(*NotificationsAPIListByNotificationIdQueryParams)) (*pagination.NotificationStateEntrysListByNotificationIdPagination, error) {
 	queryParameters := &NotificationsAPIListByNotificationIdQueryParams{}
 	for _, queryParam := range queryParams {

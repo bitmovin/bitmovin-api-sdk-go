@@ -59,7 +59,7 @@ func (api *EncodingWatchFoldersAPI) Get(watchFolderId string) (*model.WatchFolde
 	return &responseModel, err
 }
 
-// List all Watch Folders
+// List Watch Folders
 func (api *EncodingWatchFoldersAPI) List(queryParams ...func(*EncodingWatchFoldersAPIListQueryParams)) (*pagination.WatchFoldersListPagination, error) {
 	queryParameters := &EncodingWatchFoldersAPIListQueryParams{}
 	for _, queryParam := range queryParams {

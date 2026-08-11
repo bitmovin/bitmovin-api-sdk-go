@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsSpriteAPIWithCl
 	return a
 }
 
-// Create Add Sprite Representation
+// Create Sprite Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsSpriteAPI) Create(manifestId string, periodId string, adaptationsetId string, spriteRepresentation model.SpriteRepresentation) (*model.SpriteRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -54,7 +54,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsSpriteAPI) D
 	return &responseModel, err
 }
 
-// Get Sprite Representation Details
+// Get Sprite Representation details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsSpriteAPI) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.SpriteRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -68,7 +68,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsSpriteAPI) G
 	return &responseModel, err
 }
 
-// List all Sprite Representations
+// List Sprite Representations
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsSpriteAPI) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsSpriteAPIListQueryParams)) (*pagination.SpriteRepresentationsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsSpriteAPIListQueryParams{}
 	for _, queryParam := range queryParams {

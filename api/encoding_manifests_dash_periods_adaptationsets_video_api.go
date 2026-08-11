@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsVideoAPIWithClient(apiClient *
 	return a
 }
 
-// Create Add Video AdaptationSet
+// Create Video AdaptationSet
 func (api *EncodingManifestsDashPeriodsAdaptationsetsVideoAPI) Create(manifestId string, periodId string, videoAdaptationSet model.VideoAdaptationSet) (*model.VideoAdaptationSet, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -52,7 +52,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsVideoAPI) Delete(manifestId
 	return &responseModel, err
 }
 
-// Get Video AdaptationSet Details
+// Get Video AdaptationSet details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsVideoAPI) Get(manifestId string, periodId string, adaptationsetId string) (*model.VideoAdaptationSet, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -65,7 +65,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsVideoAPI) Get(manifestId st
 	return &responseModel, err
 }
 
-// List all Video AdaptationSets
+// List Video AdaptationSets
 func (api *EncodingManifestsDashPeriodsAdaptationsetsVideoAPI) List(manifestId string, periodId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsVideoAPIListQueryParams)) (*pagination.VideoAdaptationSetsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsVideoAPIListQueryParams{}
 	for _, queryParam := range queryParams {

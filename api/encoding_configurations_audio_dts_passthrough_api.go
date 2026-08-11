@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioDtsPassthroughAPI) Delete(configurationId 
 	return &responseModel, err
 }
 
-// Get DTS Passthrough Codec Configuration Details
+// Get DTS Passthrough Codec Configuration details
 func (api *EncodingConfigurationsAudioDtsPassthroughAPI) Get(configurationId string) (*model.DtsPassthroughAudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

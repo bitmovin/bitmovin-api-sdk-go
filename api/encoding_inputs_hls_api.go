@@ -48,7 +48,7 @@ func (api *EncodingInputsHlsAPI) Delete(inputId string) (*model.HlsInput, error)
 	return &responseModel, err
 }
 
-// Get HLS Input Details
+// Get HLS Input details
 func (api *EncodingInputsHlsAPI) Get(inputId string) (*model.HlsInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

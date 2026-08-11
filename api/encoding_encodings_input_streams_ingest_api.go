@@ -27,7 +27,7 @@ func NewEncodingEncodingsInputStreamsIngestAPIWithClient(apiClient *apiclient.AP
 	return a
 }
 
-// Create Add Ingest Input Stream
+// Create Ingest Input Stream
 func (api *EncodingEncodingsInputStreamsIngestAPI) Create(encodingId string, ingestInputStream model.IngestInputStream) (*model.IngestInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -50,7 +50,7 @@ func (api *EncodingEncodingsInputStreamsIngestAPI) Delete(encodingId string, inp
 	return &responseModel, err
 }
 
-// Get Ingest Input Stream Details
+// Get Ingest Input Stream details
 func (api *EncodingEncodingsInputStreamsIngestAPI) Get(encodingId string, inputStreamId string) (*model.IngestInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

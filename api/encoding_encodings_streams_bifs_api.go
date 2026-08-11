@@ -32,7 +32,7 @@ func NewEncodingEncodingsStreamsBifsAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Create Add a Roku Bif file
+// Create a Roku Bif file
 func (api *EncodingEncodingsStreamsBifsAPI) Create(encodingId string, streamId string, bif model.Bif) (*model.Bif, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsStreamsBifsAPI) Delete(encodingId string, streamId s
 	return &responseModel, err
 }
 
-// Get Bif Details
+// Get Bif details
 func (api *EncodingEncodingsStreamsBifsAPI) Get(encodingId string, streamId string, bifId string) (*model.Bif, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

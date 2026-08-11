@@ -53,7 +53,7 @@ func (api *EncodingFiltersCropAPI) Delete(filterId string) (*model.BitmovinRespo
 	return &responseModel, err
 }
 
-// Get Crop Filter Details
+// Get Crop Filter details
 func (api *EncodingFiltersCropAPI) Get(filterId string) (*model.CropFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

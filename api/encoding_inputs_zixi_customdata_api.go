@@ -26,7 +26,7 @@ func NewEncodingInputsZixiCustomdataAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Get Zixi input Custom Data
+// Get Zixi Input Custom Data
 func (api *EncodingInputsZixiCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

@@ -32,7 +32,7 @@ func NewEncodingEncodingsStreamsThumbnailsAPIWithClient(apiClient *apiclient.API
 	return a
 }
 
-// Create Add Thumbnail
+// Create Thumbnail
 func (api *EncodingEncodingsStreamsThumbnailsAPI) Create(encodingId string, streamId string, thumbnail model.Thumbnail) (*model.Thumbnail, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsStreamsThumbnailsAPI) Delete(encodingId string, stre
 	return &responseModel, err
 }
 
-// Get Thumbnail Details
+// Get Thumbnail details
 func (api *EncodingEncodingsStreamsThumbnailsAPI) Get(encodingId string, streamId string, thumbnailId string) (*model.Thumbnail, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

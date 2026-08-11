@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsMp4DrmMarlinAPIWithClient(apiClient *apiclient.A
 	return a
 }
 
-// Create Add Marlin DRM to an MP4 muxing
+// Create Marlin DRM to an MP4 muxing
 func (api *EncodingEncodingsMuxingsMp4DrmMarlinAPI) Create(encodingId string, muxingId string, marlinDrm model.MarlinDrm) (*model.MarlinDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsMp4DrmMarlinAPI) Delete(encodingId string, mu
 	return &responseModel, err
 }
 
-// Get Marlin DRM Details of an MP4 muxing
+// Get Marlin DRM from an MP4 muxing details
 func (api *EncodingEncodingsMuxingsMp4DrmMarlinAPI) Get(encodingId string, muxingId string, drmId string) (*model.MarlinDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

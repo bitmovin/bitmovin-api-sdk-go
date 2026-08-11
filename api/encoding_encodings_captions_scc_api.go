@@ -32,7 +32,7 @@ func NewEncodingEncodingsCaptionsSccAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Create Convert SCC captions
+// Create SCC Caption Conversion
 func (api *EncodingEncodingsCaptionsSccAPI) Create(encodingId string, convertSccCaption model.ConvertSccCaption) (*model.ConvertSccCaption, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -43,7 +43,7 @@ func (api *EncodingEncodingsCaptionsSccAPI) Create(encodingId string, convertScc
 	return &responseModel, err
 }
 
-// Delete Convert SCC captions
+// Delete SCC Caption Conversion
 func (api *EncodingEncodingsCaptionsSccAPI) Delete(encodingId string, captionsId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -55,7 +55,7 @@ func (api *EncodingEncodingsCaptionsSccAPI) Delete(encodingId string, captionsId
 	return &responseModel, err
 }
 
-// Get Convert SCC captions Details
+// Get SCC Caption Conversion details
 func (api *EncodingEncodingsCaptionsSccAPI) Get(encodingId string, captionsId string) (*model.ConvertSccCaption, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -67,7 +67,7 @@ func (api *EncodingEncodingsCaptionsSccAPI) Get(encodingId string, captionsId st
 	return &responseModel, err
 }
 
-// List Convert SCC captions
+// List SCC Caption Conversions
 func (api *EncodingEncodingsCaptionsSccAPI) List(encodingId string, queryParams ...func(*EncodingEncodingsCaptionsSccAPIListQueryParams)) (*pagination.ConvertSccCaptionsListPagination, error) {
 	queryParameters := &EncodingEncodingsCaptionsSccAPIListQueryParams{}
 	for _, queryParam := range queryParams {

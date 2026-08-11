@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioMp3API) Delete(configurationId string) (*m
 	return &responseModel, err
 }
 
-// Get MP3 Codec Configuration Details
+// Get MP3 Codec Configuration details
 func (api *EncodingConfigurationsAudioMp3API) Get(configurationId string) (*model.Mp3AudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

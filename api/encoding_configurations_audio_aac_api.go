@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioAacAPI) Delete(configurationId string) (*m
 	return &responseModel, err
 }
 
-// Get AAC Codec Configuration Details
+// Get AAC Codec Configuration details
 func (api *EncodingConfigurationsAudioAacAPI) Get(configurationId string) (*model.AacAudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

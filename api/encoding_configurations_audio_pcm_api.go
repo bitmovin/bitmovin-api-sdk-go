@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioPcmAPI) Delete(configurationId string) (*m
 	return &responseModel, err
 }
 
-// Get PCM Codec Configuration Details
+// Get PCM Codec Configuration details
 func (api *EncodingConfigurationsAudioPcmAPI) Get(configurationId string) (*model.PcmAudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

@@ -35,7 +35,7 @@ func NewEncodingEncodingsMuxingsProgressiveWavAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Create Add Progressive Wav muxing
+// Create Progressive Wav muxing
 func (api *EncodingEncodingsMuxingsProgressiveWavAPI) Create(encodingId string, progressiveWavMuxing model.ProgressiveWavMuxing) (*model.ProgressiveWavMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

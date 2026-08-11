@@ -187,6 +187,13 @@ func unmarshalFilter(data []byte, consumer bitutils.Consumer) (Filter, error) {
 		}
 		return result, nil
 
+	case "DOLBY_LOUDNESS":
+		var result DolbyLoudnessFilter
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}

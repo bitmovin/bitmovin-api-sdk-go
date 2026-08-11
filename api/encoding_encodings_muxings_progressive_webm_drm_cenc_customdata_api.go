@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsProgressiveWebmDrmCencCustomdataAPIWithClient(ap
 	return a
 }
 
-// Get CENC DRM Custom Data of a Progressive WebM muxing
+// Get CENC DRM from a Progressive WebM muxing Custom Data
 func (api *EncodingEncodingsMuxingsProgressiveWebmDrmCencCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

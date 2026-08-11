@@ -27,7 +27,7 @@ func NewEncodingEncodingsInputStreamsTrimmingTimeBasedAPIWithClient(apiClient *a
 	return a
 }
 
-// Create Add Time-Based Trimming Input Stream
+// Create Time-Based Trimming Input Stream
 func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedAPI) Create(encodingId string, timeBasedTrimmingInputStream model.TimeBasedTrimmingInputStream) (*model.TimeBasedTrimmingInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -50,7 +50,7 @@ func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedAPI) Delete(encodingId 
 	return &responseModel, err
 }
 
-// Get Time-Based Trimming Input Stream Details
+// Get Time-Based Trimming Input Stream details
 func (api *EncodingEncodingsInputStreamsTrimmingTimeBasedAPI) Get(encodingId string, inputStreamId string) (*model.TimeBasedTrimmingInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

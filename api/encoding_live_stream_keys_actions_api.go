@@ -26,7 +26,7 @@ func NewEncodingLiveStreamKeysActionsAPIWithClient(apiClient *apiclient.APIClien
 	return a
 }
 
-// Unassign stream keys
+// Unassign Stream Keys
 func (api *EncodingLiveStreamKeysActionsAPI) Unassign(streamKeysUnassignAction model.StreamKeysUnassignAction) (*model.StreamKeysUnassignAction, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}

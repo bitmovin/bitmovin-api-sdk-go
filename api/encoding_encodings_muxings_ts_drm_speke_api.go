@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsTsDrmSpekeAPIWithClient(apiClient *apiclient.API
 	return a
 }
 
-// Create Add SPEKE DRM key provider to a TS muxing
+// Create SPEKE DRM key provider to a TS muxing
 func (api *EncodingEncodingsMuxingsTsDrmSpekeAPI) Create(encodingId string, muxingId string, spekeDrm model.SpekeDrm) (*model.SpekeDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsTsDrmSpekeAPI) Delete(encodingId string, muxi
 	return &responseModel, err
 }
 
-// Get SPEKE DRM Details of a TS muxing
+// Get SPEKE DRM from a TS muxing details
 func (api *EncodingEncodingsMuxingsTsDrmSpekeAPI) Get(encodingId string, muxingId string, drmId string) (*model.SpekeDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

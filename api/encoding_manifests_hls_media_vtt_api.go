@@ -27,7 +27,7 @@ func NewEncodingManifestsHlsMediaVttAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Create Add VTT Media
+// Create VTT Media
 func (api *EncodingManifestsHlsMediaVttAPI) Create(manifestId string, vttMediaInfo model.VttMediaInfo) (*model.VttMediaInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -50,7 +50,7 @@ func (api *EncodingManifestsHlsMediaVttAPI) Delete(manifestId string, mediaId st
 	return &responseModel, err
 }
 
-// Get VTT Media Details
+// Get VTT Media details
 func (api *EncodingManifestsHlsMediaVttAPI) Get(manifestId string, mediaId string) (*model.VttMediaInfo, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -62,7 +62,7 @@ func (api *EncodingManifestsHlsMediaVttAPI) Get(manifestId string, mediaId strin
 	return &responseModel, err
 }
 
-// List all VTT Media
+// List VTT Media
 func (api *EncodingManifestsHlsMediaVttAPI) List(manifestId string, queryParams ...func(*EncodingManifestsHlsMediaVttAPIListQueryParams)) (*pagination.VttMediaInfosListPagination, error) {
 	queryParameters := &EncodingManifestsHlsMediaVttAPIListQueryParams{}
 	for _, queryParam := range queryParams {

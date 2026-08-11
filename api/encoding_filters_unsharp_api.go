@@ -53,7 +53,7 @@ func (api *EncodingFiltersUnsharpAPI) Delete(filterId string) (*model.BitmovinRe
 	return &responseModel, err
 }
 
-// Get Unsharp Filter Details
+// Get Unsharp Filter details
 func (api *EncodingFiltersUnsharpAPI) Get(filterId string) (*model.UnsharpFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

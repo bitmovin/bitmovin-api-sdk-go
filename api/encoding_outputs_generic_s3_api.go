@@ -53,7 +53,7 @@ func (api *EncodingOutputsGenericS3API) Delete(outputId string) (*model.GenericS
 	return &responseModel, err
 }
 
-// Get Generic S3 Output Details
+// Get Generic S3 Output details
 func (api *EncodingOutputsGenericS3API) Get(outputId string) (*model.GenericS3Output, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["output_id"] = outputId

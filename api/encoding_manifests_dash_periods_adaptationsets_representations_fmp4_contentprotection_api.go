@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Contentprot
 	return a
 }
 
-// Create Add Content Protection to fMP4 Representation
+// Create Content Protection to fMP4 Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4ContentprotectionAPI) Create(manifestId string, periodId string, adaptationsetId string, representationId string, contentProtection model.ContentProtection) (*model.ContentProtection, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -56,7 +56,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Contentp
 	return &responseModel, err
 }
 
-// Get fMP4 Representation Content Protection Details
+// Get fMP4 Representation Content Protection details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4ContentprotectionAPI) Get(manifestId string, periodId string, adaptationsetId string, representationId string, contentprotectionId string) (*model.ContentProtection, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -71,7 +71,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4Contentp
 	return &responseModel, err
 }
 
-// List all fMP4 Representation Content Protections
+// List fMP4 Representation Content Protections
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4ContentprotectionAPI) List(manifestId string, periodId string, adaptationsetId string, representationId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4ContentprotectionAPIListQueryParams)) (*pagination.ContentProtectionsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4ContentprotectionAPIListQueryParams{}
 	for _, queryParam := range queryParams {

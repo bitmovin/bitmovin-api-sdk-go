@@ -26,7 +26,7 @@ func NewNotificationsStatesAPIWithClient(apiClient *apiclient.APIClient) *Notifi
 	return a
 }
 
-// List Notification State History (Specific Resource)
+// List Notification State History for a specific Resource
 func (api *NotificationsStatesAPI) List(notificationId string, resourceId string, queryParams ...func(*NotificationsStatesAPIListQueryParams)) (*pagination.NotificationStateEntrysListPagination, error) {
 	queryParameters := &NotificationsStatesAPIListQueryParams{}
 	for _, queryParam := range queryParams {

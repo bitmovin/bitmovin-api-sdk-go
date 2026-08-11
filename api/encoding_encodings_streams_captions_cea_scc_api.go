@@ -32,7 +32,7 @@ func NewEncodingEncodingsStreamsCaptionsCeaSccAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Create Embed SCC captions as 608/708 into Stream
+// Create SCC captions as 608/708
 func (api *EncodingEncodingsStreamsCaptionsCeaSccAPI) Create(encodingId string, streamId string, sccCaption model.SccCaption) (*model.SccCaption, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -44,7 +44,7 @@ func (api *EncodingEncodingsStreamsCaptionsCeaSccAPI) Create(encodingId string, 
 	return &responseModel, err
 }
 
-// Delete SCC captions as 608/708 from Stream
+// Delete SCC captions as 608/708
 func (api *EncodingEncodingsStreamsCaptionsCeaSccAPI) Delete(encodingId string, streamId string, captionsId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsStreamsCaptionsCeaSccAPI) Delete(encodingId string, 
 	return &responseModel, err
 }
 
-// Get Embed SCC captions as 608/708 Details
+// Get SCC captions as 608/708 details
 func (api *EncodingEncodingsStreamsCaptionsCeaSccAPI) Get(encodingId string, streamId string, captionsId string) (*model.SccCaption, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -70,7 +70,7 @@ func (api *EncodingEncodingsStreamsCaptionsCeaSccAPI) Get(encodingId string, str
 	return &responseModel, err
 }
 
-// List SCC captions as 608/708 from Stream
+// List SCC captions as 608/708
 func (api *EncodingEncodingsStreamsCaptionsCeaSccAPI) List(encodingId string, streamId string, queryParams ...func(*EncodingEncodingsStreamsCaptionsCeaSccAPIListQueryParams)) (*pagination.SccCaptionsListPagination, error) {
 	queryParameters := &EncodingEncodingsStreamsCaptionsCeaSccAPIListQueryParams{}
 	for _, queryParam := range queryParams {

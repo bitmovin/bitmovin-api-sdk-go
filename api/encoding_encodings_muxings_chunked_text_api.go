@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsChunkedTextAPIWithClient(apiClient *apiclient.AP
 	return a
 }
 
-// Create Add Chunked Text muxing
+// Create Chunked Text muxing
 func (api *EncodingEncodingsMuxingsChunkedTextAPI) Create(encodingId string, chunkedTextMuxing model.ChunkedTextMuxing) (*model.ChunkedTextMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

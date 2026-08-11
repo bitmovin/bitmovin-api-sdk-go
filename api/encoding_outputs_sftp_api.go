@@ -53,7 +53,7 @@ func (api *EncodingOutputsSftpAPI) Delete(outputId string) (*model.SftpOutput, e
 	return &responseModel, err
 }
 
-// Get SFTP Output Details
+// Get SFTP Output details
 func (api *EncodingOutputsSftpAPI) Get(outputId string) (*model.SftpOutput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["output_id"] = outputId

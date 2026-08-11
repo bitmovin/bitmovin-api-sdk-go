@@ -26,7 +26,7 @@ func NewEncodingEncodingsLiveHdAPIWithClient(apiClient *apiclient.APIClient) *En
 	return a
 }
 
-// GetStartRequest Live Encoding Start Details
+// GetStartRequest Get Live Encoding Channel Start Details
 func (api *EncodingEncodingsLiveHdAPI) GetStartRequest(encodingId string) (*model.StartLiveChannelEncodingRequest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

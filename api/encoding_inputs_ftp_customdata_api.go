@@ -26,7 +26,7 @@ func NewEncodingInputsFtpCustomdataAPIWithClient(apiClient *apiclient.APIClient)
 	return a
 }
 
-// Get FTP Custom Data
+// Get FTP Input Custom Data
 func (api *EncodingInputsFtpCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

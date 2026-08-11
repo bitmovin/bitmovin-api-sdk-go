@@ -53,7 +53,7 @@ func (api *EncodingFiltersInterlaceAPI) Delete(filterId string) (*model.Bitmovin
 	return &responseModel, err
 }
 
-// Get Interlace Filter Details
+// Get Interlace Filter details
 func (api *EncodingFiltersInterlaceAPI) Get(filterId string) (*model.InterlaceFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

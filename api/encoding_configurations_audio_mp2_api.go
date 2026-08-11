@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioMp2API) Delete(configurationId string) (*m
 	return &responseModel, err
 }
 
-// Get MP2 Codec Configuration Details
+// Get MP2 Codec Configuration details
 func (api *EncodingConfigurationsAudioMp2API) Get(configurationId string) (*model.Mp2AudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

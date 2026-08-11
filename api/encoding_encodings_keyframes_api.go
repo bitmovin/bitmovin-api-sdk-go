@@ -50,7 +50,7 @@ func (api *EncodingEncodingsKeyframesAPI) Delete(encodingId string, keyframeId s
 	return &responseModel, err
 }
 
-// Get Keyframe Details
+// Get Keyframe details
 func (api *EncodingEncodingsKeyframesAPI) Get(encodingId string, keyframeId string) (*model.Keyframe, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -62,7 +62,7 @@ func (api *EncodingEncodingsKeyframesAPI) Get(encodingId string, keyframeId stri
 	return &responseModel, err
 }
 
-// List all Keyframes
+// List Keyframes
 func (api *EncodingEncodingsKeyframesAPI) List(encodingId string, queryParams ...func(*EncodingEncodingsKeyframesAPIListQueryParams)) (*pagination.KeyframesListPagination, error) {
 	queryParameters := &EncodingEncodingsKeyframesAPIListQueryParams{}
 	for _, queryParam := range queryParams {

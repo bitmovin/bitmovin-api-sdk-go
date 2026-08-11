@@ -53,7 +53,7 @@ func (api *EncodingInputsFtpAPI) Delete(inputId string) (*model.FtpInput, error)
 	return &responseModel, err
 }
 
-// Get FTP Input Details
+// Get FTP Input details
 func (api *EncodingInputsFtpAPI) Get(inputId string) (*model.FtpInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

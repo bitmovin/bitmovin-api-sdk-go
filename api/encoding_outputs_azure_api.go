@@ -53,7 +53,7 @@ func (api *EncodingOutputsAzureAPI) Delete(outputId string) (*model.AzureOutput,
 	return &responseModel, err
 }
 
-// Get Azure Output Details
+// Get Azure Output details
 func (api *EncodingOutputsAzureAPI) Get(outputId string) (*model.AzureOutput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["output_id"] = outputId

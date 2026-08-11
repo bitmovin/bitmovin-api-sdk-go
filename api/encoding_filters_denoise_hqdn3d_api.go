@@ -53,7 +53,7 @@ func (api *EncodingFiltersDenoiseHqdn3dAPI) Delete(filterId string) (*model.Bitm
 	return &responseModel, err
 }
 
-// Get Denoise hqdn3d Filter Details
+// Get Denoise hqdn3d Filter details
 func (api *EncodingFiltersDenoiseHqdn3dAPI) Get(filterId string) (*model.DenoiseHqdn3dFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

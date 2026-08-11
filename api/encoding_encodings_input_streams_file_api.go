@@ -27,7 +27,7 @@ func NewEncodingEncodingsInputStreamsFileAPIWithClient(apiClient *apiclient.APIC
 	return a
 }
 
-// Create Add File input stream
+// Create File input stream
 func (api *EncodingEncodingsInputStreamsFileAPI) Create(encodingId string, fileInputStream model.FileInputStream) (*model.FileInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -38,7 +38,7 @@ func (api *EncodingEncodingsInputStreamsFileAPI) Create(encodingId string, fileI
 	return &responseModel, err
 }
 
-// Delete File stream
+// Delete File Input Stream
 func (api *EncodingEncodingsInputStreamsFileAPI) Delete(encodingId string, inputStreamId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -50,7 +50,7 @@ func (api *EncodingEncodingsInputStreamsFileAPI) Delete(encodingId string, input
 	return &responseModel, err
 }
 
-// Get File input stream details
+// Get File Input Stream details
 func (api *EncodingEncodingsInputStreamsFileAPI) Get(encodingId string, inputStreamId string) (*model.FileInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

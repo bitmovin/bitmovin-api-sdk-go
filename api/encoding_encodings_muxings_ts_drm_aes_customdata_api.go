@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsTsDrmAesCustomdataAPIWithClient(apiClient *apicl
 	return a
 }
 
-// Get AES encryption Custom Data of a TS muxing
+// Get AES encryption configuration from a TS muxing Custom Data
 func (api *EncodingEncodingsMuxingsTsDrmAesCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

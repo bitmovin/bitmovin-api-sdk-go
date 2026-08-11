@@ -27,7 +27,7 @@ func NewEncodingEncodingsInputStreamsSubtitlesDvbSubtitleAPIWithClient(apiClient
 	return a
 }
 
-// Create Add DVB Subtitle Input Stream
+// Create DVB Subtitle Input Stream
 func (api *EncodingEncodingsInputStreamsSubtitlesDvbSubtitleAPI) Create(encodingId string, dvbSubtitleInputStream model.DvbSubtitleInputStream) (*model.DvbSubtitleInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -50,7 +50,7 @@ func (api *EncodingEncodingsInputStreamsSubtitlesDvbSubtitleAPI) Delete(encoding
 	return &responseModel, err
 }
 
-// Get DVB Subtitle Input Stream Details
+// Get DVB Subtitle Input Stream details
 func (api *EncodingEncodingsInputStreamsSubtitlesDvbSubtitleAPI) Get(encodingId string, inputStreamId string) (*model.DvbSubtitleInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

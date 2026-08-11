@@ -32,7 +32,7 @@ func NewEncodingInfrastructureGceAPIWithClient(apiClient *apiclient.APIClient) *
 	return a
 }
 
-// Create Add GCE Account
+// Create GCE Account
 func (api *EncodingInfrastructureGceAPI) Create(gceAccount model.GceAccount) (*model.GceAccount, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -53,7 +53,7 @@ func (api *EncodingInfrastructureGceAPI) Delete(infrastructureId string) (*model
 	return &responseModel, err
 }
 
-// Get GCE Account Details
+// Get GCE Account details
 func (api *EncodingInfrastructureGceAPI) Get(infrastructureId string) (*model.GceAccount, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["infrastructure_id"] = infrastructureId

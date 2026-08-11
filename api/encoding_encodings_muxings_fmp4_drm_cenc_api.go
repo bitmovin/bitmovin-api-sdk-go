@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsFmp4DrmCencAPIWithClient(apiClient *apiclient.AP
 	return a
 }
 
-// Create Add CENC DRM to an fMP4 muxing
+// Create CENC DRM to an fMP4 muxing
 func (api *EncodingEncodingsMuxingsFmp4DrmCencAPI) Create(encodingId string, muxingId string, cencDrm model.CencDrm) (*model.CencDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsFmp4DrmCencAPI) Delete(encodingId string, mux
 	return &responseModel, err
 }
 
-// Get CENC DRM Details of an fMP4 muxing
+// Get CENC DRM from an fMP4 muxing details
 func (api *EncodingEncodingsMuxingsFmp4DrmCencAPI) Get(encodingId string, muxingId string, drmId string) (*model.CencDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

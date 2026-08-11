@@ -26,7 +26,7 @@ func NewEncodingLiveEncodingsActionsAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Patch Update the ingest points of a Redundant RTMP Input
+// Patch Update Ingest Points of a Redundant RTMP Input
 func (api *EncodingLiveEncodingsActionsAPI) Patch(encodingId string, updateEncodingRtmpIngestPointRequest model.UpdateEncodingRtmpIngestPointRequest) (*model.UpdateEncodingRtmpIngestPointResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

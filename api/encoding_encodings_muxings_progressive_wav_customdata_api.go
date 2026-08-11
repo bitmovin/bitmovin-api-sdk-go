@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsProgressiveWavCustomdataAPIWithClient(apiClient 
 	return a
 }
 
-// Get Progressive Wav muxing Custom Data
+// Get Progressive WAV muxing Custom Data
 func (api *EncodingEncodingsMuxingsProgressiveWavCustomdataAPI) Get(encodingId string, muxingId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

@@ -26,7 +26,7 @@ func NewNotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPIWithClient
 	return a
 }
 
-// Create Add Encoding Changed Webhook Notification (All Encodings)
+// Create &#39;Encoding Status Changed&#39; Webhook
 func (api *NotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPI) Create(webhookNotificationWithStreamConditionsRequest model.WebhookNotificationWithStreamConditionsRequest) (*model.WebhookNotificationWithStreamConditions, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -36,7 +36,7 @@ func (api *NotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPI) Creat
 	return &responseModel, err
 }
 
-// CreateByEncodingId Add Encoding Changed Webhook Notification (Specific Encoding)
+// CreateByEncodingId Create &#39;Encoding Status Changed&#39; Webhook for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPI) CreateByEncodingId(encodingId string, webhookNotificationWithStreamConditionsRequest model.WebhookNotificationWithStreamConditionsRequest) (*model.WebhookNotificationWithStreamConditions, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -47,7 +47,7 @@ func (api *NotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPI) Creat
 	return &responseModel, err
 }
 
-// DeleteByWebhookId Delete Encoding Status Changed Webhook
+// DeleteByWebhookId Delete &#39;Encoding Status Changed&#39; Webhook
 func (api *NotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPI) DeleteByWebhookId(notificationId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["notification_id"] = notificationId
@@ -58,7 +58,7 @@ func (api *NotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPI) Delet
 	return &responseModel, err
 }
 
-// Update Replace Encoding Status Changed Webhook Notification
+// Update &#39;Encoding Status Changed&#39; Webhook
 func (api *NotificationsWebhooksEncodingEncodingsEncodingStatusChangedAPI) Update(notificationId string, webhookNotificationWithStreamConditionsRequest model.WebhookNotificationWithStreamConditionsRequest) (*model.WebhookNotificationWithStreamConditions, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["notification_id"] = notificationId

@@ -27,7 +27,7 @@ func NewEncodingEncodingsStreamsBurnInSubtitlesAssaAPIWithClient(apiClient *apic
 	return a
 }
 
-// Create Burn-In ASSA Subtitle into Stream
+// Create Burn-In ASSA Subtitle
 func (api *EncodingEncodingsStreamsBurnInSubtitlesAssaAPI) Create(encodingId string, streamId string, burnInSubtitleAssa model.BurnInSubtitleAssa) (*model.BurnInSubtitleAssa, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -39,7 +39,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesAssaAPI) Create(encodingId str
 	return &responseModel, err
 }
 
-// Delete Burn-In ASSA Subtitle from Stream
+// Delete Burn-In ASSA Subtitle
 func (api *EncodingEncodingsStreamsBurnInSubtitlesAssaAPI) Delete(encodingId string, streamId string, subtitleId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -52,7 +52,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesAssaAPI) Delete(encodingId str
 	return &responseModel, err
 }
 
-// Get Burn-In ASSA Subtitle Details
+// Get Burn-In ASSA Subtitle details
 func (api *EncodingEncodingsStreamsBurnInSubtitlesAssaAPI) Get(encodingId string, streamId string, subtitleId string) (*model.BurnInSubtitleAssa, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -65,7 +65,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesAssaAPI) Get(encodingId string
 	return &responseModel, err
 }
 
-// List the Burn-In ASSA subtitles of a stream
+// List Burn-In ASSA Subtitles
 func (api *EncodingEncodingsStreamsBurnInSubtitlesAssaAPI) List(encodingId string, streamId string, queryParams ...func(*EncodingEncodingsStreamsBurnInSubtitlesAssaAPIListQueryParams)) (*pagination.BurnInSubtitleAssasListPagination, error) {
 	queryParameters := &EncodingEncodingsStreamsBurnInSubtitlesAssaAPIListQueryParams{}
 	for _, queryParam := range queryParams {

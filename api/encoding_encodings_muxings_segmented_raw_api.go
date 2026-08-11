@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsSegmentedRawAPIWithClient(apiClient *apiclient.A
 	return a
 }
 
-// Create Add Segmented RAW muxing
+// Create Segmented RAW muxing
 func (api *EncodingEncodingsMuxingsSegmentedRawAPI) Create(encodingId string, segmentedRawMuxing model.SegmentedRawMuxing) (*model.SegmentedRawMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

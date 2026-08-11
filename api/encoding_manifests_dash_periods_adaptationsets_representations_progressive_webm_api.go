@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsProgressiveWebm
 	return a
 }
 
-// Create Add Progressive WebM Representation
+// Create Progressive WebM Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsProgressiveWebmAPI) Create(manifestId string, periodId string, adaptationsetId string, dashProgressiveWebmRepresentation model.DashProgressiveWebmRepresentation) (*model.DashProgressiveWebmRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -54,7 +54,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsProgressiveW
 	return &responseModel, err
 }
 
-// Get Progressive WebM Representation Details
+// Get Progressive WebM Representation details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsProgressiveWebmAPI) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashProgressiveWebmRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -68,7 +68,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsProgressiveW
 	return &responseModel, err
 }
 
-// List all Progressive WebM Representations
+// List Progressive WebM Representations
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsProgressiveWebmAPI) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsProgressiveWebmAPIListQueryParams)) (*pagination.DashProgressiveWebmRepresentationsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsProgressiveWebmAPIListQueryParams{}
 	for _, queryParam := range queryParams {

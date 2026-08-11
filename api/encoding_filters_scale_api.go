@@ -53,7 +53,7 @@ func (api *EncodingFiltersScaleAPI) Delete(filterId string) (*model.BitmovinResp
 	return &responseModel, err
 }
 
-// Get Scale Filter Details
+// Get Scale Filter details
 func (api *EncodingFiltersScaleAPI) Get(filterId string) (*model.ScaleFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

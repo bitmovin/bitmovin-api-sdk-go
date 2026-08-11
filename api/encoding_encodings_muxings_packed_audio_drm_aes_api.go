@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsPackedAudioDrmAesAPIWithClient(apiClient *apicli
 	return a
 }
 
-// Create Add AES encryption configuration to the Packed Audio muxing
+// Create AES encryption configuration to a Packed Audio muxing
 func (api *EncodingEncodingsMuxingsPackedAudioDrmAesAPI) Create(encodingId string, muxingId string, aesEncryptionDrm model.AesEncryptionDrm) (*model.AesEncryptionDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsPackedAudioDrmAesAPI) Delete(encodingId strin
 	return &responseModel, err
 }
 
-// Get AES encryption Details of a Packed Audio muxing
+// Get AES encryption configuration from a Packed Audio muxing details
 func (api *EncodingEncodingsMuxingsPackedAudioDrmAesAPI) Get(encodingId string, muxingId string, drmId string) (*model.AesEncryptionDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

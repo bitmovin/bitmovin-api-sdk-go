@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsAudioDolbyDigitalPlusAPI) Delete(configurationI
 	return &responseModel, err
 }
 
-// Get Dolby Digital Plus Codec Configuration Details
+// Get Dolby Digital Plus Codec Configuration details
 func (api *EncodingConfigurationsAudioDolbyDigitalPlusAPI) Get(configurationId string) (*model.DolbyDigitalPlusAudioConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

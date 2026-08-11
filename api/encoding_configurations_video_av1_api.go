@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsVideoAv1API) Delete(configurationId string) (*m
 	return &responseModel, err
 }
 
-// Get AV1 Codec Configuration Details
+// Get AV1 Codec Configuration details
 func (api *EncodingConfigurationsVideoAv1API) Get(configurationId string) (*model.Av1VideoConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

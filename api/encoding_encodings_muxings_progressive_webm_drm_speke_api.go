@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsProgressiveWebmDrmSpekeAPIWithClient(apiClient *
 	return a
 }
 
-// Create Add SPEKE DRM key provider to Progressive WebM
+// Create SPEKE DRM key provider to Progressive WebM
 func (api *EncodingEncodingsMuxingsProgressiveWebmDrmSpekeAPI) Create(encodingId string, muxingId string, spekeDrm model.SpekeDrm) (*model.SpekeDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsProgressiveWebmDrmSpekeAPI) Delete(encodingId
 	return &responseModel, err
 }
 
-// Get SPEKE DRM Details of a Progressive WebM muxing
+// Get SPEKE DRM from a Progressive WebM muxing details
 func (api *EncodingEncodingsMuxingsProgressiveWebmDrmSpekeAPI) Get(encodingId string, muxingId string, drmId string) (*model.SpekeDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

@@ -53,7 +53,7 @@ func (api *EncodingInputsDirectFileUploadAPI) Delete(inputId string) (*model.Bit
 	return &responseModel, err
 }
 
-// Get Direct File Upload Input Details
+// Get Direct File Upload Input details
 func (api *EncodingInputsDirectFileUploadAPI) Get(inputId string) (*model.DirectFileUploadInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

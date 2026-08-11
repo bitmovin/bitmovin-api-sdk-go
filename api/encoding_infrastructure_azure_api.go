@@ -32,7 +32,7 @@ func NewEncodingInfrastructureAzureAPIWithClient(apiClient *apiclient.APIClient)
 	return a
 }
 
-// Create Add Azure Account
+// Create Azure Account
 func (api *EncodingInfrastructureAzureAPI) Create(azureAccount model.AzureAccount) (*model.AzureAccount, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -53,7 +53,7 @@ func (api *EncodingInfrastructureAzureAPI) Delete(infrastructureId string) (*mod
 	return &responseModel, err
 }
 
-// Get Azure Account Details
+// Get Azure Account details
 func (api *EncodingInfrastructureAzureAPI) Get(infrastructureId string) (*model.AzureAccount, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["infrastructure_id"] = infrastructureId

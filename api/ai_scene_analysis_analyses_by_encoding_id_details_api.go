@@ -31,7 +31,7 @@ func NewAiSceneAnalysisAnalysesByEncodingIdDetailsAPIWithClient(apiClient *apicl
 	return a
 }
 
-// Get AI scene analysis details by encoding ID
+// Get AI Scene Analysis details
 // Returns detailed AI scene analysis for a given encoding.
 func (api *AiSceneAnalysisAnalysesByEncodingIdDetailsAPI) Get(encodingId string) (*model.SceneAnalysisDetailsResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {

@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsFmp4DrmWidevineCustomdataAPIWithClient(apiClient
 	return a
 }
 
-// Get Widevine DRM Custom Data of an fMP4 muxing
+// Get Widevine DRM from an fMP4 muxing Custom Data
 func (api *EncodingEncodingsMuxingsFmp4DrmWidevineCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

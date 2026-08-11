@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsPackedAudioDrmAesCustomdataAPIWithClient(apiClie
 	return a
 }
 
-// Get AES encryption Custom Data of a Packed Audio muxing
+// Get AES encryption configuration from a Packed Audio muxing Custom Data
 func (api *EncodingEncodingsMuxingsPackedAudioDrmAesCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

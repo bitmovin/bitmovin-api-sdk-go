@@ -7,4 +7,5 @@ type SceneAnalysisListSort string
 const (
 	SceneAnalysisListSort_CREATED_AT_DESC SceneAnalysisListSort = "createdAt:DESC"
 	SceneAnalysisListSort_CREATED_AT_ASC  SceneAnalysisListSort = "createdAt:ASC"
+	SceneAnalysisListSort_RELEVANCE_DESC  SceneAnalysisListSort = "relevance:DESC"
 )

@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsVideoVp9API) Delete(configurationId string) (*m
 	return &responseModel, err
 }
 
-// Get VP9 Codec Configuration Details
+// Get VP9 Codec Configuration details
 func (api *EncodingConfigurationsVideoVp9API) Get(configurationId string) (*model.Vp9VideoConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

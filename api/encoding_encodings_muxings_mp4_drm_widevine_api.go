@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsMp4DrmWidevineAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Create Add Widevine DRM to an MP4 muxing
+// Create Widevine DRM to an MP4 muxing
 func (api *EncodingEncodingsMuxingsMp4DrmWidevineAPI) Create(encodingId string, muxingId string, widevineDrm model.WidevineDrm) (*model.WidevineDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsMp4DrmWidevineAPI) Delete(encodingId string, 
 	return &responseModel, err
 }
 
-// Get Widevine DRM Details of an MP4 muxing
+// Get Widevine DRM from an MP4 muxing details
 func (api *EncodingEncodingsMuxingsMp4DrmWidevineAPI) Get(encodingId string, muxingId string, drmId string) (*model.WidevineDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

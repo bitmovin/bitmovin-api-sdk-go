@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsFmp4DrmCencCustomdataAPIWithClient(apiClient *ap
 	return a
 }
 
-// Get CENC DRM Custom Data of an fMP4 muxing
+// Get CENC DRM from an fMP4 muxing Custom Data
 func (api *EncodingEncodingsMuxingsFmp4DrmCencCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

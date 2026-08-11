@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsMp4DrmSpekeAPIWithClient(apiClient *apiclient.AP
 	return a
 }
 
-// Create Add SPEKE DRM key provider to an MP4 muxing
+// Create SPEKE DRM key provider to an MP4 muxing
 func (api *EncodingEncodingsMuxingsMp4DrmSpekeAPI) Create(encodingId string, muxingId string, spekeDrm model.SpekeDrm) (*model.SpekeDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsMp4DrmSpekeAPI) Delete(encodingId string, mux
 	return &responseModel, err
 }
 
-// Get SPEKE DRM Details of an MP4 muxing
+// Get SPEKE DRM from an MP4 muxing details
 func (api *EncodingEncodingsMuxingsMp4DrmSpekeAPI) Get(encodingId string, muxingId string, drmId string) (*model.SpekeDrm, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

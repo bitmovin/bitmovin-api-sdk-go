@@ -35,7 +35,7 @@ func NewEncodingManifestsDashPeriodsAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Create Add Period
+// Create Period
 func (api *EncodingManifestsDashPeriodsAPI) Create(manifestId string, period model.Period) (*model.Period, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -58,7 +58,7 @@ func (api *EncodingManifestsDashPeriodsAPI) Delete(manifestId string, periodId s
 	return &responseModel, err
 }
 
-// Get Period Details
+// Get Period details
 func (api *EncodingManifestsDashPeriodsAPI) Get(manifestId string, periodId string) (*model.Period, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -70,7 +70,7 @@ func (api *EncodingManifestsDashPeriodsAPI) Get(manifestId string, periodId stri
 	return &responseModel, err
 }
 
-// List all Periods
+// List Periods
 func (api *EncodingManifestsDashPeriodsAPI) List(manifestId string, queryParams ...func(*EncodingManifestsDashPeriodsAPIListQueryParams)) (*pagination.PeriodsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAPIListQueryParams{}
 	for _, queryParam := range queryParams {

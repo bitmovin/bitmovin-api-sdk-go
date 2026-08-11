@@ -26,7 +26,7 @@ func NewNotificationsWebhooksEncodingEncodingsLiveInputStreamChangedAPIWithClien
 	return a
 }
 
-// Create Add Live Input Stream Changed Webhook Notification (All Encodings)
+// Create &#39;Live Input Stream Changed&#39; Webhook
 func (api *NotificationsWebhooksEncodingEncodingsLiveInputStreamChangedAPI) Create(webhookNotificationWithStreamConditionsRequest model.WebhookNotificationWithStreamConditionsRequest) (*model.WebhookNotificationWithStreamConditions, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 	}
@@ -36,7 +36,7 @@ func (api *NotificationsWebhooksEncodingEncodingsLiveInputStreamChangedAPI) Crea
 	return &responseModel, err
 }
 
-// CreateByEncodingId Add Live Input Stream Changed Webhook Notification (Specific Encoding)
+// CreateByEncodingId Create &#39;Live Input Stream Changed&#39; Webhook for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsLiveInputStreamChangedAPI) CreateByEncodingId(encodingId string, webhookNotificationWithStreamConditionsRequest model.WebhookNotificationWithStreamConditionsRequest) (*model.WebhookNotificationWithStreamConditions, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -47,7 +47,7 @@ func (api *NotificationsWebhooksEncodingEncodingsLiveInputStreamChangedAPI) Crea
 	return &responseModel, err
 }
 
-// Update Replace Live Input Stream Changed Webhook Notification
+// Update &#39;Live Input Stream Changed&#39; Webhook
 func (api *NotificationsWebhooksEncodingEncodingsLiveInputStreamChangedAPI) Update(notificationId string, webhookNotificationWithStreamConditionsRequest model.WebhookNotificationWithStreamConditionsRequest) (*model.WebhookNotificationWithStreamConditions, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["notification_id"] = notificationId

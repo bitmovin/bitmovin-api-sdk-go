@@ -36,6 +36,8 @@ type EncodingFiltersAPI struct {
 	DenoiseHqdn3d *EncodingFiltersDenoiseHqdn3dAPI
 	// EbuR128SinglePass communicates with '/encoding/filters/ebu-r128-single-pass' endpoints
 	EbuR128SinglePass *EncodingFiltersEbuR128SinglePassAPI
+	// DolbyLoudness communicates with '/encoding/filters/dolby-loudness' endpoints
+	DolbyLoudness *EncodingFiltersDolbyLoudnessAPI
 	// Text communicates with '/encoding/filters/text' endpoints
 	Text *EncodingFiltersTextAPI
 	// Interlace communicates with '/encoding/filters/interlace' endpoints
@@ -72,6 +74,7 @@ func NewEncodingFiltersAPIWithClient(apiClient *apiclient.APIClient) *EncodingFi
 	a.AudioMix = NewEncodingFiltersAudioMixAPIWithClient(apiClient)
 	a.DenoiseHqdn3d = NewEncodingFiltersDenoiseHqdn3dAPIWithClient(apiClient)
 	a.EbuR128SinglePass = NewEncodingFiltersEbuR128SinglePassAPIWithClient(apiClient)
+	a.DolbyLoudness = NewEncodingFiltersDolbyLoudnessAPIWithClient(apiClient)
 	a.Text = NewEncodingFiltersTextAPIWithClient(apiClient)
 	a.Interlace = NewEncodingFiltersInterlaceAPIWithClient(apiClient)
 	a.Unsharp = NewEncodingFiltersUnsharpAPIWithClient(apiClient)

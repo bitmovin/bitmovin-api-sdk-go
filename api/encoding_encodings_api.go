@@ -86,7 +86,7 @@ func (api *EncodingEncodingsAPI) Delete(encodingId string) (*model.BitmovinRespo
 	return &responseModel, err
 }
 
-// Get Encoding Details
+// Get Encoding details
 func (api *EncodingEncodingsAPI) Get(encodingId string) (*model.Encoding, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -97,7 +97,7 @@ func (api *EncodingEncodingsAPI) Get(encodingId string) (*model.Encoding, error)
 	return &responseModel, err
 }
 
-// GetStartRequest Encoding Start Details
+// GetStartRequest Get Encoding Start Details
 func (api *EncodingEncodingsAPI) GetStartRequest(encodingId string) (*model.StartEncodingRequest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -108,7 +108,7 @@ func (api *EncodingEncodingsAPI) GetStartRequest(encodingId string) (*model.Star
 	return &responseModel, err
 }
 
-// List all Encodings
+// List Encodings
 // Bitmovin retains historical encoding jobs data for a period of 90 days. Should you require the data to be stored for an extended duration, it is necessary to store it within your own data repository.
 func (api *EncodingEncodingsAPI) List(queryParams ...func(*EncodingEncodingsAPIListQueryParams)) (*pagination.EncodingsListPagination, error) {
 	queryParameters := &EncodingEncodingsAPIListQueryParams{}
@@ -147,7 +147,7 @@ func (api *EncodingEncodingsAPI) Reschedule(encodingId string, rescheduleEncodin
 	return &responseModel, err
 }
 
-// Start VoD Encoding
+// Start VOD Encoding
 func (api *EncodingEncodingsAPI) Start(encodingId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -158,7 +158,7 @@ func (api *EncodingEncodingsAPI) Start(encodingId string) (*model.BitmovinRespon
 	return &responseModel, err
 }
 
-// Start VoD Encoding
+// Start VOD Encoding
 func (api *EncodingEncodingsAPI) StartWithRequestBody(encodingId string, startEncodingRequest model.StartEncodingRequest) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -169,7 +169,7 @@ func (api *EncodingEncodingsAPI) StartWithRequestBody(encodingId string, startEn
 	return &responseModel, err
 }
 
-// Status Encoding Status
+// Status Get Encoding Status
 func (api *EncodingEncodingsAPI) Status(encodingId string) (*model.ModelTask, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -180,7 +180,7 @@ func (api *EncodingEncodingsAPI) Status(encodingId string) (*model.ModelTask, er
 	return &responseModel, err
 }
 
-// Stop Encoding
+// Stop VOD Encoding
 func (api *EncodingEncodingsAPI) Stop(encodingId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

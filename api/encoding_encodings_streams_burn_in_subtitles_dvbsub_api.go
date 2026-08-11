@@ -27,7 +27,7 @@ func NewEncodingEncodingsStreamsBurnInSubtitlesDvbsubAPIWithClient(apiClient *ap
 	return a
 }
 
-// Create Burn-In DVB-SUB Subtitle into Stream
+// Create Burn-In DVB-SUB Subtitle
 func (api *EncodingEncodingsStreamsBurnInSubtitlesDvbsubAPI) Create(encodingId string, streamId string, burnInSubtitleDvbSub model.BurnInSubtitleDvbSub) (*model.BurnInSubtitleDvbSub, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -39,7 +39,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesDvbsubAPI) Create(encodingId s
 	return &responseModel, err
 }
 
-// Delete Burn-In DVB-SUB Subtitle from Stream
+// Delete Burn-In DVB-SUB Subtitle
 func (api *EncodingEncodingsStreamsBurnInSubtitlesDvbsubAPI) Delete(encodingId string, streamId string, subtitleId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -52,7 +52,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesDvbsubAPI) Delete(encodingId s
 	return &responseModel, err
 }
 
-// Get Burn-In DVB-SUB Subtitle Details
+// Get Burn-In DVB-SUB Subtitle details
 func (api *EncodingEncodingsStreamsBurnInSubtitlesDvbsubAPI) Get(encodingId string, streamId string, subtitleId string) (*model.BurnInSubtitleDvbSub, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -65,7 +65,7 @@ func (api *EncodingEncodingsStreamsBurnInSubtitlesDvbsubAPI) Get(encodingId stri
 	return &responseModel, err
 }
 
-// List the Burn-In DVB-SUB subtitles of a stream
+// List Burn-In DVB-SUB Subtitles
 func (api *EncodingEncodingsStreamsBurnInSubtitlesDvbsubAPI) List(encodingId string, streamId string, queryParams ...func(*EncodingEncodingsStreamsBurnInSubtitlesDvbsubAPIListQueryParams)) (*pagination.BurnInSubtitleDvbSubsListPagination, error) {
 	queryParameters := &EncodingEncodingsStreamsBurnInSubtitlesDvbsubAPIListQueryParams{}
 	for _, queryParam := range queryParams {

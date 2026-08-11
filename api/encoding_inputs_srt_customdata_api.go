@@ -26,7 +26,7 @@ func NewEncodingInputsSrtCustomdataAPIWithClient(apiClient *apiclient.APIClient)
 	return a
 }
 
-// Get SRT input Custom Data
+// Get SRT Input Custom Data
 func (api *EncodingInputsSrtCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

@@ -53,7 +53,7 @@ func (api *EncodingInputsAsperaAPI) Delete(inputId string) (*model.AsperaInput, 
 	return &responseModel, err
 }
 
-// Get Aspera Input Details
+// Get Aspera Input details
 func (api *EncodingInputsAsperaAPI) Get(inputId string) (*model.AsperaInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttAPIWithClien
 	return a
 }
 
-// Create Add VTT Representation
+// Create VTT Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttAPI) Create(manifestId string, periodId string, adaptationsetId string, dashVttRepresentation model.DashVttRepresentation) (*model.DashVttRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -54,7 +54,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttAPI) Dele
 	return &responseModel, err
 }
 
-// Get VTT Representation Details
+// Get VTT Representation details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttAPI) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashVttRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -68,7 +68,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttAPI) Get(
 	return &responseModel, err
 }
 
-// List all VTT Representations
+// List VTT Representations
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttAPI) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttAPIListQueryParams)) (*pagination.DashVttRepresentationsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsVttAPIListQueryParams{}
 	for _, queryParam := range queryParams {

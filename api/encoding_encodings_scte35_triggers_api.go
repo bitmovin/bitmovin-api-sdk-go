@@ -27,7 +27,7 @@ func NewEncodingEncodingsScte35TriggersAPIWithClient(apiClient *apiclient.APICli
 	return a
 }
 
-// Create SCTE 35 trigger
+// Create SCTE 35 Trigger
 // This endpoint supports VOD encodings only. Requests made with a live encoding ID will fail.
 func (api *EncodingEncodingsScte35TriggersAPI) Create(encodingId string, scte35Trigger model.Scte35Trigger) (*model.Scte35Trigger, error) {
 	reqParams := func(params *apiclient.RequestParams) {
@@ -65,7 +65,7 @@ func (api *EncodingEncodingsScte35TriggersAPI) Get(encodingId string, scte35trig
 	return &responseModel, err
 }
 
-// List all SCTE 35 triggers for an encoding
+// List SCTE 35 Triggers
 // This endpoint supports VOD encodings only. Requests made with a live encoding ID will fail.
 func (api *EncodingEncodingsScte35TriggersAPI) List(encodingId string, queryParams ...func(*EncodingEncodingsScte35TriggersAPIListQueryParams)) (*pagination.Scte35TriggersListPagination, error) {
 	queryParameters := &EncodingEncodingsScte35TriggersAPIListQueryParams{}

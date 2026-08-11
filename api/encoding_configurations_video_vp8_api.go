@@ -53,7 +53,7 @@ func (api *EncodingConfigurationsVideoVp8API) Delete(configurationId string) (*m
 	return &responseModel, err
 }
 
-// Get VP8 Codec Configuration Details
+// Get VP8 Codec Configuration details
 func (api *EncodingConfigurationsVideoVp8API) Get(configurationId string) (*model.Vp8VideoConfiguration, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId
@@ -64,7 +64,7 @@ func (api *EncodingConfigurationsVideoVp8API) Get(configurationId string) (*mode
 	return &responseModel, err
 }
 
-// List issues a Get request to /encoding/configurations/video/vp8
+// List VP8 Codec Configurations
 func (api *EncodingConfigurationsVideoVp8API) List(queryParams ...func(*EncodingConfigurationsVideoVp8APIListQueryParams)) (*pagination.Vp8VideoConfigurationsListPagination, error) {
 	queryParameters := &EncodingConfigurationsVideoVp8APIListQueryParams{}
 	for _, queryParam := range queryParams {

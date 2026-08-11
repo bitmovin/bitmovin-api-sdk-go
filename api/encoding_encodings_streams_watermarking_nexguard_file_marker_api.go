@@ -32,7 +32,7 @@ func NewEncodingEncodingsStreamsWatermarkingNexguardFileMarkerAPIWithClient(apiC
 	return a
 }
 
-// Create Add a nexguard file marker watermarking configurations
+// Create a nexguard file marker watermarking configurations
 // Nexguard FileMarker watermarking has several restrictions on the shape of your streams and muxings. The supported muxings are currently fMP4, TS and WebM; segment naming must follow &#x60;&lt;filename&gt;_&lt;number&gt;.&lt;extension&gt;&#x60;; init segment naming must follow &#x60;&lt;filename&gt;_init.&lt;extension&gt;&#x60; Supported framerates:   * 23.976   * 24.000   * 25.000   * 29.970   * 30.000   * 48.000   * 50.000   * 59.940   * 60.000  Resolution:   * 320 &lt;&#x3D; width &lt;&#x3D; 5120   * 240 &lt;&#x3D; height &lt;&#x3D; 3200  And the GOP size has to be 2 or 2.002 seconds. Please note that our api requires the gop size to be in frames.
 func (api *EncodingEncodingsStreamsWatermarkingNexguardFileMarkerAPI) Create(encodingId string, streamId string, nexGuardFileMarker model.NexGuardFileMarker) (*model.NexGuardFileMarker, error) {
 	reqParams := func(params *apiclient.RequestParams) {
@@ -45,7 +45,7 @@ func (api *EncodingEncodingsStreamsWatermarkingNexguardFileMarkerAPI) Create(enc
 	return &responseModel, err
 }
 
-// Delete nexguard file marker watermarking configurations
+// Delete Nexguard file marker watermarking configurations
 func (api *EncodingEncodingsStreamsWatermarkingNexguardFileMarkerAPI) Delete(encodingId string, streamId string, nexguardId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

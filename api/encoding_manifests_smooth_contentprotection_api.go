@@ -27,7 +27,7 @@ func NewEncodingManifestsSmoothContentprotectionAPIWithClient(apiClient *apiclie
 	return a
 }
 
-// Create Add Content Protection to Smooth Streaming
+// Create Content Protection to Smooth Streaming
 func (api *EncodingManifestsSmoothContentprotectionAPI) Create(manifestId string, smoothManifestContentProtection model.SmoothManifestContentProtection) (*model.SmoothManifestContentProtection, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -38,7 +38,7 @@ func (api *EncodingManifestsSmoothContentprotectionAPI) Create(manifestId string
 	return &responseModel, err
 }
 
-// Delete Content Protection of Smooth Streaming
+// Delete Content Protection of Smooth Streaming Representation
 func (api *EncodingManifestsSmoothContentprotectionAPI) Delete(manifestId string, protectionId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -50,7 +50,7 @@ func (api *EncodingManifestsSmoothContentprotectionAPI) Delete(manifestId string
 	return &responseModel, err
 }
 
-// Get Content Protection of Smooth Streaming Representation Details
+// Get Content Protection of Smooth Streaming Representation details
 func (api *EncodingManifestsSmoothContentprotectionAPI) Get(manifestId string, protectionId string) (*model.SmoothManifestContentProtection, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId

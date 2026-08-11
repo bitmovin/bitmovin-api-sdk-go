@@ -26,7 +26,7 @@ func NewEncodingEncodingsStreamsCaptionsCeaSccCustomdataAPIWithClient(apiClient 
 	return a
 }
 
-// Get Embed SCC captions as 608/708 Custom Data
+// Get SCC captions as 608/708 Custom Data
 func (api *EncodingEncodingsStreamsCaptionsCeaSccCustomdataAPI) Get(encodingId string, streamId string, captionsId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

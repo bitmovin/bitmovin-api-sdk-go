@@ -48,7 +48,7 @@ func (api *EncodingInputsRedundantRtmpAPI) Delete(inputId string) (*model.Bitmov
 	return &responseModel, err
 }
 
-// Get Redundant RTMP Input Details
+// Get Redundant RTMP Input details
 func (api *EncodingInputsRedundantRtmpAPI) Get(inputId string) (*model.RedundantRtmpInput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

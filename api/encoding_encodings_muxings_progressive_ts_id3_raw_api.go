@@ -32,7 +32,7 @@ func NewEncodingEncodingsMuxingsProgressiveTsId3RawAPIWithClient(apiClient *apic
 	return a
 }
 
-// Create Add Raw ID3 Tag to a Progressive TS muxing
+// Create Raw ID3 Tag to a Progressive TS muxing
 func (api *EncodingEncodingsMuxingsProgressiveTsId3RawAPI) Create(encodingId string, muxingId string, rawId3Tag model.RawId3Tag) (*model.RawId3Tag, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -57,7 +57,7 @@ func (api *EncodingEncodingsMuxingsProgressiveTsId3RawAPI) Delete(encodingId str
 	return &responseModel, err
 }
 
-// Get Raw ID3 Tag Details of a Progressive TS muxing
+// Get Raw ID3 Tag of a Progressive TS muxing details
 func (api *EncodingEncodingsMuxingsProgressiveTsId3RawAPI) Get(encodingId string, muxingId string, id3TagId string) (*model.RawId3Tag, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

@@ -26,7 +26,7 @@ func NewEncodingInputsS3RoleBasedCustomdataAPIWithClient(apiClient *apiclient.AP
 	return a
 }
 
-// Get S3 Custom Data
+// Get S3 Role-based Input Custom Data
 func (api *EncodingInputsS3RoleBasedCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

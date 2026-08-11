@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsFmp4DrmClearkeyCustomdataAPIWithClient(apiClient
 	return a
 }
 
-// Get ClearKey DRM Custom Data of an fMP4 muxing
+// Get ClearKey DRM from an fMP4 muxing Custom Data
 func (api *EncodingEncodingsMuxingsFmp4DrmClearkeyCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

@@ -26,7 +26,7 @@ func NewEncodingConfigurationsSubtitlesImscCustomdataAPIWithClient(apiClient *ap
 	return a
 }
 
-// Get IMSC subtitle configuration custom data
+// Get IMSC subtitle configuration Custom Data
 func (api *EncodingConfigurationsSubtitlesImscCustomdataAPI) Get(configurationId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["configuration_id"] = configurationId

@@ -53,7 +53,7 @@ func (api *EncodingFiltersEbuR128SinglePassAPI) Delete(filterId string) (*model.
 	return &responseModel, err
 }
 
-// Get EBU R128 Single Pass Filter Details
+// Get EBU R128 Single Pass Filter details
 func (api *EncodingFiltersEbuR128SinglePassAPI) Get(filterId string) (*model.EbuR128SinglePassFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

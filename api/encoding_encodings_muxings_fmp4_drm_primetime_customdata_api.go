@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsFmp4DrmPrimetimeCustomdataAPIWithClient(apiClien
 	return a
 }
 
-// Get PrimeTime DRM Custom Data of an fMP4 muxing
+// Get PrimeTime DRM from an fMP4 muxing Custom Data
 func (api *EncodingEncodingsMuxingsFmp4DrmPrimetimeCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

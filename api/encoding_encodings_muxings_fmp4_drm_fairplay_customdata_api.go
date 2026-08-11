@@ -26,7 +26,7 @@ func NewEncodingEncodingsMuxingsFmp4DrmFairplayCustomdataAPIWithClient(apiClient
 	return a
 }
 
-// Get FairPlay DRM Custom Data of an fMP4 muxing
+// Get FairPlay DRM from an fMP4 muxing Custom Data
 func (api *EncodingEncodingsMuxingsFmp4DrmFairplayCustomdataAPI) Get(encodingId string, muxingId string, drmId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

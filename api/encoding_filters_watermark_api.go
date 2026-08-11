@@ -53,7 +53,7 @@ func (api *EncodingFiltersWatermarkAPI) Delete(filterId string) (*model.Bitmovin
 	return &responseModel, err
 }
 
-// Get Watermark Filter Details
+// Get Watermark Filter details
 func (api *EncodingFiltersWatermarkAPI) Get(filterId string) (*model.WatermarkFilter, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["filter_id"] = filterId

@@ -53,7 +53,7 @@ func (api *EncodingOutputsGcsAPI) Delete(outputId string) (*model.GcsOutput, err
 	return &responseModel, err
 }
 
-// Get GCS Output Details
+// Get GCS Output details
 func (api *EncodingOutputsGcsAPI) Get(outputId string) (*model.GcsOutput, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["output_id"] = outputId

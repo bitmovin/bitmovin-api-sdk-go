@@ -26,7 +26,7 @@ func NewEncodingEncodingsOutputPathsAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Get Encoding Output Paths Retrieval
+// Get Encoding Output Paths
 func (api *EncodingEncodingsOutputPathsAPI) Get(encodingId string) (*[]model.EncodingOutputPaths, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

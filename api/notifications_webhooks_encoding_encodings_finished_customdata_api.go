@@ -26,7 +26,7 @@ func NewNotificationsWebhooksEncodingEncodingsFinishedCustomdataAPIWithClient(ap
 	return a
 }
 
-// GetCustomDataByEncodingIdAndWebhookId &#39;Encoding Finished&#39; Webhook Custom Data for a specific Encoding
+// GetCustomDataByEncodingIdAndWebhookId Get &#39;Encoding Finished&#39; Webhook Custom Data for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsFinishedCustomdataAPI) GetCustomDataByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -38,7 +38,7 @@ func (api *NotificationsWebhooksEncodingEncodingsFinishedCustomdataAPI) GetCusto
 	return &responseModel, err
 }
 
-// GetCustomDataByWebhookId &#39;Encoding Finished&#39; Webhook Custom Data
+// GetCustomDataByWebhookId Get &#39;Encoding Finished&#39; Webhook Custom Data
 func (api *NotificationsWebhooksEncodingEncodingsFinishedCustomdataAPI) GetCustomDataByWebhookId(webhookId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["webhook_id"] = webhookId

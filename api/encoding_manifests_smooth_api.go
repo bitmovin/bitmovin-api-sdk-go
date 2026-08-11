@@ -63,7 +63,7 @@ func (api *EncodingManifestsSmoothAPI) Delete(manifestId string) (*model.Bitmovi
 	return &responseModel, err
 }
 
-// Get Smooth Streaming Manifest Details
+// Get Smooth Streaming Manifest details
 func (api *EncodingManifestsSmoothAPI) Get(manifestId string) (*model.SmoothStreamingManifest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -74,7 +74,7 @@ func (api *EncodingManifestsSmoothAPI) Get(manifestId string) (*model.SmoothStre
 	return &responseModel, err
 }
 
-// GetStartRequest Manifest Start Details
+// GetStartRequest Smooth Streaming Manifest Start Details
 func (api *EncodingManifestsSmoothAPI) GetStartRequest(manifestId string) (*model.StartManifestRequest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId

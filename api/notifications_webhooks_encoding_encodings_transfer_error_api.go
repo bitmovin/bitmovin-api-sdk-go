@@ -32,7 +32,7 @@ func NewNotificationsWebhooksEncodingEncodingsTransferErrorAPIWithClient(apiClie
 	return a
 }
 
-// Create Add &#39;Encoding Transfer Error&#39; Webhook
+// Create &#39;Encoding Transfer Error&#39; Webhook
 // Add a new webhook notification that triggers if a transfer fails. A maximum number of 5 webhooks is allowed
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) Create(webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
@@ -43,7 +43,7 @@ func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) Create(webhoo
 	return &responseModel, err
 }
 
-// CreateByEncodingId Add &#39;Encoding Transfer Error&#39; Webhook for a specific Encoding
+// CreateByEncodingId Create &#39;Encoding Transfer Error&#39; Webhook for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) CreateByEncodingId(encodingId string, webhook model.Webhook) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -77,7 +77,7 @@ func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) DeleteByWebho
 	return &responseModel, err
 }
 
-// GetByEncodingIdAndWebhookId &#39;Encoding Transfer Error&#39; Webhook Details for a specific Encoding
+// GetByEncodingIdAndWebhookId Get &#39;Encoding Transfer Error&#39; Webhook details for a specific Encoding
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) GetByEncodingIdAndWebhookId(encodingId string, webhookId string) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -89,7 +89,7 @@ func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) GetByEncoding
 	return &responseModel, err
 }
 
-// GetByWebhookId &#39;Encoding Transfer Error&#39; Webhook Details
+// GetByWebhookId Get &#39;Encoding Transfer Error&#39; Webhook details
 func (api *NotificationsWebhooksEncodingEncodingsTransferErrorAPI) GetByWebhookId(webhookId string) (*model.Webhook, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["webhook_id"] = webhookId

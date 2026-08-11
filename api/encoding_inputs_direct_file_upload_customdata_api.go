@@ -26,7 +26,7 @@ func NewEncodingInputsDirectFileUploadCustomdataAPIWithClient(apiClient *apiclie
 	return a
 }
 
-// Get Direct File Upload Custom Data
+// Get Direct File Upload Input Custom Data
 func (api *EncodingInputsDirectFileUploadCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

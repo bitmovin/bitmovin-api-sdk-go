@@ -35,7 +35,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4APIWithClie
 	return a
 }
 
-// Create Add fMP4 Representation
+// Create fMP4 Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4API) Create(manifestId string, periodId string, adaptationsetId string, dashFmp4Representation model.DashFmp4Representation) (*model.DashFmp4Representation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -62,7 +62,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4API) Del
 	return &responseModel, err
 }
 
-// Get fMP4 Representation Details
+// Get fMP4 Representation details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4API) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashFmp4Representation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -76,7 +76,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4API) Get
 	return &responseModel, err
 }
 
-// List all fMP4 Representations
+// List fMP4 Representations
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4API) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4APIListQueryParams)) (*pagination.DashFmp4RepresentationsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsFmp4APIListQueryParams{}
 	for _, queryParam := range queryParams {

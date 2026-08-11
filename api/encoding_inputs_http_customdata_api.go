@@ -26,7 +26,7 @@ func NewEncodingInputsHttpCustomdataAPIWithClient(apiClient *apiclient.APIClient
 	return a
 }
 
-// Get HTTP Custom Data
+// Get HTTP Input Custom Data
 func (api *EncodingInputsHttpCustomdataAPI) Get(inputId string) (*model.CustomData, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

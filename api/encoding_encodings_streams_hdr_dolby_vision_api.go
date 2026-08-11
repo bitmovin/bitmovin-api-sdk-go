@@ -27,7 +27,7 @@ func NewEncodingEncodingsStreamsHdrDolbyVisionAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Create Add Dolby Vision Metadata
+// Create Dolby Vision Metadata
 func (api *EncodingEncodingsStreamsHdrDolbyVisionAPI) Create(encodingId string, streamId string, dolbyVisionMetadata model.DolbyVisionMetadata) (*model.DolbyVisionMetadata, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -52,7 +52,7 @@ func (api *EncodingEncodingsStreamsHdrDolbyVisionAPI) Delete(encodingId string, 
 	return &responseModel, err
 }
 
-// Get Dolby Vision Metadata Details
+// Get Dolby Vision Metadata details
 func (api *EncodingEncodingsStreamsHdrDolbyVisionAPI) Get(encodingId string, streamId string, hdrId string) (*model.DolbyVisionMetadata, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

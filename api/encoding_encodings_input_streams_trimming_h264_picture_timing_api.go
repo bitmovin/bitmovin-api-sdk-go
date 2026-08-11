@@ -27,7 +27,7 @@ func NewEncodingEncodingsInputStreamsTrimmingH264PictureTimingAPIWithClient(apiC
 	return a
 }
 
-// Create Add H264 Picture Timing Trimming Input Stream
+// Create H264 Picture Timing Trimming Input Stream
 func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingAPI) Create(encodingId string, h264PictureTimingTrimmingInputStream model.H264PictureTimingTrimmingInputStream) (*model.H264PictureTimingTrimmingInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
@@ -50,7 +50,7 @@ func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingAPI) Delete(enc
 	return &responseModel, err
 }
 
-// Get H264 Picture Timing Trimming Input Stream Details
+// Get H264 Picture Timing Trimming Input Stream details
 func (api *EncodingEncodingsInputStreamsTrimmingH264PictureTimingAPI) Get(encodingId string, inputStreamId string) (*model.H264PictureTimingTrimmingInputStream, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

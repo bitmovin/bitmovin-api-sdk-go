@@ -60,7 +60,7 @@ func (api *EncodingEncodingsLiveAPI) Get(encodingId string) (*model.LiveEncoding
 	return &responseModel, err
 }
 
-// GetStartRequest Live Encoding Start Details
+// GetStartRequest Get Live Encoding Start Details
 func (api *EncodingEncodingsLiveAPI) GetStartRequest(encodingId string) (*model.StartLiveEncodingRequest, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

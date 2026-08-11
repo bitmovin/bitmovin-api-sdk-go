@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4DrmAPIWithCl
 	return a
 }
 
-// Create Add DRM MP4 Representation
+// Create DRM MP4 Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4DrmAPI) Create(manifestId string, periodId string, adaptationsetId string, dashMp4DrmRepresentation model.DashMp4DrmRepresentation) (*model.DashMp4DrmRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -54,7 +54,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4DrmAPI) D
 	return &responseModel, err
 }
 
-// Get DRM MP4 Representation Details
+// Get DRM MP4 Representation details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4DrmAPI) Get(manifestId string, periodId string, adaptationsetId string, representationId string) (*model.DashMp4DrmRepresentation, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -68,7 +68,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4DrmAPI) G
 	return &responseModel, err
 }
 
-// List all DRM MP4 Representations
+// List DRM MP4 Representations
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4DrmAPI) List(manifestId string, periodId string, adaptationsetId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4DrmAPIListQueryParams)) (*pagination.DashMp4DrmRepresentationsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsMp4DrmAPIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -27,7 +27,7 @@ func NewEncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprot
 	return a
 }
 
-// Create Add Content Protection to CMAF Representation
+// Create Content Protection to CMAF Representation
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionAPI) Create(manifestId string, periodId string, adaptationsetId string, representationId string, contentProtection model.ContentProtection) (*model.ContentProtection, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -56,7 +56,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentp
 	return &responseModel, err
 }
 
-// Get CMAF Representation Content Protection Details
+// Get CMAF Representation Content Protection details
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionAPI) Get(manifestId string, periodId string, adaptationsetId string, representationId string, contentprotectionId string) (*model.ContentProtection, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -71,7 +71,7 @@ func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentp
 	return &responseModel, err
 }
 
-// List all CMAF Representation Content Protections
+// List CMAF Representation Content Protections
 func (api *EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionAPI) List(manifestId string, periodId string, adaptationsetId string, representationId string, queryParams ...func(*EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionAPIListQueryParams)) (*pagination.ContentProtectionsListPagination, error) {
 	queryParameters := &EncodingManifestsDashPeriodsAdaptationsetsRepresentationsCmafContentprotectionAPIListQueryParams{}
 	for _, queryParam := range queryParams {

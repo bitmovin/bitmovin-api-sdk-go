@@ -42,7 +42,7 @@ func (api *EncodingInfrastructurePrewarmedEncoderPoolsAPI) Create(prewarmedEncod
 	return &responseModel, err
 }
 
-// Delete prewarmed encoder pool
+// Delete Prewarmed encoder pool
 func (api *EncodingInfrastructurePrewarmedEncoderPoolsAPI) Delete(poolId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["pool_id"] = poolId

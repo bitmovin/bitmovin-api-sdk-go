@@ -39,7 +39,7 @@ func (api *EncodingManifestsHlsStreamsCustomTagsAPI) Create(manifestId string, s
 	return &responseModel, err
 }
 
-// Delete Custom Tag
+// Delete Stream Custom Tag
 func (api *EncodingManifestsHlsStreamsCustomTagsAPI) Delete(manifestId string, streamId string, customTagId string) (*model.BitmovinResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId
@@ -52,7 +52,7 @@ func (api *EncodingManifestsHlsStreamsCustomTagsAPI) Delete(manifestId string, s
 	return &responseModel, err
 }
 
-// Get Custom Tag Details
+// Get Stream Custom Tag Details
 func (api *EncodingManifestsHlsStreamsCustomTagsAPI) Get(manifestId string, streamId string, customTagId string) (*model.CustomTag, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["manifest_id"] = manifestId

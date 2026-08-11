@@ -53,7 +53,7 @@ func (api *EncodingInputsGenericS3API) Delete(inputId string) (*model.GenericS3I
 	return &responseModel, err
 }
 
-// Get Generic S3 Input Details
+// Get Generic S3 Input details
 func (api *EncodingInputsGenericS3API) Get(inputId string) (*model.GenericS3Input, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["input_id"] = inputId

@@ -35,7 +35,7 @@ func NewEncodingEncodingsMuxingsProgressiveMovAPIWithClient(apiClient *apiclient
 	return a
 }
 
-// Create Add Progressive MOV muxing
+// Create Progressive MOV muxing
 func (api *EncodingEncodingsMuxingsProgressiveMovAPI) Create(encodingId string, progressiveMovMuxing model.ProgressiveMovMuxing) (*model.ProgressiveMovMuxing, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId
