@@ -18,4 +18,6 @@ type SceneAnalysisListItem struct {
 	SceneCount *int32 `json:"sceneCount,omitempty"`
 	// Unique language codes for available translated analysis details in backend-defined deterministic order. Order and casing are returned unchanged. Omitted or empty when no translations are available; consumers must treat both representations as an empty list
 	OutputLanguageCodes []string `json:"outputLanguageCodes,omitempty"`
+	// The scene segment that best matches searchText. Present only for semantic-search requests with a non-blank searchText; omitted from ordinary list results.
+	MatchingSegment *SceneAnalysisMatchingSegment `json:"matchingSegment,omitempty"`
 }

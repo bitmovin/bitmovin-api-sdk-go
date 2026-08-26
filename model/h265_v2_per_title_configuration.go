@@ -21,8 +21,6 @@ type H265V2PerTitleConfiguration struct {
 	CodecMinBitrateFactor *float64 `json:"codecMinBitrateFactor,omitempty"`
 	// This factor is used to calculate the maxBitrate of the codec configuration for the generated representations as a multiple of the targetBitrate
 	CodecMaxBitrateFactor *float64 `json:"codecMaxBitrateFactor,omitempty"`
-	// This factor is used to calculate the bufsize of the codec configuration for the generated representations as a multiple of the targetBitrate
-	CodecBufsizeFactor *float64 `json:"codecBufsizeFactor,omitempty"`
 	// Desired target quality of the highest representation expressed as QP value used for the CQP probe encode
 	TargetQualityQp *int32 `json:"targetQualityQp,omitempty"`
 }

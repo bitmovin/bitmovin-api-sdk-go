@@ -12,4 +12,6 @@ type Shot struct {
 	Keywords []string `json:"keywords,omitempty"`
 	// A collection of the primary subjects or objects detected and tracked within this shot, including their positions and characteristics
 	MainSubjects []MainSubject `json:"mainSubjects,omitempty"`
+	// Content advisory detection results for this shot, such as tobacco or vaping imagery
+	ShotAdvisories *ShotAdvisories `json:"shotAdvisories,omitempty"`
 }

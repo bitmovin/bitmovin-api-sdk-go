@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 )
 
-// Rate control mode configuration. Use H265V2PerceptualQualityModeConfig for PQP mode or H265V2ConstantBitrateModeConfig for CBR mode.
+// Rate control mode configuration. Use H265V2PerceptualQualityModeConfig for PQP mode.
 type H265V2RateControlModeConfig interface {
 	// H265V2RateControlModeConfigType returns the discriminator type of the polymorphic model
 	H265V2RateControlModeConfigType() H265V2RateControlModeConfigType
@@ -65,13 +65,6 @@ func unmarshalH265V2RateControlModeConfig(data []byte, consumer bitutils.Consume
 	switch baseType.H265V2RateControlModeConfigType() {
 	case "PERCEPTUAL_QUALITY_MODE":
 		var result H265V2PerceptualQualityModeConfig
-		if err := consumer.Consume(buf2, &result); err != nil {
-			return nil, err
-		}
-		return result, nil
-
-	case "CONSTANT_BITRATE_MODE":
-		var result H265V2ConstantBitrateModeConfig
 		if err := consumer.Consume(buf2, &result); err != nil {
 			return nil, err
 		}

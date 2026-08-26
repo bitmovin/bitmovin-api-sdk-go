@@ -21,4 +21,5 @@ const (
 	ConditionAttribute_ROTATION                       ConditionAttribute = "ROTATION"
 	ConditionAttribute_CONNECTION_STATUS              ConditionAttribute = "CONNECTION_STATUS"
 	ConditionAttribute_CONNECTION_STATUS_JUST_CHANGED ConditionAttribute = "CONNECTION_STATUS_JUST_CHANGED"
+	ConditionAttribute_STREAMID                       ConditionAttribute = "STREAMID"
 )

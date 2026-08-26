@@ -27,8 +27,10 @@ type AkamaiMslOutput struct {
 	EventName *string `json:"eventName,omitempty"`
 	// - DASH: configure the Encoding with fMP4 or CMAF muxings and a DASH manifest. - HLS: configure the Encoding with TS muxings and an HLS manifest. - CMAF: configure the Encoding with fMP4 or CMAF muxings with both DASH and HLS manifests. (required)
 	StreamFormat AkamaiMslStreamFormat `json:"streamFormat,omitempty"`
-	// The Akamai MSL Version. Only MSL4 is supported at the moment. (required)
+	// The Akamai MSL Version. MSL4 and MSL5 are supported. (required)
 	MslVersion AkamaiMslVersion `json:"mslVersion,omitempty"`
+	// MSL5 only. HTTP Digest publishing credentials. Sending this field with `mslVersion: MSL4` is rejected. Credentials (username, password) are write-only and not returned in responses.
+	PublishingAuthentication *MslPublishingAuthentication `json:"publishingAuthentication,omitempty"`
 }
 
 func (m AkamaiMslOutput) OutputType() OutputType {

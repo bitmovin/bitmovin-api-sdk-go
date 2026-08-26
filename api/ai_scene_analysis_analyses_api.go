@@ -33,7 +33,7 @@ func NewAiSceneAnalysisAnalysesAPIWithClient(apiClient *apiclient.APIClient) *Ai
 }
 
 // List AI Scene Analyses
-// Returns a paginated list of AI scene analyses. A searchText containing at least one non-whitespace character enables semantic search, must contain between 3 and 100 characters, and uses relevance ordering; omitted, empty, or whitespace-only searchText preserves ordinary list behavior.
+// Returns a paginated list of AI scene analyses. A searchText containing at least one non-whitespace character enables semantic search, must contain between 3 and 100 characters, and uses relevance ordering; each semantic-search result includes the matching scene segment. Omitted, empty, or whitespace-only searchText preserves ordinary list behavior and omits the matching segment.
 func (api *AiSceneAnalysisAnalysesAPI) List(queryParams ...func(*AiSceneAnalysisAnalysesAPIListQueryParams)) (*pagination.SceneAnalysisListItemsListPagination, error) {
 	queryParameters := &AiSceneAnalysisAnalysesAPIListQueryParams{}
 	for _, queryParam := range queryParams {

@@ -6,4 +6,5 @@ type AkamaiMslVersion string
 // List of possible AkamaiMslVersion values
 const (
 	AkamaiMslVersion_MSL4 AkamaiMslVersion = "MSL4"
+	AkamaiMslVersion_MSL5 AkamaiMslVersion = "MSL5"
 )

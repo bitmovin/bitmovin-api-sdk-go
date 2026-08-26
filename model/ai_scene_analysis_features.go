@@ -8,4 +8,6 @@ type AiSceneAnalysisFeatures struct {
 	AutomaticAdPlacement *AiSceneAnalysisAutomaticAdPlacement `json:"automaticAdPlacement,omitempty"`
 	// AI scene analysis will create translated asset description files for the language codes.
 	OutputLanguageCodes *AiSceneAnalysisOutputLanguageCodes `json:"outputLanguageCodes,omitempty"`
+	// AI scene analysis will screen the asset for content requiring a statutory on-screen advisory and report the findings per shot in the asset description. Requires assetDescription. Contact support to enable this feature for your organization.
+	RegulatoryAdvisories *AiSceneAnalysisRegulatoryAdvisories `json:"regulatoryAdvisories,omitempty"`
 }
