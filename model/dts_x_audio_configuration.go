@@ -19,7 +19,8 @@ type DtsXAudioConfiguration struct {
 	ModifiedAt *DateTime `json:"modifiedAt,omitempty"`
 	// User-specific meta data. This can hold anything.
 	CustomData *map[string]interface{} `json:"customData,omitempty"`
-	Bitrate    MediaConfigBitrate      `json:"bitrate,omitempty"`
+	// Target bitrate for the encoded audio in bps. Allowed values are: 160000, 192000, 224000, 256000, 288000, 320000, 384000, 448000 (required)
+	Bitrate *int64 `json:"bitrate,omitempty"`
 	// Audio sampling rate in Hz. Must be 48000
 	Rate          *float64          `json:"rate,omitempty"`
 	ChannelLayout DtsXChannelLayout `json:"channelLayout,omitempty"`

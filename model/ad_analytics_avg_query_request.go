@@ -21,6 +21,8 @@ type AdAnalyticsAvgQueryRequest struct {
 	Dimension AdAnalyticsAttribute        `json:"dimension,omitempty"`
 	Interval  AnalyticsInterval           `json:"interval,omitempty"`
 	GroupBy   []AdAnalyticsAttribute      `json:"groupBy,omitempty"`
+	// Whether context data should be included in the response
+	IncludeContext *bool `json:"includeContext,omitempty"`
 	// Maximum number of rows returned (max. 200)
 	Limit *int64 `json:"limit,omitempty"`
 	// Offset of data
@@ -30,16 +32,17 @@ type AdAnalyticsAvgQueryRequest struct {
 // UnmarshalJSON unmarshals model AdAnalyticsAvgQueryRequest from a JSON structure
 func (m *AdAnalyticsAvgQueryRequest) UnmarshalJSON(raw []byte) error {
 	var data struct {
-		Start      *DateTime                 `json:"start"`
-		End        *DateTime                 `json:"end"`
-		LicenseKey *string                   `json:"licenseKey"`
-		Filters    json.RawMessage           `json:"filters"`
-		OrderBy    []AdAnalyticsOrderByEntry `json:"orderBy"`
-		Dimension  AdAnalyticsAttribute      `json:"dimension"`
-		Interval   AnalyticsInterval         `json:"interval"`
-		GroupBy    []AdAnalyticsAttribute    `json:"groupBy"`
-		Limit      *int64                    `json:"limit"`
-		Offset     *int64                    `json:"offset"`
+		Start          *DateTime                 `json:"start"`
+		End            *DateTime                 `json:"end"`
+		LicenseKey     *string                   `json:"licenseKey"`
+		Filters        json.RawMessage           `json:"filters"`
+		OrderBy        []AdAnalyticsOrderByEntry `json:"orderBy"`
+		Dimension      AdAnalyticsAttribute      `json:"dimension"`
+		Interval       AnalyticsInterval         `json:"interval"`
+		GroupBy        []AdAnalyticsAttribute    `json:"groupBy"`
+		IncludeContext *bool                     `json:"includeContext"`
+		Limit          *int64                    `json:"limit"`
+		Offset         *int64                    `json:"offset"`
 	}
 
 	buf := bytes.NewBuffer(raw)
@@ -59,6 +62,7 @@ func (m *AdAnalyticsAvgQueryRequest) UnmarshalJSON(raw []byte) error {
 	result.Dimension = data.Dimension
 	result.Interval = data.Interval
 	result.GroupBy = data.GroupBy
+	result.IncludeContext = data.IncludeContext
 	result.Limit = data.Limit
 	result.Offset = data.Offset
 
