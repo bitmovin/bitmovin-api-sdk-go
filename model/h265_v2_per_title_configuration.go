@@ -15,7 +15,7 @@ type H265V2PerTitleConfiguration struct {
 	ComplexityFactor *float64 `json:"complexityFactor,omitempty"`
 	// Additional configuration for fixed resolution and bitrate templates
 	FixedResolutionAndBitrateConfiguration *PerTitleFixedResolutionAndBitrateConfiguration `json:"fixedResolutionAndBitrateConfiguration,omitempty"`
-	// This factor influences the resolution selection of the per-title algorithm. The default value is 0.0. negative values will lead to results where the algorithm will choose lower resolutions for given bitrates. A positive value will result in higher resolutions to be selected. The range of the factor is -5.0 to +5.0. Please note that changing this factor might also lead to slightly different bitrate selection by the algorithm.
+	// This factor influences the resolution selection of the per-title algorithm. The default value is 0.0. negative values will lead to results where the algorithm will choose lower resolutions for given bitrates. A positive value will result in higher resolutions to be selected. The range of the factor is -15.0 to +15.0. Please note that changing this factor might also lead to slightly different bitrate selection by the algorithm.
 	ResolutionScaleFactor *float64 `json:"resolutionScaleFactor,omitempty"`
 	// This factor is used to calculate the minBitrate of the codec configuration for the generated representations as a multiple of the targetBitrate
 	CodecMinBitrateFactor *float64 `json:"codecMinBitrateFactor,omitempty"`

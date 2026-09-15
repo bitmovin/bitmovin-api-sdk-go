@@ -5,6 +5,7 @@ type AkamaiCloudRegion string
 
 // List of possible AkamaiCloudRegion values
 const (
+	AkamaiCloudRegion_AU_MEL AkamaiCloudRegion = "AU_MEL"
 	AkamaiCloudRegion_BR_GRU AkamaiCloudRegion = "BR_GRU"
 	AkamaiCloudRegion_ES_MAD AkamaiCloudRegion = "ES_MAD"
 	AkamaiCloudRegion_FR_PAR AkamaiCloudRegion = "FR_PAR"

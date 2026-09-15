@@ -14,6 +14,8 @@ type PlayerAPI struct {
 	Licenses *PlayerLicensesAPI
 	// CustomBuilds intermediary API object with no endpoints
 	CustomBuilds *PlayerCustomBuildsAPI
+	// Testing intermediary API object with no endpoints
+	Testing *PlayerTestingAPI
 }
 
 // NewPlayerAPI constructor for PlayerAPI that takes options as argument
@@ -32,6 +34,7 @@ func NewPlayerAPIWithClient(apiClient *apiclient.APIClient) *PlayerAPI {
 	a.Channels = NewPlayerChannelsAPIWithClient(apiClient)
 	a.Licenses = NewPlayerLicensesAPIWithClient(apiClient)
 	a.CustomBuilds = NewPlayerCustomBuildsAPIWithClient(apiClient)
+	a.Testing = NewPlayerTestingAPIWithClient(apiClient)
 
 	return a
 }
