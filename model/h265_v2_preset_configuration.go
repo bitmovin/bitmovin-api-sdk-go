@@ -5,6 +5,8 @@ type H265V2PresetConfiguration string
 
 // List of possible H265V2PresetConfiguration values
 const (
+	H265V2PresetConfiguration_VOD_SPEED        H265V2PresetConfiguration = "VOD_SPEED"
+	H265V2PresetConfiguration_VOD_STANDARD     H265V2PresetConfiguration = "VOD_STANDARD"
 	H265V2PresetConfiguration_VOD_QUALITY      H265V2PresetConfiguration = "VOD_QUALITY"
 	H265V2PresetConfiguration_VOD_HIGH_QUALITY H265V2PresetConfiguration = "VOD_HIGH_QUALITY"
 )
