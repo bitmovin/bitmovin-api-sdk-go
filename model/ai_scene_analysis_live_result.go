@@ -10,6 +10,8 @@ type AiSceneAnalysisLiveResult struct {
 	Sequence *int64 `json:"sequence,omitempty"`
 	// Time at which the AI analysis produced this result generation (required)
 	ProducedAt *DateTime `json:"producedAt,omitempty"`
+	// UTC presentation-clock time in Unix milliseconds corresponding to media time zero. This origin is fixed for the Live Analysis; coverage, observation, and source-gap times remain relative to it. It is not the source capture time or result publication time. (required)
+	MediaTimeOriginUnixMs *int64 `json:"mediaTimeOriginUnixMs,omitempty"`
 	// Whether AI analysis produced this as the final result generation. This does not by itself imply that the Analysis completed successfully. (required)
 	IsFinal *bool `json:"isFinal,omitempty"`
 	// Start of cumulative analyzed coverage on the monotonic analysis timeline (required)

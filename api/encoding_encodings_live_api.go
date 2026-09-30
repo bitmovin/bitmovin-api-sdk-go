@@ -13,6 +13,8 @@ type EncodingEncodingsLiveAPI struct {
 	Esam *EncodingEncodingsLiveEsamAPI
 	// ResetLiveManifestTimeshift communicates with '/encoding/encodings/{encoding_id}/live/reset-live-manifest-timeshift' endpoints
 	ResetLiveManifestTimeshift *EncodingEncodingsLiveResetLiveManifestTimeshiftAPI
+	// UpdateAutoshutdownConfig communicates with '/encoding/encodings/{encoding_id}/live/update-autoshutdown-config' endpoints
+	UpdateAutoshutdownConfig *EncodingEncodingsLiveUpdateAutoshutdownConfigAPI
 	// Heartbeat communicates with '/encoding/encodings/{encoding_id}/live/heartbeat' endpoints
 	Heartbeat *EncodingEncodingsLiveHeartbeatAPI
 	// HeartbeatFinal communicates with '/encoding/encodings/{encoding_id}/live/heartbeat-final' endpoints
@@ -40,6 +42,7 @@ func NewEncodingEncodingsLiveAPIWithClient(apiClient *apiclient.APIClient) *Enco
 	a := &EncodingEncodingsLiveAPI{apiClient: apiClient}
 	a.Esam = NewEncodingEncodingsLiveEsamAPIWithClient(apiClient)
 	a.ResetLiveManifestTimeshift = NewEncodingEncodingsLiveResetLiveManifestTimeshiftAPIWithClient(apiClient)
+	a.UpdateAutoshutdownConfig = NewEncodingEncodingsLiveUpdateAutoshutdownConfigAPIWithClient(apiClient)
 	a.Heartbeat = NewEncodingEncodingsLiveHeartbeatAPIWithClient(apiClient)
 	a.HeartbeatFinal = NewEncodingEncodingsLiveHeartbeatFinalAPIWithClient(apiClient)
 	a.Hd = NewEncodingEncodingsLiveHdAPIWithClient(apiClient)
