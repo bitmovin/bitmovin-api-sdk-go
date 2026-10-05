@@ -153,6 +153,7 @@ const (
 	AnalyticsAttribute_SEQUENCE_NUMBER                AnalyticsAttribute = "SEQUENCE_NUMBER"
 	AnalyticsAttribute_SIZE                           AnalyticsAttribute = "SIZE"
 	AnalyticsAttribute_STARTUPTIME                    AnalyticsAttribute = "STARTUPTIME"
+	AnalyticsAttribute_START_FAILURE_PERCENTAGE       AnalyticsAttribute = "START_FAILURE_PERCENTAGE"
 	AnalyticsAttribute_STREAM_FORMAT                  AnalyticsAttribute = "STREAM_FORMAT"
 	AnalyticsAttribute_SUPPORTED_VIDEO_CODECS         AnalyticsAttribute = "SUPPORTED_VIDEO_CODECS"
 	AnalyticsAttribute_TARGET_LATENCY                 AnalyticsAttribute = "TARGET_LATENCY"

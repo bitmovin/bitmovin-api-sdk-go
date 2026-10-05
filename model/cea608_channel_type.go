@@ -1,6 +1,6 @@
 package model
 
-// Cea608ChannelType : Subtitle channel track
+// Cea608ChannelType : CEA-608 caption channel, as defined in ANSI/CTA-608-E. Only the primary channel of each field is selectable.
 type Cea608ChannelType string
 
 // List of possible Cea608ChannelType values

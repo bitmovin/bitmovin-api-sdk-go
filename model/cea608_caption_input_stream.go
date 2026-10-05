@@ -23,7 +23,7 @@ type Cea608CaptionInputStream struct {
 	InputId *string `json:"inputId,omitempty"`
 	// Path to media file (required)
 	InputPath *string `json:"inputPath,omitempty"`
-	// The channel number of the subtitle on the respective stream position (required)
+	// The CEA-608 caption channel to extract, as defined in ANSI/CTA-608-E. Only the primary channel of each field is selectable: CC1 on field 1 and CC3 on field 2. (required)
 	Channel Cea608ChannelType `json:"channel,omitempty"`
 }
 
