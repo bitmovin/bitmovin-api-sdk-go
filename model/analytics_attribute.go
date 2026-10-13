@@ -123,6 +123,7 @@ const (
 	AnalyticsAttribute_ISP                            AnalyticsAttribute = "ISP"
 	AnalyticsAttribute_LANGUAGE                       AnalyticsAttribute = "LANGUAGE"
 	AnalyticsAttribute_LATENCY                        AnalyticsAttribute = "LATENCY"
+	AnalyticsAttribute_LATENCY_DELTA                  AnalyticsAttribute = "LATENCY_DELTA"
 	AnalyticsAttribute_LICENSE_KEY                    AnalyticsAttribute = "LICENSE_KEY"
 	AnalyticsAttribute_M3U8_URL                       AnalyticsAttribute = "M3U8_URL"
 	AnalyticsAttribute_MINUTE                         AnalyticsAttribute = "MINUTE"

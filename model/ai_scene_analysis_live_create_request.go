@@ -8,6 +8,8 @@ type AiSceneAnalysisLiveCreateRequest struct {
 	StreamKey *string `json:"streamKey,omitempty"`
 	// Region in which the AI analysis runs. `EXTERNAL` is not supported yet.
 	CloudRegion CloudRegion `json:"cloudRegion,omitempty"`
+	// Encoder release for the backing Live Encoding, using the same values and validation as `Encoding.encoderVersion` (for example, `LATEST` or a supported release version). Passed unchanged to the Encoding Resource Service. If omitted, the server default is used. Selects the full encoder release; component header overrides remain separate.
+	EncoderVersion *string `json:"encoderVersion,omitempty"`
 	// Destinations for the stream recording (required)
 	Recording *AiSceneAnalysisLiveRecordingRequest `json:"recording,omitempty"`
 	// Destinations for cumulative AI analysis results (required)
