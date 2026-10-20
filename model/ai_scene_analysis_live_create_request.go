@@ -12,6 +12,6 @@ type AiSceneAnalysisLiveCreateRequest struct {
 	EncoderVersion *string `json:"encoderVersion,omitempty"`
 	// Destinations for the stream recording (required)
 	Recording *AiSceneAnalysisLiveRecordingRequest `json:"recording,omitempty"`
-	// Destinations for cumulative AI analysis results (required)
+	// Destinations for incremental Live Analysis result batches (required)
 	Outputs []AiSceneAnalysisLiveOutput `json:"outputs,omitempty"`
 }

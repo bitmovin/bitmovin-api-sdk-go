@@ -2,7 +2,7 @@ package model
 
 // Immutable consumer-visible observation produced from an analyzed media window
 type AiSceneAnalysisLiveObservation struct {
-	// Stable opaque observation ID that remains unchanged across cumulative result generations (required)
+	// Stable opaque observation ID that remains unchanged during the observation's lifetime and is never reused after removal (required)
 	Id *string `json:"id,omitempty"`
 	// Consumer-visible description of a development in the analyzed media (required)
 	Text *string `json:"text,omitempty"`

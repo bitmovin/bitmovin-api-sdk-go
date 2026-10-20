@@ -12,7 +12,7 @@ type AiSceneAnalysisLiveResponse struct {
 	Status AiSceneAnalysisLiveStatus `json:"status,omitempty"`
 	// Resolved output configuration for the stream recording (required)
 	Recording *AiSceneAnalysisLiveRecording `json:"recording,omitempty"`
-	// Resolved Encoding Output ID references for cumulative AI analysis results (required)
+	// Resolved Encoding Output ID references for incremental Live Analysis result batches (required)
 	Outputs []EncodingOutput `json:"outputs,omitempty"`
 	// Current RTMP ingest details. Present only in the Get Live Analysis details response while the Live Analysis is `RUNNING`.
 	Ingest *LiveEncoding `json:"ingest,omitempty"`

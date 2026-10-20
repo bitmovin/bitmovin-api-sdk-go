@@ -27,7 +27,7 @@ func NewAiSceneAnalysisLiveAnalysesResultsLatestAPIWithClient(apiClient *apiclie
 }
 
 // Get Live Analysis Latest Result
-// Returns the latest cumulative AI analysis results.
+// Returns the latest complete Live Analysis result snapshot.
 func (api *AiSceneAnalysisLiveAnalysesResultsLatestAPI) Get(analysisId string) (*model.AiSceneAnalysisLiveResult, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["analysis_id"] = analysisId
