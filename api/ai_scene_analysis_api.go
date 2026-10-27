@@ -10,8 +10,6 @@ type AiSceneAnalysisAPI struct {
 
 	// Analyses communicates with '/ai-scene-analysis/analyses' endpoints
 	Analyses *AiSceneAnalysisAnalysesAPI
-	// LiveAnalyses communicates with '/ai-scene-analysis/live-analyses' endpoints
-	LiveAnalyses *AiSceneAnalysisLiveAnalysesAPI
 }
 
 // NewAiSceneAnalysisAPI constructor for AiSceneAnalysisAPI that takes options as argument
@@ -28,7 +26,6 @@ func NewAiSceneAnalysisAPI(options ...apiclient.APIClientOption) (*AiSceneAnalys
 func NewAiSceneAnalysisAPIWithClient(apiClient *apiclient.APIClient) *AiSceneAnalysisAPI {
 	a := &AiSceneAnalysisAPI{apiClient: apiClient}
 	a.Analyses = NewAiSceneAnalysisAnalysesAPIWithClient(apiClient)
-	a.LiveAnalyses = NewAiSceneAnalysisLiveAnalysesAPIWithClient(apiClient)
 
 	return a
 }
