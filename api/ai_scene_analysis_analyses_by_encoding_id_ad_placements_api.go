@@ -27,7 +27,7 @@ func NewAiSceneAnalysisAnalysesByEncodingIdAdPlacementsAPIWithClient(apiClient *
 }
 
 // Get AI Scene Analysis ad placements
-// Returns ad placements from AI scene analysis for a given encoding.
+// Returns selected ad breaks for an encoding.
 func (api *AiSceneAnalysisAnalysesByEncodingIdAdPlacementsAPI) Get(encodingId string) (*model.SceneAnalysisAdPlacementMetadataResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

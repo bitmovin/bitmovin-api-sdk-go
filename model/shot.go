@@ -1,17 +1,17 @@
 package model
 
-// Represents a continuous camera shot within a scene, containing detailed visual analysis including subjects, timing, and descriptive metadata
+// A detected shot associated with one scene. A shot can cross a scene boundary or lie entirely outside its associated scene. Use the shot's own timestamps to locate its content.
 type Shot struct {
 	// The start time of the shot in seconds from the beginning of the video (required)
 	StartInSeconds *float64 `json:"startInSeconds,omitempty"`
 	// The end time of the shot in seconds from the beginning of the video (required)
 	EndInSeconds *float64 `json:"endInSeconds,omitempty"`
-	// A comprehensive textual description of the visual content, action, and context within this shot
+	// Description of the shot's visual content, action and context.
 	DetailedDescription *string `json:"detailedDescription,omitempty"`
-	// A list of relevant keywords and tags that describe the content, themes, or notable elements in this shot
+	// Keywords describing the shot's content, themes or notable elements.
 	Keywords []string `json:"keywords,omitempty"`
-	// A collection of the primary subjects or objects detected and tracked within this shot, including their positions and characteristics
+	// Selected subjects or objects identified in this shot.
 	MainSubjects []MainSubject `json:"mainSubjects,omitempty"`
-	// Content advisory detection results for this shot, such as tobacco or vaping imagery
+	// Content advisory results for this shot, or null when no assessment is available. Availability depends on whether advisory analysis was enabled and supported by the analysis version.
 	ShotAdvisories *ShotAdvisories `json:"shotAdvisories,omitempty"`
 }

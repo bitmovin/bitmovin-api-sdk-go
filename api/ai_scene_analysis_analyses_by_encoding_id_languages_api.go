@@ -27,7 +27,7 @@ func NewAiSceneAnalysisAnalysesByEncodingIdLanguagesAPIWithClient(apiClient *api
 }
 
 // Get AI Scene Analysis languages
-// Returns list of languages from AI scene analysis for a given encoding.
+// Returns language codes registered for available VOD analysis details for an encoding. Use a returned code to fetch the corresponding language variant of the details.
 func (api *AiSceneAnalysisAnalysesByEncodingIdLanguagesAPI) Get(encodingId string) (*model.SceneAnalysisLanguagesResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

@@ -32,7 +32,7 @@ func NewAiSceneAnalysisAnalysesByEncodingIdDetailsAPIWithClient(apiClient *apicl
 }
 
 // Get AI Scene Analysis details
-// Returns detailed AI scene analysis for a given encoding.
+// Returns the original VOD analysis details for an encoding. The descriptive text is generated in English. Use Get AI Scene Analysis languages to discover available language variants.
 func (api *AiSceneAnalysisAnalysesByEncodingIdDetailsAPI) Get(encodingId string) (*model.SceneAnalysisDetailsResponse, error) {
 	reqParams := func(params *apiclient.RequestParams) {
 		params.PathParams["encoding_id"] = encodingId

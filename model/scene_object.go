@@ -2,6 +2,8 @@ package model
 
 // SceneObject model
 type SceneObject struct {
+	// Free-text description of the object in this scene.
 	Description *string `json:"description,omitempty"`
-	Category    *string `json:"category,omitempty"`
+	// Kind of object in free text rather than a fixed category list.
+	Category *string `json:"category,omitempty"`
 }

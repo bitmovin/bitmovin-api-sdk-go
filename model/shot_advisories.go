@@ -1,9 +1,9 @@
 package model
 
-// The result of content advisory detection for a shot, covering both what was detected and whether the shot was assessed at all
+// Advisory assessment for a shot.
 type ShotAdvisories struct {
-	// Whether and how the shot was assessed for content advisories (required)
+	// Outcome of the advisory assessment for this shot. (required)
 	Status AdvisoryAnalysisStatus `json:"status,omitempty"`
-	// The advisory-relevant imagery detected in this shot. Empty when the shot was assessed and nothing was found, or when it was not assessed at all (required)
+	// Advisories reported for this shot. Consult status before interpreting an empty or omitted list. (required)
 	Advisories []ContentAdvisory `json:"advisories,omitempty"`
 }
