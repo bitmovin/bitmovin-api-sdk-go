@@ -168,6 +168,13 @@ func unmarshalOutput(data []byte, consumer bitutils.Consumer) (Output, error) {
 		}
 		return result, nil
 
+	case "MOQ":
+		var result MoqOutput
+		if err := consumer.Consume(buf2, &result); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	default:
 		return baseType, nil
 	}
